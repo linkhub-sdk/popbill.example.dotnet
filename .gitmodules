@@ -1,0 +1,6 @@
+[submodule "Popbill"]
+	path = Popbill
+	url = https://github.com/linkhub-sdk/popbill.dotnet.git
+[submodule "Linkhub"]
+	path = Linkhub
+	url = https://github.com/linkhub-sdk/linkhub.dotnet.git
