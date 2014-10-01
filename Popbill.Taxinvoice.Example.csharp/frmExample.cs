@@ -42,7 +42,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             joinInfo.Addr = "주소";
             joinInfo.ZipCode = "500-100";
             joinInfo.BizType = "업태";
-            joinInfo.Bizclass = "업종";
+            joinInfo.BizClass = "업종";
             joinInfo.ID = "userid";                   //6자 이상 20자 미만
             joinInfo.PWD = "pwd_must_be_long_enough"; //6자 이상 20자 미만
             joinInfo.ContactName = "담당자명";
