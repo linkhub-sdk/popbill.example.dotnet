@@ -1074,7 +1074,7 @@ Partial Class frmExample
         'cboMgtKeyType
         '
         Me.cboMgtKeyType.FormattingEnabled = True
-        Me.cboMgtKeyType.Items.AddRange(New Object() {"SELL", "BUY", "TRUST"})
+        Me.cboMgtKeyType.Items.AddRange(New Object() {"SELL", "BUY", "TRUSTEE"})
         Me.cboMgtKeyType.Location = New System.Drawing.Point(152, 14)
         Me.cboMgtKeyType.Name = "cboMgtKeyType"
         Me.cboMgtKeyType.Size = New System.Drawing.Size(74, 20)

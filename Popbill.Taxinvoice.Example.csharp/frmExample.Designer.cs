@@ -633,7 +633,7 @@
             this.cboMgtKeyType.Items.AddRange(new object[] {
             "SELL",
             "BUY",
-            "TRUST"});
+            "TRUSTEE"});
             this.cboMgtKeyType.Location = new System.Drawing.Point(152, 14);
             this.cboMgtKeyType.Name = "cboMgtKeyType";
             this.cboMgtKeyType.Size = new System.Drawing.Size(74, 20);
