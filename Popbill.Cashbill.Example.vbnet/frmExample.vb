@@ -253,18 +253,7 @@ Public Class frmExample
 
     End Sub
 
-    Private Sub btnGetURL_SBOX_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGetURL_SBOX.Click
-        Try
-            Dim url As String = cashbillService.GetURL(txtCorpNum.Text, txtUserId.Text, "SBOX")
-
-            MsgBox(url)
-        Catch ex As PopbillException
-
-            MsgBox(ex.code.ToString() + " | " + ex.Message)
-        End Try
-    End Sub
-
-    Private Sub btnGetURL_PBOX_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGetURL_PBOX.Click
+    Private Sub btnGetURL_SBOX_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGetURL_PBOX.Click
         Try
             Dim url As String = cashbillService.GetURL(txtCorpNum.Text, txtUserId.Text, "PBOX")
 

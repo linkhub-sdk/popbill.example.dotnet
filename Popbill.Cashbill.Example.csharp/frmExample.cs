@@ -305,7 +305,7 @@ namespace Popbill.Cashbill.Example.csharp
         {
             try
             {
-                string url = cashbillService.GetURL(txtCorpNum.Text, txtUserId.Text, "SBOX");
+                string url = cashbillService.GetURL(txtCorpNum.Text, txtUserId.Text, "PBOX");
 
                 MessageBox.Show(url);
 

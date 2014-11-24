@@ -42,7 +42,6 @@ Partial Class frmExample
         Me.GroupBox13 = New System.Windows.Forms.GroupBox
         Me.btnGetURL_WRITE = New System.Windows.Forms.Button
         Me.btnGetURL_PBOX = New System.Windows.Forms.Button
-        Me.btnGetURL_SBOX = New System.Windows.Forms.Button
         Me.btnGetURL_TBOX = New System.Windows.Forms.Button
         Me.GroupBox12 = New System.Windows.Forms.GroupBox
         Me.btnGetEmailURL = New System.Windows.Forms.Button
@@ -261,7 +260,6 @@ Partial Class frmExample
         '
         Me.GroupBox13.Controls.Add(Me.btnGetURL_WRITE)
         Me.GroupBox13.Controls.Add(Me.btnGetURL_PBOX)
-        Me.GroupBox13.Controls.Add(Me.btnGetURL_SBOX)
         Me.GroupBox13.Controls.Add(Me.btnGetURL_TBOX)
         Me.GroupBox13.Location = New System.Drawing.Point(445, 223)
         Me.GroupBox13.Name = "GroupBox13"
@@ -272,7 +270,7 @@ Partial Class frmExample
         '
         'btnGetURL_WRITE
         '
-        Me.btnGetURL_WRITE.Location = New System.Drawing.Point(6, 116)
+        Me.btnGetURL_WRITE.Location = New System.Drawing.Point(7, 84)
         Me.btnGetURL_WRITE.Name = "btnGetURL_WRITE"
         Me.btnGetURL_WRITE.Size = New System.Drawing.Size(102, 26)
         Me.btnGetURL_WRITE.TabIndex = 11
@@ -281,21 +279,12 @@ Partial Class frmExample
         '
         'btnGetURL_PBOX
         '
-        Me.btnGetURL_PBOX.Location = New System.Drawing.Point(6, 84)
+        Me.btnGetURL_PBOX.Location = New System.Drawing.Point(6, 52)
         Me.btnGetURL_PBOX.Name = "btnGetURL_PBOX"
         Me.btnGetURL_PBOX.Size = New System.Drawing.Size(102, 26)
-        Me.btnGetURL_PBOX.TabIndex = 10
-        Me.btnGetURL_PBOX.Text = "매입보관함"
+        Me.btnGetURL_PBOX.TabIndex = 9
+        Me.btnGetURL_PBOX.Text = "발행보관함"
         Me.btnGetURL_PBOX.UseVisualStyleBackColor = True
-        '
-        'btnGetURL_SBOX
-        '
-        Me.btnGetURL_SBOX.Location = New System.Drawing.Point(6, 52)
-        Me.btnGetURL_SBOX.Name = "btnGetURL_SBOX"
-        Me.btnGetURL_SBOX.Size = New System.Drawing.Size(102, 26)
-        Me.btnGetURL_SBOX.TabIndex = 9
-        Me.btnGetURL_SBOX.Text = "매출보관함"
-        Me.btnGetURL_SBOX.UseVisualStyleBackColor = True
         '
         'btnGetURL_TBOX
         '
@@ -658,7 +647,6 @@ Partial Class frmExample
     Friend WithEvents GroupBox11 As System.Windows.Forms.GroupBox
     Friend WithEvents btnGetURL_WRITE As System.Windows.Forms.Button
     Friend WithEvents btnGetURL_PBOX As System.Windows.Forms.Button
-    Friend WithEvents btnGetURL_SBOX As System.Windows.Forms.Button
     Friend WithEvents btnGetURL_TBOX As System.Windows.Forms.Button
     Friend WithEvents btnGetInfos As System.Windows.Forms.Button
     Friend WithEvents btnGetLogs As System.Windows.Forms.Button
