@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Popbill.Cashbill.Example.cs
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Popbill.Cashbill.Example.vbnet", "Popbill.Cashbill.Example.vbnet\Popbill.Cashbill.Example.vbnet.vbproj", "{E46323CA-FA79-4DA4-9FAF-C9D2AD91C02A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Popbill.Statement.Example.csharp", "Popbill.Statement.Example.csharp\Popbill.Statement.Example.csharp.csproj", "{DA912DEA-BBAD-419E-9A40-6C2D2B70E946}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{E46323CA-FA79-4DA4-9FAF-C9D2AD91C02A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E46323CA-FA79-4DA4-9FAF-C9D2AD91C02A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E46323CA-FA79-4DA4-9FAF-C9D2AD91C02A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA912DEA-BBAD-419E-9A40-6C2D2B70E946}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA912DEA-BBAD-419E-9A40-6C2D2B70E946}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA912DEA-BBAD-419E-9A40-6C2D2B70E946}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA912DEA-BBAD-419E-9A40-6C2D2B70E946}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
