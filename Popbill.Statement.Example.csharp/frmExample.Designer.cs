@@ -66,10 +66,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-            this.lineShape4 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lineShape5 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lineShape3 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
@@ -463,50 +459,12 @@
             this.groupBox5.Controls.Add(this.btnDelete);
             this.groupBox5.Controls.Add(this.btnCancel);
             this.groupBox5.Controls.Add(this.btnIssue);
-            this.groupBox5.Controls.Add(this.shapeContainer1);
             this.groupBox5.Location = new System.Drawing.Point(333, 18);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(234, 162);
             this.groupBox5.TabIndex = 46;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "전자명세서 발행 프로세스";
-            // 
-            // shapeContainer1
-            // 
-            this.shapeContainer1.Location = new System.Drawing.Point(3, 17);
-            this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
-            this.shapeContainer1.Name = "shapeContainer1";
-            this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
-            this.lineShape4,
-            this.lineShape5,
-            this.lineShape3});
-            this.shapeContainer1.Size = new System.Drawing.Size(228, 142);
-            this.shapeContainer1.TabIndex = 46;
-            this.shapeContainer1.TabStop = false;
-            // 
-            // lineShape4
-            // 
-            this.lineShape4.Name = "lineShape4";
-            this.lineShape4.X1 = 183;
-            this.lineShape4.X2 = 183;
-            this.lineShape4.Y1 = 55;
-            this.lineShape4.Y2 = 104;
-            // 
-            // lineShape5
-            // 
-            this.lineShape5.Name = "lineShape5";
-            this.lineShape5.X1 = 84;
-            this.lineShape5.X2 = 84;
-            this.lineShape5.Y1 = 57;
-            this.lineShape5.Y2 = 102;
-            // 
-            // lineShape3
-            // 
-            this.lineShape3.Name = "lineShape3";
-            this.lineShape3.X1 = 118;
-            this.lineShape3.X2 = 153;
-            this.lineShape3.Y1 = 116;
-            this.lineShape3.Y2 = 116;
             // 
             // groupBox6
             // 
@@ -811,10 +769,6 @@
         private System.Windows.Forms.Button btnGetPartnerBalance;
         private System.Windows.Forms.GroupBox groupBox11;
         private System.Windows.Forms.GroupBox groupBox12;
-        private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
-        private Microsoft.VisualBasic.PowerPacks.LineShape lineShape3;
-        private Microsoft.VisualBasic.PowerPacks.LineShape lineShape4;
-        private Microsoft.VisualBasic.PowerPacks.LineShape lineShape5;
     }
 }
 
