@@ -15,7 +15,7 @@ namespace Popbill.Statement.Example.csharp
         private string LinkID = "TESTER";
 
         // 비밀키
-        private string SecretKey = "FhOeOWbvCgnw106bHmpRvuBZc4pyhPyPQUczyanFK70=";
+        private string SecretKey = "dOkfnobxAlQQwNVnkJWrM96g3a/M9DbRb99wFzdAGQA=";
         
         private StatementService statementService;
 
