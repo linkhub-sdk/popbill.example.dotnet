@@ -45,35 +45,40 @@
             this.txtCorpNum = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.btnSendSMS_one = new System.Windows.Forms.Button();
-            this.txtReserveDT = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtReceiptNum = new System.Windows.Forms.TextBox();
-            this.btn_SendSMS_hund = new System.Windows.Forms.Button();
-            this.btnSendSMS_Same = new System.Windows.Forms.Button();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.btnSendLMS_same = new System.Windows.Forms.Button();
-            this.btnSendLMS_hund = new System.Windows.Forms.Button();
-            this.btnSendLMS_one = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnCancelReserve = new System.Windows.Forms.Button();
+            this.btnGetMessageResult = new System.Windows.Forms.Button();
+            this.btnGetURL = new System.Windows.Forms.Button();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.btnSendXMS_same = new System.Windows.Forms.Button();
             this.btnSendXMS_hund = new System.Windows.Forms.Button();
             this.btnSendXMS_one = new System.Windows.Forms.Button();
-            this.btnGetURL = new System.Windows.Forms.Button();
-            this.btnGetMessageResult = new System.Windows.Forms.Button();
-            this.btnCancelReserve = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.btnSendLMS_same = new System.Windows.Forms.Button();
+            this.btnSendLMS_hund = new System.Windows.Forms.Button();
+            this.btnSendLMS_one = new System.Windows.Forms.Button();
+            this.txtReceiptNum = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.btnSendSMS_Same = new System.Windows.Forms.Button();
+            this.btn_SendSMS_hund = new System.Windows.Forms.Button();
+            this.btnSendSMS_one = new System.Windows.Forms.Button();
+            this.txtReserveDT = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.btnSendMMS_Same = new System.Windows.Forms.Button();
+            this.btnSendMMS = new System.Windows.Forms.Button();
+            this.btn_unitcost_mms = new System.Windows.Forms.Button();
             this.GroupBox1.SuspendLayout();
             this.GroupBox5.SuspendLayout();
             this.GroupBox3.SuspendLayout();
             this.GroupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            this.groupBox8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBox8.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.groupBox9.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtUserId
@@ -91,7 +96,7 @@
             this.GroupBox1.Controls.Add(this.GroupBox2);
             this.GroupBox1.Location = new System.Drawing.Point(6, 31);
             this.GroupBox1.Name = "GroupBox1";
-            this.GroupBox1.Size = new System.Drawing.Size(566, 106);
+            this.GroupBox1.Size = new System.Drawing.Size(688, 106);
             this.GroupBox1.TabIndex = 16;
             this.GroupBox1.TabStop = false;
             this.GroupBox1.Text = "팝빌 기본 API";
@@ -100,7 +105,7 @@
             // 
             this.GroupBox5.Controls.Add(this.cboPopbillTOGO);
             this.GroupBox5.Controls.Add(this.getPopbillURL);
-            this.GroupBox5.Location = new System.Drawing.Point(423, 17);
+            this.GroupBox5.Location = new System.Drawing.Point(549, 23);
             this.GroupBox5.Name = "GroupBox5";
             this.GroupBox5.Size = new System.Drawing.Size(131, 83);
             this.GroupBox5.TabIndex = 2;
@@ -132,20 +137,21 @@
             // 
             // GroupBox3
             // 
+            this.GroupBox3.Controls.Add(this.btn_unitcost_mms);
             this.GroupBox3.Controls.Add(this.btnUnitCost_LMS);
             this.GroupBox3.Controls.Add(this.btnGetPartnerBalance);
             this.GroupBox3.Controls.Add(this.btnUnitCost);
             this.GroupBox3.Controls.Add(this.btnGetBalance);
             this.GroupBox3.Location = new System.Drawing.Point(145, 17);
             this.GroupBox3.Name = "GroupBox3";
-            this.GroupBox3.Size = new System.Drawing.Size(272, 83);
+            this.GroupBox3.Size = new System.Drawing.Size(383, 83);
             this.GroupBox3.TabIndex = 1;
             this.GroupBox3.TabStop = false;
             this.GroupBox3.Text = "포인트 관련";
             // 
             // btnUnitCost_LMS
             // 
-            this.btnUnitCost_LMS.Location = new System.Drawing.Point(15, 48);
+            this.btnUnitCost_LMS.Location = new System.Drawing.Point(130, 19);
             this.btnUnitCost_LMS.Name = "btnUnitCost_LMS";
             this.btnUnitCost_LMS.Size = new System.Drawing.Size(118, 26);
             this.btnUnitCost_LMS.TabIndex = 4;
@@ -155,7 +161,7 @@
             // 
             // btnGetPartnerBalance
             // 
-            this.btnGetPartnerBalance.Location = new System.Drawing.Point(143, 48);
+            this.btnGetPartnerBalance.Location = new System.Drawing.Point(130, 51);
             this.btnGetPartnerBalance.Name = "btnGetPartnerBalance";
             this.btnGetPartnerBalance.Size = new System.Drawing.Size(118, 26);
             this.btnGetPartnerBalance.TabIndex = 3;
@@ -165,7 +171,7 @@
             // 
             // btnUnitCost
             // 
-            this.btnUnitCost.Location = new System.Drawing.Point(15, 16);
+            this.btnUnitCost.Location = new System.Drawing.Point(6, 19);
             this.btnUnitCost.Name = "btnUnitCost";
             this.btnUnitCost.Size = new System.Drawing.Size(118, 26);
             this.btnUnitCost.TabIndex = 3;
@@ -175,7 +181,7 @@
             // 
             // btnGetBalance
             // 
-            this.btnGetBalance.Location = new System.Drawing.Point(143, 16);
+            this.btnGetBalance.Location = new System.Drawing.Point(6, 51);
             this.btnGetBalance.Name = "btnGetBalance";
             this.btnGetBalance.Size = new System.Drawing.Size(118, 26);
             this.btnGetBalance.TabIndex = 2;
@@ -229,7 +235,7 @@
             this.txtCorpNum.Name = "txtCorpNum";
             this.txtCorpNum.Size = new System.Drawing.Size(143, 21);
             this.txtCorpNum.TabIndex = 13;
-            this.txtCorpNum.Text = "1231212312";
+            this.txtCorpNum.Text = "4108600477";
             // 
             // Label1
             // 
@@ -242,6 +248,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.groupBox9);
             this.groupBox4.Controls.Add(this.dataGridView1);
             this.groupBox4.Controls.Add(this.btnCancelReserve);
             this.groupBox4.Controls.Add(this.btnGetMessageResult);
@@ -255,85 +262,91 @@
             this.groupBox4.Controls.Add(this.label3);
             this.groupBox4.Location = new System.Drawing.Point(6, 143);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(565, 347);
+            this.groupBox4.Size = new System.Drawing.Size(688, 347);
             this.groupBox4.TabIndex = 17;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "메시지 관련 기능";
             // 
-            // groupBox6
+            // dataGridView1
             // 
-            this.groupBox6.Controls.Add(this.btnSendSMS_Same);
-            this.groupBox6.Controls.Add(this.btn_SendSMS_hund);
-            this.groupBox6.Controls.Add(this.btnSendSMS_one);
-            this.groupBox6.Location = new System.Drawing.Point(18, 41);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(172, 55);
-            this.groupBox6.TabIndex = 15;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "SMS 문자 전송";
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(14, 132);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 21;
+            this.dataGridView1.Size = new System.Drawing.Size(663, 203);
+            this.dataGridView1.TabIndex = 23;
             // 
-            // btnSendSMS_one
+            // btnCancelReserve
             // 
-            this.btnSendSMS_one.Location = new System.Drawing.Point(9, 20);
-            this.btnSendSMS_one.Name = "btnSendSMS_one";
-            this.btnSendSMS_one.Size = new System.Drawing.Size(47, 27);
-            this.btnSendSMS_one.TabIndex = 0;
-            this.btnSendSMS_one.Text = "1건";
-            this.btnSendSMS_one.UseVisualStyleBackColor = true;
-            this.btnSendSMS_one.Click += new System.EventHandler(this.btnSendSMS_one_Click);
+            this.btnCancelReserve.Location = new System.Drawing.Point(556, 102);
+            this.btnCancelReserve.Name = "btnCancelReserve";
+            this.btnCancelReserve.Size = new System.Drawing.Size(121, 24);
+            this.btnCancelReserve.TabIndex = 22;
+            this.btnCancelReserve.Text = "예약 전송 취소";
+            this.btnCancelReserve.UseVisualStyleBackColor = true;
+            this.btnCancelReserve.Click += new System.EventHandler(this.btnCancelReserve_Click);
             // 
-            // txtReserveDT
+            // btnGetMessageResult
             // 
-            this.txtReserveDT.Location = new System.Drawing.Point(196, 11);
-            this.txtReserveDT.Name = "txtReserveDT";
-            this.txtReserveDT.Size = new System.Drawing.Size(168, 21);
-            this.txtReserveDT.TabIndex = 14;
+            this.btnGetMessageResult.Location = new System.Drawing.Point(429, 102);
+            this.btnGetMessageResult.Name = "btnGetMessageResult";
+            this.btnGetMessageResult.Size = new System.Drawing.Size(121, 24);
+            this.btnGetMessageResult.TabIndex = 21;
+            this.btnGetMessageResult.Text = "전송상태확인";
+            this.btnGetMessageResult.UseVisualStyleBackColor = true;
+            this.btnGetMessageResult.Click += new System.EventHandler(this.btnGetMessageResult_Click);
             // 
-            // label3
+            // btnGetURL
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 17);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(191, 12);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "예약시간(yyyyMMddHHmmss) : ";
+            this.btnGetURL.Location = new System.Drawing.Point(556, 11);
+            this.btnGetURL.Name = "btnGetURL";
+            this.btnGetURL.Size = new System.Drawing.Size(121, 24);
+            this.btnGetURL.TabIndex = 20;
+            this.btnGetURL.Text = "전송내역조회 팝업";
+            this.btnGetURL.UseVisualStyleBackColor = true;
+            this.btnGetURL.Click += new System.EventHandler(this.btnGetURL_Click);
             // 
-            // label4
+            // groupBox8
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 109);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 12);
-            this.label4.TabIndex = 16;
-            this.label4.Text = "접수번호 : ";
+            this.groupBox8.Controls.Add(this.btnSendXMS_same);
+            this.groupBox8.Controls.Add(this.btnSendXMS_hund);
+            this.groupBox8.Controls.Add(this.btnSendXMS_one);
+            this.groupBox8.Location = new System.Drawing.Point(378, 41);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(172, 55);
+            this.groupBox8.TabIndex = 19;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "XMS 문자 전송";
             // 
-            // txtReceiptNum
+            // btnSendXMS_same
             // 
-            this.txtReceiptNum.Location = new System.Drawing.Point(73, 105);
-            this.txtReceiptNum.Name = "txtReceiptNum";
-            this.txtReceiptNum.Size = new System.Drawing.Size(143, 21);
-            this.txtReceiptNum.TabIndex = 17;
-            this.txtReceiptNum.Text = "014102315000000005";
+            this.btnSendXMS_same.Location = new System.Drawing.Point(115, 20);
+            this.btnSendXMS_same.Name = "btnSendXMS_same";
+            this.btnSendXMS_same.Size = new System.Drawing.Size(47, 27);
+            this.btnSendXMS_same.TabIndex = 2;
+            this.btnSendXMS_same.Text = "동보";
+            this.btnSendXMS_same.UseVisualStyleBackColor = true;
+            this.btnSendXMS_same.Click += new System.EventHandler(this.btnSendXMS_same_Click);
             // 
-            // btn_SendSMS_hund
+            // btnSendXMS_hund
             // 
-            this.btn_SendSMS_hund.Location = new System.Drawing.Point(62, 20);
-            this.btn_SendSMS_hund.Name = "btn_SendSMS_hund";
-            this.btn_SendSMS_hund.Size = new System.Drawing.Size(47, 27);
-            this.btn_SendSMS_hund.TabIndex = 1;
-            this.btn_SendSMS_hund.Text = "100건";
-            this.btn_SendSMS_hund.UseVisualStyleBackColor = true;
-            this.btn_SendSMS_hund.Click += new System.EventHandler(this.button1_Click);
+            this.btnSendXMS_hund.Location = new System.Drawing.Point(62, 20);
+            this.btnSendXMS_hund.Name = "btnSendXMS_hund";
+            this.btnSendXMS_hund.Size = new System.Drawing.Size(47, 27);
+            this.btnSendXMS_hund.TabIndex = 1;
+            this.btnSendXMS_hund.Text = "100건";
+            this.btnSendXMS_hund.UseVisualStyleBackColor = true;
+            this.btnSendXMS_hund.Click += new System.EventHandler(this.btnSendXMS_hund_Click);
             // 
-            // btnSendSMS_Same
+            // btnSendXMS_one
             // 
-            this.btnSendSMS_Same.Location = new System.Drawing.Point(115, 20);
-            this.btnSendSMS_Same.Name = "btnSendSMS_Same";
-            this.btnSendSMS_Same.Size = new System.Drawing.Size(47, 27);
-            this.btnSendSMS_Same.TabIndex = 2;
-            this.btnSendSMS_Same.Text = "동보";
-            this.btnSendSMS_Same.UseVisualStyleBackColor = true;
-            this.btnSendSMS_Same.Click += new System.EventHandler(this.btnSendSMS_Same_Click);
+            this.btnSendXMS_one.Location = new System.Drawing.Point(9, 20);
+            this.btnSendXMS_one.Name = "btnSendXMS_one";
+            this.btnSendXMS_one.Size = new System.Drawing.Size(47, 27);
+            this.btnSendXMS_one.TabIndex = 0;
+            this.btnSendXMS_one.Text = "1건";
+            this.btnSendXMS_one.UseVisualStyleBackColor = true;
+            this.btnSendXMS_one.Click += new System.EventHandler(this.btnSendXMS_one_Click);
             // 
             // groupBox7
             // 
@@ -377,92 +390,127 @@
             this.btnSendLMS_one.UseVisualStyleBackColor = true;
             this.btnSendLMS_one.Click += new System.EventHandler(this.btnSendLMS_one_Click);
             // 
-            // groupBox8
+            // txtReceiptNum
             // 
-            this.groupBox8.Controls.Add(this.btnSendXMS_same);
-            this.groupBox8.Controls.Add(this.btnSendXMS_hund);
-            this.groupBox8.Controls.Add(this.btnSendXMS_one);
-            this.groupBox8.Location = new System.Drawing.Point(378, 41);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(172, 55);
-            this.groupBox8.TabIndex = 19;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "LMS 문자 전송";
+            this.txtReceiptNum.Location = new System.Drawing.Point(73, 105);
+            this.txtReceiptNum.Name = "txtReceiptNum";
+            this.txtReceiptNum.Size = new System.Drawing.Size(143, 21);
+            this.txtReceiptNum.TabIndex = 17;
+            this.txtReceiptNum.Text = "014102315000000005";
             // 
-            // btnSendXMS_same
+            // label4
             // 
-            this.btnSendXMS_same.Location = new System.Drawing.Point(115, 20);
-            this.btnSendXMS_same.Name = "btnSendXMS_same";
-            this.btnSendXMS_same.Size = new System.Drawing.Size(47, 27);
-            this.btnSendXMS_same.TabIndex = 2;
-            this.btnSendXMS_same.Text = "동보";
-            this.btnSendXMS_same.UseVisualStyleBackColor = true;
-            this.btnSendXMS_same.Click += new System.EventHandler(this.btnSendXMS_same_Click);
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 109);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(65, 12);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "접수번호 : ";
             // 
-            // btnSendXMS_hund
+            // groupBox6
             // 
-            this.btnSendXMS_hund.Location = new System.Drawing.Point(62, 20);
-            this.btnSendXMS_hund.Name = "btnSendXMS_hund";
-            this.btnSendXMS_hund.Size = new System.Drawing.Size(47, 27);
-            this.btnSendXMS_hund.TabIndex = 1;
-            this.btnSendXMS_hund.Text = "100건";
-            this.btnSendXMS_hund.UseVisualStyleBackColor = true;
-            this.btnSendXMS_hund.Click += new System.EventHandler(this.btnSendXMS_hund_Click);
+            this.groupBox6.Controls.Add(this.btnSendSMS_Same);
+            this.groupBox6.Controls.Add(this.btn_SendSMS_hund);
+            this.groupBox6.Controls.Add(this.btnSendSMS_one);
+            this.groupBox6.Location = new System.Drawing.Point(18, 41);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(172, 55);
+            this.groupBox6.TabIndex = 15;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "SMS 문자 전송";
             // 
-            // btnSendXMS_one
+            // btnSendSMS_Same
             // 
-            this.btnSendXMS_one.Location = new System.Drawing.Point(9, 20);
-            this.btnSendXMS_one.Name = "btnSendXMS_one";
-            this.btnSendXMS_one.Size = new System.Drawing.Size(47, 27);
-            this.btnSendXMS_one.TabIndex = 0;
-            this.btnSendXMS_one.Text = "1건";
-            this.btnSendXMS_one.UseVisualStyleBackColor = true;
-            this.btnSendXMS_one.Click += new System.EventHandler(this.btnSendXMS_one_Click);
+            this.btnSendSMS_Same.Location = new System.Drawing.Point(115, 20);
+            this.btnSendSMS_Same.Name = "btnSendSMS_Same";
+            this.btnSendSMS_Same.Size = new System.Drawing.Size(47, 27);
+            this.btnSendSMS_Same.TabIndex = 2;
+            this.btnSendSMS_Same.Text = "동보";
+            this.btnSendSMS_Same.UseVisualStyleBackColor = true;
+            this.btnSendSMS_Same.Click += new System.EventHandler(this.btnSendSMS_Same_Click);
             // 
-            // btnGetURL
+            // btn_SendSMS_hund
             // 
-            this.btnGetURL.Location = new System.Drawing.Point(429, 11);
-            this.btnGetURL.Name = "btnGetURL";
-            this.btnGetURL.Size = new System.Drawing.Size(121, 24);
-            this.btnGetURL.TabIndex = 20;
-            this.btnGetURL.Text = "전송내역조회 팝업";
-            this.btnGetURL.UseVisualStyleBackColor = true;
-            this.btnGetURL.Click += new System.EventHandler(this.btnGetURL_Click);
+            this.btn_SendSMS_hund.Location = new System.Drawing.Point(62, 20);
+            this.btn_SendSMS_hund.Name = "btn_SendSMS_hund";
+            this.btn_SendSMS_hund.Size = new System.Drawing.Size(47, 27);
+            this.btn_SendSMS_hund.TabIndex = 1;
+            this.btn_SendSMS_hund.Text = "100건";
+            this.btn_SendSMS_hund.UseVisualStyleBackColor = true;
+            this.btn_SendSMS_hund.Click += new System.EventHandler(this.button1_Click);
             // 
-            // btnGetMessageResult
+            // btnSendSMS_one
             // 
-            this.btnGetMessageResult.Location = new System.Drawing.Point(302, 102);
-            this.btnGetMessageResult.Name = "btnGetMessageResult";
-            this.btnGetMessageResult.Size = new System.Drawing.Size(121, 24);
-            this.btnGetMessageResult.TabIndex = 21;
-            this.btnGetMessageResult.Text = "전송상태확인";
-            this.btnGetMessageResult.UseVisualStyleBackColor = true;
-            this.btnGetMessageResult.Click += new System.EventHandler(this.btnGetMessageResult_Click);
+            this.btnSendSMS_one.Location = new System.Drawing.Point(9, 20);
+            this.btnSendSMS_one.Name = "btnSendSMS_one";
+            this.btnSendSMS_one.Size = new System.Drawing.Size(47, 27);
+            this.btnSendSMS_one.TabIndex = 0;
+            this.btnSendSMS_one.Text = "1건";
+            this.btnSendSMS_one.UseVisualStyleBackColor = true;
+            this.btnSendSMS_one.Click += new System.EventHandler(this.btnSendSMS_one_Click);
             // 
-            // btnCancelReserve
+            // txtReserveDT
             // 
-            this.btnCancelReserve.Location = new System.Drawing.Point(429, 102);
-            this.btnCancelReserve.Name = "btnCancelReserve";
-            this.btnCancelReserve.Size = new System.Drawing.Size(121, 24);
-            this.btnCancelReserve.TabIndex = 22;
-            this.btnCancelReserve.Text = "예약 전송 취소";
-            this.btnCancelReserve.UseVisualStyleBackColor = true;
-            this.btnCancelReserve.Click += new System.EventHandler(this.btnCancelReserve_Click);
+            this.txtReserveDT.Location = new System.Drawing.Point(196, 11);
+            this.txtReserveDT.Name = "txtReserveDT";
+            this.txtReserveDT.Size = new System.Drawing.Size(186, 21);
+            this.txtReserveDT.TabIndex = 14;
             // 
-            // dataGridView1
+            // label3
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(14, 132);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 21;
-            this.dataGridView1.Size = new System.Drawing.Size(539, 203);
-            this.dataGridView1.TabIndex = 23;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(10, 17);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(191, 12);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "예약시간(yyyyMMddHHmmss) : ";
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.btnSendMMS_Same);
+            this.groupBox9.Controls.Add(this.btnSendMMS);
+            this.groupBox9.Location = new System.Drawing.Point(556, 41);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(121, 55);
+            this.groupBox9.TabIndex = 24;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "MMS 문자 전송";
+            // 
+            // btnSendMMS_Same
+            // 
+            this.btnSendMMS_Same.Location = new System.Drawing.Point(62, 20);
+            this.btnSendMMS_Same.Name = "btnSendMMS_Same";
+            this.btnSendMMS_Same.Size = new System.Drawing.Size(47, 27);
+            this.btnSendMMS_Same.TabIndex = 2;
+            this.btnSendMMS_Same.Text = "동보";
+            this.btnSendMMS_Same.UseVisualStyleBackColor = true;
+            this.btnSendMMS_Same.Click += new System.EventHandler(this.btnSendMMS_Same_Click);
+            // 
+            // btnSendMMS
+            // 
+            this.btnSendMMS.Location = new System.Drawing.Point(9, 20);
+            this.btnSendMMS.Name = "btnSendMMS";
+            this.btnSendMMS.Size = new System.Drawing.Size(47, 27);
+            this.btnSendMMS.TabIndex = 0;
+            this.btnSendMMS.Text = "1건";
+            this.btnSendMMS.UseVisualStyleBackColor = true;
+            this.btnSendMMS.Click += new System.EventHandler(this.btnSendMMS_Click);
+            // 
+            // btn_unitcost_mms
+            // 
+            this.btn_unitcost_mms.Location = new System.Drawing.Point(254, 19);
+            this.btn_unitcost_mms.Name = "btn_unitcost_mms";
+            this.btn_unitcost_mms.Size = new System.Drawing.Size(118, 26);
+            this.btn_unitcost_mms.TabIndex = 5;
+            this.btn_unitcost_mms.Text = "MMS 단가 확인";
+            this.btn_unitcost_mms.UseVisualStyleBackColor = true;
+            this.btn_unitcost_mms.Click += new System.EventHandler(this.btn_unitcost_mms_Click);
             // 
             // frmExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(577, 499);
+            this.ClientSize = new System.Drawing.Size(698, 499);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.txtUserId);
             this.Controls.Add(this.GroupBox1);
@@ -477,10 +525,11 @@
             this.GroupBox2.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox9.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -525,6 +574,10 @@
         private System.Windows.Forms.Button btnCancelReserve;
         private System.Windows.Forms.Button btnGetMessageResult;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.Button btnSendMMS_Same;
+        private System.Windows.Forms.Button btnSendMMS;
+        internal System.Windows.Forms.Button btn_unitcost_mms;
     }
 }
 
