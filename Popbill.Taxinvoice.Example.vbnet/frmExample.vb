@@ -274,8 +274,13 @@ Public Class frmExample
     Private Sub btnSend_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSend.Click
         Dim KeyType As MgtKeyType = [Enum].Parse(GetType(MgtKeyType), cboMgtKeyType.Text)
 
+        Dim Memo As String = "발행예정 메모"
+
+        //발행예정 메일제목, 공백으로 처리시 기본메일 제목으로 전송ㄴ
+        Dim EmailSubject As String = "발행예정 메일제목 테스트 dotent 3.5"
+
         Try
-            Dim response As Response = taxinvoiceService.Send(txtCorpNum.Text, KeyType, txtMgtKey.Text, "발행예정시 메모.", txtUserId.Text)
+            Dim response As Response = taxinvoiceService.Send(txtCorpNum.Text, KeyType, txtMgtKey.Text, Memo, EmailSubject, txtUserId.Text)
 
             MsgBox(response.message)
 

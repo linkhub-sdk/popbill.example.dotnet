@@ -1059,7 +1059,7 @@
             this.txtUserId.Name = "txtUserId";
             this.txtUserId.Size = new System.Drawing.Size(143, 21);
             this.txtUserId.TabIndex = 10;
-            this.txtUserId.Text = "userid";
+            this.txtUserId.Text = "testkorea";
             // 
             // cboPopbillTOGO
             // 
@@ -1144,7 +1144,7 @@
             this.txtCorpNum.Name = "txtCorpNum";
             this.txtCorpNum.Size = new System.Drawing.Size(143, 21);
             this.txtCorpNum.TabIndex = 8;
-            this.txtCorpNum.Text = "1231212312";
+            this.txtCorpNum.Text = "1234567890";
             // 
             // Label1
             // 

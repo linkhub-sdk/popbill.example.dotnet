@@ -9,7 +9,7 @@ namespace Popbill.Taxinvoice.Example.csharp
         //링크아이디
         private string LinkID = "TESTER";
         //비밀키
-        private string SecretKey = "2eQzzRuuygccucjyhFLMGkQEz7MzmDB9wA++aZROr1I=";
+        private string SecretKey = "SwWxqU+0TErBXy/9TVjIPEnI0VTUMMSQZtJf3Ed8q3I=";
 
         private TaxinvoiceService taxinvoiceService;
 
@@ -182,7 +182,7 @@ namespace Popbill.Taxinvoice.Example.csharp
         {
             Taxinvoice taxinvoice = new Taxinvoice();
 
-            taxinvoice.writeDate = "20140923";                      //필수, 기재상 작성일자
+            taxinvoice.writeDate = "20150615";                      //필수, 기재상 작성일자
             taxinvoice.chargeDirection = "정과금";                  //필수, {정과금, 역과금}
             taxinvoice.issueType = "정발행";                        //필수, {정발행, 역발행, 위수탁}
             taxinvoice.purposeType = "영수";                        //필수, {영수, 청구}
@@ -190,7 +190,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             taxinvoice.taxType = "과세";                            //필수, {과세, 영세, 면세}
 
 
-            taxinvoice.invoicerCorpNum = "1231212312";
+            taxinvoice.invoicerCorpNum = "1234567890";
             taxinvoice.invoicerTaxRegID = "";                       //종사업자 식별번호. 필요시 기재. 형식은 숫자 4자리.
             taxinvoice.invoicerCorpName = "공급자 상호";
             taxinvoice.invoicerMgtKey = txtMgtKey.Text;             //문서관리번호 1~24자리까지 공급자사업자번호별 중복없는 고유번호 할당
@@ -305,9 +305,14 @@ namespace Popbill.Taxinvoice.Example.csharp
         {
             MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
 
+            String Memo = "발행예정 메모";
+
+            //발행예정 메일제목, 공백으로 처리시 기본메일 제목으로 전송
+            String EmailSubject = "";
+
             try
             {
-                Response response = taxinvoiceService.Send(txtCorpNum.Text, KeyType, txtMgtKey.Text, "발행예정시 메모.", txtUserId.Text);
+                Response response = taxinvoiceService.Send(txtCorpNum.Text, KeyType, txtMgtKey.Text, Memo, EmailSubject, txtUserId.Text);
 
                 MessageBox.Show(response.message);
 
