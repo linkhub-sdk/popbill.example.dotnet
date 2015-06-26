@@ -10,7 +10,7 @@ namespace Popbill.Cashbill.Example.csharp
         //링크아이디
         private string LinkID = "TESTER";
         //비밀키
-        private string SecretKey = "Oafp98tjXpqjzPZRBL9lB1RsXR9zodOxCoPue7PfsQc=";
+        private string SecretKey = "SwWxqU+0TErBXy/9TVjIPEnI0VTUMMSQZtJf3Ed8q3I=";
 
         private CashbillService cashbillService;
 
@@ -19,9 +19,10 @@ namespace Popbill.Cashbill.Example.csharp
         public frmExample()
         {
             InitializeComponent();
-            //초기화
+            //현금영수증 몯류 초기화
             cashbillService = new CashbillService(LinkID, SecretKey);
-            //테스트를 완료한후 아래 변수를 false로 변경하거나, 아래줄을 삭제하여 실제 서비스 연결.
+
+            //연동환경 설정값, 테스트용(true), 상업옹(false)
             cashbillService.IsTest = true;
         }
 
@@ -45,7 +46,7 @@ namespace Popbill.Cashbill.Example.csharp
         {
             JoinForm joinInfo = new JoinForm();
 
-            joinInfo.LinkID = LinkID;
+            joinInfo.LinkID = LinkID;                 //링크아이디
             joinInfo.CorpNum = "1231212312";          //사업자번호 "-" 제외
             joinInfo.CEOName = "대표자성명";
             joinInfo.CorpName = "상호";
@@ -112,6 +113,7 @@ namespace Popbill.Cashbill.Example.csharp
         {
             try
             {
+                //CheckIsMember(조회할 사업자번호, 링크아이디)
                 Response response = cashbillService.CheckIsMember(txtCorpNum.Text, LinkID);
 
                 MessageBox.Show(response.code.ToString() + " | " + response.message);
@@ -159,33 +161,35 @@ namespace Popbill.Cashbill.Example.csharp
         private void btnRegister_Click(object sender, EventArgs e)
         {
             Cashbill cashbill = new Cashbill();
-
-                           
-            cashbill.mgtKey = txtMgtKey.Text;        //발행자별 고유번호 할당, 1~24자리 영문,숫자조합으로 중복없이 구성.
-            cashbill.tradeType = "승인거래";         //승인거래 or 취소거래
-            cashbill.franchiseCorpNum = txtCorpNum.Text;
+            
+            cashbill.mgtKey = txtMgtKey.Text;        //문서관리번호, 발행자별 고유번호 할당, 1~24자리 영문,숫자,'-','_' 조합으로 중복없이 구성.
+            cashbill.tradeType = "승인거래";         //거래유형 {승인거래, 취소거래} 중 기재
+            cashbill.franchiseCorpNum = txtCorpNum.Text;    //발행자 사업자번호
             cashbill.franchiseCorpName = "발행자 상호";
             cashbill.franchiseCEOName = "발행자 대표자";
             cashbill.franchiseAddr = "발행자 주소";
             cashbill.franchiseTEL = "070-1234-1234";
-            cashbill.identityNum = "01041680206";
+
+            cashbill.tradeUsage = "소득공제용";      //현금영수증 형태 , {소득공제용, 지출증빙용}중 기재
+            cashbill.identityNum = "01041680206";    //거래처식별번호, 
             cashbill.customerName = "고객명";
             cashbill.itemName = "상품명";
             cashbill.orderNumber = "주문번호";
             cashbill.email = "test@test.com";
             cashbill.hp = "111-1234-1234";
             cashbill.fax = "777-444-3333";
-            cashbill.serviceFee = "0";
-            cashbill.supplyCost = "10000";
-            cashbill.tax = "1000";
-            cashbill.totalAmount = "11000";
-            cashbill.tradeUsage = "소득공제용";      //소득공제용 or 지출증빙용
-            cashbill.taxationType = "과세";          //과세 or 비과세
+            cashbill.serviceFee = "0";              //봉사료
+            cashbill.supplyCost = "10000";          //공급가액
+            cashbill.tax = "1000";                  //세액
+            cashbill.totalAmount = "11000";         //거래금액(봉사료+공급가액+세액)
+            
+            cashbill.taxationType = "과세";         //과세형태, {과세, 비과세}
 
-            cashbill.smssendYN =  false;
+            cashbill.smssendYN =  false;            //발행시 문자전송여부 
           
             try
             {
+                //Register(팝빌회원 사업자번호, 현금영수증 객체, 팝빌회원 아이디)
                 Response response = cashbillService.Register(txtCorpNum.Text, cashbill, txtUserId.Text);
 
                 MessageBox.Show(response.message);
@@ -201,7 +205,8 @@ namespace Popbill.Cashbill.Example.csharp
          
             try
             {
-                Response response = cashbillService.Delete(txtCorpNum.Text,  txtMgtKey.Text, txtUserId.Text);
+                //Delete(팝빌회원 사업자번호, 문서관리번호, 팝빌회원 아이디)
+                Response response = cashbillService.Delete(txtCorpNum.Text, txtMgtKey.Text, txtUserId.Text);
 
                 MessageBox.Show(response.message);
 
@@ -218,17 +223,36 @@ namespace Popbill.Cashbill.Example.csharp
 
             try
             {
-                Cashbill cashbill = cashbillService.GetDetailInfo(txtCorpNum.Text,  txtMgtKey.Text);
-
-                //자세한 문세정보는 작성시 항목을 참조하거나, 연동메뉴얼 참조.
+                //GetDetailInfo(팝빌회원 사업자번호, 문서관리번호)
+                Cashbill cashbill = cashbillService.GetDetailInfo(txtCorpNum.Text, txtMgtKey.Text);
 
                 string tmp = null;
 
+                tmp += "mgtKey : " + cashbill.mgtKey + CRLF;
+                tmp += "tradeType : " + cashbill.tradeType + CRLF;
+                tmp += "tradeUsage : " + cashbill.tradeUsage + CRLF;
+                tmp += "taxationType: " + cashbill.taxationType + CRLF;
+                tmp += "tradeDate : " + cashbill.tradeDate + CRLF;
+                tmp += "supplyCost : " + cashbill.supplyCost + CRLF;
+                tmp += "tax : " + cashbill.tax + CRLF;
+                tmp += "serviceFee : " + cashbill.serviceFee + CRLF;
+                tmp += "totalAmount : " + cashbill.totalAmount + CRLF;
                 tmp += "franchiseCorpNum : " + cashbill.franchiseCorpNum + CRLF;
                 tmp += "franchiseCorpName : " + cashbill.franchiseCorpName + CRLF;
+                tmp += "franchiseCEOName : " + cashbill.franchiseCEOName + CRLF;
+                tmp += "franchiseAddr : " + cashbill.franchiseAddr + CRLF;
+                tmp += "franchiseTEL : " + cashbill.franchiseTEL + CRLF;
                 tmp += "identityNum : " + cashbill.identityNum + CRLF;
-                tmp += "customerName : " + cashbill.customerName + CRLF;
-
+                tmp += "customerName: " + cashbill.customerName + CRLF;
+                tmp += "itemName : " + cashbill.itemName + CRLF;
+                tmp += "orderNumber : " + cashbill.orderNumber + CRLF;
+                tmp += "hp : " + cashbill.hp + CRLF;
+                tmp += "fax : " + cashbill.fax + CRLF;
+                tmp += "confirmNum : " + cashbill.confirmNum + CRLF;
+                tmp += "orgConfirmNum : " + cashbill.orgConfirmNum + CRLF;
+                tmp += "smssendYN : " + cashbill.smssendYN + CRLF;
+                tmp += "faxsendYN : " + cashbill.faxsendYN + CRLF;
+                
                 MessageBox.Show(tmp);
 
 
@@ -363,8 +387,8 @@ namespace Popbill.Cashbill.Example.csharp
             List<string> MgtKeyList = new List<string>();
 
             //'최대 1000건.
-            MgtKeyList.Add("1234");
-            MgtKeyList.Add("12345");
+            MgtKeyList.Add("20150626-30");
+            MgtKeyList.Add("20150626-31");
 
             try
             {
@@ -372,7 +396,37 @@ namespace Popbill.Cashbill.Example.csharp
 
                 //'TOGO Describe it.
 
-                MessageBox.Show(cashbillInfoList.Count.ToString());
+                string tmp = null;
+
+                for (int i = 0; i < cashbillInfoList.Count; i++)
+                {
+                    tmp += "itemKey : " + cashbillInfoList[i].itemKey + CRLF;
+                    tmp += "mgtKey : " + cashbillInfoList[i].mgtKey + CRLF;
+                    tmp += "tradeDate : " + cashbillInfoList[i].tradeDate + CRLF;
+                    tmp += "issueDT : " + cashbillInfoList[i].issueDT + CRLF;
+                    tmp += "customerName : " + cashbillInfoList[i].customerName + CRLF;
+                    tmp += "itemName : " + cashbillInfoList[i].itemName + CRLF;
+                    tmp += "identityNum : " + cashbillInfoList[i].identityNum + CRLF;
+                    tmp += "taxationType : " + cashbillInfoList[i].taxationType + CRLF;
+
+                    tmp += "totalAmount : " + cashbillInfoList[i].totalAmount + CRLF;
+                    tmp += "tradeUsage : " + cashbillInfoList[i].tradeUsage + CRLF;
+                    tmp += "tradeType : " + cashbillInfoList[i].tradeType + CRLF;
+                    tmp += "stateCode : " + cashbillInfoList[i].stateCode + CRLF;
+                    tmp += "stateDT : " + cashbillInfoList[i].stateDT + CRLF;
+                    tmp += "printYN : " + cashbillInfoList[i].printYN + CRLF;
+
+                    tmp += "confirmNum : " + cashbillInfoList[i].confirmNum + CRLF;
+                    tmp += "orgConfirmNum : " + cashbillInfoList[i].orgConfirmNum + CRLF;
+
+                    tmp += "ntssendDT : " + cashbillInfoList[i].ntssendDT + CRLF;
+                    tmp += "ntsresult : " + cashbillInfoList[i].ntsresult + CRLF;
+                    tmp += "ntsresultDT : " + cashbillInfoList[i].ntsresultDT + CRLF;
+                    tmp += "ntsresultCode : " + cashbillInfoList[i].ntsresultCode + CRLF;
+                    tmp += "ntsresultMessage : " + cashbillInfoList[i].ntsresultMessage + CRLF+CRLF;
+                }
+
+                MessageBox.Show(tmp);
 
 
             }
@@ -388,6 +442,7 @@ namespace Popbill.Cashbill.Example.csharp
           
             try
             {
+                //SendEmail(팝빌회원 사업자번호, 문서관리번호, 수신메일주소, 팝빌회원 아이디)
                 Response response = cashbillService.SendEmail(txtCorpNum.Text, txtMgtKey.Text, "test@test.com", txtUserId.Text);
 
                 MessageBox.Show(response.message);
@@ -405,6 +460,8 @@ namespace Popbill.Cashbill.Example.csharp
 
             try
             {
+                //SendSMS(팝빌회원 사업자번호, 문서관리번호, 발신번호, 수신번호, 문자내용, 팝빌회원 아이디)
+                //문자내용의 길이가 90Byte를 초과하는 경우 길이가 조정되어 전송됨
                 Response response = cashbillService.SendSMS(txtCorpNum.Text, txtMgtKey.Text, "1111-2222", "111-2222-4444", "발신문자 내용...", txtUserId.Text);
 
                 MessageBox.Show(response.message);
@@ -421,6 +478,7 @@ namespace Popbill.Cashbill.Example.csharp
         {
             try
             {
+                //SendFAX(팝빌회원 사업자번호, 문서관리번호, 발신번호, 수신번호, 팝빌회원 아이디)
                 Response response = cashbillService.SendFAX(txtCorpNum.Text, txtMgtKey.Text, "1111-2222", "000-2222-4444", txtUserId.Text);
 
                 MessageBox.Show(response.message);
@@ -437,6 +495,7 @@ namespace Popbill.Cashbill.Example.csharp
         {
             try
             {
+                //GetPopUpURL(팝빌회원 사업자번호, 문서관리번호, 팝빌회원 아이디)
                 string url = cashbillService.GetPopUpURL(txtCorpNum.Text, txtMgtKey.Text, txtUserId.Text);
 
                 MessageBox.Show(url);
@@ -452,6 +511,7 @@ namespace Popbill.Cashbill.Example.csharp
         {
             try
             {
+                //GetPrintURL(팝빌회원 사업자번호, 문서관리번호, 팝빌회원 아이디)
                 string url = cashbillService.GetPrintURL(txtCorpNum.Text, txtMgtKey.Text, txtUserId.Text);
 
                 MessageBox.Show(url);
@@ -469,7 +529,8 @@ namespace Popbill.Cashbill.Example.csharp
           
             try
             {
-                string url = cashbillService.GetEPrintURL(txtCorpNum.Text,  txtMgtKey.Text, txtUserId.Text);
+                //GetEPrintURL(팝빌회원 사업자번호, 문서관리번호, 팝빌회원 아이디)
+                string url = cashbillService.GetEPrintURL(txtCorpNum.Text, txtMgtKey.Text, txtUserId.Text);
 
                 MessageBox.Show(url);
 
@@ -484,7 +545,7 @@ namespace Popbill.Cashbill.Example.csharp
         {
             try
             {
-                string url = cashbillService.GetEPrintURL(txtCorpNum.Text,  txtMgtKey.Text, txtUserId.Text);
+                string url = cashbillService.GetMailURL(txtCorpNum.Text,  txtMgtKey.Text, txtUserId.Text);
 
                 MessageBox.Show(url);
 
@@ -500,12 +561,13 @@ namespace Popbill.Cashbill.Example.csharp
           
             List<string> MgtKeyList = new List<string>();
 
-            //'최대 1000건.
+            //문서관리번호 배열, 최대 1000건.
             MgtKeyList.Add("1234");
             MgtKeyList.Add("12345");
 
             try
             {
+                //GetMassPrintURL(팝빌회원 사업자번호, 문서관리번호 배열, 팝빌회원 아이디)
                 string url = cashbillService.GetMassPrintURL(txtCorpNum.Text, MgtKeyList, txtUserId.Text);
 
                 MessageBox.Show(url);
@@ -523,6 +585,7 @@ namespace Popbill.Cashbill.Example.csharp
           
             try
             {
+                //Issue(팝빌회원 사업자번호, 문서관리번호, 메모, 팝빌회원 아이디)
                 Response response = cashbillService.Issue(txtCorpNum.Text,  txtMgtKey.Text, "발행시 메모",  txtUserId.Text);
 
                 MessageBox.Show(response.message);
@@ -540,6 +603,7 @@ namespace Popbill.Cashbill.Example.csharp
           
             try
             {
+                //CancelIssue(팝빌회원 사업자번호, 문서관리번호, 메모, 팝빌회원 아이디)
                 Response response = cashbillService.CancelIssue(txtCorpNum.Text, txtMgtKey.Text, "발행취소시 메모.", txtUserId.Text);
 
                 MessageBox.Show(response.message);
@@ -557,32 +621,35 @@ namespace Popbill.Cashbill.Example.csharp
 
             Cashbill cashbill = new Cashbill();
 
-            cashbill.mgtKey = txtMgtKey.Text;        //발행자별 고유번호 할당, 1~24자리 영문,숫자조합으로 중복없이 구성.
-            cashbill.tradeType = "승인거래";         //승인거래 or 취소거래
-            cashbill.franchiseCorpNum = txtCorpNum.Text;
+            cashbill.mgtKey = txtMgtKey.Text;        //문서관리번호, 발행자별 고유번호 할당, 1~24자리 영문,숫자,'-','_' 조합으로 중복없이 구성.
+            cashbill.tradeType = "승인거래";         //거래유형 {승인거래, 취소거래} 중 기재
+            cashbill.franchiseCorpNum = txtCorpNum.Text;    //발행자 사업자번호
             cashbill.franchiseCorpName = "발행자 상호_수정";
-            cashbill.franchiseCEOName = "발행자 대표자";
+            cashbill.franchiseCEOName = "발행자 대표자_수정";
             cashbill.franchiseAddr = "발행자 주소";
             cashbill.franchiseTEL = "070-1234-1234";
-            cashbill.identityNum = "01041680206";
+
+            cashbill.tradeUsage = "소득공제용";      //현금영수증 형태 , {소득공제용, 지출증빙용}중 기재
+            cashbill.identityNum = "01041680206";    //거래처식별번호, 
             cashbill.customerName = "고객명";
             cashbill.itemName = "상품명";
             cashbill.orderNumber = "주문번호";
             cashbill.email = "test@test.com";
             cashbill.hp = "111-1234-1234";
             cashbill.fax = "777-444-3333";
-            cashbill.serviceFee = "0";
-            cashbill.supplyCost = "10000";
-            cashbill.tax = "1000";
-            cashbill.totalAmount = "11000";
-            cashbill.tradeUsage = "소득공제용";      //소득공제용 or 지출증빙용
-            cashbill.taxationType = "과세";          //과세 or 비과세
+            cashbill.serviceFee = "0";              //봉사료
+            cashbill.supplyCost = "10000";          //공급가액
+            cashbill.tax = "1000";                  //세액
+            cashbill.totalAmount = "11000";         //거래금액(봉사료+공급가액+세액)
 
-            cashbill.smssendYN = false;
+            cashbill.taxationType = "과세";         //과세형태, {과세, 비과세}
+
+            cashbill.smssendYN = false;            //발행시 문자전송여부 
 
 
             try
             {
+                //Update(팝빌회원 사업자번호, 문서관리번호, 현금영수증객체, 팝빌회원 아이디)
                 Response response = cashbillService.Update(txtCorpNum.Text, txtMgtKey.Text, cashbill, txtUserId.Text);
 
                 MessageBox.Show(response.message);
@@ -592,5 +659,6 @@ namespace Popbill.Cashbill.Example.csharp
                 MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
             }
         }
+
     }
 }

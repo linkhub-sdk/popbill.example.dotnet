@@ -39,7 +39,7 @@
             this.btnAccept = new System.Windows.Forms.Button();
             this.btnCancelIssue = new System.Windows.Forms.Button();
             this.btnIssue = new System.Windows.Forms.Button();
-            this.Button7 = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.btnRegister = new System.Windows.Forms.Button();
             this.btnCancelSend = new System.Windows.Forms.Button();
             this.btnSend = new System.Windows.Forms.Button();
@@ -197,7 +197,7 @@
             this.GroupBox8.Controls.Add(this.btnAccept);
             this.GroupBox8.Controls.Add(this.btnCancelIssue);
             this.GroupBox8.Controls.Add(this.btnIssue);
-            this.GroupBox8.Controls.Add(this.Button7);
+            this.GroupBox8.Controls.Add(this.btnUpdate);
             this.GroupBox8.Controls.Add(this.btnRegister);
             this.GroupBox8.Controls.Add(this.btnCancelSend);
             this.GroupBox8.Controls.Add(this.btnSend);
@@ -267,16 +267,16 @@
             this.btnIssue.UseVisualStyleBackColor = false;
             this.btnIssue.Click += new System.EventHandler(this.btnIssue_Click);
             // 
-            // Button7
+            // btnUpdate
             // 
-            this.Button7.BackColor = System.Drawing.Color.LightCoral;
-            this.Button7.Location = new System.Drawing.Point(142, 23);
-            this.Button7.Name = "Button7";
-            this.Button7.Size = new System.Drawing.Size(50, 25);
-            this.Button7.TabIndex = 6;
-            this.Button7.Text = "수정";
-            this.Button7.UseVisualStyleBackColor = false;
-            this.Button7.Click += new System.EventHandler(this.Button7_Click);
+            this.btnUpdate.BackColor = System.Drawing.Color.LightCoral;
+            this.btnUpdate.Location = new System.Drawing.Point(142, 23);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(50, 25);
+            this.btnUpdate.TabIndex = 6;
+            this.btnUpdate.Text = "수정";
+            this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnRegister
             // 
@@ -1206,7 +1206,7 @@
         internal System.Windows.Forms.Button btnAccept;
         internal System.Windows.Forms.Button btnCancelIssue;
         internal System.Windows.Forms.Button btnIssue;
-        internal System.Windows.Forms.Button Button7;
+        internal System.Windows.Forms.Button btnUpdate;
         internal System.Windows.Forms.Button btnRegister;
         internal System.Windows.Forms.Button btnCancelSend;
         internal System.Windows.Forms.Button btnSend;

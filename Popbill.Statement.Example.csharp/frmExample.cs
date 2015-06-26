@@ -15,7 +15,7 @@ namespace Popbill.Statement.Example.csharp
         private string LinkID = "TESTER";
 
         // 비밀키
-        private string SecretKey = "dOkfnobxAlQQwNVnkJWrM96g3a/M9DbRb99wFzdAGQA=";
+        private string SecretKey = "SwWxqU+0TErBXy/9TVjIPEnI0VTUMMSQZtJf3Ed8q3I=";
         
         private StatementService statementService;
 
@@ -25,10 +25,10 @@ namespace Popbill.Statement.Example.csharp
         {
             InitializeComponent();
 
+            // 전자명세서 모듈 초기화
             statementService = new StatementService(LinkID, SecretKey);
-            
-            // 연동환경 설정값, 테스트완료후 false로 변경시 상업용으로 전환 가능.
-            // true(테스트용), false(상업용)
+
+            // 연동환경 설정값, true(테스트용), false(상업용).
             statementService.IsTest = true;
         }
 
@@ -52,7 +52,6 @@ namespace Popbill.Statement.Example.csharp
         {
             try
             {
-                
                 //CheckIsMember(사업자번호, 링크아이디)
                 Response response = statementService.CheckIsMember(txtCorpNum.Text, LinkID);
 
@@ -192,8 +191,7 @@ namespace Popbill.Statement.Example.csharp
 
             try
             {
-
-
+                //CheckMgtKeyInUse(팝빌회원 사업자번호, 명세서코드, 문서관리번호)
                 bool InUse = statementService.CheckMgtKeyInuse(txtCorpNum.Text, itemCode, txtMgtKey.Text);
 
                 MessageBox.Show(InUse ? "사용중" : "미사용중");
@@ -299,6 +297,7 @@ namespace Popbill.Statement.Example.csharp
 
             try
             {
+                //Register(팝빌회원 사업자번호, 명세서 객체, 팝빌회원 아이디)
                 Response response = statementService.Register(txtCorpNum.Text, statement, txtUserID.Text);
 
                 MessageBox.Show(response.code + " | " + response.message);
@@ -324,7 +323,7 @@ namespace Popbill.Statement.Example.csharp
 
             statement.mgtKey = txtMgtKey.Text;            //문서관리번호
 
-            statement.senderCorpNum = txtCorpNum.Text;
+            statement.senderCorpNum = txtCorpNum.Text;    //공급자 사업자번호, '-'제외 10자리
             statement.senderTaxRegID = "";                //종사업자 식별번호. 필요시 기재. 형식은 숫자 4자리.
             statement.senderCorpName = "공급자 상호";
             statement.senderCEOName = "공급자 대표자 성명";
@@ -395,8 +394,7 @@ namespace Popbill.Statement.Example.csharp
             detail.spare1 = "spare5";
 
             statement.detailList.Add(detail);
-
-
+            
             statement.propertyBag = new propertyBag();
 
             statement.propertyBag.Add("Balance", "15000");          // 추가속성항목, 자세한사항은 "전자명세서 API 연동매뉴얼> 5.2 기본양식 추가속성 테이블" 참조. 
@@ -404,6 +402,7 @@ namespace Popbill.Statement.Example.csharp
 
             try
             {
+                //Update(팝빌회원 사업자번호, 명세서코드, 문서관리번호, 명세서객체, 팝빌회원 아이디)
                 Response response = statementService.Update(txtCorpNum.Text, selectedItemCode(), txtMgtKey.Text, statement, txtUserID.Text);
 
                 MessageBox.Show(response.code + " | " + response.message);
@@ -422,6 +421,7 @@ namespace Popbill.Statement.Example.csharp
 
             try
             {
+                //Issue(팝빌회원 사업자번호, 명세서코드, 문서관리번호, 메모, 팝빌회원 아이디)
                 Response response = statementService.Issue(txtCorpNum.Text, itemCode, txtMgtKey.Text, "발행메모", txtUserID.Text);
 
                 MessageBox.Show(response.code + " | " + response.message);
@@ -442,6 +442,7 @@ namespace Popbill.Statement.Example.csharp
 
             try
             {
+                //CancelIssue(팝빌회원 사업자번호, 명세서코드, 문서관리번호, 메모, 팝빌회원 아이디)
                 Response response = statementService.CancelIssue(txtCorpNum.Text, itemCode, txtMgtKey.Text, "발행취소 메모", txtUserID.Text);
 
                 MessageBox.Show(response.code + " | " + response.message);
@@ -461,6 +462,7 @@ namespace Popbill.Statement.Example.csharp
 
             try
             {
+                //Delete(팝빌회원 사업자번호, 명세서코드, 문서관리번호, 팝빌회원 아이디)
                 Response response = statementService.Delete(txtCorpNum.Text, itemCode, txtMgtKey.Text, txtUserID.Text);
 
                 MessageBox.Show(response.code + " | " + response.message);
@@ -485,6 +487,7 @@ namespace Popbill.Statement.Example.csharp
 
                 try
                 {
+                    //AttachFile(팝빌회원 사업자번호, 명세서코드, 문서관리번호, 파일경로, 팝빌회원 아이디)
                     Response response = statementService.AttachFile(txtCorpNum.Text, itemCode, txtMgtKey.Text, strFileName, txtUserID.Text);
 
                     MessageBox.Show(response.code + " | " + response.message);
@@ -553,6 +556,7 @@ namespace Popbill.Statement.Example.csharp
 
             try
             {
+                //GetInfo(팝빌회원 사업자번호, 명세서코드, 문서관리번호)
                 StatementInfo statementInfo = statementService.GetInfo(txtCorpNum.Text, itemCode, txtMgtKey.Text);
 
                 string tmp = null;
@@ -595,6 +599,7 @@ namespace Popbill.Statement.Example.csharp
 
             try
             {
+                //GetDetailInfo(팝빌회원 사업자번호, 명세서코드, 문서관리번호)
                 Statement statement = statementService.GetDetailInfo(txtCorpNum.Text, itemCode, txtMgtKey.Text);
                 
                 string tmp = null;                                                                               
@@ -691,13 +696,13 @@ namespace Popbill.Statement.Example.csharp
 
             List<string> MgtKeyList = new List<string>();
 
-            //최대 1000건
+            //문서관리번호 배열, 최대 1000건
             MgtKeyList.Add("20150310-01");
             MgtKeyList.Add("20150310-02");
 
-
             try
             {
+                //GetInfos(팝빌회원 사업자번호, 명세서코드, 문서관리번호배열)
                 List<StatementInfo> statementInfoList = statementService.GetInfos(txtCorpNum.Text, itemCode, MgtKeyList);
 
                 string tmp = null;
@@ -774,10 +779,11 @@ namespace Popbill.Statement.Example.csharp
             String ReceiverEmail = "test@test.com";
 
             try
-            {
-               Response response = statementService.SendEmail(txtCorpNum.Text, itemcode, txtMgtKey.Text, ReceiverEmail, txtUserID.Text);
+            {   
+                //SendEmail(팝빌회원 사업자번호, 명세서코드, 문서관리번호, 수신메일주소, 팝빌회원 아이디)
+                Response response = statementService.SendEmail(txtCorpNum.Text, itemcode, txtMgtKey.Text, ReceiverEmail, txtUserID.Text);
 
-               MessageBox.Show(response.message);
+                MessageBox.Show(response.message);
 
             }
             catch (PopbillException ex)
@@ -797,6 +803,8 @@ namespace Popbill.Statement.Example.csharp
             string msgContents = "dotnet 전자명세서 문자전송 테스트";
             try
             {
+                //SendSMS(팝빌회원 사업자번호, 명세서코드, 문서관리번호, 발신번호, 수신번호, 메시지내용, 팝빌회원 아이디)
+                //메시지내용(msgContents)이 90Byte초과하는경우 길이가 조정되어 전송됨
                 Response response = statementService.SendSMS(txtCorpNum.Text, itemcode, txtMgtKey.Text, senderNum, receiverNum, msgContents, txtUserID.Text);
                 MessageBox.Show(response.message);
 
@@ -818,6 +826,7 @@ namespace Popbill.Statement.Example.csharp
             
             try
             {
+                //SendFAX(팝빌회원 사업자번호, 명세서코드, 문서관리번호, 발신번호, 수신번호, 팝빌회원 아이디)
                 Response response = statementService.SendFAX(txtCorpNum.Text, itemcode, txtMgtKey.Text, senderNum, receiverNum, txtUserID.Text);
                 MessageBox.Show(response.message);
 
@@ -836,6 +845,7 @@ namespace Popbill.Statement.Example.csharp
 
             try
             {
+                //GetPopUpURL(팝빌회원 사업자번호, 명세서코드, 문서관리번호, 팝빌회원 아이디)
                 string url = statementService.GetPopUpURL(txtCorpNum.Text, itemCode, txtMgtKey.Text, txtUserID.Text);
                 MessageBox.Show(url);
 
@@ -854,6 +864,7 @@ namespace Popbill.Statement.Example.csharp
 
             try
             {
+                //GetPrintURL(팝빌회원 사업자번호, 명세서코드, 문서관리번호, 팝빌회원 아이디)
                 string url = statementService.GetPrintURL(txtCorpNum.Text, itemCode, txtMgtKey.Text, txtUserID.Text);
                 MessageBox.Show(url);
 
@@ -872,6 +883,7 @@ namespace Popbill.Statement.Example.csharp
 
             try
             {
+                //GetEPrintURL(팝빌회원 사업자번호, 명세서코드, 문서관리번호, 팝빌회원 아이디)
                 string url = statementService.GetEPrintURL(txtCorpNum.Text, itemCode, txtMgtKey.Text, txtUserID.Text);
                 MessageBox.Show(url);
 
@@ -889,6 +901,7 @@ namespace Popbill.Statement.Example.csharp
 
             List<string> mgtKeyList = new List<string>();
 
+            //문서관리번호 배열, 최대 1000건
             mgtKeyList.Add("20150311-01");
             mgtKeyList.Add("20150311-02");
             mgtKeyList.Add("20150311-03");
@@ -896,6 +909,7 @@ namespace Popbill.Statement.Example.csharp
 
             try
             {
+                //GetMassPrintURL(팝빌회원 사업자번호, 명세서코드, 문서관리번호배열 , 팝빌회원 아이디)
                 string url = statementService.GetMassPrintURL(txtCorpNum.Text, itemCode, mgtKeyList, txtUserID.Text);
                 MessageBox.Show(url);
 
@@ -914,6 +928,7 @@ namespace Popbill.Statement.Example.csharp
 
             try
             {
+                //GetMailURL(팝빌회원 사업자번호, 명세서코드, 문서관리번호, 팝빌회원 아이디)
                 string url = statementService.GetMailURL(txtCorpNum.Text, itemCode, txtMgtKey.Text, txtUserID.Text);
                 MessageBox.Show(url);
 
@@ -956,9 +971,6 @@ namespace Popbill.Statement.Example.csharp
                 MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
             }
         }
-
-        
-
     }
 }
 
