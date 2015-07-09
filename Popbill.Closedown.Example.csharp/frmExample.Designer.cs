@@ -54,7 +54,7 @@
             // 
             // btnCheckCorpNum
             // 
-            this.btnCheckCorpNum.Location = new System.Drawing.Point(242, 172);
+            this.btnCheckCorpNum.Location = new System.Drawing.Point(245, 172);
             this.btnCheckCorpNum.Name = "btnCheckCorpNum";
             this.btnCheckCorpNum.Size = new System.Drawing.Size(77, 27);
             this.btnCheckCorpNum.TabIndex = 18;
@@ -64,7 +64,7 @@
             // 
             // btnCheckCorpNums
             // 
-            this.btnCheckCorpNums.Location = new System.Drawing.Point(332, 172);
+            this.btnCheckCorpNums.Location = new System.Drawing.Point(335, 172);
             this.btnCheckCorpNums.Name = "btnCheckCorpNums";
             this.btnCheckCorpNums.Size = new System.Drawing.Size(77, 27);
             this.btnCheckCorpNums.TabIndex = 19;
@@ -74,7 +74,7 @@
             // 
             // btnCheckIsMember
             // 
-            this.btnCheckIsMember.Location = new System.Drawing.Point(36, 72);
+            this.btnCheckIsMember.Location = new System.Drawing.Point(39, 72);
             this.btnCheckIsMember.Name = "btnCheckIsMember";
             this.btnCheckIsMember.Size = new System.Drawing.Size(104, 27);
             this.btnCheckIsMember.TabIndex = 0;
@@ -84,7 +84,7 @@
             // 
             // btnJoinMember
             // 
-            this.btnJoinMember.Location = new System.Drawing.Point(36, 105);
+            this.btnJoinMember.Location = new System.Drawing.Point(39, 105);
             this.btnJoinMember.Name = "btnJoinMember";
             this.btnJoinMember.Size = new System.Drawing.Size(104, 27);
             this.btnJoinMember.TabIndex = 1;
@@ -95,15 +95,15 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 14);
+            this.label1.Location = new System.Drawing.Point(20, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 12);
+            this.label1.Size = new System.Drawing.Size(101, 12);
             this.label1.TabIndex = 2;
-            this.label1.Text = "사업자번호 :";
+            this.label1.Text = "팝빌 사업자번호 :";
             // 
             // txtCorpNum
             // 
-            this.txtCorpNum.Location = new System.Drawing.Point(92, 9);
+            this.txtCorpNum.Location = new System.Drawing.Point(129, 9);
             this.txtCorpNum.Name = "txtCorpNum";
             this.txtCorpNum.Size = new System.Drawing.Size(115, 21);
             this.txtCorpNum.TabIndex = 3;
@@ -112,15 +112,15 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(237, 13);
+            this.label2.Location = new System.Drawing.Point(282, 13);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(77, 12);
+            this.label2.Size = new System.Drawing.Size(81, 12);
             this.label2.TabIndex = 4;
-            this.label2.Text = "팝빌아이디 : ";
+            this.label2.Text = "팝빌 아이디 : ";
             // 
             // txtUserID
             // 
-            this.txtUserID.Location = new System.Drawing.Point(313, 9);
+            this.txtUserID.Location = new System.Drawing.Point(363, 9);
             this.txtUserID.Name = "txtUserID";
             this.txtUserID.Size = new System.Drawing.Size(118, 21);
             this.txtUserID.TabIndex = 5;
@@ -128,7 +128,7 @@
             // 
             // btnGetBalance
             // 
-            this.btnGetBalance.Location = new System.Drawing.Point(160, 70);
+            this.btnGetBalance.Location = new System.Drawing.Point(163, 70);
             this.btnGetBalance.Name = "btnGetBalance";
             this.btnGetBalance.Size = new System.Drawing.Size(104, 27);
             this.btnGetBalance.TabIndex = 6;
@@ -138,7 +138,7 @@
             // 
             // btnUnitCost
             // 
-            this.btnUnitCost.Location = new System.Drawing.Point(160, 103);
+            this.btnUnitCost.Location = new System.Drawing.Point(163, 103);
             this.btnUnitCost.Name = "btnUnitCost";
             this.btnUnitCost.Size = new System.Drawing.Size(104, 27);
             this.btnUnitCost.TabIndex = 7;
@@ -148,7 +148,7 @@
             // 
             // btnGetPopbillURL_LOGIN
             // 
-            this.btnGetPopbillURL_LOGIN.Location = new System.Drawing.Point(285, 71);
+            this.btnGetPopbillURL_LOGIN.Location = new System.Drawing.Point(288, 71);
             this.btnGetPopbillURL_LOGIN.Name = "btnGetPopbillURL_LOGIN";
             this.btnGetPopbillURL_LOGIN.Size = new System.Drawing.Size(104, 27);
             this.btnGetPopbillURL_LOGIN.TabIndex = 8;
@@ -158,7 +158,7 @@
             // 
             // btnGetPopbillURL_CHRG
             // 
-            this.btnGetPopbillURL_CHRG.Location = new System.Drawing.Point(285, 104);
+            this.btnGetPopbillURL_CHRG.Location = new System.Drawing.Point(288, 104);
             this.btnGetPopbillURL_CHRG.Name = "btnGetPopbillURL_CHRG";
             this.btnGetPopbillURL_CHRG.Size = new System.Drawing.Size(104, 27);
             this.btnGetPopbillURL_CHRG.TabIndex = 9;
@@ -178,7 +178,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Location = new System.Drawing.Point(28, 55);
+            this.groupBox1.Location = new System.Drawing.Point(31, 55);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(118, 86);
             this.groupBox1.TabIndex = 11;
@@ -187,7 +187,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Location = new System.Drawing.Point(153, 55);
+            this.groupBox2.Location = new System.Drawing.Point(156, 55);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(118, 85);
             this.groupBox2.TabIndex = 12;
@@ -196,7 +196,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Location = new System.Drawing.Point(279, 55);
+            this.groupBox3.Location = new System.Drawing.Point(282, 55);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(117, 87);
             this.groupBox3.TabIndex = 13;
@@ -206,7 +206,7 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.btnGetPartnerBalance);
-            this.groupBox4.Location = new System.Drawing.Point(405, 55);
+            this.groupBox4.Location = new System.Drawing.Point(408, 55);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(133, 85);
             this.groupBox4.TabIndex = 14;
@@ -216,7 +216,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(30, 181);
+            this.label3.Location = new System.Drawing.Point(33, 181);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(105, 12);
             this.label3.TabIndex = 16;
@@ -224,7 +224,7 @@
             // 
             // txtCheckCorpNum
             // 
-            this.txtCheckCorpNum.Location = new System.Drawing.Point(135, 177);
+            this.txtCheckCorpNum.Location = new System.Drawing.Point(138, 177);
             this.txtCheckCorpNum.Name = "txtCheckCorpNum";
             this.txtCheckCorpNum.Size = new System.Drawing.Size(100, 21);
             this.txtCheckCorpNum.TabIndex = 17;
@@ -233,7 +233,7 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Location = new System.Drawing.Point(16, 37);
+            this.groupBox5.Location = new System.Drawing.Point(19, 37);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(536, 112);
             this.groupBox5.TabIndex = 20;
@@ -242,7 +242,7 @@
             // 
             // groupBox6
             // 
-            this.groupBox6.Location = new System.Drawing.Point(13, 157);
+            this.groupBox6.Location = new System.Drawing.Point(16, 157);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(539, 56);
             this.groupBox6.TabIndex = 21;
@@ -253,7 +253,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 230);
+            this.ClientSize = new System.Drawing.Size(574, 232);
             this.Controls.Add(this.btnCheckCorpNums);
             this.Controls.Add(this.btnCheckCorpNum);
             this.Controls.Add(this.txtCheckCorpNum);
