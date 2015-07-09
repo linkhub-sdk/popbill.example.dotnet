@@ -114,7 +114,6 @@ namespace Popbill.Closedown.Example.csharp
             try
             {
                 string url = closedownService.GetPopbillURL(txtCorpNum.Text, txtUserID.Text, "LOGIN");
-                txtURL.Text = url;
                 MessageBox.Show(url);
             }
             catch (PopbillException ex)
@@ -129,7 +128,6 @@ namespace Popbill.Closedown.Example.csharp
             try
             {
                 string url = closedownService.GetPopbillURL(txtCorpNum.Text, txtUserID.Text, "CHRG");
-                txtURL.Text = url;
                 MessageBox.Show(url);
             }
             catch (PopbillException ex)
