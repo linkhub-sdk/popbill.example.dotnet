@@ -7,7 +7,6 @@ namespace Popbill.Closedown.Example.csharp
 {
     public partial class frmExample : Form
     {
-
         //링크아이디
         private string LinkID = "TESTER";
         //비밀키

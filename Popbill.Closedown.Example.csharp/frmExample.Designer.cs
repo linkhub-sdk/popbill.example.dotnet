@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.Button btnCheckCorpNum;
-            System.Windows.Forms.Button btnCheckCorpNums;
+            this.btnCheckCorpNum = new System.Windows.Forms.Button();
+            this.btnCheckCorpNums = new System.Windows.Forms.Button();
             this.btnCheckIsMember = new System.Windows.Forms.Button();
             this.btnJoinMember = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -45,35 +45,32 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.txtURL = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtCheckCorpNum = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            btnCheckCorpNum = new System.Windows.Forms.Button();
-            btnCheckCorpNums = new System.Windows.Forms.Button();
             this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCheckCorpNum
             // 
-            btnCheckCorpNum.Location = new System.Drawing.Point(242, 172);
-            btnCheckCorpNum.Name = "btnCheckCorpNum";
-            btnCheckCorpNum.Size = new System.Drawing.Size(77, 27);
-            btnCheckCorpNum.TabIndex = 18;
-            btnCheckCorpNum.Text = "단건조회";
-            btnCheckCorpNum.UseVisualStyleBackColor = true;
-            btnCheckCorpNum.Click += new System.EventHandler(this.btnCheckCorpNum_Click);
+            this.btnCheckCorpNum.Location = new System.Drawing.Point(242, 172);
+            this.btnCheckCorpNum.Name = "btnCheckCorpNum";
+            this.btnCheckCorpNum.Size = new System.Drawing.Size(77, 27);
+            this.btnCheckCorpNum.TabIndex = 18;
+            this.btnCheckCorpNum.Text = "단건조회";
+            this.btnCheckCorpNum.UseVisualStyleBackColor = true;
+            this.btnCheckCorpNum.Click += new System.EventHandler(this.btnCheckCorpNum_Click);
             // 
             // btnCheckCorpNums
             // 
-            btnCheckCorpNums.Location = new System.Drawing.Point(332, 172);
-            btnCheckCorpNums.Name = "btnCheckCorpNums";
-            btnCheckCorpNums.Size = new System.Drawing.Size(77, 27);
-            btnCheckCorpNums.TabIndex = 19;
-            btnCheckCorpNums.Text = "대량조회";
-            btnCheckCorpNums.UseVisualStyleBackColor = true;
-            btnCheckCorpNums.Click += new System.EventHandler(this.btnCheckCorpNums_Click);
+            this.btnCheckCorpNums.Location = new System.Drawing.Point(332, 172);
+            this.btnCheckCorpNums.Name = "btnCheckCorpNums";
+            this.btnCheckCorpNums.Size = new System.Drawing.Size(77, 27);
+            this.btnCheckCorpNums.TabIndex = 19;
+            this.btnCheckCorpNums.Text = "대량조회";
+            this.btnCheckCorpNums.UseVisualStyleBackColor = true;
+            this.btnCheckCorpNums.Click += new System.EventHandler(this.btnCheckCorpNums_Click);
             // 
             // btnCheckIsMember
             // 
@@ -216,13 +213,6 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "파트너 관련";
             // 
-            // txtURL
-            // 
-            this.txtURL.Location = new System.Drawing.Point(469, 13);
-            this.txtURL.Name = "txtURL";
-            this.txtURL.Size = new System.Drawing.Size(100, 21);
-            this.txtURL.TabIndex = 15;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -254,7 +244,7 @@
             // 
             this.groupBox6.Location = new System.Drawing.Point(13, 157);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(418, 55);
+            this.groupBox6.Size = new System.Drawing.Size(539, 56);
             this.groupBox6.TabIndex = 21;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "휴폐업조회 API";
@@ -263,12 +253,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(706, 246);
-            this.Controls.Add(btnCheckCorpNums);
-            this.Controls.Add(btnCheckCorpNum);
+            this.ClientSize = new System.Drawing.Size(584, 230);
+            this.Controls.Add(this.btnCheckCorpNums);
+            this.Controls.Add(this.btnCheckCorpNum);
             this.Controls.Add(this.txtCheckCorpNum);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtURL);
             this.Controls.Add(this.btnGetPopbillURL_CHRG);
             this.Controls.Add(this.btnGetPopbillURL_LOGIN);
             this.Controls.Add(this.btnUnitCost);
@@ -310,11 +299,12 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.TextBox txtURL;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtCheckCorpNum;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Button btnCheckCorpNum;
+        private System.Windows.Forms.Button btnCheckCorpNums;
     }
 }
 

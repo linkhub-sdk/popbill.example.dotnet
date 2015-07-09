@@ -5,6 +5,7 @@ using Popbill.Cashbill;
 
 namespace Popbill.Cashbill.Example.csharp
 {
+
     public partial class frmExample : Form
     {
         //링크아이디
@@ -32,7 +33,7 @@ namespace Popbill.Cashbill.Example.csharp
             try
             {
                 string url = cashbillService.GetPopbillURL(txtCorpNum.Text, txtUserId.Text, cboPopbillTOGO.Text);
-
+                
                 MessageBox.Show(url);
             }
             catch (PopbillException ex)
