@@ -19,19 +19,11 @@ namespace Popbill.Taxinvoice.Example.csharp
         {
             InitializeComponent();
 
-            //전자세금계산서 초기화
+            //전자세금계산서 모듈 초기화
             taxinvoiceService = new TaxinvoiceService(LinkID, SecretKey);
 
             //연동환경 설정값, 테스트용(true), 상업용(false)
             taxinvoiceService.IsTest = true;
-        }
-
-        private void getPopbillURL_Click(object sender, EventArgs e)
-        {
-            
-            string url = taxinvoiceService.GetPopbillURL(txtCorpNum.Text, txtUserId.Text, cboPopbillTOGO.Text);
-
-            MessageBox.Show(url);
         }
 
         private void btnJoinMember_Click(object sender, EventArgs e)
@@ -58,12 +50,12 @@ namespace Popbill.Taxinvoice.Example.csharp
             {
                 Response response = taxinvoiceService.JoinMember(joinInfo);
 
-                MessageBox.Show(response.message);
+                MessageBox.Show(response.message, "회원가입");
 
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message, "회원가입");
 
             }
         }
@@ -75,31 +67,16 @@ namespace Popbill.Taxinvoice.Example.csharp
             {
                 double remainPoint = taxinvoiceService.GetBalance(txtCorpNum.Text);
 
-                MessageBox.Show(remainPoint.ToString());
+                MessageBox.Show(remainPoint.ToString(), "잔여포인트 조회");
 
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("[ "+ ex.code.ToString() + " ] " + ex.Message, "잔여포인트 조회");
 
             }
         }
 
-        private void btnGetPartnerBalance_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                double remainPoint = taxinvoiceService.GetPartnerBalance(txtCorpNum.Text);
-
-                MessageBox.Show(remainPoint.ToString());
-
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
-
-            }
-        }
 
         private void btnCheckIsMember_Click(object sender, EventArgs e)
         {
@@ -108,12 +85,12 @@ namespace Popbill.Taxinvoice.Example.csharp
                 //CheckIsMember(조회할 사업자번호, 링크아이디)
                 Response response = taxinvoiceService.CheckIsMember(txtCorpNum.Text, LinkID);
 
-                MessageBox.Show(response.code.ToString() + " | " + response.message);
+                MessageBox.Show(response.code.ToString() + " | " + response.message, "연동회원 가입여부확인");
 
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("[ " +ex.code.ToString() + " ] " + ex.Message, "연동회원 가입여부 확인");
 
             }
         }
@@ -124,12 +101,12 @@ namespace Popbill.Taxinvoice.Example.csharp
             {
                 float unitCost = taxinvoiceService.GetUnitCost(txtCorpNum.Text);
 
-                MessageBox.Show(unitCost.ToString());
+                MessageBox.Show(unitCost.ToString(), "발행단가 확인");
 
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("[ "+ex.code.ToString() + " ] " + ex.Message , "발행단가 확인");
 
             }
         }
@@ -140,12 +117,12 @@ namespace Popbill.Taxinvoice.Example.csharp
             {
                 DateTime expiration = taxinvoiceService.GetCertificateExpireDate(txtCorpNum.Text);
 
-                MessageBox.Show(expiration.ToString());
+                MessageBox.Show(expiration.ToString(), "공인인증서 만료일시 확인");
 
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message, "공인인증서 만료일시 확인");
 
             }
         }
@@ -1285,5 +1262,204 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                //GetInfos(팝빌회원 사업자번호, 발행유형, 문서관리번호 배열)
+                List<Contact> contactList = taxinvoiceService.ListContact(txtCorpNum.Text, txtUserId.Text);
+
+                MessageBox.Show(contactList[0].id);
+
+
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+            }
+        }
+
+        private void getPopbillURL_LOGIN_Click(object sender, EventArgs e)
+        {
+            string url = taxinvoiceService.GetPopbillURL(txtCorpNum.Text, txtUserId.Text, "LOGIN");
+
+            MessageBox.Show(url, "팝빌 로그인 URL");
+        }
+
+        private void getPopbillURL_CHRG_Click(object sender, EventArgs e)
+        {
+            string url = taxinvoiceService.GetPopbillURL(txtCorpNum.Text, txtUserId.Text, "CHRG");
+
+            MessageBox.Show(url, "포인트 충전 URL");
+        }
+
+        private void getPopbillURL_CERT_Click(object sender, EventArgs e)
+        {
+            string url = taxinvoiceService.GetPopbillURL(txtCorpNum.Text, txtUserId.Text, "CERT");
+
+            MessageBox.Show(url, "공인인증서 등록 URL");
+        }
+
+        private void btnRegistContact_Click(object sender, EventArgs e)
+        {
+            Contact contactInfo = new Contact();
+
+            contactInfo.id = "test12341234";        // 담당자 아이디, 한글, 영문(대/소), 숫자, '-', '_' 6자 이상 20자 미만 구성
+            contactInfo.pwd = "12345";              // 비밀번호, 6자 이상 20자 미만 구성
+            contactInfo.personName = "담당자 명";   // 담당자명 
+            contactInfo.tel = "070-7510-3710";      // 연락처
+            contactInfo.hp = "010-1234-1234";       // 휴대폰번호
+            contactInfo.fax = "070-7510-3710";      // 팩스번호 
+            contactInfo.email = "code@linkhub.co.kr";   // 이메일주소
+            contactInfo.searchAllAllowYN = false;   // 회사조회 권한여부, true(회사조회), false(개인조회)
+            contactInfo.mgrYN = false;              // 관리자 권한여부 
+
+            try
+            {
+                Response response = taxinvoiceService.RegistContact(txtCorpNum.Text, contactInfo, txtUserId.Text);
+
+                MessageBox.Show("["+response.code.ToString() + "] " + response.message, "담당자 추가");
+                
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("["+ex.code.ToString() + "] " + ex.Message, "담당자 추가");
+            }
+        }
+
+        private void btnUpdateContact_Click(object sender, EventArgs e)
+        {
+            Contact contactInfo = new Contact();
+
+            contactInfo.personName = "담당자123";      // 담당자명 
+            contactInfo.tel = "070-7510-3710";      // 연락처
+            contactInfo.hp = "010-1234-1234";       // 휴대폰번호
+            contactInfo.fax = "070-7510-3710";      // 팩스번호 
+            contactInfo.email = "code@linkhub.co.kr";   // 이메일주소
+            contactInfo.searchAllAllowYN = true;    // 회사조회 권한여부, true(회사조회), false(개인조회)
+            contactInfo.mgrYN = false;              // 관리자 권한여부 
+
+            try
+            {
+                Response response = taxinvoiceService.UpdateContact(txtCorpNum.Text, contactInfo, txtUserId.Text);
+
+                MessageBox.Show("[" + response.code.ToString() + "] " + response.message, "담당자 정보 수정");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("[" + ex.code.ToString() + "] " + ex.Message, "담당자 정보 수정");
+            }
+        }
+
+        private void btnGetPartnerBalance_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                double remainPoint = taxinvoiceService.GetPartnerBalance(txtCorpNum.Text);
+
+                MessageBox.Show(remainPoint.ToString());
+
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+
+            }
+        }
+
+        private void btnCheckID_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //CheckID(조회할 회원아이디)
+                Response response = taxinvoiceService.CheckID(txtUserId.Text);
+
+                MessageBox.Show("[ "+ response.code.ToString() + " ] " + response.message,"ID 중복확인");
+
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("[ "+ex.code.ToString() + " ] " + ex.Message, "ID 중복확인");
+
+            }
+        }
+
+        private void btnListContact_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<Contact> contactList = taxinvoiceService.ListContact(txtCorpNum.Text, txtUserId.Text);
+
+                string tmp = null;
+
+                foreach (Contact contactInfo in contactList)
+                {
+                    tmp += "id (담당자 아이디) : " + contactInfo.id + CRLF;
+                    tmp += "personName (담당자명) : " + contactInfo.personName + CRLF;
+                    tmp += "email (담당자 이메일) : " + contactInfo.email + CRLF;
+                    tmp += "hp (휴대폰번호) : " + contactInfo.hp + CRLF;
+                    tmp += "searchAllAllowYN (회사조회 여부) : " + contactInfo.searchAllAllowYN + CRLF;
+                    tmp += "tel (연락처) : " + contactInfo.tel + CRLF;
+                    tmp += "fax (팩스번호) : " + contactInfo.fax + CRLF;
+                    tmp += "mgrYN (관리자 여부) : " + contactInfo.mgrYN + CRLF;
+                    tmp += "regDT (등록일시) : " + contactInfo.regDT + CRLF;
+                    tmp += CRLF;
+                }
+              
+                MessageBox.Show(tmp, "담당자 목록조회");
+
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("[ "+ ex.code.ToString() + " ] " + ex.Message, "담당자 목록조회");
+            }
+        }
+
+        private void btnGetCorpInfo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                CorpInfo corpInfo = taxinvoiceService.GetCorpInfo(txtCorpNum.Text, txtUserId.Text);
+
+                string tmp = null;
+                tmp += "ceoname (대표자명) : " + corpInfo.ceoname + CRLF;
+                tmp += "corpNamem (상호명) : " + corpInfo.corpName + CRLF;
+                tmp += "addr (주소) : " + corpInfo.addr + CRLF;
+                tmp += "bizType (업태) : " + corpInfo.bizType + CRLF;
+                tmp += "bizClass (종목) : " + corpInfo.bizClass + CRLF;
+                
+                MessageBox.Show(tmp, "회사정보 조회");                
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message, "회사정보 조회");
+            }
+
+        }
+
+        private void btnUpdateCorpInfo_Click(object sender, EventArgs e)
+        {
+            CorpInfo corpInfo = new CorpInfo();
+
+            corpInfo.ceoname = "대표자명 테스트";
+            corpInfo.corpName = "업체명";
+            corpInfo.addr = "주소정보 수정";
+            corpInfo.bizType = "업태정보 수정";
+            corpInfo.bizClass = "업종정보 수정";
+
+            try
+            {
+                Response response = taxinvoiceService.UpdateCorpInfo(txtCorpNum.Text, corpInfo, txtUserId.Text);
+
+                MessageBox.Show("[ " + response.code.ToString() + " ] " + response.message, "회사정보 수정");
+
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message, "회사정보 수정");
+            }
+           
+        }
     }
 }

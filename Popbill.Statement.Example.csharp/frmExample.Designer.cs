@@ -72,18 +72,25 @@
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnCheckID = new System.Windows.Forms.Button();
             this.btnJoinMember = new System.Windows.Forms.Button();
             this.btnCheckIsMember = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnGetPartnerBalance = new System.Windows.Forms.Button();
             this.btnGetUnitCost = new System.Windows.Forms.Button();
             this.btnGetBalance = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnGetPopbillURL_CHRG = new System.Windows.Forms.Button();
             this.btnGetPopbillURL_LOGIN = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.btnGetPartnerBalance = new System.Windows.Forms.Button();
+            this.UpdateContact = new System.Windows.Forms.Button();
+            this.ListContact = new System.Windows.Forms.Button();
+            this.btnRegistContact = new System.Windows.Forms.Button();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.btnGetCorpInfo = new System.Windows.Forms.Button();
+            this.btnUpdateCorpInfo = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -97,29 +104,30 @@
             this.groupBox4.SuspendLayout();
             this.groupBox11.SuspendLayout();
             this.groupBox12.SuspendLayout();
+            this.groupBox13.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 19);
+            this.label1.Location = new System.Drawing.Point(15, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 12);
+            this.label1.Size = new System.Drawing.Size(125, 12);
             this.label1.TabIndex = 0;
-            this.label1.Text = "사업자번호 :";
+            this.label1.Text = "팝빌회원 사업자번호 :";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(196, 19);
+            this.label2.Location = new System.Drawing.Point(249, 20);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 12);
+            this.label2.Size = new System.Drawing.Size(101, 12);
             this.label2.TabIndex = 1;
-            this.label2.Text = "팝빌아이디 :";
+            this.label2.Text = "팝빌회원 아이디 :";
             // 
             // txtCorpNum
             // 
-            this.txtCorpNum.Location = new System.Drawing.Point(92, 12);
+            this.txtCorpNum.Location = new System.Drawing.Point(143, 16);
             this.txtCorpNum.Name = "txtCorpNum";
             this.txtCorpNum.Size = new System.Drawing.Size(100, 21);
             this.txtCorpNum.TabIndex = 2;
@@ -127,7 +135,7 @@
             // 
             // txtUserID
             // 
-            this.txtUserID.Location = new System.Drawing.Point(275, 10);
+            this.txtUserID.Location = new System.Drawing.Point(347, 16);
             this.txtUserID.Name = "txtUserID";
             this.txtUserID.Size = new System.Drawing.Size(100, 21);
             this.txtUserID.TabIndex = 3;
@@ -531,20 +539,31 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnCheckID);
             this.groupBox1.Controls.Add(this.btnJoinMember);
             this.groupBox1.Controls.Add(this.btnCheckIsMember);
-            this.groupBox1.Location = new System.Drawing.Point(17, 22);
+            this.groupBox1.Location = new System.Drawing.Point(9, 16);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(110, 85);
+            this.groupBox1.Size = new System.Drawing.Size(116, 119);
             this.groupBox1.TabIndex = 41;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "회원정보";
             // 
+            // btnCheckID
+            // 
+            this.btnCheckID.Location = new System.Drawing.Point(7, 49);
+            this.btnCheckID.Name = "btnCheckID";
+            this.btnCheckID.Size = new System.Drawing.Size(102, 29);
+            this.btnCheckID.TabIndex = 6;
+            this.btnCheckID.Text = "ID 중복 확인";
+            this.btnCheckID.UseVisualStyleBackColor = true;
+            this.btnCheckID.Click += new System.EventHandler(this.btnCheckID_Click);
+            // 
             // btnJoinMember
             // 
-            this.btnJoinMember.Location = new System.Drawing.Point(9, 51);
+            this.btnJoinMember.Location = new System.Drawing.Point(7, 81);
             this.btnJoinMember.Name = "btnJoinMember";
-            this.btnJoinMember.Size = new System.Drawing.Size(91, 26);
+            this.btnJoinMember.Size = new System.Drawing.Size(103, 30);
             this.btnJoinMember.TabIndex = 5;
             this.btnJoinMember.Text = "회원 가입";
             this.btnJoinMember.UseVisualStyleBackColor = true;
@@ -552,9 +571,9 @@
             // 
             // btnCheckIsMember
             // 
-            this.btnCheckIsMember.Location = new System.Drawing.Point(9, 19);
+            this.btnCheckIsMember.Location = new System.Drawing.Point(7, 17);
             this.btnCheckIsMember.Name = "btnCheckIsMember";
-            this.btnCheckIsMember.Size = new System.Drawing.Size(91, 26);
+            this.btnCheckIsMember.Size = new System.Drawing.Size(102, 30);
             this.btnCheckIsMember.TabIndex = 4;
             this.btnCheckIsMember.Text = "가입여부 확인";
             this.btnCheckIsMember.UseVisualStyleBackColor = true;
@@ -562,20 +581,31 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnGetPartnerBalance);
             this.groupBox2.Controls.Add(this.btnGetUnitCost);
             this.groupBox2.Controls.Add(this.btnGetBalance);
-            this.groupBox2.Location = new System.Drawing.Point(139, 22);
+            this.groupBox2.Location = new System.Drawing.Point(130, 15);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(127, 86);
+            this.groupBox2.Size = new System.Drawing.Size(133, 119);
             this.groupBox2.TabIndex = 42;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "포인트 관련";
             // 
+            // btnGetPartnerBalance
+            // 
+            this.btnGetPartnerBalance.Location = new System.Drawing.Point(7, 49);
+            this.btnGetPartnerBalance.Name = "btnGetPartnerBalance";
+            this.btnGetPartnerBalance.Size = new System.Drawing.Size(118, 31);
+            this.btnGetPartnerBalance.TabIndex = 8;
+            this.btnGetPartnerBalance.Text = "파트너포인트 확인";
+            this.btnGetPartnerBalance.UseVisualStyleBackColor = true;
+            this.btnGetPartnerBalance.Click += new System.EventHandler(this.btnGetPartnerPoint_Click);
+            // 
             // btnGetUnitCost
             // 
-            this.btnGetUnitCost.Location = new System.Drawing.Point(11, 49);
+            this.btnGetUnitCost.Location = new System.Drawing.Point(7, 83);
             this.btnGetUnitCost.Name = "btnGetUnitCost";
-            this.btnGetUnitCost.Size = new System.Drawing.Size(104, 26);
+            this.btnGetUnitCost.Size = new System.Drawing.Size(118, 29);
             this.btnGetUnitCost.TabIndex = 7;
             this.btnGetUnitCost.Text = "요금 단가 확인";
             this.btnGetUnitCost.UseVisualStyleBackColor = true;
@@ -583,9 +613,9 @@
             // 
             // btnGetBalance
             // 
-            this.btnGetBalance.Location = new System.Drawing.Point(11, 17);
+            this.btnGetBalance.Location = new System.Drawing.Point(8, 18);
             this.btnGetBalance.Name = "btnGetBalance";
-            this.btnGetBalance.Size = new System.Drawing.Size(104, 26);
+            this.btnGetBalance.Size = new System.Drawing.Size(117, 29);
             this.btnGetBalance.TabIndex = 6;
             this.btnGetBalance.Text = "잔여포인트 확인";
             this.btnGetBalance.UseVisualStyleBackColor = true;
@@ -595,18 +625,18 @@
             // 
             this.groupBox3.Controls.Add(this.btnGetPopbillURL_CHRG);
             this.groupBox3.Controls.Add(this.btnGetPopbillURL_LOGIN);
-            this.groupBox3.Location = new System.Drawing.Point(280, 22);
+            this.groupBox3.Location = new System.Drawing.Point(270, 14);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(139, 87);
+            this.groupBox3.Size = new System.Drawing.Size(139, 121);
             this.groupBox3.TabIndex = 43;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "기타";
+            this.groupBox3.Text = "팝빌 URL 관련";
             // 
             // btnGetPopbillURL_CHRG
             // 
-            this.btnGetPopbillURL_CHRG.Location = new System.Drawing.Point(12, 51);
+            this.btnGetPopbillURL_CHRG.Location = new System.Drawing.Point(9, 52);
             this.btnGetPopbillURL_CHRG.Name = "btnGetPopbillURL_CHRG";
-            this.btnGetPopbillURL_CHRG.Size = new System.Drawing.Size(115, 26);
+            this.btnGetPopbillURL_CHRG.Size = new System.Drawing.Size(123, 32);
             this.btnGetPopbillURL_CHRG.TabIndex = 9;
             this.btnGetPopbillURL_CHRG.Text = "포인트 충전 URL";
             this.btnGetPopbillURL_CHRG.UseVisualStyleBackColor = true;
@@ -614,9 +644,9 @@
             // 
             // btnGetPopbillURL_LOGIN
             // 
-            this.btnGetPopbillURL_LOGIN.Location = new System.Drawing.Point(12, 19);
+            this.btnGetPopbillURL_LOGIN.Location = new System.Drawing.Point(9, 19);
             this.btnGetPopbillURL_LOGIN.Name = "btnGetPopbillURL_LOGIN";
-            this.btnGetPopbillURL_LOGIN.Size = new System.Drawing.Size(115, 26);
+            this.btnGetPopbillURL_LOGIN.Size = new System.Drawing.Size(122, 32);
             this.btnGetPopbillURL_LOGIN.TabIndex = 8;
             this.btnGetPopbillURL_LOGIN.Text = "팝빌 로그인 URL";
             this.btnGetPopbillURL_LOGIN.UseVisualStyleBackColor = true;
@@ -624,33 +654,56 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.btnGetPartnerBalance);
-            this.groupBox4.Location = new System.Drawing.Point(432, 22);
+            this.groupBox4.Controls.Add(this.UpdateContact);
+            this.groupBox4.Controls.Add(this.ListContact);
+            this.groupBox4.Controls.Add(this.btnRegistContact);
+            this.groupBox4.Location = new System.Drawing.Point(415, 14);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(136, 58);
+            this.groupBox4.Size = new System.Drawing.Size(135, 120);
             this.groupBox4.TabIndex = 44;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "파트너 관련";
+            this.groupBox4.Text = "담당자 관련";
             // 
-            // btnGetPartnerBalance
+            // UpdateContact
             // 
-            this.btnGetPartnerBalance.Location = new System.Drawing.Point(9, 21);
-            this.btnGetPartnerBalance.Name = "btnGetPartnerBalance";
-            this.btnGetPartnerBalance.Size = new System.Drawing.Size(115, 26);
-            this.btnGetPartnerBalance.TabIndex = 10;
-            this.btnGetPartnerBalance.Text = "파트너포인트 확인";
-            this.btnGetPartnerBalance.UseVisualStyleBackColor = true;
-            this.btnGetPartnerBalance.Click += new System.EventHandler(this.btnGetPartnerBalance_Click);
+            this.UpdateContact.Location = new System.Drawing.Point(8, 83);
+            this.UpdateContact.Name = "UpdateContact";
+            this.UpdateContact.Size = new System.Drawing.Size(120, 31);
+            this.UpdateContact.TabIndex = 2;
+            this.UpdateContact.Text = "담당자 정보 수정";
+            this.UpdateContact.UseVisualStyleBackColor = true;
+            this.UpdateContact.Click += new System.EventHandler(this.UpdateContact_Click);
+            // 
+            // ListContact
+            // 
+            this.ListContact.Location = new System.Drawing.Point(8, 50);
+            this.ListContact.Name = "ListContact";
+            this.ListContact.Size = new System.Drawing.Size(119, 29);
+            this.ListContact.TabIndex = 1;
+            this.ListContact.Text = "담당자 목록 조회";
+            this.ListContact.UseVisualStyleBackColor = true;
+            this.ListContact.Click += new System.EventHandler(this.ListContact_Click);
+            // 
+            // btnRegistContact
+            // 
+            this.btnRegistContact.Location = new System.Drawing.Point(8, 18);
+            this.btnRegistContact.Name = "btnRegistContact";
+            this.btnRegistContact.Size = new System.Drawing.Size(118, 29);
+            this.btnRegistContact.TabIndex = 0;
+            this.btnRegistContact.Text = "담당자 추가";
+            this.btnRegistContact.UseVisualStyleBackColor = true;
+            this.btnRegistContact.Click += new System.EventHandler(this.btnRegistContact_Click);
             // 
             // groupBox11
             // 
+            this.groupBox11.Controls.Add(this.groupBox13);
             this.groupBox11.Controls.Add(this.groupBox4);
             this.groupBox11.Controls.Add(this.groupBox3);
             this.groupBox11.Controls.Add(this.groupBox2);
             this.groupBox11.Controls.Add(this.groupBox1);
             this.groupBox11.Location = new System.Drawing.Point(15, 42);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(615, 118);
+            this.groupBox11.Size = new System.Drawing.Size(702, 149);
             this.groupBox11.TabIndex = 52;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "팝빌 기본 API";
@@ -670,18 +723,49 @@
             this.groupBox12.Controls.Add(this.txtFormCode);
             this.groupBox12.Controls.Add(this.cboItemCode);
             this.groupBox12.Controls.Add(this.btnCheckMgtKeyInUse);
-            this.groupBox12.Location = new System.Drawing.Point(15, 166);
+            this.groupBox12.Location = new System.Drawing.Point(15, 202);
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.Size = new System.Drawing.Size(613, 487);
             this.groupBox12.TabIndex = 53;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "전자명세서 관련 API";
             // 
+            // groupBox13
+            // 
+            this.groupBox13.Controls.Add(this.btnUpdateCorpInfo);
+            this.groupBox13.Controls.Add(this.btnGetCorpInfo);
+            this.groupBox13.Location = new System.Drawing.Point(558, 14);
+            this.groupBox13.Name = "groupBox13";
+            this.groupBox13.Size = new System.Drawing.Size(130, 117);
+            this.groupBox13.TabIndex = 45;
+            this.groupBox13.TabStop = false;
+            this.groupBox13.Text = "회사정보 관련";
+            // 
+            // btnGetCorpInfo
+            // 
+            this.btnGetCorpInfo.Location = new System.Drawing.Point(8, 17);
+            this.btnGetCorpInfo.Name = "btnGetCorpInfo";
+            this.btnGetCorpInfo.Size = new System.Drawing.Size(115, 30);
+            this.btnGetCorpInfo.TabIndex = 0;
+            this.btnGetCorpInfo.Text = "회사정보 조회";
+            this.btnGetCorpInfo.UseVisualStyleBackColor = true;
+            this.btnGetCorpInfo.Click += new System.EventHandler(this.btnGetCorpInfo_Click);
+            // 
+            // btnUpdateCorpInfo
+            // 
+            this.btnUpdateCorpInfo.Location = new System.Drawing.Point(8, 49);
+            this.btnUpdateCorpInfo.Name = "btnUpdateCorpInfo";
+            this.btnUpdateCorpInfo.Size = new System.Drawing.Size(115, 30);
+            this.btnUpdateCorpInfo.TabIndex = 1;
+            this.btnUpdateCorpInfo.Text = "회사정보 수정";
+            this.btnUpdateCorpInfo.UseVisualStyleBackColor = true;
+            this.btnUpdateCorpInfo.Click += new System.EventHandler(this.btnUpdateCorpInfo_Click);
+            // 
             // frmExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(654, 688);
+            this.ClientSize = new System.Drawing.Size(730, 688);
             this.Controls.Add(this.groupBox12);
             this.Controls.Add(this.groupBox11);
             this.Controls.Add(this.txtUserID);
@@ -689,6 +773,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "frmExample";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "팝빌 전자명세서 C# SDK Example";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -706,6 +791,7 @@
             this.groupBox11.ResumeLayout(false);
             this.groupBox12.ResumeLayout(false);
             this.groupBox12.PerformLayout();
+            this.groupBox13.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -766,9 +852,16 @@
         private System.Windows.Forms.Button btnGetPopbillURL_CHRG;
         private System.Windows.Forms.Button btnGetPopbillURL_LOGIN;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Button btnGetPartnerBalance;
         private System.Windows.Forms.GroupBox groupBox11;
         private System.Windows.Forms.GroupBox groupBox12;
+        private System.Windows.Forms.Button btnCheckID;
+        private System.Windows.Forms.Button btnGetPartnerBalance;
+        private System.Windows.Forms.Button btnRegistContact;
+        private System.Windows.Forms.Button ListContact;
+        private System.Windows.Forms.Button UpdateContact;
+        private System.Windows.Forms.GroupBox groupBox13;
+        private System.Windows.Forms.Button btnGetCorpInfo;
+        private System.Windows.Forms.Button btnUpdateCorpInfo;
     }
 }
 

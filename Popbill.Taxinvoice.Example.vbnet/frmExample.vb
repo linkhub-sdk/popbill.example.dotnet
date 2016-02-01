@@ -276,7 +276,7 @@ Public Class frmExample
 
         Dim Memo As String = "발행예정 메모"
 
-        //발행예정 메일제목, 공백으로 처리시 기본메일 제목으로 전송ㄴ
+        '발행예정 메일제목, 공백으로 처리시 기본메일 제목으로 전송ㄴ
         Dim EmailSubject As String = "발행예정 메일제목 테스트 dotent 3.5"
 
         Try
