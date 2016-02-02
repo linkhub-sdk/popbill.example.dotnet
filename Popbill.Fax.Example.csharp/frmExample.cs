@@ -495,12 +495,14 @@ namespace Popbill.Fax.Example.csharp
 
             bool ReserveYN = false;     // 예약여부, True-예약전송건 검색
             bool SenderOnly = false;    // 개인조회여부, True-개인조회
+
+            String Order = "D";         // 정렬방향, A-오름차순, D-내림차순
             int Page = 1;       // 페이지 번호
             int PerPage = 100;   // 페이지당 검색개수, 최대 1000개
 
             try
             {
-                FAXSearchResult searchResult = faxService.Search(txtCorpNum.Text, SDate, EDate, State, ReserveYN, SenderOnly, Page, PerPage);
+                FAXSearchResult searchResult = faxService.Search(txtCorpNum.Text, SDate, EDate, State, ReserveYN, SenderOnly, Order, Page, PerPage);
                 
                 String tmp = null;
 

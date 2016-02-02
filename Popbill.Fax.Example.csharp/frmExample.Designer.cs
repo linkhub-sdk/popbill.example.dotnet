@@ -336,11 +336,11 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(592, 20);
+            this.btnSearch.Location = new System.Drawing.Point(458, 20);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(114, 34);
             this.btnSearch.TabIndex = 28;
-            this.btnSearch.Text = "전속내역 기간조회";
+            this.btnSearch.Text = "전송내역 기간조회";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
@@ -415,7 +415,7 @@
             // 
             // btnGetURL
             // 
-            this.btnGetURL.Location = new System.Drawing.Point(451, 20);
+            this.btnGetURL.Location = new System.Drawing.Point(581, 20);
             this.btnGetURL.Name = "btnGetURL";
             this.btnGetURL.Size = new System.Drawing.Size(125, 34);
             this.btnGetURL.TabIndex = 20;

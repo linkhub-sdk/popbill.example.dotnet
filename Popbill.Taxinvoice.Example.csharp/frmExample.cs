@@ -1640,12 +1640,13 @@ namespace Popbill.Taxinvoice.Example.csharp
             TaxType[2] = "Z";
 
             bool? LateOnly = null;  // 지연발행 여부, 미기재시 전체, true-지연발행분 조회, false-정상발행분 조회
+            String Order = "D";     // 정렬방향, A-오름차순, D-내림차순
             int Page = 1;           // 페이지번호
-            int PerPage = 10;       // 페이지당 검색개수, 최대 1000건
+            int PerPage = 25;       // 페이지당 검색개수, 최대 1000건
 
             try
             {
-                TISearchResult searchResult = taxinvoiceService.Search(txtCorpNum.Text, KeyType, DType, SDate, EDate, State, Type, TaxType, LateOnly, Page, PerPage);
+                TISearchResult searchResult = taxinvoiceService.Search(txtCorpNum.Text, KeyType, DType, SDate, EDate, State, Type, TaxType, LateOnly, Order, Page, PerPage);
                
                 String tmp = null;
 

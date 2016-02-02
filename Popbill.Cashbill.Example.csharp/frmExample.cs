@@ -932,12 +932,13 @@ namespace Popbill.Cashbill.Example.csharp
             TaxationType[0] = "T";
             TaxationType[1] = "N";
 
+            String Order = "D";     // 정렬방향, A-오름차순, D-내림차순
             int Page = 1;           // 페이지 번호
-            int PerPage = 15;       // 페이지당 검색개수, 최대 1000개 
+            int PerPage = 35;       // 페이지당 검색개수, 최대 1000개 
 
             try
             {
-                CBSearchResult searchResult = cashbillService.Search(txtCorpNum.Text, DType, SDate, EDate, State, TradeType, TradeUsage, TaxationType, Page, PerPage);
+                CBSearchResult searchResult = cashbillService.Search(txtCorpNum.Text, DType, SDate, EDate, State, TradeType, TradeUsage, TaxationType, Order, Page, PerPage);
                 String tmp = null;
 
                 tmp += "code : " + searchResult.code + CRLF;

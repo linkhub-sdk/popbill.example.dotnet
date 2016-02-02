@@ -1381,13 +1381,14 @@ namespace Popbill.Statement.Example.csharp
             //명세서 종류코드, 121-거래명세서, 122-청구서, 123-견적서, 124-발주서, 125-입금표, 126-영수증
             int[] ItemCode = { 121, 122, 123, 124, 125, 126 };
 
+            String Order = "D"; // 정렬방향, A-오름차순, D-내림차순
             int Page = 1;       // 페이지 번호
-            int PerPage = 15;   // 페이지당 목록개수, 최대 1000개
+            int PerPage = 50;   // 페이지당 목록개수, 최대 1000개
 
             try
             {
 
-                DocSearchResult searchResult = statementService.Search(txtCorpNum.Text, DType, SDate, EDate, State, ItemCode, Page, PerPage);
+                DocSearchResult searchResult = statementService.Search(txtCorpNum.Text, DType, SDate, EDate, State, ItemCode, Order, Page, PerPage);
 
                 String tmp = null;
                 tmp += "code : " + searchResult.code + CRLF;
@@ -1398,7 +1399,7 @@ namespace Popbill.Statement.Example.csharp
                 tmp += "message : " + searchResult.message + CRLF +CRLF;
 
                 tmp += "itemCode | itemKey | mgtKey | taxType | writeDate | senderCorpName | senderCorpNum | receiverCorpName | receiverCorpNum | supplyCostTotal";
-                tmp += " | taxTotal | stateCode";
+                tmp += " | taxTotal | stateCode" +CRLF;
 
                 foreach (StatementInfo statementInfo in searchResult.list)
                 {

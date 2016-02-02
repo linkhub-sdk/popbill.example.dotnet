@@ -712,12 +712,14 @@ namespace Popbill.Message.Example.csharp
 
             bool ReserveYN = false;     // 예약여부, true-예약전송만 조회 
             bool SenderYN = false;      // 개인조회여부 true-개인조회
+
+            String Order = "D";         // 정렬방향, A-오름차순, D-내림차순
             int Page = 1;               // 페이지 번호
-            int PerPage = 100;           // 페이지당 검색개수, 최대 1000건
+            int PerPage = 100;          // 페이지당 검색개수, 최대 1000건
 
             try
             {
-                MSGSearchResult searchResult = messageService.Search(txtCorpNum.Text, SDate, EDate, State, Item, ReserveYN, SenderYN, Page, PerPage);
+                MSGSearchResult searchResult = messageService.Search(txtCorpNum.Text, SDate, EDate, State, Item, ReserveYN, SenderYN, Order, Page, PerPage);
                 
                 String tmp = null;
                 tmp += "code : " + searchResult.code + CRLF;
