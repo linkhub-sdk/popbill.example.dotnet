@@ -496,7 +496,7 @@ namespace Popbill.Fax.Example.csharp
             bool ReserveYN = false;     // 예약여부, True-예약전송건 검색
             bool SenderOnly = false;    // 개인조회여부, True-개인조회
             int Page = 1;       // 페이지 번호
-            int PerPage = 15;   // 페이지당 검색개수, 최대 1000개
+            int PerPage = 100;   // 페이지당 검색개수, 최대 1000개
 
             try
             {
@@ -511,32 +511,9 @@ namespace Popbill.Fax.Example.csharp
                 tmp += "pageCount : " + searchResult.pageCount + CRLF;
                 tmp += "message : " + searchResult.message + CRLF + CRLF;
 
-                tmp += "sendState | convState | sendNum | receiveNum | receiveName | sendPageCnt | successPageCnt | failPageCnt | refundPageCnt | ";
-                tmp += "cancelPageCnt | reserveDT | sendDT | resultDT | sendResult";
-                tmp += CRLF;
-                
-
-                foreach (FaxResult faxInfo in searchResult.list)
-                {
-                    tmp += faxInfo.sendState + " | ";
-                    tmp += faxInfo.convState + " | ";
-                    tmp += faxInfo.sendNum + " | ";
-                    tmp += faxInfo.receiveNum + " | ";
-                    tmp += faxInfo.receiveName + " | ";
-                    tmp += faxInfo.sendPageCnt + " | ";
-                    tmp += faxInfo.successPageCnt + " | ";
-                    tmp += faxInfo.failPageCnt + " | ";
-                    tmp += faxInfo.refundPageCnt + " | ";
-                    tmp += faxInfo.cancelPageCnt + " | ";
-                    tmp += faxInfo.reserveDT + " | ";
-                    tmp += faxInfo.sendDT + " | ";
-                    tmp += faxInfo.resultDT + " | ";
-                    tmp += faxInfo.sendResult;
-                    
-                    tmp += CRLF;
-                }
-
                 MessageBox.Show(tmp, "팩스 전송내역 조회");
+
+                dataGridView1.DataSource = searchResult.list;
             }
             catch (PopbillException ex)
             {
