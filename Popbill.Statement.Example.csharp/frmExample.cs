@@ -1473,8 +1473,6 @@ namespace Popbill.Statement.Example.csharp
             }
         }
 
-
-
     }
 }
 

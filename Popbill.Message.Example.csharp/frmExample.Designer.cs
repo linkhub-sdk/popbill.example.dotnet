@@ -78,6 +78,7 @@
             this.txtReserveDT = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.btnGetAutoDenyList = new System.Windows.Forms.Button();
             this.GroupBox1.SuspendLayout();
             this.groupBox11.SuspendLayout();
             this.groupBox10.SuspendLayout();
@@ -352,6 +353,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.btnGetAutoDenyList);
             this.groupBox4.Controls.Add(this.btnSearch);
             this.groupBox4.Controls.Add(this.groupBox9);
             this.groupBox4.Controls.Add(this.dataGridView1);
@@ -434,9 +436,9 @@
             // 
             // btnGetURL
             // 
-            this.btnGetURL.Location = new System.Drawing.Point(720, 15);
+            this.btnGetURL.Location = new System.Drawing.Point(601, 15);
             this.btnGetURL.Name = "btnGetURL";
-            this.btnGetURL.Size = new System.Drawing.Size(121, 34);
+            this.btnGetURL.Size = new System.Drawing.Size(121, 32);
             this.btnGetURL.TabIndex = 20;
             this.btnGetURL.Text = "전송내역조회 팝업";
             this.btnGetURL.UseVisualStyleBackColor = true;
@@ -603,13 +605,23 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(570, 17);
+            this.btnSearch.Location = new System.Drawing.Point(466, 16);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(130, 31);
             this.btnSearch.TabIndex = 25;
             this.btnSearch.Text = "전송내역 기간조회";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // btnGetAutoDenyList
+            // 
+            this.btnGetAutoDenyList.Location = new System.Drawing.Point(728, 15);
+            this.btnGetAutoDenyList.Name = "btnGetAutoDenyList";
+            this.btnGetAutoDenyList.Size = new System.Drawing.Size(121, 32);
+            this.btnGetAutoDenyList.TabIndex = 26;
+            this.btnGetAutoDenyList.Text = "080 수신거부목록";
+            this.btnGetAutoDenyList.UseVisualStyleBackColor = true;
+            this.btnGetAutoDenyList.Click += new System.EventHandler(this.btnGetAutoDenyList_Click);
             // 
             // frmExample
             // 
@@ -695,6 +707,7 @@
         private System.Windows.Forms.Button btnGetCorpInfo;
         private System.Windows.Forms.Button btnUpdateCorpInfo;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnGetAutoDenyList;
     }
 }
 

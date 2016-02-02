@@ -741,5 +741,25 @@ namespace Popbill.Message.Example.csharp
 
         }
 
+        private void btnGetAutoDenyList_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<AutoDeny> AutoDenyList = messageService.GetAutoDenyList(txtCorpNum.Text);
+                String tmp = null;
+                foreach (AutoDeny denyInfo in AutoDenyList)
+                {
+                    tmp += "number : " + denyInfo.number + " || regDT " + denyInfo.regDT +CRLF;
+
+                }
+                MessageBox.Show(tmp, "080 수신거부목록 조회");
+
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+            }
+        }
+
     }
 }
