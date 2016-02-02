@@ -1461,5 +1461,273 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
            
         }
+
+        private void btnRegistIssue_Click(object sender, EventArgs e)
+        {
+            bool forceIssue = false;        // 지연발행 강제여부
+            String memo = "즉시발행 메모";  // 즉시발행 메모 
+            
+            // 세금계산서 정보 객체 
+            Taxinvoice taxinvoice = new Taxinvoice();
+
+            taxinvoice.writeDate = "20160201";                      //필수, 기재상 작성일자
+            taxinvoice.chargeDirection = "정과금";                  //필수, {정과금, 역과금}
+            taxinvoice.issueType = "정발행";                        //필수, {정발행, 역발행, 위수탁}
+            taxinvoice.purposeType = "영수";                        //필수, {영수, 청구}
+            taxinvoice.issueTiming = "직접발행";                    //필수, {직접발행, 승인시자동발행}
+            taxinvoice.taxType = "과세";                            //필수, {과세, 영세, 면세}
+
+            taxinvoice.invoicerCorpNum = "1234567890";              //공급자 사업자번호
+            taxinvoice.invoicerTaxRegID = "";                       //종사업자 식별번호. 필요시 기재. 형식은 숫자 4자리.
+            taxinvoice.invoicerCorpName = "공급자 상호";
+            taxinvoice.invoicerMgtKey = txtMgtKey.Text;             //정발행시 필수, 문서관리번호 1~24자리까지 공급자사업자번호별 중복없는 고유번호 할당
+            taxinvoice.invoicerCEOName = "공급자 대표자 성명";
+            taxinvoice.invoicerAddr = "공급자 주소";
+            taxinvoice.invoicerBizClass = "공급자 업종";
+            taxinvoice.invoicerBizType = "공급자 업태,업태2";
+            taxinvoice.invoicerContactName = "공급자 담당자명";
+            taxinvoice.invoicerEmail = "test@test.com";
+            taxinvoice.invoicerTEL = "070-7070-0707";
+            taxinvoice.invoicerHP = "010-000-2222";
+            taxinvoice.invoicerSMSSendYN = false;                    //정발행시(공급자->공급받는자) 문자발송기능 사용시 활용
+
+            taxinvoice.invoiceeType = "사업자";                     //공급받는자 구분, {사업자, 개인, 외국인}
+            taxinvoice.invoiceeCorpNum = "8888888888";              //공급받는자 사업자번호
+            taxinvoice.invoiceeCorpName = "공급받는자 상호";
+            taxinvoice.invoiceeMgtKey = "";                         //역발행시 필수, 문서관리번호 1~24자리까지 공급자사업자번호별 중복없는 고유번호 할당
+            taxinvoice.invoiceeCEOName = "공급받는자 대표자 성명";
+            taxinvoice.invoiceeAddr = "공급받는자 주소";
+            taxinvoice.invoiceeBizClass = "공급받는자 업종";
+            taxinvoice.invoiceeBizType = "공급받는자 업태";
+            taxinvoice.invoiceeTEL1 = "070-1234-1234";
+            taxinvoice.invoiceeContactName1 = "공급받는자 담당자명";
+            taxinvoice.invoiceeEmail1 = "test@test.com";
+            taxinvoice.invoiceeHP1 = "010-111-222";
+            taxinvoice.invoiceeSMSSendYN = false;                   //역발행시(공급받는자->공급자) 문자발송기능 사용시 활용
+
+            taxinvoice.supplyCostTotal = "100000";                  //필수 공급가액 합계"
+            taxinvoice.taxTotal = "10000";                          //필수 세액 합계
+            taxinvoice.totalAmount = "110000";                      //필수 합계금액.  공급가액 + 세액
+
+            taxinvoice.modifyCode = null;                           //수정세금계산서 작성시 1~6까지 선택기재.
+            taxinvoice.originalTaxinvoiceKey = "";                  //수정세금계산서 작성시 원본세금계산서의 ItemKey기재. ItemKey는 문서확인.
+            taxinvoice.serialNum = "123";
+            taxinvoice.cash = "";                                   //현금
+            taxinvoice.chkBill = "";                                //수표
+            taxinvoice.note = "";                                   //어음
+            taxinvoice.credit = "";                                 //외상미수금
+            taxinvoice.remark1 = "비고1";
+            taxinvoice.remark2 = "비고2";
+            taxinvoice.remark3 = "비고3";
+            taxinvoice.kwon = 1;
+            taxinvoice.ho = 1;
+
+            taxinvoice.businessLicenseYN = false;                   //사업자등록증 이미지 첨부시 설정.
+            taxinvoice.bankBookYN = false;                          //통장사본 이미지 첨부시 설정.
+
+            taxinvoice.detailList = new List<TaxinvoiceDetail>();
+
+            TaxinvoiceDetail detail = new TaxinvoiceDetail();
+
+            detail.serialNum = 1;                                   //일련번호
+            detail.purchaseDT = "20140319";                         //거래일자
+            detail.itemName = "품목명";
+            detail.spec = "규격";
+            detail.qty = "1";                                       //수량
+            detail.unitCost = "100000";                             //단가
+            detail.supplyCost = "100000";                           //공급가액
+            detail.tax = "10000";                                   //세액
+            detail.remark = "품목비고";
+
+            taxinvoice.detailList.Add(detail);
+
+            detail = new TaxinvoiceDetail();
+
+            detail.serialNum = 2;
+            detail.itemName = "품목명";
+
+            taxinvoice.detailList.Add(detail);
+
+            taxinvoice.addContactList = new List<TaxinvoiceAddContact>();
+
+            TaxinvoiceAddContact addContact = new TaxinvoiceAddContact();
+
+            addContact.serialNum = 1;
+            addContact.email = "test2@invoicee.com";
+            addContact.contactName = "추가담당자명";
+
+            taxinvoice.addContactList.Add(addContact);
+
+            TaxinvoiceAddContact addContact2 = new TaxinvoiceAddContact();
+
+            addContact2.serialNum = 2;
+            addContact2.email = "test2@invoicee.com";
+            addContact2.contactName = "추가담당자명";
+
+            taxinvoice.addContactList.Add(addContact2);
+
+            try
+            {
+                //RegistIssue(팝빌회원 사업자번호, 세금계산서 객체, 지연발행 강제여부, 메모)
+                Response response = taxinvoiceService.RegistIssue(txtCorpNum.Text, taxinvoice, forceIssue, memo);
+
+                MessageBox.Show("[ "+response.code +" ] "+response.message, "즉시발행");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("[ "+ex.code.ToString() + " ] " + ex.Message, "즉시발행");
+            }
+        }
+
+        private void btnCancelIssue_Sub_Click(object sender, EventArgs e)
+        {
+            MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
+
+            try
+            {
+                //CancelIssue(팝빌회원 사업자번호, 발행유형, 문서관리번호, 메모, 팝빌회원 아이디)
+                Response response = taxinvoiceService.CancelIssue(txtCorpNum.Text, KeyType, txtMgtKey.Text, "발행취소시 메모.", txtUserId.Text);
+
+                MessageBox.Show("[ "+ response.code + " ] "+ response.message, "발행취소");
+
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message, "발행취소");
+            }
+        }
+
+        private void btnDelete_Sub_Click(object sender, EventArgs e)
+        {
+            MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
+            
+            try
+            {
+                //Delete(팝빌회원 사업자번호, 발행유형, 문서관리번호, 팝빌회원아이디)
+                Response response = taxinvoiceService.Delete(txtCorpNum.Text, KeyType, txtMgtKey.Text, txtUserId.Text);
+
+                MessageBox.Show(response.message, "삭제");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show(ex.code.ToString() + " | " + ex.Message, "삭제");
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {   
+            MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
+
+            String DType = "I";         // [필수] 일자유형, R-등록일자, I-발행일자, W-작성일자 중 1개기입
+            String SDate = "20160101";  // [필수] 시작일자
+            String EDate = "20160201";  // [필수] 종료일자
+            
+            // 전송상태값 배열, 미기재시 전체 상태조회, 문서상태 값 3자리의 배열, 2,3번째 자리에 와일드카드 가능
+            String[] State = new String[3];
+            State[0] = "100";
+            State[1] = "2**";
+            State[2] = "3**";
+
+            // 문서유형 배열, N-일반세금계산서, M-수정세금계산서
+            String[] Type = new String[2];
+            Type[0] = "N";
+            Type[1] = "M";
+
+            // 과세형태 배열, T-과세, N-면세, Z-영세 
+            String[] TaxType = new String[3];
+            TaxType[0] = "T";
+            TaxType[1] = "N";
+            TaxType[2] = "Z";
+
+            bool? LateOnly = null;  // 지연발행 여부, 미기재시 전체, true-지연발행분 조회, false-정상발행분 조회
+            int Page = 1;           // 페이지번호
+            int PerPage = 10;       // 페이지당 검색개수, 최대 1000건
+
+            try
+            {
+                TISearchResult searchResult = taxinvoiceService.Search(txtCorpNum.Text, KeyType, DType, SDate, EDate, State, Type, TaxType, LateOnly, Page, PerPage);
+               
+                String tmp = null;
+
+                tmp += "code : " + searchResult.code + CRLF;
+                tmp += "total : " + searchResult.total + CRLF;
+                tmp += "perPage : " + searchResult.perPage + CRLF;
+                tmp += "pageNum : " + searchResult.pageNum + CRLF;
+                tmp += "pageCount : " + searchResult.pageCount + CRLF;
+                tmp += "message : " + searchResult.message + CRLF + CRLF;
+
+                tmp += "itemKey | taxType | writeDate | regDT | invoicerCorpNum | invoicerCorpName | invoicerMgtKey | invoiceeCorpNum | invoiceeCorpName | invoiceeMgtKey ";
+                tmp += "supplyCostTotal | taxTotal | purposeType | issueDT | stateCode | stateDT | lateIssueYN ";
+                tmp += CRLF + CRLF;
+
+                foreach (TaxinvoiceInfo taxinvoiceInfo in searchResult.list)
+                {
+                    tmp += taxinvoiceInfo.itemKey + " | ";
+                    tmp += taxinvoiceInfo.taxType + " | ";
+                    tmp += taxinvoiceInfo.writeDate + " | ";
+                    tmp += taxinvoiceInfo.regDT + " | ";
+                    tmp += taxinvoiceInfo.invoicerCorpNum + " | ";
+                    tmp += taxinvoiceInfo.invoicerCorpName + " | ";
+                    tmp += taxinvoiceInfo.invoicerMgtKey + " | ";
+                    tmp += taxinvoiceInfo.invoiceeCorpNum + " | ";
+                    tmp += taxinvoiceInfo.invoiceeCorpName + " | ";
+                    tmp += taxinvoiceInfo.invoiceeMgtKey + " | ";
+                    tmp += taxinvoiceInfo.supplyCostTotal + " | ";
+                    tmp += taxinvoiceInfo.taxTotal + " | ";
+                    tmp += taxinvoiceInfo.purposeType + " | ";
+                    tmp += taxinvoiceInfo.issueDT + " | ";
+                    tmp += taxinvoiceInfo.stateCode + " | ";
+                    tmp += taxinvoiceInfo.stateDT + " | ";
+                    tmp += taxinvoiceInfo.lateIssueYN;
+
+                    tmp += CRLF;
+                }
+
+                MessageBox.Show(tmp, "문서목록 조회");
+        
+
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("[ "+ ex.code.ToString() + " ] " + ex.Message, "문서목록 조회");
+            }
+           
+        }
+
+        private void btnAttachStmt_Click(object sender, EventArgs e)
+        {
+            MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
+            String MgtKey = txtMgtKey.Text;     // 세금계산서 관리번호
+            int DocItemCode = 121;              // 첨부할 명세서 종류 코드
+            String DocMgtKey = "20160202-01";   // 첨부할 명세서 관리번호
+
+            try
+            {
+                Response response = taxinvoiceService.AttachStatement(txtCorpNum.Text, KeyType, MgtKey, DocItemCode, DocMgtKey);
+                MessageBox.Show("[ " + response.code + " ] " + response.message, "전자명세서 첨부");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show(ex.code.ToString() + " | " + ex.Message, "전자명세서 첨부");
+            }
+        }
+
+        private void btnDetachStmt_Click(object sender, EventArgs e)
+        {
+            MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
+            String MgtKey = txtMgtKey.Text;     // 세금계산서 관리번호 
+            int DocItemCode = 121;              // 첨부해제할 명세서 종류 코드 
+            String DocMgtKey = "20160202-01";   // 첨부해제할 명세서 관리번호 
+
+            try
+            {
+                Response response = taxinvoiceService.DetachStatement(txtCorpNum.Text, KeyType, MgtKey, DocItemCode, DocMgtKey);
+                MessageBox.Show("[ " + response.code + " ] " + response.message, "전자명세서 첨부해제");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show(ex.code.ToString() + " | " + ex.Message, "전자명세서 첨부해제");
+            }
+        }
     }
 }

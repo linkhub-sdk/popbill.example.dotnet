@@ -480,5 +480,68 @@ namespace Popbill.Fax.Example.csharp
                 MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message, "회사정보 수정");
             }
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            String SDate = "20160101";      // 시작일자, yyyyMMdd
+            String EDate = "20160202";      // 종료일자, yyyyMMdd
+
+            //전송상태 배열 1-대기, 2-성공, 3-실패, 4-취소
+            String[] State = new String[4];
+            State[0] = "1";
+            State[1] = "2";
+            State[2] = "3";
+            State[3] = "4";
+
+            bool ReserveYN = false;     // 예약여부, True-예약전송건 검색
+            bool SenderOnly = false;    // 개인조회여부, True-개인조회
+            int Page = 1;       // 페이지 번호
+            int PerPage = 15;   // 페이지당 검색개수, 최대 1000개
+
+            try
+            {
+                FAXSearchResult searchResult = faxService.Search(txtCorpNum.Text, SDate, EDate, State, ReserveYN, SenderOnly, Page, PerPage);
+                
+                String tmp = null;
+
+                tmp += "code : " + searchResult.code + CRLF;
+                tmp += "total : " + searchResult.total + CRLF;
+                tmp += "perPage : " + searchResult.perPage + CRLF;
+                tmp += "pageNum : " + searchResult.pageNum + CRLF;
+                tmp += "pageCount : " + searchResult.pageCount + CRLF;
+                tmp += "message : " + searchResult.message + CRLF + CRLF;
+
+                tmp += "sendState | convState | sendNum | receiveNum | receiveName | sendPageCnt | successPageCnt | failPageCnt | refundPageCnt | ";
+                tmp += "cancelPageCnt | reserveDT | sendDT | resultDT | sendResult";
+                tmp += CRLF;
+                
+
+                foreach (FaxResult faxInfo in searchResult.list)
+                {
+                    tmp += faxInfo.sendState + " | ";
+                    tmp += faxInfo.convState + " | ";
+                    tmp += faxInfo.sendNum + " | ";
+                    tmp += faxInfo.receiveNum + " | ";
+                    tmp += faxInfo.receiveName + " | ";
+                    tmp += faxInfo.sendPageCnt + " | ";
+                    tmp += faxInfo.successPageCnt + " | ";
+                    tmp += faxInfo.failPageCnt + " | ";
+                    tmp += faxInfo.refundPageCnt + " | ";
+                    tmp += faxInfo.cancelPageCnt + " | ";
+                    tmp += faxInfo.reserveDT + " | ";
+                    tmp += faxInfo.sendDT + " | ";
+                    tmp += faxInfo.resultDT + " | ";
+                    tmp += faxInfo.sendResult;
+                    
+                    tmp += CRLF;
+                }
+
+                MessageBox.Show(tmp, "팩스 전송내역 조회");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message, "팩스 전송내역 조회");
+            }
+        }
     }
 }

@@ -69,6 +69,7 @@
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.btnFAXSend = new System.Windows.Forms.Button();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -87,10 +88,19 @@
             this.ListContact = new System.Windows.Forms.Button();
             this.btnRegistContact = new System.Windows.Forms.Button();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
-            this.btnGetCorpInfo = new System.Windows.Forms.Button();
             this.btnUpdateCorpInfo = new System.Windows.Forms.Button();
+            this.btnGetCorpInfo = new System.Windows.Forms.Button();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btnRegistIssue = new System.Windows.Forms.Button();
+            this.btnDeleteSub = new System.Windows.Forms.Button();
+            this.btnCancelIssueSub = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.btnAttachStmt = new System.Windows.Forms.Button();
+            this.btnDetachStmt = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -103,8 +113,10 @@
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox11.SuspendLayout();
-            this.groupBox12.SuspendLayout();
             this.groupBox13.SuspendLayout();
+            this.groupBox12.SuspendLayout();
+            this.groupBox14.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -143,7 +155,7 @@
             // 
             // btnIssue
             // 
-            this.btnIssue.Location = new System.Drawing.Point(54, 86);
+            this.btnIssue.Location = new System.Drawing.Point(25, 82);
             this.btnIssue.Name = "btnIssue";
             this.btnIssue.Size = new System.Drawing.Size(68, 26);
             this.btnIssue.TabIndex = 13;
@@ -153,7 +165,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(54, 121);
+            this.btnCancel.Location = new System.Drawing.Point(25, 117);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(68, 26);
             this.btnCancel.TabIndex = 14;
@@ -163,7 +175,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(155, 121);
+            this.btnDelete.Location = new System.Drawing.Point(126, 117);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(66, 26);
             this.btnDelete.TabIndex = 15;
@@ -203,7 +215,7 @@
             // 
             // btnCheckMgtKeyInUse
             // 
-            this.btnCheckMgtKeyInUse.Location = new System.Drawing.Point(168, 125);
+            this.btnCheckMgtKeyInUse.Location = new System.Drawing.Point(114, 125);
             this.btnCheckMgtKeyInUse.Name = "btnCheckMgtKeyInUse";
             this.btnCheckMgtKeyInUse.Size = new System.Drawing.Size(151, 26);
             this.btnCheckMgtKeyInUse.TabIndex = 19;
@@ -215,7 +227,7 @@
             // 
             this.btnGetDetailInfo.Location = new System.Drawing.Point(9, 113);
             this.btnGetDetailInfo.Name = "btnGetDetailInfo";
-            this.btnGetDetailInfo.Size = new System.Drawing.Size(102, 26);
+            this.btnGetDetailInfo.Size = new System.Drawing.Size(102, 31);
             this.btnGetDetailInfo.TabIndex = 20;
             this.btnGetDetailInfo.Text = "문서 상세정보";
             this.btnGetDetailInfo.UseVisualStyleBackColor = true;
@@ -225,7 +237,7 @@
             // 
             this.btnGetLogs.Location = new System.Drawing.Point(9, 81);
             this.btnGetLogs.Name = "btnGetLogs";
-            this.btnGetLogs.Size = new System.Drawing.Size(102, 26);
+            this.btnGetLogs.Size = new System.Drawing.Size(102, 31);
             this.btnGetLogs.TabIndex = 21;
             this.btnGetLogs.Text = "문서 이력";
             this.btnGetLogs.UseVisualStyleBackColor = true;
@@ -235,7 +247,7 @@
             // 
             this.btnGetInfos.Location = new System.Drawing.Point(9, 49);
             this.btnGetInfos.Name = "btnGetInfos";
-            this.btnGetInfos.Size = new System.Drawing.Size(102, 26);
+            this.btnGetInfos.Size = new System.Drawing.Size(102, 31);
             this.btnGetInfos.TabIndex = 22;
             this.btnGetInfos.Text = "문서 정보(대량)";
             this.btnGetInfos.UseVisualStyleBackColor = true;
@@ -245,7 +257,7 @@
             // 
             this.btnGetInfo.Location = new System.Drawing.Point(9, 17);
             this.btnGetInfo.Name = "btnGetInfo";
-            this.btnGetInfo.Size = new System.Drawing.Size(102, 26);
+            this.btnGetInfo.Size = new System.Drawing.Size(102, 31);
             this.btnGetInfo.TabIndex = 23;
             this.btnGetInfo.Text = "문서 정보";
             this.btnGetInfo.UseVisualStyleBackColor = true;
@@ -255,7 +267,7 @@
             // 
             this.btnSendFAX.Location = new System.Drawing.Point(10, 81);
             this.btnSendFAX.Name = "btnSendFAX";
-            this.btnSendFAX.Size = new System.Drawing.Size(91, 26);
+            this.btnSendFAX.Size = new System.Drawing.Size(126, 30);
             this.btnSendFAX.TabIndex = 24;
             this.btnSendFAX.Text = "팩스 전송";
             this.btnSendFAX.UseVisualStyleBackColor = true;
@@ -265,7 +277,7 @@
             // 
             this.btnSendSMS.Location = new System.Drawing.Point(10, 49);
             this.btnSendSMS.Name = "btnSendSMS";
-            this.btnSendSMS.Size = new System.Drawing.Size(91, 26);
+            this.btnSendSMS.Size = new System.Drawing.Size(126, 30);
             this.btnSendSMS.TabIndex = 25;
             this.btnSendSMS.Text = "문자 전송";
             this.btnSendSMS.UseVisualStyleBackColor = true;
@@ -275,7 +287,7 @@
             // 
             this.btnSendEmail.Location = new System.Drawing.Point(10, 17);
             this.btnSendEmail.Name = "btnSendEmail";
-            this.btnSendEmail.Size = new System.Drawing.Size(91, 26);
+            this.btnSendEmail.Size = new System.Drawing.Size(126, 30);
             this.btnSendEmail.TabIndex = 26;
             this.btnSendEmail.Text = "이메일 전송";
             this.btnSendEmail.UseVisualStyleBackColor = true;
@@ -285,7 +297,7 @@
             // 
             this.btnGetMassPrintURL.Location = new System.Drawing.Point(11, 113);
             this.btnGetMassPrintURL.Name = "btnGetMassPrintURL";
-            this.btnGetMassPrintURL.Size = new System.Drawing.Size(185, 26);
+            this.btnGetMassPrintURL.Size = new System.Drawing.Size(183, 32);
             this.btnGetMassPrintURL.TabIndex = 27;
             this.btnGetMassPrintURL.Text = "다량 인쇄 팝업 URL";
             this.btnGetMassPrintURL.UseVisualStyleBackColor = true;
@@ -295,7 +307,7 @@
             // 
             this.btnGetEPrintURL.Location = new System.Drawing.Point(11, 81);
             this.btnGetEPrintURL.Name = "btnGetEPrintURL";
-            this.btnGetEPrintURL.Size = new System.Drawing.Size(185, 26);
+            this.btnGetEPrintURL.Size = new System.Drawing.Size(183, 32);
             this.btnGetEPrintURL.TabIndex = 28;
             this.btnGetEPrintURL.Text = "수신자 인쇄 팝업 URL";
             this.btnGetEPrintURL.UseVisualStyleBackColor = true;
@@ -305,7 +317,7 @@
             // 
             this.btnGetPrintURL.Location = new System.Drawing.Point(11, 49);
             this.btnGetPrintURL.Name = "btnGetPrintURL";
-            this.btnGetPrintURL.Size = new System.Drawing.Size(185, 26);
+            this.btnGetPrintURL.Size = new System.Drawing.Size(183, 32);
             this.btnGetPrintURL.TabIndex = 29;
             this.btnGetPrintURL.Text = "인쇄 팝업 URL";
             this.btnGetPrintURL.UseVisualStyleBackColor = true;
@@ -315,7 +327,7 @@
             // 
             this.btnGetPopUpURL.Location = new System.Drawing.Point(11, 17);
             this.btnGetPopUpURL.Name = "btnGetPopUpURL";
-            this.btnGetPopUpURL.Size = new System.Drawing.Size(185, 26);
+            this.btnGetPopUpURL.Size = new System.Drawing.Size(183, 32);
             this.btnGetPopUpURL.TabIndex = 30;
             this.btnGetPopUpURL.Text = "문서 내용 보기 팝업 URL";
             this.btnGetPopUpURL.UseVisualStyleBackColor = true;
@@ -323,9 +335,9 @@
             // 
             // btnGetURL_SBOX
             // 
-            this.btnGetURL_SBOX.Location = new System.Drawing.Point(11, 47);
+            this.btnGetURL_SBOX.Location = new System.Drawing.Point(11, 53);
             this.btnGetURL_SBOX.Name = "btnGetURL_SBOX";
-            this.btnGetURL_SBOX.Size = new System.Drawing.Size(91, 26);
+            this.btnGetURL_SBOX.Size = new System.Drawing.Size(91, 32);
             this.btnGetURL_SBOX.TabIndex = 31;
             this.btnGetURL_SBOX.Text = "발행 문서함";
             this.btnGetURL_SBOX.UseVisualStyleBackColor = true;
@@ -335,7 +347,7 @@
             // 
             this.btnGetURL_TBOX.Location = new System.Drawing.Point(11, 15);
             this.btnGetURL_TBOX.Name = "btnGetURL_TBOX";
-            this.btnGetURL_TBOX.Size = new System.Drawing.Size(91, 26);
+            this.btnGetURL_TBOX.Size = new System.Drawing.Size(91, 32);
             this.btnGetURL_TBOX.TabIndex = 32;
             this.btnGetURL_TBOX.Text = "임시 문서함";
             this.btnGetURL_TBOX.UseVisualStyleBackColor = true;
@@ -345,7 +357,7 @@
             // 
             this.btnGetMailURL.Location = new System.Drawing.Point(11, 145);
             this.btnGetMailURL.Name = "btnGetMailURL";
-            this.btnGetMailURL.Size = new System.Drawing.Size(185, 26);
+            this.btnGetMailURL.Size = new System.Drawing.Size(183, 32);
             this.btnGetMailURL.TabIndex = 33;
             this.btnGetMailURL.Text = "이메일(공급받는자) 링크 URL";
             this.btnGetMailURL.UseVisualStyleBackColor = true;
@@ -363,7 +375,7 @@
             "영수증"});
             this.cboItemCode.Location = new System.Drawing.Point(168, 45);
             this.cboItemCode.Name = "cboItemCode";
-            this.cboItemCode.Size = new System.Drawing.Size(149, 20);
+            this.cboItemCode.Size = new System.Drawing.Size(93, 20);
             this.cboItemCode.TabIndex = 34;
             this.cboItemCode.Text = "거래명세서";
             // 
@@ -371,16 +383,15 @@
             // 
             this.txtFormCode.Location = new System.Drawing.Point(168, 71);
             this.txtFormCode.Name = "txtFormCode";
-            this.txtFormCode.Size = new System.Drawing.Size(148, 21);
+            this.txtFormCode.Size = new System.Drawing.Size(93, 21);
             this.txtFormCode.TabIndex = 35;
             // 
             // txtMgtKey
             // 
             this.txtMgtKey.Location = new System.Drawing.Point(168, 98);
             this.txtMgtKey.Name = "txtMgtKey";
-            this.txtMgtKey.Size = new System.Drawing.Size(148, 21);
+            this.txtMgtKey.Size = new System.Drawing.Size(92, 21);
             this.txtMgtKey.TabIndex = 36;
-            this.txtMgtKey.Text = "20150311-03";
             // 
             // txtFileID
             // 
@@ -422,7 +433,7 @@
             // 
             // btnRegister
             // 
-            this.btnRegister.Location = new System.Drawing.Point(75, 10);
+            this.btnRegister.Location = new System.Drawing.Point(71, 10);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(59, 26);
             this.btnRegister.TabIndex = 11;
@@ -432,7 +443,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(152, 10);
+            this.btnUpdate.Location = new System.Drawing.Point(134, 10);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(59, 26);
             this.btnUpdate.TabIndex = 12;
@@ -447,15 +458,15 @@
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.btnUpdate);
             this.panel1.Controls.Add(this.btnRegister);
-            this.panel1.Location = new System.Drawing.Point(7, 26);
+            this.panel1.Location = new System.Drawing.Point(9, 26);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(219, 47);
+            this.panel1.Size = new System.Drawing.Size(199, 47);
             this.panel1.TabIndex = 45;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(16, 19);
+            this.label6.Location = new System.Drawing.Point(10, 17);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(53, 12);
             this.label6.TabIndex = 13;
@@ -467,9 +478,9 @@
             this.groupBox5.Controls.Add(this.btnDelete);
             this.groupBox5.Controls.Add(this.btnCancel);
             this.groupBox5.Controls.Add(this.btnIssue);
-            this.groupBox5.Location = new System.Drawing.Point(333, 18);
+            this.groupBox5.Location = new System.Drawing.Point(474, 17);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(234, 162);
+            this.groupBox5.Size = new System.Drawing.Size(214, 163);
             this.groupBox5.TabIndex = 46;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "전자명세서 발행 프로세스";
@@ -480,7 +491,7 @@
             this.groupBox6.Controls.Add(this.btnDeleteFile);
             this.groupBox6.Controls.Add(this.btnGetFiles);
             this.groupBox6.Controls.Add(this.btnAttachFile);
-            this.groupBox6.Location = new System.Drawing.Point(234, 186);
+            this.groupBox6.Location = new System.Drawing.Point(355, 189);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(333, 84);
             this.groupBox6.TabIndex = 47;
@@ -489,28 +500,42 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.btnSearch);
             this.groupBox7.Controls.Add(this.btnGetInfo);
             this.groupBox7.Controls.Add(this.btnGetInfos);
             this.groupBox7.Controls.Add(this.btnGetLogs);
             this.groupBox7.Controls.Add(this.btnGetDetailInfo);
-            this.groupBox7.Location = new System.Drawing.Point(19, 299);
+            this.groupBox7.Location = new System.Drawing.Point(25, 287);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(122, 150);
+            this.groupBox7.Size = new System.Drawing.Size(128, 214);
             this.groupBox7.TabIndex = 48;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "문서 정보";
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.btnDetachStmt);
+            this.groupBox8.Controls.Add(this.btnAttachStmt);
+            this.groupBox8.Controls.Add(this.btnFAXSend);
             this.groupBox8.Controls.Add(this.btnSendEmail);
             this.groupBox8.Controls.Add(this.btnSendSMS);
             this.groupBox8.Controls.Add(this.btnSendFAX);
-            this.groupBox8.Location = new System.Drawing.Point(149, 299);
+            this.groupBox8.Location = new System.Drawing.Point(173, 287);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(112, 118);
+            this.groupBox8.Size = new System.Drawing.Size(141, 218);
             this.groupBox8.TabIndex = 49;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "부가 서비스";
+            // 
+            // btnFAXSend
+            // 
+            this.btnFAXSend.Location = new System.Drawing.Point(10, 113);
+            this.btnFAXSend.Name = "btnFAXSend";
+            this.btnFAXSend.Size = new System.Drawing.Size(126, 30);
+            this.btnFAXSend.TabIndex = 27;
+            this.btnFAXSend.Text = "선팩스 전송";
+            this.btnFAXSend.UseVisualStyleBackColor = true;
+            this.btnFAXSend.Click += new System.EventHandler(this.btnFAXSend_Click);
             // 
             // groupBox9
             // 
@@ -519,9 +544,9 @@
             this.groupBox9.Controls.Add(this.btnGetPrintURL);
             this.groupBox9.Controls.Add(this.btnGetEPrintURL);
             this.groupBox9.Controls.Add(this.btnGetMassPrintURL);
-            this.groupBox9.Location = new System.Drawing.Point(270, 298);
+            this.groupBox9.Location = new System.Drawing.Point(338, 287);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(206, 182);
+            this.groupBox9.Size = new System.Drawing.Size(208, 217);
             this.groupBox9.TabIndex = 50;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "인쇄 URL";
@@ -530,9 +555,9 @@
             // 
             this.groupBox10.Controls.Add(this.btnGetURL_TBOX);
             this.groupBox10.Controls.Add(this.btnGetURL_SBOX);
-            this.groupBox10.Location = new System.Drawing.Point(487, 297);
+            this.groupBox10.Location = new System.Drawing.Point(565, 287);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(114, 84);
+            this.groupBox10.Size = new System.Drawing.Size(114, 97);
             this.groupBox10.TabIndex = 51;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "기타 URL";
@@ -708,8 +733,40 @@
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "팝빌 기본 API";
             // 
+            // groupBox13
+            // 
+            this.groupBox13.Controls.Add(this.btnUpdateCorpInfo);
+            this.groupBox13.Controls.Add(this.btnGetCorpInfo);
+            this.groupBox13.Location = new System.Drawing.Point(558, 14);
+            this.groupBox13.Name = "groupBox13";
+            this.groupBox13.Size = new System.Drawing.Size(130, 117);
+            this.groupBox13.TabIndex = 45;
+            this.groupBox13.TabStop = false;
+            this.groupBox13.Text = "회사정보 관련";
+            // 
+            // btnUpdateCorpInfo
+            // 
+            this.btnUpdateCorpInfo.Location = new System.Drawing.Point(8, 49);
+            this.btnUpdateCorpInfo.Name = "btnUpdateCorpInfo";
+            this.btnUpdateCorpInfo.Size = new System.Drawing.Size(115, 30);
+            this.btnUpdateCorpInfo.TabIndex = 1;
+            this.btnUpdateCorpInfo.Text = "회사정보 수정";
+            this.btnUpdateCorpInfo.UseVisualStyleBackColor = true;
+            this.btnUpdateCorpInfo.Click += new System.EventHandler(this.btnUpdateCorpInfo_Click);
+            // 
+            // btnGetCorpInfo
+            // 
+            this.btnGetCorpInfo.Location = new System.Drawing.Point(8, 17);
+            this.btnGetCorpInfo.Name = "btnGetCorpInfo";
+            this.btnGetCorpInfo.Size = new System.Drawing.Size(115, 30);
+            this.btnGetCorpInfo.TabIndex = 0;
+            this.btnGetCorpInfo.Text = "회사정보 조회";
+            this.btnGetCorpInfo.UseVisualStyleBackColor = true;
+            this.btnGetCorpInfo.Click += new System.EventHandler(this.btnGetCorpInfo_Click);
+            // 
             // groupBox12
             // 
+            this.groupBox12.Controls.Add(this.groupBox14);
             this.groupBox12.Controls.Add(this.groupBox10);
             this.groupBox12.Controls.Add(this.groupBox9);
             this.groupBox12.Controls.Add(this.groupBox8);
@@ -725,47 +782,108 @@
             this.groupBox12.Controls.Add(this.btnCheckMgtKeyInUse);
             this.groupBox12.Location = new System.Drawing.Point(15, 202);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(613, 487);
+            this.groupBox12.Size = new System.Drawing.Size(702, 520);
             this.groupBox12.TabIndex = 53;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "전자명세서 관련 API";
             // 
-            // groupBox13
+            // groupBox14
             // 
-            this.groupBox13.Controls.Add(this.btnUpdateCorpInfo);
-            this.groupBox13.Controls.Add(this.btnGetCorpInfo);
-            this.groupBox13.Location = new System.Drawing.Point(558, 14);
-            this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(130, 117);
-            this.groupBox13.TabIndex = 45;
-            this.groupBox13.TabStop = false;
-            this.groupBox13.Text = "회사정보 관련";
+            this.groupBox14.Controls.Add(this.panel2);
+            this.groupBox14.Controls.Add(this.btnDeleteSub);
+            this.groupBox14.Controls.Add(this.btnCancelIssueSub);
+            this.groupBox14.Location = new System.Drawing.Point(282, 18);
+            this.groupBox14.Name = "groupBox14";
+            this.groupBox14.Size = new System.Drawing.Size(185, 163);
+            this.groupBox14.TabIndex = 47;
+            this.groupBox14.TabStop = false;
+            this.groupBox14.Text = "전자명세서 즉시발행 프로세스";
             // 
-            // btnGetCorpInfo
+            // panel2
             // 
-            this.btnGetCorpInfo.Location = new System.Drawing.Point(8, 17);
-            this.btnGetCorpInfo.Name = "btnGetCorpInfo";
-            this.btnGetCorpInfo.Size = new System.Drawing.Size(115, 30);
-            this.btnGetCorpInfo.TabIndex = 0;
-            this.btnGetCorpInfo.Text = "회사정보 조회";
-            this.btnGetCorpInfo.UseVisualStyleBackColor = true;
-            this.btnGetCorpInfo.Click += new System.EventHandler(this.btnGetCorpInfo_Click);
+            this.panel2.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.label7);
+            this.panel2.Controls.Add(this.btnRegistIssue);
+            this.panel2.Location = new System.Drawing.Point(9, 26);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(163, 47);
+            this.panel2.TabIndex = 45;
             // 
-            // btnUpdateCorpInfo
+            // label7
             // 
-            this.btnUpdateCorpInfo.Location = new System.Drawing.Point(8, 49);
-            this.btnUpdateCorpInfo.Name = "btnUpdateCorpInfo";
-            this.btnUpdateCorpInfo.Size = new System.Drawing.Size(115, 30);
-            this.btnUpdateCorpInfo.TabIndex = 1;
-            this.btnUpdateCorpInfo.Text = "회사정보 수정";
-            this.btnUpdateCorpInfo.UseVisualStyleBackColor = true;
-            this.btnUpdateCorpInfo.Click += new System.EventHandler(this.btnUpdateCorpInfo_Click);
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(10, 17);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(53, 12);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "즉시발행";
+            // 
+            // btnRegistIssue
+            // 
+            this.btnRegistIssue.Location = new System.Drawing.Point(76, 10);
+            this.btnRegistIssue.Name = "btnRegistIssue";
+            this.btnRegistIssue.Size = new System.Drawing.Size(69, 26);
+            this.btnRegistIssue.TabIndex = 11;
+            this.btnRegistIssue.Text = "즉시발행";
+            this.btnRegistIssue.UseVisualStyleBackColor = true;
+            this.btnRegistIssue.Click += new System.EventHandler(this.btnRegistIssue_Click);
+            // 
+            // btnDeleteSub
+            // 
+            this.btnDeleteSub.Location = new System.Drawing.Point(105, 117);
+            this.btnDeleteSub.Name = "btnDeleteSub";
+            this.btnDeleteSub.Size = new System.Drawing.Size(61, 26);
+            this.btnDeleteSub.TabIndex = 15;
+            this.btnDeleteSub.Text = "삭제";
+            this.btnDeleteSub.UseVisualStyleBackColor = true;
+            this.btnDeleteSub.Click += new System.EventHandler(this.btnDeleteSub_Click);
+            // 
+            // btnCancelIssueSub
+            // 
+            this.btnCancelIssueSub.Location = new System.Drawing.Point(24, 115);
+            this.btnCancelIssueSub.Name = "btnCancelIssueSub";
+            this.btnCancelIssueSub.Size = new System.Drawing.Size(64, 26);
+            this.btnCancelIssueSub.TabIndex = 14;
+            this.btnCancelIssueSub.Text = "발행취소";
+            this.btnCancelIssueSub.UseVisualStyleBackColor = true;
+            this.btnCancelIssueSub.Click += new System.EventHandler(this.btnCancelIssueSub_Click);
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(9, 144);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(102, 31);
+            this.btnSearch.TabIndex = 24;
+            this.btnSearch.Text = "문서 목록조회";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // btnAttachStmt
+            // 
+            this.btnAttachStmt.Location = new System.Drawing.Point(10, 145);
+            this.btnAttachStmt.Name = "btnAttachStmt";
+            this.btnAttachStmt.Size = new System.Drawing.Size(126, 30);
+            this.btnAttachStmt.TabIndex = 28;
+            this.btnAttachStmt.Text = "명세서 첨부";
+            this.btnAttachStmt.UseVisualStyleBackColor = true;
+            this.btnAttachStmt.Click += new System.EventHandler(this.btnAttachStmt_Click);
+            // 
+            // btnDetachStmt
+            // 
+            this.btnDetachStmt.Location = new System.Drawing.Point(10, 177);
+            this.btnDetachStmt.Name = "btnDetachStmt";
+            this.btnDetachStmt.Size = new System.Drawing.Size(126, 30);
+            this.btnDetachStmt.TabIndex = 29;
+            this.btnDetachStmt.Text = "명세서 첨부해제";
+            this.btnDetachStmt.UseVisualStyleBackColor = true;
+            this.btnDetachStmt.Click += new System.EventHandler(this.btnDetachStmt_Click);
             // 
             // frmExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(730, 688);
+            this.ClientSize = new System.Drawing.Size(845, 752);
             this.Controls.Add(this.groupBox12);
             this.Controls.Add(this.groupBox11);
             this.Controls.Add(this.txtUserID);
@@ -789,9 +907,12 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox11.ResumeLayout(false);
+            this.groupBox13.ResumeLayout(false);
             this.groupBox12.ResumeLayout(false);
             this.groupBox12.PerformLayout();
-            this.groupBox13.ResumeLayout(false);
+            this.groupBox14.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -862,6 +983,16 @@
         private System.Windows.Forms.GroupBox groupBox13;
         private System.Windows.Forms.Button btnGetCorpInfo;
         private System.Windows.Forms.Button btnUpdateCorpInfo;
+        private System.Windows.Forms.Button btnFAXSend;
+        private System.Windows.Forms.GroupBox groupBox14;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnRegistIssue;
+        private System.Windows.Forms.Button btnDeleteSub;
+        private System.Windows.Forms.Button btnCancelIssueSub;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnDetachStmt;
+        private System.Windows.Forms.Button btnAttachStmt;
     }
 }
 

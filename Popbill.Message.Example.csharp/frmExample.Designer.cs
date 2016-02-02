@@ -77,6 +77,7 @@
             this.btnSendSMS_one = new System.Windows.Forms.Button();
             this.txtReserveDT = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.GroupBox1.SuspendLayout();
             this.groupBox11.SuspendLayout();
             this.groupBox10.SuspendLayout();
@@ -351,6 +352,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.btnSearch);
             this.groupBox4.Controls.Add(this.groupBox9);
             this.groupBox4.Controls.Add(this.dataGridView1);
             this.groupBox4.Controls.Add(this.btnCancelReserve);
@@ -432,7 +434,7 @@
             // 
             // btnGetURL
             // 
-            this.btnGetURL.Location = new System.Drawing.Point(563, 27);
+            this.btnGetURL.Location = new System.Drawing.Point(720, 15);
             this.btnGetURL.Name = "btnGetURL";
             this.btnGetURL.Size = new System.Drawing.Size(121, 34);
             this.btnGetURL.TabIndex = 20;
@@ -599,6 +601,16 @@
             this.label3.TabIndex = 13;
             this.label3.Text = "예약시간(yyyyMMddHHmmss) : ";
             // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(570, 17);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(130, 31);
+            this.btnSearch.TabIndex = 25;
+            this.btnSearch.Text = "전송내역 기간조회";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
             // frmExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -682,6 +694,7 @@
         private System.Windows.Forms.GroupBox groupBox11;
         private System.Windows.Forms.Button btnGetCorpInfo;
         private System.Windows.Forms.Button btnUpdateCorpInfo;
+        private System.Windows.Forms.Button btnSearch;
     }
 }
 

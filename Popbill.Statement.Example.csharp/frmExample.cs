@@ -1117,6 +1117,358 @@ namespace Popbill.Statement.Example.csharp
             }
         }
 
+        private void btnFAXSend_Click(object sender, EventArgs e)
+        {
+            String SendNum = "07075103710";     // [필수] 선팩스전송 발신번호
+            String ReceiveNum = "000111222";    // [필수] 선팩스전송 수신팩스번호 
+
+            Statement statement = new Statement();
+
+            statement.writeDate = "20160201";             //필수, 기재상 작성일자 (yyyyMMdd)
+            statement.purposeType = "영수";               //필수, {영수, 청구}
+            statement.taxType = "과세";                   //필수, {과세, 영세, 면세}
+            statement.formCode = txtFormCode.Text;        //맞춤양식코드, 기본값을 공백('')으로 처리하면 기본양식으로 처리.
+
+            statement.itemCode = selectedItemCode();      //명세서코드
+
+            statement.mgtKey = txtMgtKey.Text;            //문서관리번호
+
+            statement.senderCorpNum = txtCorpNum.Text;
+            statement.senderTaxRegID = "";                //종사업자 식별번호. 필요시 기재. 형식은 숫자 4자리.
+            statement.senderCorpName = "공급자 상호";
+            statement.senderCEOName = "공급자 대표자 성명";
+            statement.senderAddr = "공급자 주소";
+            statement.senderBizClass = "공급자 업종";
+            statement.senderBizType = "공급자 업태,업태2";
+            statement.senderContactName = "공급자 담당자명";
+            statement.senderEmail = "test@test.com";
+            statement.senderTEL = "070-7070-0707";
+            statement.senderHP = "010-000-2222";
+            statement.receiverCorpNum = "8888888888";
+            statement.receiverCorpName = "공급받는자 상호";
+            statement.receiverCEOName = "공급받는자 대표자 성명";
+            statement.receiverAddr = "공급받는자 주소";
+            statement.receiverBizClass = "공급받는자 업종";
+            statement.receiverBizType = "공급받는자 업태";
+            statement.receiverContactName = "공급받는자 담당자명";
+            statement.receiverEmail = "test@receiver.com";
+
+            statement.supplyCostTotal = "200000";         //필수 공급가액 합계
+            statement.taxTotal = "20000";                 //필수 세액 합계
+            statement.totalAmount = "220000";             //필수 합계금액.  공급가액 + 세액
+
+            statement.serialNum = "123";                 //기재상 일련번호 항목
+            statement.remark1 = "비고1";
+            statement.remark2 = "비고2";
+            statement.remark3 = "비고3";
+
+            statement.businessLicenseYN = false; //사업자등록증 이미지 첨부시 설정.
+            statement.bankBookYN = false;         //통장사본 이미지 첨부시 설정.
+
+            statement.detailList = new List<StatementDetail>();
+
+            StatementDetail detail = new StatementDetail();
+
+            detail.serialNum = 1;                                   //일련번호, 1~99까지 순차기재
+            detail.purchaseDT = "20150309";                         //거래일자
+            detail.itemName = "품목명";
+            detail.spec = "규격";
+            detail.qty = "1";                                       //수량
+            detail.unitCost = "100000";                             //단가
+            detail.supplyCost = "100000";                           //공급가액
+            detail.tax = "10000";                                   //세액
+            detail.remark = "품목비고";
+            detail.spare1 = "spare1";
+            detail.spare1 = "spare2";
+            detail.spare1 = "spare3";
+            detail.spare1 = "spare4";
+            detail.spare1 = "spare5";
+
+            statement.detailList.Add(detail);
+
+            detail = new StatementDetail();
+
+            detail.serialNum = 2;                                   //일련번호, 1~99까지 순차기재
+            detail.purchaseDT = "20150309";                         //거래일자
+            detail.itemName = "품목명";
+            detail.spec = "규격";
+            detail.qty = "1";                                       //수량
+            detail.unitCost = "100000";                             //단가
+            detail.supplyCost = "100000";                           //공급가액
+            detail.tax = "10000";                                   //세액
+            detail.remark = "품목비고";
+            detail.spare1 = "spare1";
+            detail.spare1 = "spare2";
+            detail.spare1 = "spare3";
+            detail.spare1 = "spare4";
+            detail.spare1 = "spare5";
+
+            statement.detailList.Add(detail);
+
+            statement.propertyBag = new propertyBag();              // 추가속성항목, 자세한사항은 "전자명세서 API 연동매뉴얼> 5.2 기본양식 추가속성 테이블" 참조. 
+
+            statement.propertyBag.Add("Balance", "15000");          // 전잔액
+            statement.propertyBag.Add("Deposit", "5000");           // 입금액
+            statement.propertyBag.Add("CBalance", "20000");         // 현잔액
+
+            try
+            {
+                //FAXSend(팝빌회원 사업자번호, 명세서 객체, 발신번호, 수신번호, 팝빌회원 아이디)
+                String receiptNum = statementService.FAXSend(txtCorpNum.Text, statement,SendNum, ReceiveNum, txtUserID.Text);
+
+                MessageBox.Show("팩스전송 접수번호 : " + receiptNum, "선팩스전송");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message, "선팩스전송");
+            }
+        }
+
+        private void btnRegistIssue_Click(object sender, EventArgs e)
+        {
+            String memo = "즉시발행 메모";
+
+            Statement statement = new Statement();
+
+            statement.writeDate = "20160202";             //필수, 기재상 작성일자 (yyyyMMdd)
+            statement.purposeType = "영수";               //필수, {영수, 청구}
+            statement.taxType = "과세";                   //필수, {과세, 영세, 면세}
+            statement.formCode = txtFormCode.Text;        //맞춤양식코드, 기본값을 공백('')으로 처리하면 기본양식으로 처리.
+
+            statement.itemCode = selectedItemCode();      //명세서코드
+
+            statement.mgtKey = txtMgtKey.Text;            //문서관리번호
+
+            statement.senderCorpNum = txtCorpNum.Text;
+            statement.senderTaxRegID = "";                //종사업자 식별번호. 필요시 기재. 형식은 숫자 4자리.
+            statement.senderCorpName = "공급자 상호";
+            statement.senderCEOName = "공급자 대표자 성명";
+            statement.senderAddr = "공급자 주소";
+            statement.senderBizClass = "공급자 업종";
+            statement.senderBizType = "공급자 업태,업태2";
+            statement.senderContactName = "공급자 담당자명";
+            statement.senderEmail = "test@test.com";
+            statement.senderTEL = "070-7070-0707";
+            statement.senderHP = "010-000-2222";
+            statement.receiverCorpNum = "8888888888";
+            statement.receiverCorpName = "공급받는자 상호";
+            statement.receiverCEOName = "공급받는자 대표자 성명";
+            statement.receiverAddr = "공급받는자 주소";
+            statement.receiverBizClass = "공급받는자 업종";
+            statement.receiverBizType = "공급받는자 업태";
+            statement.receiverContactName = "공급받는자 담당자명";
+            statement.receiverEmail = "test@receiver.com";
+
+            statement.supplyCostTotal = "200000";         //필수 공급가액 합계
+            statement.taxTotal = "20000";                 //필수 세액 합계
+            statement.totalAmount = "220000";             //필수 합계금액.  공급가액 + 세액
+
+            statement.serialNum = "123";                 //기재상 일련번호 항목
+            statement.remark1 = "비고1";
+            statement.remark2 = "비고2";
+            statement.remark3 = "비고3";
+
+            statement.businessLicenseYN = false; //사업자등록증 이미지 첨부시 설정.
+            statement.bankBookYN = false;         //통장사본 이미지 첨부시 설정.
+
+            statement.detailList = new List<StatementDetail>();
+
+            StatementDetail detail = new StatementDetail();
+
+            detail.serialNum = 1;                                   //일련번호, 1~99까지 순차기재
+            detail.purchaseDT = "20150309";                         //거래일자
+            detail.itemName = "품목명";
+            detail.spec = "규격";
+            detail.qty = "1";                                       //수량
+            detail.unitCost = "100000";                             //단가
+            detail.supplyCost = "100000";                           //공급가액
+            detail.tax = "10000";                                   //세액
+            detail.remark = "품목비고";
+            detail.spare1 = "spare1";
+            detail.spare1 = "spare2";
+            detail.spare1 = "spare3";
+            detail.spare1 = "spare4";
+            detail.spare1 = "spare5";
+
+            statement.detailList.Add(detail);
+
+            detail = new StatementDetail();
+
+            detail.serialNum = 2;                                   //일련번호, 1~99까지 순차기재
+            detail.purchaseDT = "20150309";                         //거래일자
+            detail.itemName = "품목명";
+            detail.spec = "규격";
+            detail.qty = "1";                                       //수량
+            detail.unitCost = "100000";                             //단가
+            detail.supplyCost = "100000";                           //공급가액
+            detail.tax = "10000";                                   //세액
+            detail.remark = "품목비고";
+            detail.spare1 = "spare1";
+            detail.spare1 = "spare2";
+            detail.spare1 = "spare3";
+            detail.spare1 = "spare4";
+            detail.spare1 = "spare5";
+
+            statement.detailList.Add(detail);
+
+            statement.propertyBag = new propertyBag();              // 추가속성항목, 자세한사항은 "전자명세서 API 연동매뉴얼> 5.2 기본양식 추가속성 테이블" 참조. 
+
+            statement.propertyBag.Add("Balance", "15000");          // 전잔액
+            statement.propertyBag.Add("Deposit", "5000");           // 입금액
+            statement.propertyBag.Add("CBalance", "20000");         // 현잔액
+
+            try
+            {
+                //RegisterIssue(팝빌회원 사업자번호, 명세서 객체, 즉시발행 메모)
+                Response response = statementService.RegistIssue(txtCorpNum.Text, statement, memo);
+
+                MessageBox.Show("[ " + response.code + " ] " + response.message);
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message);
+            }
+        }
+
+        private void btnCancelIssueSub_Click(object sender, EventArgs e)
+        {
+            int itemCode = selectedItemCode();
+
+            try
+            {
+                //CancelIssue(팝빌회원 사업자번호, 명세서코드, 문서관리번호, 메모, 팝빌회원 아이디)
+                Response response = statementService.CancelIssue(txtCorpNum.Text, itemCode, txtMgtKey.Text, "발행취소 메모", txtUserID.Text);
+
+                MessageBox.Show(response.code + " | " + response.message);
+
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+            }
+        }
+
+        private void btnDeleteSub_Click(object sender, EventArgs e)
+        {
+            int itemCode = selectedItemCode();
+
+            try
+            {
+                //Delete(팝빌회원 사업자번호, 명세서코드, 문서관리번호, 팝빌회원 아이디)
+                Response response = statementService.Delete(txtCorpNum.Text, itemCode, txtMgtKey.Text, txtUserID.Text);
+
+                MessageBox.Show(response.code + " | " + response.message);
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            String DType = "R";         // 검색일자 유형, R-등록일자, W-작성일자, I-발행일자
+            String SDate = "20151001";  // 시작일자, yyyyMMdd
+            String EDate = "20160202";  // 종료일자, yyyyMMdd
+
+            // 전송상태값 배열, 미기재시 전체 상태조회, 문서상태 값 3자리의 배열, 2,3번째 자리에 와일드카드 가능
+            String[] State = new String[4];
+            State[0] = "100";
+            State[1] = "2**";
+            State[2] = "3**";
+            State[3] = "4**";
+
+            //명세서 종류코드, 121-거래명세서, 122-청구서, 123-견적서, 124-발주서, 125-입금표, 126-영수증
+            int[] ItemCode = { 121, 122, 123, 124, 125, 126 };
+
+            int Page = 1;       // 페이지 번호
+            int PerPage = 15;   // 페이지당 목록개수, 최대 1000개
+
+            try
+            {
+
+                DocSearchResult searchResult = statementService.Search(txtCorpNum.Text, DType, SDate, EDate, State, ItemCode, Page, PerPage);
+
+                String tmp = null;
+                tmp += "code : " + searchResult.code + CRLF;
+                tmp += "total : " + searchResult.total + CRLF;
+                tmp += "perPage : " + searchResult.perPage + CRLF;
+                tmp += "pageNum : " + searchResult.pageNum + CRLF;
+                tmp += "pageCount : " + searchResult.pageCount + CRLF;
+                tmp += "message : " + searchResult.message + CRLF +CRLF;
+
+                tmp += "itemCode | itemKey | mgtKey | taxType | writeDate | senderCorpName | senderCorpNum | receiverCorpName | receiverCorpNum | supplyCostTotal";
+                tmp += " | taxTotal | stateCode";
+
+                foreach (StatementInfo statementInfo in searchResult.list)
+                {
+                    tmp += statementInfo.itemCode + " | ";
+                    tmp += statementInfo.itemKey + " | ";
+                    tmp += statementInfo.mgtKey + " | ";
+                    tmp += statementInfo.taxType + " | ";
+                    tmp += statementInfo.writeDate + " | ";
+                    tmp += statementInfo.senderCorpName + " | ";
+                    tmp += statementInfo.senderCorpNum + " | ";
+                    tmp += statementInfo.receiverCorpName + " | ";
+                    tmp += statementInfo.receiverCorpNum + " | ";
+                    tmp += statementInfo.supplyCostTotal + " | ";
+                    tmp += statementInfo.taxTotal + " | ";
+                    tmp += statementInfo.stateCode;
+                    tmp += CRLF;
+                }
+
+                MessageBox.Show(tmp, "전자명세서 목록조회 결과");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("[ "+ex.code.ToString() + " ] " + ex.Message);
+            }
+        }
+
+        private void btnAttachStmt_Click(object sender, EventArgs e)
+        {
+            int itemCode = selectedItemCode();
+            //명세서 종류코드, 121-거래명세서, 122-청구서, 123-견적서, 124-발주서, 125-입금표, 126-영수증
+
+            int SubItemCode = 121;              //첨부할 명세서 코드
+            String SubMgtKey = "20160202-03";   //첨부할 명세서 관리번호 
+
+            try
+            {
+                // AttachStatement(사업자번호, 명세서코드, 관리번호, 첨부할 명세서코드, 첨부할 관리번호)    
+                Response response = statementService.AttachStatement(txtCorpNum.Text, itemCode, txtMgtKey.Text, SubItemCode, SubMgtKey);
+
+                MessageBox.Show("[ " + response.code + " ] " + response.message, "전자명세서 첨부");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message, "전자명세서 첨부");
+            }
+        }
+
+        private void btnDetachStmt_Click(object sender, EventArgs e)
+        {
+            int itemCode = selectedItemCode();
+            //명세서 종류코드, 121-거래명세서, 122-청구서, 123-견적서, 124-발주서, 125-입금표, 126-영수증
+
+            int SubItemCode = 121;              //첨부해제할 명세서 코드
+            String SubMgtKey = "20160202-03";   //첨부해제할 명세서 관리번호 
+
+            try
+            {
+                // DetachStatement(사업자번호, 명세서코드, 관리번호, 첨부해제할 명세서코드, 첨부해제할 관리번호)    
+                Response response = statementService.DetachStatement(txtCorpNum.Text, itemCode, txtMgtKey.Text, SubItemCode, SubMgtKey);
+
+                MessageBox.Show("[ " + response.code + " ] " + response.message, "전자명세서 첨부해제");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message, "전자명세서 첨부해제");
+            }
+        }
+
+
+
     }
 }
 

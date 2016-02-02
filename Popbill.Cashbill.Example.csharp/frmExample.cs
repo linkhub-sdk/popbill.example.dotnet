@@ -824,5 +824,159 @@ namespace Popbill.Cashbill.Example.csharp
             }
         }
 
+        private void btnCancelIssueSub_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //CancelIssue(팝빌회원 사업자번호, 문서관리번호, 메모, 팝빌회원 아이디)
+                Response response = cashbillService.CancelIssue(txtCorpNum.Text, txtMgtKey.Text, "발행취소시 메모.", txtUserId.Text);
+
+                MessageBox.Show(response.message);
+
+
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+            }
+        }
+
+        private void btnDeleteSub_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                //Delete(팝빌회원 사업자번호, 문서관리번호, 팝빌회원 아이디)
+                Response response = cashbillService.Delete(txtCorpNum.Text, txtMgtKey.Text, txtUserId.Text);
+
+                MessageBox.Show(response.message);
+
+
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+            }
+        }
+
+        private void btnRegistIssue_Click(object sender, EventArgs e)
+        {
+            String memo = "현금영수증 즉시발행 메모";
+
+            Cashbill cashbill = new Cashbill();
+
+            cashbill.mgtKey = txtMgtKey.Text;        //문서관리번호, 발행자별 고유번호 할당, 1~24자리 영문,숫자,'-','_' 조합으로 중복없이 구성.
+            cashbill.tradeType = "승인거래";         //거래유형 {승인거래, 취소거래} 중 기재
+            cashbill.franchiseCorpNum = txtCorpNum.Text;    //발행자 사업자번호
+            cashbill.franchiseCorpName = "발행자 상호";
+            cashbill.franchiseCEOName = "발행자 대표자";
+            cashbill.franchiseAddr = "발행자 주소";
+            cashbill.franchiseTEL = "070-1234-1234";
+
+            cashbill.tradeUsage = "소득공제용";      //현금영수증 형태 , {소득공제용, 지출증빙용}중 기재
+            cashbill.identityNum = "01043245117";    //거래처식별번호, 
+            cashbill.customerName = "고객명";
+            cashbill.itemName = "상품명";
+            cashbill.orderNumber = "주문번호";
+            cashbill.email = "test@test.com";
+            cashbill.hp = "111-1234-1234";
+            cashbill.fax = "777-444-3333";
+            cashbill.serviceFee = "0";              //봉사료
+            cashbill.supplyCost = "10000";          //공급가액
+            cashbill.tax = "1000";                  //세액
+            cashbill.totalAmount = "11000";         //거래금액(봉사료+공급가액+세액)
+
+            cashbill.taxationType = "과세";         //과세형태, {과세, 비과세}
+
+            cashbill.smssendYN = false;            //발행시 문자전송여부 
+
+            try
+            {
+                //RegistIssue(팝빌회원 사업자번호, 현금영수증 객체, 발행메모, 팝빌회원 아이디)
+                Response response = cashbillService.RegistIssue(txtCorpNum.Text, cashbill, memo, txtUserId.Text);
+
+                MessageBox.Show("[ " + response.code + " ] " + response.message);
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message);
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+         
+            String DType = "R";     // 검색일자 유형, R-등록일자, T-거래일자, I-발행일자
+            String SDate = "20151001";  // 시작일자
+            String EDate = "20160202";  // 종료일자
+
+            //상태코드 배열, 2,3번째 자리에 와일드카드(*) 사용가능
+            String[] State = new String[4];
+            State[0] = "100";
+            State[1] = "2**";
+            State[2] = "3**";
+            State[3] = "4**";
+            
+            // 현금영수증형태 배열, N-일반 현금영수증, C-취소 현금영수증
+            String[] TradeType = new String[2];
+            TradeType[0] = "N";
+            TradeType[1] = "C";
+
+            // 거래용도 배열, P-소득공제용, C-지출증빙용
+            String[] TradeUsage = new String[2];
+            TradeUsage[0] = "P";
+            TradeUsage[1] = "C";
+
+            // 과세형태 배열, T-과세, N-비과세 
+            String[] TaxationType = new String[2];
+            TaxationType[0] = "T";
+            TaxationType[1] = "N";
+
+            int Page = 1;           // 페이지 번호
+            int PerPage = 15;       // 페이지당 검색개수, 최대 1000개 
+
+            try
+            {
+                CBSearchResult searchResult = cashbillService.Search(txtCorpNum.Text, DType, SDate, EDate, State, TradeType, TradeUsage, TaxationType, Page, PerPage);
+                String tmp = null;
+
+                tmp += "code : " + searchResult.code + CRLF;
+                tmp += "total : " + searchResult.total + CRLF;
+                tmp += "perPage : " + searchResult.perPage + CRLF;
+                tmp += "pageNum : " + searchResult.pageNum + CRLF;
+                tmp += "pageCount : " + searchResult.pageCount + CRLF;
+                tmp += "message : " + searchResult.message + CRLF + CRLF;
+                
+                tmp += "itemKey | mgtKey | tradeDate | issueDT | customerName | itemName | identityNum | taxationType |";
+                tmp += " totalAmount | tradeUsage | tradeType | stateCode | confirmNUm" + CRLF;
+
+                foreach (CashbillInfo cashbillInfo in searchResult.list)
+                {
+                    tmp += cashbillInfo.itemKey + " | ";
+                    tmp += cashbillInfo.mgtKey + " | ";
+                    tmp += cashbillInfo.tradeDate + " | ";
+                    tmp += cashbillInfo.issueDT + " | ";
+                    tmp += cashbillInfo.customerName + " | ";
+                    tmp += cashbillInfo.itemName + " | ";
+                    tmp += cashbillInfo.identityNum + " | ";
+                    tmp += cashbillInfo.taxationType + " | ";
+                    tmp += cashbillInfo.totalAmount + " | ";
+                    tmp += cashbillInfo.tradeUsage + " | ";
+                    tmp += cashbillInfo.tradeType + " | ";
+                    tmp += cashbillInfo.stateCode + " | ";
+                    tmp += cashbillInfo.confirmNum + " | ";
+
+                    tmp += CRLF;
+                }
+
+                MessageBox.Show(tmp, "문서목록 조회");
+        
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message, "문서목록조회");
+            }
+        }
+
     }
 }

@@ -692,5 +692,52 @@ namespace Popbill.Message.Example.csharp
             }
         }
 
+        private void btnSearch_Click(object sender, EventArgs e)
+        {           
+            String SDate = "20160120";  // 시작일자, yyyyMMdd
+            String EDate = "20160202";  // 종료일자, yyyyMMdd
+            
+            // 전송상태값 배열, 1-대기, 2-성공, 3-실패, 4-취소
+            String[] State = new String[4];
+            State[0] = "1";
+            State[1] = "2";
+            State[2] = "3";
+            State[3] = "4";
+
+            // 검색대상 배열, SMS, LMS, MMS
+            String[] Item = new String[3];
+            Item[0] = "SMS";
+            Item[1] = "LMS";
+            Item[2] = "MMS";
+
+            bool ReserveYN = false;     // 예약여부, true-예약전송만 조회 
+            bool SenderYN = false;      // 개인조회여부 true-개인조회
+            int Page = 1;               // 페이지 번호
+            int PerPage = 100;           // 페이지당 검색개수, 최대 1000건
+
+            try
+            {
+                MSGSearchResult searchResult = messageService.Search(txtCorpNum.Text, SDate, EDate, State, Item, ReserveYN, SenderYN, Page, PerPage);
+                
+                String tmp = null;
+                tmp += "code : " + searchResult.code + CRLF;
+                tmp += "total : " + searchResult.total + CRLF;
+                tmp += "perPage : " + searchResult.perPage + CRLF;
+                tmp += "pageNum : " + searchResult.pageNum + CRLF;
+                tmp += "pageCount : " + searchResult.pageCount + CRLF;
+                tmp += "message : " + searchResult.message + CRLF;
+
+                MessageBox.Show(tmp, "전송내역조회 결과");
+
+                dataGridView1.DataSource = searchResult.list;
+
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("[ " + ex.code.ToString()+ " ] " +ex.Message);
+            }
+
+        }
+
     }
 }
