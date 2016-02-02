@@ -534,12 +534,15 @@ namespace Popbill.Taxinvoice.Example.csharp
                 tmp += "invoicerCorpName : " + taxinvoiceInfo.invoicerCorpName + CRLF;
                 tmp += "invoicerCorpNum : " + taxinvoiceInfo.invoicerCorpNum + CRLF;
                 tmp += "invoicerMgtKey : " + taxinvoiceInfo.invoicerMgtKey + CRLF;
+                tmp += "invoicerPrintYN : " + taxinvoiceInfo.invoicerPrintYN + CRLF;
                 tmp += "invoiceeCorpName : " + taxinvoiceInfo.invoiceeCorpName + CRLF;
                 tmp += "invoiceeCorpNum : " + taxinvoiceInfo.invoiceeCorpNum + CRLF;
                 tmp += "invoiceeMgtKey : " + taxinvoiceInfo.invoiceeMgtKey + CRLF;
+                tmp += "invoiceePrintYN : " + taxinvoiceInfo.invoiceePrintYN + CRLF;
                 tmp += "trusteeCorpName : " + taxinvoiceInfo.trusteeCorpName + CRLF;
                 tmp += "trusteeCorpNum : " + taxinvoiceInfo.trusteeCorpNum + CRLF;
                 tmp += "trusteeMgtKey : " + taxinvoiceInfo.trusteeMgtKey + CRLF;
+                tmp += "trusteePrintYN : " + taxinvoiceInfo.trusteePrintYN + CRLF;
 
                 tmp += "supplyCostTotal : " + taxinvoiceInfo.supplyCostTotal + CRLF;
                 tmp += "taxTotal : " + taxinvoiceInfo.taxTotal + CRLF;
@@ -1657,7 +1660,8 @@ namespace Popbill.Taxinvoice.Example.csharp
                 tmp += "pageCount : " + searchResult.pageCount + CRLF;
                 tmp += "message : " + searchResult.message + CRLF + CRLF;
 
-                tmp += "itemKey | taxType | writeDate | regDT | invoicerCorpNum | invoicerCorpName | invoicerMgtKey | invoiceeCorpNum | invoiceeCorpName | invoiceeMgtKey ";
+                tmp += "itemKey | taxType | writeDate | regDT | invoicerCorpNum | invoicerCorpName | invoicerMgtKey | invoicerPrintYN |";
+                tmp += " invoiceeCorpNum | invoiceeCorpName | invoiceeMgtKey | invoiceePrintYN | ";
                 tmp += "supplyCostTotal | taxTotal | purposeType | issueDT | stateCode | stateDT | lateIssueYN ";
                 tmp += CRLF + CRLF;
 
@@ -1670,9 +1674,11 @@ namespace Popbill.Taxinvoice.Example.csharp
                     tmp += taxinvoiceInfo.invoicerCorpNum + " | ";
                     tmp += taxinvoiceInfo.invoicerCorpName + " | ";
                     tmp += taxinvoiceInfo.invoicerMgtKey + " | ";
+                    tmp += taxinvoiceInfo.invoicerPrintYN + " | ";
                     tmp += taxinvoiceInfo.invoiceeCorpNum + " | ";
                     tmp += taxinvoiceInfo.invoiceeCorpName + " | ";
                     tmp += taxinvoiceInfo.invoiceeMgtKey + " | ";
+                    tmp += taxinvoiceInfo.invoiceePrintYN + " | ";
                     tmp += taxinvoiceInfo.supplyCostTotal + " | ";
                     tmp += taxinvoiceInfo.taxTotal + " | ";
                     tmp += taxinvoiceInfo.purposeType + " | ";

@@ -555,8 +555,10 @@ namespace Popbill.Statement.Example.csharp
                 tmp += "writeDate : " + statementInfo.writeDate + CRLF;
                 tmp += "senderCorpName : " + statementInfo.senderCorpName + CRLF;
                 tmp += "senderCorpNum : " + statementInfo.senderCorpNum + CRLF;
+                tmp += "senderPrintYN : " + statementInfo.senderPrintYN + CRLF;
                 tmp += "receiverCorpName : " + statementInfo.receiverCorpName + CRLF;
                 tmp += "receiverCorpNum : " + statementInfo.receiverCorpNum + CRLF;
+                tmp += "receiverPrintYN : " + statementInfo.receiverPrintYN + CRLF;
                 tmp += "supplyCostTotal : " + statementInfo.supplyCostTotal + CRLF;
                 tmp += "taxTotal : " + statementInfo.taxTotal + CRLF;
                 tmp += "issueDT : " + statementInfo.issueDT + CRLF;
@@ -1398,7 +1400,8 @@ namespace Popbill.Statement.Example.csharp
                 tmp += "pageCount : " + searchResult.pageCount + CRLF;
                 tmp += "message : " + searchResult.message + CRLF +CRLF;
 
-                tmp += "itemCode | itemKey | mgtKey | taxType | writeDate | senderCorpName | senderCorpNum | receiverCorpName | receiverCorpNum | supplyCostTotal";
+                tmp += "itemCode | itemKey | mgtKey | taxType | writeDate | senderCorpName | senderCorpNum | senderPrintYN | ";
+                tmp += " receiverCorpName | receiverCorpNum | receiverPrintYN | supplyCostTotal";
                 tmp += " | taxTotal | stateCode" +CRLF;
 
                 foreach (StatementInfo statementInfo in searchResult.list)
@@ -1410,8 +1413,10 @@ namespace Popbill.Statement.Example.csharp
                     tmp += statementInfo.writeDate + " | ";
                     tmp += statementInfo.senderCorpName + " | ";
                     tmp += statementInfo.senderCorpNum + " | ";
+                    tmp += statementInfo.senderPrintYN + " | ";
                     tmp += statementInfo.receiverCorpName + " | ";
                     tmp += statementInfo.receiverCorpNum + " | ";
+                    tmp += statementInfo.receiverPrintYN + " | ";
                     tmp += statementInfo.supplyCostTotal + " | ";
                     tmp += statementInfo.taxTotal + " | ";
                     tmp += statementInfo.stateCode;
