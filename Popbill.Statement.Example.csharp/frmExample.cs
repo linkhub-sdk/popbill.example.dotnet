@@ -1473,6 +1473,28 @@ namespace Popbill.Statement.Example.csharp
             }
         }
 
+        private void btnGetChargeInfo_Click(object sender, EventArgs e)
+        {
+            //명세서 종류코드, 121-거래명세서, 122-청구서, 123-견적서, 124-발주서, 125-입금표, 126-영수증
+            int itemCode = selectedItemCode();
+
+            try
+            {
+                ChargeInfo chrgInf = statementService.GetChargeInfo(txtCorpNum.Text, itemCode);
+
+                string tmp = null;
+                tmp += "unitCost (단가) : " + chrgInf.unitCost + CRLF;
+                tmp += "chargeMethod (과금유형) : " + chrgInf.chargeMethod + CRLF;
+                tmp += "rateSystem (과금제도) : " + chrgInf.rateSystem + CRLF;
+
+                MessageBox.Show(tmp, "과금정보 확인");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message, "과금정보 확인");
+            }
+        }
+
     }
 }
 

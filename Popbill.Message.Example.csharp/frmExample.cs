@@ -761,5 +761,28 @@ namespace Popbill.Message.Example.csharp
             }
         }
 
+        private void btnGetChargeInfo_Click(object sender, EventArgs e)
+        {
+            MessageType msgType = MessageType.SMS; //메시지 타입,SMS-단문, LMS-장문, MMS-포토
+
+            try
+            {
+                ChargeInfo chrgInf = messageService.GetChargeInfo(txtCorpNum.Text, msgType);
+                String tmp = null;
+
+                tmp += "unitCost(단가) : " + chrgInf.unitCost +CRLF;
+                tmp += "chargeMethod(과금유형) : " + chrgInf.chargeMethod + CRLF;
+                tmp += "rateSystem(과금제도) : " + chrgInf.rateSystem + CRLF;
+
+                MessageBox.Show(tmp, "과금정보 확인");
+
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show(ex.code.ToString() + " | " + ex.Message, "과금정보 확인");
+
+            }
+        }
+
     }
 }

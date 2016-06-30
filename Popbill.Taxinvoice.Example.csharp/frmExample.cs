@@ -1736,5 +1736,24 @@ namespace Popbill.Taxinvoice.Example.csharp
                 MessageBox.Show(ex.code.ToString() + " | " + ex.Message, "전자명세서 첨부해제");
             }
         }
+
+        private void btnGetChargeInfo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ChargeInfo chrgInf = taxinvoiceService.GetChargeInfo(txtCorpNum.Text);
+
+                string tmp = null;
+                tmp += "unitCost (발행단가) : " + chrgInf.unitCost + CRLF;
+                tmp += "chargeMethod (과금유형) : " + chrgInf.chargeMethod + CRLF;
+                tmp += "rateSystem (과금제도) : " + chrgInf.rateSystem + CRLF;
+
+                MessageBox.Show(tmp, "과금정보 확인");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message, "과금정보 확인");
+            }
+        }
     }
 }

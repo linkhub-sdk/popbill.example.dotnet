@@ -54,6 +54,8 @@
             this.txtCorpNum = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnGetAutoDenyList = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.btnSendMMS_Same = new System.Windows.Forms.Button();
             this.btnSendMMS = new System.Windows.Forms.Button();
@@ -77,8 +79,7 @@
             this.btnSendSMS_one = new System.Windows.Forms.Button();
             this.txtReserveDT = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.btnGetAutoDenyList = new System.Windows.Forms.Button();
+            this.btnGetChargeInfo = new System.Windows.Forms.Button();
             this.GroupBox1.SuspendLayout();
             this.groupBox11.SuspendLayout();
             this.groupBox10.SuspendLayout();
@@ -221,6 +222,7 @@
             // 
             // GroupBox3
             // 
+            this.GroupBox3.Controls.Add(this.btnGetChargeInfo);
             this.GroupBox3.Controls.Add(this.btn_unitcost_mms);
             this.GroupBox3.Controls.Add(this.btnUnitCost_LMS);
             this.GroupBox3.Controls.Add(this.btnGetPartnerBalance);
@@ -373,6 +375,26 @@
             this.groupBox4.TabIndex = 17;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "문자전송 관련 기능";
+            // 
+            // btnGetAutoDenyList
+            // 
+            this.btnGetAutoDenyList.Location = new System.Drawing.Point(728, 15);
+            this.btnGetAutoDenyList.Name = "btnGetAutoDenyList";
+            this.btnGetAutoDenyList.Size = new System.Drawing.Size(121, 32);
+            this.btnGetAutoDenyList.TabIndex = 26;
+            this.btnGetAutoDenyList.Text = "080 수신거부목록";
+            this.btnGetAutoDenyList.UseVisualStyleBackColor = true;
+            this.btnGetAutoDenyList.Click += new System.EventHandler(this.btnGetAutoDenyList_Click);
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(466, 16);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(130, 31);
+            this.btnSearch.TabIndex = 25;
+            this.btnSearch.Text = "전송내역 기간조회";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // groupBox9
             // 
@@ -603,25 +625,15 @@
             this.label3.TabIndex = 13;
             this.label3.Text = "예약시간(yyyyMMddHHmmss) : ";
             // 
-            // btnSearch
+            // btnGetChargeInfo
             // 
-            this.btnSearch.Location = new System.Drawing.Point(466, 16);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(130, 31);
-            this.btnSearch.TabIndex = 25;
-            this.btnSearch.Text = "전송내역 기간조회";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // btnGetAutoDenyList
-            // 
-            this.btnGetAutoDenyList.Location = new System.Drawing.Point(728, 15);
-            this.btnGetAutoDenyList.Name = "btnGetAutoDenyList";
-            this.btnGetAutoDenyList.Size = new System.Drawing.Size(121, 32);
-            this.btnGetAutoDenyList.TabIndex = 26;
-            this.btnGetAutoDenyList.Text = "080 수신거부목록";
-            this.btnGetAutoDenyList.UseVisualStyleBackColor = true;
-            this.btnGetAutoDenyList.Click += new System.EventHandler(this.btnGetAutoDenyList_Click);
+            this.btnGetChargeInfo.Location = new System.Drawing.Point(142, 94);
+            this.btnGetChargeInfo.Name = "btnGetChargeInfo";
+            this.btnGetChargeInfo.Size = new System.Drawing.Size(113, 30);
+            this.btnGetChargeInfo.TabIndex = 6;
+            this.btnGetChargeInfo.Text = "과금정보 확인";
+            this.btnGetChargeInfo.UseVisualStyleBackColor = true;
+            this.btnGetChargeInfo.Click += new System.EventHandler(this.btnGetChargeInfo_Click);
             // 
             // frmExample
             // 
@@ -708,6 +720,7 @@
         private System.Windows.Forms.Button btnUpdateCorpInfo;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnGetAutoDenyList;
+        private System.Windows.Forms.Button btnGetChargeInfo;
     }
 }
 

@@ -66,6 +66,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -102,11 +106,8 @@
             this.btnDeleteSub = new System.Windows.Forms.Button();
             this.btnCancelIssueSub = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.Label23 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.btnGetChargeInfo = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -495,6 +496,54 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "전자명세서 발행 프로세스";
             // 
+            // label9
+            // 
+            this.label9.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.label9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label9.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label9.Location = new System.Drawing.Point(58, 29);
+            this.label9.Name = "label9";
+            this.label9.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.label9.Size = new System.Drawing.Size(1, 104);
+            this.label9.TabIndex = 46;
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label10
+            // 
+            this.label10.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label10.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label10.Location = new System.Drawing.Point(158, 33);
+            this.label10.Name = "label10";
+            this.label10.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.label10.Size = new System.Drawing.Size(1, 104);
+            this.label10.TabIndex = 47;
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label11
+            // 
+            this.label11.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label11.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label11.Location = new System.Drawing.Point(27, 99);
+            this.label11.Name = "label11";
+            this.label11.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.label11.Size = new System.Drawing.Size(132, 1);
+            this.label11.TabIndex = 48;
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label12
+            // 
+            this.label12.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label12.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label12.Location = new System.Drawing.Point(41, 137);
+            this.label12.Name = "label12";
+            this.label12.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.label12.Size = new System.Drawing.Size(134, 1);
+            this.label12.TabIndex = 49;
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.txtFileID);
@@ -609,7 +658,7 @@
             this.groupBox1.Controls.Add(this.btnCheckIsMember);
             this.groupBox1.Location = new System.Drawing.Point(9, 16);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(116, 119);
+            this.groupBox1.Size = new System.Drawing.Size(116, 147);
             this.groupBox1.TabIndex = 41;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "회원정보";
@@ -646,12 +695,13 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnGetChargeInfo);
             this.groupBox2.Controls.Add(this.btnGetPartnerBalance);
             this.groupBox2.Controls.Add(this.btnGetUnitCost);
             this.groupBox2.Controls.Add(this.btnGetBalance);
             this.groupBox2.Location = new System.Drawing.Point(130, 15);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(133, 119);
+            this.groupBox2.Size = new System.Drawing.Size(133, 147);
             this.groupBox2.TabIndex = 42;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "포인트 관련";
@@ -660,7 +710,7 @@
             // 
             this.btnGetPartnerBalance.Location = new System.Drawing.Point(7, 49);
             this.btnGetPartnerBalance.Name = "btnGetPartnerBalance";
-            this.btnGetPartnerBalance.Size = new System.Drawing.Size(118, 31);
+            this.btnGetPartnerBalance.Size = new System.Drawing.Size(118, 30);
             this.btnGetPartnerBalance.TabIndex = 8;
             this.btnGetPartnerBalance.Text = "파트너포인트 확인";
             this.btnGetPartnerBalance.UseVisualStyleBackColor = true;
@@ -668,9 +718,9 @@
             // 
             // btnGetUnitCost
             // 
-            this.btnGetUnitCost.Location = new System.Drawing.Point(7, 83);
+            this.btnGetUnitCost.Location = new System.Drawing.Point(7, 82);
             this.btnGetUnitCost.Name = "btnGetUnitCost";
-            this.btnGetUnitCost.Size = new System.Drawing.Size(118, 29);
+            this.btnGetUnitCost.Size = new System.Drawing.Size(118, 28);
             this.btnGetUnitCost.TabIndex = 7;
             this.btnGetUnitCost.Text = "요금 단가 확인";
             this.btnGetUnitCost.UseVisualStyleBackColor = true;
@@ -692,7 +742,7 @@
             this.groupBox3.Controls.Add(this.btnGetPopbillURL_LOGIN);
             this.groupBox3.Location = new System.Drawing.Point(270, 14);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(139, 121);
+            this.groupBox3.Size = new System.Drawing.Size(139, 149);
             this.groupBox3.TabIndex = 43;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "팝빌 URL 관련";
@@ -724,7 +774,7 @@
             this.groupBox4.Controls.Add(this.btnRegistContact);
             this.groupBox4.Location = new System.Drawing.Point(415, 14);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(135, 120);
+            this.groupBox4.Size = new System.Drawing.Size(135, 148);
             this.groupBox4.TabIndex = 44;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "담당자 관련";
@@ -766,9 +816,9 @@
             this.groupBox11.Controls.Add(this.groupBox3);
             this.groupBox11.Controls.Add(this.groupBox2);
             this.groupBox11.Controls.Add(this.groupBox1);
-            this.groupBox11.Location = new System.Drawing.Point(15, 42);
+            this.groupBox11.Location = new System.Drawing.Point(15, 39);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(702, 149);
+            this.groupBox11.Size = new System.Drawing.Size(702, 172);
             this.groupBox11.TabIndex = 52;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "팝빌 기본 API";
@@ -779,7 +829,7 @@
             this.groupBox13.Controls.Add(this.btnGetCorpInfo);
             this.groupBox13.Location = new System.Drawing.Point(558, 14);
             this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(130, 117);
+            this.groupBox13.Size = new System.Drawing.Size(130, 147);
             this.groupBox13.TabIndex = 45;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "회사정보 관련";
@@ -820,9 +870,9 @@
             this.groupBox12.Controls.Add(this.txtFormCode);
             this.groupBox12.Controls.Add(this.cboItemCode);
             this.groupBox12.Controls.Add(this.btnCheckMgtKeyInUse);
-            this.groupBox12.Location = new System.Drawing.Point(15, 202);
+            this.groupBox12.Location = new System.Drawing.Point(15, 219);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(702, 538);
+            this.groupBox12.Size = new System.Drawing.Size(702, 527);
             this.groupBox12.TabIndex = 53;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "전자명세서 관련 API";
@@ -903,30 +953,6 @@
             this.label8.TabIndex = 46;
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label9
-            // 
-            this.label9.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label9.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label9.Location = new System.Drawing.Point(58, 29);
-            this.label9.Name = "label9";
-            this.label9.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.label9.Size = new System.Drawing.Size(1, 104);
-            this.label9.TabIndex = 46;
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label10
-            // 
-            this.label10.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label10.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label10.Location = new System.Drawing.Point(158, 33);
-            this.label10.Name = "label10";
-            this.label10.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.label10.Size = new System.Drawing.Size(1, 104);
-            this.label10.TabIndex = 47;
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // Label23
             // 
             this.Label23.BackColor = System.Drawing.SystemColors.ControlDark;
@@ -939,35 +965,21 @@
             this.Label23.TabIndex = 47;
             this.Label23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label11
+            // btnGetChargeInfo
             // 
-            this.label11.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label11.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label11.Location = new System.Drawing.Point(27, 99);
-            this.label11.Name = "label11";
-            this.label11.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.label11.Size = new System.Drawing.Size(132, 1);
-            this.label11.TabIndex = 48;
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label12
-            // 
-            this.label12.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label12.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label12.Location = new System.Drawing.Point(41, 137);
-            this.label12.Name = "label12";
-            this.label12.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.label12.Size = new System.Drawing.Size(134, 1);
-            this.label12.TabIndex = 49;
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGetChargeInfo.Location = new System.Drawing.Point(7, 113);
+            this.btnGetChargeInfo.Name = "btnGetChargeInfo";
+            this.btnGetChargeInfo.Size = new System.Drawing.Size(119, 28);
+            this.btnGetChargeInfo.TabIndex = 9;
+            this.btnGetChargeInfo.Text = "과금정보 확인";
+            this.btnGetChargeInfo.UseVisualStyleBackColor = true;
+            this.btnGetChargeInfo.Click += new System.EventHandler(this.btnGetChargeInfo_Click);
             // 
             // frmExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(734, 752);
+            this.ClientSize = new System.Drawing.Size(732, 766);
             this.Controls.Add(this.groupBox12);
             this.Controls.Add(this.groupBox11);
             this.Controls.Add(this.txtUserID);
@@ -1083,6 +1095,7 @@
         internal System.Windows.Forms.Label label11;
         internal System.Windows.Forms.Label label12;
         internal System.Windows.Forms.Label Label23;
+        private System.Windows.Forms.Button btnGetChargeInfo;
     }
 }
 
