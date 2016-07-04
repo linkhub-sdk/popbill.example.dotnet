@@ -474,7 +474,6 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
                 tmp += "serviceFeeTotal (봉사료 합계) : " + summaryInfo.serviceFeeTotal.ToString() + CRLF;
                 tmp += "amountTotal (합계 금액) : " + summaryInfo.amountTotal.ToString() + CRLF;
                 
-
                 MessageBox.Show(tmp, "수집 결과 요약정보 조회");
             }
             catch (PopbillException ex)
