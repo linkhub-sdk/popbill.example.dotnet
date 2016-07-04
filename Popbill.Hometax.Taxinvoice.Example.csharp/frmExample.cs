@@ -445,8 +445,6 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
 
                 MessageBox.Show(tmp, "수집 결과 조회");
 
-                string[] subItemArr = new string[7];
-
                 string rowStr = "작성일자 | 발행일자 | 전송일자 | 거래처 | 등록번호 | 과세형태 | 공급가액 | 문서형태 | 국세청승인번호 ";
                 listBox1.Items.Add(rowStr);
 
@@ -476,8 +474,6 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
 
                     listBox1.Items.Add(rowStr);
                 }
-
-                txtNTSconfirmNum.Text = searchInfo.list[0].ntsconfirmNum;
 
             }           
             catch (PopbillException ex)
@@ -673,10 +669,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
                 MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message, "정액제 서비스 상태 확인");
 
             }
-        }
-
-
-        
+        }      
     }
 }
 
