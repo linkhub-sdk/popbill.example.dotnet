@@ -1621,15 +1621,15 @@ namespace Popbill.Taxinvoice.Example.csharp
         {   
             MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
 
-            String DType = "I";         // [필수] 일자유형, R-등록일자, I-발행일자, W-작성일자 중 1개기입
-            String SDate = "20160101";  // [필수] 시작일자
-            String EDate = "20160201";  // [필수] 종료일자
+            String DType = "W";         // [필수] 일자유형, R-등록일자, I-발행일자, W-작성일자 중 1개기입
+            String SDate = "20160601";  // [필수] 시작일자
+            String EDate = "20160731";  // [필수] 종료일자
             
             // 전송상태값 배열, 미기재시 전체 상태조회, 문서상태 값 3자리의 배열, 2,3번째 자리에 와일드카드 가능
             String[] State = new String[3];
-            State[0] = "100";
-            State[1] = "2**";
-            State[2] = "3**";
+            State[0] = "300";
+            State[1] = "6**";
+            State[2] = "4**";
 
             // 문서유형 배열, N-일반세금계산서, M-수정세금계산서
             String[] Type = new String[2];
@@ -1642,14 +1642,23 @@ namespace Popbill.Taxinvoice.Example.csharp
             TaxType[1] = "N";
             TaxType[2] = "Z";
 
+            // 종사업장 유무, 공백-전체조회, 0-종사업장 없는 문서 조회, 1-종사업장번호 조건에 따라 조회
+            String TaxRegIDYN = "";
+
+            // 종사업장번호 유형, S-공급자, B-공급받는자, T-수탁자
+            String TaxRegIDType = "S";
+
+            // 종사업장번호, 콤마(",")로 구분하여 구성 ex) "0001,1234"
+            String TaxRegID = ""; 
+
             bool? LateOnly = null;  // 지연발행 여부, 미기재시 전체, true-지연발행분 조회, false-정상발행분 조회
             String Order = "D";     // 정렬방향, A-오름차순, D-내림차순
             int Page = 1;           // 페이지번호
-            int PerPage = 25;       // 페이지당 검색개수, 최대 1000건
+            int PerPage = 30;       // 페이지당 검색개수, 최대 1000건
 
             try
             {
-                TISearchResult searchResult = taxinvoiceService.Search(txtCorpNum.Text, KeyType, DType, SDate, EDate, State, Type, TaxType, LateOnly, Order, Page, PerPage);
+                TISearchResult searchResult = taxinvoiceService.Search(txtCorpNum.Text, KeyType, DType, SDate, EDate, State, Type, TaxType, LateOnly, TaxRegIDYN, TaxRegIDType, TaxRegID, Order, Page, PerPage);
                
                 String tmp = null;
 

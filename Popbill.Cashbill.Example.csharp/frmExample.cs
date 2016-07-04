@@ -52,7 +52,6 @@ namespace Popbill.Cashbill.Example.csharp
             joinInfo.CEOName = "대표자성명";
             joinInfo.CorpName = "상호";
             joinInfo.Addr = "주소";
-            joinInfo.ZipCode = "500-100";
             joinInfo.BizType = "업태";
             joinInfo.BizClass = "업종";
             joinInfo.ID = "userid";                   //6자 이상 20자 미만
@@ -976,6 +975,25 @@ namespace Popbill.Cashbill.Example.csharp
             catch (PopbillException ex)
             {
                 MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message, "문서목록조회");
+            }
+        }
+
+        private void btnGetChargeInfo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ChargeInfo chrgInf = cashbillService.GetChargeInfo(txtCorpNum.Text);
+
+                string tmp = null;
+                tmp += "unitCost (단가) : " + chrgInf.unitCost + CRLF;
+                tmp += "chargeMethod (과금유형) : " + chrgInf.chargeMethod + CRLF;
+                tmp += "rateSystem (과금제도) : " + chrgInf.rateSystem + CRLF;
+
+                MessageBox.Show(tmp, "과금정보 확인");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("[" + ex.code.ToString() + "] " + ex.Message, "과금정보 확인");
             }
         }
 

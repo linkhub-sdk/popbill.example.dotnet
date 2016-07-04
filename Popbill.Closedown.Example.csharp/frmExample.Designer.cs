@@ -67,7 +67,7 @@
             // 
             // btnCheckCorpNum
             // 
-            this.btnCheckCorpNum.Location = new System.Drawing.Point(225, 17);
+            this.btnCheckCorpNum.Location = new System.Drawing.Point(228, 17);
             this.btnCheckCorpNum.Name = "btnCheckCorpNum";
             this.btnCheckCorpNum.Size = new System.Drawing.Size(77, 31);
             this.btnCheckCorpNum.TabIndex = 18;

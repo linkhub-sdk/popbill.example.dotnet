@@ -13,7 +13,7 @@ namespace Popbill.Fax.Example.csharp
     {
         //링크아이디
         private string LinkID = "TESTER";
-        //비밀키
+        //비밀
         private string SecretKey = "SwWxqU+0TErBXy/9TVjIPEnI0VTUMMSQZtJf3Ed8q3I=";
 
         private FaxService faxService;
@@ -213,7 +213,7 @@ namespace Popbill.Fax.Example.csharp
 
                 try
                 {
-                    String receiptNum = faxService.SendFAX(txtCorpNum.Text, "070-7510-6766", "111-2222-3333", "수신자 명칭", strFileName, getReserveDT(), txtUserId.Text);
+                    String receiptNum = faxService.SendFAX(txtCorpNum.Text, "02-6442-9700", "02-6442-9700", "수신자 명칭", strFileName, getReserveDT(), txtUserId.Text);
 
                     MessageBox.Show("접수번호 : " + receiptNum);
                     txtReceiptNum.Text = receiptNum;
@@ -541,5 +541,6 @@ namespace Popbill.Fax.Example.csharp
                 MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message, "과금정보 조회");
             }
         }
+
     }
 }
