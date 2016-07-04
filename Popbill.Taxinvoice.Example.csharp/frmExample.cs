@@ -1627,9 +1627,9 @@ namespace Popbill.Taxinvoice.Example.csharp
             
             // 전송상태값 배열, 미기재시 전체 상태조회, 문서상태 값 3자리의 배열, 2,3번째 자리에 와일드카드 가능
             String[] State = new String[3];
-            State[0] = "300";
-            State[1] = "6**";
-            State[2] = "4**";
+            State[0] = "3**";
+            State[1] = "4**";
+            State[2] = "6**";
 
             // 문서유형 배열, N-일반세금계산서, M-수정세금계산서
             String[] Type = new String[2];
@@ -1658,7 +1658,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
             try
             {
-                TISearchResult searchResult = taxinvoiceService.Search(txtCorpNum.Text, KeyType, DType, SDate, EDate, State, Type, TaxType, LateOnly, TaxRegIDYN, TaxRegIDType, TaxRegID, Order, Page, PerPage);
+                TISearchResult searchResult = taxinvoiceService.Search(txtCorpNum.Text, KeyType, DType, SDate, EDate, State, Type, TaxType, LateOnly, TaxRegIDYN, TaxRegIDType, TaxRegID, Order, Page, PerPage, txtUserId.Text);
                
                 String tmp = null;
 
