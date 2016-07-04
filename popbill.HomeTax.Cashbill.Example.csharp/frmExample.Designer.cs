@@ -91,7 +91,7 @@
             this.groupBox7.Controls.Add(this.groupBox8);
             this.groupBox7.Location = new System.Drawing.Point(12, 189);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(693, 456);
+            this.groupBox7.Size = new System.Drawing.Size(693, 496);
             this.groupBox7.TabIndex = 23;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "홈택스 전자(세금)계산서 연계 관련 API";
