@@ -13,7 +13,7 @@ namespace Popbill.Fax.Example.csharp
     {
         //링크아이디
         private string LinkID = "TESTER";
-        //비밀
+        //비밀키, 유출에 주의
         private string SecretKey = "SwWxqU+0TErBXy/9TVjIPEnI0VTUMMSQZtJf3Ed8q3I=";
 
         private FaxService faxService;
