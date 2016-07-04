@@ -366,7 +366,8 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
                 List<HTCashbillJobState> jobList = htCashbillService.ListActiveJob(txtCorpNum.Text);
 
                 String tmp = "jobID | jobState | queryType | queryDateType | queryStDate | queryEnDate | errorCode | ";
-                tmp += "errorReason | jobStartDT | jobEndDT | collectCount | regDT ";
+                tmp += "errorReason | jobStartDT | jobEndDT | collectCount | regDT " + CRLF;
+
 
                 for (int i = 0; i < jobList.Count; i++)
                 {
@@ -383,7 +384,7 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
                     tmp += jobList[i].collectCount.ToString() + " | ";
                     tmp += jobList[i].regDT;
 
-                    tmp += CRLF + CRLF;
+                    tmp += CRLF;
                 }
 
                 if (jobList.Count > 0) txtJobID.Text = jobList[0].jobID;
@@ -485,7 +486,7 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         private void btnGetFlatRatePopUpURL_Click(object sender, EventArgs e)
         {
             String url = htCashbillService.GetFlatRatePopUpURL(txtCorpNum.Text, txtUserId.Text);
-
+        
             MessageBox.Show(url, "정액제 서비스 신청 URL");
         }
 

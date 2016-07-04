@@ -52,6 +52,17 @@
             this.txtCorpNum = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.btnGetCertificateExpireDate = new System.Windows.Forms.Button();
+            this.btnGetCertificatePopUpURL = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnGetFlatRatePopUpURL = new System.Windows.Forms.Button();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnGetXML = new System.Windows.Forms.Button();
+            this.btnGetTaxinvocie = new System.Windows.Forms.Button();
+            this.txtNTSconfirmNum = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
@@ -63,17 +74,6 @@
             this.btnRequestJob = new System.Windows.Forms.Button();
             this.btnGetJobState = new System.Windows.Forms.Button();
             this.btnListActiveJob = new System.Windows.Forms.Button();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtNTSconfirmNum = new System.Windows.Forms.TextBox();
-            this.btnGetTaxinvocie = new System.Windows.Forms.Button();
-            this.btnGetXML = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.btnGetFlatRatePopUpURL = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnGetCertificatePopUpURL = new System.Windows.Forms.Button();
-            this.btnGetCertificateExpireDate = new System.Windows.Forms.Button();
             this.GroupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.GroupBox6.SuspendLayout();
@@ -81,10 +81,10 @@
             this.GroupBox3.SuspendLayout();
             this.GroupBox2.SuspendLayout();
             this.groupBox7.SuspendLayout();
+            this.groupBox11.SuspendLayout();
+            this.groupBox10.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.groupBox8.SuspendLayout();
-            this.groupBox10.SuspendLayout();
-            this.groupBox11.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtUserId
@@ -340,6 +340,118 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "홈택스 전자(세금)계산서 연계 관련 API";
             // 
+            // groupBox11
+            // 
+            this.groupBox11.Controls.Add(this.btnGetCertificateExpireDate);
+            this.groupBox11.Controls.Add(this.btnGetCertificatePopUpURL);
+            this.groupBox11.Controls.Add(this.button1);
+            this.groupBox11.Controls.Add(this.btnGetFlatRatePopUpURL);
+            this.groupBox11.Location = new System.Drawing.Point(594, 20);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(177, 159);
+            this.groupBox11.TabIndex = 7;
+            this.groupBox11.TabStop = false;
+            this.groupBox11.Text = "부가기능";
+            // 
+            // btnGetCertificateExpireDate
+            // 
+            this.btnGetCertificateExpireDate.Location = new System.Drawing.Point(8, 122);
+            this.btnGetCertificateExpireDate.Name = "btnGetCertificateExpireDate";
+            this.btnGetCertificateExpireDate.Size = new System.Drawing.Size(163, 28);
+            this.btnGetCertificateExpireDate.TabIndex = 3;
+            this.btnGetCertificateExpireDate.Text = "공인인증서 만료일자 확인";
+            this.btnGetCertificateExpireDate.UseVisualStyleBackColor = true;
+            this.btnGetCertificateExpireDate.Click += new System.EventHandler(this.btnGetCertificateExpireDate_Click);
+            // 
+            // btnGetCertificatePopUpURL
+            // 
+            this.btnGetCertificatePopUpURL.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGetCertificatePopUpURL.Location = new System.Drawing.Point(8, 89);
+            this.btnGetCertificatePopUpURL.Name = "btnGetCertificatePopUpURL";
+            this.btnGetCertificatePopUpURL.Size = new System.Drawing.Size(163, 28);
+            this.btnGetCertificatePopUpURL.TabIndex = 2;
+            this.btnGetCertificatePopUpURL.Text = "공인인증서 등록 URL";
+            this.btnGetCertificatePopUpURL.UseVisualStyleBackColor = true;
+            this.btnGetCertificatePopUpURL.Click += new System.EventHandler(this.btnGetCertificatePopUpURL_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(8, 56);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(163, 28);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "정액제 서비스 상태 확인";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnGetFlatRatePopUpURL
+            // 
+            this.btnGetFlatRatePopUpURL.Location = new System.Drawing.Point(8, 23);
+            this.btnGetFlatRatePopUpURL.Name = "btnGetFlatRatePopUpURL";
+            this.btnGetFlatRatePopUpURL.Size = new System.Drawing.Size(163, 28);
+            this.btnGetFlatRatePopUpURL.TabIndex = 0;
+            this.btnGetFlatRatePopUpURL.Text = "정액제 서비스 신청 URL";
+            this.btnGetFlatRatePopUpURL.UseVisualStyleBackColor = true;
+            this.btnGetFlatRatePopUpURL.Click += new System.EventHandler(this.btnGetFlatRatePopUpURL_Click);
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.label6);
+            this.groupBox10.Controls.Add(this.btnGetXML);
+            this.groupBox10.Controls.Add(this.btnGetTaxinvocie);
+            this.groupBox10.Controls.Add(this.txtNTSconfirmNum);
+            this.groupBox10.Controls.Add(this.label5);
+            this.groupBox10.Location = new System.Drawing.Point(322, 21);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(265, 132);
+            this.groupBox10.TabIndex = 6;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "전자(세금)계산서 상세정보 조회";
+            // 
+            // label6
+            // 
+            this.label6.Location = new System.Drawing.Point(13, 49);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(246, 28);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "(\'수집 결과 조회\' 후 반환된 국세청 승인번호를 입력하세요.)";
+            // 
+            // btnGetXML
+            // 
+            this.btnGetXML.Location = new System.Drawing.Point(111, 80);
+            this.btnGetXML.Name = "btnGetXML";
+            this.btnGetXML.Size = new System.Drawing.Size(142, 29);
+            this.btnGetXML.TabIndex = 3;
+            this.btnGetXML.Text = "상세정보 조회 - XML";
+            this.btnGetXML.UseVisualStyleBackColor = true;
+            this.btnGetXML.Click += new System.EventHandler(this.btnGetXML_Click);
+            // 
+            // btnGetTaxinvocie
+            // 
+            this.btnGetTaxinvocie.Location = new System.Drawing.Point(8, 80);
+            this.btnGetTaxinvocie.Name = "btnGetTaxinvocie";
+            this.btnGetTaxinvocie.Size = new System.Drawing.Size(92, 29);
+            this.btnGetTaxinvocie.TabIndex = 2;
+            this.btnGetTaxinvocie.Text = "상세정보 조회";
+            this.btnGetTaxinvocie.UseVisualStyleBackColor = true;
+            this.btnGetTaxinvocie.Click += new System.EventHandler(this.btnGetTaxinvocie_Click);
+            // 
+            // txtNTSconfirmNum
+            // 
+            this.txtNTSconfirmNum.Location = new System.Drawing.Point(102, 18);
+            this.txtNTSconfirmNum.Name = "txtNTSconfirmNum";
+            this.txtNTSconfirmNum.Size = new System.Drawing.Size(157, 21);
+            this.txtNTSconfirmNum.TabIndex = 1;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(2, 23);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(101, 12);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "국세청승인번호 : ";
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -447,118 +559,6 @@
             this.btnListActiveJob.UseVisualStyleBackColor = true;
             this.btnListActiveJob.Click += new System.EventHandler(this.btnListActiveJob_Click);
             // 
-            // groupBox10
-            // 
-            this.groupBox10.Controls.Add(this.label6);
-            this.groupBox10.Controls.Add(this.btnGetXML);
-            this.groupBox10.Controls.Add(this.btnGetTaxinvocie);
-            this.groupBox10.Controls.Add(this.txtNTSconfirmNum);
-            this.groupBox10.Controls.Add(this.label5);
-            this.groupBox10.Location = new System.Drawing.Point(322, 21);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(265, 132);
-            this.groupBox10.TabIndex = 6;
-            this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "전자(세금)계산서 상세정보 조회";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(2, 23);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(101, 12);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "국세청승인번호 : ";
-            // 
-            // txtNTSconfirmNum
-            // 
-            this.txtNTSconfirmNum.Location = new System.Drawing.Point(102, 18);
-            this.txtNTSconfirmNum.Name = "txtNTSconfirmNum";
-            this.txtNTSconfirmNum.Size = new System.Drawing.Size(157, 21);
-            this.txtNTSconfirmNum.TabIndex = 1;
-            // 
-            // btnGetTaxinvocie
-            // 
-            this.btnGetTaxinvocie.Location = new System.Drawing.Point(8, 80);
-            this.btnGetTaxinvocie.Name = "btnGetTaxinvocie";
-            this.btnGetTaxinvocie.Size = new System.Drawing.Size(92, 29);
-            this.btnGetTaxinvocie.TabIndex = 2;
-            this.btnGetTaxinvocie.Text = "상세정보 조회";
-            this.btnGetTaxinvocie.UseVisualStyleBackColor = true;
-            this.btnGetTaxinvocie.Click += new System.EventHandler(this.btnGetTaxinvocie_Click);
-            // 
-            // btnGetXML
-            // 
-            this.btnGetXML.Location = new System.Drawing.Point(111, 80);
-            this.btnGetXML.Name = "btnGetXML";
-            this.btnGetXML.Size = new System.Drawing.Size(142, 29);
-            this.btnGetXML.TabIndex = 3;
-            this.btnGetXML.Text = "상세정보 조회 - XML";
-            this.btnGetXML.UseVisualStyleBackColor = true;
-            this.btnGetXML.Click += new System.EventHandler(this.btnGetXML_Click);
-            // 
-            // label6
-            // 
-            this.label6.Location = new System.Drawing.Point(13, 49);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(246, 28);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "(\'수집 결과 조회\' 후 반환된 국세청 승인번호를 입력하세요.)";
-            // 
-            // groupBox11
-            // 
-            this.groupBox11.Controls.Add(this.btnGetCertificateExpireDate);
-            this.groupBox11.Controls.Add(this.btnGetCertificatePopUpURL);
-            this.groupBox11.Controls.Add(this.button1);
-            this.groupBox11.Controls.Add(this.btnGetFlatRatePopUpURL);
-            this.groupBox11.Location = new System.Drawing.Point(594, 20);
-            this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(177, 159);
-            this.groupBox11.TabIndex = 7;
-            this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "부가기능";
-            // 
-            // btnGetFlatRatePopUpURL
-            // 
-            this.btnGetFlatRatePopUpURL.Location = new System.Drawing.Point(8, 23);
-            this.btnGetFlatRatePopUpURL.Name = "btnGetFlatRatePopUpURL";
-            this.btnGetFlatRatePopUpURL.Size = new System.Drawing.Size(163, 28);
-            this.btnGetFlatRatePopUpURL.TabIndex = 0;
-            this.btnGetFlatRatePopUpURL.Text = "정액제 서비스 신청 URL";
-            this.btnGetFlatRatePopUpURL.UseVisualStyleBackColor = true;
-            this.btnGetFlatRatePopUpURL.Click += new System.EventHandler(this.btnGetFlatRatePopUpURL_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(8, 56);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(163, 28);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "정액제 서비스 상태 확인";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btnGetCertificatePopUpURL
-            // 
-            this.btnGetCertificatePopUpURL.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGetCertificatePopUpURL.Location = new System.Drawing.Point(8, 89);
-            this.btnGetCertificatePopUpURL.Name = "btnGetCertificatePopUpURL";
-            this.btnGetCertificatePopUpURL.Size = new System.Drawing.Size(163, 28);
-            this.btnGetCertificatePopUpURL.TabIndex = 2;
-            this.btnGetCertificatePopUpURL.Text = "공인인증서 등록 URL";
-            this.btnGetCertificatePopUpURL.UseVisualStyleBackColor = true;
-            this.btnGetCertificatePopUpURL.Click += new System.EventHandler(this.btnGetCertificatePopUpURL_Click);
-            // 
-            // btnGetCertificateExpireDate
-            // 
-            this.btnGetCertificateExpireDate.Location = new System.Drawing.Point(8, 122);
-            this.btnGetCertificateExpireDate.Name = "btnGetCertificateExpireDate";
-            this.btnGetCertificateExpireDate.Size = new System.Drawing.Size(163, 28);
-            this.btnGetCertificateExpireDate.TabIndex = 3;
-            this.btnGetCertificateExpireDate.Text = "공인인증서 만료일자 확인";
-            this.btnGetCertificateExpireDate.UseVisualStyleBackColor = true;
-            this.btnGetCertificateExpireDate.Click += new System.EventHandler(this.btnGetCertificateExpireDate_Click);
-            // 
             // frmExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -581,11 +581,11 @@
             this.GroupBox2.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox8.ResumeLayout(false);
+            this.groupBox11.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
-            this.groupBox11.ResumeLayout(false);
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox8.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
