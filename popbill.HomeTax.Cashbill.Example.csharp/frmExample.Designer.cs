@@ -102,7 +102,7 @@
             this.groupBox11.Controls.Add(this.btnGetCertificatePopUpURL);
             this.groupBox11.Controls.Add(this.btnGetFlatRateState);
             this.groupBox11.Controls.Add(this.btnGetFlatRatePopUpURL);
-            this.groupBox11.Location = new System.Drawing.Point(321, 9);
+            this.groupBox11.Location = new System.Drawing.Point(332, 19);
             this.groupBox11.Name = "groupBox11";
             this.groupBox11.Size = new System.Drawing.Size(177, 159);
             this.groupBox11.TabIndex = 7;
@@ -153,7 +153,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(278, 178);
+            this.label4.Location = new System.Drawing.Point(278, 194);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(259, 12);
             this.label4.TabIndex = 5;
@@ -163,7 +163,7 @@
             // 
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 12;
-            this.listBox1.Location = new System.Drawing.Point(21, 200);
+            this.listBox1.Location = new System.Drawing.Point(21, 214);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(631, 256);
             this.listBox1.TabIndex = 4;
@@ -172,7 +172,7 @@
             // 
             this.groupBox9.Controls.Add(this.btnSummary);
             this.groupBox9.Controls.Add(this.btnSearch);
-            this.groupBox9.Location = new System.Drawing.Point(156, 21);
+            this.groupBox9.Location = new System.Drawing.Point(160, 21);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(160, 131);
             this.groupBox9.TabIndex = 3;
@@ -201,7 +201,7 @@
             // 
             // txtJobID
             // 
-            this.txtJobID.Location = new System.Drawing.Point(140, 175);
+            this.txtJobID.Location = new System.Drawing.Point(140, 189);
             this.txtJobID.Name = "txtJobID";
             this.txtJobID.Size = new System.Drawing.Size(134, 21);
             this.txtJobID.TabIndex = 2;
@@ -209,7 +209,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(19, 178);
+            this.label3.Location = new System.Drawing.Point(19, 194);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(115, 12);
             this.label3.TabIndex = 1;
@@ -263,7 +263,7 @@
             this.txtUserId.Name = "txtUserId";
             this.txtUserId.Size = new System.Drawing.Size(143, 21);
             this.txtUserId.TabIndex = 21;
-            this.txtUserId.Text = "testkorea";
+            this.txtUserId.Text = "innoposttest";
             // 
             // GroupBox1
             // 
@@ -482,7 +482,7 @@
             this.txtCorpNum.Name = "txtCorpNum";
             this.txtCorpNum.Size = new System.Drawing.Size(143, 21);
             this.txtCorpNum.TabIndex = 19;
-            this.txtCorpNum.Text = "1234567890";
+            this.txtCorpNum.Text = "4108600477";
             // 
             // Label1
             // 
