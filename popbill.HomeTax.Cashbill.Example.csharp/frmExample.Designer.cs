@@ -263,7 +263,7 @@
             this.txtUserId.Name = "txtUserId";
             this.txtUserId.Size = new System.Drawing.Size(143, 21);
             this.txtUserId.TabIndex = 21;
-            this.txtUserId.Text = "innoposttest";
+            this.txtUserId.Text = "testkorea";
             // 
             // GroupBox1
             // 
@@ -482,7 +482,7 @@
             this.txtCorpNum.Name = "txtCorpNum";
             this.txtCorpNum.Size = new System.Drawing.Size(143, 21);
             this.txtCorpNum.TabIndex = 19;
-            this.txtCorpNum.Text = "4108600477";
+            this.txtCorpNum.Text = "1234567890";
             // 
             // Label1
             // 
