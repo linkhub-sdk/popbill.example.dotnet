@@ -8,8 +8,8 @@
     <ProjectGuid>{D6685075-D1F2-40FD-B75B-77AAD0BFBB6B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>popbill.HomeTax.Cashbill.Example.csharp</RootNamespace>
-    <AssemblyName>popbill.HomeTax.Cashbill.Example.csharp</AssemblyName>
+    <RootNamespace>Popbill.HomeTax.Cashbill.Example.csharp</RootNamespace>
+    <AssemblyName>Popbill.HomeTax.Cashbill.Example.csharp</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -68,6 +68,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
