@@ -905,16 +905,14 @@ namespace Popbill.Cashbill.Example.csharp
         private void btnSearch_Click(object sender, EventArgs e)
         {
          
-            String DType = "R";     // 검색일자 유형, R-등록일자, T-거래일자, I-발행일자
-            String SDate = "20151001";  // 시작일자
-            String EDate = "20160202";  // 종료일자
+            String DType = "T";     // 검색일자 유형, R-등록일자, T-거래일자, I-발행일자
+            String SDate = "20160701";  // 시작일자
+            String EDate = "20160831";  // 종료일자
 
             //상태코드 배열, 2,3번째 자리에 와일드카드(*) 사용가능
-            String[] State = new String[4];
-            State[0] = "100";
-            State[1] = "2**";
-            State[2] = "3**";
-            State[3] = "4**";
+            String[] State = new String[2];
+            State[0] = "3**";
+            State[1] = "4**";
             
             // 현금영수증형태 배열, N-일반 현금영수증, C-취소 현금영수증
             String[] TradeType = new String[2];
@@ -931,13 +929,15 @@ namespace Popbill.Cashbill.Example.csharp
             TaxationType[0] = "T";
             TaxationType[1] = "N";
 
+            String QString = "1234"; // 식별번호 조회, 미기재시 전체조회 
+
             String Order = "D";     // 정렬방향, A-오름차순, D-내림차순
             int Page = 1;           // 페이지 번호
             int PerPage = 35;       // 페이지당 검색개수, 최대 1000개 
 
             try
             {
-                CBSearchResult searchResult = cashbillService.Search(txtCorpNum.Text, DType, SDate, EDate, State, TradeType, TradeUsage, TaxationType, Order, Page, PerPage);
+                CBSearchResult searchResult = cashbillService.Search(txtCorpNum.Text, DType, SDate, EDate, State, TradeType, TradeUsage, TaxationType, QString, Order, Page, PerPage);
                 String tmp = null;
 
                 tmp += "code : " + searchResult.code + CRLF;

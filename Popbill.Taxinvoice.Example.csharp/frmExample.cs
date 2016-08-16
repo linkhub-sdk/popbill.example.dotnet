@@ -1649,16 +1649,22 @@ namespace Popbill.Taxinvoice.Example.csharp
             String TaxRegIDType = "S";
 
             // 종사업장번호, 콤마(",")로 구분하여 구성 ex) "0001,1234"
-            String TaxRegID = ""; 
+            String TaxRegID = "";
 
-            bool? LateOnly = null;  // 지연발행 여부, 미기재시 전체, true-지연발행분 조회, false-정상발행분 조회
+            // 지연발행 여부, 미기재시 전체, true-지연발행분 조회, false-정상발행분 조회
+            bool? LateOnly = null;
+
+            // 거래처 조회, 거래처 사업자등록번호 또는 상호명 기재, 미기재시 전체조회 
+            String QString = "";
+
             String Order = "D";     // 정렬방향, A-오름차순, D-내림차순
             int Page = 1;           // 페이지번호
             int PerPage = 30;       // 페이지당 검색개수, 최대 1000건
 
             try
             {
-                TISearchResult searchResult = taxinvoiceService.Search(txtCorpNum.Text, KeyType, DType, SDate, EDate, State, Type, TaxType, LateOnly, TaxRegIDYN, TaxRegIDType, TaxRegID, Order, Page, PerPage, txtUserId.Text);
+                TISearchResult searchResult = taxinvoiceService.Search(txtCorpNum.Text, KeyType, DType, SDate, EDate, State, 
+                                        Type, TaxType, LateOnly, TaxRegIDYN, TaxRegIDType, TaxRegID, QString, Order, Page, PerPage, txtUserId.Text);
                
                 String tmp = null;
 
