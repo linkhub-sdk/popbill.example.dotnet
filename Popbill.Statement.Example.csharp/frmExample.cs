@@ -1495,6 +1495,19 @@ namespace Popbill.Statement.Example.csharp
             }
         }
 
+        private void getPopbillURL_SEAL_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string url = statementService.GetPopbillURL(txtCorpNum.Text, txtUserID.Text, "SEAL");
+                
+                MessageBox.Show(url, "인감 및 첨부문서 등록 URL");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+            }
+        }
     }
 }
 

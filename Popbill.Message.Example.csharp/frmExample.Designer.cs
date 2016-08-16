@@ -41,6 +41,7 @@
             this.btnGetPopbillURL_CHRG = new System.Windows.Forms.Button();
             this.getPopbillURL = new System.Windows.Forms.Button();
             this.GroupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnGetChargeInfo = new System.Windows.Forms.Button();
             this.btn_unitcost_mms = new System.Windows.Forms.Button();
             this.btnUnitCost_LMS = new System.Windows.Forms.Button();
             this.btnGetPartnerBalance = new System.Windows.Forms.Button();
@@ -79,7 +80,6 @@
             this.btnSendSMS_one = new System.Windows.Forms.Button();
             this.txtReserveDT = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnGetChargeInfo = new System.Windows.Forms.Button();
             this.GroupBox1.SuspendLayout();
             this.groupBox11.SuspendLayout();
             this.groupBox10.SuspendLayout();
@@ -235,6 +235,16 @@
             this.GroupBox3.TabStop = false;
             this.GroupBox3.Text = "포인트 관련";
             // 
+            // btnGetChargeInfo
+            // 
+            this.btnGetChargeInfo.Location = new System.Drawing.Point(142, 94);
+            this.btnGetChargeInfo.Name = "btnGetChargeInfo";
+            this.btnGetChargeInfo.Size = new System.Drawing.Size(113, 30);
+            this.btnGetChargeInfo.TabIndex = 6;
+            this.btnGetChargeInfo.Text = "과금정보 확인";
+            this.btnGetChargeInfo.UseVisualStyleBackColor = true;
+            this.btnGetChargeInfo.Click += new System.EventHandler(this.btnGetChargeInfo_Click);
+            // 
             // btn_unitcost_mms
             // 
             this.btn_unitcost_mms.Location = new System.Drawing.Point(11, 92);
@@ -378,7 +388,7 @@
             // 
             // btnGetAutoDenyList
             // 
-            this.btnGetAutoDenyList.Location = new System.Drawing.Point(728, 15);
+            this.btnGetAutoDenyList.Location = new System.Drawing.Point(728, 19);
             this.btnGetAutoDenyList.Name = "btnGetAutoDenyList";
             this.btnGetAutoDenyList.Size = new System.Drawing.Size(121, 32);
             this.btnGetAutoDenyList.TabIndex = 26;
@@ -388,7 +398,7 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(466, 16);
+            this.btnSearch.Location = new System.Drawing.Point(466, 20);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(130, 31);
             this.btnSearch.TabIndex = 25;
@@ -458,7 +468,7 @@
             // 
             // btnGetURL
             // 
-            this.btnGetURL.Location = new System.Drawing.Point(601, 15);
+            this.btnGetURL.Location = new System.Drawing.Point(601, 19);
             this.btnGetURL.Name = "btnGetURL";
             this.btnGetURL.Size = new System.Drawing.Size(121, 32);
             this.btnGetURL.TabIndex = 20;
@@ -624,16 +634,6 @@
             this.label3.Size = new System.Drawing.Size(191, 12);
             this.label3.TabIndex = 13;
             this.label3.Text = "예약시간(yyyyMMddHHmmss) : ";
-            // 
-            // btnGetChargeInfo
-            // 
-            this.btnGetChargeInfo.Location = new System.Drawing.Point(142, 94);
-            this.btnGetChargeInfo.Name = "btnGetChargeInfo";
-            this.btnGetChargeInfo.Size = new System.Drawing.Size(113, 30);
-            this.btnGetChargeInfo.TabIndex = 6;
-            this.btnGetChargeInfo.Text = "과금정보 확인";
-            this.btnGetChargeInfo.UseVisualStyleBackColor = true;
-            this.btnGetChargeInfo.Click += new System.EventHandler(this.btnGetChargeInfo_Click);
             // 
             // frmExample
             // 

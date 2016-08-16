@@ -1764,5 +1764,14 @@ namespace Popbill.Taxinvoice.Example.csharp
                 MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message, "과금정보 확인");
             }
         }
+
+        private void getPopbillURL_SEAL_Click(object sender, EventArgs e)
+        {
+            string url = taxinvoiceService.GetPopbillURL(txtCorpNum.Text, txtUserId.Text, "SEAL");
+
+            MessageBox.Show(url, "인감 및 첨부문서 등록 URL");
+        
+        }
+
     }
 }

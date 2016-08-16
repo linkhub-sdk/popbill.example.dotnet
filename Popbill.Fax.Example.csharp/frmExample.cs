@@ -205,15 +205,18 @@ namespace Popbill.Fax.Example.csharp
 
         private void button1_Click(object sender, EventArgs e)
         {
+            String senderNum = "07075103710";       // 발신번호
+            String senderName = "발신자명";         // 발신자명
+            String receiverNum = "010111222";       // 수신번호
+            String receiverName = "수신자명";       // 수신자명 
 
             if (fileDialog.ShowDialog(this) == DialogResult.OK)
             {
                 string strFileName = fileDialog.FileName;
 
-
                 try
                 {
-                    String receiptNum = faxService.SendFAX(txtCorpNum.Text, "02-6442-9700", "02-6442-9700", "수신자 명칭", strFileName, getReserveDT(), txtUserId.Text);
+                    String receiptNum = faxService.SendFAX(txtCorpNum.Text, senderNum, senderName, receiverNum, receiverName, strFileName, getReserveDT(), txtUserId.Text);
 
                     MessageBox.Show("접수번호 : " + receiptNum);
                     txtReceiptNum.Text = receiptNum;
@@ -228,6 +231,8 @@ namespace Popbill.Fax.Example.csharp
 
         private void button2_Click(object sender, EventArgs e)
         {
+            String senderNum = "07075103710";       // 발신번호 
+            String senderName = "발신자명";         // 발신자명
 
             if (fileDialog.ShowDialog(this) == DialogResult.OK)
             {
@@ -245,7 +250,7 @@ namespace Popbill.Fax.Example.csharp
 
                 try
                 {
-                    String receiptNum = faxService.SendFAX(txtCorpNum.Text, "070-7510-6766", receivers, strFileName, getReserveDT(), txtUserId.Text);
+                    String receiptNum = faxService.SendFAX(txtCorpNum.Text, senderNum, senderName, receivers, strFileName, getReserveDT(), txtUserId.Text);
 
                     MessageBox.Show("접수번호 : " + receiptNum);
                     txtReceiptNum.Text = receiptNum;
@@ -260,6 +265,11 @@ namespace Popbill.Fax.Example.csharp
 
         private void button3_Click(object sender, EventArgs e)
         {
+            String senderNum = "07075103710";   // 발신번호 
+            String senderName = "발신자명";     // 발신자명
+            String receiverNum = "010111222";   // 수신번호
+            String receiverName = "수신자명";   // 수신자명
+            
             List<String> filePaths = new List<string>();
 
             while (fileDialog.ShowDialog(this) == DialogResult.OK)
@@ -272,7 +282,7 @@ namespace Popbill.Fax.Example.csharp
             {
                 try
                 {
-                    String receiptNum = faxService.SendFAX(txtCorpNum.Text, "070-7510-6766", "111-2222-3333", "수신자 명칭", filePaths, getReserveDT(), txtUserId.Text);
+                    String receiptNum = faxService.SendFAX(txtCorpNum.Text, senderNum, senderName, receiverNum, receiverName, filePaths, getReserveDT(), txtUserId.Text);
 
                     MessageBox.Show("접수번호 : " + receiptNum);
                     txtReceiptNum.Text = receiptNum;
@@ -287,6 +297,9 @@ namespace Popbill.Fax.Example.csharp
 
         private void button4_Click(object sender, EventArgs e)
         {
+            String senderNum = "07075103710";   // 발신번호
+            String senderName = "발신자명";     // 발신자명
+
             List<String> filePaths = new List<string>();
 
             while (fileDialog.ShowDialog(this) == DialogResult.OK)
@@ -307,10 +320,9 @@ namespace Popbill.Fax.Example.csharp
                     receivers.Add(receiver);
                 }
 
-
                 try
                 {
-                    String receiptNum = faxService.SendFAX(txtCorpNum.Text, "070-7510-6766", receivers, filePaths, getReserveDT(), txtUserId.Text);
+                    String receiptNum = faxService.SendFAX(txtCorpNum.Text, senderNum, senderName, receivers, filePaths, getReserveDT(), txtUserId.Text);
 
                     MessageBox.Show("접수번호 : " + receiptNum);
                     txtReceiptNum.Text = receiptNum;
