@@ -174,14 +174,13 @@ namespace Popbill.Message.Example.csharp
         private void btnSendSMS_one_Click(object sender, EventArgs e)
         {
             String senderNum = "070175103710";         // 발신번호 
-            String senderName = "발신자명";         // 발신자명
             String receiver = "010111222";          // 수신번호
             String receiverName = "수신자명";       // 수신자명 
             String contents = "단문 문자 메시지 내용. 90byte 초과시 삭제되어 전송";     // 메시지내용 
 
             try
             {
-                string receiptNum = messageService.SendSMS(txtCorpNum.Text, senderNum, senderName, receiver, receiverName, contents, getReserveDT(), txtUserId.Text);
+                string receiptNum = messageService.SendSMS(txtCorpNum.Text, senderNum, receiver, receiverName, contents, getReserveDT(), txtUserId.Text);
 
                 MessageBox.Show("접수번호 : " + receiptNum);
                 txtReceiptNum.Text = receiptNum;
@@ -229,7 +228,6 @@ namespace Popbill.Message.Example.csharp
         private void btnSendSMS_Same_Click(object sender, EventArgs e)
         {
             String senderNum = "07075103710";      // 발신번호
-            String senderName = "발신자명";     // 발신자명
             String contents = "동보전송 문자메시지 내용";       
 
 
@@ -246,7 +244,7 @@ namespace Popbill.Message.Example.csharp
             }
             try
             {
-                string receiptNum = messageService.SendSMS(txtCorpNum.Text, senderNum, senderName, contents, messages, getReserveDT(), txtUserId.Text);
+                string receiptNum = messageService.SendSMS(txtCorpNum.Text, senderNum, contents, messages, getReserveDT(), txtUserId.Text);
 
                 MessageBox.Show("접수번호 : " + receiptNum);
                 txtReceiptNum.Text = receiptNum;
@@ -262,7 +260,6 @@ namespace Popbill.Message.Example.csharp
         private void btnSendLMS_one_Click(object sender, EventArgs e)
         {
             String senderNum = "07075103710";          // 발신번호 
-            String senderName = "발신자명";         // 발신자명
             String receiver = "010111222";          // 수신번호 
             String receiverName = "수신자명";       //수신자명
             String subject = "장문문자 메시지 제목";
@@ -270,7 +267,7 @@ namespace Popbill.Message.Example.csharp
 
             try
             {
-                string receiptNum = messageService.SendLMS(txtCorpNum.Text, senderNum, senderName, receiver, receiverName, subject, contents, getReserveDT(), txtUserId.Text);
+                string receiptNum = messageService.SendLMS(txtCorpNum.Text, senderNum, receiver, receiverName, subject, contents, getReserveDT(), txtUserId.Text);
 
                 MessageBox.Show("접수번호 : " + receiptNum);
                 txtReceiptNum.Text = receiptNum;
@@ -319,7 +316,6 @@ namespace Popbill.Message.Example.csharp
         private void btnSendLMS_same_Click(object sender, EventArgs e)
         {
             String senderNum = "07075103710";          // 발신번호 
-            String senderName = "발신자명";         // 발신자명 
             String subject = "동보 메시지 제목";    
             String contents = "동보 메시지 내용";
             List<Message> messages = new List<Message>();
@@ -335,7 +331,7 @@ namespace Popbill.Message.Example.csharp
             }
             try
             {
-                string receiptNum = messageService.SendLMS(txtCorpNum.Text, senderNum, senderName, subject, contents, messages, getReserveDT(), txtUserId.Text);
+                string receiptNum = messageService.SendLMS(txtCorpNum.Text, senderNum, subject, contents, messages, getReserveDT(), txtUserId.Text);
 
                 MessageBox.Show("접수번호 : " + receiptNum);
                 txtReceiptNum.Text = receiptNum;
@@ -351,7 +347,6 @@ namespace Popbill.Message.Example.csharp
         private void btnSendXMS_one_Click(object sender, EventArgs e)
         {
             String senderNum = "07075103710";      // 발신번호 
-            String senderName = "발신자명";     // 발신자명
             String receiver = "010111222";      // 수신번호 
             String receiverName = "수신자명";   // 수신자명
             String subject = "장문문자 메시지 제목";
@@ -359,7 +354,7 @@ namespace Popbill.Message.Example.csharp
 
             try
             {
-                string receiptNum = messageService.SendXMS(txtCorpNum.Text, senderNum, senderName, receiver, receiverName, subject, contents, getReserveDT(), txtUserId.Text);
+                string receiptNum = messageService.SendXMS(txtCorpNum.Text, senderNum, receiver, receiverName, subject, contents, getReserveDT(), txtUserId.Text);
 
                 MessageBox.Show("접수번호 : " + receiptNum);
                 txtReceiptNum.Text = receiptNum;
@@ -407,7 +402,6 @@ namespace Popbill.Message.Example.csharp
         private void btnSendXMS_same_Click(object sender, EventArgs e)
         {
             String senderNum = "07075103710";          // 발신번호 
-            String senderName = "발신자명";         // 발신자명             
             String subject = "동보 메시지 제목";    
             String contents = "동보 단문문자 메시지 내용";
 
@@ -424,7 +418,7 @@ namespace Popbill.Message.Example.csharp
 
             try
             {
-                string receiptNum = messageService.SendXMS(txtCorpNum.Text, senderNum, senderName, subject, contents, messages, getReserveDT(), txtUserId.Text);
+                string receiptNum = messageService.SendXMS(txtCorpNum.Text, senderNum, subject, contents, messages, getReserveDT(), txtUserId.Text);
 
                 MessageBox.Show("접수번호 : " + receiptNum);
                 txtReceiptNum.Text = receiptNum;
@@ -486,7 +480,6 @@ namespace Popbill.Message.Example.csharp
         private void btnSendMMS_Click(object sender, EventArgs e)
         {
             String senderNum = "07075103710";      // 발신번호
-            String senderName = "발신자명";     // 발신자명
             String receiver = "010111222";      // 수신번호 
             String receiverName = "수신자명";   // 수신자명
             String subject = "장문문자 메시지 제목";
@@ -496,7 +489,7 @@ namespace Popbill.Message.Example.csharp
             {
                 string mmsFilePath = "c:\\test.jpg";
 
-                string receiptNum = messageService.SendMMS(txtCorpNum.Text, senderNum, senderName, receiver, receiverName, subject, contents, mmsFilePath, getReserveDT(), txtUserId.Text);
+                string receiptNum = messageService.SendMMS(txtCorpNum.Text, senderNum, receiver, receiverName, subject, contents, mmsFilePath, getReserveDT(), txtUserId.Text);
 
                 MessageBox.Show("접수번호 : " + receiptNum);
                 txtReceiptNum.Text = receiptNum;
@@ -528,7 +521,6 @@ namespace Popbill.Message.Example.csharp
         private void btnSendMMS_Same_Click(object sender, EventArgs e)
         {
             String senderNum = "07075103710";
-            String senderName = "발신자명";
             String subject = "동보메시지 제목";
             String contents = "동보 문자 메시지 내용, 최대 2000byte";
 
@@ -547,7 +539,7 @@ namespace Popbill.Message.Example.csharp
             }
             try
             {
-                string receiptNum = messageService.SendMMS(txtCorpNum.Text, senderNum, senderName, subject, contents, messages, mmsFilePath, getReserveDT(), txtUserId.Text);
+                string receiptNum = messageService.SendMMS(txtCorpNum.Text, senderNum, subject, contents, messages, mmsFilePath, getReserveDT(), txtUserId.Text);
 
                 MessageBox.Show("접수번호 : " + receiptNum);
                 txtReceiptNum.Text = receiptNum;
