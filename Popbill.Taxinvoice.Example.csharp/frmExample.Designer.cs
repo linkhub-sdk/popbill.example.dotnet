@@ -157,7 +157,7 @@
             // 
             // btnGetInfos
             // 
-            this.btnGetInfos.Location = new System.Drawing.Point(8, 95);
+            this.btnGetInfos.Location = new System.Drawing.Point(9, 56);
             this.btnGetInfos.Name = "btnGetInfos";
             this.btnGetInfos.Size = new System.Drawing.Size(106, 33);
             this.btnGetInfos.TabIndex = 9;
@@ -167,7 +167,7 @@
             // 
             // btnGetLogs
             // 
-            this.btnGetLogs.Location = new System.Drawing.Point(8, 132);
+            this.btnGetLogs.Location = new System.Drawing.Point(10, 129);
             this.btnGetLogs.Name = "btnGetLogs";
             this.btnGetLogs.Size = new System.Drawing.Size(105, 32);
             this.btnGetLogs.TabIndex = 8;
@@ -536,7 +536,7 @@
             // 
             // btnGetDetailInfo
             // 
-            this.btnGetDetailInfo.Location = new System.Drawing.Point(9, 57);
+            this.btnGetDetailInfo.Location = new System.Drawing.Point(10, 93);
             this.btnGetDetailInfo.Name = "btnGetDetailInfo";
             this.btnGetDetailInfo.Size = new System.Drawing.Size(104, 32);
             this.btnGetDetailInfo.TabIndex = 6;
@@ -556,7 +556,7 @@
             // 
             // gtnGetFiles
             // 
-            this.gtnGetFiles.Location = new System.Drawing.Point(9, 22);
+            this.gtnGetFiles.Location = new System.Drawing.Point(9, 57);
             this.gtnGetFiles.Name = "gtnGetFiles";
             this.gtnGetFiles.Size = new System.Drawing.Size(117, 35);
             this.gtnGetFiles.TabIndex = 8;
@@ -596,7 +596,7 @@
             // 
             // btnAttachFile
             // 
-            this.btnAttachFile.Location = new System.Drawing.Point(9, 59);
+            this.btnAttachFile.Location = new System.Drawing.Point(9, 19);
             this.btnAttachFile.Name = "btnAttachFile";
             this.btnAttachFile.Size = new System.Drawing.Size(118, 33);
             this.btnAttachFile.TabIndex = 9;
