@@ -205,8 +205,8 @@ namespace Popbill.Fax.Example.csharp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            String senderNum = "07075103710";       // 발신번호
-            String receiverNum = "010111222";       // 수신번호
+            String senderNum = "07043042991";       // 발신번호
+            String receiverNum = "070111222";       // 수신번호
             String receiverName = "수신자명";       // 수신자명 
 
             if (fileDialog.ShowDialog(this) == DialogResult.OK)
