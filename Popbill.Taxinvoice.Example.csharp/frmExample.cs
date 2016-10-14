@@ -1579,15 +1579,22 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
         }
 
+        /*
+         * 공급받은자로부터 요청받은 역발행 세금계산서를 [거부]처리합니다. 
+         */
         private void btnRefuse_Click(object sender, EventArgs e)
         {
 
+            // 세금계산서 발행유형
             MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
+
+            // 메모 
+            string memo = "역발행 요청 거부 메모";
 
             try
             {
-                //Refuse(팝빌회원 사업자번호, 발행유형, 문서관리번호, 메모, 팝빌회원 아이디)
-                Response response = taxinvoiceService.Refuse(txtCorpNum.Text, KeyType, txtMgtKey.Text, "역발행 요청 거부시 메모", txtUserId.Text);
+               
+                Response response = taxinvoiceService.Refuse(txtCorpNum.Text, KeyType, txtMgtKey.Text, memo, txtUserId.Text);
 
                 MessageBox.Show(response.message);
 
@@ -2835,7 +2842,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             
             try
             {   
-                Response response = taxinvoiceService.Delete(txtCorpNum.Text, KeyType, txtMgtKey.Text, txtUserId.Text);
+                Response response = taxinvoiceService.Delete(txtCorpNum.Text, KeyType, txtMgtKey.Text);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + response.message, "세금계산서 삭제");
