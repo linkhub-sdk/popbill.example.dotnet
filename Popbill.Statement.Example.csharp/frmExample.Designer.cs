@@ -89,6 +89,7 @@
             this.btnGetUnitCost = new System.Windows.Forms.Button();
             this.btnGetBalance = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.getPopbillURL_SEAL = new System.Windows.Forms.Button();
             this.btnGetPopbillURL_CHRG = new System.Windows.Forms.Button();
             this.btnGetPopbillURL_LOGIN = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -108,7 +109,6 @@
             this.btnCancelIssueSub = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.Label23 = new System.Windows.Forms.Label();
-            this.getPopbillURL_SEAL = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -233,9 +233,9 @@
             // 
             // btnGetDetailInfo
             // 
-            this.btnGetDetailInfo.Location = new System.Drawing.Point(9, 122);
+            this.btnGetDetailInfo.Location = new System.Drawing.Point(6, 123);
             this.btnGetDetailInfo.Name = "btnGetDetailInfo";
-            this.btnGetDetailInfo.Size = new System.Drawing.Size(102, 31);
+            this.btnGetDetailInfo.Size = new System.Drawing.Size(117, 31);
             this.btnGetDetailInfo.TabIndex = 20;
             this.btnGetDetailInfo.Text = "문서 상세정보";
             this.btnGetDetailInfo.UseVisualStyleBackColor = true;
@@ -243,9 +243,9 @@
             // 
             // btnGetLogs
             // 
-            this.btnGetLogs.Location = new System.Drawing.Point(9, 87);
+            this.btnGetLogs.Location = new System.Drawing.Point(6, 88);
             this.btnGetLogs.Name = "btnGetLogs";
-            this.btnGetLogs.Size = new System.Drawing.Size(102, 31);
+            this.btnGetLogs.Size = new System.Drawing.Size(117, 31);
             this.btnGetLogs.TabIndex = 21;
             this.btnGetLogs.Text = "문서 이력";
             this.btnGetLogs.UseVisualStyleBackColor = true;
@@ -253,9 +253,9 @@
             // 
             // btnGetInfos
             // 
-            this.btnGetInfos.Location = new System.Drawing.Point(9, 52);
+            this.btnGetInfos.Location = new System.Drawing.Point(6, 53);
             this.btnGetInfos.Name = "btnGetInfos";
-            this.btnGetInfos.Size = new System.Drawing.Size(102, 31);
+            this.btnGetInfos.Size = new System.Drawing.Size(117, 31);
             this.btnGetInfos.TabIndex = 22;
             this.btnGetInfos.Text = "문서 정보(대량)";
             this.btnGetInfos.UseVisualStyleBackColor = true;
@@ -263,9 +263,9 @@
             // 
             // btnGetInfo
             // 
-            this.btnGetInfo.Location = new System.Drawing.Point(9, 17);
+            this.btnGetInfo.Location = new System.Drawing.Point(6, 18);
             this.btnGetInfo.Name = "btnGetInfo";
-            this.btnGetInfo.Size = new System.Drawing.Size(102, 31);
+            this.btnGetInfo.Size = new System.Drawing.Size(117, 31);
             this.btnGetInfo.TabIndex = 23;
             this.btnGetInfo.Text = "문서 정보";
             this.btnGetInfo.UseVisualStyleBackColor = true;
@@ -565,18 +565,18 @@
             this.groupBox7.Controls.Add(this.btnGetInfos);
             this.groupBox7.Controls.Add(this.btnGetLogs);
             this.groupBox7.Controls.Add(this.btnGetDetailInfo);
-            this.groupBox7.Location = new System.Drawing.Point(25, 287);
+            this.groupBox7.Location = new System.Drawing.Point(31, 287);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(132, 238);
+            this.groupBox7.Size = new System.Drawing.Size(130, 210);
             this.groupBox7.TabIndex = 48;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "문서 정보";
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(9, 157);
+            this.btnSearch.Location = new System.Drawing.Point(6, 158);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(102, 31);
+            this.btnSearch.Size = new System.Drawing.Size(117, 31);
             this.btnSearch.TabIndex = 24;
             this.btnSearch.Text = "문서 목록조회";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -733,7 +733,7 @@
             this.btnGetUnitCost.Name = "btnGetUnitCost";
             this.btnGetUnitCost.Size = new System.Drawing.Size(118, 28);
             this.btnGetUnitCost.TabIndex = 7;
-            this.btnGetUnitCost.Text = "요금 단가 확인";
+            this.btnGetUnitCost.Text = "발행 단가 확인";
             this.btnGetUnitCost.UseVisualStyleBackColor = true;
             this.btnGetUnitCost.Click += new System.EventHandler(this.btnGetUnitCost_Click);
             // 
@@ -758,6 +758,16 @@
             this.groupBox3.TabIndex = 43;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "팝빌 URL 관련";
+            // 
+            // getPopbillURL_SEAL
+            // 
+            this.getPopbillURL_SEAL.Location = new System.Drawing.Point(8, 87);
+            this.getPopbillURL_SEAL.Name = "getPopbillURL_SEAL";
+            this.getPopbillURL_SEAL.Size = new System.Drawing.Size(132, 30);
+            this.getPopbillURL_SEAL.TabIndex = 10;
+            this.getPopbillURL_SEAL.Text = "인감 및 첨부문서 URL";
+            this.getPopbillURL_SEAL.UseVisualStyleBackColor = true;
+            this.getPopbillURL_SEAL.Click += new System.EventHandler(this.getPopbillURL_SEAL_Click);
             // 
             // btnGetPopbillURL_CHRG
             // 
@@ -976,16 +986,6 @@
             this.Label23.Size = new System.Drawing.Size(131, 1);
             this.Label23.TabIndex = 47;
             this.Label23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // getPopbillURL_SEAL
-            // 
-            this.getPopbillURL_SEAL.Location = new System.Drawing.Point(8, 87);
-            this.getPopbillURL_SEAL.Name = "getPopbillURL_SEAL";
-            this.getPopbillURL_SEAL.Size = new System.Drawing.Size(132, 30);
-            this.getPopbillURL_SEAL.TabIndex = 10;
-            this.getPopbillURL_SEAL.Text = "인감 및 첨부문서 URL";
-            this.getPopbillURL_SEAL.UseVisualStyleBackColor = true;
-            this.getPopbillURL_SEAL.Click += new System.EventHandler(this.getPopbillURL_SEAL_Click);
             // 
             // frmExample
             // 

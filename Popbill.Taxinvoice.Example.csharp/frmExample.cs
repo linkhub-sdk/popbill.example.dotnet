@@ -9,7 +9,7 @@
  * 
  * <테스트 연동개발 준비사항>
  * 1) 29, 32 라인에 선언된 링크아이디(LinkID)와 비밀키(SecretKey)를 
- *    링크허브 가입시 메일로 발급받은 인증정보
+ *    링크허브 가입시 메일로 발급받은 인증정보로 변경합니다.
  * 2) 팝빌 개발용 사이트(test.popbill.com)에 연동회원으로 가입합니다.
  * 3) 전자세금계산서 발행을 위해 공인인증서를 등록합니다. 두가지 방법 중 선택 
  *    - 팝빌사이트 로그인 > [전자세금계산서] > [환경설정] > [공인인증서 관리]
@@ -790,7 +790,7 @@ namespace Popbill.Taxinvoice.Example.csharp
                
             try
             {
-                Response response = taxinvoiceService.Delete(txtCorpNum.Text, KeyType, txtMgtKey.Text, txtUserId.Text);
+                Response response = taxinvoiceService.Delete(txtCorpNum.Text, KeyType, txtMgtKey.Text);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + response.message, "세금계산서 삭제");  
@@ -2263,6 +2263,10 @@ namespace Popbill.Taxinvoice.Example.csharp
             
         }
 
+        /*
+         * 팝빌 포인트충전 팝업 URL을 반환합니다.
+         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         */
         private void getPopbillURL_CHRG_Click(object sender, EventArgs e)
         {
             try
@@ -2307,10 +2311,10 @@ namespace Popbill.Taxinvoice.Example.csharp
             Contact contactInfo = new Contact();
 
             //담당자 아이디, 6자 이상 20자 미만
-            contactInfo.id = "userid";
+            contactInfo.id = "testkorea_20161014";
 
             //비밀번호, 6자 이상 20자 미만
-            contactInfo.pwd = "this_is_password";
+            contactInfo.pwd = "popbill";
 
             //담당자명 
             contactInfo.personName = "담당자명";   
@@ -2328,7 +2332,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             contactInfo.email = "dev@linkhub.co.kr";
 
             // 회사조회 권한여부, true(회사조회), false(개인조회)
-            contactInfo.searchAllAllowYN = false;
+            contactInfo.searchAllAllowYN = true;
             
             // 관리자 권한여부 
             contactInfo.mgrYN = false;              
