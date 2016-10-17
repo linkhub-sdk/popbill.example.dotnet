@@ -606,17 +606,17 @@ namespace Popbill.Cashbill.Example.csharp
         private void btnSendSMS_Click(object sender, EventArgs e)
         {
             // 발신번호
-            string sender = "070-4304-2991";
+            string sendNum = "070-4304-2991";
 
             // 수신번호
-            string receiver = "010-111-222";
+            string receiveNum = "010-111-222";
 
 
             // 메시지 내용, 90byte 초과시 길이가 조정되어 전송됨
             string contents = "문자 메시지 내용은 90byte초과시 길이가 조정되어 전송됩니다.";
             try
-            {   
-                Response response = cashbillService.SendSMS(txtCorpNum.Text, txtMgtKey.Text, sender, receiver, contents, txtUserId.Text);
+            {
+                Response response = cashbillService.SendSMS(txtCorpNum.Text, txtMgtKey.Text, sendNum, receiveNum, contents, txtUserId.Text);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + response.message, "알림문자 전송");
@@ -634,14 +634,14 @@ namespace Popbill.Cashbill.Example.csharp
         private void btnSendFAX_Click(object sender, EventArgs e)
         {
             // 발신번호
-            string sender = "070-4304-2991";
+            string sendNum = "070-4304-2991";
 
             // 수신팩스번호
-            string reciever = "02-6442-9700";
+            string receiverNum = "02-6442-9700";
 
             try
-            {   
-                Response response = cashbillService.SendFAX(txtCorpNum.Text, txtMgtKey.Text, sender, receiver, txtUserId.Text);
+            {
+                Response response = cashbillService.SendFAX(txtCorpNum.Text, txtMgtKey.Text, sendNum, receiverNum, txtUserId.Text);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + response.message, "현금영수증 팩스전송");
