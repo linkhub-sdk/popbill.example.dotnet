@@ -56,6 +56,7 @@
             this.GroupBox11 = new System.Windows.Forms.GroupBox();
             this.btnUnitCost = new System.Windows.Forms.Button();
             this.GroupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnGetChargeInfo = new System.Windows.Forms.Button();
             this.btnGetPartnerBalance1 = new System.Windows.Forms.Button();
             this.btnGetBalance = new System.Windows.Forms.Button();
             this.btnGetPopUpURL = new System.Windows.Forms.Button();
@@ -92,7 +93,6 @@
             this.Label2 = new System.Windows.Forms.Label();
             this.txtCorpNum = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
-            this.btnGetChargeInfo = new System.Windows.Forms.Button();
             this.GroupBox8.SuspendLayout();
             this.GroupBox9.SuspendLayout();
             this.GroupBox11.SuspendLayout();
@@ -110,7 +110,7 @@
             // 
             // btnGetInfos
             // 
-            this.btnGetInfos.Location = new System.Drawing.Point(6, 116);
+            this.btnGetInfos.Location = new System.Drawing.Point(6, 54);
             this.btnGetInfos.Name = "btnGetInfos";
             this.btnGetInfos.Size = new System.Drawing.Size(104, 26);
             this.btnGetInfos.TabIndex = 9;
@@ -120,7 +120,7 @@
             // 
             // btnGetLogs
             // 
-            this.btnGetLogs.Location = new System.Drawing.Point(6, 84);
+            this.btnGetLogs.Location = new System.Drawing.Point(6, 116);
             this.btnGetLogs.Name = "btnGetLogs";
             this.btnGetLogs.Size = new System.Drawing.Size(104, 26);
             this.btnGetLogs.TabIndex = 8;
@@ -285,7 +285,7 @@
             // 
             // btnGetDetailInfo
             // 
-            this.btnGetDetailInfo.Location = new System.Drawing.Point(6, 52);
+            this.btnGetDetailInfo.Location = new System.Drawing.Point(6, 84);
             this.btnGetDetailInfo.Name = "btnGetDetailInfo";
             this.btnGetDetailInfo.Size = new System.Drawing.Size(104, 26);
             this.btnGetDetailInfo.TabIndex = 6;
@@ -393,7 +393,7 @@
             // 
             // btnUnitCost
             // 
-            this.btnUnitCost.Location = new System.Drawing.Point(6, 52);
+            this.btnUnitCost.Location = new System.Drawing.Point(6, 85);
             this.btnUnitCost.Name = "btnUnitCost";
             this.btnUnitCost.Size = new System.Drawing.Size(118, 28);
             this.btnUnitCost.TabIndex = 3;
@@ -414,9 +414,19 @@
             this.GroupBox3.TabStop = false;
             this.GroupBox3.Text = "포인트 관련";
             // 
+            // btnGetChargeInfo
+            // 
+            this.btnGetChargeInfo.Location = new System.Drawing.Point(6, 116);
+            this.btnGetChargeInfo.Name = "btnGetChargeInfo";
+            this.btnGetChargeInfo.Size = new System.Drawing.Size(117, 31);
+            this.btnGetChargeInfo.TabIndex = 5;
+            this.btnGetChargeInfo.Text = "과금정보 확인";
+            this.btnGetChargeInfo.UseVisualStyleBackColor = true;
+            this.btnGetChargeInfo.Click += new System.EventHandler(this.btnGetChargeInfo_Click);
+            // 
             // btnGetPartnerBalance1
             // 
-            this.btnGetPartnerBalance1.Location = new System.Drawing.Point(6, 83);
+            this.btnGetPartnerBalance1.Location = new System.Drawing.Point(6, 52);
             this.btnGetPartnerBalance1.Name = "btnGetPartnerBalance1";
             this.btnGetPartnerBalance1.Size = new System.Drawing.Size(118, 30);
             this.btnGetPartnerBalance1.TabIndex = 4;
@@ -805,16 +815,6 @@
             this.Label1.Size = new System.Drawing.Size(129, 12);
             this.Label1.TabIndex = 7;
             this.Label1.Text = "팝빌회원 사업자번호 : ";
-            // 
-            // btnGetChargeInfo
-            // 
-            this.btnGetChargeInfo.Location = new System.Drawing.Point(6, 116);
-            this.btnGetChargeInfo.Name = "btnGetChargeInfo";
-            this.btnGetChargeInfo.Size = new System.Drawing.Size(117, 31);
-            this.btnGetChargeInfo.TabIndex = 5;
-            this.btnGetChargeInfo.Text = "과금정보 확인";
-            this.btnGetChargeInfo.UseVisualStyleBackColor = true;
-            this.btnGetChargeInfo.Click += new System.EventHandler(this.btnGetChargeInfo_Click);
             // 
             // frmExample
             // 

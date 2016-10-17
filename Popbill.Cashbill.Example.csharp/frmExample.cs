@@ -1,4 +1,19 @@
-﻿using System;
+﻿
+/*
+ * 팝빌 현금영수증 API DotNet SDK Example
+ * 
+ * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - http://blog.linkhub.co.kr/587
+ * - 업데이트 일자 : 2016-10-17
+ * - 연동 기술지원 연락처 : 1600-8536 / 070-4304-2991~2
+ * - 연동 기술지원 이메일 : dev@linkhub.co.kr
+ * 
+ * <테스트 연동개발 준비사항>
+ * 1) 27, 30 라인에 선언된 링크아이디(LinkID)와 비밀키(SecretKey)를 
+ *    링크허브 가입시 메일로 발급받은 인증정보로 변경합니다.
+ * 2) 팝빌 개발용 사이트(test.popbill.com)에 연동회원으로 가입합니다.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Popbill.Cashbill;
@@ -10,6 +25,7 @@ namespace Popbill.Cashbill.Example.csharp
     {
         //링크아이디
         private string LinkID = "TESTER";
+
         //비밀키
         private string SecretKey = "SwWxqU+0TErBXy/9TVjIPEnI0VTUMMSQZtJf3Ed8q3I=";
 
@@ -20,62 +36,101 @@ namespace Popbill.Cashbill.Example.csharp
         public frmExample()
         {
             InitializeComponent();
+
             //현금영수증 몯류 초기화
             cashbillService = new CashbillService(LinkID, SecretKey);
 
-            //연동환경 설정값, 테스트용(true), 상업옹(false)
+            //연동환경 설정값, 개발용(true), 상업옹(false)
             cashbillService.IsTest = true;
         }
 
+        /*
+         * 팝빌 로그인 팝업 URL을 반환합니다.
+         * - URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         */
         private void getPopbillURL_Click(object sender, EventArgs e)
         {
-            
             try
             {
                 string url = cashbillService.GetPopbillURL(txtCorpNum.Text, txtUserId.Text, "LOGIN");
                 
-                MessageBox.Show(url);
+                MessageBox.Show(url, "팝빌 로그인 URL");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
-
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "팝빌 로그인 URL");
             }
         }
 
+        /*
+         * 연동회원 가입을 요청합니다.
+         */
         private void btnJoinMember_Click(object sender, EventArgs e)
         {
             JoinForm joinInfo = new JoinForm();
 
-            joinInfo.LinkID = LinkID;                 //링크아이디
-            joinInfo.CorpNum = "1231212312";          //사업자번호 "-" 제외
+            //링크아이디
+            joinInfo.LinkID = LinkID;
+
+            //사업자번호 "-" 제외
+            joinInfo.CorpNum = "1231212312";
+
+            //대표자명 
             joinInfo.CEOName = "대표자성명";
+
+            //상호
             joinInfo.CorpName = "상호";
+
+            //주소
             joinInfo.Addr = "주소";
+
+            //업태
             joinInfo.BizType = "업태";
-            joinInfo.BizClass = "업종";
-            joinInfo.ID = "userid";                   //6자 이상 20자 미만
-            joinInfo.PWD = "pwd_must_be_long_enough"; //6자 이상 20자 미만
+
+            // 종목
+            joinInfo.BizClass = "종목";
+
+            // 아이디, 6자이상 20자 미만
+            joinInfo.ID = "userid";
+
+            // 비밀번호, 6자이상 20자 미만
+            joinInfo.PWD = "pwd_must_be_long_enough";
+
+            // 담당자명
             joinInfo.ContactName = "담당자명";
-            joinInfo.ContactTEL = "02-999-9999";
-            joinInfo.ContactHP = "010-1234-5678";
-            joinInfo.ContactFAX = "02-999-9998";
+
+            // 담당자 연락처
+            joinInfo.ContactTEL = "070-4304-2991";
+
+            // 담당자 휴대폰번호
+            joinInfo.ContactHP = "010-111-222";
+
+            // 담당자 팩스번호
+            joinInfo.ContactFAX = "02-6442-9700";
+
+            // 담당자 메일주소
             joinInfo.ContactEmail = "test@test.com";
 
             try
             {
                 Response response = cashbillService.JoinMember(joinInfo);
 
-                MessageBox.Show(response.message);
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "연동회원 가입요청");
 
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
-
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "연동회원 가입요청");
             }
         }
 
+        /*
+         * 연동회원의 잔여포인트를 조회합니다.
+         * - 파트너 과금 방식의 경우 파트너 잔여포인트 조회(GetPartnerBalance API) 기능을 사용하시기 바랍니다.
+         */
         private void btnGetBalance_Click(object sender, EventArgs e)
         {
 
@@ -83,29 +138,28 @@ namespace Popbill.Cashbill.Example.csharp
             {
                 double remainPoint = cashbillService.GetBalance(txtCorpNum.Text);
 
-                MessageBox.Show(remainPoint.ToString());
+                MessageBox.Show(remainPoint.ToString(), "연동회원 잔여포인트 확인");
 
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
-
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "연동회원 잔여포인트 확인");
             }
         }
 
-        private void btnGetPartnerBalance_Click(object sender, EventArgs e)
-        {
-            
-        }
-
+        /*
+         * 사업자의 파트너 연동회원 가입여부를 확인합니다.
+         * - 사업자등록번호는 '-' 제외한 10자리 숫자 문자열입니다.
+         */
         private void btnCheckIsMember_Click(object sender, EventArgs e)
         {
             try
             {
-                //CheckIsMember(조회할 사업자번호, 링크아이디)
                 Response response = cashbillService.CheckIsMember(txtCorpNum.Text, LinkID);
 
-                MessageBox.Show(response.code.ToString() + " | " + response.message);
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "연동회원 가입여부확인");
 
             }
             catch (PopbillException ex)
@@ -115,22 +169,27 @@ namespace Popbill.Cashbill.Example.csharp
             }
         }
 
+        /*
+         * 현금영수증 발행단가를 확인합니다.
+         */
         private void btnUnitCost_Click(object sender, EventArgs e)
         {
             try
             {
                 float unitCost = cashbillService.GetUnitCost(txtCorpNum.Text);
 
-                MessageBox.Show(unitCost.ToString());
-
+                MessageBox.Show("발행단가 : " + unitCost.ToString(), "현금영수증 발행단가");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
-
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "현금영수증 발행단가");
             }
         }
 
+        /*
+         * 문서관리번호 중복여부 확인
+         */
         private void btnCheckMgtKeyInUse_Click(object sender, EventArgs e)
         {
         
@@ -138,81 +197,141 @@ namespace Popbill.Cashbill.Example.csharp
             {
                 bool InUse = cashbillService.CheckMgtKeyInUse(txtCorpNum.Text, txtMgtKey.Text);
 
-                MessageBox.Show((InUse ? "사용중" : "미사용중"));
+                MessageBox.Show((InUse ? "사용중" : "미사용중"), "문서관리번호 중복여부 확인");
 
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "문서관리번호 중복여부 확인");
             }
         }
 
+        /*
+         * 1건의 현금영수증을 임시저장합니다.
+         * - 임시저장 후 발행(Issue API)을 호출해야 국세청에 전송됩니다. 
+         * - 임시저장과 발행을 한번의 호출로 처리하는 즉시발행(RegistIssue API) 
+         *   사용을 권장합니다.
+         * - 현금영수증 항목별 정보는 "[현금영수증 API 연동매뉴얼] > 4.1. 현금영수증 구성"
+         *   을 참조하시기 바랍니다.
+         */
         private void btnRegister_Click(object sender, EventArgs e)
         {
             Cashbill cashbill = new Cashbill();
-            
-            cashbill.mgtKey = txtMgtKey.Text;        //문서관리번호, 발행자별 고유번호 할당, 1~24자리 영문,숫자,'-','_' 조합으로 중복없이 구성.
-            cashbill.tradeType = "승인거래";         //거래유형 {승인거래, 취소거래} 중 기재
-            cashbill.franchiseCorpNum = txtCorpNum.Text;    //발행자 사업자번호
+
+            // [필수] 문서관리번호, 사업자별로 중복되지 않도록 관리번호 할당
+            // 1~24자리 영문,숫자,'-','_' 조합 구성
+            cashbill.mgtKey = txtMgtKey.Text;
+
+            // [필수] 거래유형, {승인거래, 취소거래} 중 기재
+            cashbill.tradeType = "승인거래";
+
+            // [필수] 과세형태, { 과세, 비과세 } 중 기재
+            cashbill.taxationType = "과세";
+
+            // [필수] 공급가액
+            cashbill.supplyCost = "10000";
+
+            // [필수] 세액 
+            cashbill.tax = "1000";
+
+            // [필수] 봉사료
+            cashbill.serviceFee = "0";
+
+            // [필수] 거래금액 ( 공급가액 + 세액 + 봉사료 ) 
+            cashbill.totalAmount = "11000";
+
+            // [필수] 현금영수증 형태, {소득공제용, 지출증빙용} 중 기재
+            cashbill.tradeUsage = "소득공제용";
+
+            // [필수] 거래처 식별번호
+            // 현금영수증 형태(tradeUsage) - '소득공제용' 인 경우 
+            // - 주민등록/휴대폰/카드번호 기재 가능
+            // 현금영수증 형태(tradeUsage) - '지출증빙용' 인 경우
+            // - 사업자번호/주민등록/휴대폰/카드번호 기재 가능 
+            cashbill.identityNum = "010111222";
+
+
+            // [필수] 발행자 사업자번호
+            cashbill.franchiseCorpNum = txtCorpNum.Text;
+
+            // 발행자 상호
             cashbill.franchiseCorpName = "발행자 상호";
+
+            // 발행자 대표자 성명
             cashbill.franchiseCEOName = "발행자 대표자";
+
+            // 발행자 주소
             cashbill.franchiseAddr = "발행자 주소";
+
+            // 발행자 연락처
             cashbill.franchiseTEL = "070-1234-1234";
 
-            cashbill.tradeUsage = "소득공제용";      //현금영수증 형태 , {소득공제용, 지출증빙용}중 기재
-            cashbill.identityNum = "01041680206";    //거래처식별번호, 
-            cashbill.customerName = "고객명";
-            cashbill.itemName = "상품명";
-            cashbill.orderNumber = "주문번호";
-            cashbill.email = "test@test.com";
-            cashbill.hp = "111-1234-1234";
-            cashbill.fax = "777-444-3333";
-            cashbill.serviceFee = "0";              //봉사료
-            cashbill.supplyCost = "10000";          //공급가액
-            cashbill.tax = "1000";                  //세액
-            cashbill.totalAmount = "11000";         //거래금액(봉사료+공급가액+세액)
-            
-            cashbill.taxationType = "과세";         //과세형태, {과세, 비과세}
 
-            cashbill.smssendYN =  false;            //발행시 문자전송여부 
+            // 고객명
+            cashbill.customerName = "고객명";
+
+            // 상품명
+            cashbill.itemName = "상품명";
+
+            // 주문번호
+            cashbill.orderNumber = "주문번호";
+
+            // 고객 메일
+            cashbill.email = "test@test.com";
+
+            // 고객 휴대폰번호
+            cashbill.hp = "010-111-222";
+
+            // 고객 팩스번호
+            cashbill.fax = "02-6442-9700";
+
+            // 발행시 알림문자 전송여부
+            cashbill.smssendYN = false;
           
             try
-            {
-                //Register(팝빌회원 사업자번호, 현금영수증 객체, 팝빌회원 아이디)
+            {   
                 Response response = cashbillService.Register(txtCorpNum.Text, cashbill, txtUserId.Text);
 
-                MessageBox.Show(response.message);
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "현금영수증 임시저장");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "현금영수증 임시저장");
             }
         }
 
+        /*
+         * [발행취소] 상태의 현금영수증을 삭제 처리합니다.
+         * - 삭제된 현금영수증의 문서관리번호는 재사용할 수 있습니다.
+         */
         private void btnDelete_Click(object sender, EventArgs e)
         {
-         
             try
             {
-                //Delete(팝빌회원 사업자번호, 문서관리번호, 팝빌회원 아이디)
                 Response response = cashbillService.Delete(txtCorpNum.Text, txtMgtKey.Text, txtUserId.Text);
 
-                MessageBox.Show(response.message);
-
-
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "현금영수증 삭제");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "현금영수증 삭제");
             }
         }
 
+        /*
+         * 1건의 현금영수증 상세정보를 확인합니다. 
+         * - 응답항목에 대한 자세한 사항은 "[현금영수증 API 연동매뉴얼] > 4.1. 현금영수증 구성"
+         *   을 참조하시기 바랍니다.
+         */
         private void btnGetDetailInfo_Click(object sender, EventArgs e)
         {
-
             try
             {
-                //GetDetailInfo(팝빌회원 사업자번호, 문서관리번호)
                 Cashbill cashbill = cashbillService.GetDetailInfo(txtCorpNum.Text, txtMgtKey.Text);
 
                 string tmp = null;
@@ -242,16 +361,22 @@ namespace Popbill.Cashbill.Example.csharp
                 tmp += "smssendYN : " + cashbill.smssendYN + CRLF;
                 tmp += "faxsendYN : " + cashbill.faxsendYN + CRLF;
                 
-                MessageBox.Show(tmp);
-
-
+                MessageBox.Show(tmp, "현금영수증 상세정보 조회");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "현금영수증 상세정보 조회");
             }
         }
 
+
+        /*
+         * 1건의 현금영수증 상태/요약 정보를 확인합니다.
+         * - 현금영수증 상태정보(GetInfo API) 응답항목에 대한 자세한 정보는
+         *   "[현금영수증 API 연동매뉴얼] > 4.2. 현금영수증 상태정보 구성"을 
+         *   참조하시기 바랍니다. 
+         */
         private void btnGetInfo_Click(object sender, EventArgs e)
         {
          
@@ -289,61 +414,78 @@ namespace Popbill.Cashbill.Example.csharp
 
                 tmp += "regDT : " + cashbillInfo.regDT;
 
-                MessageBox.Show(tmp);
-
-
+                MessageBox.Show(tmp, "현금영수증 상태/요약 정보 확인");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "현금영수증 상태/요약 정보 확인");
             }
         }
 
+        /*
+         * 팝빌 현금영수증 임시문서함 팝업 URL을 반환합니다.
+         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         */
         private void btnGetURL_TBOX_Click(object sender, EventArgs e)
         {
             try
             {
                 string url = cashbillService.GetURL(txtCorpNum.Text, txtUserId.Text, "TBOX");
 
-                MessageBox.Show(url);
+                MessageBox.Show(url, "팝빌 현금영수증 임시문서함 팝업 URL");
 
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "팝빌 현금영수증 임시문서함 팝업 URL");
             }
         }
 
+        /*
+         * 팝빌 현금영수증 발행문서함 팝업 URL을 반환합니다.
+         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         */
         private void btnGetURL_SBOX_Click(object sender, EventArgs e)
         {
             try
             {
                 string url = cashbillService.GetURL(txtCorpNum.Text, txtUserId.Text, "PBOX");
 
-                MessageBox.Show(url);
+                MessageBox.Show(url, "팝빌 현금영수증 발행문서함 팝업 URL");
 
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "팝빌 현금영수증 발행문서함 팝업 URL");
             }
         }
 
+        /*
+         * 팝빌 현금영수증 발행문서함 팝업 URL을 반환합니다.
+         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         */
         private void btnGetURL_WRITE_Click(object sender, EventArgs e)
         {
             try
             {
                 string url = cashbillService.GetURL(txtCorpNum.Text, txtUserId.Text, "WRITE");
 
-                MessageBox.Show(url);
-
+                MessageBox.Show(url, "팝빌 현금영수증 작성 팝업 URL");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "팝빌 현금영수증 작성 팝업 URL");
             }
         }
 
+
+        /*
+         * 현금영수증 상태변경 이력을 확인합니다.
+         */
         private void btnGetLogs_Click(object sender, EventArgs e)
         {
         
@@ -353,37 +495,43 @@ namespace Popbill.Cashbill.Example.csharp
 
                 String tmp = "";
 
-
                 foreach (CashbillLog log in logList)
                 {
                     tmp += log.docLogType + " | " + log.log + " | " + log.procType + " | " + log.procMemo + " | " + log.regDT + " | " + log.ip + CRLF;
                 }
                 
-                MessageBox.Show(tmp);
-
-
-
+                MessageBox.Show(tmp, "현금영수증 상태변경 이력 확인");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "현금영수증 상태변경 이력 확인");
             }
         }
 
+
+        /*
+         * 다수건의 현금영수증 상태/요약 정보를 확인합니다.
+         * - 현금영수증 상태정보(GetInfo API) 응답항목에 대한 자세한 정보는
+         *   "[현금영수증 API 연동매뉴얼] > 4.2. 현금영수증 상태정보 구성"을 
+         *   참조하시기 바랍니다. 
+         */
         private void btnGetInfos_Click(object sender, EventArgs e)
         {
         
             List<string> MgtKeyList = new List<string>();
 
-            //'최대 1000건.
-            MgtKeyList.Add("20150626-30");
-            MgtKeyList.Add("20150626-31");
+            // 현금영수증 문서관리번호 배열, 최대 1000건.
+            MgtKeyList.Add("20161017-01");
+            MgtKeyList.Add("20161017-02");
+            MgtKeyList.Add("20161017-03");
+            MgtKeyList.Add("20161017-04");
+            MgtKeyList.Add("20161017-05");
+            MgtKeyList.Add("20161017-06");
 
             try
             {
                 List<CashbillInfo> cashbillInfoList = cashbillService.GetInfos(txtCorpNum.Text, MgtKeyList);
-
-                //'TOGO Describe it.
 
                 string tmp = null;
 
@@ -415,315 +563,456 @@ namespace Popbill.Cashbill.Example.csharp
                     tmp += "ntsresultMessage : " + cashbillInfoList[i].ntsresultMessage + CRLF+CRLF;
                 }
 
-                MessageBox.Show(tmp);
-
-
+                MessageBox.Show(tmp, "현금영수증 상태/요약 정보 조회 - 대량");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "현금영수증 상태/요약 정보 조회 - 대량");
             }
 
         }
 
+        /*
+         * 발행 안내메일을 재전송합니다.
+         */
         private void btnSendEmail_Click(object sender, EventArgs e)
         {
+
+            // 수신메일주소
+            string receiveEmail = "test@test.com";
           
             try
             {
-                //SendEmail(팝빌회원 사업자번호, 문서관리번호, 수신메일주소, 팝빌회원 아이디)
-                Response response = cashbillService.SendEmail(txtCorpNum.Text, txtMgtKey.Text, "test@test.com", txtUserId.Text);
+                Response response = cashbillService.SendEmail(txtCorpNum.Text, txtMgtKey.Text, receiveEmail, txtUserId.Text);
 
-                MessageBox.Show(response.message);
-
-
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "발행안내메일 재전송");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "발행안내메일 재전송");
             }
         }
 
+
+       /*
+        * 알림문자를 전송합니다 (단문/SMS - 한글 최대 45자)
+        * - 알림문자 전송시 포인트가 차감됩니다. (전송실패시 환불처리)
+        * - 전송내역 확인은 "[팝빌 홈페이지] 로그인 > [문자.팩스] > [전송내역] 탭에서
+        *   전송결과를 확인할 수 있습니다.
+        */
         private void btnSendSMS_Click(object sender, EventArgs e)
         {
+            // 발신번호
+            string sender = "070-4304-2991";
 
+            // 수신번호
+            string receiver = "010-111-222";
+
+
+            // 메시지 내용, 90byte 초과시 길이가 조정되어 전송됨
+            string contents = "문자 메시지 내용은 90byte초과시 길이가 조정되어 전송됩니다.";
             try
-            {
-                //SendSMS(팝빌회원 사업자번호, 문서관리번호, 발신번호, 수신번호, 문자내용, 팝빌회원 아이디)
-                //문자내용의 길이가 90Byte를 초과하는 경우 길이가 조정되어 전송됨
-                Response response = cashbillService.SendSMS(txtCorpNum.Text, txtMgtKey.Text, "1111-2222", "111-2222-4444", "발신문자 내용...", txtUserId.Text);
+            {   
+                Response response = cashbillService.SendSMS(txtCorpNum.Text, txtMgtKey.Text, sender, receiver, contents, txtUserId.Text);
 
-                MessageBox.Show(response.message);
-
-
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "알림문자 전송");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "알림문자 전송");
             }
         }
 
+        /*
+         * 현금영수증을 팩스전송합니다. 
+         */
         private void btnSendFAX_Click(object sender, EventArgs e)
         {
+            // 발신번호
+            string sender = "070-4304-2991";
+
+            // 수신팩스번호
+            string reciever = "02-6442-9700";
+
             try
-            {
-                //SendFAX(팝빌회원 사업자번호, 문서관리번호, 발신번호, 수신번호, 팝빌회원 아이디)
-                Response response = cashbillService.SendFAX(txtCorpNum.Text, txtMgtKey.Text, "1111-2222", "000-2222-4444", txtUserId.Text);
+            {   
+                Response response = cashbillService.SendFAX(txtCorpNum.Text, txtMgtKey.Text, sender, receiver, txtUserId.Text);
 
-                MessageBox.Show(response.message);
-
-
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "현금영수증 팩스전송");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "현금영수증 팩스전송");
             }
         }
 
+        /*
+         * 1건의 현금영수증 보기 팝업 URL을 반환합니다.
+         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         */
         private void btnGetPopUpURL_Click(object sender, EventArgs e)
         {
             try
-            {
-                //GetPopUpURL(팝빌회원 사업자번호, 문서관리번호, 팝빌회원 아이디)
+            {     
                 string url = cashbillService.GetPopUpURL(txtCorpNum.Text, txtMgtKey.Text, txtUserId.Text);
 
-                MessageBox.Show(url);
-
+                MessageBox.Show(url, "현금영수증 보기 팝업 URL");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "현금영수증 보기 팝업 URL");
             }
         }
 
+        /*
+         * 1건의 현금영수증 인쇄 팝업 URL을 반환합니다.
+         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         */
         private void btnGetPrintURL_Click(object sender, EventArgs e)
         {
             try
-            {
-                //GetPrintURL(팝빌회원 사업자번호, 문서관리번호, 팝빌회원 아이디)
+            {   
                 string url = cashbillService.GetPrintURL(txtCorpNum.Text, txtMgtKey.Text, txtUserId.Text);
 
-                MessageBox.Show(url);
-
+                MessageBox.Show(url, "현금영수증 인쇄 팝업 URL");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "현금영수증 인쇄 팝업 URL");
             }
-
         }
 
+        /*
+         * 1건의 현금영수증 인쇄 팝업 URL을 반환합니다. (공급받는자용)
+         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다
+         */
         private void btnEPrintURL_Click(object sender, EventArgs e)
         {
-          
             try
-            {
-                //GetEPrintURL(팝빌회원 사업자번호, 문서관리번호, 팝빌회원 아이디)
+            {   
                 string url = cashbillService.GetEPrintURL(txtCorpNum.Text, txtMgtKey.Text, txtUserId.Text);
 
-                MessageBox.Show(url);
-
+                MessageBox.Show(url, "현금영수증 인쇄 팝업 URL - 공급받는자용");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "현금영수증 인쇄 팝업 URL - 공급받는자용");
             }
         }
 
+        /*
+         * 현금영수증 메일링크 URL을 반환합니다.
+         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다. 
+         */
         private void btnGetEmailURL_Click(object sender, EventArgs e)
         {
             try
             {
                 string url = cashbillService.GetMailURL(txtCorpNum.Text,  txtMgtKey.Text, txtUserId.Text);
 
-                MessageBox.Show(url);
+                MessageBox.Show(url, "메일링크 URL 확인");
 
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "메일링크 URL 확인");
             }
         }
 
+        /*
+         * 다수의 현금영수증 인쇄 팝업 URL을 반환합니다.
+         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         */
         private void btnGetMassPrintURL_Click(object sender, EventArgs e)
         {
           
             List<string> MgtKeyList = new List<string>();
 
-            //문서관리번호 배열, 최대 1000건.
-            MgtKeyList.Add("1234");
-            MgtKeyList.Add("12345");
-
+            // 현금영수증 문서관리번호 배열, 최대 1000건.
+            MgtKeyList.Add("20161017-01");
+            MgtKeyList.Add("20161017-02");
+            MgtKeyList.Add("20161017-03");
+            MgtKeyList.Add("20161017-04");
+            MgtKeyList.Add("20161017-05");
+            MgtKeyList.Add("20161017-06");
+            
             try
             {
-                //GetMassPrintURL(팝빌회원 사업자번호, 문서관리번호 배열, 팝빌회원 아이디)
                 string url = cashbillService.GetMassPrintURL(txtCorpNum.Text, MgtKeyList, txtUserId.Text);
 
-                MessageBox.Show(url);
-
+                MessageBox.Show(url, "현금영수증 인쇄 팝업 URL - 대량");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "현금영수증 인쇄 팝업 URL - 대량");
             }
         }
 
-    
+
+        /*
+         * 1건의 임시저장 현금영수증을 발행 처리합니다.
+         * - 발행일 기준으로 오후 5시까지 발행된 현금영수증은
+         *   익일 오후 2시에 국세청 전송결과를 확인할 수 있습니다.
+         */
         private void btnIssue_Click(object sender, EventArgs e)
         {
-          
+            // 메모
+            string memo = "발행 메모";
+
             try
             {
-                //Issue(팝빌회원 사업자번호, 문서관리번호, 메모, 팝빌회원 아이디)
-                Response response = cashbillService.Issue(txtCorpNum.Text,  txtMgtKey.Text, "발행시 메모",  txtUserId.Text);
+                Response response = cashbillService.Issue(txtCorpNum.Text, txtMgtKey.Text, memo, txtUserId.Text);
 
-                MessageBox.Show(response.message);
-
-
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "현금영수증 발행");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "현금영수증 발행");
             }
         }
 
+        /*
+         * 1건의 발행완료 현금영수증을 발행취소 처리합니다.
+         * - 발행취소 처리된 현금영수증은 국세청에 전송되지 않습니다.
+         * - 발행취소는 국세청 전송 전에만 가능합니다.
+         */
         private void btnCancelIssue_Click(object sender, EventArgs e)
         {
-          
+            // 메모
+            string memo = "발행취소 메모";
+
             try
-            {
-                //CancelIssue(팝빌회원 사업자번호, 문서관리번호, 메모, 팝빌회원 아이디)
-                Response response = cashbillService.CancelIssue(txtCorpNum.Text, txtMgtKey.Text, "발행취소시 메모.", txtUserId.Text);
+            {   
+                Response response = cashbillService.CancelIssue(txtCorpNum.Text, txtMgtKey.Text, memo, txtUserId.Text);
 
-                MessageBox.Show(response.message);
-
-
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "발행취소");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "발행취소");
             }
         }
 
+        /*
+         * 1건의 [임시저장] 상태의 현금영수증을 수정합니다.
+         */
         private void Button7_Click(object sender, EventArgs e)
         {
-
             Cashbill cashbill = new Cashbill();
 
-            cashbill.mgtKey = txtMgtKey.Text;        //문서관리번호, 발행자별 고유번호 할당, 1~24자리 영문,숫자,'-','_' 조합으로 중복없이 구성.
-            cashbill.tradeType = "승인거래";         //거래유형 {승인거래, 취소거래} 중 기재
-            cashbill.franchiseCorpNum = txtCorpNum.Text;    //발행자 사업자번호
+            // [필수] 문서관리번호, 사업자별로 중복되지 않도록 관리번호 할당
+            // 1~24자리 영문,숫자,'-','_' 조합 구성
+            cashbill.mgtKey = txtMgtKey.Text;
+
+            // [필수] 거래유형, {승인거래, 취소거래} 중 기재
+            cashbill.tradeType = "승인거래";
+
+            // [필수] 과세형태, { 과세, 비과세 } 중 기재
+            cashbill.taxationType = "과세";
+
+            // [필수] 공급가액
+            cashbill.supplyCost = "10000";
+
+            // [필수] 세액 
+            cashbill.tax = "1000";
+
+            // [필수] 봉사료
+            cashbill.serviceFee = "0";
+
+            // [필수] 거래금액 ( 공급가액 + 세액 + 봉사료 ) 
+            cashbill.totalAmount = "11000";
+
+            // [필수] 현금영수증 형태, {소득공제용, 지출증빙용} 중 기재
+            cashbill.tradeUsage = "소득공제용";
+
+            // [필수] 거래처 식별번호
+            // 현금영수증 형태(tradeUsage) - '소득공제용' 인 경우 
+            // - 주민등록/휴대폰/카드번호 기재 가능
+            // 현금영수증 형태(tradeUsage) - '지출증빙용' 인 경우
+            // - 사업자번호/주민등록/휴대폰/카드번호 기재 가능 
+            cashbill.identityNum = "010111222";
+
+
+            // [필수] 발행자 사업자번호
+            cashbill.franchiseCorpNum = txtCorpNum.Text;
+
+            // 발행자 상호
             cashbill.franchiseCorpName = "발행자 상호_수정";
+
+            // 발행자 대표자 성명
             cashbill.franchiseCEOName = "발행자 대표자_수정";
+
+            // 발행자 주소
             cashbill.franchiseAddr = "발행자 주소";
+
+            // 발행자 연락처
             cashbill.franchiseTEL = "070-1234-1234";
 
-            cashbill.tradeUsage = "소득공제용";      //현금영수증 형태 , {소득공제용, 지출증빙용}중 기재
-            cashbill.identityNum = "01041680206";    //거래처식별번호, 
+
+            // 고객명
             cashbill.customerName = "고객명";
+
+            // 상품명
             cashbill.itemName = "상품명";
+
+            // 주문번호
             cashbill.orderNumber = "주문번호";
+
+            // 고객 메일
             cashbill.email = "test@test.com";
-            cashbill.hp = "111-1234-1234";
-            cashbill.fax = "777-444-3333";
-            cashbill.serviceFee = "0";              //봉사료
-            cashbill.supplyCost = "10000";          //공급가액
-            cashbill.tax = "1000";                  //세액
-            cashbill.totalAmount = "11000";         //거래금액(봉사료+공급가액+세액)
 
-            cashbill.taxationType = "과세";         //과세형태, {과세, 비과세}
+            // 고객 휴대폰번호
+            cashbill.hp = "010-111-222";
 
-            cashbill.smssendYN = false;            //발행시 문자전송여부 
+            // 고객 팩스번호
+            cashbill.fax = "02-6442-9700";
 
+            // 발행시 알림문자 전송여부
+            cashbill.smssendYN = false;
 
             try
-            {
-                //Update(팝빌회원 사업자번호, 문서관리번호, 현금영수증객체, 팝빌회원 아이디)
+            {  
                 Response response = cashbillService.Update(txtCorpNum.Text, txtMgtKey.Text, cashbill, txtUserId.Text);
 
-                MessageBox.Show(response.message);
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "현금영수증 수정");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "현금영수증 수정");
             }
         }
 
+
+        /*
+         * 파트너 잔여포인트를 확인합니다.
+         * - 연동과금 방식의 경우 연동회원 잔여포인트 조회 (GetBalance API)를 이용하시기 바랍니다. 
+         */
         private void btnGetPartnerBalance1_Click(object sender, EventArgs e)
         {
             try
             {
                 double remainPoint = cashbillService.GetPartnerBalance(txtCorpNum.Text);
 
-                MessageBox.Show(remainPoint.ToString());
-
+                MessageBox.Show(remainPoint.ToString(), "파트너 잔여포인트 확인");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
-
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "파트너 잔여포인트 확인");
             }
         }
 
+        /*
+         * 팝빌 포인트충전 팝업 URL을 반환합니다.
+         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         */
         private void btnGetPopbillURL_CHRG_Click(object sender, EventArgs e)
         {
             try
             {
                 string url = cashbillService.GetPopbillURL(txtCorpNum.Text, txtUserId.Text, "CHRG");
 
-                MessageBox.Show(url);
+                MessageBox.Show(url, "포인트충전 팝업 URL");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "포인트충전 팝업 URL");
 
             }
         }
 
+        /*
+         * 아이디 중복여부를 확인합니다.
+         * - 아이디는 6자이상 20자미만으로 작성하시기 바랍니다.
+         * - 아이디는 대/소문자 구분되지 않습니다. 
+         */
         private void btnCheckID_Click(object sender, EventArgs e)
         {
             try
             {
-                //CheckID(조회할 회원아이디)
                 Response response = cashbillService.CheckID(txtUserId.Text);
 
-                MessageBox.Show("[ " + response.code.ToString() + " ] " + response.message, "ID 중복확인");
-
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "ID 중복확인");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message, "ID 중복확인");
-
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "ID 중복확인");
             }
         }
 
+        /*
+         * 연동회원의 담당자를 추가합니다.
+         */
         private void btnRegistContact_Click(object sender, EventArgs e)
         {
             Contact contactInfo = new Contact();
 
-            contactInfo.id = "test12341234";        // 담당자 아이디, 한글, 영문(대/소), 숫자, '-', '_' 6자 이상 20자 미만 구성
-            contactInfo.pwd = "12345";              // 비밀번호, 6자 이상 20자 미만 구성
-            contactInfo.personName = "담당자 명";   // 담당자명 
-            contactInfo.tel = "070-7510-3710";      // 연락처
-            contactInfo.hp = "010-1234-1234";       // 휴대폰번호
-            contactInfo.fax = "070-7510-3710";      // 팩스번호 
-            contactInfo.email = "code@linkhub.co.kr";   // 이메일주소
-            contactInfo.searchAllAllowYN = false;   // 회사조회 권한여부, true(회사조회), false(개인조회)
-            contactInfo.mgrYN = false;              // 관리자 권한여부 
+            //담당자 아이디, 6자 이상 20자 미만
+            contactInfo.id = "userid";
+
+            //비밀번호, 6자 이상 20자 미만
+            contactInfo.pwd = "this_is_password";
+
+            //담당자명 
+            contactInfo.personName = "담당자명";
+
+            //담당자연락처
+            contactInfo.tel = "070-4304-2991";
+
+            //담당자 휴대폰번호
+            contactInfo.hp = "010-111-222";
+
+            //담당자 팩스번호 
+            contactInfo.fax = "070-4304-2991";
+
+            //담당자 메일주소
+            contactInfo.email = "dev@linkhub.co.kr";
+
+            // 회사조회 권한여부, true(회사조회), false(개인조회)
+            contactInfo.searchAllAllowYN = false;
+
+            // 관리자 권한여부 
+            contactInfo.mgrYN = false;    
 
             try
             {
                 Response response = cashbillService.RegistContact(txtCorpNum.Text, contactInfo, txtUserId.Text);
 
-                MessageBox.Show("[" + response.code.ToString() + "] " + response.message, "담당자 추가");
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "담당자 추가");
 
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[" + ex.code.ToString() + "] " + ex.Message, "담당자 추가");
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "담당자 추가");
             }
         }
 
+        /*
+         * 연동회원의 담당자 목록을 확인합니다 
+         */
         private void btnListContact_Click(object sender, EventArgs e)
         {
             try
@@ -751,34 +1040,56 @@ namespace Popbill.Cashbill.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message, "담당자 목록조회");
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "담당자 목록조회");
             }
         }
 
+        /*
+         * 담당자 정보를 수정합니다.
+         */
         private void btnUpdateContact_Click(object sender, EventArgs e)
         {
             Contact contactInfo = new Contact();
 
-            contactInfo.personName = "담당자123";      // 담당자명 
-            contactInfo.tel = "070-7510-3710";      // 연락처
-            contactInfo.hp = "010-1234-1234";       // 휴대폰번호
-            contactInfo.fax = "070-7510-3710";      // 팩스번호 
-            contactInfo.email = "code@linkhub.co.kr";   // 이메일주소
-            contactInfo.searchAllAllowYN = true;    // 회사조회 권한여부, true(회사조회), false(개인조회)
-            contactInfo.mgrYN = false;              // 관리자 권한여부 
+            // 담당자명 
+            contactInfo.personName = "담당자123";
+
+            // 연락처
+            contactInfo.tel = "070-4304-2991";
+
+            // 휴대폰번호
+            contactInfo.hp = "010-1234-1234";
+
+            // 팩스번호 
+            contactInfo.fax = "02-6442-9700";
+
+            // 이메일주소
+            contactInfo.email = "dev@linkhub.co.kr";
+
+            // 회사조회 권한여부, true(회사조회), false(개인조회)
+            contactInfo.searchAllAllowYN = true;
+
+            // 관리자 권한여부 
+            contactInfo.mgrYN = false; 
 
             try
             {
                 Response response = cashbillService.UpdateContact(txtCorpNum.Text, contactInfo, txtUserId.Text);
 
-                MessageBox.Show("[" + response.code.ToString() + "] " + response.message, "담당자 정보 수정");
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "담당자 정보 수정");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[" + ex.code.ToString() + "] " + ex.Message, "담당자 정보 수정");
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "담당자 정보 수정");
             }
         }
 
+        /*
+         * 회사정보를 조회합니다.
+         */
         private void btnGetCorpInfo_Click(object sender, EventArgs e)
         {
             try
@@ -796,118 +1107,207 @@ namespace Popbill.Cashbill.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message, "회사정보 조회");
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "회사정보 조회");
             }
         }
 
+        /*
+         * 회사정보를 수정합니다.
+         */
         private void btnUpdateCorpInfo_Click(object sender, EventArgs e)
         {
             CorpInfo corpInfo = new CorpInfo();
 
+            // 대표자성명
             corpInfo.ceoname = "대표자명 테스트";
+
+            // 상호
             corpInfo.corpName = "업체명";
+
+            // 주소
             corpInfo.addr = "주소정보 수정";
+
+            // 업태 
             corpInfo.bizType = "업태정보 수정";
-            corpInfo.bizClass = "업종정보 수정";
+
+            // 종목
+            corpInfo.bizClass = "종목 수정";
 
             try
             {
                 Response response = cashbillService.UpdateCorpInfo(txtCorpNum.Text, corpInfo, txtUserId.Text);
 
-                MessageBox.Show("[ " + response.code.ToString() + " ] " + response.message, "회사정보 수정");
-
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "회사정보 수정");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message, "회사정보 수정");
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "회사정보 수정");
             }
         }
 
+
+        /*
+         * 1건의 [발행완료] 현금영수증을 [발행취소] 처리합니다.
+         * - 현금영수증 발행취소는 국세청 전송전에만 가능합니다.
+         * - 발행취소 처리된 현금영수증은 국세청에 전송되지 않습니다.
+         * - 발행취소 현금영수증에 사용된 문서관리번호를 재사용 하기 위해서는 
+         *   삭제(Delete API)를 호출하여 삭제처리해야 합니다.
+         */
         private void btnCancelIssueSub_Click(object sender, EventArgs e)
         {
+            // 메모
+            string memo = "발행취소 메모";
+
             try
             {
-                //CancelIssue(팝빌회원 사업자번호, 문서관리번호, 메모, 팝빌회원 아이디)
-                Response response = cashbillService.CancelIssue(txtCorpNum.Text, txtMgtKey.Text, "발행취소시 메모.", txtUserId.Text);
+                Response response = cashbillService.CancelIssue(txtCorpNum.Text, txtMgtKey.Text, memo, txtUserId.Text);
 
-                MessageBox.Show(response.message);
-
-
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "현금영수증 발행취소");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "현금영수증 발행취소");
             }
         }
 
+
+        /*
+         * [발행취소] 상태의 현금영수증을 삭제 처리합니다.
+         * - 삭제된 현금영수증의 문서관리번호는 재사용할 수 있습니다.
+         */
         private void btnDeleteSub_Click(object sender, EventArgs e)
         {
 
             try
-            {
-                //Delete(팝빌회원 사업자번호, 문서관리번호, 팝빌회원 아이디)
+            {   
                 Response response = cashbillService.Delete(txtCorpNum.Text, txtMgtKey.Text, txtUserId.Text);
 
-                MessageBox.Show(response.message);
-
-
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "현금영수증 삭제");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "현금영수증 삭제");
             }
         }
 
+        /*
+         * 1건의 현금영수증을 즉시발행 처리합니다.
+         * - 발행일 기준으로 오후 5시까지 발행된 현금영수증은
+         *   익일 오후 2시에 국세청 전송결과를 확인할 수 있습니다.
+         */
         private void btnRegistIssue_Click(object sender, EventArgs e)
         {
+
+            // 메모
             String memo = "현금영수증 즉시발행 메모";
 
             Cashbill cashbill = new Cashbill();
 
-            cashbill.mgtKey = txtMgtKey.Text;        //문서관리번호, 발행자별 고유번호 할당, 1~24자리 영문,숫자,'-','_' 조합으로 중복없이 구성.
-            cashbill.tradeType = "승인거래";         //거래유형 {승인거래, 취소거래} 중 기재
-            cashbill.franchiseCorpNum = txtCorpNum.Text;    //발행자 사업자번호
+            // [필수] 문서관리번호, 발행자별 고유번호 할당, 1~24자리 영문,숫자,'-','_' 조합으로 중복없이 구성.
+            cashbill.mgtKey = txtMgtKey.Text;
+
+            // [필수] 거래유형, {승인거래, 취소거래} 중 기재
+            cashbill.tradeType = "승인거래";
+
+            // [필수] 과세형태, { 과세, 비과세 } 중 기재
+            cashbill.taxationType = "과세";
+
+            // [필수] 공급가액
+            cashbill.supplyCost = "10000";          
+
+            // [필수] 세액 
+            cashbill.tax = "1000";
+
+            // [필수] 봉사료
+            cashbill.serviceFee = "0";
+
+            // [필수] 거래금액 ( 공급가액 + 세액 + 봉사료 ) 
+            cashbill.totalAmount = "11000";
+
+            // [필수] 현금영수증 형태, {소득공제용, 지출증빙용} 중 기재
+            cashbill.tradeUsage = "소득공제용";
+
+            // [필수] 거래처 식별번호
+            // 현금영수증 형태(tradeUsage) - '소득공제용' 인 경우 
+            // - 주민등록/휴대폰/카드번호 기재 가능
+            // 현금영수증 형태(tradeUsage) - '지출증빙용' 인 경우
+            // - 사업자번호/주민등록/휴대폰/카드번호 기재 가능 
+            cashbill.identityNum = "010111222";    
+
+
+            // [필수] 발행자 사업자번호
+            cashbill.franchiseCorpNum = txtCorpNum.Text;
+
+            // 발행자 상호
             cashbill.franchiseCorpName = "발행자 상호";
+
+            // 발행자 대표자 성명
             cashbill.franchiseCEOName = "발행자 대표자";
+
+            // 발행자 주소
             cashbill.franchiseAddr = "발행자 주소";
+
+            // 발행자 연락처
             cashbill.franchiseTEL = "070-1234-1234";
 
-            cashbill.tradeUsage = "소득공제용";      //현금영수증 형태 , {소득공제용, 지출증빙용}중 기재
-            cashbill.identityNum = "01043245117";    //거래처식별번호, 
+
+            // 고객명
             cashbill.customerName = "고객명";
+
+            // 상품명
             cashbill.itemName = "상품명";
+
+            // 주문번호
             cashbill.orderNumber = "주문번호";
+
+            // 고객 메일
             cashbill.email = "test@test.com";
-            cashbill.hp = "111-1234-1234";
-            cashbill.fax = "777-444-3333";
-            cashbill.serviceFee = "0";              //봉사료
-            cashbill.supplyCost = "10000";          //공급가액
-            cashbill.tax = "1000";                  //세액
-            cashbill.totalAmount = "11000";         //거래금액(봉사료+공급가액+세액)
 
-            cashbill.taxationType = "과세";         //과세형태, {과세, 비과세}
+            // 고객 휴대폰번호
+            cashbill.hp = "010-111-222";
 
-            cashbill.smssendYN = false;            //발행시 문자전송여부 
+            // 고객 팩스번호
+            cashbill.fax = "02-6442-9700";
+
+            // 발행시 알림문자 전송여부
+            cashbill.smssendYN = false;
 
             try
-            {
-                //RegistIssue(팝빌회원 사업자번호, 현금영수증 객체, 발행메모, 팝빌회원 아이디)
+            {   
                 Response response = cashbillService.RegistIssue(txtCorpNum.Text, cashbill, memo, txtUserId.Text);
 
-                MessageBox.Show("[ " + response.code + " ] " + response.message);
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "현금영수증 즉시발행");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "현금영수증 즉시발행");
             }
         }
 
+        /*
+         * 검색조건을 사용하여 현금영수증 목록을 확인합니다.
+         * - 응답항목에 대한 정보는 "[현금영수증 API 연동매뉴얼] > 3.4.3 Search (목록 조회)"
+         *   를 참조하여 주시기 바랍니다. 
+         */
         private void btnSearch_Click(object sender, EventArgs e)
         {
-         
-            String DType = "T";     // 검색일자 유형, R-등록일자, T-거래일자, I-발행일자
-            String SDate = "20160701";  // 시작일자
-            String EDate = "20160831";  // 종료일자
+            // 검색일자 유형, R-등록일자, T-거래일자, I-발행일자
+            String DType = "T";
+
+            // 시작일자
+            String SDate = "20160901";
+
+            // 종료일자
+            String EDate = "20161031";  
 
             //상태코드 배열, 2,3번째 자리에 와일드카드(*) 사용가능
             String[] State = new String[2];
@@ -929,23 +1329,31 @@ namespace Popbill.Cashbill.Example.csharp
             TaxationType[0] = "T";
             TaxationType[1] = "N";
 
-            String QString = "1234"; // 식별번호 조회, 미기재시 전체조회 
+            // 식별번호 조회, 미기재시 전체조회 
+            String QString = "";
 
-            String Order = "D";     // 정렬방향, A-오름차순, D-내림차순
-            int Page = 1;           // 페이지 번호
-            int PerPage = 35;       // 페이지당 검색개수, 최대 1000개 
+            // 정렬방향, A-오름차순, D-내림차순
+            String Order = "D";
+
+            // 페이지 번호
+            int Page = 1;
+
+            // 페이지당 검색개수, 최대 1000개 
+            int PerPage = 35;       
 
             try
             {
-                CBSearchResult searchResult = cashbillService.Search(txtCorpNum.Text, DType, SDate, EDate, State, TradeType, TradeUsage, TaxationType, QString, Order, Page, PerPage);
+                CBSearchResult searchResult = cashbillService.Search(txtCorpNum.Text, DType, SDate, EDate, State, TradeType,
+                                                            TradeUsage, TaxationType, QString, Order, Page, PerPage);
+
                 String tmp = null;
 
-                tmp += "code : " + searchResult.code + CRLF;
-                tmp += "total : " + searchResult.total + CRLF;
-                tmp += "perPage : " + searchResult.perPage + CRLF;
-                tmp += "pageNum : " + searchResult.pageNum + CRLF;
-                tmp += "pageCount : " + searchResult.pageCount + CRLF;
-                tmp += "message : " + searchResult.message + CRLF + CRLF;
+                tmp += "code (응답코드) : " + searchResult.code + CRLF;
+                tmp += "message (응답메시지) : " + searchResult.message + CRLF + CRLF;
+                tmp += "total (총 검색결과 건수) : " + searchResult.total + CRLF;
+                tmp += "perPage (페이지당 검색개수) : " + searchResult.perPage + CRLF;
+                tmp += "pageNum (페이지 번호) : " + searchResult.pageNum + CRLF;
+                tmp += "pageCount (페이지 개수) : " + searchResult.pageCount + CRLF;
                 
                 tmp += "itemKey | mgtKey | tradeDate | issueDT | customerName | itemName | identityNum | taxationType |";
                 tmp += " totalAmount | tradeUsage | tradeType | stateCode | confirmNUm" + CRLF;
@@ -969,15 +1377,19 @@ namespace Popbill.Cashbill.Example.csharp
                     tmp += CRLF;
                 }
 
-                MessageBox.Show(tmp, "문서목록 조회");
+                MessageBox.Show(tmp, "현금영수증 목록 조회");
         
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message, "문서목록조회");
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "현금영수증 목록 조회");
             }
         }
 
+        /*
+         * 현금영수증 API 서비스 과금정보를 확인합니다.
+         */
         private void btnGetChargeInfo_Click(object sender, EventArgs e)
         {
             try
@@ -993,7 +1405,8 @@ namespace Popbill.Cashbill.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[" + ex.code.ToString() + "] " + ex.Message, "과금정보 확인");
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "과금정보 확인");
             }
         }
 
