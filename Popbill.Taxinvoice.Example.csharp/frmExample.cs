@@ -259,7 +259,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             taxinvoice.writeDate = "20161013";
 
             // [필수] 과금방향, {정과금, 역과금}중 선택
-            // - 정과금(공급자과금), 역과금(급받는자과금)
+            // - 정과금(공급자과금), 역과금(공급받는자과금)
             // - 역과금은 역발행 세금계산서를 발행하는 경우만 가능
             taxinvoice.chargeDirection = "정과금";
 
@@ -320,6 +320,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
             // 발행시 알림문자 전송여부
             // - 공급받는자 담당자 휴대폰번호(invoiceeHP1)로 전송
+            // - 전송시 포인트가 차감되며 전송실패하는 경우 포인트 환불처리
             taxinvoice.invoicerSMSSendYN = false;
 
 
@@ -337,7 +338,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             taxinvoice.invoiceeCorpName = "공급받는자 상호";
 
             // [역발행시 필수] 공급받는자 문서관리번호, 숫자, 영문, '-', '_' 조합으로
-            //                 1~24자리까지 사업자번호별 중복없는 고유번호 할당
+            // 1~24자리까지 사업자번호별 중복없는 고유번호 할당
             taxinvoice.invoiceeMgtKey = "";
 
             // [필수] 공급받는자 대표자 성명 
@@ -514,8 +515,6 @@ namespace Popbill.Taxinvoice.Example.csharp
         /*
          * 세금계산서 기재항목을 수정합니다.
          * - 세금계산서 수정은 [임시저장] 상태인 경우에만 가능합니다.
-         * - 국세청이 전송중이거나 완료된 세금계산서는 수정/삭제 할수 없으며
-         *   수정세금계산서를 추가로 발행하여야 합니다. 
          */
         private void btnUpdate_Click(object sender, EventArgs e)
         {
@@ -527,7 +526,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             taxinvoice.writeDate = "20161013";
 
             // [필수] 과금방향, {정과금, 역과금}중 선택
-            // - 정과금(공급자과금), 역과금(급받는자과금)
+            // - 정과금(공급자과금), 역과금(공급받는자과금)
             // - 역과금은 역발행 세금계산서를 발행하는 경우만 가능
             taxinvoice.chargeDirection = "정과금";
 
@@ -781,7 +780,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
         /*
          * 1건의 세금계산서를 삭제합니다.
-         * - 세금계산서에 사용된 문서관리번호는 삭제 이후 재사용할 수 있습니다.
+         * - 등록된 문서관리번호는 삭제 이후 재사용할 수 있습니다.
          */
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -1111,7 +1110,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
 
         /*
-         * 다량의 세금계산서 상태/요약 정보를 확인합니다. (최대 1000건)
+         * 대량의 세금계산서 상태/요약 정보를 확인합니다. (최대 1000건)
          * - 세금계산서 상태정보(GetInfos API) 응답항목에 대한 자세한 정보는
          *  "[전자세금계산서 API 연동매뉴얼] > 4.2. (세금)계산서 상태정보 구성"
          *  을 참조하시기 바랍니다. 
@@ -1154,8 +1153,6 @@ namespace Popbill.Taxinvoice.Example.csharp
 
         /*
          * 발행 안내메일을 재전송합니다.
-         * - 메일내용중 전자세금계산서 [보기] 버튼이 동작하지 않는 경우,
-         *   키보드 왼쪽 Shift 키를 누르고 버튼을 클릭해보시기 바랍니다.
          */
         private void btnSendEmail_Click(object sender, EventArgs e)
         {
@@ -1197,7 +1194,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             // 수신번호
             string receiverNum = "010-111-222";
 
-            // 문자메시지 내용
+            // 문자메시지 내용, 90byte 초과시 길이가 조정되어 전송됨
             string contents = "알림문자 전송내용, 90byte 초과된 내용은 삭제되어 전송됨";
                
             try
@@ -1293,7 +1290,7 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * 세금계산서 인쇄(공급받는자) URL을 반환합니다.
+         * 세금계산서 인쇄(공급받는자용) URL을 반환합니다.
          * - URL 보안정책에 따라 반환된 URL은 30초의 유효시간을 갖습니다.
          */
         private void btnEPrintURL_Click(object sender, EventArgs e)
@@ -1339,7 +1336,7 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         *  다수건의 전자세금계산서 인쇄팝업 URL을 반환합니다.
+         *  대량의 전자세금계산서 인쇄팝업 URL을 반환합니다.
          *  - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
          */
         private void btnGetMassPrintURL_Click(object sender, EventArgs e)
@@ -1399,8 +1396,8 @@ namespace Popbill.Taxinvoice.Example.csharp
 
 
         /*
-         * [임시저장 상태의 세금계산서를 [발행] 처리합니다.
-         * - 발행(Issue API)를 호출하는 시점에서 포인트가 차감됩니다.
+         * [임시저장] 상태의 세금계산서를 [발행] 처리합니다.
+         * - 발행(Issue API)을 호출하는 시점에서 포인트가 차감됩니다.
          *  - [발행완료] 세금계산서는 연동회원의 국세청 전송설정에 따라
          *    익일/즉시전송 처리됩니다. 기본설정(익일전송)
          * - 국세청 전송설정은 "팝빌 로그인" > [전자세금계산서] > [환경설정] >
@@ -1441,8 +1438,8 @@ namespace Popbill.Taxinvoice.Example.csharp
         /*
          * [발행완료] 세금계산서를 [발행취소] 처리합니다.
          * - [발행취소]는 국세청 전송전에만 가능합니다.
-         * - 발행취소된 세금계산서는 국세청에 전송되지 않습니다.
-         * - 발행취소 세금계산서에 기재된 문서관리번호를 재사용 하기 위해서는
+         * - 발행취소 세금계산서는 국세청에 전송되지 않습니다.
+         * - 발행취소 세금계산서에 사용된 문서관리번호를 재사용 하기 위해서는
          *   삭제(Delete API)를 호출하여 [삭제] 처리 하셔야 합니다.
          */
         private void btnCancelIssue_Click(object sender, EventArgs e)
@@ -1525,7 +1522,7 @@ namespace Popbill.Taxinvoice.Example.csharp
          *  공급받는자가 공급자에게 1건의 세금계산서 역발행을 요청합니다.
          * - 역발행 세금계산서 프로세스를 구현하기 위해서는 공급자/공급받는자가 모두
          *   팝빌에 회원이여야 합니다.
-         * - 역발행 요청후 공급자가 [발행] 처리시 포인트가 차감되며 역발행
+         * - 역발행 요청후 공급자가 [발행] 처리시 포인트가 차감되며
          *   세금계산서 항목중 과금방향(ChargeDirection) 에 기재한 값에 따라
          *   정과금(공급자과금) 또는 역과금(공급받는자과금) 처리됩니다.
          */
@@ -1621,7 +1618,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             taxinvoice.writeDate = "20161013";
 
             // [필수] 과금방향, {정과금, 역과금}중 선택
-            // - 정과금(공급자과금), 역과금(급받는자과금)
+            // - 정과금(공급자과금), 역과금(공급받는자과금)
             // - 역과금은 역발행 세금계산서를 발행하는 경우만 가능
             taxinvoice.chargeDirection = "정과금";
 
@@ -1887,7 +1884,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             taxinvoice.writeDate = "20161013";
 
             // [필수] 과금방향, {정과금, 역과금}중 선택
-            // - 정과금(공급자과금), 역과금(급받는자과금)
+            // - 정과금(공급자과금), 역과금(공급받는자과금)
             // - 역과금은 역발행 세금계산서를 발행하는 경우만 가능
             taxinvoice.chargeDirection = "정과금";
 
@@ -2168,8 +2165,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
         /*
          * 세금계산서에 첨부된 파일의 목록을 확인합니다.
-         * - 응답항목 중 파일아이디(AttachedFile) 항목은 파일삭제(DeleteFile API)
-         *   호출시 이용할 수 있습니다.
+         * - 응답항목 중 파일아이디(AttachedFile) 항목은 파일삭제(DeleteFile API) 시 사용됩니다.
          */
         private void gtnGetFiles_Click(object sender, EventArgs e)
         {
@@ -2224,23 +2220,6 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-            try
-            {
-                //GetInfos(팝빌회원 사업자번호, 발행유형, 문서관리번호 배열)
-                List<Contact> contactList = taxinvoiceService.ListContact(txtCorpNum.Text, txtUserId.Text);
-
-                MessageBox.Show(contactList[0].id);
-
-
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
-            }
-        }
 
         /*
          * 팝빌 로그인 팝업 URL을 반환합니다.
@@ -2314,7 +2293,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             contactInfo.id = "testkorea_20161014";
 
             //비밀번호, 6자 이상 20자 미만
-            contactInfo.pwd = "popbill";
+            contactInfo.pwd = "user_password";
 
             //담당자명 
             contactInfo.personName = "담당자명";   
@@ -2552,7 +2531,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             taxinvoice.writeDate = "20161013";
 
             // [필수] 과금방향, {정과금, 역과금}중 선택
-            // - 정과금(공급자과금), 역과금(급받는자과금)
+            // - 정과금(공급자과금), 역과금(공급받는자과금)
             // - 역과금은 역발행 세금계산서를 발행하는 경우만 가능
             taxinvoice.chargeDirection = "정과금";
 
@@ -2997,7 +2976,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "전자명세서 첨부해제");
+                                "응답메시지(message) : " + ex.Message, "전자명세서 첨부");
             }
         }
 
@@ -3013,7 +2992,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             int DocItemCode = 121;
 
             // 첨부해제할 명세서 관리번호 
-            String DocMgtKey = "20160202-01";   
+            String DocMgtKey = "20160202-01";
 
             try
             {
