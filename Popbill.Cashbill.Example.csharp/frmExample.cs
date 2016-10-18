@@ -138,7 +138,7 @@ namespace Popbill.Cashbill.Example.csharp
             {
                 double remainPoint = cashbillService.GetBalance(txtCorpNum.Text);
 
-                MessageBox.Show(remainPoint.ToString(), "연동회원 잔여포인트 확인");
+                MessageBox.Show("잔여포인트 : " + remainPoint.ToString(), "연동회원 잔여포인트 확인");
 
             }
             catch (PopbillException ex)
@@ -164,7 +164,8 @@ namespace Popbill.Cashbill.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "연동회원 가입여부 확인");
 
             }
         }
@@ -249,7 +250,7 @@ namespace Popbill.Cashbill.Example.csharp
             // - 주민등록/휴대폰/카드번호 기재 가능
             // 현금영수증 형태(tradeUsage) - '지출증빙용' 인 경우
             // - 사업자번호/주민등록/휴대폰/카드번호 기재 가능 
-            cashbill.identityNum = "010111222";
+            cashbill.identityNum = "0101112222";
 
 
             // [필수] 발행자 사업자번호
@@ -637,7 +638,7 @@ namespace Popbill.Cashbill.Example.csharp
             string sendNum = "070-4304-2991";
 
             // 수신팩스번호
-            string receiverNum = "02-6442-9700";
+            string receiverNum = "070-111-222";
 
             try
             {
@@ -846,7 +847,7 @@ namespace Popbill.Cashbill.Example.csharp
             // - 주민등록/휴대폰/카드번호 기재 가능
             // 현금영수증 형태(tradeUsage) - '지출증빙용' 인 경우
             // - 사업자번호/주민등록/휴대폰/카드번호 기재 가능 
-            cashbill.identityNum = "010111222";
+            cashbill.identityNum = "0101112222";
 
 
             // [필수] 발행자 사업자번호
@@ -911,7 +912,7 @@ namespace Popbill.Cashbill.Example.csharp
             {
                 double remainPoint = cashbillService.GetPartnerBalance(txtCorpNum.Text);
 
-                MessageBox.Show(remainPoint.ToString(), "파트너 잔여포인트 확인");
+                MessageBox.Show("파트너 잔여포인트 : " + remainPoint.ToString(), "파트너 잔여포인트 확인");
             }
             catch (PopbillException ex)
             {
@@ -1239,7 +1240,7 @@ namespace Popbill.Cashbill.Example.csharp
             // - 주민등록/휴대폰/카드번호 기재 가능
             // 현금영수증 형태(tradeUsage) - '지출증빙용' 인 경우
             // - 사업자번호/주민등록/휴대폰/카드번호 기재 가능 
-            cashbill.identityNum = "010111222";    
+            cashbill.identityNum = "0101112222";    
 
 
             // [필수] 발행자 사업자번호
