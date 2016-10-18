@@ -1,4 +1,22 @@
-﻿using System;
+﻿
+/*
+ * 팝빌 홈택스 현금영수증 연계 API DotNet SDK Example
+ * 
+ * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - http://blog.linkhub.co.kr/587
+ * - 업데이트 일자 : 2016-10-18
+ * - 연동 기술지원 연락처 : 1600-8536 / 070-4304-2991~2
+ * - 연동 기술지원 이메일 : dev@linkhub.co.kr
+ * 
+ * <테스트 연동개발 준비사항>
+ * 1) 33, 36 라인에 선언된 링크아이디(LinkID)와 비밀키(SecretKey)를 
+ *    링크허브 가입시 메일로 발급받은 인증정보로 변경합니다.
+ * 2) 팝빌 개발용 사이트(test.popbill.com)에 연동회원으로 가입합니다.
+ * 3) 홈택스 연계를 위해 공인인증서를 등록합니다. 두가지 방법 중 선택 
+ *    - 팝빌사이트 로그인 > [홈택스연계] > [환경설정] > [공인인증서 관리]
+ *    - 홉택스 연계 공인인증서 등록 팝업 URL (GetCertificatePopUpURL API)을 이용하여 등록
+ */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +31,7 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
     {
         //링크아이디
         private string LinkID = "TESTER";
+
         //비밀키
         private string SecretKey = "SwWxqU+0TErBXy/9TVjIPEnI0VTUMMSQZtJf3Ed8q3I=";
 
@@ -24,30 +43,36 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         {
             InitializeComponent();
 
-            //초기화
+            // 홈택스 현금영수증 연계 모듈 초기화
             htCashbillService = new HTCashbillService(LinkID, SecretKey);
-            //테스트를 완료한후 아래 변수를 false로 변경하거나, 아래줄을 삭제하여 실제 서비스 연결.
+
+            // 연동환경 설정값, 개발용(true), 상업용(false)
             htCashbillService.IsTest = true;
         }
 
-
+       /*
+        * 해당사업자의 연동회원 가입여부를 확인합니다.
+        * - 사업자등록번호는 '-' 제외한 10자리 숫자 문자열입니다.
+        */
         private void btnCheckIsMember_Click(object sender, EventArgs e)
         {
             try
             {
-                //CheckIsMember(조회할 사업자번호, 링크아이디)
                 Response response = htCashbillService.CheckIsMember(txtCorpNum.Text, LinkID);
 
-                MessageBox.Show("[" + response.code.ToString() + "] " + response.message, "연동회원 가입여부 확인");
-
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "연동회원 가입여부 확인");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[" + ex.code.ToString() + "] " + ex.Message, "연동회원 가입여부 확인");
-
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "연동회원 가입여부 확인");
             }
         }
 
+        /*
+         * 연동회원의 회사정보를 조회합니다.
+         */
         private void btnGetCorpInfo_Click(object sender, EventArgs e)
         {
             try
@@ -65,51 +90,77 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message, "회사정보 조회");
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "회사정보 조회");
             }
         }
 
+        /*
+         * 연동회원 담당자를 추가합니다.
+         */
         private void btnRegistContact_Click(object sender, EventArgs e)
         {
             Contact contactInfo = new Contact();
 
-            contactInfo.id = "test12341234";        // 담당자 아이디, 한글, 영문(대/소), 숫자, '-', '_' 6자 이상 20자 미만 구성
-            contactInfo.pwd = "12345";              // 비밀번호, 6자 이상 20자 미만 구성
-            contactInfo.personName = "담당자 명";   // 담당자명 
-            contactInfo.tel = "070-7510-3710";      // 연락처
-            contactInfo.hp = "010-1234-1234";       // 휴대폰번호
-            contactInfo.fax = "070-7510-3710";      // 팩스번호 
-            contactInfo.email = "code@linkhub.co.kr";   // 이메일주소
-            contactInfo.searchAllAllowYN = false;   // 회사조회 권한여부, true(회사조회), false(개인조회)
-            contactInfo.mgrYN = false;              // 관리자 권한여부 
+            //담당자 아이디, 6자 이상 20자 미만
+            contactInfo.id = "testkorea_20161014";
+
+            //비밀번호, 6자 이상 20자 미만
+            contactInfo.pwd = "popbill";
+
+            //담당자명 
+            contactInfo.personName = "담당자명";
+
+            //담당자연락처
+            contactInfo.tel = "070-4304-2991";
+
+            //담당자 휴대폰번호
+            contactInfo.hp = "010-111-222";
+
+            //담당자 팩스번호 
+            contactInfo.fax = "070-4304-2991";
+
+            //담당자 메일주소
+            contactInfo.email = "dev@linkhub.co.kr";
+
+            // 회사조회 권한여부, true(회사조회), false(개인조회)
+            contactInfo.searchAllAllowYN = true;
+
+            // 관리자 권한여부 
+            contactInfo.mgrYN = false;    
+
 
             try
             {
                 Response response = htCashbillService.RegistContact(txtCorpNum.Text, contactInfo, txtUserId.Text);
 
-                MessageBox.Show("[" + response.code.ToString() + "] " + response.message, "담당자 추가");
-
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "담당자 추가");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[" + ex.code.ToString() + "] " + ex.Message, "담당자 추가");
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "담당자 추가");
             }
         }
 
+        /*
+         * 회원아이디 중복여부를 확인합니다.
+         */
         private void btnCheckID_Click(object sender, EventArgs e)
         {
             try
-            {
-                //CheckID(조회할 회원아이디)
+            {   
                 Response response = htCashbillService.CheckID(txtUserId.Text);
 
-                MessageBox.Show("[" + response.code.ToString() + "] " + response.message, "ID 중복확인");
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "ID 중복확인");
 
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[" + ex.code.ToString() + "] " + ex.Message, "ID 중복확인");
-
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "ID 중복확인");
             }
         }
 
@@ -117,50 +168,87 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         {
             JoinForm joinInfo = new JoinForm();
 
-            joinInfo.LinkID = LinkID;                 //링크아이디
-            joinInfo.CorpNum = "1231212312";          //사업자번호 "-" 제외
+            //링크아이디
+            joinInfo.LinkID = LinkID;
+
+            //사업자번호 "-" 제외
+            joinInfo.CorpNum = "1231212312";
+
+            //대표자명 
             joinInfo.CEOName = "대표자성명";
+
+            //상호
             joinInfo.CorpName = "상호";
+
+            //주소
             joinInfo.Addr = "주소";
+
+            //업태
             joinInfo.BizType = "업태";
-            joinInfo.BizClass = "업종";
-            joinInfo.ID = "userid";                   //6자 이상 20자 미만
-            joinInfo.PWD = "pwd_must_be_long_enough"; //6자 이상 20자 미만
+
+            // 종목
+            joinInfo.BizClass = "종목";
+
+            // 아이디, 6자이상 20자 미만
+            joinInfo.ID = "userid";
+
+            // 비밀번호, 6자이상 20자 미만
+            joinInfo.PWD = "pwd_must_be_long_enough";
+
+            // 담당자명
             joinInfo.ContactName = "담당자명";
-            joinInfo.ContactTEL = "02-999-9999";
-            joinInfo.ContactHP = "010-1234-5678";
-            joinInfo.ContactFAX = "02-999-9998";
+
+            // 담당자 연락처
+            joinInfo.ContactTEL = "070-4304-2991";
+
+            // 담당자 휴대폰번호
+            joinInfo.ContactHP = "010-111-222";
+
+            // 담당자 팩스번호
+            joinInfo.ContactFAX = "02-6442-9700";
+
+            // 담당자 메일주소
             joinInfo.ContactEmail = "test@test.com";
 
             try
             {
                 Response response = htCashbillService.JoinMember(joinInfo);
 
-                MessageBox.Show("[" + response.code.ToString() + "] " + response.message, "연동회원 가입요청");
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "연동회원 가입요청");
 
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[" + ex.code.ToString() + "] " + ex.Message, "연동회원 가입요청");
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "연동회원 가입요청");
             }
         }
 
+       /*
+        * 연동회원의 잔여포인트를 조회합니다.
+        * - 파트너 과금 방식의 경우 파트너 잔여포인트 조회(GetPartnerBalance API) 기능을 사용하시기 바랍니다.
+        */
         private void btnGetBalance_Click(object sender, EventArgs e)
         {
             try
             {
                 double remainPoint = htCashbillService.GetBalance(txtCorpNum.Text);
 
-                MessageBox.Show("잔여포인트 : " + remainPoint.ToString(), "잔여포인트 확인");
+                MessageBox.Show("잔여포인트 : " + remainPoint.ToString(), "연동회원 잔여포인트 확인");
 
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[" + ex.code.ToString() + "] " + ex.Message, "잔여포인트 확인");
-
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "연동회원 잔여포인트 확인");
             }
         }
 
+       /*
+        * 연동회원의 잔여포인트를 조회합니다.
+        * - 파트너 과금 방식의 경우 파트너 잔여포인트 조회(GetPartnerBalance API) 기능을 사용하시기 바랍니다.
+        */
         private void btnGetPartnerBalance1_Click(object sender, EventArgs e)
         {
             try
@@ -168,15 +256,17 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
                 double remainPoint = htCashbillService.GetPartnerBalance(txtCorpNum.Text);
 
                 MessageBox.Show("파트너 잔여포인트 : " + remainPoint.ToString(), "파트너 잔여포인트 확인");
-
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[" + ex.code.ToString() + "] " + ex.Message, "파트너 잔여포인트 확인");
-
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "파트너 잔여포인트 확인");
             }
         }
 
+        /*
+         * 홈택스 현금영수증 연계 서비스 과금정보를 확인합니다. 
+         */
         private void btnGetChargeInfo_Click(object sender, EventArgs e)
         {
             try
@@ -192,13 +282,17 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[" + ex.code.ToString() + "] " + ex.Message, "과금정보 확인");
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "과금정보 확인");
             }
         }
 
+        /*
+         * 팝빌 로그인 팝업 URL을 반환합니다.
+         * - URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         */
         private void getPopbillURL_LOGIN_Click(object sender, EventArgs e)
         {
-
             try
             {
                 string url = htCashbillService.GetPopbillURL(txtCorpNum.Text, txtUserId.Text, "LOGIN");
@@ -207,11 +301,15 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[" + ex.code.ToString() + "] " + ex.Message, "팝빌 로그인 URL 확인");
-
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "팝빌 로그인 URL 확인");
             }
         }
 
+        /*
+         * 팝빌 포인트충전 팝업 URL을 반환합니다.
+         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         */
         private void btnGetPopbillURL_CHRG_Click(object sender, EventArgs e)
         {
             try
@@ -222,11 +320,14 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[" + ex.code.ToString() + "] " + ex.Message);
-
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "포인트 충전 URL");
             }
         }
 
+        /*
+         * 담당자 목록을 조회합니다.
+         */
         private void btnListContact_Click(object sender, EventArgs e)
         {
             try
@@ -248,73 +349,110 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
                     tmp += "regDT (등록일시) : " + contactInfo.regDT + CRLF;
                     tmp += CRLF;
                 }
-
                 MessageBox.Show(tmp, "담당자 목록조회");
-
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message, "담당자 목록조회");
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "담당자 목록조회");
             }
         }
 
+        /*
+         * 담당자 정보를 수정합니다.
+         */
         private void btnUpdateContact_Click(object sender, EventArgs e)
         {
             Contact contactInfo = new Contact();
 
-            contactInfo.personName = "담당자123";      // 담당자명 
-            contactInfo.tel = "070-7510-3710";      // 연락처
-            contactInfo.hp = "010-1234-1234";       // 휴대폰번호
-            contactInfo.fax = "070-7510-3710";      // 팩스번호 
-            contactInfo.email = "code@linkhub.co.kr";   // 이메일주소
-            contactInfo.searchAllAllowYN = true;    // 회사조회 권한여부, true(회사조회), false(개인조회)
-            contactInfo.mgrYN = false;              // 관리자 권한여부 
+            // 담당자명 
+            contactInfo.personName = "담당자123";
+
+            // 연락처
+            contactInfo.tel = "070-4304-2991";
+
+            // 휴대폰번호
+            contactInfo.hp = "010-1234-1234";
+
+            // 팩스번호 
+            contactInfo.fax = "02-6442-9700";
+
+            // 이메일주소
+            contactInfo.email = "dev@linkhub.co.kr";
+
+            // 회사조회 권한여부, true(회사조회), false(개인조회)
+            contactInfo.searchAllAllowYN = true;
+
+            // 관리자 권한여부 
+            contactInfo.mgrYN = false;           
 
             try
             {
                 Response response = htCashbillService.UpdateContact(txtCorpNum.Text, contactInfo, txtUserId.Text);
 
-                MessageBox.Show("[" + response.code.ToString() + "] " + response.message, "담당자 정보 수정");
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "담당자 정보 수정");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[" + ex.code.ToString() + "] " + ex.Message, "담당자 정보 수정");
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "담당자 정보 수정");
             }
         }
 
+        /*
+         * 연동회원의 회사정보를 수정합니다.
+         */
         private void btnUpdateCorpInfo_Click(object sender, EventArgs e)
         {
             CorpInfo corpInfo = new CorpInfo();
 
+            // 대표자성명
             corpInfo.ceoname = "대표자명 테스트";
+
+            // 상호
             corpInfo.corpName = "업체명";
+
+            // 주소
             corpInfo.addr = "주소정보 수정";
+
+            // 업태 
             corpInfo.bizType = "업태정보 수정";
-            corpInfo.bizClass = "업종정보 수정";
+
+            // 종목
+            corpInfo.bizClass = "종목 수정";
 
             try
             {
                 Response response = htCashbillService.UpdateCorpInfo(txtCorpNum.Text, corpInfo, txtUserId.Text);
 
-                MessageBox.Show("[ " + response.code.ToString() + " ] " + response.message, "회사정보 수정");
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "회사정보 수정");
 
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message, "회사정보 수정");
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "회사정보 수정");
             }
         }
 
+        /*
+         * 현금영수증 매출/매입 내역 수집을 요청합니다
+         * - 수집 요청후 반환받은 작업아이디(JobID)의 유효시간은 1시간 입니다. 
+         * - 매출/매입 연계 프로세스는 "[홈택스 현금영수증 연계 API 연동매뉴얼]
+         *   > 1.2. 프로세스 흐름도" 를 참고하시기 바랍니다.
+         */
         private void btnRequestJob_Click(object sender, EventArgs e)
         {
             // 현금영수증 유형 SELL-매출, BUY-매입
             KeyType tiKeyType = KeyType.SELL;
 
             // 시작일자, 표시형식(yyyyMMdd)
-            String SDate = "20160601";
+            String SDate = "20160901";
 
             // 종료일자, 표시형식(yyyyMMdd)
-            String EDate = "20160731";
+            String EDate = "20161031";
 
             try
             {
@@ -327,10 +465,16 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message, "수집 요청");
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "수집 요청");
             }            
         }
 
+        /*
+         *  수집 요청 상태를 확인합니다.
+         * - 응답항목 관한 정보는 "[홈택스 현금영수증 연계 API 연동매뉴얼
+         *   > 3.2.2. GetJobState(수집 상태 확인)" 을 참고하시기 바랍니다 .
+         */
         private void btnGetJobState_Click(object sender, EventArgs e)
         {
             try
@@ -355,10 +499,17 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message, "수집 상태 확인");
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "수집 상태 확인");
             }            
         }
 
+        /*
+         * 수집 요청건들에 대한 상태 목록을 확인합니다.
+         * - 수집 요청 작업아이디(JobID)의 유효시간은 1시간 입니다.
+         * - 응답항목에 관한 정보는 "[홈택스 현금영수증 연계 API 연동매뉴얼]
+         *   > 3.2.3. ListActiveJob (수집 상태 목록 확인)" 을 참고하시기 바랍니다.
+         */
         private void btnListActiveJob_Click(object sender, EventArgs e)
         {
             try
@@ -395,10 +546,16 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message, "수집 목록 확인");
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "수집 목록 확인");
             } 
         }
 
+        /*
+         * 검색조건을 사용하여 수집결과를 조회합니다.
+         * - 응답항목에 관한 정보는 "[홈택스 현금영수증 연계 API 연동매뉴얼]
+         *   > 3.3.1. Search (수집 결과 조회)" 을 참고하시기 바랍니다.
+         */
         private void btnSearch_Click(object sender, EventArgs e)
         {
             // 현금영수증 형태 배열, N-일반 현금영수증, C-취소 현금영수증
@@ -453,10 +610,17 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message, "수집 결과 조회");
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "수집 결과 조회");
             }     
         }
 
+
+        /*
+         * 검색조건을 사용하여 수집 결과 요약정보를 조회합니다.
+         * - 응답항목에 관한 정보는 "[홈택스 현금영수증 연계 API 연동매뉴얼]
+         *   > 3.3.2. Summary (수집 결과 요약정보 조회)" 을 참고하시기 바랍니다.
+         */
         private void btnSummary_Click(object sender, EventArgs e)
         {
             // 현금영수증 형태 배열, N-일반 현금영수증, C-취소 현금영수증
@@ -479,17 +643,34 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message, "수집 결과 요약정보 조회");
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "수집 결과 요약정보 조회");
             }
         }
 
+
+        /*
+         * 정액제 신청 팝업 URL을 반환합니다.
+         * - 반환된 URL은 보안정책에 따라 30초의 유효시간을 갖습니다.
+         */
         private void btnGetFlatRatePopUpURL_Click(object sender, EventArgs e)
         {
-            String url = htCashbillService.GetFlatRatePopUpURL(txtCorpNum.Text, txtUserId.Text);
-        
-            MessageBox.Show(url, "정액제 서비스 신청 URL");
+            try
+            {
+                String url = htCashbillService.GetFlatRatePopUpURL(txtCorpNum.Text, txtUserId.Text);
+
+                MessageBox.Show(url, "정액제 서비스 신청 URL");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "정액제 서비스 신청 URL");
+            }
         }
 
+        /*
+         * 연동회원의 정액제 서비스 상태를 확인합니다.
+         */
         private void button1_Click(object sender, EventArgs e)
         {
             try
@@ -511,18 +692,33 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message, "정액제 서비스 상태 확인");
-
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "정액제 서비스 상태 확인");
             }
         }
 
+        /*
+         * 공인인증서 등록 팝업 URL을 반환합니다.
+         * - 반환된 URL은 보안정책에 따라 30초의 유효시간을 갖습니다.
+         */
         private void btnGetCertificatePopUpURL_Click(object sender, EventArgs e)
         {
-            String url = htCashbillService.GetCertificatePopUpURL(txtCorpNum.Text, txtUserId.Text);
+            try
+            {
+                String url = htCashbillService.GetCertificatePopUpURL(txtCorpNum.Text, txtUserId.Text);
 
-            MessageBox.Show(url, "공인인증서 등록 URL");
+                MessageBox.Show(url, "공인인증서 등록 URL");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "공인인증서 등록 URL");
+            }
         }
 
+        /*
+         * 등록된 홈택스 공인인증서의 만료일자를 확인합니다.
+         */
         private void btnGetCertificateExpireDate_Click(object sender, EventArgs e)
         {
             try
@@ -534,8 +730,8 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message, "공인인증서 만료일시 확인");
-
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "공인인증서 만료일시 확인");
             }
         }
 

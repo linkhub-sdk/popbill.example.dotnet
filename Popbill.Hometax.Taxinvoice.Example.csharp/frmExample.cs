@@ -70,20 +70,22 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
             }
         }
 
+        /*
+         * 회원아이디 중복여부를 확인합니다.
+         */
         private void btnCheckID_Click(object sender, EventArgs e)
         {
             try
             {
-                //CheckID(조회할 회원아이디)
                 Response response = htTaxinvoiceService.CheckID(txtUserId.Text);
 
-                MessageBox.Show("[" + response.code.ToString() + "] " + response.message, "ID 중복확인");
-
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "ID 중복여부 확인");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[" + ex.code.ToString() + "] " + ex.Message, "ID 중복확인");
-
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "ID 중복여부 확인");
             }
         }
 
@@ -92,31 +94,59 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
 
             JoinForm joinInfo = new JoinForm();
 
-            joinInfo.LinkID = LinkID;                 //링크아이디
-            joinInfo.CorpNum = "1231212312";          //사업자번호 "-" 제외
+            //링크아이디
+            joinInfo.LinkID = LinkID;
+
+            //사업자번호 "-" 제외
+            joinInfo.CorpNum = "1231212312";
+
+            //대표자명 
             joinInfo.CEOName = "대표자성명";
+
+            //상호
             joinInfo.CorpName = "상호";
+
+            //주소
             joinInfo.Addr = "주소";
+
+            //업태
             joinInfo.BizType = "업태";
-            joinInfo.BizClass = "업종";
-            joinInfo.ID = "userid";                   //6자 이상 20자 미만
-            joinInfo.PWD = "pwd_must_be_long_enough"; //6자 이상 20자 미만
+
+            // 종목
+            joinInfo.BizClass = "종목";
+
+            // 아이디, 6자이상 20자 미만
+            joinInfo.ID = "userid";
+
+            // 비밀번호, 6자이상 20자 미만
+            joinInfo.PWD = "pwd_must_be_long_enough";
+
+            // 담당자명
             joinInfo.ContactName = "담당자명";
-            joinInfo.ContactTEL = "02-999-9999";
-            joinInfo.ContactHP = "010-1234-5678";
-            joinInfo.ContactFAX = "02-999-9998";
+
+            // 담당자 연락처
+            joinInfo.ContactTEL = "070-4304-2991";
+
+            // 담당자 휴대폰번호
+            joinInfo.ContactHP = "010-111-222";
+
+            // 담당자 팩스번호
+            joinInfo.ContactFAX = "02-6442-9700";
+
+            // 담당자 메일주소
             joinInfo.ContactEmail = "test@test.com";
 
             try
             {
                 Response response = htTaxinvoiceService.JoinMember(joinInfo);
 
-                MessageBox.Show("[" + response.code.ToString() + "] " + response.message, "연동회원 가입요청");
-
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "연동회원 가입요청");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[" + ex.code.ToString() + "] " + ex.Message, "연동회원 가입요청");
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "연동회원 가입요청");
             }
         }
 
