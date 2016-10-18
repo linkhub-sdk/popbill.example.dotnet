@@ -441,7 +441,6 @@
             this.txtReceiptNum.Name = "txtReceiptNum";
             this.txtReceiptNum.Size = new System.Drawing.Size(143, 21);
             this.txtReceiptNum.TabIndex = 17;
-            this.txtReceiptNum.Text = "014102315000000005";
             // 
             // label4
             // 

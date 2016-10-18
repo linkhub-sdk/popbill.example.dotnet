@@ -1,4 +1,19 @@
-﻿using System;
+﻿
+/*
+ * 팝빌 팩스 API DotNet SDK Example
+ * 
+ * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - http://blog.linkhub.co.kr/587
+ * - 업데이트 일자 : 2016-10-18
+ * - 연동 기술지원 연락처 : 1600-8536 / 070-4304-2991~2
+ * - 연동 기술지원 이메일 : dev@linkhub.co.kr
+ * 
+ * <테스트 연동개발 준비사항>
+ * 1) 30, 33 라인에 선언된 링크아이디(LinkID)와 비밀키(SecretKey)를 
+ *    링크허브 가입시 메일로 발급받은 인증정보로 변경합니다.
+ * 2) 팝빌 개발용 사이트(test.popbill.com)에 연동회원으로 가입합니다.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +28,7 @@ namespace Popbill.Fax.Example.csharp
     {
         //링크아이디
         private string LinkID = "TESTER";
+
         //비밀키, 유출에 주의
         private string SecretKey = "SwWxqU+0TErBXy/9TVjIPEnI0VTUMMSQZtJf3Ed8q3I=";
 
@@ -24,61 +40,100 @@ namespace Popbill.Fax.Example.csharp
         {
             InitializeComponent();
 
-            //초기화
+            // 팩스 서비스 모듈초기화
             faxService = new FaxService(LinkID, SecretKey);
-            //테스트를 완료한후 아래 변수를 false로 변경하거나, 아래줄을 삭제하여 실제 서비스 연결.
+
+            // 연동환경 설정값 true(개발용), false(상업용)
             faxService.IsTest = true;
         }
 
+        /*
+         * 팝빌 로그인 팝업 URL을 반환합니다.
+         * - 반환된 URL은 보안정책에 따라 30초의 유효시간을 갖습니다. 
+         */
         private void getPopbillURL_Click(object sender, EventArgs e)
         {
             try
             {
                 string url = faxService.GetPopbillURL(txtCorpNum.Text, txtUserId.Text, "LOGIN");
 
-                MessageBox.Show(url);
+                MessageBox.Show(url, "팝빌 로그인 URL");
 
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "팝빌 로그인 URL");
             }
         }
 
+        /*
+         * 연동회원 신규가입을 요청합니다.
+         */
         private void btnJoinMember_Click(object sender, EventArgs e)
         {
             JoinForm joinInfo = new JoinForm();
 
+            // 링크아이디
             joinInfo.LinkID = LinkID;
-            joinInfo.CorpNum = "1231212312";          //사업자번호 "-" 제외
+
+            // 사업자번호 "-" 제외
+            joinInfo.CorpNum = "1231212312";
+
+            // 대표자명 
             joinInfo.CEOName = "대표자성명";
+
+            // 상호
             joinInfo.CorpName = "상호";
+
+            // 주소
             joinInfo.Addr = "주소";
-            joinInfo.ZipCode = "500-100";
+
+            // 업태
             joinInfo.BizType = "업태";
-            joinInfo.BizClass = "업종";
-            joinInfo.ID = "userid";                   //6자 이상 20자 미만
-            joinInfo.PWD = "pwd_must_be_long_enough"; //6자 이상 20자 미만
+
+            // 종목
+            joinInfo.BizClass = "종목";
+
+            // 아이디, 6자이상 20자 미만
+            joinInfo.ID = "userid";
+
+            // 비밀번호, 6자이상 20자 미만
+            joinInfo.PWD = "pwd_must_be_long_enough";
+
+            // 담당자명
             joinInfo.ContactName = "담당자명";
-            joinInfo.ContactTEL = "02-999-9999";
-            joinInfo.ContactHP = "010-1234-5678";
-            joinInfo.ContactFAX = "02-999-9998";
+
+            // 담당자 연락처
+            joinInfo.ContactTEL = "070-4304-2991";
+
+            // 담당자 휴대폰번호
+            joinInfo.ContactHP = "010-111-222";
+
+            // 담당자 팩스번호
+            joinInfo.ContactFAX = "02-6442-9700";
+
+            // 담당자 메일주소
             joinInfo.ContactEmail = "test@test.com";
 
             try
             {
                 Response response = faxService.JoinMember(joinInfo);
 
-                MessageBox.Show(response.message);
-
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "연동회원 가입요청");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
-
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "연동회원 가입요청");
             }
         }
 
+        /*
+         * 연동회원의 잔여포인트를 조회합니다.
+         * - 파트너 과금 방식의 경우 파트너 잔여포인트 조회(GetPartnerBalance API)를 이용하시기 바랍니다. 
+         */
         private void btnGetBalance_Click(object sender, EventArgs e)
         {
 
@@ -86,60 +141,75 @@ namespace Popbill.Fax.Example.csharp
             {
                 double remainPoint = faxService.GetBalance(txtCorpNum.Text);
 
-                MessageBox.Show(remainPoint.ToString());
+                MessageBox.Show("연동회원 잔여포인트 : " + remainPoint.ToString(), "연동회원 잔여포인트 확인");
 
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "연동회원 잔여포인트 확인");
 
             }
         }
 
+        /*
+         * 파트너의 잔여포인트를 확인합니다.
+         * - 연동과금 방식의 경우 연동회원 잔여포인트 조회 (GetBalance API)를 이용하시기 바랍니다.
+         * 
+         */
         private void btnGetPartnerBalance_Click(object sender, EventArgs e)
         {
             try
             {
                 double remainPoint = faxService.GetPartnerBalance(txtCorpNum.Text);
 
-                MessageBox.Show(remainPoint.ToString());
+                MessageBox.Show("파트너 잔여포인트 : " + remainPoint.ToString(), "파트너 잔여포인트 확인");
 
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "파트너 잔여포인트 확인");
 
             }
         }
 
+        /*
+         * 해당사업자가 연동회원으로 가입되어있는지 여부를 확인합니다.
+         * - 사업자번호는 '-' 제외한 10자리 숫자 문자열입니다.
+         */
         private void btnCheckIsMember_Click(object sender, EventArgs e)
         {
             try
             {
                 Response response = faxService.CheckIsMember(txtCorpNum.Text, LinkID);
 
-                MessageBox.Show(response.code.ToString() + " | " + response.message);
-
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "연동회원 가입여부 확인");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
-
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                        "응답메시지(message) : " + ex.Message, "연동회원 가입여부 확인");
             }
         }
 
+        /*
+         * 팩스 전송단가를 확인합니다.
+         */
         private void btnUnitCost_Click(object sender, EventArgs e)
         {
             try
             {
                 float unitCost = faxService.GetUnitCost(txtCorpNum.Text);
 
-                MessageBox.Show(unitCost.ToString());
+                MessageBox.Show("팩스 전송단가 확인 : " + unitCost.ToString(), "팩스 전송단가 확인");
 
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "팩스 전송단가 확인");
 
             }
         }
@@ -156,38 +226,48 @@ namespace Popbill.Fax.Example.csharp
             return reserveDT;
         }
 
-
+        /*
+         * 팩스 전송내역 팝업 URL을 반환합니다.
+         */
         private void btnGetURL_Click(object sender, EventArgs e)
         {
             try
             {
                 string url = faxService.GetURL(txtCorpNum.Text, txtUserId.Text, "BOX");
 
-                MessageBox.Show(url);
-
+                MessageBox.Show(url, "팩스 전송내역 URL");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "팩스 전송내역 URL");
             }
         }
 
+        /*
+         * 팩스 예약전송건을 취소처리합니다.
+         * - 예약전송 취소는 전송예약시간 10분전까지만 가능합니다.
+         */
         private void btnCancelReserve_Click(object sender, EventArgs e)
         {
             try
             {
                 Response response = faxService.CancelReserve(txtCorpNum.Text, txtReceiptNum.Text, txtUserId.Text);
 
-                MessageBox.Show(response.message);
-
-
+                MessageBox.Show(response.message, "팩스 예약전송 취소");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "팩스 예약전송 취소");
             }
         }
 
+        /*
+         * 팩스전송 상태정보 조회
+         * - 응답항목에 대한 정보는 "[팩스 API 연동매뉴얼] > 3.3.1 GetFaxDetail 
+         *   (전송내역 및 전송상태 확인)" 을 참조하시기 바랍니다. 
+         */
         private void btnGetFaxResult_Click(object sender, EventArgs e)
         {
             try
@@ -199,15 +279,21 @@ namespace Popbill.Fax.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "팩스 전송상태 확인");
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            String senderNum = "07043042991";       // 발신번호
-            String receiverNum = "070111222";       // 수신번호
-            String receiverName = "수신자명";       // 수신자명 
+            // 발신번호
+            String senderNum = "07043042991";
+
+            // 수신번호
+            String receiverNum = "070111222";
+
+            // 수신자명 
+            String receiverName = "수신자명";       
 
             if (fileDialog.ShowDialog(this) == DialogResult.OK)
             {
@@ -217,12 +303,14 @@ namespace Popbill.Fax.Example.csharp
                 {
                     String receiptNum = faxService.SendFAX(txtCorpNum.Text, senderNum, receiverNum, receiverName, strFileName, getReserveDT(), txtUserId.Text);
 
-                    MessageBox.Show("접수번호 : " + receiptNum);
+                    MessageBox.Show("접수번호 : " + receiptNum, "팩스 전송");
+
                     txtReceiptNum.Text = receiptNum;
                 }
                 catch (PopbillException ex)
                 {
-                    MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                    MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                    "응답메시지(message) : " + ex.Message, "팩스 전송");
                 }
 
             }
@@ -230,7 +318,8 @@ namespace Popbill.Fax.Example.csharp
 
         private void button2_Click(object sender, EventArgs e)
         {
-            String senderNum = "07075103710";       // 발신번호
+            // 발신번호, 날짜형식(yyyMMdd)
+            String senderNum = "07043042991";       
 
             if (fileDialog.ShowDialog(this) == DialogResult.OK)
             {
@@ -241,7 +330,11 @@ namespace Popbill.Fax.Example.csharp
                 for (int i = 0; i < 100; i++)
                 {
                     FaxReceiver receiver = new FaxReceiver();
+
+                    // 수신번호
                     receiver.receiveNum = "111-2222-3333";
+
+                    // 수신자명
                     receiver.receiveName = "수신자명칭_" + i;
                     receivers.Add(receiver);
                 }
@@ -250,12 +343,14 @@ namespace Popbill.Fax.Example.csharp
                 {
                     String receiptNum = faxService.SendFAX(txtCorpNum.Text, senderNum, receivers, strFileName, getReserveDT(), txtUserId.Text);
 
-                    MessageBox.Show("접수번호 : " + receiptNum);
+                    MessageBox.Show("접수번호 : " + receiptNum, "팩스 전송");
+
                     txtReceiptNum.Text = receiptNum;
                 }
                 catch (PopbillException ex)
                 {
-                    MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                    MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                    "응답메시지(message) : " + ex.Message, "팩스 전송");
                 }
 
             }
@@ -263,9 +358,14 @@ namespace Popbill.Fax.Example.csharp
 
         private void button3_Click(object sender, EventArgs e)
         {
-            String senderNum = "07075103710";   // 발신번호
-            String receiverNum = "010111222";   // 수신번호
-            String receiverName = "수신자명";   // 수신자명
+            // 발신번호
+            String senderNum = "07043042991";
+
+            // 수신번호
+            String receiverNum = "070111222";
+
+            // 수신자명
+            String receiverName = "수신자명";   
             
             List<String> filePaths = new List<string>();
 
@@ -281,20 +381,22 @@ namespace Popbill.Fax.Example.csharp
                 {
                     String receiptNum = faxService.SendFAX(txtCorpNum.Text, senderNum, receiverNum, receiverName, filePaths, getReserveDT(), txtUserId.Text);
 
-                    MessageBox.Show("접수번호 : " + receiptNum);
+                    MessageBox.Show("접수번호 : " + receiptNum, "팩스 전송");
+            
                     txtReceiptNum.Text = receiptNum;
                 }
                 catch (PopbillException ex)
                 {
-                    MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                    MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                    "응답메시지(message) : " + ex.Message, "팩스 전송");
                 }
-
             }
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            String senderNum = "07075103710";   // 발신번호
+            // 발신번호
+            String senderNum = "07043042991";   
 
             List<String> filePaths = new List<string>();
 
@@ -311,7 +413,11 @@ namespace Popbill.Fax.Example.csharp
                 for (int i = 0; i < 100; i++)
                 {
                     FaxReceiver receiver = new FaxReceiver();
+
+                    // 수신번호
                     receiver.receiveNum = "111-2222-3333";
+
+                    // 수신자명
                     receiver.receiveName = "수신자명칭_" + i;
                     receivers.Add(receiver);
                 }
@@ -320,76 +426,113 @@ namespace Popbill.Fax.Example.csharp
                 {
                     String receiptNum = faxService.SendFAX(txtCorpNum.Text, senderNum, receivers, filePaths, getReserveDT(), txtUserId.Text);
 
-                    MessageBox.Show("접수번호 : " + receiptNum);
+                    MessageBox.Show("접수번호 : " + receiptNum, "팩스전송");
+
                     txtReceiptNum.Text = receiptNum;
                 }
                 catch (PopbillException ex)
                 {
-                    MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                    MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                    "응답메시지(message) : " + ex.Message, "팩스전송");
                 }
 
             }
         }
 
+        /*
+         * 팝빌 포인트충전 팝업 URL을 반환합니다.
+         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         */
         private void btnGetPopbillURL_CHRG_Click(object sender, EventArgs e)
         {
             try
             {
                 string url = faxService.GetPopbillURL(txtCorpNum.Text, txtUserId.Text, "CHRG");
 
-                MessageBox.Show(url);
+                MessageBox.Show(url, "포인트충전 팝업 URL");
 
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "포인트충전 팝업 URL");
             }
         }
 
+        /*
+         * 아이디 중복여부를 확인합니다.
+         * - 아이디는 6자 이상 20미만으로 작성하시기 바랍니다.
+         * - 아이디는 대/소문자 구분되지 않습니다.
+         * 
+         */
         private void btnCheckID_Click(object sender, EventArgs e)
         {
             try
             {
-                //CheckID(조회할 회원아이디)
                 Response response = faxService.CheckID(txtUserId.Text);
 
-                MessageBox.Show("[ " + response.code.ToString() + " ] " + response.message, "ID 중복확인");
-
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "ID 중복여부 확인");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message, "ID 중복확인");
-
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "ID 중복여부 확인");
             }
         }
 
+        /*
+         * 연동회원의 담당자를 추가합니다.
+         */
         private void btnRegistContact_Click(object sender, EventArgs e)
         {
             Contact contactInfo = new Contact();
 
-            contactInfo.id = "test12341234";        // 담당자 아이디, 한글, 영문(대/소), 숫자, '-', '_' 6자 이상 20자 미만 구성
-            contactInfo.pwd = "12345";              // 비밀번호, 6자 이상 20자 미만 구성
-            contactInfo.personName = "담당자 명";   // 담당자명 
-            contactInfo.tel = "070-7510-3710";      // 연락처
-            contactInfo.hp = "010-1234-1234";       // 휴대폰번호
-            contactInfo.fax = "070-7510-3710";      // 팩스번호 
-            contactInfo.email = "code@linkhub.co.kr";   // 이메일주소
-            contactInfo.searchAllAllowYN = false;   // 회사조회 권한여부, true(회사조회), false(개인조회)
-            contactInfo.mgrYN = false;              // 관리자 권한여부 
+            //담당자 아이디, 6자 이상 20자 미만
+            contactInfo.id = "userid";
+
+            //비밀번호, 6자 이상 20자 미만
+            contactInfo.pwd = "this_is_password";
+
+            //담당자명 
+            contactInfo.personName = "담당자명";
+
+            //담당자연락처
+            contactInfo.tel = "070-4304-2991";
+
+            //담당자 휴대폰번호
+            contactInfo.hp = "010-111-222";
+
+            //담당자 팩스번호 
+            contactInfo.fax = "070-4304-2991";
+
+            //담당자 메일주소
+            contactInfo.email = "dev@linkhub.co.kr";
+
+            // 회사조회 권한여부, true(회사조회), false(개인조회)
+            contactInfo.searchAllAllowYN = false;
+
+            // 관리자 권한여부 
+            contactInfo.mgrYN = false;
 
             try
             {
                 Response response = faxService.RegistContact(txtCorpNum.Text, contactInfo, txtUserId.Text);
 
-                MessageBox.Show("[" + response.code.ToString() + "] " + response.message, "담당자 추가");
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "담당자 추가");
 
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[" + ex.code.ToString() + "] " + ex.Message, "담당자 추가");
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "담당자 추가");
             }
         }
 
+        /*
+         * 연동회원의 담당자 목록을 확인합니다.
+         */
         private void btnListContact_Click(object sender, EventArgs e)
         {
             try
@@ -417,34 +560,56 @@ namespace Popbill.Fax.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message, "담당자 목록조회");
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "연동회원 담당자 목록 확인");
             }
         }
 
+        /*
+         * 담당자 정보를 수정합니다.
+         */
         private void btnUpdateContact_Click(object sender, EventArgs e)
         {
             Contact contactInfo = new Contact();
 
-            contactInfo.personName = "담당자123";      // 담당자명 
-            contactInfo.tel = "070-7510-3710";      // 연락처
-            contactInfo.hp = "010-1234-1234";       // 휴대폰번호
-            contactInfo.fax = "070-7510-3710";      // 팩스번호 
-            contactInfo.email = "code@linkhub.co.kr";   // 이메일주소
-            contactInfo.searchAllAllowYN = true;    // 회사조회 권한여부, true(회사조회), false(개인조회)
-            contactInfo.mgrYN = false;              // 관리자 권한여부 
+            // 담당자명 
+            contactInfo.personName = "담당자123";
+
+            // 연락처
+            contactInfo.tel = "070-4304-2991";
+
+            // 휴대폰번호
+            contactInfo.hp = "010-1234-1234";
+
+            // 팩스번호 
+            contactInfo.fax = "02-6442-9700";
+
+            // 이메일주소
+            contactInfo.email = "dev@linkhub.co.kr";
+
+            // 회사조회 권한여부, true(회사조회), false(개인조회)
+            contactInfo.searchAllAllowYN = true;
+
+            // 관리자 권한여부 
+            contactInfo.mgrYN = false; 
 
             try
             {
                 Response response = faxService.UpdateContact(txtCorpNum.Text, contactInfo, txtUserId.Text);
 
-                MessageBox.Show("[" + response.code.ToString() + "] " + response.message, "담당자 정보 수정");
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "담당자 정보수정");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[" + ex.code.ToString() + "] " + ex.Message, "담당자 정보 수정");
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "담당자 정보수정");
             }
         }
 
+        /*
+         * 회사정보를 조회합니다.
+         */
         private void btnGetCorpInfo_Click(object sender, EventArgs e)
         {
             try
@@ -462,7 +627,8 @@ namespace Popbill.Fax.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message, "회사정보 조회");
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "회사정보 조회");
             }
         }
 
@@ -470,29 +636,47 @@ namespace Popbill.Fax.Example.csharp
         {
             CorpInfo corpInfo = new CorpInfo();
 
+            // 대표자성명
             corpInfo.ceoname = "대표자명 테스트";
+
+            // 상호
             corpInfo.corpName = "업체명";
+
+            // 주소
             corpInfo.addr = "주소정보 수정";
+
+            // 업태 
             corpInfo.bizType = "업태정보 수정";
-            corpInfo.bizClass = "업종정보 수정";
+
+            // 종목
+            corpInfo.bizClass = "종목 수정";
 
             try
             {
                 Response response = faxService.UpdateCorpInfo(txtCorpNum.Text, corpInfo, txtUserId.Text);
 
-                MessageBox.Show("[ " + response.code.ToString() + " ] " + response.message, "회사정보 수정");
-
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "회사정보 수정");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message, "회사정보 수정");
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "회사정보 수정");
             }
         }
 
+        /*
+         * 검색조건을 사용하여 현금영수증 목록을 확인합니다.
+         * - 응답항목에 대한 정보는 "[팩스 API 연동매뉴얼] > 3.3.2. Search(전송내역 목록 조회)" 를 
+         *   참조하여 주시기 바랍니다.
+         */
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            String SDate = "20160101";      // 시작일자, yyyyMMdd
-            String EDate = "20160202";      // 종료일자, yyyyMMdd
+            // 시작일자, 날짜형식(yyyyMMdd)
+            String SDate = "20160901";
+
+            // 종료일자, 날짜형식(yyyyMMdd)
+            String EDate = "20161031";     
 
             //전송상태 배열 1-대기, 2-성공, 3-실패, 4-취소
             String[] State = new String[4];
@@ -501,12 +685,20 @@ namespace Popbill.Fax.Example.csharp
             State[2] = "3";
             State[3] = "4";
 
-            bool ReserveYN = false;     // 예약여부, True-예약전송건 검색
-            bool SenderOnly = false;    // 개인조회여부, True-개인조회
+            // 예약여부, True-예약전송건 검색
+            bool ReserveYN = false;
 
-            String Order = "D";         // 정렬방향, A-오름차순, D-내림차순
-            int Page = 1;       // 페이지 번호
-            int PerPage = 100;   // 페이지당 검색개수, 최대 1000개
+            // 개인조회여부, True-개인조회, False-회사조회
+            bool SenderOnly = false;
+
+            // 정렬방향, A-오름차순, D-내림차순
+            String Order = "D";
+
+            // 페이지 번호
+            int Page = 1;
+
+            // 페이지당 검색개수, 최대 1000개
+            int PerPage = 100;   
 
             try
             {
@@ -514,12 +706,12 @@ namespace Popbill.Fax.Example.csharp
                 
                 String tmp = null;
 
-                tmp += "code : " + searchResult.code + CRLF;
-                tmp += "total : " + searchResult.total + CRLF;
-                tmp += "perPage : " + searchResult.perPage + CRLF;
-                tmp += "pageNum : " + searchResult.pageNum + CRLF;
-                tmp += "pageCount : " + searchResult.pageCount + CRLF;
-                tmp += "message : " + searchResult.message + CRLF + CRLF;
+                tmp += "code (응답코드) : " + searchResult.code + CRLF;
+                tmp += "total (총 검색결과 건수): " + searchResult.total + CRLF;
+                tmp += "perPage (페이지당 검색개수) : " + searchResult.perPage + CRLF;
+                tmp += "pageNum (페이지 번호) : " + searchResult.pageNum + CRLF;
+                tmp += "pageCount (페이지 개수) : " + searchResult.pageCount + CRLF;
+                tmp += "message (응답메시지) : " + searchResult.message + CRLF + CRLF;
 
                 MessageBox.Show(tmp, "팩스 전송내역 조회");
 
@@ -527,10 +719,14 @@ namespace Popbill.Fax.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message, "팩스 전송내역 조회");
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "팩스 전송내역 조회");
             }
         }
 
+        /*
+         * 팩스 APi서비스 과금정보를 확인합니다.
+         */
         private void btnGetChargeInfo_Click(object sender, EventArgs e)
         {
             try
@@ -542,11 +738,12 @@ namespace Popbill.Fax.Example.csharp
                 tmp += "chargeMethod (과금유형) : " + chrgInf.chargeMethod + CRLF;
                 tmp += "rateSystem (과금제도) : " + chrgInf.rateSystem + CRLF;
 
-                MessageBox.Show(tmp, "과금정보 확인");
+                MessageBox.Show(tmp, "과금정보 조회");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message, "과금정보 조회");
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "과금정보 조회");
             }
         }
 
