@@ -1,4 +1,19 @@
-﻿using System;
+﻿
+/*
+ * 팝빌 문자 API DotNet SDK Example
+ * 
+ * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - http://blog.linkhub.co.kr/587
+ * - 업데이트 일자 : 2016-10-18
+ * - 연동 기술지원 연락처 : 1600-8536 / 070-4304-2991~2
+ * - 연동 기술지원 이메일 : dev@linkhub.co.kr
+ * 
+ * <테스트 연동개발 준비사항>
+ * 1) 30, 33 라인에 선언된 링크아이디(LinkID)와 비밀키(SecretKey)를 
+ *    링크허브 가입시 메일로 발급받은 인증정보로 변경합니다.
+ * 2) 팝빌 개발용 사이트(test.popbill.com)에 연동회원으로 가입합니다.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +28,7 @@ namespace Popbill.Message.Example.csharp
     {
         //링크아이디
         private string LinkID = "TESTER";
+
         //비밀키
         private string SecretKey = "SwWxqU+0TErBXy/9TVjIPEnI0VTUMMSQZtJf3Ed8q3I=";
 
@@ -24,61 +40,100 @@ namespace Popbill.Message.Example.csharp
         {
             InitializeComponent();
 
-            //초기화
+            // 문자 서비스 모듈 초기화
             messageService = new MessageService(LinkID, SecretKey);
-            //테스트를 완료한후 아래 변수를 false로 변경하거나, 아래줄을 삭제하여 실제 서비스 연결.
+
+            // 연동환경 설정값, true(개발용), false(상업용)
             messageService.IsTest = true;
         }
 
+        /*
+         * 팝빌 로그인 팝업 URL을 반환합니다.
+         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다 
+         */
         private void getPopbillURL_Click(object sender, EventArgs e)
         {
             try
             {
                 string url = messageService.GetPopbillURL(txtCorpNum.Text, txtUserId.Text, "LOGIN");
 
-                MessageBox.Show(url);
+                MessageBox.Show(url, "팝빌 로그인 URL");
 
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "팝빌 로그인 URL");
             }
         }
 
+        /*
+         * 연동회원 신규가입을 요청합니다.
+         */
         private void btnJoinMember_Click(object sender, EventArgs e)
         {
             JoinForm joinInfo = new JoinForm();
 
+            // 링크아이디
             joinInfo.LinkID = LinkID;
-            joinInfo.CorpNum = "1231212312";          //사업자번호 "-" 제외
+
+            // 사업자번호 "-" 제외
+            joinInfo.CorpNum = "1231212312";
+
+            // 대표자명 
             joinInfo.CEOName = "대표자성명";
+
+            // 상호
             joinInfo.CorpName = "상호";
+
+            // 주소
             joinInfo.Addr = "주소";
-            joinInfo.ZipCode = "500-100";
+
+            // 업태
             joinInfo.BizType = "업태";
-            joinInfo.BizClass = "업종";
-            joinInfo.ID = "userid";                   //6자 이상 20자 미만
-            joinInfo.PWD = "pwd_must_be_long_enough"; //6자 이상 20자 미만
+
+            // 종목
+            joinInfo.BizClass = "종목";
+
+            // 아이디, 6자이상 20자 미만
+            joinInfo.ID = "userid";
+
+            // 비밀번호, 6자이상 20자 미만
+            joinInfo.PWD = "pwd_must_be_long_enough";
+
+            // 담당자명
             joinInfo.ContactName = "담당자명";
-            joinInfo.ContactTEL = "02-999-9999";
-            joinInfo.ContactHP = "010-1234-5678";
-            joinInfo.ContactFAX = "02-999-9998";
+
+            // 담당자 연락처
+            joinInfo.ContactTEL = "070-4304-2991";
+
+            // 담당자 휴대폰번호
+            joinInfo.ContactHP = "010-111-222";
+
+            // 담당자 팩스번호
+            joinInfo.ContactFAX = "02-6442-9700";
+
+            // 담당자 메일주소
             joinInfo.ContactEmail = "test@test.com";
 
             try
             {
                 Response response = messageService.JoinMember(joinInfo);
 
-                MessageBox.Show(response.message);
-
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "연동회원 가입요청");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
-
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "연동회원 가입요청");
             }
         }
 
+        /*
+         * 연동회원의 잔여포인트를 조회합니다.
+         * - 파트너 과금 방식의 경우 파트너 잔여 포인트 조회(GetPartnerBalance API)를 이용하시기 바랍니다.
+         */
         private void btnGetBalance_Click(object sender, EventArgs e)
         {
 
@@ -86,77 +141,92 @@ namespace Popbill.Message.Example.csharp
             {
                 double remainPoint = messageService.GetBalance(txtCorpNum.Text);
 
-                MessageBox.Show(remainPoint.ToString());
-
+                MessageBox.Show("연동회원 잔여포인트 : " + remainPoint.ToString(), "연동회원 잔여포인트 확인");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "연동회원 잔여포인트 확인");
 
             }
         }
 
+        /*
+         * 파트너 잔여포인트를 확인합니다.
+         * - 연동과금 방식의 경우 연동회원 잔여포인트 조회(GetBalance API)를 이용하시기 바랍니다.
+         */
         private void btnGetPartnerBalance_Click(object sender, EventArgs e)
         {
             try
             {
                 double remainPoint = messageService.GetPartnerBalance(txtCorpNum.Text);
 
-                MessageBox.Show(remainPoint.ToString());
+                MessageBox.Show("파트너 잔여포인트 : " + remainPoint.ToString(), "파트너 잔여포인트 확인");
 
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
-
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "파트너 잔여포인트 확인");
             }
         }
 
+        /*
+         * 해당사업자가 연동회원으로 가입되어있는지 여부를 확인합니다.
+         * - 사업자번호는 '-'를 제외한 10자리 숫자 문자열입니다.
+         */
         private void btnCheckIsMember_Click(object sender, EventArgs e)
         {
             try
             {
                 Response response = messageService.CheckIsMember(txtCorpNum.Text, LinkID);
 
-                MessageBox.Show(response.code.ToString() + " | " + response.message);
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "연동회원 가입여부 확인");
 
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "연동회원 가이병부 확인");
 
             }
         }
 
+        /*
+         * 단문(SMS) 메시지 전송단가를 확인합니다.
+         */
         private void btnUnitCost_Click(object sender, EventArgs e)
         {
             try
             {
                 float unitCost = messageService.GetUnitCost(txtCorpNum.Text,MessageType.SMS);
 
-                MessageBox.Show(unitCost.ToString());
+                MessageBox.Show("전송단가 : " + unitCost.ToString(), "단문(SMS) 메시지 전송단가");
 
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
-
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "단문(SMS) 메시지 전송단가");
             }
         }
        
+        /*
+         * 장문(LMS) 메시지 전송단가를 확인합니다. 
+         */
         private void btnUnitCost_LMS_Click(object sender, EventArgs e)
         {
             try
             {
                 float unitCost = messageService.GetUnitCost(txtCorpNum.Text, MessageType.LMS);
 
-                MessageBox.Show(unitCost.ToString());
-
+                MessageBox.Show("전송단가 : " +  unitCost.ToString(), "장문(LMS) 메시지 전송단가");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
-
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "장문(LMS) 메시지 전송단가");
             }
         }
 
@@ -173,23 +243,31 @@ namespace Popbill.Message.Example.csharp
 
         private void btnSendSMS_one_Click(object sender, EventArgs e)
         {
-            String senderNum = "070175103710";         // 발신번호 
-            String receiver = "010111222";          // 수신번호
-            String receiverName = "수신자명";       // 수신자명 
-            String contents = "단문 문자 메시지 내용. 90byte 초과시 삭제되어 전송";     // 메시지내용 
+            // 발신번호 
+            String senderNum = "07043042991";
+
+            // 수신번호
+            String receiver = "010111222";
+
+            // 수신자명 
+            String receiverName = "수신자명";
+
+            // 메시지내용 
+            String contents = "단문 문자 메시지 내용. 90byte 초과시 삭제되어 전송";     
 
             try
             {
-                string receiptNum = messageService.SendSMS(txtCorpNum.Text, senderNum, receiver, receiverName, contents, getReserveDT(), txtUserId.Text);
+                string receiptNum = messageService.SendSMS(txtCorpNum.Text, senderNum, receiver, 
+                                            receiverName, contents, getReserveDT(), txtUserId.Text);
 
-                MessageBox.Show("접수번호 : " + receiptNum);
+                MessageBox.Show("접수번호 : " + receiptNum, "단문(SMS) 전송");
+
                 txtReceiptNum.Text = receiptNum;
-
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
-
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "단문(SMS) 전송");
             }
         }
 
@@ -201,10 +279,19 @@ namespace Popbill.Message.Example.csharp
             {
                 Message msg = new Message();
 
-                msg.sendNum = "07075103710";        // 발신번호
-                msg.senderName = "발신자명";        // 발신자명
-                msg.receiveNum = "010111222";     // 수신번호
-                msg.receiveName = "수신자명칭_" + i;    // 수신자명 
+                // 발신번호
+                msg.sendNum = "07043042991";
+
+                // 발신자명
+                msg.senderName = "발신자명";
+
+                // 수신번호
+                msg.receiveNum = "010111222";
+
+                // 수신자명 
+                msg.receiveName = "수신자명칭_" + i;    
+
+                // 문자메시지 내용
                 msg.content = "단문 문자메시지 내용, 각 메시지마다 개별설정 가능." + i;
 
                 messages.Add(msg);
@@ -214,20 +301,23 @@ namespace Popbill.Message.Example.csharp
             {
                 string receiptNum = messageService.SendSMS(txtCorpNum.Text,messages, getReserveDT(), txtUserId.Text);
 
-                MessageBox.Show("접수번호 : " + receiptNum);
+                MessageBox.Show("접수번호 : " + receiptNum, "단문(SMS) 전송");
                 txtReceiptNum.Text = receiptNum;
-
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "SMS(단문) 전송");
 
             }
         }
 
         private void btnSendSMS_Same_Click(object sender, EventArgs e)
         {
-            String senderNum = "07075103710";      // 발신번호
+            // 발신번호
+            String senderNum = "07043042991";
+
+            // 동보 메시지 내용 
             String contents = "동보전송 문자메시지 내용";       
 
 
@@ -237,46 +327,60 @@ namespace Popbill.Message.Example.csharp
             {
                 Message msg = new Message();
 
+                // 수신번호 
                 msg.receiveNum = "010111222";
+
+                //수신자명
                 msg.receiveName = "수신자명칭_" + i;
             
                 messages.Add(msg);
             }
+
             try
             {
                 string receiptNum = messageService.SendSMS(txtCorpNum.Text, senderNum, contents, messages, getReserveDT(), txtUserId.Text);
 
-                MessageBox.Show("접수번호 : " + receiptNum);
+                MessageBox.Show("접수번호 : " + receiptNum, "SMS(단문) 전송");
+
                 txtReceiptNum.Text = receiptNum;
 
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
-
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "SMS(단문) 전송");
             }
         }
 
         private void btnSendLMS_one_Click(object sender, EventArgs e)
         {
-            String senderNum = "07075103710";          // 발신번호 
-            String receiver = "010111222";          // 수신번호 
-            String receiverName = "수신자명";       //수신자명
+            // 발신번호 
+            String senderNum = "07043042991";
+
+            // 수신번호 
+            String receiver = "010111222";
+
+            //수신자명
+            String receiverName = "수신자명";       
+
+            // 메시지 제목
             String subject = "장문문자 메시지 제목";
+
+            // 메시지 내용, 최대 2000byte
             String contents = "장문문자 메시지 내용, 2000byte초과시 길이가 조정되어 전송됨";
 
             try
             {
                 string receiptNum = messageService.SendLMS(txtCorpNum.Text, senderNum, receiver, receiverName, subject, contents, getReserveDT(), txtUserId.Text);
 
-                MessageBox.Show("접수번호 : " + receiptNum);
-                txtReceiptNum.Text = receiptNum;
+                MessageBox.Show("접수번호 : " + receiptNum, "LMS(장문) 전송");
 
+                txtReceiptNum.Text = receiptNum;
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
-
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "LMS(장문) 전송");
             }
         }
 
@@ -288,11 +392,22 @@ namespace Popbill.Message.Example.csharp
             {
                 Message msg = new Message();
 
-                msg.sendNum = "07075103710";
+                // 발신번호
+                msg.sendNum = "07043042991";
+
+                // 발신자명
                 msg.senderName = "발신자명";
+
+                // 수신번호
                 msg.receiveNum = "010111222";
+
+                // 수신자명
                 msg.receiveName = "수신자명칭_" + i;
+
+                // 메시지 제목
                 msg.subject = "장문 문자메시지 제목";
+
+                // 메시지 내용, 최대 2000byte
                 msg.content = "장문 문자메시지 내용, 각 메시지마다 개별설정 가능." + i;
 
                 messages.Add(msg);
@@ -302,68 +417,88 @@ namespace Popbill.Message.Example.csharp
             {
                 string receiptNum = messageService.SendLMS(txtCorpNum.Text, messages, getReserveDT(), txtUserId.Text);
 
-                MessageBox.Show("접수번호 : " + receiptNum);
-                txtReceiptNum.Text = receiptNum;
+                MessageBox.Show("접수번호 : " + receiptNum, "장문(LMS) 메시지 전송");
 
+                txtReceiptNum.Text = receiptNum;
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "장문(LMS) 메시지 전송");
 
             }
         }
 
         private void btnSendLMS_same_Click(object sender, EventArgs e)
         {
-            String senderNum = "07075103710";          // 발신번호 
+            // 발신번호 
+            String senderNum = "07043042991";
+
+            // 메시지 제목
             String subject = "동보 메시지 제목";    
+
+            // 메시지 내용 
             String contents = "동보 메시지 내용";
+
             List<Message> messages = new List<Message>();
 
             for (int i = 0; i < 100; i++)
             {
                 Message msg = new Message();
 
+                // 수신번호
                 msg.receiveNum = "010111222";
+
+                // 수신자명
                 msg.receiveName = "수신자명칭_" + i;
 
                 messages.Add(msg);
             }
+
             try
             {
                 string receiptNum = messageService.SendLMS(txtCorpNum.Text, senderNum, subject, contents, messages, getReserveDT(), txtUserId.Text);
 
-                MessageBox.Show("접수번호 : " + receiptNum);
-                txtReceiptNum.Text = receiptNum;
+                MessageBox.Show("접수번호 : " + receiptNum, "장문(LMS) 메시지 전송");
 
+                txtReceiptNum.Text = receiptNum;
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
-
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "장문(LMS) 메시지 전송");
             }
         }
 
         private void btnSendXMS_one_Click(object sender, EventArgs e)
         {
-            String senderNum = "07075103710";      // 발신번호 
-            String receiver = "010111222";      // 수신번호 
-            String receiverName = "수신자명";   // 수신자명
+            // 발신번호 
+            String senderNum = "07043042991";
+
+            // 수신번호 
+            String receiver = "010111222";
+
+            // 수신자명
+            String receiverName = "수신자명";
+
+            // 메시지 제목
             String subject = "장문문자 메시지 제목";
+
+            // 메시지내용, 90byte 기준으로 단문/장문이 자동으로 인식되어 전송됨, 최대 2000byte 
             String contents = "문자 메시지 내용, 메시지의 길이에 따라 90byte를 기준으로 SMS/LMS가 자동 구분되어 전송됨";
 
             try
             {
                 string receiptNum = messageService.SendXMS(txtCorpNum.Text, senderNum, receiver, receiverName, subject, contents, getReserveDT(), txtUserId.Text);
 
-                MessageBox.Show("접수번호 : " + receiptNum);
-                txtReceiptNum.Text = receiptNum;
+                MessageBox.Show("접수번호 : " + receiptNum, "XMS(자동인식) 전송" );
 
+                txtReceiptNum.Text = receiptNum;
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
-
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "XMS(자동인식) 전송");
             }
         }
 
@@ -375,34 +510,51 @@ namespace Popbill.Message.Example.csharp
             {
                 Message msg = new Message();
 
-                msg.sendNum = "07075103710";    // 발신번호
-                msg.senderName = "발신자명";    // 발신자명
-                msg.receiveNum = "010111222";   // 수신번호
+                // 발신번호
+                msg.sendNum = "07043042991";
+
+                // 발신자명
+                msg.senderName = "발신자명";
+
+                // 수신번호
+                msg.receiveNum = "010111222";
+
+                // 수신자명
                 msg.receiveName = "수신자명칭_" + i;
+
+                // 메시지 제목
                 msg.subject = "문자메시지 제목";
+
+                // 메시지 내용
                 msg.content = "문자메시지 내용, 각 메시지마다 개별설정 가능." + i;
 
                 messages.Add(msg);
             }
+
             try
             {
                 string receiptNum = messageService.SendXMS(txtCorpNum.Text, messages, getReserveDT(), txtUserId.Text);
 
-                MessageBox.Show("접수번호 : " + receiptNum);
-                txtReceiptNum.Text = receiptNum;
+                MessageBox.Show("접수번호 : " + receiptNum, "XMS(자동인식) 전송");
 
+                txtReceiptNum.Text = receiptNum;
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
-
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "XMS(자동인식) 메시지 전송");
             }
         }
 
         private void btnSendXMS_same_Click(object sender, EventArgs e)
         {
-            String senderNum = "07075103710";          // 발신번호 
+            // 발신번호 
+            String senderNum = "07043042991";
+
+            // 동보 메시지 제목
             String subject = "동보 메시지 제목";    
+
+            // 동보 메시지 내용
             String contents = "동보 단문문자 메시지 내용";
 
             List<Message> messages = new List<Message>();
@@ -410,7 +562,11 @@ namespace Popbill.Message.Example.csharp
             for (int i = 0; i < 100; i++)
             {
                 Message msg = new Message();
+
+                // 수신번호
                 msg.receiveNum = "010111222";
+
+                // 수신자명
                 msg.receiveName = "수신자명칭_" + i;
 
                 messages.Add(msg);
@@ -420,48 +576,63 @@ namespace Popbill.Message.Example.csharp
             {
                 string receiptNum = messageService.SendXMS(txtCorpNum.Text, senderNum, subject, contents, messages, getReserveDT(), txtUserId.Text);
 
-                MessageBox.Show("접수번호 : " + receiptNum);
+                MessageBox.Show("접수번호 : " + receiptNum, "XMS(자동인식) 메시지 전송");
+
                 txtReceiptNum.Text = receiptNum;
 
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
-
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "XMS(자동인식) 메시지 전송");
             }
         }
 
+        /*
+         * 전송내역 조회 팝업 URL을 반환합니다.
+         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         */
         private void btnGetURL_Click(object sender, EventArgs e)
         {
             try
             {
                 string url = messageService.GetURL(txtCorpNum.Text, txtUserId.Text, "BOX");
 
-                MessageBox.Show(url);
+                MessageBox.Show(url, "전송내역 팝업 URL");
 
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "전송내역 팝업 URL");
             }
         }
 
+        /*
+         * 문자 예약전송건을 취소합니다.
+         * - 예약취소는 전송예약시간 10분전까지만 가능합니다.
+         */
         private void btnCancelReserve_Click(object sender, EventArgs e)
         {
             try
             {
                 Response response = messageService.CancelReserve(txtCorpNum.Text,txtReceiptNum.Text,txtUserId.Text);
 
-                MessageBox.Show(response.message);
-
-
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "예약문자 전송 취소");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "예약문자 전송 취소");
             }
         }
 
+        /*
+         * 문자전송 상태 정보를 확인합니다.
+         * - 응답항목에 대한 정보는 "[문자 API 연동매뉴얼] > 3.3.1 GetMessage (전송내역 확인)" 을
+         *   참조하시기 바랍니다.
+         */
         private void btnGetMessageResult_Click(object sender, EventArgs e)
         {
             try
@@ -473,57 +644,80 @@ namespace Popbill.Message.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "문자 전송내역 확인");
             }
         }
 
         private void btnSendMMS_Click(object sender, EventArgs e)
         {
-            String senderNum = "07075103710";      // 발신번호
-            String receiver = "010111222";      // 수신번호 
-            String receiverName = "수신자명";   // 수신자명
+            // 발신번호
+            String senderNum = "07043042991";
+
+            // 수신번호 
+            String receiver = "010111222";
+
+            // 수신자명
+            String receiverName = "수신자명";
+
+            // 메시지 제목
             String subject = "장문문자 메시지 제목";
+
+            // 메시지 내용, 최대 2000byte 
             String contents = "장문 문자 메시지 내용. 최대길이 2000byte";
 
             try
             {
+                // 포토 메시지 파일경로, JPG 파일포맷, 300KByte 이하 전송 가능
                 string mmsFilePath = "c:\\test.jpg";
 
-                string receiptNum = messageService.SendMMS(txtCorpNum.Text, senderNum, receiver, receiverName, subject, contents, mmsFilePath, getReserveDT(), txtUserId.Text);
+                string receiptNum = messageService.SendMMS(txtCorpNum.Text, senderNum, receiver, receiverName, 
+                                                    subject, contents, mmsFilePath, getReserveDT(), txtUserId.Text);
 
                 MessageBox.Show("접수번호 : " + receiptNum);
+
                 txtReceiptNum.Text = receiptNum;
 
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
-
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "MMS(포토) 메시지 전송");
             }
         }
 
+        /*
+         * 포토(MMS) 메시지 전송 단가를 확인합니다.
+         */
         private void btn_unitcost_mms_Click(object sender, EventArgs e)
         {
             try
             {
                 float unitCost = messageService.GetUnitCost(txtCorpNum.Text, MessageType.MMS);
 
-                MessageBox.Show(unitCost.ToString());
+                MessageBox.Show("전송단가 : " + unitCost.ToString(), "MMS(포토) 메시지 전송 단가");
 
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
-
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "MMS(포토) 메시지 전송 단가");
             }
         }
 
         private void btnSendMMS_Same_Click(object sender, EventArgs e)
         {
-            String senderNum = "07075103710";
+            // 발신번호
+            String senderNum = "07043042991";
+
+            // 메시지 제목
             String subject = "동보메시지 제목";
+
+            // 메시지 내용
             String contents = "동보 문자 메시지 내용, 최대 2000byte";
 
+
+            // 파일경로, jpg 파일포맷, 300KByte 이하 전송가능
             String mmsFilePath = "c:\\test.jpg";
 
             List<Message> messages = new List<Message>();
@@ -532,14 +726,18 @@ namespace Popbill.Message.Example.csharp
             {
                 Message msg = new Message();
 
+                // 수신번호
                 msg.receiveNum = "010111222";
+
+                // 수신자명
                 msg.receiveName = "수신자명칭_" + i;
 
                 messages.Add(msg);
             }
             try
             {
-                string receiptNum = messageService.SendMMS(txtCorpNum.Text, senderNum, subject, contents, messages, mmsFilePath, getReserveDT(), txtUserId.Text);
+                string receiptNum = messageService.SendMMS(txtCorpNum.Text, senderNum, subject, 
+                                        contents, messages, mmsFilePath, getReserveDT(), txtUserId.Text);
 
                 MessageBox.Show("접수번호 : " + receiptNum);
                 txtReceiptNum.Text = receiptNum;
@@ -547,55 +745,83 @@ namespace Popbill.Message.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
-
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "MMS(포토) 메시지 전송");
             }
         }
 
+        /*
+         * 팝빌 회원아이디 중복여부를 확인합니다.
+         * - 아이디는 6자 이상 20자 미만으로 작성하시기 바랍니다.
+         * - 아이디는 대/소문자 구분되지 않습니다.
+         */
         private void btnCheckID_Click(object sender, EventArgs e)
         {
             try
-            {
-                //CheckID(조회할 회원아이디)
+            {   
                 Response response = messageService.CheckID(txtUserId.Text);
 
-                MessageBox.Show("[ " + response.code.ToString() + " ] " + response.message, "ID 중복확인");
-
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "ID 중복확인");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message, "ID 중복확인");
-
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "ID 중복확인");
             }
         }
 
+        /*
+         * 연동회원의 담당자를 추가합니다.
+         */
         private void btnRegistContact_Click(object sender, EventArgs e)
         {
             Contact contactInfo = new Contact();
 
-            contactInfo.id = "test12341234";        // 담당자 아이디, 한글, 영문(대/소), 숫자, '-', '_' 6자 이상 20자 미만 구성
-            contactInfo.pwd = "12345";              // 비밀번호, 6자 이상 20자 미만 구성
-            contactInfo.personName = "담당자 명";   // 담당자명 
-            contactInfo.tel = "070-7510-3710";      // 연락처
-            contactInfo.hp = "010-1234-1234";       // 휴대폰번호
-            contactInfo.fax = "070-7510-3710";      // 팩스번호 
-            contactInfo.email = "code@linkhub.co.kr";   // 이메일주소
-            contactInfo.searchAllAllowYN = false;   // 회사조회 권한여부, true(회사조회), false(개인조회)
-            contactInfo.mgrYN = false;              // 관리자 권한여부 
+            //담당자 아이디, 6자 이상 20자 미만
+            contactInfo.id = "userid";
+
+            //비밀번호, 6자 이상 20자 미만
+            contactInfo.pwd = "this_is_password";
+
+            //담당자명 
+            contactInfo.personName = "담당자명";
+
+            //담당자연락처
+            contactInfo.tel = "070-4304-2991";
+
+            //담당자 휴대폰번호
+            contactInfo.hp = "010-111-222";
+
+            //담당자 팩스번호 
+            contactInfo.fax = "070-4304-2991";
+
+            //담당자 메일주소
+            contactInfo.email = "dev@linkhub.co.kr";
+
+            // 회사조회 권한여부, true(회사조회), false(개인조회)
+            contactInfo.searchAllAllowYN = false;
+
+            // 관리자 권한여부 
+            contactInfo.mgrYN = false;
 
             try
             {
                 Response response = messageService.RegistContact(txtCorpNum.Text, contactInfo, txtUserId.Text);
 
-                MessageBox.Show("[" + response.code.ToString() + "] " + response.message, "담당자 추가");
-
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "담당자 추가");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[" + ex.code.ToString() + "] " + ex.Message, "담당자 추가");
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "담당자 추가");
             }
         }
 
+        /*
+         * 연동회원의 담당자 목록을 확인합니다.
+         */
         private void btnListContact_Click(object sender, EventArgs e)
         {
             try
@@ -623,34 +849,56 @@ namespace Popbill.Message.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message, "담당자 목록조회");
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "담당자 목록조회");
             }
         }
 
+        /*
+         * 담당자 정보를 수정합니다. 
+         */
         private void btnUpdateContact_Click(object sender, EventArgs e)
         {
             Contact contactInfo = new Contact();
 
-            contactInfo.personName = "담당자123";      // 담당자명 
-            contactInfo.tel = "070-7510-3710";      // 연락처
-            contactInfo.hp = "010-1234-1234";       // 휴대폰번호
-            contactInfo.fax = "070-7510-3710";      // 팩스번호 
-            contactInfo.email = "code@linkhub.co.kr";   // 이메일주소
-            contactInfo.searchAllAllowYN = true;    // 회사조회 권한여부, true(회사조회), false(개인조회)
-            contactInfo.mgrYN = false;              // 관리자 권한여부 
+            // 담당자명 
+            contactInfo.personName = "담당자123";
+
+            // 연락처
+            contactInfo.tel = "070-4304-2991";
+
+            // 휴대폰번호
+            contactInfo.hp = "010-1234-1234";
+
+            // 팩스번호 
+            contactInfo.fax = "02-6442-9700";
+
+            // 이메일주소
+            contactInfo.email = "dev@linkhub.co.kr";
+
+            // 회사조회 권한여부, true(회사조회), false(개인조회)
+            contactInfo.searchAllAllowYN = true;
+
+            // 관리자 권한여부 
+            contactInfo.mgrYN = false; 
 
             try
             {
                 Response response = messageService.UpdateContact(txtCorpNum.Text, contactInfo, txtUserId.Text);
 
-                MessageBox.Show("[" + response.code.ToString() + "] " + response.message, "담당자 정보 수정");
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "담당자 정보 수정");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[" + ex.code.ToString() + "] " + ex.Message, "담당자 정보 수정");
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "담당자 정보 수정");
             }
         }
 
+        /*
+         * 회사정보를 조회합니다.
+         */
         private void btnGetCorpInfo_Click(object sender, EventArgs e)
         {
             try
@@ -668,52 +916,80 @@ namespace Popbill.Message.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message, "회사정보 조회");
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "회사정보 조회");
             }
         }
 
+        /*
+         * 회사정보를 수정합니다.
+         */
         private void btnUpdateCorpInfo_Click(object sender, EventArgs e)
         {
             CorpInfo corpInfo = new CorpInfo();
 
+            // 대표자성명
             corpInfo.ceoname = "대표자명 테스트";
+
+            // 상호
             corpInfo.corpName = "업체명";
+
+            // 주소
             corpInfo.addr = "주소정보 수정";
+
+            // 업태 
             corpInfo.bizType = "업태정보 수정";
-            corpInfo.bizClass = "업종정보 수정";
+
+            // 종목
+            corpInfo.bizClass = "종목 수정";
 
             try
             {
                 Response response = messageService.UpdateCorpInfo(txtCorpNum.Text, corpInfo, txtUserId.Text);
 
-                MessageBox.Show("[ " + response.code.ToString() + " ] " + response.message, "회사정보 수정");
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "회사정보 수정");
 
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[ " + ex.code.ToString() + " ] " + ex.Message, "회사정보 수정");
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "회사정보 수정");
             }
         }
 
+        /*
+         * 팝빌 포인트충전 팝업 URL을 반환합니다.
+         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         */
         private void btnGetPopbillURL_CHRG_Click(object sender, EventArgs e)
         {
             try
             {
                 string url = messageService.GetPopbillURL(txtCorpNum.Text, txtUserId.Text, "CHRG");
 
-                MessageBox.Show(url);
+                MessageBox.Show(url, "포인트 충전 팝업 URL");
 
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "포인트 충전 팝업 URL");
             }
         }
 
+        /*
+         * 검색조건을 사용하여 문자 전송내역을 확인합니다. 
+         * - 응답항목에 대한 정보는 "[문자 API 연동매뉴얼] > 3.3.2 Search(전송내역 목록 조회)
+         *   를 참조하시기 바랍니다.
+         */
         private void btnSearch_Click(object sender, EventArgs e)
-        {           
-            String SDate = "20160120";  // 시작일자, yyyyMMdd
-            String EDate = "20160202";  // 종료일자, yyyyMMdd
+        {
+            // 시작일자, 날짜형식(yyyMMdd)
+            String SDate = "20160901";
+
+            // 종료일자, 날짜형식(yyyyMMdd)
+            String EDate = "20161031";  
             
             // 전송상태값 배열, 1-대기, 2-성공, 3-실패, 4-취소
             String[] State = new String[4];
@@ -728,24 +1004,33 @@ namespace Popbill.Message.Example.csharp
             Item[1] = "LMS";
             Item[2] = "MMS";
 
-            bool ReserveYN = false;     // 예약여부, true-예약전송만 조회 
-            bool SenderYN = false;      // 개인조회여부 true-개인조회
+            // 예약여부, true-예약전송만 조회 
+            bool ReserveYN = false;
 
-            String Order = "D";         // 정렬방향, A-오름차순, D-내림차순
-            int Page = 1;               // 페이지 번호
-            int PerPage = 100;          // 페이지당 검색개수, 최대 1000건
+            // 개인조회여부 true-개인조회, false-회사조회 
+            bool SenderYN = false;
+
+            // 정렬방향, A-오름차순, D-내림차순
+            String Order = "D";
+
+            // 페이지 번호
+            int Page = 1;
+
+            // 페이지당 검색개수, 최대 1000건
+            int PerPage = 100;          
 
             try
             {
-                MSGSearchResult searchResult = messageService.Search(txtCorpNum.Text, SDate, EDate, State, Item, ReserveYN, SenderYN, Order, Page, PerPage);
+                MSGSearchResult searchResult = messageService.Search(txtCorpNum.Text, SDate, EDate, State, 
+                                                                  Item, ReserveYN, SenderYN, Order, Page, PerPage);
                 
                 String tmp = null;
-                tmp += "code : " + searchResult.code + CRLF;
-                tmp += "total : " + searchResult.total + CRLF;
-                tmp += "perPage : " + searchResult.perPage + CRLF;
-                tmp += "pageNum : " + searchResult.pageNum + CRLF;
-                tmp += "pageCount : " + searchResult.pageCount + CRLF;
-                tmp += "message : " + searchResult.message + CRLF;
+                tmp += "code (응답코드) : " + searchResult.code + CRLF;
+                tmp += "total (총 검색결과 건수) : " + searchResult.total + CRLF;
+                tmp += "perPage (페이지당 검색개수) : " + searchResult.perPage + CRLF;
+                tmp += "pageNum (페이지 번호) : " + searchResult.pageNum + CRLF;
+                tmp += "pageCount (페이지 개수) : " + searchResult.pageCount + CRLF;
+                tmp += "message (응답메시지) : " + searchResult.message + CRLF;
 
                 MessageBox.Show(tmp, "전송내역조회 결과");
 
@@ -754,11 +1039,14 @@ namespace Popbill.Message.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("[ " + ex.code.ToString()+ " ] " +ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "전송내역조회 결과");
             }
-
         }
 
+        /*
+         * 080 수신거부 목록을 확인합니다.
+         */
         private void btnGetAutoDenyList_Click(object sender, EventArgs e)
         {
             try
@@ -775,13 +1063,18 @@ namespace Popbill.Message.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "080 수신거부목록 확인");
             }
         }
 
+        /*
+         * 문자 API 서비스 과금정보를 확인합니다.
+         */
         private void btnGetChargeInfo_Click(object sender, EventArgs e)
         {
-            MessageType msgType = MessageType.SMS; //메시지 타입,SMS-단문, LMS-장문, MMS-포토
+            //메시지 타입,SMS-단문, LMS-장문, MMS-포토
+            MessageType msgType = MessageType.SMS; 
 
             try
             {
@@ -792,12 +1085,13 @@ namespace Popbill.Message.Example.csharp
                 tmp += "chargeMethod(과금유형) : " + chrgInf.chargeMethod + CRLF;
                 tmp += "rateSystem(과금제도) : " + chrgInf.rateSystem + CRLF;
 
-                MessageBox.Show(tmp, "과금정보 확인");
+                MessageBox.Show(tmp, "단문(SMS) 과금정보 확인");
 
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message, "과금정보 확인");
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "단문(SMS) 과금정보 확인");
 
             }
         }
