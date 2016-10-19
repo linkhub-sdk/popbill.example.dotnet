@@ -205,7 +205,6 @@ namespace Popbill.Closedown.Example.csharp
             }
         }
 
-
         /*
          * 1건의 사업자 휴폐업정보를 조회합니다.
          */
