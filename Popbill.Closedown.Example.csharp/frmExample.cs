@@ -36,16 +36,15 @@ namespace Popbill.Closedown.Example.csharp
         {
             InitializeComponent();
 
-            //휴폐업조회 서비스 모듈 초기화
+            // 휴폐업조회 서비스 모듈 초기화
             closedownService = new ClosedownService(LinkID, SecretKey);
 
-            //연동환경 설정값, 개발용(true), 상업용(false)
+            // 연동환경 설정값, 개발용(true), 상업용(false)
             closedownService.IsTest = true;
         }
 
-
         /*
-         * 해당사업자가 연동회원으로 가입되어있는지 여부를 확인합니다.
+         * 해당사업자의 연동회원 가입여부를 확인합니다.
          * - 사업자번호는 '-'를 제외한 10자리 숫자 문자열입니다.
          */
         private void btnCheckIsMember_Click(object sender, EventArgs e)
@@ -65,7 +64,7 @@ namespace Popbill.Closedown.Example.csharp
         }
 
         /*
-         * 연동회원 신규가입을 요청합니다.
+         * 연동회원가입을 요청합니다.
          */
         private void btnJoinMember_Click(object sender, EventArgs e)
         {
@@ -213,7 +212,7 @@ namespace Popbill.Closedown.Example.csharp
         private void btnCheckCorpNum_Click(object sender, EventArgs e)
         {
             String tmp = "";
-            
+   
             try
             {
                 CorpState result = closedownService.checkCorpNum(txtCorpNum.Text, txtCheckCorpNum.Text);
@@ -237,7 +236,7 @@ namespace Popbill.Closedown.Example.csharp
         }
 
         /*
-         * 다수건의 사업자 휴폐업정보를 조회합니다.
+         * 사업자 휴폐업정보를 조회합니다 (대량).
          */
         private void btnCheckCorpNums_Click(object sender, EventArgs e)
         {
@@ -245,14 +244,13 @@ namespace Popbill.Closedown.Example.csharp
 
             List<String> CorpNumList = new List<string>();
 
-            //조회할 사업자번호 배열, 최대 1000건
+            // 조회할 사업자번호 배열, 최대 1000건
             CorpNumList.Add("1234567890");
             CorpNumList.Add("4352343543");
             CorpNumList.Add("6798700433");
 
             try
             {
-
                 List<CorpState> corpStateList = closedownService.checkCorpNums(txtCorpNum.Text, CorpNumList);
 
                 tmp += "* state (휴폐업상태) : null-알수없음, 0-등록되지 않은 사업자번호, 1-사업중, 2-폐업, 3-휴업" + CRLF;
@@ -338,7 +336,7 @@ namespace Popbill.Closedown.Example.csharp
             contactInfo.id = "test12341234";
 
             // 비밀번호, 6자 이상 20자 미만 구성
-            contactInfo.pwd = "12345";
+            contactInfo.pwd = "this_is_password";
 
             // 담당자명 
             contactInfo.personName = "담당자 명";
@@ -427,7 +425,7 @@ namespace Popbill.Closedown.Example.csharp
             contactInfo.hp = "010-1234-1234";
 
             // 팩스번호 
-            contactInfo.fax = "02-6442-9700";
+            contactInfo.fax = "070-111-222";
 
             // 이메일주소
             contactInfo.email = "dev@linkhub.co.kr";
@@ -464,7 +462,7 @@ namespace Popbill.Closedown.Example.csharp
                 string tmp = null;
 
                 tmp += "ceoname (대표자명) : " + corpInfo.ceoname + CRLF;
-                tmp += "corpNamem (상호명) : " + corpInfo.corpName + CRLF;
+                tmp += "corpName (상호명) : " + corpInfo.corpName + CRLF;
                 tmp += "addr (주소) : " + corpInfo.addr + CRLF;
                 tmp += "bizType (업태) : " + corpInfo.bizType + CRLF;
                 tmp += "bizClass (종목) : " + corpInfo.bizClass + CRLF;
@@ -514,6 +512,9 @@ namespace Popbill.Closedown.Example.csharp
             }
         }
 
+        /*
+         * 휴폐업조회 API 서비스 과금정보를 확인합니다.
+         */
         private void btnGetChargeInfo_Click(object sender, EventArgs e)
         {
             try
@@ -521,7 +522,8 @@ namespace Popbill.Closedown.Example.csharp
                 ChargeInfo chrgInf = closedownService.GetChargeInfo(txtCorpNum.Text);
 
                 string tmp = null;
-                tmp += "unitCost (단가) : " + chrgInf.unitCost + CRLF;
+
+                tmp += "unitCost (조회단가) : " + chrgInf.unitCost + CRLF;
                 tmp += "chargeMethod (과금유형) : " + chrgInf.chargeMethod + CRLF;
                 tmp += "rateSystem (과금제도) : " + chrgInf.rateSystem + CRLF;
 
@@ -533,7 +535,5 @@ namespace Popbill.Closedown.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "과금정보 확인");
             }
         }
-
-        
     }
 }
