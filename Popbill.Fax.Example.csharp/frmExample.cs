@@ -8,7 +8,7 @@
  * - 연동 기술지원 이메일 : dev@linkhub.co.kr
  * 
  * <테스트 연동개발 준비사항>
- * 1) 30, 33 라인에 선언된 링크아이디(LinkID)와 비밀키(SecretKey)를 
+ * 1) 30, 33 라인에 선언된 링크아이디(LinkID)와 비밀키(SecretKey)를
  *    링크허브 가입시 메일로 발급받은 인증정보로 변경합니다.
  * 2) 팝빌 개발용 사이트(test.popbill.com)에 연동회원으로 가입합니다.
  */
@@ -26,10 +26,10 @@ namespace Popbill.Fax.Example.csharp
 {
     public partial class frmExample : Form
     {
-        //링크아이디
+        // 링크아이디
         private string LinkID = "TESTER";
 
-        //비밀키, 유출에 주의
+        // 비밀키, 유출에 주의
         private string SecretKey = "SwWxqU+0TErBXy/9TVjIPEnI0VTUMMSQZtJf3Ed8q3I=";
 
         private FaxService faxService;
@@ -40,7 +40,7 @@ namespace Popbill.Fax.Example.csharp
         {
             InitializeComponent();
 
-            // 팩스 서비스 모듈초기화
+            // 팩스 서비스 모듈 초기화
             faxService = new FaxService(LinkID, SecretKey);
 
             // 연동환경 설정값 true(개발용), false(상업용)
@@ -77,7 +77,7 @@ namespace Popbill.Fax.Example.csharp
             // 링크아이디
             joinInfo.LinkID = LinkID;
 
-            // 사업자번호 "-" 제외
+            // 사업자번호 "-" 제외, 10자리
             joinInfo.CorpNum = "1231212312";
 
             // 대표자명 
@@ -111,7 +111,7 @@ namespace Popbill.Fax.Example.csharp
             joinInfo.ContactHP = "010-111-222";
 
             // 담당자 팩스번호
-            joinInfo.ContactFAX = "02-6442-9700";
+            joinInfo.ContactFAX = "070-111-222";
 
             // 담당자 메일주소
             joinInfo.ContactEmail = "test@test.com";
@@ -136,26 +136,22 @@ namespace Popbill.Fax.Example.csharp
          */
         private void btnGetBalance_Click(object sender, EventArgs e)
         {
-
             try
             {
                 double remainPoint = faxService.GetBalance(txtCorpNum.Text);
 
                 MessageBox.Show("연동회원 잔여포인트 : " + remainPoint.ToString(), "연동회원 잔여포인트 확인");
-
             }
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + ex.Message, "연동회원 잔여포인트 확인");
-
             }
         }
 
         /*
          * 파트너의 잔여포인트를 확인합니다.
          * - 연동과금 방식의 경우 연동회원 잔여포인트 조회 (GetBalance API)를 이용하시기 바랍니다.
-         * 
          */
         private void btnGetPartnerBalance_Click(object sender, EventArgs e)
         {
@@ -164,18 +160,16 @@ namespace Popbill.Fax.Example.csharp
                 double remainPoint = faxService.GetPartnerBalance(txtCorpNum.Text);
 
                 MessageBox.Show("파트너 잔여포인트 : " + remainPoint.ToString(), "파트너 잔여포인트 확인");
-
             }
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + ex.Message, "파트너 잔여포인트 확인");
-
             }
         }
 
         /*
-         * 해당사업자가 연동회원으로 가입되어있는지 여부를 확인합니다.
+         * 해당사업자의 연동회원 가입여부를 확인합니다.
          * - 사업자번호는 '-' 제외한 10자리 숫자 문자열입니다.
          */
         private void btnCheckIsMember_Click(object sender, EventArgs e)
@@ -190,7 +184,7 @@ namespace Popbill.Fax.Example.csharp
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                        "응답메시지(message) : " + ex.Message, "연동회원 가입여부 확인");
+                                "응답메시지(message) : " + ex.Message, "연동회원 가입여부 확인");
             }
         }
 
@@ -228,6 +222,7 @@ namespace Popbill.Fax.Example.csharp
 
         /*
          * 팩스 전송내역 팝업 URL을 반환합니다.
+         * - 반환된 URL은 보안정책에 따라 30초의 유효시간을 갖습니다.
          */
         private void btnGetURL_Click(object sender, EventArgs e)
         {
@@ -325,6 +320,7 @@ namespace Popbill.Fax.Example.csharp
             {
                 string strFileName = fileDialog.FileName;
 
+                // 수신자정보 배열 (최대 1000건)
                 List<FaxReceiver> receivers = new List<FaxReceiver>();
 
                 for (int i = 0; i < 100; i++)
@@ -352,7 +348,6 @@ namespace Popbill.Fax.Example.csharp
                     MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
                                     "응답메시지(message) : " + ex.Message, "팩스 전송");
                 }
-
             }
         }
 
@@ -403,7 +398,6 @@ namespace Popbill.Fax.Example.csharp
             while (fileDialog.ShowDialog(this) == DialogResult.OK)
             {
                 filePaths.Add(fileDialog.FileName);
-
             }
 
             if (filePaths.Count > 0)
@@ -412,6 +406,7 @@ namespace Popbill.Fax.Example.csharp
 
                 for (int i = 0; i < 100; i++)
                 {
+                    // 수신정보 배열(최대 1000건)
                     FaxReceiver receiver = new FaxReceiver();
 
                     // 수신번호
@@ -450,7 +445,6 @@ namespace Popbill.Fax.Example.csharp
                 string url = faxService.GetPopbillURL(txtCorpNum.Text, txtUserId.Text, "CHRG");
 
                 MessageBox.Show(url, "포인트충전 팝업 URL");
-
             }
             catch (PopbillException ex)
             {
@@ -460,7 +454,7 @@ namespace Popbill.Fax.Example.csharp
         }
 
         /*
-         * 아이디 중복여부를 확인합니다.
+         * 팝빌 회원아이디 중복여부를 확인합니다.
          * - 아이디는 6자 이상 20미만으로 작성하시기 바랍니다.
          * - 아이디는 대/소문자 구분되지 않습니다.
          * 
@@ -510,7 +504,7 @@ namespace Popbill.Fax.Example.csharp
             contactInfo.email = "dev@linkhub.co.kr";
 
             // 회사조회 권한여부, true(회사조회), false(개인조회)
-            contactInfo.searchAllAllowYN = false;
+            contactInfo.searchAllAllowYN = true;
 
             // 관리자 권한여부 
             contactInfo.mgrYN = false;
@@ -556,12 +550,11 @@ namespace Popbill.Fax.Example.csharp
                 }
 
                 MessageBox.Show(tmp, "담당자 목록조회");
-
             }
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "연동회원 담당자 목록 확인");
+                                "응답메시지(message) : " + ex.Message, "담당자 목록조회");
             }
         }
 
@@ -582,7 +575,7 @@ namespace Popbill.Fax.Example.csharp
             contactInfo.hp = "010-1234-1234";
 
             // 팩스번호 
-            contactInfo.fax = "02-6442-9700";
+            contactInfo.fax = "070-111-222";
 
             // 이메일주소
             contactInfo.email = "dev@linkhub.co.kr";
@@ -666,7 +659,7 @@ namespace Popbill.Fax.Example.csharp
         }
 
         /*
-         * 검색조건을 사용하여 현금영수증 목록을 확인합니다.
+         * 검색조건을 사용하여 팩스 전송내역을 확인합니다.
          * - 응답항목에 대한 정보는 "[팩스 API 연동매뉴얼] > 3.3.2. Search(전송내역 목록 조회)" 를 
          *   참조하여 주시기 바랍니다.
          */
@@ -734,7 +727,7 @@ namespace Popbill.Fax.Example.csharp
                 ChargeInfo chrgInf = faxService.GetChargeInfo(txtCorpNum.Text, txtUserId.Text);
 
                 string tmp = null;
-                tmp += "unitCost (단가) : " + chrgInf.unitCost + CRLF;
+                tmp += "unitCost (전송단가) : " + chrgInf.unitCost + CRLF;
                 tmp += "chargeMethod (과금유형) : " + chrgInf.chargeMethod + CRLF;
                 tmp += "rateSystem (과금제도) : " + chrgInf.rateSystem + CRLF;
 
@@ -746,6 +739,5 @@ namespace Popbill.Fax.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "과금정보 조회");
             }
         }
-
     }
 }
