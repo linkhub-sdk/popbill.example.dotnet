@@ -249,7 +249,8 @@ namespace Popbill.Fax.Example.csharp
             {
                 Response response = faxService.CancelReserve(txtCorpNum.Text, txtReceiptNum.Text, txtUserId.Text);
 
-                MessageBox.Show(response.message, "팩스 예약전송 취소");
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "팩스 예약전송 취소");
             }
             catch (PopbillException ex)
             {

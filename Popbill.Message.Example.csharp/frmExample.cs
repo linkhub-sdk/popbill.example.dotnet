@@ -172,7 +172,7 @@ namespace Popbill.Message.Example.csharp
         }
 
         /*
-         * 해당사업자가 연동회원으로 가입되어있는지 여부를 확인합니다.
+         * 해당사업자의 회원가입 여부를 확인합니다.
          * - 사업자번호는 '-'를 제외한 10자리 숫자 문자열입니다.
          */
         private void btnCheckIsMember_Click(object sender, EventArgs e)
@@ -252,7 +252,7 @@ namespace Popbill.Message.Example.csharp
             // 수신자명 
             String receiverName = "수신자명";
 
-            // 메시지내용 
+            // 메시지내용, 단문(SMS) 메시지는 90byte초과된 내용은 삭제되어 전송됨. 
             String contents = "단문 문자 메시지 내용. 90byte 초과시 삭제되어 전송";     
 
             try
@@ -288,10 +288,10 @@ namespace Popbill.Message.Example.csharp
                 // 수신번호
                 msg.receiveNum = "010111222";
 
-                // 수신자명 
-                msg.receiveName = "수신자명칭_" + i;    
+                // 수신자명
+                msg.receiveName = "수신자명칭_" + i;
 
-                // 문자메시지 내용
+                // 메시지 내용, 단문(SMS) 메시지는 90byte초과된 내용은 삭제되어 전송됨. 
                 msg.content = "단문 문자메시지 내용, 각 메시지마다 개별설정 가능." + i;
 
                 messages.Add(msg);
@@ -302,13 +302,13 @@ namespace Popbill.Message.Example.csharp
                 string receiptNum = messageService.SendSMS(txtCorpNum.Text,messages, getReserveDT(), txtUserId.Text);
 
                 MessageBox.Show("접수번호 : " + receiptNum, "단문(SMS) 전송");
+
                 txtReceiptNum.Text = receiptNum;
             }
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + ex.Message, "SMS(단문) 전송");
-
             }
         }
 
@@ -317,7 +317,7 @@ namespace Popbill.Message.Example.csharp
             // 발신번호
             String senderNum = "07043042991";
 
-            // 동보 메시지 내용 
+            // 동보 메시지 내용, 단문(SMS) 메시지는 90byte초과된 내용은 삭제되어 전송됨. 
             String contents = "동보전송 문자메시지 내용";       
 
 
@@ -366,12 +366,13 @@ namespace Popbill.Message.Example.csharp
             // 메시지 제목
             String subject = "장문문자 메시지 제목";
 
-            // 메시지 내용, 최대 2000byte
+            // 메시지 내용, 장문(LMS) 메시지는 2000byte초과된 내용은 삭제되어 전송됨. 
             String contents = "장문문자 메시지 내용, 2000byte초과시 길이가 조정되어 전송됨";
 
             try
             {
-                string receiptNum = messageService.SendLMS(txtCorpNum.Text, senderNum, receiver, receiverName, subject, contents, getReserveDT(), txtUserId.Text);
+                string receiptNum = messageService.SendLMS(txtCorpNum.Text, senderNum, receiver, 
+                                        receiverName, subject, contents, getReserveDT(), txtUserId.Text);
 
                 MessageBox.Show("접수번호 : " + receiptNum, "LMS(장문) 전송");
 
@@ -407,7 +408,7 @@ namespace Popbill.Message.Example.csharp
                 // 메시지 제목
                 msg.subject = "장문 문자메시지 제목";
 
-                // 메시지 내용, 최대 2000byte
+                // 메시지 내용, 장문(LMS) 메시지는 2000byte초과된 내용은 삭제되어 전송됨. 
                 msg.content = "장문 문자메시지 내용, 각 메시지마다 개별설정 가능." + i;
 
                 messages.Add(msg);
@@ -435,9 +436,9 @@ namespace Popbill.Message.Example.csharp
             String senderNum = "07043042991";
 
             // 메시지 제목
-            String subject = "동보 메시지 제목";    
+            String subject = "동보 메시지 제목";
 
-            // 메시지 내용 
+            // 메시지 내용, 장문(LMS) 메시지는 2000byte초과된 내용은 삭제되어 전송됨. 
             String contents = "동보 메시지 내용";
 
             List<Message> messages = new List<Message>();
@@ -484,21 +485,21 @@ namespace Popbill.Message.Example.csharp
             // 메시지 제목
             String subject = "장문문자 메시지 제목";
 
-            // 메시지내용, 90byte 기준으로 단문/장문이 자동으로 인식되어 전송됨, 최대 2000byte 
+            // 메시지내용, 90byte 기준으로 단문/장문이 자동으로 인식되어 전송됨, 최대 2000byte
             String contents = "문자 메시지 내용, 메시지의 길이에 따라 90byte를 기준으로 SMS/LMS가 자동 구분되어 전송됨";
 
             try
             {
                 string receiptNum = messageService.SendXMS(txtCorpNum.Text, senderNum, receiver, receiverName, subject, contents, getReserveDT(), txtUserId.Text);
 
-                MessageBox.Show("접수번호 : " + receiptNum, "XMS(자동인식) 전송" );
+                MessageBox.Show("접수번호 : " + receiptNum, "자동인식(XMS) 전송" );
 
                 txtReceiptNum.Text = receiptNum;
             }
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "XMS(자동인식) 전송");
+                                "응답메시지(message) : " + ex.Message, "자동인식(XMS) 전송");
             }
         }
 
@@ -525,7 +526,7 @@ namespace Popbill.Message.Example.csharp
                 // 메시지 제목
                 msg.subject = "문자메시지 제목";
 
-                // 메시지 내용
+                // 메시지내용, 90byte 기준으로 단문/장문이 자동으로 인식되어 전송됨, 최대 2000byte
                 msg.content = "문자메시지 내용, 각 메시지마다 개별설정 가능." + i;
 
                 messages.Add(msg);
@@ -535,14 +536,14 @@ namespace Popbill.Message.Example.csharp
             {
                 string receiptNum = messageService.SendXMS(txtCorpNum.Text, messages, getReserveDT(), txtUserId.Text);
 
-                MessageBox.Show("접수번호 : " + receiptNum, "XMS(자동인식) 전송");
+                MessageBox.Show("접수번호 : " + receiptNum, "자동인식(XMS) 전송");
 
                 txtReceiptNum.Text = receiptNum;
             }
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "XMS(자동인식) 메시지 전송");
+                                "응답메시지(message) : " + ex.Message, "자동인식(XMS) 메시지 전송");
             }
         }
 
@@ -552,9 +553,9 @@ namespace Popbill.Message.Example.csharp
             String senderNum = "07043042991";
 
             // 동보 메시지 제목
-            String subject = "동보 메시지 제목";    
+            String subject = "동보 메시지 제목";
 
-            // 동보 메시지 내용
+            // 동보 메시지내용, 90byte 기준으로 단문/장문이 자동으로 인식되어 전송됨, 최대 2000byte
             String contents = "동보 단문문자 메시지 내용";
 
             List<Message> messages = new List<Message>();
@@ -576,7 +577,7 @@ namespace Popbill.Message.Example.csharp
             {
                 string receiptNum = messageService.SendXMS(txtCorpNum.Text, senderNum, subject, contents, messages, getReserveDT(), txtUserId.Text);
 
-                MessageBox.Show("접수번호 : " + receiptNum, "XMS(자동인식) 메시지 전송");
+                MessageBox.Show("접수번호 : " + receiptNum, "자동인식(XMS) 메시지 전송");
 
                 txtReceiptNum.Text = receiptNum;
 
@@ -584,7 +585,7 @@ namespace Popbill.Message.Example.csharp
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "XMS(자동인식) 메시지 전송");
+                                "응답메시지(message) : " + ex.Message, "자동인식(XMS) 메시지 전송");
             }
         }
 
@@ -598,13 +599,13 @@ namespace Popbill.Message.Example.csharp
             {
                 string url = messageService.GetURL(txtCorpNum.Text, txtUserId.Text, "BOX");
 
-                MessageBox.Show(url, "전송내역 팝업 URL");
+                MessageBox.Show(url, "문자 전송내역 팝업 URL");
 
             }
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "전송내역 팝업 URL");
+                                "응답메시지(message) : " + ex.Message, "문자 전송내역 팝업 URL");
             }
         }
 
@@ -645,7 +646,7 @@ namespace Popbill.Message.Example.csharp
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "문자 전송내역 확인");
+                                "응답메시지(message) : " + ex.Message, "문자 전송상태 확인");
             }
         }
 
@@ -663,7 +664,7 @@ namespace Popbill.Message.Example.csharp
             // 메시지 제목
             String subject = "장문문자 메시지 제목";
 
-            // 메시지 내용, 최대 2000byte 
+            // 메시지 내용, 포토(MMS) 메시지는 2000byte초과된 내용은 삭제되어 전송됨. 
             String contents = "장문 문자 메시지 내용. 최대길이 2000byte";
 
             try
@@ -674,7 +675,7 @@ namespace Popbill.Message.Example.csharp
                 string receiptNum = messageService.SendMMS(txtCorpNum.Text, senderNum, receiver, receiverName, 
                                                     subject, contents, mmsFilePath, getReserveDT(), txtUserId.Text);
 
-                MessageBox.Show("접수번호 : " + receiptNum);
+                MessageBox.Show("접수번호 : " + receiptNum, "포토(MMS) 메시지 전송");
 
                 txtReceiptNum.Text = receiptNum;
 
@@ -682,7 +683,7 @@ namespace Popbill.Message.Example.csharp
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "MMS(포토) 메시지 전송");
+                                "응답메시지(message) : " + ex.Message, "포토(MMS) 메시지 전송");
             }
         }
 
@@ -695,13 +696,13 @@ namespace Popbill.Message.Example.csharp
             {
                 float unitCost = messageService.GetUnitCost(txtCorpNum.Text, MessageType.MMS);
 
-                MessageBox.Show("전송단가 : " + unitCost.ToString(), "MMS(포토) 메시지 전송 단가");
+                MessageBox.Show("전송단가 : " + unitCost.ToString(), "포토(MMS) 메시지 전송 단가");
 
             }
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "MMS(포토) 메시지 전송 단가");
+                                "응답메시지(message) : " + ex.Message, "포토(MMS) 메시지 전송 단가");
             }
         }
 
@@ -713,7 +714,7 @@ namespace Popbill.Message.Example.csharp
             // 메시지 제목
             String subject = "동보메시지 제목";
 
-            // 메시지 내용
+            // 메시지 내용, 포토(MMS) 메시지는 2000byte초과된 내용은 삭제되어 전송됨. 
             String contents = "동보 문자 메시지 내용, 최대 2000byte";
 
 
@@ -734,19 +735,20 @@ namespace Popbill.Message.Example.csharp
 
                 messages.Add(msg);
             }
+
             try
             {
                 string receiptNum = messageService.SendMMS(txtCorpNum.Text, senderNum, subject, 
                                         contents, messages, mmsFilePath, getReserveDT(), txtUserId.Text);
 
-                MessageBox.Show("접수번호 : " + receiptNum);
-                txtReceiptNum.Text = receiptNum;
+                MessageBox.Show("접수번호 : " + receiptNum, "포토(MMS) 메시지 전송");
 
+                txtReceiptNum.Text = receiptNum;
             }
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "MMS(포토) 메시지 전송");
+                                "응답메시지(message) : " + ex.Message, "포토(MMS) 메시지 전송");
             }
         }
 
@@ -778,29 +780,29 @@ namespace Popbill.Message.Example.csharp
         {
             Contact contactInfo = new Contact();
 
-            //담당자 아이디, 6자 이상 20자 미만
+            // 담당자 아이디, 6자 이상 20자 미만
             contactInfo.id = "userid";
 
-            //비밀번호, 6자 이상 20자 미만
+            // 비밀번호, 6자 이상 20자 미만
             contactInfo.pwd = "this_is_password";
 
-            //담당자명 
+            // 담당자명 
             contactInfo.personName = "담당자명";
 
-            //담당자연락처
+            // 담당자연락처
             contactInfo.tel = "070-4304-2991";
-
-            //담당자 휴대폰번호
+            
+            // 담당자 휴대폰번호
             contactInfo.hp = "010-111-222";
 
-            //담당자 팩스번호 
+            // 담당자 팩스번호 
             contactInfo.fax = "070-4304-2991";
 
-            //담당자 메일주소
+            // 담당자 메일주소
             contactInfo.email = "dev@linkhub.co.kr";
 
             // 회사조회 권한여부, true(회사조회), false(개인조회)
-            contactInfo.searchAllAllowYN = false;
+            contactInfo.searchAllAllowYN = true;
 
             // 관리자 권한여부 
             contactInfo.mgrYN = false;
@@ -845,7 +847,6 @@ namespace Popbill.Message.Example.csharp
                 }
 
                 MessageBox.Show(tmp, "담당자 목록조회");
-
             }
             catch (PopbillException ex)
             {
@@ -949,7 +950,6 @@ namespace Popbill.Message.Example.csharp
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + response.message, "회사정보 수정");
-
             }
             catch (PopbillException ex)
             {
@@ -1052,14 +1052,18 @@ namespace Popbill.Message.Example.csharp
             try
             {
                 List<AutoDeny> AutoDenyList = messageService.GetAutoDenyList(txtCorpNum.Text);
+
                 String tmp = null;
+
+                tmp = "number(번호) / regDT(등록일시)" + CRLF;
+
                 foreach (AutoDeny denyInfo in AutoDenyList)
                 {
-                    tmp += "number : " + denyInfo.number + " || regDT " + denyInfo.regDT +CRLF;
+                    tmp += denyInfo.number + " / " + denyInfo.regDT +CRLF;
 
                 }
-                MessageBox.Show(tmp, "080 수신거부목록 조회");
 
+                MessageBox.Show(tmp, "080 수신거부목록 조회");
             }
             catch (PopbillException ex)
             {
@@ -1079,22 +1083,20 @@ namespace Popbill.Message.Example.csharp
             try
             {
                 ChargeInfo chrgInf = messageService.GetChargeInfo(txtCorpNum.Text, msgType);
+
                 String tmp = null;
 
-                tmp += "unitCost(단가) : " + chrgInf.unitCost +CRLF;
+                tmp += "unitCost(전송단가) : " + chrgInf.unitCost +CRLF;
                 tmp += "chargeMethod(과금유형) : " + chrgInf.chargeMethod + CRLF;
                 tmp += "rateSystem(과금제도) : " + chrgInf.rateSystem + CRLF;
 
                 MessageBox.Show(tmp, "단문(SMS) 과금정보 확인");
-
             }
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + ex.Message, "단문(SMS) 과금정보 확인");
-
             }
         }
-
     }
 }
