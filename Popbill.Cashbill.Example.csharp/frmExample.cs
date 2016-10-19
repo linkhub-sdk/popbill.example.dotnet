@@ -37,10 +37,10 @@ namespace Popbill.Cashbill.Example.csharp
         {
             InitializeComponent();
 
-            //현금영수증 몯류 초기화
+            // 현금영수증 모듈 초기화
             cashbillService = new CashbillService(LinkID, SecretKey);
 
-            //연동환경 설정값, 개발용(true), 상업옹(false)
+            // 연동환경 설정값, 개발용(true), 상업용(false)
             cashbillService.IsTest = true;
         }
 
@@ -70,22 +70,22 @@ namespace Popbill.Cashbill.Example.csharp
         {
             JoinForm joinInfo = new JoinForm();
 
-            //링크아이디
+            // 링크아이디
             joinInfo.LinkID = LinkID;
 
-            //사업자번호 "-" 제외
+            // 사업자번호 "-" 제외
             joinInfo.CorpNum = "1231212312";
 
-            //대표자명 
+            // 대표자명 
             joinInfo.CEOName = "대표자성명";
 
-            //상호
+            // 상호
             joinInfo.CorpName = "상호";
 
-            //주소
+            // 주소
             joinInfo.Addr = "주소";
 
-            //업태
+            // 업태
             joinInfo.BizType = "업태";
 
             // 종목
@@ -149,7 +149,7 @@ namespace Popbill.Cashbill.Example.csharp
         }
 
         /*
-         * 사업자의 파트너 연동회원 가입여부를 확인합니다.
+         * 해당사업자의 연동회원 가입여부를 확인합니다.
          * - 사업자등록번호는 '-' 제외한 10자리 숫자 문자열입니다.
          */
         private void btnCheckIsMember_Click(object sender, EventArgs e)
@@ -210,11 +210,11 @@ namespace Popbill.Cashbill.Example.csharp
 
         /*
          * 1건의 현금영수증을 임시저장합니다.
-         * - 임시저장 후 발행(Issue API)을 호출해야 국세청에 전송됩니다. 
-         * - 임시저장과 발행을 한번의 호출로 처리하는 즉시발행(RegistIssue API) 
-         *   사용을 권장합니다.
          * - 현금영수증 항목별 정보는 "[현금영수증 API 연동매뉴얼] > 4.1. 현금영수증 구성"
          *   을 참조하시기 바랍니다.
+         * * - 임시저장 후 발행(Issue API)을 호출해야 국세청에 전송됩니다. 
+         * - 임시저장과 발행을 한번의 호출로 처리하는 즉시발행(RegistIssue API) 
+         *   사용을 권장합니다.
          */
         private void btnRegister_Click(object sender, EventArgs e)
         {
@@ -305,7 +305,7 @@ namespace Popbill.Cashbill.Example.csharp
         }
 
         /*
-         * [발행취소] 상태의 현금영수증을 삭제 처리합니다.
+         * [임시저장] 또는 [발행취소] 상태의 현금영수증을 삭제 처리합니다.
          * - 삭제된 현금영수증의 문서관리번호는 재사용할 수 있습니다.
          */
         private void btnDelete_Click(object sender, EventArgs e)
@@ -512,10 +512,10 @@ namespace Popbill.Cashbill.Example.csharp
 
 
         /*
-         * 다수건의 현금영수증 상태/요약 정보를 확인합니다.
-         * - 현금영수증 상태정보(GetInfo API) 응답항목에 대한 자세한 정보는
+         * 대량의 현금영수증 상태/요약 정보를 확인합니다. (최대 1000건)
+         * - 현금영수증 상태정보 대량확인 (GetInfos API) 응답항목에 대한 자세한 정보는
          *   "[현금영수증 API 연동매뉴얼] > 4.2. 현금영수증 상태정보 구성"을 
-         *   참조하시기 바랍니다. 
+         *   참조하시기 바랍니다.
          */
         private void btnGetInfos_Click(object sender, EventArgs e)
         {
@@ -732,7 +732,7 @@ namespace Popbill.Cashbill.Example.csharp
         }
 
         /*
-         * 다수의 현금영수증 인쇄 팝업 URL을 반환합니다.
+         * 대량의 현금영수증 인쇄 팝업 URL을 반환합니다. (최대100건)
          * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
          */
         private void btnGetMassPrintURL_Click(object sender, EventArgs e)
@@ -740,7 +740,7 @@ namespace Popbill.Cashbill.Example.csharp
           
             List<string> MgtKeyList = new List<string>();
 
-            // 현금영수증 문서관리번호 배열, 최대 1000건.
+            // 현금영수증 문서관리번호 배열, 최대 100건.
             MgtKeyList.Add("20161017-01");
             MgtKeyList.Add("20161017-02");
             MgtKeyList.Add("20161017-03");
@@ -789,7 +789,7 @@ namespace Popbill.Cashbill.Example.csharp
         /*
          * 1건의 발행완료 현금영수증을 발행취소 처리합니다.
          * - 발행취소 처리된 현금영수증은 국세청에 전송되지 않습니다.
-         * - 발행취소는 국세청 전송 전에만 가능합니다.
+         * - 발행취소는 국세청 전송전에만 가능합니다.
          */
         private void btnCancelIssue_Click(object sender, EventArgs e)
         {
@@ -882,7 +882,7 @@ namespace Popbill.Cashbill.Example.csharp
             cashbill.hp = "010-111-222";
 
             // 고객 팩스번호
-            cashbill.fax = "02-6442-9700";
+            cashbill.fax = "070-111-222";
 
             // 발행시 알림문자 전송여부
             cashbill.smssendYN = false;
@@ -937,7 +937,6 @@ namespace Popbill.Cashbill.Example.csharp
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + ex.Message, "포인트충전 팝업 URL");
-
             }
         }
 
@@ -991,10 +990,10 @@ namespace Popbill.Cashbill.Example.csharp
             contactInfo.email = "dev@linkhub.co.kr";
 
             // 회사조회 권한여부, true(회사조회), false(개인조회)
-            contactInfo.searchAllAllowYN = false;
+            contactInfo.searchAllAllowYN = true;
 
             // 관리자 권한여부 
-            contactInfo.mgrYN = false;    
+            contactInfo.mgrYN = false;
 
             try
             {
@@ -1099,7 +1098,7 @@ namespace Popbill.Cashbill.Example.csharp
 
                 string tmp = null;
                 tmp += "ceoname (대표자명) : " + corpInfo.ceoname + CRLF;
-                tmp += "corpNamem (상호명) : " + corpInfo.corpName + CRLF;
+                tmp += "corpName (상호명) : " + corpInfo.corpName + CRLF;
                 tmp += "addr (주소) : " + corpInfo.addr + CRLF;
                 tmp += "bizType (업태) : " + corpInfo.bizType + CRLF;
                 tmp += "bizClass (종목) : " + corpInfo.bizClass + CRLF;
@@ -1154,7 +1153,7 @@ namespace Popbill.Cashbill.Example.csharp
          * 1건의 [발행완료] 현금영수증을 [발행취소] 처리합니다.
          * - 현금영수증 발행취소는 국세청 전송전에만 가능합니다.
          * - 발행취소 처리된 현금영수증은 국세청에 전송되지 않습니다.
-         * - 발행취소 현금영수증에 사용된 문서관리번호를 재사용 하기 위해서는 
+         * - 등록된 문서관리번호를 재사용 하기 위해서는 발행취소 후 
          *   삭제(Delete API)를 호출하여 삭제처리해야 합니다.
          */
         private void btnCancelIssueSub_Click(object sender, EventArgs e)
@@ -1178,7 +1177,7 @@ namespace Popbill.Cashbill.Example.csharp
 
 
         /*
-         * [발행취소] 상태의 현금영수증을 삭제 처리합니다.
+         * [임시저장] 또는 [발행취소] 상태의 현금영수증을 삭제 처리합니다.
          * - 삭제된 현금영수증의 문서관리번호는 재사용할 수 있습니다.
          */
         private void btnDeleteSub_Click(object sender, EventArgs e)
@@ -1310,7 +1309,9 @@ namespace Popbill.Cashbill.Example.csharp
             // 종료일자
             String EDate = "20161031";  
 
-            //상태코드 배열, 2,3번째 자리에 와일드카드(*) 사용가능
+            // 상태코드 배열, 2,3번째 자리에 와일드카드(*) 사용가능
+            // - 상태코드에 대한 자세한 사항은 "[현금영수증 API 연동매뉴얼] >
+            //   5.1. 현금영수증 상태코드"를 참고하시기 바랍니다.
             String[] State = new String[2];
             State[0] = "3**";
             State[1] = "4**";
@@ -1340,7 +1341,7 @@ namespace Popbill.Cashbill.Example.csharp
             int Page = 1;
 
             // 페이지당 검색개수, 최대 1000개 
-            int PerPage = 35;       
+            int PerPage = 30;
 
             try
             {
@@ -1398,7 +1399,7 @@ namespace Popbill.Cashbill.Example.csharp
                 ChargeInfo chrgInf = cashbillService.GetChargeInfo(txtCorpNum.Text);
 
                 string tmp = null;
-                tmp += "unitCost (단가) : " + chrgInf.unitCost + CRLF;
+                tmp += "unitCost (발행단가) : " + chrgInf.unitCost + CRLF;
                 tmp += "chargeMethod (과금유형) : " + chrgInf.chargeMethod + CRLF;
                 tmp += "rateSystem (과금제도) : " + chrgInf.rateSystem + CRLF;
 

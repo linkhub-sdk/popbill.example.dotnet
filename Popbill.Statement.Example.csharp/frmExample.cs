@@ -65,7 +65,6 @@ namespace Popbill.Statement.Example.csharp
        /*
         * 사업자의 파트너 연동회원 가입여부를 확인합니다.
         * - 사업자등록번호는 '-' 제외한 10자리 숫자 문자열입니다.
-        * - 링크아이디는 29번라인에 선언되어있는 인증정보(LInkID) 입니다.
         */
         private void btnCheckIsMember_Click(object sender, EventArgs e)
         {
@@ -86,8 +85,8 @@ namespace Popbill.Statement.Example.csharp
 
 
        /*
-        * 연동회원 가입요청을 신청합니다.
-        * - 회원가입 전 아이디확인(CheckID API)를 사용하여 아이디 중복여부를 확인할 수 있습니다. 
+        * 연동회원 가입을 요청합니다.
+        * - 회원가입 전 아이디 확인(CheckID API)을 사용하여 아이디 중복여부를 확인할 수 있습니다. 
         */
         private void btnJoinMember_Click(object sender, EventArgs e)
         {
@@ -253,14 +252,14 @@ namespace Popbill.Statement.Example.csharp
             }
         }
 
-        
+
         /*
          * 1건의 전자명세서를 임시저장 합니다.
-         * - 임시저장흐 발행(Issue API)를 호출해야 수신자에게 전자명세서가 전달됩니다.
-         * - 임시저장과 발행을 한번의 호출로 처리하는 즉시발행(RegistIssue API) 프로세스 
-         *   사용을 권장합니다.
          * - 전자명세서 항목별 정보는 "[전자명세서 API 연동매뉴얼] > 4.1. 전자명세서 구성"
          *   을 참조하시기 바랍니다.
+         * - 임시저장후 발행(Issue API)를 호출해야 수신자 담당자 메일로 전자명세서가 전송됩니다.
+         * - 임시저장과 발행을 한번의 호출로 처리하는 즉시발행(RegistIssue API) 프로세스 
+         *   사용을 권장합니다.
          */
         private void btnRegister_Click(object sender, EventArgs e)
         {
@@ -268,7 +267,7 @@ namespace Popbill.Statement.Example.csharp
             Statement statement = new Statement();
 
             // [필수], 기재상 작성일자 날짜형식(yyyyMMdd)
-            statement.writeDate = "20161017";
+            statement.writeDate = "20161019";
 
             // [필수], {영수, 청구} 중 기재 
             statement.purposeType = "영수";
@@ -287,7 +286,7 @@ namespace Popbill.Statement.Example.csharp
 
 
             /**************************************************************************
-             *                          발신자 정보                                   *
+             *                              발신자 정보                               *
              **************************************************************************/
 
             // [필수] 발신자 사업자번호
@@ -753,7 +752,7 @@ namespace Popbill.Statement.Example.csharp
                 foreach (AttachedFile file in fileList)
                 {
                     tmp += file.serialNum.ToString() + " | " + file.displayName + " | " + file.attachedFile + " | " + file.regDT + CRLF;
-
+                    txtFileID.Text = file.attachedFile;
                 }
 
                 MessageBox.Show(tmp);
@@ -1533,7 +1532,7 @@ namespace Popbill.Statement.Example.csharp
             String SendNum = "07043042991";
 
             // [필수] 선팩스전송 수신팩스번호 
-            String ReceiveNum = "000111222";    
+            String ReceiveNum = "010111222";    
 
 
             // 전자명세서 객체
@@ -1728,7 +1727,7 @@ namespace Popbill.Statement.Example.csharp
             Statement statement = new Statement();
 
             // [필수], 기재상 작성일자 날짜형식(yyyyMMdd)
-            statement.writeDate = "20161017";
+            statement.writeDate = "20161019";
 
             // [필수], {영수, 청구} 중 기재 
             statement.purposeType = "영수";
