@@ -909,7 +909,9 @@ namespace Popbill.Taxinvoice.Example.csharp
                 tmp += "invoiceeTEL1 : " + taxinvoice.invoiceeTEL1 + CRLF;
                 tmp += "invoiceeHP1 : " + taxinvoice.invoiceeHP1 + CRLF;
                 tmp += "invoiceeEmail1 : " + taxinvoice.invoiceeEmail1 + CRLF;
-                tmp += "invoiceeSMSSendYN : " + taxinvoice.invoiceeSMSSendYN + CRLF +CRLF;
+                tmp += "invoiceeSMSSendYN : " + taxinvoice.invoiceeSMSSendYN + CRLF;
+                tmp += "closeDownState : " + taxinvoice.closeDownState + CRLF;
+                tmp += "closeDownStateDate: " + taxinvoice.closeDownStateDate + CRLF + CRLF;
 
                 tmp += "taxTotal : " + taxinvoice.taxTotal + CRLF;
                 tmp += "supplyCostTotal : " + taxinvoice.supplyCostTotal + CRLF;
@@ -961,10 +963,9 @@ namespace Popbill.Taxinvoice.Example.csharp
                 tmp += "invoiceeCorpNum : " + taxinvoiceInfo.invoiceeCorpNum + CRLF;
                 tmp += "invoiceeMgtKey : " + taxinvoiceInfo.invoiceeMgtKey + CRLF;
                 tmp += "invoiceePrintYN : " + taxinvoiceInfo.invoiceePrintYN + CRLF;
-                tmp += "trusteeCorpName : " + taxinvoiceInfo.trusteeCorpName + CRLF;
-                tmp += "trusteeCorpNum : " + taxinvoiceInfo.trusteeCorpNum + CRLF;
-                tmp += "trusteeMgtKey : " + taxinvoiceInfo.trusteeMgtKey + CRLF;
-                tmp += "trusteePrintYN : " + taxinvoiceInfo.trusteePrintYN + CRLF;
+                tmp += "closeDownState : " + taxinvoiceInfo.closeDownState + CRLF;
+                tmp += "closeDownStateDate : " + taxinvoiceInfo.closeDownStateDate + CRLF;
+
 
                 tmp += "supplyCostTotal : " + taxinvoiceInfo.supplyCostTotal + CRLF;
                 tmp += "taxTotal : " + taxinvoiceInfo.taxTotal + CRLF;
@@ -1123,10 +1124,10 @@ namespace Popbill.Taxinvoice.Example.csharp
             List<string> MgtKeyList = new List<string>();
 
             //  조회할 세금계산서 문서관리번호 배열, (최대 1000건)
-            MgtKeyList.Add("20161014-01");
-            MgtKeyList.Add("20161014-02");
-            MgtKeyList.Add("20161014-03");
-            MgtKeyList.Add("20161014-04");
+            MgtKeyList.Add("20161221-03");
+            MgtKeyList.Add("20161221-02");
+            MgtKeyList.Add("20161221-01");
+            
 
             string tmp = "";
 
@@ -1134,11 +1135,12 @@ namespace Popbill.Taxinvoice.Example.csharp
             {
                 List<TaxinvoiceInfo> taxinvoiceInfoList = taxinvoiceService.GetInfos(txtCorpNum.Text, KeyType, MgtKeyList);
 
-                tmp = "발행일자 | 공급자 상호 | 공급자 사업자번호 | 공급받는자 상호 | 공급받는자 사업자번호 | 공급가액 합계 | 세액 합계" + CRLF;
+                tmp = "발행일자 | 공급자 상호 | 공급자 사업자번호 | 공급받는자 상호 | 공급받는자 사업자번호 | 공급가액 합계 | 세액 합계 | 휴폐업 상태 | 휴폐업 일자" + CRLF;
                 foreach (TaxinvoiceInfo info in taxinvoiceInfoList)
                 {
                     tmp += info.writeDate + " | " + info.invoicerCorpName + " | " + info.invoicerCorpNum + " | " + info.invoiceeCorpName + " | " + 
-                            info.invoiceeCorpNum + " | " + info.supplyCostTotal + " | " +  info.taxTotal + CRLF;
+                            info.invoiceeCorpNum + " | " + info.supplyCostTotal + " | " +  info.taxTotal + " | "
+                            + info.closeDownState + " | " + info.closeDownStateDate + CRLF ;
                 }
 
                 MessageBox.Show(tmp, "문서 상태정보 대량 확인");
@@ -2854,7 +2856,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             String SDate = "20160901";
 
             // [필수] 종료일자, 날자형식(yyyyMMdd)
-            String EDate = "20161031";  
+            String EDate = "20161231";  
             
             // 전송상태값 배열, 미기재시 전체 상태조회, 문서상태 값 3자리의 배열, 2,3번째 자리에 와일드카드 가능
             String[] State = new String[3];
@@ -2912,7 +2914,7 @@ namespace Popbill.Taxinvoice.Example.csharp
                 tmp += "message (응답메시지) : " + searchResult.message + CRLF + CRLF;
 
                 tmp += "itemKey | taxType | writeDate | regDT | invoicerCorpNum | invoicerCorpName | invoicerMgtKey | invoicerPrintYN |";
-                tmp += " invoiceeCorpNum | invoiceeCorpName | invoiceeMgtKey | invoiceePrintYN | ";
+                tmp += " invoiceeCorpNum | invoiceeCorpName | invoiceeMgtKey | invoiceePrintYN | closeDownState | closeDownStateDate | ";
                 tmp += "supplyCostTotal | taxTotal | purposeType | issueDT | stateCode | stateDT | lateIssueYN ";
                 tmp += CRLF + CRLF;
 
@@ -2930,6 +2932,8 @@ namespace Popbill.Taxinvoice.Example.csharp
                     tmp += taxinvoiceInfo.invoiceeCorpName + " | ";
                     tmp += taxinvoiceInfo.invoiceeMgtKey + " | ";
                     tmp += taxinvoiceInfo.invoiceePrintYN + " | ";
+                    tmp += taxinvoiceInfo.closeDownState + " | ";
+                    tmp += taxinvoiceInfo.closeDownStateDate + " | ";
                     tmp += taxinvoiceInfo.supplyCostTotal + " | ";
                     tmp += taxinvoiceInfo.taxTotal + " | ";
                     tmp += taxinvoiceInfo.purposeType + " | ";
