@@ -986,10 +986,10 @@ namespace Popbill.Message.Example.csharp
         private void btnSearch_Click(object sender, EventArgs e)
         {
             // 시작일자, 날짜형식(yyyMMdd)
-            String SDate = "20160901";
+            String SDate = "20170101";
 
             // 종료일자, 날짜형식(yyyyMMdd)
-            String EDate = "20161031";  
+            String EDate = "20170301";  
             
             // 전송상태값 배열, 1-대기, 2-성공, 3-실패, 4-취소
             String[] State = new String[4];
