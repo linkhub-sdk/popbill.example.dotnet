@@ -314,7 +314,7 @@ namespace Popbill.Fax.Example.csharp
 
         private void button2_Click(object sender, EventArgs e)
         {
-            // 발신번호, 날짜형식(yyyMMdd)
+            // 발신번호
             String senderNum = "07043042991";       
 
             if (fileDialog.ShowDialog(this) == DialogResult.OK)
@@ -740,5 +740,90 @@ namespace Popbill.Fax.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "과금정보 조회");
             }
         }
+    
+        /*
+         * 팩스 재전송을 요청합니다.
+         */
+        private void btnResendFAX_Click(object sender, EventArgs e)
+        {
+            // 발신번호, 공백으로 처리시 기존전송정보로 전송
+            String senderNum = "";
+
+            // 발신자명, 공백으로 처리시 기존전송정보로 전송
+            String senderName = "";
+
+            // 수신번호/수신자명을 공백으로 처리시 기존전송정보로 전송
+            // 수신번호
+            String receiverNum = "";
+
+            // 수신자명 
+            String receiverName = "";
+
+            try
+            {
+                String receiptNum = faxService.ResendFAX(txtCorpNum.Text, txtReceiptNum.Text, 
+                    senderNum, senderName, receiverNum, receiverName, getReserveDT(), txtUserId.Text);
+
+                MessageBox.Show("접수번호 : " + receiptNum, "팩스 전송");
+
+                txtReceiptNum.Text = receiptNum;
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "팩스 전송");
+            }
+        }
+
+        /*
+         * 팩스 재전송을 요청합니다. (동보전송)
+         */
+        private void btnResendFAXSame_Click(object sender, EventArgs e)
+        {
+            // 발신번호, 공백으로 처리시 기존전송정보로 전송
+            String senderNum = "07043042991";
+
+            // 발신자명, 공백으로 처리시 기존전송정보로 전송
+            String senderName = "발신자명";
+
+            // 수신자정보를 변경하지 않고 기존 전송정보로 전송하는 경우
+            List<FaxReceiver> receivers = null;
+
+
+            // 수신자정보를 변경하여 재전송하는 경우, 아래코드 참조
+            // 수신자정보 배열 (최대 1000건)
+            //List<FaxReceiver> receivers = new List<FaxReceiver>();
+
+            /* 
+            for (int i = 0; i < 10; i++)
+            {
+                FaxReceiver receiver = new FaxReceiver();
+
+                // 수신번호
+                receiver.receiveNum = "111-2222-3333";
+
+                // 수신자명
+                receiver.receiveName = "수신자명칭_" + i;
+                receivers.Add(receiver);
+            }
+            */
+
+            try
+            {
+                String receiptNum = faxService.ResendFAX(txtCorpNum.Text, txtReceiptNum.Text, senderNum, senderName, receivers, getReserveDT(), txtUserId.Text);
+
+                MessageBox.Show("접수번호 : " + receiptNum, "팩스 전송");
+
+                txtReceiptNum.Text = receiptNum;
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "팩스 전송");
+            }
+        }
+
+
+
     }
 }
