@@ -965,7 +965,7 @@ namespace Popbill.Taxinvoice.Example.csharp
                 tmp += "invoiceePrintYN : " + taxinvoiceInfo.invoiceePrintYN + CRLF;
                 tmp += "closeDownState : " + taxinvoiceInfo.closeDownState + CRLF;
                 tmp += "closeDownStateDate : " + taxinvoiceInfo.closeDownStateDate + CRLF;
-
+                tmp += "interOPYN : " + taxinvoiceInfo.interOPYN + CRLF;
 
                 tmp += "supplyCostTotal : " + taxinvoiceInfo.supplyCostTotal + CRLF;
                 tmp += "taxTotal : " + taxinvoiceInfo.taxTotal + CRLF;
@@ -2530,7 +2530,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             Taxinvoice taxinvoice = new Taxinvoice();
 
             // [필수] 기재상 작성일자, 날자형식(yyyyMMdd)
-            taxinvoice.writeDate = "20161013";
+            taxinvoice.writeDate = "20170323";
 
             // [필수] 과금방향, {정과금, 역과금}중 선택
             // - 정과금(공급자과금), 역과금(공급받는자과금)
@@ -2915,7 +2915,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
                 tmp += "itemKey | taxType | writeDate | regDT | invoicerCorpNum | invoicerCorpName | invoicerMgtKey | invoicerPrintYN |";
                 tmp += " invoiceeCorpNum | invoiceeCorpName | invoiceeMgtKey | invoiceePrintYN | closeDownState | closeDownStateDate | ";
-                tmp += "supplyCostTotal | taxTotal | purposeType | issueDT | stateCode | stateDT | lateIssueYN ";
+                tmp += "supplyCostTotal | taxTotal | purposeType | issueDT | stateCode | stateDT | lateIssueYN | interOPYN";
                 tmp += CRLF + CRLF;
 
                 foreach (TaxinvoiceInfo taxinvoiceInfo in searchResult.list)
@@ -2940,7 +2940,9 @@ namespace Popbill.Taxinvoice.Example.csharp
                     tmp += taxinvoiceInfo.issueDT + " | ";
                     tmp += taxinvoiceInfo.stateCode + " | ";
                     tmp += taxinvoiceInfo.stateDT + " | ";
-                    tmp += taxinvoiceInfo.lateIssueYN;
+                    tmp += taxinvoiceInfo.lateIssueYN + " | ";
+                    tmp += taxinvoiceInfo.interOPYN;
+
 
                     tmp += CRLF;
                 }
