@@ -3,9 +3,9 @@
  * 팝빌 전자세금계산서 API DotNet SDK Example
  * 
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - http://blog.linkhub.co.kr/587
- * - 업데이트 일자 : 2016-10-13
- * - 연동 기술지원 연락처 : 1600-8536 / 070-4304-2991~2
- * - 연동 기술지원 이메일 : dev@linkhub.co.kr
+ * - 업데이트 일자 : 2017-03-27
+ * - 연동 기술지원 연락처 : 1600-8536 / 070-4304-2991
+ * - 연동 기술지원 이메일 : code@linkhub.co.kr
  * 
  * <테스트 연동개발 준비사항>
  * 1) 29, 32 라인에 선언된 링크아이디(LinkID)와 비밀키(SecretKey)를 
@@ -2899,10 +2899,13 @@ namespace Popbill.Taxinvoice.Example.csharp
             // 페이지당 검색개수, 최대 1000건
             int PerPage = 30;       
 
+            // 일반/연동문서 구분, 공백-전체조회, 0-일반문서 조회, 1-연동문서조회
+            String InterOPYN = "";
+
             try
             {
                 TISearchResult searchResult = taxinvoiceService.Search(txtCorpNum.Text, KeyType, DType, SDate, EDate, State, 
-                                        Type, TaxType, LateOnly, TaxRegIDYN, TaxRegIDType, TaxRegID, QString, Order, Page, PerPage, txtUserId.Text);
+                                        Type, TaxType, LateOnly, TaxRegIDYN, TaxRegIDType, TaxRegID, QString, Order, Page, PerPage, InterOPYN, txtUserId.Text);
                
                 String tmp = null;
 
