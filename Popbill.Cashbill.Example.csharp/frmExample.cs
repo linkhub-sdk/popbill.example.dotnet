@@ -337,30 +337,31 @@ namespace Popbill.Cashbill.Example.csharp
 
                 string tmp = null;
 
-                tmp += "mgtKey : " + cashbill.mgtKey + CRLF;
-                tmp += "tradeType : " + cashbill.tradeType + CRLF;
-                tmp += "tradeUsage : " + cashbill.tradeUsage + CRLF;
-                tmp += "taxationType: " + cashbill.taxationType + CRLF;
-                tmp += "tradeDate : " + cashbill.tradeDate + CRLF;
-                tmp += "supplyCost : " + cashbill.supplyCost + CRLF;
-                tmp += "tax : " + cashbill.tax + CRLF;
-                tmp += "serviceFee : " + cashbill.serviceFee + CRLF;
-                tmp += "totalAmount : " + cashbill.totalAmount + CRLF;
-                tmp += "franchiseCorpNum : " + cashbill.franchiseCorpNum + CRLF;
-                tmp += "franchiseCorpName : " + cashbill.franchiseCorpName + CRLF;
-                tmp += "franchiseCEOName : " + cashbill.franchiseCEOName + CRLF;
-                tmp += "franchiseAddr : " + cashbill.franchiseAddr + CRLF;
-                tmp += "franchiseTEL : " + cashbill.franchiseTEL + CRLF;
-                tmp += "identityNum : " + cashbill.identityNum + CRLF;
-                tmp += "customerName: " + cashbill.customerName + CRLF;
-                tmp += "itemName : " + cashbill.itemName + CRLF;
-                tmp += "orderNumber : " + cashbill.orderNumber + CRLF;
-                tmp += "hp : " + cashbill.hp + CRLF;
-                tmp += "fax : " + cashbill.fax + CRLF;
-                tmp += "confirmNum : " + cashbill.confirmNum + CRLF;
-                tmp += "orgConfirmNum : " + cashbill.orgConfirmNum + CRLF;
-                tmp += "smssendYN : " + cashbill.smssendYN + CRLF;
-                tmp += "faxsendYN : " + cashbill.faxsendYN + CRLF;
+                tmp += "mgtKey (문서관리번호) : " + cashbill.mgtKey + CRLF;
+                tmp += "tradeType (현금영수증 형태) : " + cashbill.tradeType + CRLF;
+                tmp += "tradeUsage (거래유형) : " + cashbill.tradeUsage + CRLF;
+                tmp += "taxationType (과세형태) : " + cashbill.taxationType + CRLF;
+                tmp += "tradeDate (거래일자) : " + cashbill.tradeDate + CRLF;
+                tmp += "supplyCost (공급가액) : " + cashbill.supplyCost + CRLF;
+                tmp += "tax (세액) : " + cashbill.tax + CRLF;
+                tmp += "serviceFee (봉사료) : " + cashbill.serviceFee + CRLF;
+                tmp += "totalAmount (거래금액) : " + cashbill.totalAmount + CRLF;
+                
+                tmp += "franchiseCorpNum (발행자 사업자번호) : " + cashbill.franchiseCorpNum + CRLF;
+                tmp += "franchiseCorpName (발행자 상호) : " + cashbill.franchiseCorpName + CRLF;
+                tmp += "franchiseCEOName (발행자 대표자명) : " + cashbill.franchiseCEOName + CRLF;
+                tmp += "franchiseAddr (발행자 주소) : " + cashbill.franchiseAddr + CRLF;
+                tmp += "franchiseTEL (발행자 연락처) : " + cashbill.franchiseTEL + CRLF;
+
+                tmp += "identityNum (거래처식별번호) : " + cashbill.identityNum + CRLF;
+                tmp += "customerName (고객명) : " + cashbill.customerName + CRLF;
+                tmp += "itemName (상품명) : " + cashbill.itemName + CRLF;
+                tmp += "orderNumber (가맹점주문번호) : " + cashbill.orderNumber + CRLF;
+                tmp += "hp (휴대폰) : " + cashbill.hp + CRLF;
+                
+                tmp += "confirmNum (국세청승인번호) : " + cashbill.confirmNum + CRLF;
+                tmp += "orgConfirmNum (원본현금영수증 국세청승인번호) : " + cashbill.orgConfirmNum + CRLF;
+                tmp += "smssendYN (알림문자 전송여부) : " + cashbill.smssendYN + CRLF;
                 
                 MessageBox.Show(tmp, "현금영수증 상세정보 조회");
             }
@@ -387,33 +388,32 @@ namespace Popbill.Cashbill.Example.csharp
 
                 string tmp = null;
 
-                tmp += "itemKey : " + cashbillInfo.itemKey + CRLF;
-                tmp += "mgtKey : " + cashbillInfo.mgtKey + CRLF;
-                tmp += "tradeDate : " + cashbillInfo.tradeDate + CRLF;
-                tmp += "issueDT : " + cashbillInfo.issueDT + CRLF;
-                tmp += "customerName : " + cashbillInfo.customerName + CRLF;
-                tmp += "itemName : " + cashbillInfo.itemName + CRLF;
-                tmp += "identityNum : " + cashbillInfo.identityNum + CRLF;
-                tmp += "taxationType : " + cashbillInfo.taxationType + CRLF;
+                tmp += "itemKey (현금영수증 아이템키) : " + cashbillInfo.itemKey + CRLF;
+                tmp += "mgtKey (문서관리번호) : " + cashbillInfo.mgtKey + CRLF;
+                tmp += "tradeDate (거래일자) : " + cashbillInfo.tradeDate + CRLF;
+                tmp += "issueDT (발행일시) : " + cashbillInfo.issueDT + CRLF;
+                tmp += "customerName (고객명 : " + cashbillInfo.customerName + CRLF;
+                tmp += "itemName (상품명) : " + cashbillInfo.itemName + CRLF;
+                tmp += "identityNum (거래처 식별번호) : " + cashbillInfo.identityNum + CRLF;
+                tmp += "taxationType (과세형태) : " + cashbillInfo.taxationType + CRLF;
 
-                tmp += "totalAmount : " + cashbillInfo.totalAmount + CRLF;
-                tmp += "tradeUsage : " + cashbillInfo.tradeUsage + CRLF;
-                tmp += "tradeType : " + cashbillInfo.tradeType + CRLF;
-                tmp += "stateCode : " + cashbillInfo.stateCode + CRLF;
-                tmp += "stateDT : " + cashbillInfo.stateDT + CRLF;
-                tmp += "printYN : " + cashbillInfo.printYN + CRLF;
+                tmp += "totalAmount (거래금액) : " + cashbillInfo.totalAmount + CRLF;
+                tmp += "tradeUsage (거래용도) : " + cashbillInfo.tradeUsage + CRLF;
+                tmp += "tradeType (현금영수증 형태) : " + cashbillInfo.tradeType + CRLF;
+                tmp += "stateCode (상태코드) : " + cashbillInfo.stateCode + CRLF;
+                tmp += "stateDT (상태변경일시) : " + cashbillInfo.stateDT + CRLF;
+                tmp += "printYN (인쇄여부) : " + cashbillInfo.printYN + CRLF;
 
-                tmp += "confirmNum : " + cashbillInfo.confirmNum + CRLF;
-                tmp += "orgTradeDate : " + cashbillInfo.orgTradeDate + CRLF;
-                tmp += "orgConfirmNum : " + cashbillInfo.orgConfirmNum + CRLF;
+                tmp += "confirmNum (국세청승인번호) : " + cashbillInfo.confirmNum + CRLF;
+                tmp += "orgTradeDate (원본 현금영수증 거래일자 : " + cashbillInfo.orgTradeDate + CRLF;
+                tmp += "orgConfirmNum (원본 현금영수증 국세청승인번호) : " + cashbillInfo.orgConfirmNum + CRLF;
 
-                tmp += "ntssendDT : " + cashbillInfo.ntssendDT + CRLF;
-                tmp += "ntsresult : " + cashbillInfo.ntsresult + CRLF;
-                tmp += "ntsresultDT : " + cashbillInfo.ntsresultDT + CRLF;
-                tmp += "ntsresultCode : " + cashbillInfo.ntsresultCode + CRLF;
-                tmp += "ntsresultMessage : " + cashbillInfo.ntsresultMessage + CRLF;
+                tmp += "ntssendDT (국세청 전송일시) : " + cashbillInfo.ntssendDT + CRLF;
+                tmp += "ntsresultDT (국세청 처리결과 수신일시) : " + cashbillInfo.ntsresultDT + CRLF;
+                tmp += "ntsresultCode (국세청 처리결과 상태코드) : " + cashbillInfo.ntsresultCode + CRLF;
+                tmp += "ntsresultMessage (국세청 처리결과 메시지) : " + cashbillInfo.ntsresultMessage + CRLF;
 
-                tmp += "regDT : " + cashbillInfo.regDT;
+                tmp += "regDT (등록일시) : " + cashbillInfo.regDT;
 
                 MessageBox.Show(tmp, "현금영수증 상태/요약 정보 확인");
             }
@@ -523,12 +523,9 @@ namespace Popbill.Cashbill.Example.csharp
             List<string> MgtKeyList = new List<string>();
 
             // 현금영수증 문서관리번호 배열, 최대 1000건.
-            MgtKeyList.Add("20161017-01");
-            MgtKeyList.Add("20161017-02");
-            MgtKeyList.Add("20161017-03");
-            MgtKeyList.Add("20161017-04");
-            MgtKeyList.Add("20161017-05");
-            MgtKeyList.Add("20161017-06");
+            MgtKeyList.Add("20170329-01");
+            MgtKeyList.Add("20170329-02");
+            MgtKeyList.Add("20170329-03");
 
             try
             {
@@ -538,30 +535,34 @@ namespace Popbill.Cashbill.Example.csharp
 
                 for (int i = 0; i < cashbillInfoList.Count; i++)
                 {
-                    tmp += "itemKey : " + cashbillInfoList[i].itemKey + CRLF;
-                    tmp += "mgtKey : " + cashbillInfoList[i].mgtKey + CRLF;
-                    tmp += "tradeDate : " + cashbillInfoList[i].tradeDate + CRLF;
-                    tmp += "issueDT : " + cashbillInfoList[i].issueDT + CRLF;
-                    tmp += "customerName : " + cashbillInfoList[i].customerName + CRLF;
-                    tmp += "itemName : " + cashbillInfoList[i].itemName + CRLF;
-                    tmp += "identityNum : " + cashbillInfoList[i].identityNum + CRLF;
-                    tmp += "taxationType : " + cashbillInfoList[i].taxationType + CRLF;
 
-                    tmp += "totalAmount : " + cashbillInfoList[i].totalAmount + CRLF;
-                    tmp += "tradeUsage : " + cashbillInfoList[i].tradeUsage + CRLF;
-                    tmp += "tradeType : " + cashbillInfoList[i].tradeType + CRLF;
-                    tmp += "stateCode : " + cashbillInfoList[i].stateCode + CRLF;
-                    tmp += "stateDT : " + cashbillInfoList[i].stateDT + CRLF;
-                    tmp += "printYN : " + cashbillInfoList[i].printYN + CRLF;
+                    tmp += "itemKey (현금영수증 아이템키) : " + cashbillInfoList[i].itemKey + CRLF;
+                    tmp += "mgtKey (문서관리번호) : " + cashbillInfoList[i].mgtKey + CRLF;
+                    tmp += "tradeDate (거래일자) : " + cashbillInfoList[i].tradeDate + CRLF;
+                    tmp += "issueDT (발행일시) : " + cashbillInfoList[i].issueDT + CRLF;
+                    tmp += "customerName (고객명 : " + cashbillInfoList[i].customerName + CRLF;
+                    tmp += "itemName (상품명) : " + cashbillInfoList[i].itemName + CRLF;
+                    tmp += "identityNum (거래처 식별번호) : " + cashbillInfoList[i].identityNum + CRLF;
+                    tmp += "taxationType (과세형태) : " + cashbillInfoList[i].taxationType + CRLF;
 
-                    tmp += "confirmNum : " + cashbillInfoList[i].confirmNum + CRLF;
-                    tmp += "orgConfirmNum : " + cashbillInfoList[i].orgConfirmNum + CRLF;
+                    tmp += "totalAmount (거래금액) : " + cashbillInfoList[i].totalAmount + CRLF;
+                    tmp += "tradeUsage (거래용도) : " + cashbillInfoList[i].tradeUsage + CRLF;
+                    tmp += "tradeType (현금영수증 형태) : " + cashbillInfoList[i].tradeType + CRLF;
+                    tmp += "stateCode (상태코드) : " + cashbillInfoList[i].stateCode + CRLF;
+                    tmp += "stateDT (상태변경일시) : " + cashbillInfoList[i].stateDT + CRLF;
+                    tmp += "printYN (인쇄여부) : " + cashbillInfoList[i].printYN + CRLF;
 
-                    tmp += "ntssendDT : " + cashbillInfoList[i].ntssendDT + CRLF;
-                    tmp += "ntsresult : " + cashbillInfoList[i].ntsresult + CRLF;
-                    tmp += "ntsresultDT : " + cashbillInfoList[i].ntsresultDT + CRLF;
-                    tmp += "ntsresultCode : " + cashbillInfoList[i].ntsresultCode + CRLF;
-                    tmp += "ntsresultMessage : " + cashbillInfoList[i].ntsresultMessage + CRLF+CRLF;
+                    tmp += "confirmNum (국세청승인번호) : " + cashbillInfoList[i].confirmNum + CRLF;
+                    tmp += "orgTradeDate (원본 현금영수증 거래일자 : " + cashbillInfoList[i].orgTradeDate + CRLF;
+                    tmp += "orgConfirmNum (원본 현금영수증 국세청승인번호) : " + cashbillInfoList[i].orgConfirmNum + CRLF;
+
+                    tmp += "ntssendDT (국세청 전송일시) : " + cashbillInfoList[i].ntssendDT + CRLF;
+                    tmp += "ntsresultDT (국세청 처리결과 수신일시) : " + cashbillInfoList[i].ntsresultDT + CRLF;
+                    tmp += "ntsresultCode (국세청 처리결과 상태코드) : " + cashbillInfoList[i].ntsresultCode + CRLF;
+                    tmp += "ntsresultMessage (국세청 처리결과 메시지) : " + cashbillInfoList[i].ntsresultMessage + CRLF;
+
+                    tmp += "regDT (등록일시) : " + cashbillInfoList[i].regDT + CRLF +CRLF;
+
                 }
 
                 MessageBox.Show(tmp, "현금영수증 상태/요약 정보 조회 - 대량");
