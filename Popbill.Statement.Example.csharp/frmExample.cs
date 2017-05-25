@@ -3,9 +3,9 @@
  * 팝빌 전자명세서 API DotNet SDK Example
  * 
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - http://blog.linkhub.co.kr/587
- * - 업데이트 일자 : 2016-10-17
+ * - 업데이트 일자 : 2017-05-25
  * - 연동 기술지원 연락처 : 1600-8536 / 070-4304-2991~2
- * - 연동 기술지원 이메일 : dev@linkhub.co.kr
+ * - 연동 기술지원 이메일 : code@linkhub.co.kr
  * 
  * <테스트 연동개발 준비사항>
  * 1) 30, 33 라인에 선언된 링크아이디(LinkID)와 비밀키(SecretKey)를 
@@ -1377,6 +1377,9 @@ namespace Popbill.Statement.Example.csharp
         private void UpdateContact_Click(object sender, EventArgs e)
         {
             Contact contactInfo = new Contact();
+
+            // 담당자 아이디
+            contactInfo.id = txtUserID.Text;
 
             // 담당자명 
             contactInfo.personName = "담당자123";

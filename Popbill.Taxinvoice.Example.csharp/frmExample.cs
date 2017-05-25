@@ -3,7 +3,7 @@
  * 팝빌 전자세금계산서 API DotNet SDK Example
  * 
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - http://blog.linkhub.co.kr/587
- * - 업데이트 일자 : 2017-03-27
+ * - 업데이트 일자 : 2017-05-25
  * - 연동 기술지원 연락처 : 1600-8536 / 070-4304-2991
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
  * 
@@ -2338,6 +2338,9 @@ namespace Popbill.Taxinvoice.Example.csharp
         private void btnUpdateContact_Click(object sender, EventArgs e)
         {
             Contact contactInfo = new Contact();
+
+            // 담당자 아이디
+            contactInfo.id = txtUserId.Text;
 
             // 담당자명 
             contactInfo.personName = "담당자123";
