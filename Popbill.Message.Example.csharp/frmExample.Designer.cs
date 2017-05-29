@@ -55,6 +55,8 @@
             this.txtCorpNum = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.btnGetSenderNumberList = new System.Windows.Forms.Button();
             this.btnGetAutoDenyList = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
@@ -80,6 +82,7 @@
             this.btnSendSMS_one = new System.Windows.Forms.Button();
             this.txtReserveDT = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnGetURL_SENDER = new System.Windows.Forms.Button();
             this.GroupBox1.SuspendLayout();
             this.groupBox11.SuspendLayout();
             this.groupBox10.SuspendLayout();
@@ -87,6 +90,7 @@
             this.GroupBox3.SuspendLayout();
             this.GroupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox12.SuspendLayout();
             this.groupBox9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox8.SuspendLayout();
@@ -365,6 +369,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.groupBox12);
             this.groupBox4.Controls.Add(this.btnGetAutoDenyList);
             this.groupBox4.Controls.Add(this.btnSearch);
             this.groupBox4.Controls.Add(this.groupBox9);
@@ -385,6 +390,27 @@
             this.groupBox4.TabIndex = 17;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "문자전송 관련 기능";
+            // 
+            // groupBox12
+            // 
+            this.groupBox12.Controls.Add(this.btnGetURL_SENDER);
+            this.groupBox12.Controls.Add(this.btnGetSenderNumberList);
+            this.groupBox12.Location = new System.Drawing.Point(713, 71);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Size = new System.Drawing.Size(136, 95);
+            this.groupBox12.TabIndex = 28;
+            this.groupBox12.TabStop = false;
+            this.groupBox12.Text = "발신번호 관리";
+            // 
+            // btnGetSenderNumberList
+            // 
+            this.btnGetSenderNumberList.Location = new System.Drawing.Point(8, 15);
+            this.btnGetSenderNumberList.Name = "btnGetSenderNumberList";
+            this.btnGetSenderNumberList.Size = new System.Drawing.Size(121, 32);
+            this.btnGetSenderNumberList.TabIndex = 27;
+            this.btnGetSenderNumberList.Text = "발신번호 목록 조회";
+            this.btnGetSenderNumberList.UseVisualStyleBackColor = true;
+            this.btnGetSenderNumberList.Click += new System.EventHandler(this.btnGetSenderNumberList_Click);
             // 
             // btnGetAutoDenyList
             // 
@@ -634,11 +660,21 @@
             this.label3.TabIndex = 13;
             this.label3.Text = "예약시간(yyyyMMddHHmmss) : ";
             // 
+            // btnGetURL_SENDER
+            // 
+            this.btnGetURL_SENDER.Location = new System.Drawing.Point(8, 53);
+            this.btnGetURL_SENDER.Name = "btnGetURL_SENDER";
+            this.btnGetURL_SENDER.Size = new System.Drawing.Size(121, 32);
+            this.btnGetURL_SENDER.TabIndex = 28;
+            this.btnGetURL_SENDER.Text = "발신번호 관리 팝업";
+            this.btnGetURL_SENDER.UseVisualStyleBackColor = true;
+            this.btnGetURL_SENDER.Click += new System.EventHandler(this.btnGetURL_SENDER_Click);
+            // 
             // frmExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(890, 687);
+            this.ClientSize = new System.Drawing.Size(906, 676);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.txtUserId);
             this.Controls.Add(this.GroupBox1);
@@ -656,6 +692,7 @@
             this.GroupBox2.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.groupBox12.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox8.ResumeLayout(false);
@@ -720,6 +757,9 @@
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnGetAutoDenyList;
         private System.Windows.Forms.Button btnGetChargeInfo;
+        private System.Windows.Forms.GroupBox groupBox12;
+        private System.Windows.Forms.Button btnGetSenderNumberList;
+        private System.Windows.Forms.Button btnGetURL_SENDER;
     }
 }
 

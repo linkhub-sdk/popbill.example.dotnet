@@ -1101,5 +1101,52 @@ namespace Popbill.Message.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "단문(SMS) 과금정보 확인");
             }
         }
+
+        /*
+         * 문자 발신번호 목록을 확인합니다.
+         */
+        private void btnGetSenderNumberList_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<SenderNumber> SenderNumberList = messageService.GetSenderNumberList(txtCorpNum.Text);
+
+                String tmp = null;
+
+                foreach (SenderNumber numInfo in SenderNumberList)
+                {
+                    tmp += "발신번호(number) : "+numInfo.number + CRLF;
+                    tmp += "대표번호 지정여부(representYN) : " + numInfo.representYN + CRLF;
+                    tmp += "등록상태(state) : " + numInfo.state + CRLF + CRLF;
+
+                }
+
+                MessageBox.Show(tmp, "발신번호 목록 조회");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "발신번호 목록 조회");
+            }
+        }
+
+        /*
+         * 문자 발신번호 관리 팝업 URL을 확인합니다.
+         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         */ 
+        private void btnGetURL_SENDER_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string url = messageService.GetURL(txtCorpNum.Text, txtUserId.Text, "SENDER");
+
+                MessageBox.Show(url, "문자 발신번호 관리 팝업 URL");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "문자 발신번호 관리 팝업 URL");
+            }
+        }
     }
 }
