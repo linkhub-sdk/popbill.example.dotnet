@@ -545,6 +545,7 @@
             this.Name = "frmExample";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "팝빌 팩스 SDK C# Example";
+            this.Load += new System.EventHandler(this.frmExample_Load);
             this.GroupBox1.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);

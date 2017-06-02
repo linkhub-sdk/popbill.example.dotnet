@@ -3,7 +3,7 @@
  * 팝빌 팩스 API DotNet SDK Example
  * 
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - http://blog.linkhub.co.kr/587
- * - 업데이트 일자 : 2017-05-25
+ * - 업데이트 일자 : 2017-06-02
  * - 연동 기술지원 연락처 : 1600-8536 / 070-4304-2991~2
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
  * 
@@ -289,7 +289,10 @@ namespace Popbill.Fax.Example.csharp
             String receiverNum = "070111222";
 
             // 수신자명 
-            String receiverName = "수신자명";       
+            String receiverName = "수신자명";
+
+            // 광고팩스 전송여부
+            bool adsYN = false;
 
             if (fileDialog.ShowDialog(this) == DialogResult.OK)
             {
@@ -297,7 +300,8 @@ namespace Popbill.Fax.Example.csharp
 
                 try
                 {
-                    String receiptNum = faxService.SendFAX(txtCorpNum.Text, senderNum, receiverNum, receiverName, strFileName, getReserveDT(), txtUserId.Text);
+                    String receiptNum = faxService.SendFAX(txtCorpNum.Text, senderNum, receiverNum, receiverName, 
+                        strFileName, getReserveDT(), txtUserId.Text, adsYN);
 
                     MessageBox.Show("접수번호 : " + receiptNum, "팩스 전송");
 
@@ -324,21 +328,25 @@ namespace Popbill.Fax.Example.csharp
                 // 수신자정보 배열 (최대 1000건)
                 List<FaxReceiver> receivers = new List<FaxReceiver>();
 
-                for (int i = 0; i < 100; i++)
+                for (int i = 0; i < 10; i++)
                 {
                     FaxReceiver receiver = new FaxReceiver();
 
                     // 수신번호
-                    receiver.receiveNum = "111-2222-3333";
+                    receiver.receiveNum = "070111222";
 
                     // 수신자명
                     receiver.receiveName = "수신자명칭_" + i;
                     receivers.Add(receiver);
                 }
 
+                // 광고팩스 전송여부
+                bool adsYN = false;
+
                 try
                 {
-                    String receiptNum = faxService.SendFAX(txtCorpNum.Text, senderNum, receivers, strFileName, getReserveDT(), txtUserId.Text);
+                    String receiptNum = faxService.SendFAX(txtCorpNum.Text, senderNum, receivers, strFileName,
+                        getReserveDT(), txtUserId.Text, adsYN);
 
                     MessageBox.Show("접수번호 : " + receiptNum, "팩스 전송");
 
@@ -361,7 +369,10 @@ namespace Popbill.Fax.Example.csharp
             String receiverNum = "070111222";
 
             // 수신자명
-            String receiverName = "수신자명";   
+            String receiverName = "수신자명";
+
+            // 광고팩스 전송여부
+            bool adsYN = false;
             
             List<String> filePaths = new List<string>();
 
@@ -375,7 +386,8 @@ namespace Popbill.Fax.Example.csharp
             {
                 try
                 {
-                    String receiptNum = faxService.SendFAX(txtCorpNum.Text, senderNum, receiverNum, receiverName, filePaths, getReserveDT(), txtUserId.Text);
+                    String receiptNum = faxService.SendFAX(txtCorpNum.Text, senderNum, receiverNum, receiverName, 
+                        filePaths, getReserveDT(), txtUserId.Text, adsYN);
 
                     MessageBox.Show("접수번호 : " + receiptNum, "팩스 전송");
             
@@ -394,6 +406,9 @@ namespace Popbill.Fax.Example.csharp
             // 발신번호
             String senderNum = "07043042991";   
 
+            // 광고팩스 전송여부 
+            bool adsYN = false;
+
             List<String> filePaths = new List<string>();
 
             while (fileDialog.ShowDialog(this) == DialogResult.OK)
@@ -405,13 +420,13 @@ namespace Popbill.Fax.Example.csharp
             {
                 List<FaxReceiver> receivers = new List<FaxReceiver>();
 
-                for (int i = 0; i < 100; i++)
+                for (int i = 0; i < 1; i++)
                 {
                     // 수신정보 배열(최대 1000건)
                     FaxReceiver receiver = new FaxReceiver();
 
                     // 수신번호
-                    receiver.receiveNum = "111-2222-3333";
+                    receiver.receiveNum = "070111222";
 
                     // 수신자명
                     receiver.receiveName = "수신자명칭_" + i;
@@ -420,7 +435,8 @@ namespace Popbill.Fax.Example.csharp
 
                 try
                 {
-                    String receiptNum = faxService.SendFAX(txtCorpNum.Text, senderNum, receivers, filePaths, getReserveDT(), txtUserId.Text);
+                    String receiptNum = faxService.SendFAX(txtCorpNum.Text, senderNum, receivers, 
+                        filePaths, getReserveDT(), txtUserId.Text, adsYN);
 
                     MessageBox.Show("접수번호 : " + receiptNum, "팩스전송");
 
