@@ -227,6 +227,12 @@ namespace Popbill.Cashbill.Example.csharp
             // [필수] 거래유형, {승인거래, 취소거래} 중 기재
             cashbill.tradeType = "승인거래";
 
+            // [취소거래시 필수] 원본 현금영수증 승인번호
+            cashbill.orgConfirmNum = "";
+
+            // [취소거래시 필수] 원본 현금영수증 거래일자
+            cashbill.orgTradeDate = "";
+
             // [필수] 과세형태, { 과세, 비과세 } 중 기재
             cashbill.taxationType = "과세";
 
@@ -1219,6 +1225,12 @@ namespace Popbill.Cashbill.Example.csharp
 
             // [필수] 거래유형, {승인거래, 취소거래} 중 기재
             cashbill.tradeType = "승인거래";
+
+            // [취소거래시 필수] 원본 현금영수증 승인번호
+            cashbill.orgConfirmNum = "";
+
+            // [취소거래시 필수] 원본 현금영수증 거래일자
+            cashbill.orgTradeDate = "";
 
             // [필수] 과세형태, { 과세, 비과세 } 중 기재
             cashbill.taxationType = "과세";

@@ -293,6 +293,9 @@ namespace Popbill.Fax.Example.csharp
 
             // 광고팩스 전송여부
             bool adsYN = false;
+            
+            // 팩스제목
+            String title = "팩스 전송 제목 테스트";
 
             if (fileDialog.ShowDialog(this) == DialogResult.OK)
             {
@@ -301,7 +304,7 @@ namespace Popbill.Fax.Example.csharp
                 try
                 {
                     String receiptNum = faxService.SendFAX(txtCorpNum.Text, senderNum, receiverNum, receiverName, 
-                        strFileName, getReserveDT(), txtUserId.Text, adsYN);
+                        strFileName, getReserveDT(), txtUserId.Text, adsYN, title);
 
                     MessageBox.Show("접수번호 : " + receiptNum, "팩스 전송");
 
@@ -319,7 +322,10 @@ namespace Popbill.Fax.Example.csharp
         private void button2_Click(object sender, EventArgs e)
         {
             // 발신번호
-            String senderNum = "07043042991";       
+            String senderNum = "07043042991";
+
+            // 팩스제목
+            String title = "팩스 동보전송 제목";
 
             if (fileDialog.ShowDialog(this) == DialogResult.OK)
             {
@@ -346,7 +352,7 @@ namespace Popbill.Fax.Example.csharp
                 try
                 {
                     String receiptNum = faxService.SendFAX(txtCorpNum.Text, senderNum, receivers, strFileName,
-                        getReserveDT(), txtUserId.Text, adsYN);
+                        getReserveDT(), txtUserId.Text, adsYN, title);
 
                     MessageBox.Show("접수번호 : " + receiptNum, "팩스 전송");
 
@@ -373,7 +379,10 @@ namespace Popbill.Fax.Example.csharp
 
             // 광고팩스 전송여부
             bool adsYN = false;
-            
+
+            // 팩스제목
+            String title = "팩스 다수파일전송 제목";
+
             List<String> filePaths = new List<string>();
 
             while (fileDialog.ShowDialog(this) == DialogResult.OK)
@@ -387,7 +396,7 @@ namespace Popbill.Fax.Example.csharp
                 try
                 {
                     String receiptNum = faxService.SendFAX(txtCorpNum.Text, senderNum, receiverNum, receiverName, 
-                        filePaths, getReserveDT(), txtUserId.Text, adsYN);
+                        filePaths, getReserveDT(), txtUserId.Text, adsYN, title);
 
                     MessageBox.Show("접수번호 : " + receiptNum, "팩스 전송");
             
@@ -408,6 +417,9 @@ namespace Popbill.Fax.Example.csharp
 
             // 광고팩스 전송여부 
             bool adsYN = false;
+
+            // 팩스제목
+            String title = "팩스 다중파일 동보전송 제목";
 
             List<String> filePaths = new List<string>();
 
@@ -436,7 +448,7 @@ namespace Popbill.Fax.Example.csharp
                 try
                 {
                     String receiptNum = faxService.SendFAX(txtCorpNum.Text, senderNum, receivers, 
-                        filePaths, getReserveDT(), txtUserId.Text, adsYN);
+                        filePaths, getReserveDT(), txtUserId.Text, adsYN, title);
 
                     MessageBox.Show("접수번호 : " + receiptNum, "팩스전송");
 
@@ -778,10 +790,13 @@ namespace Popbill.Fax.Example.csharp
             // 수신자명 
             String receiverName = "";
 
+            // 팩스제목
+            String title = "팩스 재전송 제목";
+
             try
             {
                 String receiptNum = faxService.ResendFAX(txtCorpNum.Text, txtReceiptNum.Text, 
-                    senderNum, senderName, receiverNum, receiverName, getReserveDT(), txtUserId.Text);
+                    senderNum, senderName, receiverNum, receiverName, getReserveDT(), txtUserId.Text, title);
 
                 MessageBox.Show("접수번호 : " + receiptNum, "팩스 전송");
 
@@ -805,8 +820,13 @@ namespace Popbill.Fax.Example.csharp
             // 발신자명, 공백으로 처리시 기존전송정보로 전송
             String senderName = "발신자명";
 
+            // 팩스제목
+            String title = "팩스재전송 제목";
+
             // 수신자정보를 변경하지 않고 기존 전송정보로 전송하는 경우
             List<FaxReceiver> receivers = null;
+
+            
 
 
             // 수신자정보를 변경하여 재전송하는 경우, 아래코드 참조
@@ -829,7 +849,7 @@ namespace Popbill.Fax.Example.csharp
 
             try
             {
-                String receiptNum = faxService.ResendFAX(txtCorpNum.Text, txtReceiptNum.Text, senderNum, senderName, receivers, getReserveDT(), txtUserId.Text);
+                String receiptNum = faxService.ResendFAX(txtCorpNum.Text, txtReceiptNum.Text, senderNum, senderName, receivers, getReserveDT(), txtUserId.Text, title);
 
                 MessageBox.Show("접수번호 : " + receiptNum, "팩스 전송");
 
