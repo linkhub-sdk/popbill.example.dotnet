@@ -222,6 +222,7 @@ namespace Popbill.Closedown.Example.csharp
                 tmp += "state(휴폐업상태) : " + result.state + "\n";
                 tmp += "type(사업유형) : " + result.type + "\n";
                 tmp += "stateDate(휴폐업일자) : " + result.stateDate + "\n";
+                tmp += "typeDate(과세유형 전환일자) : " + result.typeDate + "\n";
                 tmp += "checkDate(국세청확인일자) : " + result.checkDate + "\n";
 
                 MessageBox.Show(tmp,"휴폐업조회 - 단건");
@@ -245,8 +246,8 @@ namespace Popbill.Closedown.Example.csharp
 
             // 조회할 사업자번호 배열, 최대 1000건
             CorpNumList.Add("1234567890");
-            CorpNumList.Add("4352343543");
             CorpNumList.Add("6798700433");
+            CorpNumList.Add("4010394930");
 
             try
             {
@@ -260,8 +261,9 @@ namespace Popbill.Closedown.Example.csharp
                     tmp += "corpNum(사업자번호) : " + corpStateList[i].corpNum + CRLF;
                     tmp += "state(휴폐업상태) : " + corpStateList[i].state + CRLF;
                     tmp += "type(사업유형) : " + corpStateList[i].type + CRLF;
-                    tmp += "stateDate(휴폐업1일자) : " + corpStateList[i].stateDate + CRLF;
-                    tmp += "checkDate(국세청확인일자) : " + corpStateList[i].checkDate + CRLF + CRLF;
+                    tmp += "stateDate(휴폐업일자) : " + corpStateList[i].stateDate + CRLF;
+                    tmp += "typeDate(과세유형 전환일자) : " + corpStateList[i].typeDate + CRLF;
+                    tmp += "checkDate(국세청확인일자) : " + corpStateList[i].checkDate+ CRLF + CRLF;
                 }
                 MessageBox.Show(tmp, "휴폐업조회 - 대량");   
             }

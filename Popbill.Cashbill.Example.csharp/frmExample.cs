@@ -1428,5 +1428,81 @@ namespace Popbill.Cashbill.Example.csharp
             }
         }
 
+        /*
+         * 1건의 취소현금영수증을 즉시발행 처리합니다.
+         * - 발행일 기준으로 오후 5시까지 발행된 현금영수증은
+         *   익일 오후 2시에 국세청 전송결과를 확인할 수 있습니다.
+         * - 원본현금영수증 승인번호/거래일자는 문서 정보확인(GetInfo API)를
+         *   사용하여 확인할 수 있습니다.
+         */
+        private void btnRevokRegistIssue_Click(object sender, EventArgs e)
+        {
+            
+            // 원본현금영수증 승인번호
+            String orgConfirmNum = "820116333";
+
+            // 원본현금영수증 거래일자
+            String orgTradeDate = "20170711";
+
+            try
+            {
+                Response response = cashbillService.RevokeRegistIssue(txtCorpNum.Text, txtMgtKey.Text, orgConfirmNum, orgTradeDate);
+
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "취소현금영수증 즉시발행");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "취소현금영수증 즉시발행");
+            }
+        }
+
+        /*
+         * 1건의 [발행완료] 현금영수증을 [발행취소] 처리합니다.
+         * - 현금영수증 발행취소는 국세청 전송전에만 가능합니다.
+         * - 발행취소 처리된 현금영수증은 국세청에 전송되지 않습니다.
+         * - 등록된 문서관리번호를 재사용 하기 위해서는 발행취소 후 
+         *   삭제(Delete API)를 호출하여 삭제처리해야 합니다.
+         */
+        private void btnCancelIssue02_Click(object sender, EventArgs e)
+        {
+            // 메모
+            string memo = "발행취소 메모";
+
+            try
+            {
+                Response response = cashbillService.CancelIssue(txtCorpNum.Text, txtMgtKey.Text, memo, txtUserId.Text);
+
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "취소현금영수증 발행취소");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "취소현금영수증 발행취소");
+            }
+        }
+
+        /*
+         * [임시저장] 또는 [발행취소] 상태의 현금영수증을 삭제 처리합니다.
+         * - 삭제된 현금영수증의 문서관리번호는 재사용할 수 있습니다.
+         */
+        private void btnDelete02_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                Response response = cashbillService.Delete(txtCorpNum.Text, txtMgtKey.Text, txtUserId.Text);
+
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "취소현금영수증 삭제");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "취소현금영수증 삭제");
+            }
+        }
     }
 }
