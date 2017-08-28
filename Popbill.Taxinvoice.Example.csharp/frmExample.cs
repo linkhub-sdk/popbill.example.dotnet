@@ -3,8 +3,8 @@
  * 팝빌 전자세금계산서 API DotNet SDK Example
  * 
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - http://blog.linkhub.co.kr/587
- * - 업데이트 일자 : 2017-05-25
- * - 연동 기술지원 연락처 : 1600-8536 / 070-4304-2991
+ * - 업데이트 일자 : 2017-08-28
+ * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
  * 
  * <테스트 연동개발 준비사항>
@@ -3063,6 +3063,10 @@ namespace Popbill.Taxinvoice.Example.csharp
        
         }
 
+        /*
+         * 파트너 포인트 충전 팝업 URL을 반환합니다. 
+         * - 반환된 URL은 보안정책상 30초의 유효시간을 갖습니다.
+         */
         private void btnGetPartnerURL_CHRG_Click(object sender, EventArgs e)
         {
             try
