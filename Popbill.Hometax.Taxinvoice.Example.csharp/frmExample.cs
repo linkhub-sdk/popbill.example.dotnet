@@ -607,13 +607,14 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
 
                 MessageBox.Show(tmp, "수집 결과 조회");
 
-                string rowStr = "작성일자 | 발행일자 | 전송일자 | 거래처 | 등록번호 | 과세형태 | 공급가액 | 문서형태 | 국세청승인번호 ";
+                string rowStr = "구분 | 작성일자 | 발행일자 | 전송일자 | 거래처 | 등록번호 | 과세형태 | 공급가액 | 문서형태 | 국세청승인번호 ";
 
                 listBox1.Items.Add(rowStr);
 
                 for (int i = 0; i < searchInfo.list.Count; i++)
                 {
                     rowStr = null;
+                    rowStr += searchInfo.list[i].invoiceType + " | ";
                     rowStr += searchInfo.list[i].writeDate + " | ";
                     rowStr += searchInfo.list[i].issueDate + " | ";
                     rowStr += searchInfo.list[i].sendDate + " | ";
@@ -880,6 +881,21 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + ex.Message, "정액제 서비스 상태 확인");
+            }
+        }
+
+        private void btnGetPartnerURL_CHRG_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string url = htTaxinvoiceService.GetPartnerURL(txtCorpNum.Text, "CHRG");
+
+                MessageBox.Show(url, "파트너 포인트충전 URL");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "팝빌 로그인 URL");
             }
         }      
     }

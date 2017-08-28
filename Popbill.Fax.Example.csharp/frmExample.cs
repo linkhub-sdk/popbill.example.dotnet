@@ -908,5 +908,21 @@ namespace Popbill.Fax.Example.csharp
             }
         }
 
+        
+        private void btnGetPartnerURL_CHRG_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string url = faxService.GetPartnerURL(txtCorpNum.Text, "CHRG");
+
+                MessageBox.Show(url, "파트너 포인트충전 URL");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "팝빌 로그인 URL");
+            }
+        }
+
     }
 }

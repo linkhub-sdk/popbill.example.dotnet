@@ -592,13 +592,14 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
 
                 MessageBox.Show(tmp, "수집 결과 조회");
 
-                string rowStr = "거래유형 | 거래일시 | 거래처 식별번호 | 공급가액 | 세액 | 봉사료 | 거래금액 | 현금영수증 형태 | 국세청승인번호 ";
+                string rowStr = "구분 | 거래유형 | 거래일시 | 거래처 식별번호 | 공급가액 | 세액 | 봉사료 | 거래금액 | 현금영수증 형태 | 국세청승인번호 ";
                 listBox1.Items.Add(rowStr);
 
                 // 현금영수증 항목에 대한 추가적인 정보는 [연동매뉴얼 4.1. 응답전문 구성] 를 참조하시기 바랍니다.
                 for (int i = 0; i < searchInfo.list.Count; i++)
                 {
                     rowStr = null;
+                    rowStr += searchInfo.list[i].invoiceType + " | ";
                     rowStr += searchInfo.list[i].tradeUsage  + " | ";
                     rowStr += searchInfo.list[i].tradeDT + " | ";
                     rowStr += searchInfo.list[i].identityNum + " | ";
@@ -736,6 +737,21 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + ex.Message, "공인인증서 만료일시 확인");
+            }
+        }
+
+        private void btnGetPartnerURL_CHRG_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string url = htCashbillService.GetPartnerURL(txtCorpNum.Text, "CHRG");
+
+                MessageBox.Show(url, "파트너 포인트충전 URL");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "팝빌 로그인 URL");
             }
         }
     }

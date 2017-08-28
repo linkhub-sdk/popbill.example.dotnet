@@ -2240,7 +2240,6 @@ namespace Popbill.Taxinvoice.Example.csharp
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + ex.Message, "팝빌 로그인 URL");
             }
-
             
         }
 
@@ -2254,7 +2253,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             {
                 string url = taxinvoiceService.GetPopbillURL(txtCorpNum.Text, txtUserId.Text, "CHRG");
 
-                MessageBox.Show(url, "포인트 충전 URL");
+                MessageBox.Show(url, "연동회원 포인트 충전 URL");
             }
             catch (PopbillException ex)
             {
@@ -3062,6 +3061,21 @@ namespace Popbill.Taxinvoice.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "인감 및 첨부문서 등록 URL");
             }
        
+        }
+
+        private void btnGetPartnerURL_CHRG_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string url = taxinvoiceService.GetPartnerURL(txtCorpNum.Text, "CHRG");
+
+                MessageBox.Show(url, "파트너 포인트충전 URL");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "팝빌 로그인 URL");
+            }
         }
     }
 }
