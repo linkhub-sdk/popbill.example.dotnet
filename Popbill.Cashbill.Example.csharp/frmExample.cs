@@ -367,6 +367,7 @@ namespace Popbill.Cashbill.Example.csharp
                 
                 tmp += "confirmNum (국세청승인번호) : " + cashbill.confirmNum + CRLF;
                 tmp += "orgConfirmNum (원본현금영수증 국세청승인번호) : " + cashbill.orgConfirmNum + CRLF;
+                tmp += "cancelType (취소사유) : " + cashbill.cancelType + CRLF;
                 tmp += "smssendYN (알림문자 전송여부) : " + cashbill.smssendYN + CRLF;
                 
                 MessageBox.Show(tmp, "현금영수증 상세정보 조회");
@@ -1521,6 +1522,54 @@ namespace Popbill.Cashbill.Example.csharp
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + ex.Message, "팝빌 로그인 URL");
+            }
+        }
+
+        private void btnRevokeRegistIssue_part_Click(object sender, EventArgs e)
+        {
+            // 원본현금영수증 승인번호
+            String orgConfirmNum = "820116333";
+
+            // 원본현금영수증 거래일자
+            String orgTradeDate = "20170711";
+
+            // 알림문자 전송여부           
+            bool smssendYN = false;
+
+            // 메모
+            String memo = "부분 취소발행 메모";
+
+            // 부분취소여부, true-부분취소, false-전체취소
+            bool isPartCancel = true;
+
+            // 취소사유, 1-거래취소, 2-오류발급취소, 3-기타
+            int cancelType = 1;
+
+            // [취소] 공급가액
+            String supplyCost = "3000";
+
+            // [취소] 세액
+            String tax = "300";
+
+            // [취소] 봉사료
+            String serviceFee = "";
+
+            // [취소] 합계금액
+            String totalAmount = "3300";
+
+            try
+            {
+                Response response = cashbillService.RevokeRegistIssue(txtCorpNum.Text, txtMgtKey.Text, 
+                    orgConfirmNum, orgTradeDate, smssendYN, memo, txtUserId.Text, isPartCancel, cancelType,
+                    supplyCost, tax, serviceFee, totalAmount);
+
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "(부분) 취소현금영수증 즉시발행");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "(부분) 취소현금영수증 즉시발행");
             }
         }
     }

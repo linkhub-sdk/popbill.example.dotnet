@@ -87,13 +87,14 @@
             this.btnListContact = new System.Windows.Forms.Button();
             this.btnRegistContact = new System.Windows.Forms.Button();
             this.GroupBox5 = new System.Windows.Forms.GroupBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.btnGetPartnerURL_CHRG = new System.Windows.Forms.Button();
+            this.groupBox15 = new System.Windows.Forms.GroupBox();
             this.btnGetPopbillURL_CHRG = new System.Windows.Forms.Button();
             this.Label2 = new System.Windows.Forms.Label();
             this.txtCorpNum = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.btnGetPartnerURL_CHRG = new System.Windows.Forms.Button();
-            this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.btnRevokeRegistIssue_part = new System.Windows.Forms.Button();
             this.GroupBox9.SuspendLayout();
             this.GroupBox11.SuspendLayout();
             this.GroupBox3.SuspendLayout();
@@ -390,7 +391,7 @@
             this.GroupBox7.Controls.Add(this.Label3);
             this.GroupBox7.Location = new System.Drawing.Point(13, 186);
             this.GroupBox7.Name = "GroupBox7";
-            this.GroupBox7.Size = new System.Drawing.Size(699, 448);
+            this.GroupBox7.Size = new System.Drawing.Size(654, 448);
             this.GroupBox7.TabIndex = 12;
             this.GroupBox7.TabStop = false;
             this.GroupBox7.Text = "현금영수증 관련 API";
@@ -406,6 +407,7 @@
             // 
             // groupBox14
             // 
+            this.groupBox14.Controls.Add(this.btnRevokeRegistIssue_part);
             this.groupBox14.Controls.Add(this.btnCancelIssue02);
             this.groupBox14.Controls.Add(this.btnDelete02);
             this.groupBox14.Controls.Add(this.panel2);
@@ -414,7 +416,7 @@
             this.groupBox14.Controls.Add(this.label11);
             this.groupBox14.Location = new System.Drawing.Point(353, 91);
             this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(207, 140);
+            this.groupBox14.Size = new System.Drawing.Size(277, 140);
             this.groupBox14.TabIndex = 19;
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "취소현금영수증 즉시발행 프로세스";
@@ -459,11 +461,11 @@
             // btnRevokRegistIssue
             // 
             this.btnRevokRegistIssue.BackColor = System.Drawing.Color.LightCoral;
-            this.btnRevokRegistIssue.Location = new System.Drawing.Point(98, 23);
+            this.btnRevokRegistIssue.Location = new System.Drawing.Point(80, 24);
             this.btnRevokRegistIssue.Name = "btnRevokRegistIssue";
             this.btnRevokRegistIssue.Size = new System.Drawing.Size(69, 28);
             this.btnRevokRegistIssue.TabIndex = 9;
-            this.btnRevokRegistIssue.Text = "즉시발행";
+            this.btnRevokRegistIssue.Text = "전체취소";
             this.btnRevokRegistIssue.UseVisualStyleBackColor = false;
             this.btnRevokRegistIssue.Click += new System.EventHandler(this.btnRevokRegistIssue_Click);
             // 
@@ -475,7 +477,7 @@
             this.label11.Location = new System.Drawing.Point(9, 19);
             this.label11.Name = "label11";
             this.label11.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.label11.Size = new System.Drawing.Size(189, 37);
+            this.label11.Size = new System.Drawing.Size(249, 37);
             this.label11.TabIndex = 6;
             this.label11.Text = "즉시발행";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -747,6 +749,38 @@
             this.GroupBox5.TabStop = false;
             this.GroupBox5.Text = "팝빌 기본 URL";
             // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.btnGetPartnerURL_CHRG);
+            this.groupBox8.Controls.Add(this.btnGetPartnerBalance1);
+            this.groupBox8.Location = new System.Drawing.Point(434, 15);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(133, 120);
+            this.groupBox8.TabIndex = 14;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "파트너과금 포인트";
+            // 
+            // btnGetPartnerURL_CHRG
+            // 
+            this.btnGetPartnerURL_CHRG.Location = new System.Drawing.Point(8, 52);
+            this.btnGetPartnerURL_CHRG.Name = "btnGetPartnerURL_CHRG";
+            this.btnGetPartnerURL_CHRG.Size = new System.Drawing.Size(119, 32);
+            this.btnGetPartnerURL_CHRG.TabIndex = 0;
+            this.btnGetPartnerURL_CHRG.Text = "포인트 충전 URL";
+            this.btnGetPartnerURL_CHRG.UseVisualStyleBackColor = true;
+            this.btnGetPartnerURL_CHRG.Click += new System.EventHandler(this.btnGetPartnerURL_CHRG_Click);
+            // 
+            // groupBox15
+            // 
+            this.groupBox15.Controls.Add(this.btnGetPopbillURL_CHRG);
+            this.groupBox15.Controls.Add(this.btnGetBalance);
+            this.groupBox15.Location = new System.Drawing.Point(285, 16);
+            this.groupBox15.Name = "groupBox15";
+            this.groupBox15.Size = new System.Drawing.Size(132, 119);
+            this.groupBox15.TabIndex = 13;
+            this.groupBox15.TabStop = false;
+            this.groupBox15.Text = "연동과금 포인트";
+            // 
             // btnGetPopbillURL_CHRG
             // 
             this.btnGetPopbillURL_CHRG.Location = new System.Drawing.Point(8, 56);
@@ -783,37 +817,16 @@
             this.Label1.TabIndex = 7;
             this.Label1.Text = "팝빌회원 사업자번호 : ";
             // 
-            // groupBox8
+            // btnRevokeRegistIssue_part
             // 
-            this.groupBox8.Controls.Add(this.btnGetPartnerURL_CHRG);
-            this.groupBox8.Controls.Add(this.btnGetPartnerBalance1);
-            this.groupBox8.Location = new System.Drawing.Point(434, 15);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(133, 120);
-            this.groupBox8.TabIndex = 14;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "파트너과금 포인트";
-            // 
-            // btnGetPartnerURL_CHRG
-            // 
-            this.btnGetPartnerURL_CHRG.Location = new System.Drawing.Point(8, 52);
-            this.btnGetPartnerURL_CHRG.Name = "btnGetPartnerURL_CHRG";
-            this.btnGetPartnerURL_CHRG.Size = new System.Drawing.Size(119, 32);
-            this.btnGetPartnerURL_CHRG.TabIndex = 0;
-            this.btnGetPartnerURL_CHRG.Text = "포인트 충전 URL";
-            this.btnGetPartnerURL_CHRG.UseVisualStyleBackColor = true;
-            this.btnGetPartnerURL_CHRG.Click += new System.EventHandler(this.btnGetPartnerURL_CHRG_Click);
-            // 
-            // groupBox15
-            // 
-            this.groupBox15.Controls.Add(this.btnGetPopbillURL_CHRG);
-            this.groupBox15.Controls.Add(this.btnGetBalance);
-            this.groupBox15.Location = new System.Drawing.Point(285, 16);
-            this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(132, 119);
-            this.groupBox15.TabIndex = 13;
-            this.groupBox15.TabStop = false;
-            this.groupBox15.Text = "연동과금 포인트";
+            this.btnRevokeRegistIssue_part.BackColor = System.Drawing.Color.LightCoral;
+            this.btnRevokeRegistIssue_part.Location = new System.Drawing.Point(164, 24);
+            this.btnRevokeRegistIssue_part.Name = "btnRevokeRegistIssue_part";
+            this.btnRevokeRegistIssue_part.Size = new System.Drawing.Size(69, 28);
+            this.btnRevokeRegistIssue_part.TabIndex = 14;
+            this.btnRevokeRegistIssue_part.Text = "부분취소";
+            this.btnRevokeRegistIssue_part.UseVisualStyleBackColor = false;
+            this.btnRevokeRegistIssue_part.Click += new System.EventHandler(this.btnRevokeRegistIssue_part_Click);
             // 
             // frmExample
             // 
@@ -918,6 +931,7 @@
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.Button btnGetPartnerURL_CHRG;
         private System.Windows.Forms.GroupBox groupBox15;
+        internal System.Windows.Forms.Button btnRevokeRegistIssue_part;
     }
 }
 
