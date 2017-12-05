@@ -3,7 +3,7 @@
  * 팝빌 전자세금계산서 API DotNet SDK Example
  * 
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - http://blog.linkhub.co.kr/587
- * - 업데이트 일자 : 2017-11-14
+ * - 업데이트 일자 : 2017-12-05
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
  * 
@@ -1080,7 +1080,7 @@ namespace Popbill.Taxinvoice.Example.csharp
         /*
          * 세금계산서 상태 변경이력을 확인합니다.
          * - 상태 변경이력 확인(GetLogs API) 응답항목에 대한 자세한 정보는
-         *   "[전자세금계산서 API 연동매뉴얼] > 3.6.4 상태 변경이력 확인"
+         *   "[전자세금계산서 API 연동매뉴얼] > 3.5.5. 상태 변경이력 확인"
          *   을 참조하시기 바랍니다.
          */
         private void btnGetLogs_Click(object sender, EventArgs e)
@@ -1372,7 +1372,7 @@ namespace Popbill.Taxinvoice.Example.csharp
          * - 국세청 즉시전송을 호출하지 않은 세금계산서는 발행일 기준 익일 오후 3시에
          *   팝빌 시스템에서 일괄적으로 국세청으로 전송합니다.
          * - 익일전송시 전송일이 법정공휴일인 경우 다음 영업일에 전송됩니다.
-         * - 국세청 전송에 관한 사항은 "[전자세금계산서 API 연동매뉴얼] > 1.4 국세청
+         * - 국세청 전송에 관한 사항은 "[전자세금계산서 API 연동매뉴얼] > 1.3 국세청
          *   전송 정책" 을 참조하시기 바랍니다.
          */
         private void btnSendToNTS_Click(object sender, EventArgs e)
@@ -1406,7 +1406,7 @@ namespace Popbill.Taxinvoice.Example.csharp
          *   [전자세금계산서 관리] > [국세청 전송 및 지연발행 설정] 탭에서
          *   확인할 수 있습니다.
          * - 국세청 전송정책에 대한 사항은 "[전자세금계산서 API 연동매뉴얼] >
-         *   1.4. 국세청 전송 정책" 을 참조하시기 바랍니다
+         *   1.3. 국세청 전송 정책" 을 참조하시기 바랍니다
          */
         private void btnIssue_Click(object sender, EventArgs e)
         {
@@ -1609,7 +1609,7 @@ namespace Popbill.Taxinvoice.Example.csharp
         /*
          * 1건의 역발행 세금계산서를 [임시저장] 처리합니다.
          * - 세금계산서 항목별 정보는 "[전자세금계산서 API 연동매뉴얼] 
-         *   > 4.1. (세금)계산서구성"을 참조하시기 바랍니다.
+         *   > 4.1. 세금계산서 구성"을 참조하시기 바랍니다.
          */
         private void btnRegister_Reverse_Click(object sender, EventArgs e)
         {
@@ -2855,16 +2855,18 @@ namespace Popbill.Taxinvoice.Example.csharp
             String DType = "W";
 
             // [필수] 시작일자, 날자형식(yyyyMMdd)
-            String SDate = "20160901";
+            String SDate = "20171101";
 
             // [필수] 종료일자, 날자형식(yyyyMMdd)
-            String EDate = "20161231";  
+            String EDate = "20171231";  
             
-            // 전송상태값 배열, 미기재시 전체 상태조회, 문서상태 값 3자리의 배열, 2,3번째 자리에 와일드카드 가능
-            String[] State = new String[3];
-            State[0] = "3**";
-            State[1] = "4**";
-            State[2] = "6**";
+            // 상태코드 배열, 미기재시 전체 상태조회, 문서상태 값 3자리의 배열, 2,3번째 자리에 와일드카드 가능
+            String[] State = new String[5];
+            State[0] = "";
+            State[1] = "3**";
+            State[2] = "4**";
+            State[3] = "5**";
+            State[4] = "6**";
 
             // 문서유형 배열, N-일반세금계산서, M-수정세금계산서
             String[] Type = new String[2];
@@ -2876,6 +2878,12 @@ namespace Popbill.Taxinvoice.Example.csharp
             TaxType[0] = "T";
             TaxType[1] = "N";
             TaxType[2] = "Z";
+
+            // 발행유형 배열, N-정발행 / R-역발행 / T-위수탁
+            String[] IssueType = new String[3];
+            IssueType[0] = "N";
+            IssueType[1] = "R";
+            IssueType[2] = "T";
 
             // 종사업장 유무, 공백-전체조회, 0-종사업장 없는 문서 조회, 1-종사업장번호 조건에 따라 조회
             String TaxRegIDYN = "";
@@ -2907,7 +2915,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             try
             {
                 TISearchResult searchResult = taxinvoiceService.Search(txtCorpNum.Text, KeyType, DType, SDate, EDate, State, 
-                                        Type, TaxType, LateOnly, TaxRegIDYN, TaxRegIDType, TaxRegID, QString, Order, Page, PerPage, InterOPYN, txtUserId.Text);
+                                        Type, TaxType, IssueType, LateOnly, TaxRegIDYN, TaxRegIDType, TaxRegID, QString, Order, Page, PerPage, InterOPYN, txtUserId.Text);
                
                 String tmp = null;
 
