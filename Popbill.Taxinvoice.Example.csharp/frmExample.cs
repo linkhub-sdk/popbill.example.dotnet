@@ -2532,7 +2532,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             Taxinvoice taxinvoice = new Taxinvoice();
 
             // [필수] 기재상 작성일자, 날자형식(yyyyMMdd)
-            taxinvoice.writeDate = "20170323";
+            taxinvoice.writeDate = "20180117";
 
             // [필수] 과금방향, {정과금, 역과금}중 선택
             // - 정과금(공급자과금), 역과금(공급받는자과금)
@@ -2776,9 +2776,18 @@ namespace Popbill.Taxinvoice.Example.csharp
             // 즉시발행 메모 
             String memo = "즉시발행 메모";
 
+            // 전자거래명세서 동시작성여부
+            bool writeSpecification = false;
+
+            // 전자거래명세서 문서관리번호, 1~24자리 영문, 숫자 '_', '-' 조합으로 사업자별로 중복되지 않도록 구성
+            String dealInvoiceMgtKey = "20180117-11";
+
+            // 발행안내메일 제목, 미기재시 기본양식으로 전송
+            String emailSubject = "";
+
             try
             {   
-                Response response = taxinvoiceService.RegistIssue(txtCorpNum.Text, taxinvoice, forceIssue, memo);
+                Response response = taxinvoiceService.RegistIssue(txtCorpNum.Text, taxinvoice, forceIssue, memo, writeSpecification, dealInvoiceMgtKey, emailSubject);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + response.message, "즉시발행");
