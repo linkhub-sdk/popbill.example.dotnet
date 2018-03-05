@@ -1,4 +1,18 @@
-﻿using System;
+﻿
+/*
+ * 팝빌 카카오톡 API DotNet SDK Example
+ * 
+ * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - http://blog.linkhub.co.kr/587
+ * - 업데이트 일자 : 2018-03-05
+ * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991~2
+ * - 연동 기술지원 이메일 : code@linkhub.co.kr
+ * 
+ * <테스트 연동개발 준비사항>
+ * 1) 30, 33 라인에 선언된 링크아이디(LinkID)와 비밀키(SecretKey)를 
+ *    링크허브 가입시 메일로 발급받은 인증정보로 변경합니다.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -44,6 +58,10 @@ namespace Popbill.Kakao.Example.csharp
             return reserveDT;
         }
 
+        /*
+         * 해당사업자의 회원가입 여부를 확인합니다.
+         * - 사업자번호는 '-'를 제외한 10자리 숫자 문자열입니다.
+         */
         private void btnCheckIsMember_Click(object sender, EventArgs e)
         {
             try
@@ -62,6 +80,11 @@ namespace Popbill.Kakao.Example.csharp
             }
         }
 
+        /*
+         * 팝빌 회원아이디 중복여부를 확인합니다.
+         * - 아이디는 6자 이상 20자 미만으로 작성하시기 바랍니다.
+         * - 아이디는 대/소문자 구분되지 않습니다.
+         */
         private void btnCheckID_Click(object sender, EventArgs e)
         {
             try
@@ -78,6 +101,9 @@ namespace Popbill.Kakao.Example.csharp
             }
         }
 
+        /*
+         * 연동회원 신규가입을 요청합니다.
+         */
         private void btnJoinMember_Click(object sender, EventArgs e)
         {
             JoinForm joinInfo = new JoinForm();
@@ -138,6 +164,10 @@ namespace Popbill.Kakao.Example.csharp
             }
         }
 
+
+        /*
+        * 알림톡(ATS) 전송단가를 확인합니다.
+        */
         private void btnUnitCost_Click(object sender, EventArgs e)
         {
             try
@@ -154,6 +184,9 @@ namespace Popbill.Kakao.Example.csharp
             }
         }
 
+        /*
+        * 친구톡 텍스트(FTS) 전송단가를 확인합니다.
+        */
         private void btnUnitCost_FTS_Click(object sender, EventArgs e)
         {
             try
@@ -170,6 +203,9 @@ namespace Popbill.Kakao.Example.csharp
             }
         }
 
+        /*
+        * 친구톡 이미지(FMS) 전송단가를 확인합니다.
+        */
         private void btn_unitcost_FMS_Click(object sender, EventArgs e)
         {
             try
@@ -186,9 +222,13 @@ namespace Popbill.Kakao.Example.csharp
             }
         }
 
+
+        /*
+         * 카카오톡 API 서비스 과금정보를 확인합니다.
+         */
         private void btnGetChargeInfo_Click(object sender, EventArgs e)
         {
-            //메시지 타입, ATS-알림톡, FTS-친구톡 텍스트, FMS-친구톡 이미지
+            //카카오톡 타입, ATS-알림톡, FTS-친구톡 텍스트, FMS-친구톡 이미지
             KakaoType kakaoType = KakaoType.ATS;
 
             try
@@ -210,6 +250,10 @@ namespace Popbill.Kakao.Example.csharp
             }
         }
 
+        /*
+         * 연동회원의 잔여포인트를 조회합니다.
+         * - 파트너 과금 방식의 경우 파트너 잔여 포인트 조회(GetPartnerBalance API)를 이용하시기 바랍니다.
+         */
         private void btnGetBalance_Click(object sender, EventArgs e)
         {
 
@@ -227,6 +271,10 @@ namespace Popbill.Kakao.Example.csharp
             }
         }
 
+        /*
+         * 팝빌 포인트충전 팝업 URL을 반환합니다.
+         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         */
         private void btnGetPopbillURL_CHRG_Click(object sender, EventArgs e)
         {
             try
@@ -243,6 +291,10 @@ namespace Popbill.Kakao.Example.csharp
             }
         }
 
+        /*
+         * 파트너 잔여포인트를 확인합니다.
+         * - 연동과금 방식의 경우 연동회원 잔여포인트 조회(GetBalance API)를 이용하시기 바랍니다.
+         */
         private void btnGetPartnerBalance_Click(object sender, EventArgs e)
         {
             try
@@ -259,6 +311,10 @@ namespace Popbill.Kakao.Example.csharp
             }
         }
 
+        /*
+         * 파트너 포인트 충전 팝업 URL을 반환합니다. 
+         * - 반환된 URL은 보안정책상 30초의 유효시간을 갖습니다.
+         */
         private void btnGetPartnerURL_CHRG_Click(object sender, EventArgs e)
         {
             try
@@ -274,6 +330,10 @@ namespace Popbill.Kakao.Example.csharp
             }
         }
 
+        /*
+         * 팝빌 로그인 팝업 URL을 반환합니다.
+         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다 
+         */
         private void getPopbillURL_Click(object sender, EventArgs e)
         {
             try
@@ -290,6 +350,9 @@ namespace Popbill.Kakao.Example.csharp
             }
         }
 
+        /*
+         * 연동회원의 담당자를 추가합니다.
+         */
         private void btnRegistContact_Click(object sender, EventArgs e)
         {
             Contact contactInfo = new Contact();
@@ -333,6 +396,9 @@ namespace Popbill.Kakao.Example.csharp
             }
         }
 
+        /*
+         * 연동회원의 담당자 목록을 확인합니다.
+         */
         private void btnListContact_Click(object sender, EventArgs e)
         {
             try
@@ -364,6 +430,9 @@ namespace Popbill.Kakao.Example.csharp
             }
         }
 
+        /*
+         * 담당자 정보를 수정합니다. 
+         */
         private void btnUpdateContact_Click(object sender, EventArgs e)
         {
             Contact contactInfo = new Contact();
@@ -403,6 +472,9 @@ namespace Popbill.Kakao.Example.csharp
             }
         }
 
+        /*
+         * 회사정보를 조회합니다.
+         */
         private void btnGetCorpInfo_Click(object sender, EventArgs e)
         {
             try
@@ -425,6 +497,9 @@ namespace Popbill.Kakao.Example.csharp
             }
         }
 
+        /*
+         * 회사정보를 수정합니다.
+         */
         private void btnUpdateCorpInfo_Click(object sender, EventArgs e)
         {
             CorpInfo corpInfo = new CorpInfo();
@@ -458,20 +533,31 @@ namespace Popbill.Kakao.Example.csharp
             }
         }
 
+
+        /*
+         * 알림톡 전송을 요청합니다. 
+         */
         private void btnSendATS_one_Click(object sender, EventArgs e)
         {
+            // 알림톡 템플릿 코드, ListATSTemplate API의 templateCode 확인
             String templateCode = "018020000001";
 
+            // 팝빌에 사전 등록된 발신번호
             String senderNum = "07043042993";
-
+            
+            // 알림톡 템플릿 내용, 최대 1000자
             String content = "[테스트] 테스트 템플릿입니다.";
 
+            // 대체문자 메시지 내용 
             String altContent = "대체문자 메시지 내용";
 
+            // 대체문자 유형, 공백-미전송, C-알림톡 내용, A-대체문자 내용
             String altSendType = "A";
 
+            // 수신번호
             String receiverNum = "01043245117";
 
+            // 수신자명
             String receiverName = "수신자명";
             
             try
@@ -490,31 +576,40 @@ namespace Popbill.Kakao.Example.csharp
             }
         }
 
+        /*
+         * 알림톡 동일내용 대량전송을 요청합니다. 
+         */
         private void btnSendATS_same_Click(object sender, EventArgs e)
         {
+            // 알림톡 템플릿 코드, ListATSTemplate API의 templateCode 확인
             String templateCode = "018020000001";
 
+            // 팝빌에 사전 등록된 발신번호
             String senderNum = "07043042993";
 
+            // 알림톡 템플릿 내용, 최대 1000자
             String content = "[테스트] 테스트 템플릿입니다.";
 
+            // 대체문자 메시지 내용 
             String altContent = "대체문자 메시지 내용";
 
+            // 대체문자 유형, 공백-미전송, C-알림톡 내용, A-대체문자 내용
             String altSendType = "A";
 
 
+            // 수신자정보 배열, 최대 1000건
             List<KakaoReceiver> receivers = new List<KakaoReceiver>();
             for (int i = 0; i < 5; i++)
             {
                 KakaoReceiver receiverInfo = new KakaoReceiver();
 
+                // 수신번호
                 receiverInfo.rcv = "01043245117";
 
+                // 수신자명
                 receiverInfo.rcvnm = "수신자명";
-
                 receivers.Add(receiverInfo);
             }
-
 
             try
             {
@@ -532,22 +627,33 @@ namespace Popbill.Kakao.Example.csharp
             }
         }
 
+        /*
+         * 알림톡 개별내용 대량전송을 요청합니다. 
+         */
         private void btnSendATS_multi_Click(object sender, EventArgs e)
         {
+            // 알림톡 템플릿 코드, ListATSTemplate API의 templateCode 확인
             String templateCode = "018020000001";
 
+            // 팝빌에 사전 등록된 발신번호
             String senderNum = "07043042993";
 
+            // 대체문자 유형, 공백-미전송, C-알림톡 내용, A-대체문자 내용
             String altSendType = "A";
 
-
+            // 수신자정보 배열, 최대 1000건
             List<KakaoReceiver> receivers = new List<KakaoReceiver>();
             for (int i = 0; i < 5; i++)
             {
                 KakaoReceiver receiverInfo = new KakaoReceiver();
+
+                // 수신번호
                 receiverInfo.rcv = "01043245117";
+                // 수신자명
                 receiverInfo.rcvnm = "수신자명" + i.ToString();
+                // 알림톡 템플릿 내용, 최대 1000자
                 receiverInfo.msg = "[테스트] 테스트 템플릿입니다.";
+                // 대체문자 내용
                 receiverInfo.altmsg = "대체문자 내용입니다";                    
                 receivers.Add(receiverInfo);
             }
@@ -568,22 +674,45 @@ namespace Popbill.Kakao.Example.csharp
             }
         }
 
+        /*
+         * 친구톡 1건 전송을 요청합니다. 
+         */
         private void btnSendFTS_one_Click(object sender, EventArgs e)
         {
+            // 플러스친구 아이디, ListPlusFriendID API 의 plusFriendID 참고
             String plusFriendID = "@팝빌";
+
+            // 팝빌에 사전 등록된 발신번호
             String senderNum = "07043042993";
+
+            // 친구톡 내용, 최대 1000자
             String content = "친구톡 내용";
+
+            // 수신번호
             String receiverNum = "01043245117";
+
+            // 수신자명
             String receiverName = "수신자명";
+
+            // 대체문자 메시지 내용
             String altContent = "대체문자 내용";
+
+            // 대체문자 유형, 공백-미전송, C-알림톡 내용, A-대체문자 내용
             String altSendType = "C";
+
+            // 광고전송여부
             Boolean adsYN = false;
 
+            // 버튼배열, 최대 5개
             List<KakaoButton> buttons = new List<KakaoButton>();
             KakaoButton btnInfo = new KakaoButton();
+            // 버튼명
             btnInfo.n = "버튼이름";
+            // 버튼유형
             btnInfo.t = "WL";
+            // 버튼링크1
             btnInfo.u1 = "http://www.popbill.com";
+            // 버튼링크2
             btnInfo.u2 = "http://test.popbill.com";
             buttons.Add(btnInfo);
 
@@ -603,15 +732,30 @@ namespace Popbill.Kakao.Example.csharp
             }
         }
 
+        /*
+         * 친구톡 동일내용 대량전송을 요청합니다. 
+         */
         private void btnSendFTS_same_Click(object sender, EventArgs e)
         {
+            // 플러스친구 아이디, ListPlusFriendID API 의 plusFriendID 참고
             String plusFriendID = "@팝빌";
+
+            // 팝빌에 사전 등록된 발신번호
             String senderNum = "07043042993";
+            
+            // 친구톡내용, 최대 1000자
             String content = "친구톡 내용";
+
+            // 대체문자 메시지 내용 
             String altContent = "대체문자 내용";
+
+            // 대체문자 유형, 공백-미전송, C-알림톡 내용, A-대체문자 내용
             String altSendType = "C";
+
+            // 광고전송여부
             Boolean adsYN = false;
 
+            // 수신자정보 배열, 최대 1000건
             List<KakaoReceiver> receivers = new List<KakaoReceiver>();
             for (int i = 0; i < 5; i++)
             {
@@ -621,11 +765,16 @@ namespace Popbill.Kakao.Example.csharp
                 receivers.Add(receiverInfo);
             }
 
+            // 버튼배열, 최대 5개
             List<KakaoButton> buttons = new List<KakaoButton>();
             KakaoButton btnInfo = new KakaoButton();
+            // 버튼명
             btnInfo.n = "버튼이름";
+            // 버튼유형
             btnInfo.t = "WL";
+            // 버튼링크1
             btnInfo.u1 = "http://www.popbill.com";
+            // 버튼링크2
             btnInfo.u2 = "http://test.popbill.com";
             buttons.Add(btnInfo);
 
@@ -645,13 +794,24 @@ namespace Popbill.Kakao.Example.csharp
             }
         }
 
+        /*
+         * 친구톡 개별내용 대량전송을 요청합니다. 
+         */
         private void btnSendFTS_multi_Click(object sender, EventArgs e)
         {
+            // 플러스친구 아이디, ListPlusFriendID API 의 plusFriendID 참고
             String plusFriendID = "@팝빌";
+
+            // 팝빌에 사전 등록된 발신번호
             String senderNum = "07043042993";
+
+            // 대체문자 유형, 공백-미전송, C-알림톡 내용, A-대체문자 내용
             String altSendType = "C";
+
+            // 광고전송여부
             Boolean adsYN = false;
 
+            // 수신자정보 배열, 최대 1000건
             List<KakaoReceiver> receivers = new List<KakaoReceiver>();
             for (int i = 0; i < 5; i++)
             {
@@ -663,11 +823,16 @@ namespace Popbill.Kakao.Example.csharp
                 receivers.Add(receiverInfo);
             }
 
+            // 버튼배열, 최대 5개
             List<KakaoButton> buttons = new List<KakaoButton>();
             KakaoButton btnInfo = new KakaoButton();
+            // 버튼명
             btnInfo.n = "버튼이름";
+            // 버튼유형
             btnInfo.t = "WL";
+            // 버튼링크1
             btnInfo.u1 = "http://www.popbill.com";
+            // 버튼링크2
             btnInfo.u2 = "http://test.popbill.com";
             buttons.Add(btnInfo);
 
@@ -687,26 +852,49 @@ namespace Popbill.Kakao.Example.csharp
             }
         }
 
+        /*
+         * 친구톡(이미지) 1건 전송을 요청합니다. 
+         */
         private void btnSendFMS_one_Click(object sender, EventArgs e)
         {
+            // 플러스친구 아이디, ListPlusFriendID API 의 plusFriendID 참고
             String plusFriendID = "@팝빌";
+
+            // 팝빌에 사전 등록된 발신번호
             String senderNum = "07043042993";
+
+            // 친구톡 내용, 최대 400자
             String content = "친구톡 내용";
+
+            // 수신번호
             String receiverNum = "01043245117";
+
+            // 수신자명
             String receiverName = "수신자명";
+
+            // 대체문자 내용
             String altContent = "대체문자 내용";
+
+            // 대체문자 유형, 공백-미전송, C-알림톡 내용, A-대체문자 내용
             String altSendType = "C";
+
+            // 광고전송 여부
             Boolean adsYN = false;
-            
+
+            // 버튼배열, 최대 5개
             List<KakaoButton> buttons = new List<KakaoButton>();
             KakaoButton btnInfo = new KakaoButton();
+            // 버튼명
             btnInfo.n = "버튼이름";
+            // 버튼유형
             btnInfo.t = "WL";
+            // 버튼링크1
             btnInfo.u1 = "http://www.popbill.com";
+            // 버튼링크2
             btnInfo.u2 = "http://test.popbill.com";
             buttons.Add(btnInfo);
 
-
+            // 첨부된 이미지의 링크 URL
             String imageURL = "http://www.popbill.com";
 
             if (fileDialog.ShowDialog(this) == DialogResult.OK)
@@ -730,33 +918,55 @@ namespace Popbill.Kakao.Example.csharp
             }
         }
 
+        /*
+         * 친구톡(이미지) 동일내용 대량전송을 요청합니다. 
+         */
         private void btnSendFMS_same_Click(object sender, EventArgs e)
         {
+            // 플러스친구 아이디, ListPlusFriendID API 의 plusFriendID 참고
             String plusFriendID = "@팝빌";
+
+            // 팝빌에 사전 등록된 발신번호
             String senderNum = "07043042993";
+
+            // 친구톡 내용, 최대 400자
             String content = "친구톡 내용";
+
+            // 대체문자 메시지 내용 
             String altContent = "대체문자 내용";
+
+            // 대체문자 유형, 공백-미전송, C-알림톡 내용, A-대체문자 내용
             String altSendType = "C";
+
+            // 광고전송 여부
             Boolean adsYN = false;
 
+            // 수신자정보 배열, 최대 1000건
             List<KakaoReceiver> receivers = new List<KakaoReceiver>();
             for (int i = 0; i < 2; i++)
             {
                 KakaoReceiver receiverInfo = new KakaoReceiver();
+                // 수신번호
                 receiverInfo.rcv = "01043245117";
+                // 수신자명
                 receiverInfo.rcvnm = "수신자명" + i.ToString();
                 receivers.Add(receiverInfo);
             }
 
+            // 버튼배열, 최대 5개
             List<KakaoButton> buttons = new List<KakaoButton>();
             KakaoButton btnInfo = new KakaoButton();
+            // 버튼명
             btnInfo.n = "버튼이름";
+            // 버튼유형
             btnInfo.t = "WL";
+            // 버튼링크1
             btnInfo.u1 = "http://www.popbill.com";
+            // 버튼링크2
             btnInfo.u2 = "http://test.popbill.com";
             buttons.Add(btnInfo);
 
-
+            // 첨부된 이미지의 링크 URL
             String imageURL = "http://www.popbill.com";
 
             if (fileDialog.ShowDialog(this) == DialogResult.OK)
@@ -781,32 +991,54 @@ namespace Popbill.Kakao.Example.csharp
             
         }
 
+        /*
+         * 친구톡(이미지) 개별내용 대량전송을 요청합니다. 
+         */
         private void btnSendFMS_multi_Click(object sender, EventArgs e)
         {
+            // 플러스친구 아이디, ListPlusFriendID API 의 plusFriendID 참고
             String plusFriendID = "@팝빌";
+
+            // 팝빌에 사전 등록된 발신번호
             String senderNum = "07043042993";
+
+            // 대체문자 유형, 공백-미전송, C-알림톡 내용, A-대체문자 내용
             String altSendType = "C";
+
+            // 광고전송 여부
             Boolean adsYN = false;
 
+            // 수신자정보 배열, 최대 1000건
             List<KakaoReceiver> receivers = new List<KakaoReceiver>();
             for (int i = 0; i < 5; i++)
             {
                 KakaoReceiver receiverInfo = new KakaoReceiver();
+
+                // 수신번호 
                 receiverInfo.rcv = "01043245117";
+                // 수신자명
                 receiverInfo.rcvnm = "수신자명" + i.ToString();
+                // 친구톡내용, 최대 400자
                 receiverInfo.msg = "개별 친구톡 내용" + i.ToString();
+                // 대체문자 내용
                 receiverInfo.altmsg = "대체문자 전송내용" + i.ToString();
                 receivers.Add(receiverInfo);
             }
 
+            // 버튼배열, 최대 5개
             List<KakaoButton> buttons = new List<KakaoButton>();
             KakaoButton btnInfo = new KakaoButton();
+            // 버튼명
             btnInfo.n = "버튼이름";
+            // 버튼유형
             btnInfo.t = "WL";
+            // 버튼링크1
             btnInfo.u1 = "http://www.popbill.com";
+            // 버튼링크2
             btnInfo.u2 = "http://test.popbill.com";
             buttons.Add(btnInfo);
 
+            // 첨부된 이미지의 링크 URL
             String imageURL = "http://www.popbill.com";
 
             if (fileDialog.ShowDialog(this) == DialogResult.OK)
@@ -830,12 +1062,15 @@ namespace Popbill.Kakao.Example.csharp
             }
         }
 
+        /*
+         * 플러스친구 계정관리 팝업 URL을 반환합니다.
+         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         */
         private void btnGetURL_PLUSFRIEND_Click(object sender, EventArgs e)
         {
             try
             {
                 string url = kakaoService.GetURL(txtCorpNum.Text, txtUserId.Text, "PLUSFRIEND");
-                txtURL.Text = url;
                 MessageBox.Show(url, "플러스친구 계정관리 팝업 URL");
 
             }
@@ -846,6 +1081,9 @@ namespace Popbill.Kakao.Example.csharp
             }
         }
 
+        /*
+         * 팝빌에 등록된 플러스친구 계정 목록을 반환합니다. 
+         */
         private void btnListPlusFriendID_Click(object sender, EventArgs e)
         {
             try
@@ -871,12 +1109,15 @@ namespace Popbill.Kakao.Example.csharp
             }
         }
 
+        /*
+         * 발신번호 관리 팝업 URL을 반환합니다.
+         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         */
         private void btnGetURL_SENDER_Click(object sender, EventArgs e)
         {
             try
             {
                 string url = kakaoService.GetURL(txtCorpNum.Text, txtUserId.Text, "SENDER");
-                txtURL.Text = url;
                 MessageBox.Show(url, "발신번호 관리 팝업 URL");
 
             }
@@ -887,6 +1128,9 @@ namespace Popbill.Kakao.Example.csharp
             }
         }
 
+        /*
+         * 발신번호 목록을 반환합니다.
+         */
         private void btnGetSenderNumberList_Click(object sender, EventArgs e)
         {
             try
@@ -912,12 +1156,15 @@ namespace Popbill.Kakao.Example.csharp
             }
         }
 
+        /*
+         * 알림톡 템플릿관리 팝업 URL을 반환합니다.
+         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         */
         private void btnGetURL_TEMPLATE_Click(object sender, EventArgs e)
         {
             try
             {
                 string url = kakaoService.GetURL(txtCorpNum.Text, txtUserId.Text, "TEMPLATE");
-                txtURL.Text = url;
                 MessageBox.Show(url, "알림톡 템플릿 관리 팝업 URL");
 
             }
@@ -928,6 +1175,10 @@ namespace Popbill.Kakao.Example.csharp
             }
         }
 
+
+        /*
+         * (주)카카오로 심사 승인된 알림톡 템플릿 목록을 반환합니다.
+         */
         private void btnListATSTemplate_Click(object sender, EventArgs e)
         {
             try
@@ -967,12 +1218,16 @@ namespace Popbill.Kakao.Example.csharp
             }
         }
 
+
+        /*
+         * 카카오톡 전송내역 팝업 URL을 반환합니다.
+         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         */
         private void btnGetURL_BOX_Click(object sender, EventArgs e)
         {
             try
             {
-                string url = kakaoService.GetURL(txtCorpNum.Text, txtUserId.Text, "BOX");
-                txtURL.Text = url;
+                string url = kakaoService.GetURL(txtCorpNum.Text, txtUserId.Text, "BOX");                
                 MessageBox.Show(url, "카카오톡 전송내역 팝업 URL");
 
             }
@@ -983,6 +1238,9 @@ namespace Popbill.Kakao.Example.csharp
             }
         }
 
+        /*
+         * 카카오톡 전송내역 목록을 조회합니다.
+         */
         private void btnSearch_Click(object sender, EventArgs e)
         {
             // 시작일자, 날짜형식(yyyMMdd)
@@ -1046,6 +1304,9 @@ namespace Popbill.Kakao.Example.csharp
             }
         }
 
+        /*
+         * 카카오톡 예약전송건을 취소합니다.
+         */
         private void btnCacnelReserve_Click(object sender, EventArgs e)
         {
             try
@@ -1062,6 +1323,9 @@ namespace Popbill.Kakao.Example.csharp
             }
         }
 
+        /*
+         * 카카오톡 전송내역을 조회합니다.
+         */
         private void btnGetMessages_Click(object sender, EventArgs e)
         {
             try

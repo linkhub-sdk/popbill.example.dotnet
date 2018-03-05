@@ -87,7 +87,6 @@
             this.txtReserveDT = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.fileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.txtURL = new System.Windows.Forms.TextBox();
             this.GroupBox1.SuspendLayout();
             this.groupBox14.SuspendLayout();
             this.groupBox11.SuspendLayout();
@@ -713,19 +712,11 @@
             // 
             this.fileDialog.FileName = "OpenFileDialog1";
             // 
-            // txtURL
-            // 
-            this.txtURL.Location = new System.Drawing.Point(621, 7);
-            this.txtURL.Name = "txtURL";
-            this.txtURL.Size = new System.Drawing.Size(100, 21);
-            this.txtURL.TabIndex = 23;
-            // 
             // frmExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 758);
-            this.Controls.Add(this.txtURL);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.txtUserId);
             this.Controls.Add(this.GroupBox1);
@@ -816,7 +807,6 @@
         private System.Windows.Forms.Button btnCacnelReserve;
         private System.Windows.Forms.DataGridView dataGridView1;
         internal System.Windows.Forms.OpenFileDialog fileDialog;
-        private System.Windows.Forms.TextBox txtURL;
     }
 }
 

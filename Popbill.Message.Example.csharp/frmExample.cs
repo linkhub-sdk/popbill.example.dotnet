@@ -95,10 +95,10 @@ namespace Popbill.Message.Example.csharp
             // 종목
             joinInfo.BizClass = "종목";
 
-            // 아이디, 6자이상 20자 미만
+            // 아이디
             joinInfo.ID = "userid";
 
-            // 비밀번호, 6자이상 20자 미만
+            // 비밀번호
             joinInfo.PWD = "pwd_must_be_long_enough";
 
             // 담당자명
