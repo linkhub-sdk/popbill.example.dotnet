@@ -123,6 +123,10 @@
             this.txtUserId = new System.Windows.Forms.TextBox();
             this.getPopbillURL_LOGIN = new System.Windows.Forms.Button();
             this.GroupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox18 = new System.Windows.Forms.GroupBox();
+            this.btnGetPartnerURL_CHRG = new System.Windows.Forms.Button();
+            this.groupBox17 = new System.Windows.Forms.GroupBox();
+            this.getPopbillURL_CHRG = new System.Windows.Forms.Button();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
             this.btnUpdateCorpInfo = new System.Windows.Forms.Button();
             this.btnGetCorpInfo = new System.Windows.Forms.Button();
@@ -132,14 +136,10 @@
             this.btnRegistContact = new System.Windows.Forms.Button();
             this.GroupBox5 = new System.Windows.Forms.GroupBox();
             this.getPopbillURL_SEAL = new System.Windows.Forms.Button();
-            this.getPopbillURL_CHRG = new System.Windows.Forms.Button();
             this.Label2 = new System.Windows.Forms.Label();
             this.txtCorpNum = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.fileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.groupBox17 = new System.Windows.Forms.GroupBox();
-            this.groupBox18 = new System.Windows.Forms.GroupBox();
-            this.btnGetPartnerURL_CHRG = new System.Windows.Forms.Button();
             this.GroupBox8.SuspendLayout();
             this.GroupBox9.SuspendLayout();
             this.GroupBox10.SuspendLayout();
@@ -153,11 +153,11 @@
             this.GroupBox13.SuspendLayout();
             this.GroupBox12.SuspendLayout();
             this.GroupBox1.SuspendLayout();
+            this.groupBox18.SuspendLayout();
+            this.groupBox17.SuspendLayout();
             this.groupBox15.SuspendLayout();
             this.GroupBox6.SuspendLayout();
             this.GroupBox5.SuspendLayout();
-            this.groupBox17.SuspendLayout();
-            this.groupBox18.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnGetInfos
@@ -1247,6 +1247,48 @@
             this.GroupBox1.TabStop = false;
             this.GroupBox1.Text = "팝빌 기본 API";
             // 
+            // groupBox18
+            // 
+            this.groupBox18.Controls.Add(this.btnGetPartnerURL_CHRG);
+            this.groupBox18.Controls.Add(this.btnGetPartnerBalance);
+            this.groupBox18.Location = new System.Drawing.Point(423, 17);
+            this.groupBox18.Name = "groupBox18";
+            this.groupBox18.Size = new System.Drawing.Size(135, 114);
+            this.groupBox18.TabIndex = 6;
+            this.groupBox18.TabStop = false;
+            this.groupBox18.Text = "파트너과금 포인트";
+            // 
+            // btnGetPartnerURL_CHRG
+            // 
+            this.btnGetPartnerURL_CHRG.Location = new System.Drawing.Point(9, 53);
+            this.btnGetPartnerURL_CHRG.Name = "btnGetPartnerURL_CHRG";
+            this.btnGetPartnerURL_CHRG.Size = new System.Drawing.Size(114, 28);
+            this.btnGetPartnerURL_CHRG.TabIndex = 5;
+            this.btnGetPartnerURL_CHRG.Text = "포인트 충전 URL";
+            this.btnGetPartnerURL_CHRG.UseVisualStyleBackColor = true;
+            this.btnGetPartnerURL_CHRG.Click += new System.EventHandler(this.btnGetPartnerURL_CHRG_Click);
+            // 
+            // groupBox17
+            // 
+            this.groupBox17.Controls.Add(this.btnGetBalance);
+            this.groupBox17.Controls.Add(this.getPopbillURL_CHRG);
+            this.groupBox17.Location = new System.Drawing.Point(288, 20);
+            this.groupBox17.Name = "groupBox17";
+            this.groupBox17.Size = new System.Drawing.Size(129, 114);
+            this.groupBox17.TabIndex = 5;
+            this.groupBox17.TabStop = false;
+            this.groupBox17.Text = "연동과금 포인트";
+            // 
+            // getPopbillURL_CHRG
+            // 
+            this.getPopbillURL_CHRG.Location = new System.Drawing.Point(5, 50);
+            this.getPopbillURL_CHRG.Name = "getPopbillURL_CHRG";
+            this.getPopbillURL_CHRG.Size = new System.Drawing.Size(118, 27);
+            this.getPopbillURL_CHRG.TabIndex = 1;
+            this.getPopbillURL_CHRG.Text = "포인트 충전 URL";
+            this.getPopbillURL_CHRG.UseVisualStyleBackColor = true;
+            this.getPopbillURL_CHRG.Click += new System.EventHandler(this.getPopbillURL_CHRG_Click);
+            // 
             // groupBox15
             // 
             this.groupBox15.Controls.Add(this.btnUpdateCorpInfo);
@@ -1341,16 +1383,6 @@
             this.getPopbillURL_SEAL.UseVisualStyleBackColor = true;
             this.getPopbillURL_SEAL.Click += new System.EventHandler(this.getPopbillURL_SEAL_Click);
             // 
-            // getPopbillURL_CHRG
-            // 
-            this.getPopbillURL_CHRG.Location = new System.Drawing.Point(5, 50);
-            this.getPopbillURL_CHRG.Name = "getPopbillURL_CHRG";
-            this.getPopbillURL_CHRG.Size = new System.Drawing.Size(118, 27);
-            this.getPopbillURL_CHRG.TabIndex = 1;
-            this.getPopbillURL_CHRG.Text = "포인트 충전 URL";
-            this.getPopbillURL_CHRG.UseVisualStyleBackColor = true;
-            this.getPopbillURL_CHRG.Click += new System.EventHandler(this.getPopbillURL_CHRG_Click);
-            // 
             // Label2
             // 
             this.Label2.AutoSize = true;
@@ -1381,38 +1413,6 @@
             // 
             this.fileDialog.FileName = "OpenFileDialog1";
             // 
-            // groupBox17
-            // 
-            this.groupBox17.Controls.Add(this.btnGetBalance);
-            this.groupBox17.Controls.Add(this.getPopbillURL_CHRG);
-            this.groupBox17.Location = new System.Drawing.Point(288, 20);
-            this.groupBox17.Name = "groupBox17";
-            this.groupBox17.Size = new System.Drawing.Size(129, 114);
-            this.groupBox17.TabIndex = 5;
-            this.groupBox17.TabStop = false;
-            this.groupBox17.Text = "연동과금 포인트";
-            // 
-            // groupBox18
-            // 
-            this.groupBox18.Controls.Add(this.btnGetPartnerURL_CHRG);
-            this.groupBox18.Controls.Add(this.btnGetPartnerBalance);
-            this.groupBox18.Location = new System.Drawing.Point(423, 17);
-            this.groupBox18.Name = "groupBox18";
-            this.groupBox18.Size = new System.Drawing.Size(135, 114);
-            this.groupBox18.TabIndex = 6;
-            this.groupBox18.TabStop = false;
-            this.groupBox18.Text = "파트너과금 포인트";
-            // 
-            // btnGetPartnerURL_CHRG
-            // 
-            this.btnGetPartnerURL_CHRG.Location = new System.Drawing.Point(9, 53);
-            this.btnGetPartnerURL_CHRG.Name = "btnGetPartnerURL_CHRG";
-            this.btnGetPartnerURL_CHRG.Size = new System.Drawing.Size(114, 28);
-            this.btnGetPartnerURL_CHRG.TabIndex = 5;
-            this.btnGetPartnerURL_CHRG.Text = "포인트 충전 URL";
-            this.btnGetPartnerURL_CHRG.UseVisualStyleBackColor = true;
-            this.btnGetPartnerURL_CHRG.Click += new System.EventHandler(this.btnGetPartnerURL_CHRG_Click);
-            // 
             // frmExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -1442,11 +1442,11 @@
             this.GroupBox13.ResumeLayout(false);
             this.GroupBox12.ResumeLayout(false);
             this.GroupBox1.ResumeLayout(false);
+            this.groupBox18.ResumeLayout(false);
+            this.groupBox17.ResumeLayout(false);
             this.groupBox15.ResumeLayout(false);
             this.GroupBox6.ResumeLayout(false);
             this.GroupBox5.ResumeLayout(false);
-            this.groupBox17.ResumeLayout(false);
-            this.groupBox18.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
