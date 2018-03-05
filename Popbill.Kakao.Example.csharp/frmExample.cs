@@ -555,7 +555,7 @@ namespace Popbill.Kakao.Example.csharp
             String altSendType = "A";
 
             // 수신번호
-            String receiverNum = "01043245117";
+            String receiverNum = "010111222";
 
             // 수신자명
             String receiverName = "수신자명";
@@ -604,7 +604,7 @@ namespace Popbill.Kakao.Example.csharp
                 KakaoReceiver receiverInfo = new KakaoReceiver();
 
                 // 수신번호
-                receiverInfo.rcv = "01043245117";
+                receiverInfo.rcv = "010111222";
 
                 // 수신자명
                 receiverInfo.rcvnm = "수신자명";
@@ -648,7 +648,7 @@ namespace Popbill.Kakao.Example.csharp
                 KakaoReceiver receiverInfo = new KakaoReceiver();
 
                 // 수신번호
-                receiverInfo.rcv = "01043245117";
+                receiverInfo.rcv = "010111222";
                 // 수신자명
                 receiverInfo.rcvnm = "수신자명" + i.ToString();
                 // 알림톡 템플릿 내용, 최대 1000자
@@ -689,7 +689,7 @@ namespace Popbill.Kakao.Example.csharp
             String content = "친구톡 내용";
 
             // 수신번호
-            String receiverNum = "01043245117";
+            String receiverNum = "010111222";
 
             // 수신자명
             String receiverName = "수신자명";
@@ -760,7 +760,7 @@ namespace Popbill.Kakao.Example.csharp
             for (int i = 0; i < 5; i++)
             {
                 KakaoReceiver receiverInfo = new KakaoReceiver();
-                receiverInfo.rcv = "01043245117";
+                receiverInfo.rcv = "010111222";
                 receiverInfo.rcvnm = "수신자명" + i.ToString();
                 receivers.Add(receiverInfo);
             }
@@ -816,7 +816,7 @@ namespace Popbill.Kakao.Example.csharp
             for (int i = 0; i < 5; i++)
             {
                 KakaoReceiver receiverInfo = new KakaoReceiver();
-                receiverInfo.rcv = "01043245117";
+                receiverInfo.rcv = "010111222";
                 receiverInfo.rcvnm = "수신자명" + i.ToString();
                 receiverInfo.msg = "개별 친구톡 내용" + i.ToString();
                 receiverInfo.altmsg = "대체문자 전송내용" + i.ToString();
@@ -867,7 +867,7 @@ namespace Popbill.Kakao.Example.csharp
             String content = "친구톡 내용";
 
             // 수신번호
-            String receiverNum = "01043245117";
+            String receiverNum = "010111222";
 
             // 수신자명
             String receiverName = "수신자명";
@@ -947,7 +947,7 @@ namespace Popbill.Kakao.Example.csharp
             {
                 KakaoReceiver receiverInfo = new KakaoReceiver();
                 // 수신번호
-                receiverInfo.rcv = "01043245117";
+                receiverInfo.rcv = "010111222";
                 // 수신자명
                 receiverInfo.rcvnm = "수신자명" + i.ToString();
                 receivers.Add(receiverInfo);
@@ -1015,7 +1015,7 @@ namespace Popbill.Kakao.Example.csharp
                 KakaoReceiver receiverInfo = new KakaoReceiver();
 
                 // 수신번호 
-                receiverInfo.rcv = "01043245117";
+                receiverInfo.rcv = "010111222";
                 // 수신자명
                 receiverInfo.rcvnm = "수신자명" + i.ToString();
                 // 친구톡내용, 최대 400자
