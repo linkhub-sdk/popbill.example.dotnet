@@ -140,6 +140,7 @@
             this.txtCorpNum = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.fileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.btnAssignNum = new System.Windows.Forms.Button();
             this.GroupBox8.SuspendLayout();
             this.GroupBox9.SuspendLayout();
             this.GroupBox10.SuspendLayout();
@@ -694,6 +695,7 @@
             // 
             // GroupBox11
             // 
+            this.GroupBox11.Controls.Add(this.btnAssignNum);
             this.GroupBox11.Controls.Add(this.btnDetachStmt);
             this.GroupBox11.Controls.Add(this.btnAttachStmt);
             this.GroupBox11.Controls.Add(this.btnSendFAX);
@@ -701,7 +703,7 @@
             this.GroupBox11.Controls.Add(this.btnSendEmail);
             this.GroupBox11.Location = new System.Drawing.Point(311, 300);
             this.GroupBox11.Name = "GroupBox11";
-            this.GroupBox11.Size = new System.Drawing.Size(141, 209);
+            this.GroupBox11.Size = new System.Drawing.Size(141, 256);
             this.GroupBox11.TabIndex = 10;
             this.GroupBox11.TabStop = false;
             this.GroupBox11.Text = "부가서비스";
@@ -878,7 +880,7 @@
             this.GroupBox7.Controls.Add(this.Label3);
             this.GroupBox7.Location = new System.Drawing.Point(12, 194);
             this.GroupBox7.Name = "GroupBox7";
-            this.GroupBox7.Size = new System.Drawing.Size(859, 519);
+            this.GroupBox7.Size = new System.Drawing.Size(859, 562);
             this.GroupBox7.TabIndex = 12;
             this.GroupBox7.TabStop = false;
             this.GroupBox7.Text = "전자세금계산서 관련 API";
@@ -1413,6 +1415,16 @@
             // 
             this.fileDialog.FileName = "OpenFileDialog1";
             // 
+            // btnAssignNum
+            // 
+            this.btnAssignNum.Location = new System.Drawing.Point(15, 209);
+            this.btnAssignNum.Name = "btnAssignNum";
+            this.btnAssignNum.Size = new System.Drawing.Size(115, 33);
+            this.btnAssignNum.TabIndex = 13;
+            this.btnAssignNum.Text = "관리번호 할당";
+            this.btnAssignNum.UseVisualStyleBackColor = true;
+            this.btnAssignNum.Click += new System.EventHandler(this.btnAssignNum_Click);
+            // 
             // frmExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -1566,6 +1578,7 @@
         private System.Windows.Forms.GroupBox groupBox17;
         private System.Windows.Forms.GroupBox groupBox18;
         private System.Windows.Forms.Button btnGetPartnerURL_CHRG;
+        private System.Windows.Forms.Button btnAssignNum;
     }
 }
 

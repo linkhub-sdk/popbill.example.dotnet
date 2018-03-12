@@ -3098,5 +3098,37 @@ namespace Popbill.Taxinvoice.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "팝빌 로그인 URL");
             }
         }
+
+        /*
+         * 팝빌에서 작성한 세금계산서에 파트너 문서관리번호를 할당합니다.
+         * - 문서관리번호가 존재하지 않는 세금계산서만 할당이 가능합니다.
+         */
+        private void btnAssignNum_Click(object sender, EventArgs e)
+        {
+            // 세금계산서 유형 SELL-매출, BUY-매입, TRUSTEE-위수탁
+            MgtKeyType KeyType = MgtKeyType.SELL;
+
+            // 세금계산서 아이템키, 목록조회(Search) API의 반환항목중 ItemKey 참조
+            String itemKey = "018030518083100001";
+
+            // 할당할 문서관리번호, 숫자, 영문, '-', '_' 조합으로 
+            // 1~24자리까지 사업자번호별 중복없는 고유번호 할당
+            String mgtKey = "20180312-01";
+
+            try
+            {
+
+                Response response = taxinvoiceService.AssignMgtKey(txtCorpNum.Text, KeyType, itemKey, mgtKey);
+
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "세금계산서 관리번호 할당");
+
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "세금계산서 관리번호 할당");
+            }
+        }
     }
 }
