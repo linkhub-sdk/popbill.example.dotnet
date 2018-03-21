@@ -58,6 +58,16 @@
             this.txtCorpNum = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.btnCancelReserve = new System.Windows.Forms.Button();
+            this.btnGetMessageResult = new System.Windows.Forms.Button();
+            this.txtReceiptNum = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.txtRequestNum = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnCancelReserveRN = new System.Windows.Forms.Button();
+            this.btnGetMessagesRN = new System.Windows.Forms.Button();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.btnGetURL_SENDER = new System.Windows.Forms.Button();
             this.btnGetSenderNumberList = new System.Windows.Forms.Button();
@@ -67,8 +77,6 @@
             this.btnSendMMS_Same = new System.Windows.Forms.Button();
             this.btnSendMMS = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnCancelReserve = new System.Windows.Forms.Button();
-            this.btnGetMessageResult = new System.Windows.Forms.Button();
             this.btnGetURL = new System.Windows.Forms.Button();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.btnSendXMS_same = new System.Windows.Forms.Button();
@@ -78,14 +86,13 @@
             this.btnSendLMS_same = new System.Windows.Forms.Button();
             this.btnSendLMS_hund = new System.Windows.Forms.Button();
             this.btnSendLMS_one = new System.Windows.Forms.Button();
-            this.txtReceiptNum = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.btnSendSMS_Same = new System.Windows.Forms.Button();
             this.btn_SendSMS_hund = new System.Windows.Forms.Button();
             this.btnSendSMS_one = new System.Windows.Forms.Button();
             this.txtReserveDT = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.fileDialog = new System.Windows.Forms.OpenFileDialog();
             this.GroupBox1.SuspendLayout();
             this.groupBox14.SuspendLayout();
             this.groupBox11.SuspendLayout();
@@ -95,6 +102,8 @@
             this.GroupBox3.SuspendLayout();
             this.GroupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox16.SuspendLayout();
+            this.groupBox15.SuspendLayout();
             this.groupBox12.SuspendLayout();
             this.groupBox9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -405,35 +414,131 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.groupBox16);
+            this.groupBox4.Controls.Add(this.groupBox15);
             this.groupBox4.Controls.Add(this.groupBox12);
             this.groupBox4.Controls.Add(this.btnGetAutoDenyList);
             this.groupBox4.Controls.Add(this.btnSearch);
             this.groupBox4.Controls.Add(this.groupBox9);
             this.groupBox4.Controls.Add(this.dataGridView1);
-            this.groupBox4.Controls.Add(this.btnCancelReserve);
-            this.groupBox4.Controls.Add(this.btnGetMessageResult);
             this.groupBox4.Controls.Add(this.btnGetURL);
             this.groupBox4.Controls.Add(this.groupBox8);
             this.groupBox4.Controls.Add(this.groupBox7);
-            this.groupBox4.Controls.Add(this.txtReceiptNum);
-            this.groupBox4.Controls.Add(this.label4);
             this.groupBox4.Controls.Add(this.groupBox6);
             this.groupBox4.Controls.Add(this.txtReserveDT);
             this.groupBox4.Controls.Add(this.label3);
             this.groupBox4.Location = new System.Drawing.Point(8, 219);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(863, 439);
+            this.groupBox4.Size = new System.Drawing.Size(942, 476);
             this.groupBox4.TabIndex = 17;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "문자전송 관련 기능";
+            // 
+            // groupBox16
+            // 
+            this.groupBox16.Controls.Add(this.btnCancelReserve);
+            this.groupBox16.Controls.Add(this.btnGetMessageResult);
+            this.groupBox16.Controls.Add(this.txtReceiptNum);
+            this.groupBox16.Controls.Add(this.label4);
+            this.groupBox16.Location = new System.Drawing.Point(22, 140);
+            this.groupBox16.Name = "groupBox16";
+            this.groupBox16.Size = new System.Drawing.Size(291, 91);
+            this.groupBox16.TabIndex = 32;
+            this.groupBox16.TabStop = false;
+            this.groupBox16.Text = "접수번호 관련 기능 (요청번호 미할당)";
+            // 
+            // btnCancelReserve
+            // 
+            this.btnCancelReserve.Location = new System.Drawing.Point(146, 49);
+            this.btnCancelReserve.Name = "btnCancelReserve";
+            this.btnCancelReserve.Size = new System.Drawing.Size(121, 32);
+            this.btnCancelReserve.TabIndex = 26;
+            this.btnCancelReserve.Text = "예약 전송 취소";
+            this.btnCancelReserve.UseVisualStyleBackColor = true;
+            this.btnCancelReserve.Click += new System.EventHandler(this.btnCancelReserve_Click);
+            // 
+            // btnGetMessageResult
+            // 
+            this.btnGetMessageResult.Location = new System.Drawing.Point(19, 49);
+            this.btnGetMessageResult.Name = "btnGetMessageResult";
+            this.btnGetMessageResult.Size = new System.Drawing.Size(121, 32);
+            this.btnGetMessageResult.TabIndex = 25;
+            this.btnGetMessageResult.Text = "전송상태확인";
+            this.btnGetMessageResult.UseVisualStyleBackColor = true;
+            this.btnGetMessageResult.Click += new System.EventHandler(this.btnGetMessageResult_Click);
+            // 
+            // txtReceiptNum
+            // 
+            this.txtReceiptNum.Location = new System.Drawing.Point(78, 22);
+            this.txtReceiptNum.Name = "txtReceiptNum";
+            this.txtReceiptNum.Size = new System.Drawing.Size(187, 21);
+            this.txtReceiptNum.TabIndex = 24;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(17, 26);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(65, 12);
+            this.label4.TabIndex = 23;
+            this.label4.Text = "접수번호 : ";
+            // 
+            // groupBox15
+            // 
+            this.groupBox15.Controls.Add(this.txtRequestNum);
+            this.groupBox15.Controls.Add(this.label5);
+            this.groupBox15.Controls.Add(this.btnCancelReserveRN);
+            this.groupBox15.Controls.Add(this.btnGetMessagesRN);
+            this.groupBox15.Location = new System.Drawing.Point(328, 140);
+            this.groupBox15.Name = "groupBox15";
+            this.groupBox15.Size = new System.Drawing.Size(289, 91);
+            this.groupBox15.TabIndex = 31;
+            this.groupBox15.TabStop = false;
+            this.groupBox15.Text = "요청번호 할당 전송건 처리";
+            // 
+            // txtRequestNum
+            // 
+            this.txtRequestNum.Location = new System.Drawing.Point(76, 21);
+            this.txtRequestNum.Name = "txtRequestNum";
+            this.txtRequestNum.Size = new System.Drawing.Size(187, 21);
+            this.txtRequestNum.TabIndex = 34;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(15, 25);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 12);
+            this.label5.TabIndex = 33;
+            this.label5.Text = "요청번호 : ";
+            // 
+            // btnCancelReserveRN
+            // 
+            this.btnCancelReserveRN.Location = new System.Drawing.Point(145, 50);
+            this.btnCancelReserveRN.Name = "btnCancelReserveRN";
+            this.btnCancelReserveRN.Size = new System.Drawing.Size(121, 32);
+            this.btnCancelReserveRN.TabIndex = 32;
+            this.btnCancelReserveRN.Text = "예약전송 취소";
+            this.btnCancelReserveRN.UseVisualStyleBackColor = true;
+            this.btnCancelReserveRN.Click += new System.EventHandler(this.btnCancelReserveRN_Click);
+            // 
+            // btnGetMessagesRN
+            // 
+            this.btnGetMessagesRN.Location = new System.Drawing.Point(18, 50);
+            this.btnGetMessagesRN.Name = "btnGetMessagesRN";
+            this.btnGetMessagesRN.Size = new System.Drawing.Size(121, 32);
+            this.btnGetMessagesRN.TabIndex = 31;
+            this.btnGetMessagesRN.Text = "전송상태확인";
+            this.btnGetMessagesRN.UseVisualStyleBackColor = true;
+            this.btnGetMessagesRN.Click += new System.EventHandler(this.btnGetMessagesRN_Click);
             // 
             // groupBox12
             // 
             this.groupBox12.Controls.Add(this.btnGetURL_SENDER);
             this.groupBox12.Controls.Add(this.btnGetSenderNumberList);
-            this.groupBox12.Location = new System.Drawing.Point(713, 71);
+            this.groupBox12.Location = new System.Drawing.Point(791, 66);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(136, 95);
+            this.groupBox12.Size = new System.Drawing.Size(139, 96);
             this.groupBox12.TabIndex = 28;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "발신번호 관리";
@@ -460,7 +565,7 @@
             // 
             // btnGetAutoDenyList
             // 
-            this.btnGetAutoDenyList.Location = new System.Drawing.Point(728, 19);
+            this.btnGetAutoDenyList.Location = new System.Drawing.Point(802, 19);
             this.btnGetAutoDenyList.Name = "btnGetAutoDenyList";
             this.btnGetAutoDenyList.Size = new System.Drawing.Size(121, 32);
             this.btnGetAutoDenyList.TabIndex = 26;
@@ -470,7 +575,7 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(466, 20);
+            this.btnSearch.Location = new System.Drawing.Point(540, 20);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(130, 31);
             this.btnSearch.TabIndex = 25;
@@ -512,35 +617,15 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(20, 175);
+            this.dataGridView1.Location = new System.Drawing.Point(16, 248);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 21;
-            this.dataGridView1.Size = new System.Drawing.Size(744, 249);
+            this.dataGridView1.Size = new System.Drawing.Size(907, 210);
             this.dataGridView1.TabIndex = 23;
-            // 
-            // btnCancelReserve
-            // 
-            this.btnCancelReserve.Location = new System.Drawing.Point(367, 139);
-            this.btnCancelReserve.Name = "btnCancelReserve";
-            this.btnCancelReserve.Size = new System.Drawing.Size(121, 32);
-            this.btnCancelReserve.TabIndex = 22;
-            this.btnCancelReserve.Text = "예약 전송 취소";
-            this.btnCancelReserve.UseVisualStyleBackColor = true;
-            this.btnCancelReserve.Click += new System.EventHandler(this.btnCancelReserve_Click);
-            // 
-            // btnGetMessageResult
-            // 
-            this.btnGetMessageResult.Location = new System.Drawing.Point(240, 139);
-            this.btnGetMessageResult.Name = "btnGetMessageResult";
-            this.btnGetMessageResult.Size = new System.Drawing.Size(121, 32);
-            this.btnGetMessageResult.TabIndex = 21;
-            this.btnGetMessageResult.Text = "전송상태확인";
-            this.btnGetMessageResult.UseVisualStyleBackColor = true;
-            this.btnGetMessageResult.Click += new System.EventHandler(this.btnGetMessageResult_Click);
             // 
             // btnGetURL
             // 
-            this.btnGetURL.Location = new System.Drawing.Point(601, 19);
+            this.btnGetURL.Location = new System.Drawing.Point(675, 19);
             this.btnGetURL.Name = "btnGetURL";
             this.btnGetURL.Size = new System.Drawing.Size(121, 32);
             this.btnGetURL.TabIndex = 20;
@@ -632,22 +717,6 @@
             this.btnSendLMS_one.UseVisualStyleBackColor = true;
             this.btnSendLMS_one.Click += new System.EventHandler(this.btnSendLMS_one_Click);
             // 
-            // txtReceiptNum
-            // 
-            this.txtReceiptNum.Location = new System.Drawing.Point(86, 145);
-            this.txtReceiptNum.Name = "txtReceiptNum";
-            this.txtReceiptNum.Size = new System.Drawing.Size(143, 21);
-            this.txtReceiptNum.TabIndex = 17;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(25, 149);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 12);
-            this.label4.TabIndex = 16;
-            this.label4.Text = "접수번호 : ";
-            // 
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.btnSendSMS_Same);
@@ -706,11 +775,15 @@
             this.label3.TabIndex = 13;
             this.label3.Text = "예약시간(yyyyMMddHHmmss) : ";
             // 
+            // fileDialog
+            // 
+            this.fileDialog.FileName = "OpenFileDialog1";
+            // 
             // frmExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1182, 676);
+            this.ClientSize = new System.Drawing.Size(1186, 707);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.txtUserId);
             this.Controls.Add(this.GroupBox1);
@@ -720,7 +793,6 @@
             this.Name = "frmExample";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "팝빌 문자메시지  SDK C# Example";
-            
             this.GroupBox1.ResumeLayout(false);
             this.groupBox14.ResumeLayout(false);
             this.groupBox11.ResumeLayout(false);
@@ -731,6 +803,10 @@
             this.GroupBox2.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.groupBox16.ResumeLayout(false);
+            this.groupBox16.PerformLayout();
+            this.groupBox15.ResumeLayout(false);
+            this.groupBox15.PerformLayout();
             this.groupBox12.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -764,8 +840,6 @@
         private System.Windows.Forms.Button btnSendSMS_one;
         internal System.Windows.Forms.TextBox txtReserveDT;
         internal System.Windows.Forms.Label label3;
-        internal System.Windows.Forms.TextBox txtReceiptNum;
-        internal System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btn_SendSMS_hund;
         private System.Windows.Forms.Button btnSendSMS_Same;
         private System.Windows.Forms.GroupBox groupBox7;
@@ -777,8 +851,6 @@
         private System.Windows.Forms.Button btnSendXMS_hund;
         private System.Windows.Forms.Button btnSendXMS_one;
         private System.Windows.Forms.Button btnGetURL;
-        private System.Windows.Forms.Button btnCancelReserve;
-        private System.Windows.Forms.Button btnGetMessageResult;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.Button btnSendMMS_Same;
@@ -802,6 +874,17 @@
         private System.Windows.Forms.GroupBox groupBox14;
         private System.Windows.Forms.GroupBox groupBox13;
         private System.Windows.Forms.Button btnGetPartnerURL_CHRG;
+        private System.Windows.Forms.GroupBox groupBox15;
+        private System.Windows.Forms.Button btnCancelReserveRN;
+        private System.Windows.Forms.Button btnGetMessagesRN;
+        private System.Windows.Forms.GroupBox groupBox16;
+        private System.Windows.Forms.Button btnCancelReserve;
+        private System.Windows.Forms.Button btnGetMessageResult;
+        internal System.Windows.Forms.TextBox txtReceiptNum;
+        internal System.Windows.Forms.Label label4;
+        internal System.Windows.Forms.TextBox txtRequestNum;
+        internal System.Windows.Forms.Label label5;
+        internal System.Windows.Forms.OpenFileDialog fileDialog;
     }
 }
 

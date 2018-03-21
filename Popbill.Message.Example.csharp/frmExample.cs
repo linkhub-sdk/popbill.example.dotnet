@@ -3,7 +3,7 @@
  * 팝빌 문자 API DotNet SDK Example
  * 
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - http://blog.linkhub.co.kr/587
- * - 업데이트 일자 : 2017-11-14
+ * - 업데이트 일자 : 2018-03-21
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991~2
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
  * 
@@ -244,7 +244,7 @@ namespace Popbill.Message.Example.csharp
         private void btnSendSMS_one_Click(object sender, EventArgs e)
         {
             // 발신번호 
-            String senderNum = "07043042991";
+            String senderNum = "07043042993";
 
             // 수신번호
             String receiver = "010111222";
@@ -253,12 +253,16 @@ namespace Popbill.Message.Example.csharp
             String receiverName = "수신자명";
 
             // 메시지내용, 단문(SMS) 메시지는 90byte초과된 내용은 삭제되어 전송됨. 
-            String contents = "단문 문자 메시지 내용. 90byte 초과시 삭제되어 전송";     
+            String contents = "단문 문자 메시지 내용. 90byte 초과시 삭제되어 전송";
+
+            // 전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
+            // 최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
+            String requestNum = "";
 
             try
             {
                 string receiptNum = messageService.SendSMS(txtCorpNum.Text, senderNum, receiver, 
-                                            receiverName, contents, getReserveDT(), txtUserId.Text);
+                                            receiverName, contents, getReserveDT(), txtUserId.Text, requestNum);
 
                 MessageBox.Show("접수번호 : " + receiptNum, "단문(SMS) 전송");
 
@@ -273,6 +277,10 @@ namespace Popbill.Message.Example.csharp
 
         private void button1_Click(object sender, EventArgs e)
         {
+            // 전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
+            // 최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
+            String requestNum = "";
+
             List<Message> messages = new List<Message>();
 
             for (int i = 0; i < 100; i++)
@@ -280,7 +288,7 @@ namespace Popbill.Message.Example.csharp
                 Message msg = new Message();
 
                 // 발신번호
-                msg.sendNum = "07043042991";
+                msg.sendNum = "07043042993";
 
                 // 발신자명
                 msg.senderName = "발신자명";
@@ -299,7 +307,7 @@ namespace Popbill.Message.Example.csharp
 
             try
             {
-                string receiptNum = messageService.SendSMS(txtCorpNum.Text,messages, getReserveDT(), txtUserId.Text);
+                string receiptNum = messageService.SendSMS(txtCorpNum.Text,messages, getReserveDT(), txtUserId.Text, requestNum);
 
                 MessageBox.Show("접수번호 : " + receiptNum, "단문(SMS) 전송");
 
@@ -315,10 +323,14 @@ namespace Popbill.Message.Example.csharp
         private void btnSendSMS_Same_Click(object sender, EventArgs e)
         {
             // 발신번호
-            String senderNum = "07043042991";
+            String senderNum = "07043042993";
 
             // 동보 메시지 내용, 단문(SMS) 메시지는 90byte초과된 내용은 삭제되어 전송됨. 
-            String contents = "동보전송 문자메시지 내용";       
+            String contents = "동보전송 문자메시지 내용";
+
+            // 전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
+            // 최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
+            String requestNum = "20180321-05";
 
 
             List<Message> messages = new List<Message>();
@@ -338,7 +350,7 @@ namespace Popbill.Message.Example.csharp
 
             try
             {
-                string receiptNum = messageService.SendSMS(txtCorpNum.Text, senderNum, contents, messages, getReserveDT(), txtUserId.Text);
+                string receiptNum = messageService.SendSMS(txtCorpNum.Text, senderNum, contents, messages, getReserveDT(), txtUserId.Text, requestNum);
 
                 MessageBox.Show("접수번호 : " + receiptNum, "SMS(단문) 전송");
 
@@ -355,7 +367,7 @@ namespace Popbill.Message.Example.csharp
         private void btnSendLMS_one_Click(object sender, EventArgs e)
         {
             // 발신번호 
-            String senderNum = "07043042991";
+            String senderNum = "07043042993";
 
             // 수신번호 
             String receiver = "010111222";
@@ -369,10 +381,14 @@ namespace Popbill.Message.Example.csharp
             // 메시지 내용, 장문(LMS) 메시지는 2000byte초과된 내용은 삭제되어 전송됨. 
             String contents = "장문문자 메시지 내용, 2000byte초과시 길이가 조정되어 전송됨";
 
+            // 전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
+            // 최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
+            String requestNum = "";
+
             try
             {
                 string receiptNum = messageService.SendLMS(txtCorpNum.Text, senderNum, receiver, 
-                                        receiverName, subject, contents, getReserveDT(), txtUserId.Text);
+                                        receiverName, subject, contents, getReserveDT(), txtUserId.Text, requestNum);
 
                 MessageBox.Show("접수번호 : " + receiptNum, "LMS(장문) 전송");
 
@@ -387,6 +403,10 @@ namespace Popbill.Message.Example.csharp
 
         private void btnSendLMS_hund_Click(object sender, EventArgs e)
         {
+            // 전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
+            // 최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
+            String requestNum = "20180321-04";
+
             List<Message> messages = new List<Message>();
 
             for (int i = 0; i < 100; i++)
@@ -394,7 +414,7 @@ namespace Popbill.Message.Example.csharp
                 Message msg = new Message();
 
                 // 발신번호
-                msg.sendNum = "07043042991";
+                msg.sendNum = "07043042993";
 
                 // 발신자명
                 msg.senderName = "발신자명";
@@ -416,7 +436,7 @@ namespace Popbill.Message.Example.csharp
 
             try
             {
-                string receiptNum = messageService.SendLMS(txtCorpNum.Text, messages, getReserveDT(), txtUserId.Text);
+                string receiptNum = messageService.SendLMS(txtCorpNum.Text, messages, getReserveDT(), txtUserId.Text, requestNum);
 
                 MessageBox.Show("접수번호 : " + receiptNum, "장문(LMS) 메시지 전송");
 
@@ -433,13 +453,17 @@ namespace Popbill.Message.Example.csharp
         private void btnSendLMS_same_Click(object sender, EventArgs e)
         {
             // 발신번호 
-            String senderNum = "07043042991";
+            String senderNum = "07043042993";
 
             // 메시지 제목
             String subject = "동보 메시지 제목";
 
             // 메시지 내용, 장문(LMS) 메시지는 2000byte초과된 내용은 삭제되어 전송됨. 
             String contents = "동보 메시지 내용";
+
+            // 전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
+            // 최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
+            String requestNum = "";
 
             List<Message> messages = new List<Message>();
 
@@ -458,7 +482,7 @@ namespace Popbill.Message.Example.csharp
 
             try
             {
-                string receiptNum = messageService.SendLMS(txtCorpNum.Text, senderNum, subject, contents, messages, getReserveDT(), txtUserId.Text);
+                string receiptNum = messageService.SendLMS(txtCorpNum.Text, senderNum, subject, contents, messages, getReserveDT(), txtUserId.Text, requestNum);
 
                 MessageBox.Show("접수번호 : " + receiptNum, "장문(LMS) 메시지 전송");
 
@@ -474,7 +498,7 @@ namespace Popbill.Message.Example.csharp
         private void btnSendXMS_one_Click(object sender, EventArgs e)
         {
             // 발신번호 
-            String senderNum = "07043042991";
+            String senderNum = "07043042993";
 
             // 수신번호 
             String receiver = "010111222";
@@ -488,9 +512,13 @@ namespace Popbill.Message.Example.csharp
             // 메시지내용, 90byte 기준으로 단문/장문이 자동으로 인식되어 전송됨, 최대 2000byte
             String contents = "문자 메시지 내용, 메시지의 길이에 따라 90byte를 기준으로 SMS/LMS가 자동 구분되어 전송됨";
 
+            // 전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
+            // 최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
+            String requestNum = "";
+
             try
             {
-                string receiptNum = messageService.SendXMS(txtCorpNum.Text, senderNum, receiver, receiverName, subject, contents, getReserveDT(), txtUserId.Text);
+                string receiptNum = messageService.SendXMS(txtCorpNum.Text, senderNum, receiver, receiverName, subject, contents, getReserveDT(), txtUserId.Text, requestNum);
 
                 MessageBox.Show("접수번호 : " + receiptNum, "자동인식(XMS) 전송" );
 
@@ -505,6 +533,11 @@ namespace Popbill.Message.Example.csharp
 
         private void btnSendXMS_hund_Click(object sender, EventArgs e)
         {
+
+            // 전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
+            // 최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
+            String requestNum = "20180321-08";
+
             List<Message> messages = new List<Message>();
 
             for (int i = 0; i < 100; i++)
@@ -512,7 +545,7 @@ namespace Popbill.Message.Example.csharp
                 Message msg = new Message();
 
                 // 발신번호
-                msg.sendNum = "07043042991";
+                msg.sendNum = "07043042993";
 
                 // 발신자명
                 msg.senderName = "발신자명";
@@ -534,7 +567,7 @@ namespace Popbill.Message.Example.csharp
 
             try
             {
-                string receiptNum = messageService.SendXMS(txtCorpNum.Text, messages, getReserveDT(), txtUserId.Text);
+                string receiptNum = messageService.SendXMS(txtCorpNum.Text, messages, getReserveDT(), txtUserId.Text, requestNum);
 
                 MessageBox.Show("접수번호 : " + receiptNum, "자동인식(XMS) 전송");
 
@@ -550,13 +583,17 @@ namespace Popbill.Message.Example.csharp
         private void btnSendXMS_same_Click(object sender, EventArgs e)
         {
             // 발신번호 
-            String senderNum = "07043042991";
+            String senderNum = "07043042993";
 
             // 동보 메시지 제목
             String subject = "동보 메시지 제목";
 
             // 동보 메시지내용, 90byte 기준으로 단문/장문이 자동으로 인식되어 전송됨, 최대 2000byte
             String contents = "동보 단문문자 메시지 내용";
+
+            // 전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
+            // 최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
+            String requestNum = "";
 
             List<Message> messages = new List<Message>();
 
@@ -575,7 +612,7 @@ namespace Popbill.Message.Example.csharp
 
             try
             {
-                string receiptNum = messageService.SendXMS(txtCorpNum.Text, senderNum, subject, contents, messages, getReserveDT(), txtUserId.Text);
+                string receiptNum = messageService.SendXMS(txtCorpNum.Text, senderNum, subject, contents, messages, getReserveDT(), txtUserId.Text, requestNum);
 
                 MessageBox.Show("접수번호 : " + receiptNum, "자동인식(XMS) 메시지 전송");
 
@@ -609,51 +646,10 @@ namespace Popbill.Message.Example.csharp
             }
         }
 
-        /*
-         * 문자 예약전송건을 취소합니다.
-         * - 예약취소는 전송예약시간 10분전까지만 가능합니다.
-         */
-        private void btnCancelReserve_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Response response = messageService.CancelReserve(txtCorpNum.Text,txtReceiptNum.Text,txtUserId.Text);
-
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + response.message, "예약문자 전송 취소");
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "예약문자 전송 취소");
-            }
-        }
-
-        /*
-         * 문자전송 상태 정보를 확인합니다.
-         * - 응답항목에 대한 정보는 "[문자 API 연동매뉴얼] > 3.3.1 GetMessage (전송내역 확인)" 을
-         *   참조하시기 바랍니다.
-         */
-        private void btnGetMessageResult_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                List<MessageResult> ResultList = messageService.GetMessageResult(txtCorpNum.Text, txtReceiptNum.Text);
-
-                dataGridView1.DataSource = ResultList;
-
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "문자 전송상태 확인");
-            }
-        }
-
         private void btnSendMMS_Click(object sender, EventArgs e)
         {
             // 발신번호
-            String senderNum = "07043042991";
+            String senderNum = "07043042993";
 
             // 수신번호 
             String receiver = "010111222";
@@ -667,23 +663,29 @@ namespace Popbill.Message.Example.csharp
             // 메시지 내용, 포토(MMS) 메시지는 2000byte초과된 내용은 삭제되어 전송됨. 
             String contents = "장문 문자 메시지 내용. 최대길이 2000byte";
 
-            try
+            // 전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
+            // 최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
+            String requestNum = "";
+
+            if (fileDialog.ShowDialog(this) == DialogResult.OK)
             {
-                // 포토 메시지 파일경로, JPG 파일포맷, 300KByte 이하 전송 가능
-                string mmsFilePath = "c:\\test.jpg";
+                string mmsFilePath = fileDialog.FileName;
 
-                string receiptNum = messageService.SendMMS(txtCorpNum.Text, senderNum, receiver, receiverName, 
-                                                    subject, contents, mmsFilePath, getReserveDT(), txtUserId.Text);
+                try
+                {
+                    string receiptNum = messageService.SendMMS(txtCorpNum.Text, senderNum, receiver, receiverName,
+                                                        subject, contents, mmsFilePath, getReserveDT(), txtUserId.Text, requestNum);
 
-                MessageBox.Show("접수번호 : " + receiptNum, "포토(MMS) 메시지 전송");
+                    MessageBox.Show("접수번호 : " + receiptNum, "포토(MMS) 메시지 전송");
 
-                txtReceiptNum.Text = receiptNum;
+                    txtReceiptNum.Text = receiptNum;
 
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "포토(MMS) 메시지 전송");
+                }
+                catch (PopbillException ex)
+                {
+                    MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                    "응답메시지(message) : " + ex.Message, "포토(MMS) 메시지 전송");
+                }
             }
         }
 
@@ -709,7 +711,7 @@ namespace Popbill.Message.Example.csharp
         private void btnSendMMS_Same_Click(object sender, EventArgs e)
         {
             // 발신번호
-            String senderNum = "07043042991";
+            String senderNum = "07043042993";
 
             // 메시지 제목
             String subject = "동보메시지 제목";
@@ -717,9 +719,9 @@ namespace Popbill.Message.Example.csharp
             // 메시지 내용, 포토(MMS) 메시지는 2000byte초과된 내용은 삭제되어 전송됨. 
             String contents = "동보 문자 메시지 내용, 최대 2000byte";
 
-
-            // 파일경로, jpg 파일포맷, 300KByte 이하 전송가능
-            String mmsFilePath = "c:\\test.jpg";
+            // 전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
+            // 최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
+            String requestNum = "20180321-11";
 
             List<Message> messages = new List<Message>();
 
@@ -736,19 +738,25 @@ namespace Popbill.Message.Example.csharp
                 messages.Add(msg);
             }
 
-            try
-            {
-                string receiptNum = messageService.SendMMS(txtCorpNum.Text, senderNum, subject, 
-                                        contents, messages, mmsFilePath, getReserveDT(), txtUserId.Text);
 
-                MessageBox.Show("접수번호 : " + receiptNum, "포토(MMS) 메시지 전송");
-
-                txtReceiptNum.Text = receiptNum;
-            }
-            catch (PopbillException ex)
+            if (fileDialog.ShowDialog(this) == DialogResult.OK)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "포토(MMS) 메시지 전송");
+                string mmsFilePath = fileDialog.FileName;
+
+                try
+                {
+                    string receiptNum = messageService.SendMMS(txtCorpNum.Text, senderNum, subject,
+                                            contents, messages, mmsFilePath, getReserveDT(), txtUserId.Text, requestNum);
+
+                    MessageBox.Show("접수번호 : " + receiptNum, "포토(MMS) 메시지 전송");
+
+                    txtReceiptNum.Text = receiptNum;
+                }
+                catch (PopbillException ex)
+                {
+                    MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                    "응답메시지(message) : " + ex.Message, "포토(MMS) 메시지 전송");
+                }
             }
         }
 
@@ -1166,6 +1174,83 @@ namespace Popbill.Message.Example.csharp
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + ex.Message, "팝빌 로그인 URL");
             }
+        }
+
+        private void btnGetMessagesRN_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<MessageResult> ResultList = messageService.GetMessageResultRN(txtCorpNum.Text, txtRequestNum.Text);
+
+                dataGridView1.DataSource = ResultList;
+
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "문자 전송상태 확인");
+            }
+        }
+
+        private void btnCancelReserveRN_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Response response = messageService.CancelReserveRN(txtCorpNum.Text, txtRequestNum.Text, txtUserId.Text);
+
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "예약문자 전송 취소");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "예약문자 전송 취소");
+            }
+        }
+
+
+        /*
+         * 문자전송 상태 정보를 확인합니다.
+         * - 응답항목에 대한 정보는 "[문자 API 연동매뉴얼] > 3.3.1 GetMessage (전송내역 확인)" 을
+         *   참조하시기 바랍니다.
+         */
+        private void btnGetMessageResult_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<MessageResult> ResultList = messageService.GetMessageResult(txtCorpNum.Text, txtReceiptNum.Text);
+
+                dataGridView1.DataSource = ResultList;
+
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "문자 전송상태 확인");
+            }
+
+        }
+
+
+        /*
+         * 문자 예약전송건을 취소합니다.
+         * - 예약취소는 전송예약시간 10분전까지만 가능합니다.
+         */
+        private void btnCancelReserve_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Response response = messageService.CancelReserve(txtCorpNum.Text, txtReceiptNum.Text, txtUserId.Text);
+
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "예약문자 전송 취소");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "예약문자 전송 취소");
+            }
+
         }
 
     }
