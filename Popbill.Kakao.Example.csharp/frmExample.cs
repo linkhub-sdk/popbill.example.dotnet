@@ -559,11 +559,15 @@ namespace Popbill.Kakao.Example.csharp
 
             // 수신자명
             String receiverName = "수신자명";
+
+            // 전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
+            // 최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
+            String requestNum = "";
             
             try
             {
                 string receiptNum = kakaoService.SendATS(txtCorpNum.Text, templateCode, senderNum, altSendType, 
-                    getReserveDT(), receiverNum, receiverName, content, altContent);
+                    getReserveDT(), receiverNum, receiverName, content, altContent, requestNum);
 
                 MessageBox.Show("접수번호 : " + receiptNum, "알림톡(ATS) 전송");
 
@@ -596,6 +600,9 @@ namespace Popbill.Kakao.Example.csharp
             // 대체문자 유형, 공백-미전송, C-알림톡 내용, A-대체문자 내용
             String altSendType = "A";
 
+            // 전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
+            // 최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
+            String requestNum = "";
 
             // 수신자정보 배열, 최대 1000건
             List<KakaoReceiver> receivers = new List<KakaoReceiver>();
@@ -614,7 +621,7 @@ namespace Popbill.Kakao.Example.csharp
             try
             {
                 string receiptNum = kakaoService.SendATS(txtCorpNum.Text, templateCode, senderNum, content,
-                    altContent, altSendType, getReserveDT(), receivers);
+                    altContent, altSendType, getReserveDT(), receivers, txtUserId.Text, requestNum);
 
                 MessageBox.Show("접수번호 : " + receiptNum, "알림톡(ATS) 전송");
 
@@ -641,6 +648,10 @@ namespace Popbill.Kakao.Example.csharp
             // 대체문자 유형, 공백-미전송, C-알림톡 내용, A-대체문자 내용
             String altSendType = "A";
 
+            // 전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
+            // 최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
+            String requestNum = "04";
+
             // 수신자정보 배열, 최대 1000건
             List<KakaoReceiver> receivers = new List<KakaoReceiver>();
             for (int i = 0; i < 5; i++)
@@ -652,16 +663,16 @@ namespace Popbill.Kakao.Example.csharp
                 // 수신자명
                 receiverInfo.rcvnm = "수신자명" + i.ToString();
                 // 알림톡 템플릿 내용, 최대 1000자
-                receiverInfo.msg = "[테스트] 테스트 템플릿입니다.";
+                receiverInfo.msg = "[테스트] 테스트 템플릿입니다." + i.ToString();
                 // 대체문자 내용
-                receiverInfo.altmsg = "대체문자 내용입니다";                    
+                receiverInfo.altmsg = "대체문자 내용입니다";
                 receivers.Add(receiverInfo);
             }
 
             try
             {
                 string receiptNum = kakaoService.SendATS(txtCorpNum.Text, templateCode, senderNum, 
-                    altSendType, getReserveDT(), receivers);
+                    altSendType, getReserveDT(), receivers, txtUserId.Text, requestNum);
 
                 MessageBox.Show("접수번호 : " + receiptNum, "알림톡(ATS) 전송");
 
@@ -703,6 +714,10 @@ namespace Popbill.Kakao.Example.csharp
             // 광고전송여부
             Boolean adsYN = false;
 
+            // 전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
+            // 최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
+            String requestNum = "04";
+
             // 버튼배열, 최대 5개
             List<KakaoButton> buttons = new List<KakaoButton>();
             KakaoButton btnInfo = new KakaoButton();
@@ -719,7 +734,7 @@ namespace Popbill.Kakao.Example.csharp
             try
             {
                 string receiptNum = kakaoService.SendFTS(txtCorpNum.Text, plusFriendID, senderNum, content, 
-                    altContent, altSendType, receiverNum, receiverName, adsYN, getReserveDT(), buttons);
+                    altContent, altSendType, receiverNum, receiverName, adsYN, getReserveDT(), buttons, txtUserId.Text, requestNum);
 
                 MessageBox.Show("접수번호 : " + receiptNum, "친구톡(FTS) 전송");
 
@@ -755,6 +770,10 @@ namespace Popbill.Kakao.Example.csharp
             // 광고전송여부
             Boolean adsYN = false;
 
+            // 전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
+            // 최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
+            String requestNum = "05";
+
             // 수신자정보 배열, 최대 1000건
             List<KakaoReceiver> receivers = new List<KakaoReceiver>();
             for (int i = 0; i < 5; i++)
@@ -781,7 +800,7 @@ namespace Popbill.Kakao.Example.csharp
             try
             {
                 string receiptNum = kakaoService.SendFTS(txtCorpNum.Text, plusFriendID, senderNum, content,
-                    altContent, altSendType, adsYN, getReserveDT(), receivers, buttons);
+                    altContent, altSendType, adsYN, getReserveDT(), receivers, buttons, txtUserId.Text, requestNum);
 
                 MessageBox.Show("접수번호 : " + receiptNum, "친구톡(FTS) 전송");
 
@@ -811,6 +830,10 @@ namespace Popbill.Kakao.Example.csharp
             // 광고전송여부
             Boolean adsYN = false;
 
+            // 전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
+            // 최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
+            String requestNum = "06";
+
             // 수신자정보 배열, 최대 1000건
             List<KakaoReceiver> receivers = new List<KakaoReceiver>();
             for (int i = 0; i < 5; i++)
@@ -839,7 +862,7 @@ namespace Popbill.Kakao.Example.csharp
             try
             {
                 string receiptNum = kakaoService.SendFTS(txtCorpNum.Text, plusFriendID, senderNum, 
-                    altSendType, adsYN, getReserveDT(), receivers, buttons);
+                    altSendType, adsYN, getReserveDT(), receivers, buttons, txtUserId.Text, requestNum);
 
                 MessageBox.Show("접수번호 : " + receiptNum, "친구톡(FTS) 전송");
 
@@ -881,6 +904,10 @@ namespace Popbill.Kakao.Example.csharp
             // 광고전송 여부
             Boolean adsYN = false;
 
+            // 전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
+            // 최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
+            String requestNum = "";
+
             // 버튼배열, 최대 5개
             List<KakaoButton> buttons = new List<KakaoButton>();
             KakaoButton btnInfo = new KakaoButton();
@@ -904,7 +931,8 @@ namespace Popbill.Kakao.Example.csharp
                 try
                 {
                     string receiptNum = kakaoService.SendFMS(txtCorpNum.Text, plusFriendID, senderNum, content,
-                        altContent, altSendType, receiverNum, receiverName, adsYN, getReserveDT(), buttons, strFileName, imageURL);
+                        altContent, altSendType, receiverNum, receiverName, adsYN, getReserveDT(), buttons, 
+                        strFileName, imageURL, txtUserId.Text, requestNum);
 
                     MessageBox.Show("접수번호 : " + receiptNum, "친구톡(FTS) 전송");
 
@@ -941,6 +969,10 @@ namespace Popbill.Kakao.Example.csharp
             // 광고전송 여부
             Boolean adsYN = false;
 
+            // 전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
+            // 최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
+            String requestNum = "";
+
             // 수신자정보 배열, 최대 1000건
             List<KakaoReceiver> receivers = new List<KakaoReceiver>();
             for (int i = 0; i < 2; i++)
@@ -976,7 +1008,8 @@ namespace Popbill.Kakao.Example.csharp
                 try
                 {
                     string receiptNum = kakaoService.SendFMS(txtCorpNum.Text, plusFriendID, senderNum, content,
-                        altContent, altSendType, adsYN, getReserveDT(), receivers, buttons, strFileName, imageURL);
+                        altContent, altSendType, adsYN, getReserveDT(), receivers, buttons, strFileName, imageURL,
+                        txtUserId.Text, requestNum);
 
                     MessageBox.Show("접수번호 : " + receiptNum, "친구톡(FTS) 전송");
 
@@ -1007,6 +1040,10 @@ namespace Popbill.Kakao.Example.csharp
 
             // 광고전송 여부
             Boolean adsYN = false;
+
+            // 전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
+            // 최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
+            String requestNum = "";
 
             // 수신자정보 배열, 최대 1000건
             List<KakaoReceiver> receivers = new List<KakaoReceiver>();
@@ -1048,7 +1085,8 @@ namespace Popbill.Kakao.Example.csharp
                 try
                 {
                     string receiptNum = kakaoService.SendFMS(txtCorpNum.Text, plusFriendID, senderNum,
-                        altSendType, adsYN, getReserveDT(), receivers, buttons, strFileName, imageURL);
+                        altSendType, adsYN, getReserveDT(), receivers, buttons, strFileName, imageURL,
+                        txtUserId.Text, requestNum);
 
                     MessageBox.Show("접수번호 : " + receiptNum, "친구톡(FTS) 전송");
 
@@ -1368,6 +1406,67 @@ namespace Popbill.Kakao.Example.csharp
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + ex.Message, "전송내역 확인");
+            }
+        }
+
+        private void btnGetMessagesRN_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                KakaoSentResult info = kakaoService.GetMessagesRN(txtCorpNum.Text, txtRequestNum.Text);
+
+                String tmp = "";
+                tmp += "contentType (카카오톡 유형) : " + info.contentType + CRLF;
+                tmp += "templateCode (템플릿 코드) : " + info.templateCode + CRLF;
+                tmp += "plusFriendID (플러스친구 아이디) : " + info.plusFriendID + CRLF;
+                tmp += "sendNum (발신번호) : " + info.sendNum + CRLF;
+                tmp += "altContent (대체문자 내용) : " + info.altContent + CRLF;
+                tmp += "altSendType (대체문자 유형) : " + info.altSendType + CRLF;
+                tmp += "reserveDT (예약일시) : " + info.reserveDT + CRLF;
+                tmp += "adsYN (광고전송 여부) : " + info.adsYN + CRLF;
+                tmp += "imageURL (친구톡 이미지 URL) : " + info.imageURL + CRLF;
+                tmp += "sendCnt (전송건수) : " + info.sendCnt + CRLF;
+                tmp += "successCnt (성공건수) : " + info.successCnt + CRLF;
+                tmp += "failCnt (실패건수) : " + info.failCnt + CRLF;
+                tmp += "altCnt (대체문자 건수) : " + info.altCnt + CRLF;
+                tmp += "cancelCnt (취소건수) : " + info.cancelCnt + CRLF + CRLF;
+
+                if (info.btns != null)
+                {
+                    foreach (KakaoButton buttonInfo in info.btns)
+                    {
+                        tmp += "[버튼 정보]" + CRLF;
+                        tmp += "버튼명(n) : " + buttonInfo.n + CRLF;
+                        tmp += "버튼유형(t) : " + buttonInfo.t + CRLF;
+                        tmp += "버튼링크1(u1) : " + buttonInfo.u1 + CRLF;
+                        tmp += "버튼링크1(u2) : " + buttonInfo.u2 + CRLF;
+                    }
+                }
+                MessageBox.Show(tmp, "전송내역 확인");
+
+                dataGridView1.DataSource = info.msgs;
+
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "전송내역 확인");
+            }
+        }
+
+        private void btnCancelReserveRN_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Response response = kakaoService.CancelReserveRN(txtCorpNum.Text, txtRequestNum.Text, txtUserId.Text);
+
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "예약전송 취소");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "예약전송 취소");
             }
         }
 

@@ -56,31 +56,33 @@
             this.txtCorpNum = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.btnResendFAXRN_same = new System.Windows.Forms.Button();
+            this.btnResendFAXRN = new System.Windows.Forms.Button();
+            this.btnCancelReserveRN = new System.Windows.Forms.Button();
+            this.btnGetFaxResultRN = new System.Windows.Forms.Button();
+            this.txtRequestNum = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.btnResendFAXSame = new System.Windows.Forms.Button();
+            this.txtReceiptNum = new System.Windows.Forms.TextBox();
+            this.btnResendFAX = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnCancelReserve = new System.Windows.Forms.Button();
+            this.btnGetFaxResult = new System.Windows.Forms.Button();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.btnGetURL_SENDER = new System.Windows.Forms.Button();
             this.btnGetSenderNumberList = new System.Windows.Forms.Button();
-            this.btnResendFAXSame = new System.Windows.Forms.Button();
-            this.btnResendFAX = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnCancelReserve = new System.Windows.Forms.Button();
-            this.btnGetFaxResult = new System.Windows.Forms.Button();
             this.btnGetURL = new System.Windows.Forms.Button();
-            this.txtReceiptNum = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.txtReserveDT = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.fileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtRequestNum = new System.Windows.Forms.TextBox();
-            this.btnGetFaxResultRN = new System.Windows.Forms.Button();
-            this.btnCancelReserveRN = new System.Windows.Forms.Button();
             this.GroupBox1.SuspendLayout();
             this.groupBox13.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -90,10 +92,10 @@
             this.GroupBox3.SuspendLayout();
             this.GroupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox10.SuspendLayout();
+            this.groupBox9.SuspendLayout();
             this.groupBox8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.groupBox9.SuspendLayout();
-            this.groupBox10.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtUserId
@@ -379,8 +381,6 @@
             this.groupBox4.Controls.Add(this.groupBox10);
             this.groupBox4.Controls.Add(this.groupBox9);
             this.groupBox4.Controls.Add(this.groupBox8);
-            this.groupBox4.Controls.Add(this.btnResendFAXSame);
-            this.groupBox4.Controls.Add(this.btnResendFAX);
             this.groupBox4.Controls.Add(this.btnSearch);
             this.groupBox4.Controls.Add(this.button4);
             this.groupBox4.Controls.Add(this.button3);
@@ -396,6 +396,148 @@
             this.groupBox4.TabIndex = 17;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "팩스전송 관련 기능";
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.btnResendFAXRN_same);
+            this.groupBox10.Controls.Add(this.btnResendFAXRN);
+            this.groupBox10.Controls.Add(this.btnCancelReserveRN);
+            this.groupBox10.Controls.Add(this.btnGetFaxResultRN);
+            this.groupBox10.Controls.Add(this.txtRequestNum);
+            this.groupBox10.Controls.Add(this.label5);
+            this.groupBox10.Location = new System.Drawing.Point(297, 109);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(273, 112);
+            this.groupBox10.TabIndex = 33;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "요청번호 할당 전송건 처리";
+            // 
+            // btnResendFAXRN_same
+            // 
+            this.btnResendFAXRN_same.Location = new System.Drawing.Point(140, 74);
+            this.btnResendFAXRN_same.Name = "btnResendFAXRN_same";
+            this.btnResendFAXRN_same.Size = new System.Drawing.Size(120, 31);
+            this.btnResendFAXRN_same.TabIndex = 31;
+            this.btnResendFAXRN_same.Text = "동보 재전송";
+            this.btnResendFAXRN_same.UseVisualStyleBackColor = true;
+            this.btnResendFAXRN_same.Click += new System.EventHandler(this.btnResendFAXRN_same_Click);
+            // 
+            // btnResendFAXRN
+            // 
+            this.btnResendFAXRN.Location = new System.Drawing.Point(12, 74);
+            this.btnResendFAXRN.Name = "btnResendFAXRN";
+            this.btnResendFAXRN.Size = new System.Drawing.Size(119, 31);
+            this.btnResendFAXRN.TabIndex = 30;
+            this.btnResendFAXRN.Text = "재전송";
+            this.btnResendFAXRN.UseVisualStyleBackColor = true;
+            this.btnResendFAXRN.Click += new System.EventHandler(this.btnResendFAXRN_Click);
+            // 
+            // btnCancelReserveRN
+            // 
+            this.btnCancelReserveRN.Location = new System.Drawing.Point(140, 43);
+            this.btnCancelReserveRN.Name = "btnCancelReserveRN";
+            this.btnCancelReserveRN.Size = new System.Drawing.Size(119, 31);
+            this.btnCancelReserveRN.TabIndex = 3;
+            this.btnCancelReserveRN.Text = "예약 전송 취소";
+            this.btnCancelReserveRN.UseVisualStyleBackColor = true;
+            this.btnCancelReserveRN.Click += new System.EventHandler(this.btnCancelReserveRN_Click);
+            // 
+            // btnGetFaxResultRN
+            // 
+            this.btnGetFaxResultRN.Location = new System.Drawing.Point(12, 43);
+            this.btnGetFaxResultRN.Name = "btnGetFaxResultRN";
+            this.btnGetFaxResultRN.Size = new System.Drawing.Size(119, 30);
+            this.btnGetFaxResultRN.TabIndex = 2;
+            this.btnGetFaxResultRN.Text = "전송상태확인";
+            this.btnGetFaxResultRN.UseVisualStyleBackColor = true;
+            this.btnGetFaxResultRN.Click += new System.EventHandler(this.btnGetFaxResultRN_Click);
+            // 
+            // txtRequestNum
+            // 
+            this.txtRequestNum.Location = new System.Drawing.Point(77, 21);
+            this.txtRequestNum.Name = "txtRequestNum";
+            this.txtRequestNum.Size = new System.Drawing.Size(182, 21);
+            this.txtRequestNum.TabIndex = 1;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(10, 24);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(61, 12);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "요청번호 :";
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.btnResendFAXSame);
+            this.groupBox9.Controls.Add(this.txtReceiptNum);
+            this.groupBox9.Controls.Add(this.btnResendFAX);
+            this.groupBox9.Controls.Add(this.label4);
+            this.groupBox9.Controls.Add(this.btnCancelReserve);
+            this.groupBox9.Controls.Add(this.btnGetFaxResult);
+            this.groupBox9.Location = new System.Drawing.Point(17, 109);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(273, 112);
+            this.groupBox9.TabIndex = 32;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "접수번호 관련 기능 (요청번호 미할당)";
+            // 
+            // btnResendFAXSame
+            // 
+            this.btnResendFAXSame.Location = new System.Drawing.Point(136, 75);
+            this.btnResendFAXSame.Name = "btnResendFAXSame";
+            this.btnResendFAXSame.Size = new System.Drawing.Size(120, 31);
+            this.btnResendFAXSame.TabIndex = 30;
+            this.btnResendFAXSame.Text = "동보 재전송";
+            this.btnResendFAXSame.UseVisualStyleBackColor = true;
+            this.btnResendFAXSame.Click += new System.EventHandler(this.btnResendFAXSame_Click);
+            // 
+            // txtReceiptNum
+            // 
+            this.txtReceiptNum.Location = new System.Drawing.Point(71, 19);
+            this.txtReceiptNum.Name = "txtReceiptNum";
+            this.txtReceiptNum.Size = new System.Drawing.Size(186, 21);
+            this.txtReceiptNum.TabIndex = 17;
+            // 
+            // btnResendFAX
+            // 
+            this.btnResendFAX.Location = new System.Drawing.Point(11, 75);
+            this.btnResendFAX.Name = "btnResendFAX";
+            this.btnResendFAX.Size = new System.Drawing.Size(119, 31);
+            this.btnResendFAX.TabIndex = 29;
+            this.btnResendFAX.Text = "재전송";
+            this.btnResendFAX.UseVisualStyleBackColor = true;
+            this.btnResendFAX.Click += new System.EventHandler(this.btnResendFAX_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(10, 23);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(65, 12);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "접수번호 : ";
+            // 
+            // btnCancelReserve
+            // 
+            this.btnCancelReserve.Location = new System.Drawing.Point(136, 43);
+            this.btnCancelReserve.Name = "btnCancelReserve";
+            this.btnCancelReserve.Size = new System.Drawing.Size(120, 30);
+            this.btnCancelReserve.TabIndex = 22;
+            this.btnCancelReserve.Text = "예약 전송 취소";
+            this.btnCancelReserve.UseVisualStyleBackColor = true;
+            this.btnCancelReserve.Click += new System.EventHandler(this.btnCancelReserve_Click);
+            // 
+            // btnGetFaxResult
+            // 
+            this.btnGetFaxResult.Location = new System.Drawing.Point(10, 43);
+            this.btnGetFaxResult.Name = "btnGetFaxResult";
+            this.btnGetFaxResult.Size = new System.Drawing.Size(120, 30);
+            this.btnGetFaxResult.TabIndex = 21;
+            this.btnGetFaxResult.Text = "전송상태확인";
+            this.btnGetFaxResult.UseVisualStyleBackColor = true;
+            this.btnGetFaxResult.Click += new System.EventHandler(this.btnGetFaxResult_Click);
             // 
             // groupBox8
             // 
@@ -428,26 +570,6 @@
             this.btnGetSenderNumberList.UseVisualStyleBackColor = true;
             this.btnGetSenderNumberList.Click += new System.EventHandler(this.btnGetSenderNumberList_Click);
             // 
-            // btnResendFAXSame
-            // 
-            this.btnResendFAXSame.Location = new System.Drawing.Point(534, 67);
-            this.btnResendFAXSame.Name = "btnResendFAXSame";
-            this.btnResendFAXSame.Size = new System.Drawing.Size(79, 31);
-            this.btnResendFAXSame.TabIndex = 30;
-            this.btnResendFAXSame.Text = "동보 재전송";
-            this.btnResendFAXSame.UseVisualStyleBackColor = true;
-            this.btnResendFAXSame.Click += new System.EventHandler(this.btnResendFAXSame_Click);
-            // 
-            // btnResendFAX
-            // 
-            this.btnResendFAX.Location = new System.Drawing.Point(449, 67);
-            this.btnResendFAX.Name = "btnResendFAX";
-            this.btnResendFAX.Size = new System.Drawing.Size(79, 31);
-            this.btnResendFAX.TabIndex = 29;
-            this.btnResendFAX.Text = "재전송";
-            this.btnResendFAX.UseVisualStyleBackColor = true;
-            this.btnResendFAX.Click += new System.EventHandler(this.btnResendFAX_Click);
-            // 
             // btnSearch
             // 
             this.btnSearch.Location = new System.Drawing.Point(564, 20);
@@ -460,7 +582,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(309, 67);
+            this.button4.Location = new System.Drawing.Point(309, 54);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(113, 31);
             this.button4.TabIndex = 27;
@@ -470,7 +592,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(205, 67);
+            this.button3.Location = new System.Drawing.Point(205, 54);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(98, 31);
             this.button3.TabIndex = 26;
@@ -480,7 +602,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(111, 67);
+            this.button2.Location = new System.Drawing.Point(111, 54);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(88, 31);
             this.button2.TabIndex = 25;
@@ -490,7 +612,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(17, 67);
+            this.button1.Location = new System.Drawing.Point(17, 54);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(88, 31);
             this.button1.TabIndex = 24;
@@ -501,31 +623,11 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(17, 213);
+            this.dataGridView1.Location = new System.Drawing.Point(17, 240);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 21;
-            this.dataGridView1.Size = new System.Drawing.Size(954, 231);
+            this.dataGridView1.Size = new System.Drawing.Size(954, 218);
             this.dataGridView1.TabIndex = 23;
-            // 
-            // btnCancelReserve
-            // 
-            this.btnCancelReserve.Location = new System.Drawing.Point(138, 47);
-            this.btnCancelReserve.Name = "btnCancelReserve";
-            this.btnCancelReserve.Size = new System.Drawing.Size(120, 30);
-            this.btnCancelReserve.TabIndex = 22;
-            this.btnCancelReserve.Text = "예약 전송 취소";
-            this.btnCancelReserve.UseVisualStyleBackColor = true;
-            this.btnCancelReserve.Click += new System.EventHandler(this.btnCancelReserve_Click);
-            // 
-            // btnGetFaxResult
-            // 
-            this.btnGetFaxResult.Location = new System.Drawing.Point(12, 47);
-            this.btnGetFaxResult.Name = "btnGetFaxResult";
-            this.btnGetFaxResult.Size = new System.Drawing.Size(120, 30);
-            this.btnGetFaxResult.TabIndex = 21;
-            this.btnGetFaxResult.Text = "전송상태확인";
-            this.btnGetFaxResult.UseVisualStyleBackColor = true;
-            this.btnGetFaxResult.Click += new System.EventHandler(this.btnGetFaxResult_Click);
             // 
             // btnGetURL
             // 
@@ -536,22 +638,6 @@
             this.btnGetURL.Text = "전송내역조회 팝업";
             this.btnGetURL.UseVisualStyleBackColor = true;
             this.btnGetURL.Click += new System.EventHandler(this.btnGetURL_Click);
-            // 
-            // txtReceiptNum
-            // 
-            this.txtReceiptNum.Location = new System.Drawing.Point(71, 20);
-            this.txtReceiptNum.Name = "txtReceiptNum";
-            this.txtReceiptNum.Size = new System.Drawing.Size(186, 21);
-            this.txtReceiptNum.TabIndex = 17;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(10, 24);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 12);
-            this.label4.TabIndex = 16;
-            this.label4.Text = "접수번호 : ";
             // 
             // txtReserveDT
             // 
@@ -572,68 +658,6 @@
             // fileDialog
             // 
             this.fileDialog.FileName = "OpenFileDialog1";
-            // 
-            // groupBox9
-            // 
-            this.groupBox9.Controls.Add(this.txtReceiptNum);
-            this.groupBox9.Controls.Add(this.label4);
-            this.groupBox9.Controls.Add(this.btnCancelReserve);
-            this.groupBox9.Controls.Add(this.btnGetFaxResult);
-            this.groupBox9.Location = new System.Drawing.Point(17, 109);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(273, 88);
-            this.groupBox9.TabIndex = 32;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "접수번호 관련 기능 (요청번호 미할당)";
-            // 
-            // groupBox10
-            // 
-            this.groupBox10.Controls.Add(this.btnCancelReserveRN);
-            this.groupBox10.Controls.Add(this.btnGetFaxResultRN);
-            this.groupBox10.Controls.Add(this.txtRequestNum);
-            this.groupBox10.Controls.Add(this.label5);
-            this.groupBox10.Location = new System.Drawing.Point(297, 109);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(273, 88);
-            this.groupBox10.TabIndex = 33;
-            this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "요청번호 할당 전송건 처리";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(10, 24);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(61, 12);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "요청번호 :";
-            // 
-            // txtRequestNum
-            // 
-            this.txtRequestNum.Location = new System.Drawing.Point(77, 21);
-            this.txtRequestNum.Name = "txtRequestNum";
-            this.txtRequestNum.Size = new System.Drawing.Size(182, 21);
-            this.txtRequestNum.TabIndex = 1;
-            // 
-            // btnGetFaxResultRN
-            // 
-            this.btnGetFaxResultRN.Location = new System.Drawing.Point(12, 47);
-            this.btnGetFaxResultRN.Name = "btnGetFaxResultRN";
-            this.btnGetFaxResultRN.Size = new System.Drawing.Size(125, 30);
-            this.btnGetFaxResultRN.TabIndex = 2;
-            this.btnGetFaxResultRN.Text = "전송상태확인";
-            this.btnGetFaxResultRN.UseVisualStyleBackColor = true;
-            this.btnGetFaxResultRN.Click += new System.EventHandler(this.btnGetFaxResultRN_Click);
-            // 
-            // btnCancelReserveRN
-            // 
-            this.btnCancelReserveRN.Location = new System.Drawing.Point(144, 47);
-            this.btnCancelReserveRN.Name = "btnCancelReserveRN";
-            this.btnCancelReserveRN.Size = new System.Drawing.Size(119, 29);
-            this.btnCancelReserveRN.TabIndex = 3;
-            this.btnCancelReserveRN.Text = "예약 전송 취소";
-            this.btnCancelReserveRN.UseVisualStyleBackColor = true;
-            this.btnCancelReserveRN.Click += new System.EventHandler(this.btnCancelReserveRN_Click);
             // 
             // frmExample
             // 
@@ -659,12 +683,12 @@
             this.GroupBox2.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            this.groupBox8.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox9.PerformLayout();
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -725,6 +749,8 @@
         private System.Windows.Forms.TextBox txtRequestNum;
         private System.Windows.Forms.Button btnGetFaxResultRN;
         private System.Windows.Forms.Button btnCancelReserveRN;
+        private System.Windows.Forms.Button btnResendFAXRN_same;
+        private System.Windows.Forms.Button btnResendFAXRN;
     }
 }
 
