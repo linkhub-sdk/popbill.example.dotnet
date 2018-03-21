@@ -297,6 +297,10 @@ namespace Popbill.Fax.Example.csharp
             // 팩스제목
             String title = "팩스 전송 제목 테스트";
 
+            // 전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
+            // 최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
+            String requestNum = "";
+
             if (fileDialog.ShowDialog(this) == DialogResult.OK)
             {
                 string strFileName = fileDialog.FileName;
@@ -304,7 +308,7 @@ namespace Popbill.Fax.Example.csharp
                 try
                 {
                     String receiptNum = faxService.SendFAX(txtCorpNum.Text, senderNum, receiverNum, receiverName, 
-                        strFileName, getReserveDT(), txtUserId.Text, adsYN, title);
+                        strFileName, getReserveDT(), txtUserId.Text, adsYN, title, requestNum);
 
                     MessageBox.Show("접수번호 : " + receiptNum, "팩스 전송");
 
@@ -326,6 +330,11 @@ namespace Popbill.Fax.Example.csharp
 
             // 팩스제목
             String title = "팩스 동보전송 제목";
+
+            // 전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
+            // 최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
+            String requestNum = "";
+
 
             if (fileDialog.ShowDialog(this) == DialogResult.OK)
             {
@@ -352,7 +361,7 @@ namespace Popbill.Fax.Example.csharp
                 try
                 {
                     String receiptNum = faxService.SendFAX(txtCorpNum.Text, senderNum, receivers, strFileName,
-                        getReserveDT(), txtUserId.Text, adsYN, title);
+                        getReserveDT(), txtUserId.Text, adsYN, title, requestNum);
 
                     MessageBox.Show("접수번호 : " + receiptNum, "팩스 전송");
 
@@ -383,6 +392,10 @@ namespace Popbill.Fax.Example.csharp
             // 팩스제목
             String title = "팩스 다수파일전송 제목";
 
+            // 전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
+            // 최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
+            String requestNum = "";
+
             List<String> filePaths = new List<string>();
 
             while (fileDialog.ShowDialog(this) == DialogResult.OK)
@@ -396,7 +409,7 @@ namespace Popbill.Fax.Example.csharp
                 try
                 {
                     String receiptNum = faxService.SendFAX(txtCorpNum.Text, senderNum, receiverNum, receiverName, 
-                        filePaths, getReserveDT(), txtUserId.Text, adsYN, title);
+                        filePaths, getReserveDT(), txtUserId.Text, adsYN, title, requestNum);
 
                     MessageBox.Show("접수번호 : " + receiptNum, "팩스 전송");
             
@@ -421,6 +434,10 @@ namespace Popbill.Fax.Example.csharp
             // 팩스제목
             String title = "팩스 다중파일 동보전송 제목";
 
+            // 전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
+            // 최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
+            String requestNum = "";
+
             List<String> filePaths = new List<string>();
 
             while (fileDialog.ShowDialog(this) == DialogResult.OK)
@@ -432,7 +449,7 @@ namespace Popbill.Fax.Example.csharp
             {
                 List<FaxReceiver> receivers = new List<FaxReceiver>();
 
-                for (int i = 0; i < 1; i++)
+                for (int i = 0; i < 10; i++)
                 {
                     // 수신정보 배열(최대 1000건)
                     FaxReceiver receiver = new FaxReceiver();
@@ -448,7 +465,7 @@ namespace Popbill.Fax.Example.csharp
                 try
                 {
                     String receiptNum = faxService.SendFAX(txtCorpNum.Text, senderNum, receivers, 
-                        filePaths, getReserveDT(), txtUserId.Text, adsYN, title);
+                        filePaths, getReserveDT(), txtUserId.Text, adsYN, title, requestNum);
 
                     MessageBox.Show("접수번호 : " + receiptNum, "팩스전송");
 
@@ -924,6 +941,46 @@ namespace Popbill.Fax.Example.csharp
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + ex.Message, "팝빌 로그인 URL");
+            }
+        }
+
+
+        /*
+         * 팩스전송 요청시 기재한 요청번호(requestNum)을 이용하여 전송결과 정보를 확인합니다.
+         */
+        private void btnGetFaxResultRN_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<FaxResult> ResultList = faxService.GetFaxResultRN(txtCorpNum.Text, txtRequestNum.Text);
+
+                dataGridView1.DataSource = ResultList;
+
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "팩스 전송상태 확인");
+            }
+        }
+
+        /*
+         * 팩스전송 요청시 기재한 요청번호(requestNum)을 이용하여  예약전송건을 취소처리합니다.
+         * - 예약전송 취소는 전송예약시간 10분전까지만 가능합니다.
+         */
+        private void btnCancelReserveRN_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Response response = faxService.CancelReserveRN(txtCorpNum.Text, txtRequestNum.Text);
+
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "팩스 예약전송 취소");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "팩스 예약전송 취소");
             }
         }
 
