@@ -651,7 +651,7 @@ namespace Popbill.Kakao.Example.csharp
 
             // 전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
             // 최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
-            String requestNum = "04";
+            String requestNum = "";
 
             // 수신자정보 배열, 최대 1000건
             List<KakaoReceiver> receivers = new List<KakaoReceiver>();
@@ -717,7 +717,7 @@ namespace Popbill.Kakao.Example.csharp
 
             // 전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
             // 최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
-            String requestNum = "04";
+            String requestNum = "";
 
             // 버튼배열, 최대 5개
             List<KakaoButton> buttons = new List<KakaoButton>();
@@ -773,7 +773,7 @@ namespace Popbill.Kakao.Example.csharp
 
             // 전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
             // 최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
-            String requestNum = "05";
+            String requestNum = "";
 
             // 수신자정보 배열, 최대 1000건
             List<KakaoReceiver> receivers = new List<KakaoReceiver>();
@@ -833,7 +833,7 @@ namespace Popbill.Kakao.Example.csharp
 
             // 전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
             // 최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
-            String requestNum = "06";
+            String requestNum = "";
 
             // 수신자정보 배열, 최대 1000건
             List<KakaoReceiver> receivers = new List<KakaoReceiver>();

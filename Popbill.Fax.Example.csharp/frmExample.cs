@@ -299,7 +299,7 @@ namespace Popbill.Fax.Example.csharp
 
             // 전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
             // 최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
-            String requestNum = "20180321-15";
+            String requestNum = "";
 
             if (fileDialog.ShowDialog(this) == DialogResult.OK)
             {
