@@ -747,7 +747,7 @@
             this.btn_SendSMS_hund.TabIndex = 1;
             this.btn_SendSMS_hund.Text = "100건";
             this.btn_SendSMS_hund.UseVisualStyleBackColor = true;
-            this.btn_SendSMS_hund.Click += new System.EventHandler(this.button1_Click);
+            this.btn_SendSMS_hund.Click += new System.EventHandler(this.btnSendSMS_hund_Click);
             // 
             // btnSendSMS_one
             // 

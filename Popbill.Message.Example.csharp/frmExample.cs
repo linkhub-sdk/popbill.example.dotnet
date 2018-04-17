@@ -259,10 +259,13 @@ namespace Popbill.Message.Example.csharp
             // 최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
             String requestNum = "";
 
+            // 광고문자여부 (기본값 false)
+            Boolean adsYN = false;
+
             try
             {
-                string receiptNum = messageService.SendSMS(txtCorpNum.Text, senderNum, receiver, 
-                                            receiverName, contents, getReserveDT(), txtUserId.Text, requestNum);
+                string receiptNum = messageService.SendSMS(txtCorpNum.Text, senderNum, receiver,
+                                            receiverName, contents, getReserveDT(), txtUserId.Text, requestNum, adsYN);
 
                 MessageBox.Show("접수번호 : " + receiptNum, "단문(SMS) 전송");
 
@@ -275,11 +278,14 @@ namespace Popbill.Message.Example.csharp
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnSendSMS_hund_Click(object sender, EventArgs e)
         {
             // 전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
             // 최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
             String requestNum = "";
+
+            // 광고문자여부 (기본값 false)
+            Boolean adsYN = false;
 
             List<Message> messages = new List<Message>();
 
@@ -307,7 +313,7 @@ namespace Popbill.Message.Example.csharp
 
             try
             {
-                string receiptNum = messageService.SendSMS(txtCorpNum.Text,messages, getReserveDT(), txtUserId.Text, requestNum);
+                string receiptNum = messageService.SendSMS(txtCorpNum.Text, messages, getReserveDT(), txtUserId.Text, requestNum, adsYN);
 
                 MessageBox.Show("접수번호 : " + receiptNum, "단문(SMS) 전송");
 
@@ -332,6 +338,8 @@ namespace Popbill.Message.Example.csharp
             // 최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
             String requestNum = "";
 
+            // 광고문자여부 (기본값 false)
+            Boolean adsYN = false;
 
             List<Message> messages = new List<Message>();
 
@@ -350,7 +358,7 @@ namespace Popbill.Message.Example.csharp
 
             try
             {
-                string receiptNum = messageService.SendSMS(txtCorpNum.Text, senderNum, contents, messages, getReserveDT(), txtUserId.Text, requestNum);
+                string receiptNum = messageService.SendSMS(txtCorpNum.Text, senderNum, contents, messages, getReserveDT(), txtUserId.Text, requestNum, adsYN);
 
                 MessageBox.Show("접수번호 : " + receiptNum, "SMS(단문) 전송");
 
@@ -385,10 +393,13 @@ namespace Popbill.Message.Example.csharp
             // 최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
             String requestNum = "";
 
+            // 광고문자여부 (기본값 false)
+            Boolean adsYN = false;
+
             try
             {
-                string receiptNum = messageService.SendLMS(txtCorpNum.Text, senderNum, receiver, 
-                                        receiverName, subject, contents, getReserveDT(), txtUserId.Text, requestNum);
+                string receiptNum = messageService.SendLMS(txtCorpNum.Text, senderNum, receiver,
+                                        receiverName, subject, contents, getReserveDT(), txtUserId.Text, requestNum, adsYN);
 
                 MessageBox.Show("접수번호 : " + receiptNum, "LMS(장문) 전송");
 
@@ -406,6 +417,9 @@ namespace Popbill.Message.Example.csharp
             // 전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
             // 최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
             String requestNum = "";
+
+            // 광고문자여부 (기본값 false)
+            Boolean adsYN = false;
 
             List<Message> messages = new List<Message>();
 
@@ -436,7 +450,7 @@ namespace Popbill.Message.Example.csharp
 
             try
             {
-                string receiptNum = messageService.SendLMS(txtCorpNum.Text, messages, getReserveDT(), txtUserId.Text, requestNum);
+                string receiptNum = messageService.SendLMS(txtCorpNum.Text, messages, getReserveDT(), txtUserId.Text, requestNum, adsYN);
 
                 MessageBox.Show("접수번호 : " + receiptNum, "장문(LMS) 메시지 전송");
 
@@ -465,6 +479,9 @@ namespace Popbill.Message.Example.csharp
             // 최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
             String requestNum = "";
 
+            // 광고문자여부 (기본값 false)
+            Boolean adsYN = false;
+
             List<Message> messages = new List<Message>();
 
             for (int i = 0; i < 100; i++)
@@ -482,7 +499,7 @@ namespace Popbill.Message.Example.csharp
 
             try
             {
-                string receiptNum = messageService.SendLMS(txtCorpNum.Text, senderNum, subject, contents, messages, getReserveDT(), txtUserId.Text, requestNum);
+                string receiptNum = messageService.SendLMS(txtCorpNum.Text, senderNum, subject, contents, messages, getReserveDT(), txtUserId.Text, requestNum, adsYN);
 
                 MessageBox.Show("접수번호 : " + receiptNum, "장문(LMS) 메시지 전송");
 
@@ -516,9 +533,12 @@ namespace Popbill.Message.Example.csharp
             // 최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
             String requestNum = "";
 
+            // 광고문자여부 (기본값 false)
+            Boolean adsYN = false;
+
             try
             {
-                string receiptNum = messageService.SendXMS(txtCorpNum.Text, senderNum, receiver, receiverName, subject, contents, getReserveDT(), txtUserId.Text, requestNum);
+                string receiptNum = messageService.SendXMS(txtCorpNum.Text, senderNum, receiver, receiverName, subject, contents, getReserveDT(), txtUserId.Text, requestNum, adsYN);
 
                 MessageBox.Show("접수번호 : " + receiptNum, "자동인식(XMS) 전송" );
 
@@ -537,6 +557,9 @@ namespace Popbill.Message.Example.csharp
             // 전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
             // 최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
             String requestNum = "";
+
+            // 광고문자여부 (기본값 false)
+            Boolean adsYN = false;
 
             List<Message> messages = new List<Message>();
 
@@ -567,7 +590,7 @@ namespace Popbill.Message.Example.csharp
 
             try
             {
-                string receiptNum = messageService.SendXMS(txtCorpNum.Text, messages, getReserveDT(), txtUserId.Text, requestNum);
+                string receiptNum = messageService.SendXMS(txtCorpNum.Text, messages, getReserveDT(), txtUserId.Text, requestNum, adsYN);
 
                 MessageBox.Show("접수번호 : " + receiptNum, "자동인식(XMS) 전송");
 
@@ -595,6 +618,9 @@ namespace Popbill.Message.Example.csharp
             // 최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
             String requestNum = "";
 
+            // 광고문자여부 (기본값 false)
+            Boolean adsYN = false;
+
             List<Message> messages = new List<Message>();
 
             for (int i = 0; i < 100; i++)
@@ -612,7 +638,7 @@ namespace Popbill.Message.Example.csharp
 
             try
             {
-                string receiptNum = messageService.SendXMS(txtCorpNum.Text, senderNum, subject, contents, messages, getReserveDT(), txtUserId.Text, requestNum);
+                string receiptNum = messageService.SendXMS(txtCorpNum.Text, senderNum, subject, contents, messages, getReserveDT(), txtUserId.Text, requestNum, adsYN);
 
                 MessageBox.Show("접수번호 : " + receiptNum, "자동인식(XMS) 메시지 전송");
 
@@ -667,6 +693,9 @@ namespace Popbill.Message.Example.csharp
             // 최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
             String requestNum = "";
 
+            // 광고문자여부 (기본값 false)
+            Boolean adsYN = false;
+
             if (fileDialog.ShowDialog(this) == DialogResult.OK)
             {
                 string mmsFilePath = fileDialog.FileName;
@@ -674,7 +703,7 @@ namespace Popbill.Message.Example.csharp
                 try
                 {
                     string receiptNum = messageService.SendMMS(txtCorpNum.Text, senderNum, receiver, receiverName,
-                                                        subject, contents, mmsFilePath, getReserveDT(), txtUserId.Text, requestNum);
+                                                        subject, contents, mmsFilePath, getReserveDT(), txtUserId.Text, requestNum, adsYN);
 
                     MessageBox.Show("접수번호 : " + receiptNum, "포토(MMS) 메시지 전송");
 
@@ -723,9 +752,12 @@ namespace Popbill.Message.Example.csharp
             // 최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
             String requestNum = "";
 
+            // 광고문자여부 (기본값 false)
+            Boolean adsYN = false; 
+
             List<Message> messages = new List<Message>();
 
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 10; i++)
             {
                 Message msg = new Message();
 
@@ -746,7 +778,7 @@ namespace Popbill.Message.Example.csharp
                 try
                 {
                     string receiptNum = messageService.SendMMS(txtCorpNum.Text, senderNum, subject,
-                                            contents, messages, mmsFilePath, getReserveDT(), txtUserId.Text, requestNum);
+                                            contents, messages, mmsFilePath, getReserveDT(), txtUserId.Text, requestNum, adsYN);
 
                     MessageBox.Show("접수번호 : " + receiptNum, "포토(MMS) 메시지 전송");
 
