@@ -3109,11 +3109,11 @@ namespace Popbill.Taxinvoice.Example.csharp
             MgtKeyType KeyType = MgtKeyType.SELL;
 
             // 세금계산서 아이템키, 목록조회(Search) API의 반환항목중 ItemKey 참조
-            String itemKey = "018030518083100001";
+            String itemKey = "018041823243600001";
 
             // 할당할 문서관리번호, 숫자, 영문, '-', '_' 조합으로 
             // 1~24자리까지 사업자번호별 중복없는 고유번호 할당
-            String mgtKey = "20180312-01";
+            String mgtKey = "018041823243600001";
 
             try
             {

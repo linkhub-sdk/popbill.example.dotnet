@@ -304,7 +304,7 @@ namespace Popbill.Fax.Example.csharp
             if (fileDialog.ShowDialog(this) == DialogResult.OK)
             {
                 string strFileName = fileDialog.FileName;
-
+                
                 try
                 {
                     String receiptNum = faxService.SendFAX(txtCorpNum.Text, senderNum, receiverNum, receiverName, 
@@ -321,7 +321,7 @@ namespace Popbill.Fax.Example.csharp
                 }
 
             }
-        }
+        } 
 
         private void button2_Click(object sender, EventArgs e)
         {
