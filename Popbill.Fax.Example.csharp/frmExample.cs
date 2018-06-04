@@ -441,6 +441,7 @@ namespace Popbill.Fax.Example.csharp
 
             List<String> filePaths = new List<string>();
 
+            // 팩스전송파일, 최대 20개
             while (fileDialog.ShowDialog(this) == DialogResult.OK)
             {
                 filePaths.Add(fileDialog.FileName);
