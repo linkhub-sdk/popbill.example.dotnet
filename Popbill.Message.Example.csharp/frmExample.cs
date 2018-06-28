@@ -1063,7 +1063,7 @@ namespace Popbill.Message.Example.csharp
             // 페이지당 검색개수, 최대 1000건
             int PerPage = 100;
 
-            // 조회 검색어, 수신자명 또는 발신자명 기재
+            // 조회 검색어, 문자 전송시 기재한 수신자명 또는 발신자명 기재
             String QString = "";
 
             try
