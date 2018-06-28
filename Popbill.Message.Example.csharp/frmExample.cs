@@ -244,7 +244,7 @@ namespace Popbill.Message.Example.csharp
         private void btnSendSMS_one_Click(object sender, EventArgs e)
         {
             // 발신번호 
-            String senderNum = "07043042993";
+            String senderNum = "07043042991";
 
             // 수신번호
             String receiver = "010111222";
@@ -1028,11 +1028,12 @@ namespace Popbill.Message.Example.csharp
          */
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            // 최대 검색기간 : 6개월 이내
             // 시작일자, 날짜형식(yyyMMdd)
-            String SDate = "20170101";
+            String SDate = "20180601";
 
             // 종료일자, 날짜형식(yyyyMMdd)
-            String EDate = "20170301";  
+            String EDate = "20180630";  
             
             // 전송상태값 배열, 1-대기, 2-성공, 3-실패, 4-취소
             String[] State = new String[4];
@@ -1060,12 +1061,15 @@ namespace Popbill.Message.Example.csharp
             int Page = 1;
 
             // 페이지당 검색개수, 최대 1000건
-            int PerPage = 100;          
+            int PerPage = 100;
+
+            // 조회 검색어, 수신자명 또는 발신자명 기재
+            String QString = "";
 
             try
             {
                 MSGSearchResult searchResult = messageService.Search(txtCorpNum.Text, SDate, EDate, State, 
-                                                                  Item, ReserveYN, SenderYN, Order, Page, PerPage);
+                                                                  Item, ReserveYN, SenderYN, Order, Page, PerPage, QString);
                 
                 String tmp = null;
                 tmp += "code (응답코드) : " + searchResult.code + CRLF;
