@@ -541,10 +541,10 @@ namespace Popbill.Kakao.Example.csharp
         private void btnSendATS_one_Click(object sender, EventArgs e)
         {
             // 알림톡 템플릿 코드, ListATSTemplate API의 templateCode 확인
-            String templateCode = "018020000001";
+            String templateCode = "018060000179";
 
             // 팝빌에 사전 등록된 발신번호
-            String senderNum = "07043042993";
+            String senderNum = "07043042991";
             
             // 알림톡 템플릿 내용, 최대 1000자
             String content = "[테스트] 테스트 템플릿입니다.";
@@ -1282,11 +1282,12 @@ namespace Popbill.Kakao.Example.csharp
          */
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            // 최대 검색기한 : 6개월 이내
             // 시작일자, 날짜형식(yyyMMdd)
-            String SDate = "20180305";
+            String SDate = "20180601";
 
             // 종료일자, 날짜형식(yyyyMMdd)
-            String EDate = "20180305";
+            String EDate = "20180630";
 
             // 전송상태값 배열, 0-대기, 1- 전송중, 2-대기, 3-성공, 4-실패, 5-취소
             String[] State = new String[6];
@@ -1318,10 +1319,13 @@ namespace Popbill.Kakao.Example.csharp
             // 페이지당 검색개수, 최대 1000건
             int PerPage = 100;
 
+            // 조회 검색어, 카카오톡 전송시 기재한 수신자명 입력
+            String QString = "";
+
             try
             {
                 KakaoSearchResult searchResult = kakaoService.Search(txtCorpNum.Text, SDate, EDate, State,
-                                                                  Item, ReserveYN, SenderYN, Order, Page, PerPage);
+                                                                  Item, ReserveYN, SenderYN, Order, Page, PerPage, txtUserId.Text, QString);
 
                 String tmp = null;
                 tmp += "code (응답코드) : " + searchResult.code + CRLF;
