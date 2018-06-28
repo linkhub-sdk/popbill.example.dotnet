@@ -716,11 +716,12 @@ namespace Popbill.Fax.Example.csharp
          */
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            // 최대 검색기간 : 6개월 이내 
             // 시작일자, 날짜형식(yyyyMMdd)
-            String SDate = "20160901";
+            String SDate = "20180601";
 
             // 종료일자, 날짜형식(yyyyMMdd)
-            String EDate = "20161031";     
+            String EDate = "20180630";     
 
             //전송상태 배열 1-대기, 2-성공, 3-실패, 4-취소
             String[] State = new String[4];
@@ -742,11 +743,14 @@ namespace Popbill.Fax.Example.csharp
             int Page = 1;
 
             // 페이지당 검색개수, 최대 1000개
-            int PerPage = 100;   
+            int PerPage = 100;
+
+            // 조회 검색어, 팩스 전송시 기재한 발신자명 또는 수신자명 기재
+            String QString = "";
 
             try
             {
-                FAXSearchResult searchResult = faxService.Search(txtCorpNum.Text, SDate, EDate, State, ReserveYN, SenderOnly, Order, Page, PerPage);
+                FAXSearchResult searchResult = faxService.Search(txtCorpNum.Text, SDate, EDate, State, ReserveYN, SenderOnly, Order, Page, PerPage, QString);
                 
                 String tmp = null;
 
