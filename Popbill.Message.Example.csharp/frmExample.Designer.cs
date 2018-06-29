@@ -93,6 +93,7 @@
             this.txtReserveDT = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.fileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.btnGetStates = new System.Windows.Forms.Button();
             this.GroupBox1.SuspendLayout();
             this.groupBox14.SuspendLayout();
             this.groupBox11.SuspendLayout();
@@ -414,6 +415,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.btnGetStates);
             this.groupBox4.Controls.Add(this.groupBox16);
             this.groupBox4.Controls.Add(this.groupBox15);
             this.groupBox4.Controls.Add(this.groupBox12);
@@ -575,7 +577,7 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(540, 20);
+            this.btnSearch.Location = new System.Drawing.Point(403, 20);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(130, 31);
             this.btnSearch.TabIndex = 25;
@@ -779,6 +781,16 @@
             // 
             this.fileDialog.FileName = "OpenFileDialog1";
             // 
+            // btnGetStates
+            // 
+            this.btnGetStates.Location = new System.Drawing.Point(539, 18);
+            this.btnGetStates.Name = "btnGetStates";
+            this.btnGetStates.Size = new System.Drawing.Size(130, 31);
+            this.btnGetStates.TabIndex = 33;
+            this.btnGetStates.Text = "전송내역 요약정보";
+            this.btnGetStates.UseVisualStyleBackColor = true;
+            this.btnGetStates.Click += new System.EventHandler(this.btnGetStates_Click);
+            // 
             // frmExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -885,6 +897,7 @@
         internal System.Windows.Forms.TextBox txtRequestNum;
         internal System.Windows.Forms.Label label5;
         internal System.Windows.Forms.OpenFileDialog fileDialog;
+        private System.Windows.Forms.Button btnGetStates;
     }
 }
 

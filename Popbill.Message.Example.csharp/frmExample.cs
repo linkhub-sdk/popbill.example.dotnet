@@ -1289,5 +1289,29 @@ namespace Popbill.Message.Example.csharp
 
         }
 
+        /*
+         * 문자 전송내역 요약정보를 확인 합니다.
+         */
+        private void btnGetStates_Click(object sender, EventArgs e)
+        {
+
+            List<string> ReciptNumList = new List<string>();
+
+            ReciptNumList.Add("018041717000000018");
+            ReciptNumList.Add("018041717000000019");
+            
+            try
+            {
+
+                List<MessageState> ResultList = messageService.GetStates(txtCorpNum.Text, ReciptNumList, txtUserId.Text);
+                dataGridView1.DataSource = ResultList;
+            }
+            catch(PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                               "응답메시지(message) : " + ex.Message, "예약문자 전송 취소");
+            }
+        }
+
     }
 }
