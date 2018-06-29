@@ -325,6 +325,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
                     tmp += "fax (팩스번호) : " + contactInfo.fax + CRLF;
                     tmp += "mgrYN (관리자 여부) : " + contactInfo.mgrYN + CRLF;
                     tmp += "regDT (등록일시) : " + contactInfo.regDT + CRLF;
+                    tmp += "state (상태) : " + contactInfo.state + CRLF;
                     tmp += CRLF;
                 }
                 MessageBox.Show(tmp, "담당자 목록조회");
