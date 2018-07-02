@@ -76,6 +76,7 @@
             this.txtMgtKey = new System.Windows.Forms.TextBox();
             this.Label3 = new System.Windows.Forms.Label();
             this.GroupBox11 = new System.Windows.Forms.GroupBox();
+            this.btnAssignNum = new System.Windows.Forms.Button();
             this.btnDetachStmt = new System.Windows.Forms.Button();
             this.btnAttachStmt = new System.Windows.Forms.Button();
             this.GroupBox4 = new System.Windows.Forms.GroupBox();
@@ -123,6 +124,9 @@
             this.txtUserId = new System.Windows.Forms.TextBox();
             this.getPopbillURL_LOGIN = new System.Windows.Forms.Button();
             this.GroupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox19 = new System.Windows.Forms.GroupBox();
+            this.btnUpdateEmailConfig = new System.Windows.Forms.Button();
+            this.btnListEmailConfig = new System.Windows.Forms.Button();
             this.groupBox18 = new System.Windows.Forms.GroupBox();
             this.btnGetPartnerURL_CHRG = new System.Windows.Forms.Button();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
@@ -140,7 +144,6 @@
             this.txtCorpNum = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.fileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.btnAssignNum = new System.Windows.Forms.Button();
             this.GroupBox8.SuspendLayout();
             this.GroupBox9.SuspendLayout();
             this.GroupBox10.SuspendLayout();
@@ -154,6 +157,7 @@
             this.GroupBox13.SuspendLayout();
             this.GroupBox12.SuspendLayout();
             this.GroupBox1.SuspendLayout();
+            this.groupBox19.SuspendLayout();
             this.groupBox18.SuspendLayout();
             this.groupBox17.SuspendLayout();
             this.groupBox15.SuspendLayout();
@@ -708,6 +712,16 @@
             this.GroupBox11.TabStop = false;
             this.GroupBox11.Text = "부가서비스";
             // 
+            // btnAssignNum
+            // 
+            this.btnAssignNum.Location = new System.Drawing.Point(15, 209);
+            this.btnAssignNum.Name = "btnAssignNum";
+            this.btnAssignNum.Size = new System.Drawing.Size(115, 33);
+            this.btnAssignNum.TabIndex = 13;
+            this.btnAssignNum.Text = "관리번호 할당";
+            this.btnAssignNum.UseVisualStyleBackColor = true;
+            this.btnAssignNum.Click += new System.EventHandler(this.btnAssignNum_Click);
+            // 
             // btnDetachStmt
             // 
             this.btnDetachStmt.Location = new System.Drawing.Point(15, 170);
@@ -1234,6 +1248,7 @@
             // 
             // GroupBox1
             // 
+            this.GroupBox1.Controls.Add(this.groupBox19);
             this.GroupBox1.Controls.Add(this.groupBox18);
             this.GroupBox1.Controls.Add(this.groupBox17);
             this.GroupBox1.Controls.Add(this.groupBox15);
@@ -1244,10 +1259,41 @@
             this.GroupBox1.Controls.Add(this.GroupBox4);
             this.GroupBox1.Location = new System.Drawing.Point(12, 37);
             this.GroupBox1.Name = "GroupBox1";
-            this.GroupBox1.Size = new System.Drawing.Size(1143, 142);
+            this.GroupBox1.Size = new System.Drawing.Size(1273, 142);
             this.GroupBox1.TabIndex = 11;
             this.GroupBox1.TabStop = false;
             this.GroupBox1.Text = "팝빌 기본 API";
+            // 
+            // groupBox19
+            // 
+            this.groupBox19.Controls.Add(this.btnUpdateEmailConfig);
+            this.groupBox19.Controls.Add(this.btnListEmailConfig);
+            this.groupBox19.Location = new System.Drawing.Point(1139, 17);
+            this.groupBox19.Name = "groupBox19";
+            this.groupBox19.Size = new System.Drawing.Size(125, 114);
+            this.groupBox19.TabIndex = 5;
+            this.groupBox19.TabStop = false;
+            this.groupBox19.Text = "알림메일 관련";
+            // 
+            // btnUpdateEmailConfig
+            // 
+            this.btnUpdateEmailConfig.Location = new System.Drawing.Point(7, 50);
+            this.btnUpdateEmailConfig.Name = "btnUpdateEmailConfig";
+            this.btnUpdateEmailConfig.Size = new System.Drawing.Size(112, 27);
+            this.btnUpdateEmailConfig.TabIndex = 1;
+            this.btnUpdateEmailConfig.Text = "전송설정 수정";
+            this.btnUpdateEmailConfig.UseVisualStyleBackColor = true;
+            this.btnUpdateEmailConfig.Click += new System.EventHandler(this.btnUpdateEmailConfig_Click);
+            // 
+            // btnListEmailConfig
+            // 
+            this.btnListEmailConfig.Location = new System.Drawing.Point(7, 22);
+            this.btnListEmailConfig.Name = "btnListEmailConfig";
+            this.btnListEmailConfig.Size = new System.Drawing.Size(112, 27);
+            this.btnListEmailConfig.TabIndex = 0;
+            this.btnListEmailConfig.Text = "전송목록 조회";
+            this.btnListEmailConfig.UseVisualStyleBackColor = true;
+            this.btnListEmailConfig.Click += new System.EventHandler(this.btnListEmailConfig_Click);
             // 
             // groupBox18
             // 
@@ -1415,21 +1461,11 @@
             // 
             this.fileDialog.FileName = "OpenFileDialog1";
             // 
-            // btnAssignNum
-            // 
-            this.btnAssignNum.Location = new System.Drawing.Point(15, 209);
-            this.btnAssignNum.Name = "btnAssignNum";
-            this.btnAssignNum.Size = new System.Drawing.Size(115, 33);
-            this.btnAssignNum.TabIndex = 13;
-            this.btnAssignNum.Text = "관리번호 할당";
-            this.btnAssignNum.UseVisualStyleBackColor = true;
-            this.btnAssignNum.Click += new System.EventHandler(this.btnAssignNum_Click);
-            // 
             // frmExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1172, 768);
+            this.ClientSize = new System.Drawing.Size(1300, 768);
             this.Controls.Add(this.GroupBox7);
             this.Controls.Add(this.txtUserId);
             this.Controls.Add(this.GroupBox1);
@@ -1454,6 +1490,7 @@
             this.GroupBox13.ResumeLayout(false);
             this.GroupBox12.ResumeLayout(false);
             this.GroupBox1.ResumeLayout(false);
+            this.groupBox19.ResumeLayout(false);
             this.groupBox18.ResumeLayout(false);
             this.groupBox17.ResumeLayout(false);
             this.groupBox15.ResumeLayout(false);
@@ -1579,6 +1616,9 @@
         private System.Windows.Forms.GroupBox groupBox18;
         private System.Windows.Forms.Button btnGetPartnerURL_CHRG;
         private System.Windows.Forms.Button btnAssignNum;
+        private System.Windows.Forms.GroupBox groupBox19;
+        private System.Windows.Forms.Button btnUpdateEmailConfig;
+        private System.Windows.Forms.Button btnListEmailConfig;
     }
 }
 

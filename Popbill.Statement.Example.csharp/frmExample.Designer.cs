@@ -97,6 +97,9 @@
             this.ListContact = new System.Windows.Forms.Button();
             this.btnRegistContact = new System.Windows.Forms.Button();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.groupBox17 = new System.Windows.Forms.GroupBox();
+            this.btnUpdateEmailConfig = new System.Windows.Forms.Button();
+            this.btnListEmailConfig = new System.Windows.Forms.Button();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
             this.btnGetPartnerURL_CHRG = new System.Windows.Forms.Button();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
@@ -124,6 +127,7 @@
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox11.SuspendLayout();
+            this.groupBox17.SuspendLayout();
             this.groupBox16.SuspendLayout();
             this.groupBox15.SuspendLayout();
             this.groupBox13.SuspendLayout();
@@ -835,6 +839,7 @@
             // 
             // groupBox11
             // 
+            this.groupBox11.Controls.Add(this.groupBox17);
             this.groupBox11.Controls.Add(this.groupBox16);
             this.groupBox11.Controls.Add(this.groupBox15);
             this.groupBox11.Controls.Add(this.groupBox13);
@@ -844,10 +849,41 @@
             this.groupBox11.Controls.Add(this.groupBox3);
             this.groupBox11.Location = new System.Drawing.Point(15, 39);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(960, 145);
+            this.groupBox11.Size = new System.Drawing.Size(1085, 145);
             this.groupBox11.TabIndex = 52;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "팝빌 기본 API";
+            // 
+            // groupBox17
+            // 
+            this.groupBox17.Controls.Add(this.btnUpdateEmailConfig);
+            this.groupBox17.Controls.Add(this.btnListEmailConfig);
+            this.groupBox17.Location = new System.Drawing.Point(949, 18);
+            this.groupBox17.Name = "groupBox17";
+            this.groupBox17.Size = new System.Drawing.Size(125, 121);
+            this.groupBox17.TabIndex = 46;
+            this.groupBox17.TabStop = false;
+            this.groupBox17.Text = "알림메일 관련";
+            // 
+            // btnUpdateEmailConfig
+            // 
+            this.btnUpdateEmailConfig.Location = new System.Drawing.Point(5, 49);
+            this.btnUpdateEmailConfig.Name = "btnUpdateEmailConfig";
+            this.btnUpdateEmailConfig.Size = new System.Drawing.Size(115, 30);
+            this.btnUpdateEmailConfig.TabIndex = 1;
+            this.btnUpdateEmailConfig.Text = "전송설정 수정";
+            this.btnUpdateEmailConfig.UseVisualStyleBackColor = true;
+            this.btnUpdateEmailConfig.Click += new System.EventHandler(this.btnUpdateEmailConfig_Click);
+            // 
+            // btnListEmailConfig
+            // 
+            this.btnListEmailConfig.Location = new System.Drawing.Point(5, 17);
+            this.btnListEmailConfig.Name = "btnListEmailConfig";
+            this.btnListEmailConfig.Size = new System.Drawing.Size(115, 30);
+            this.btnListEmailConfig.TabIndex = 0;
+            this.btnListEmailConfig.Text = "전송목록 조회";
+            this.btnListEmailConfig.UseVisualStyleBackColor = true;
+            this.btnListEmailConfig.Click += new System.EventHandler(this.btnListEmailConfig_Click);
             // 
             // groupBox16
             // 
@@ -1027,7 +1063,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(993, 766);
+            this.ClientSize = new System.Drawing.Size(1113, 766);
             this.Controls.Add(this.groupBox12);
             this.Controls.Add(this.groupBox11);
             this.Controls.Add(this.txtUserID);
@@ -1051,6 +1087,7 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox11.ResumeLayout(false);
+            this.groupBox17.ResumeLayout(false);
             this.groupBox16.ResumeLayout(false);
             this.groupBox15.ResumeLayout(false);
             this.groupBox13.ResumeLayout(false);
@@ -1150,6 +1187,9 @@
         private System.Windows.Forms.GroupBox groupBox15;
         private System.Windows.Forms.GroupBox groupBox16;
         private System.Windows.Forms.Button btnGetPartnerURL_CHRG;
+        private System.Windows.Forms.GroupBox groupBox17;
+        private System.Windows.Forms.Button btnUpdateEmailConfig;
+        private System.Windows.Forms.Button btnListEmailConfig;
     }
 }
 

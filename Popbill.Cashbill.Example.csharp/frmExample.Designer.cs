@@ -57,6 +57,7 @@
             this.GroupBox7 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.btnRevokeRegistIssue_part = new System.Windows.Forms.Button();
             this.btnCancelIssue02 = new System.Windows.Forms.Button();
             this.btnDelete02 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -79,6 +80,9 @@
             this.txtUserId = new System.Windows.Forms.TextBox();
             this.getPopbillURL_LOGIN = new System.Windows.Forms.Button();
             this.GroupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.btnUpdateEmailConfig = new System.Windows.Forms.Button();
+            this.btnListEmailConfig = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnUpdateCorpInfo = new System.Windows.Forms.Button();
             this.btnGetCorpInfo = new System.Windows.Forms.Button();
@@ -94,7 +98,6 @@
             this.Label2 = new System.Windows.Forms.Label();
             this.txtCorpNum = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
-            this.btnRevokeRegistIssue_part = new System.Windows.Forms.Button();
             this.GroupBox9.SuspendLayout();
             this.GroupBox11.SuspendLayout();
             this.GroupBox3.SuspendLayout();
@@ -105,6 +108,7 @@
             this.GroupBox13.SuspendLayout();
             this.GroupBox12.SuspendLayout();
             this.GroupBox1.SuspendLayout();
+            this.groupBox16.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.GroupBox6.SuspendLayout();
             this.GroupBox5.SuspendLayout();
@@ -421,6 +425,17 @@
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "취소현금영수증 즉시발행 프로세스";
             // 
+            // btnRevokeRegistIssue_part
+            // 
+            this.btnRevokeRegistIssue_part.BackColor = System.Drawing.Color.LightCoral;
+            this.btnRevokeRegistIssue_part.Location = new System.Drawing.Point(164, 24);
+            this.btnRevokeRegistIssue_part.Name = "btnRevokeRegistIssue_part";
+            this.btnRevokeRegistIssue_part.Size = new System.Drawing.Size(69, 28);
+            this.btnRevokeRegistIssue_part.TabIndex = 14;
+            this.btnRevokeRegistIssue_part.Text = "부분취소";
+            this.btnRevokeRegistIssue_part.UseVisualStyleBackColor = false;
+            this.btnRevokeRegistIssue_part.Click += new System.EventHandler(this.btnRevokeRegistIssue_part_Click);
+            // 
             // btnCancelIssue02
             // 
             this.btnCancelIssue02.BackColor = System.Drawing.Color.LightCoral;
@@ -652,6 +667,7 @@
             // 
             // GroupBox1
             // 
+            this.GroupBox1.Controls.Add(this.groupBox16);
             this.GroupBox1.Controls.Add(this.groupBox4);
             this.GroupBox1.Controls.Add(this.GroupBox6);
             this.GroupBox1.Controls.Add(this.GroupBox3);
@@ -661,10 +677,41 @@
             this.GroupBox1.Controls.Add(this.groupBox15);
             this.GroupBox1.Location = new System.Drawing.Point(13, 33);
             this.GroupBox1.Name = "GroupBox1";
-            this.GroupBox1.Size = new System.Drawing.Size(992, 147);
+            this.GroupBox1.Size = new System.Drawing.Size(1129, 147);
             this.GroupBox1.TabIndex = 11;
             this.GroupBox1.TabStop = false;
             this.GroupBox1.Text = "팝빌 기본 API";
+            // 
+            // groupBox16
+            // 
+            this.groupBox16.Controls.Add(this.btnUpdateEmailConfig);
+            this.groupBox16.Controls.Add(this.btnListEmailConfig);
+            this.groupBox16.Location = new System.Drawing.Point(985, 16);
+            this.groupBox16.Name = "groupBox16";
+            this.groupBox16.Size = new System.Drawing.Size(126, 120);
+            this.groupBox16.TabIndex = 5;
+            this.groupBox16.TabStop = false;
+            this.groupBox16.Text = "알림메일 관련";
+            // 
+            // btnUpdateEmailConfig
+            // 
+            this.btnUpdateEmailConfig.Location = new System.Drawing.Point(7, 53);
+            this.btnUpdateEmailConfig.Name = "btnUpdateEmailConfig";
+            this.btnUpdateEmailConfig.Size = new System.Drawing.Size(111, 30);
+            this.btnUpdateEmailConfig.TabIndex = 1;
+            this.btnUpdateEmailConfig.Text = "전송설정 수정";
+            this.btnUpdateEmailConfig.UseVisualStyleBackColor = true;
+            this.btnUpdateEmailConfig.Click += new System.EventHandler(this.btnUpdateEmailConfig_Click);
+            // 
+            // btnListEmailConfig
+            // 
+            this.btnListEmailConfig.Location = new System.Drawing.Point(7, 20);
+            this.btnListEmailConfig.Name = "btnListEmailConfig";
+            this.btnListEmailConfig.Size = new System.Drawing.Size(111, 30);
+            this.btnListEmailConfig.TabIndex = 0;
+            this.btnListEmailConfig.Text = "전송목록 조회";
+            this.btnListEmailConfig.UseVisualStyleBackColor = true;
+            this.btnListEmailConfig.Click += new System.EventHandler(this.btnListEmailConfig_Click);
             // 
             // groupBox4
             // 
@@ -817,22 +864,11 @@
             this.Label1.TabIndex = 7;
             this.Label1.Text = "팝빌회원 사업자번호 : ";
             // 
-            // btnRevokeRegistIssue_part
-            // 
-            this.btnRevokeRegistIssue_part.BackColor = System.Drawing.Color.LightCoral;
-            this.btnRevokeRegistIssue_part.Location = new System.Drawing.Point(164, 24);
-            this.btnRevokeRegistIssue_part.Name = "btnRevokeRegistIssue_part";
-            this.btnRevokeRegistIssue_part.Size = new System.Drawing.Size(69, 28);
-            this.btnRevokeRegistIssue_part.TabIndex = 14;
-            this.btnRevokeRegistIssue_part.Text = "부분취소";
-            this.btnRevokeRegistIssue_part.UseVisualStyleBackColor = false;
-            this.btnRevokeRegistIssue_part.Click += new System.EventHandler(this.btnRevokeRegistIssue_part_Click);
-            // 
             // frmExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1020, 643);
+            this.ClientSize = new System.Drawing.Size(1161, 643);
             this.Controls.Add(this.GroupBox7);
             this.Controls.Add(this.txtUserId);
             this.Controls.Add(this.GroupBox1);
@@ -853,6 +889,7 @@
             this.GroupBox13.ResumeLayout(false);
             this.GroupBox12.ResumeLayout(false);
             this.GroupBox1.ResumeLayout(false);
+            this.groupBox16.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.GroupBox6.ResumeLayout(false);
             this.GroupBox5.ResumeLayout(false);
@@ -932,6 +969,9 @@
         private System.Windows.Forms.Button btnGetPartnerURL_CHRG;
         private System.Windows.Forms.GroupBox groupBox15;
         internal System.Windows.Forms.Button btnRevokeRegistIssue_part;
+        private System.Windows.Forms.GroupBox groupBox16;
+        private System.Windows.Forms.Button btnUpdateEmailConfig;
+        private System.Windows.Forms.Button btnListEmailConfig;
     }
 }
 

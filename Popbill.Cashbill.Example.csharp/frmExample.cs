@@ -1573,5 +1573,66 @@ namespace Popbill.Cashbill.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "(부분) 취소현금영수증 즉시발행");
             }
         }
+
+        /*
+         * 현금영수증 메일전송 항목에 대한 전송여부를 목록으로 반환한다.
+         */
+        private void btnListEmailConfig_Click(object sender, EventArgs e)
+        {
+            String tmp = "";
+            try
+            {
+                List<CBEmailConfig> resultList = cashbillService.ListEmailConfig(txtCorpNum.Text, txtUserId.Text);
+
+                tmp = "메일전송유형 | 전송여부" + CRLF;
+
+                foreach (CBEmailConfig info in resultList)
+                {
+                    if (info.emailType == "CSH_ISSUE")
+                    {
+                        tmp += "CSH_ISSUE (고객에게 현금영수증이 발행 되었음을 알려주는 메일) | " + info.sendYN + CRLF;
+                    };
+                    if (info.emailType == "CSH_CANCELISSUE")
+                    {
+                        tmp += "CSH_CANCELISSUE (고객에게 현금영수증이 발행취소 되었음을 알려주는 메일) | " + info.sendYN + CRLF;
+                    };
+                }
+                MessageBox.Show(tmp, "알림메일 전송목록 조회");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "알림메일 전송목록 조회");
+            }
+        }
+
+        /*
+           현금영수증 메일전송 항목에 대한 전송여부를 수정한다.
+           메일전송유형
+           CSH_ISSUE : 고객에게 현금영수증이 발행 되었음을 알려주는 메일 입니다.
+           CSH_CANCELISSUE : 고객에게 현금영수증 발행취소 되었음을 알려주는 메일 입니다.
+        */
+
+        private void btnUpdateEmailConfig_Click(object sender, EventArgs e)
+        {
+            String EmailType = "CSH_ISSUE";
+
+            bool SendYN = false;
+
+            try
+            {
+                Response response = cashbillService.UpdateEmailConfig(txtCorpNum.Text, EmailType, SendYN, txtUserId.Text);
+
+
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "알림메일 전송설정 수정");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "알림메일 전송설정 수정L");
+            }
+        }
+        
     }
 }
