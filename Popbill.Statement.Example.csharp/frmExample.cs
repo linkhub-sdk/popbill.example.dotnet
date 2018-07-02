@@ -2208,13 +2208,16 @@ namespace Popbill.Statement.Example.csharp
          */
         private void btnUpdateEmailConfig_Click(object sender, EventArgs e)
         {
-            String EmailType = "";
+            String EmailType = "SMT_ISSUE";
 
             bool SendYN = false;
 
             try
             {
                 Response response = statementService.UpdateEmailConfig(txtCorpNum.Text, EmailType, SendYN, txtUserID.Text);
+
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "알림메일 전송설정 수정");
             }
             catch (PopbillException ex)
             {

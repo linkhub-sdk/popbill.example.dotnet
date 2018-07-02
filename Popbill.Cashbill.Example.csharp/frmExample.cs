@@ -1623,7 +1623,6 @@ namespace Popbill.Cashbill.Example.csharp
             {
                 Response response = cashbillService.UpdateEmailConfig(txtCorpNum.Text, EmailType, SendYN, txtUserId.Text);
 
-
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + response.message, "알림메일 전송설정 수정");
             }
