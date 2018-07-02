@@ -2274,8 +2274,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             try
             {
                 url = taxinvoiceService.GetPopbillURL(txtCorpNum.Text, txtUserId.Text, "CERT");
-                MessageBox.Show(url, "공인인증서 등록 URL");
-
+                System.Diagnostics.Process.Start("IExplore.exe", url);
             }
             catch (PopbillException ex)
             {
