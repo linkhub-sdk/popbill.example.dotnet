@@ -2264,8 +2264,7 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * 공인인증서 등록 팝업 URL을 반환합니다.
-         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         * 공인인증서 등록 팝업창을 호출합니다.
          */
         private void getPopbillURL_CERT_Click(object sender, EventArgs e)
         {
