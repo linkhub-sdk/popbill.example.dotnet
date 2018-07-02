@@ -3,7 +3,7 @@
  * 팝빌 전자명세서 API DotNet SDK Example
  * 
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - http://blog.linkhub.co.kr/587
- * - 업데이트 일자 : 2017-11-14
+ * - 업데이트 일자 : 2018-07-02
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991~2
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
  * 
@@ -2162,32 +2162,17 @@ namespace Popbill.Statement.Example.csharp
             String tmp = "";
             try
             {
-                List<StatementEmailConfig> resultList = statementService.ListEmailConfig(txtCorpNum.Text, txtUserID.Text);
+                List<EmailConfig> resultList = statementService.ListEmailConfig(txtCorpNum.Text, txtUserID.Text);
 
                 tmp = "메일전송유형 | 전송여부" + CRLF;
 
-                foreach (StatementEmailConfig info in resultList)
+                foreach (EmailConfig info in resultList)
                 {
-                    if (info.emailType == "SMT_ISSUE")
-                    {
-                        tmp += "SMT_ISSUE (공급받는자에게 전자명세서가 발행 되었음을 알려주는 메일) | " + info.sendYN + CRLF;
-                    };
-                    if (info.emailType == "SMT_ACCEPT")
-                    {
-                        tmp += "SMT_ACCEPT (공급자에게 전자명세서가 승인 되었음을 알려주는 메일) | " + info.sendYN + CRLF;
-                    };
-                    if (info.emailType == "SMT_DENY")
-                    {
-                        tmp += "SMT_DENY (공급자게에 전자명세서가 거부 되었음을 알려주는 메일) | " + info.sendYN + CRLF;
-                    };
-                    if (info.emailType == "SMT_CANCEL")
-                    {
-                        tmp += "SMT_CANCEL (공급받는자게에 전자명세서가 취소 되었음을 알려주는 메일) | " + info.sendYN + CRLF;
-                    };
-                    if (info.emailType == "SMT_CANCEL_ISSUE")
-                    {
-                        tmp += "SMT_CANCEL_ISSUE (공급받는자에게 전자명세서가 발행취소 되었음을 알려주는 메일) | " + info.sendYN + CRLF;
-                    };
+                    if (info.emailType == "SMT_ISSUE") tmp += "SMT_ISSUE (공급받는자에게 전자명세서가 발행 되었음을 알려주는 메일) | " + info.sendYN + CRLF;
+                    if (info.emailType == "SMT_ACCEPT") tmp += "SMT_ACCEPT (공급자에게 전자명세서가 승인 되었음을 알려주는 메일) | " + info.sendYN + CRLF;
+                    if (info.emailType == "SMT_DENY") tmp += "SMT_DENY (공급자게에 전자명세서가 거부 되었음을 알려주는 메일) | " + info.sendYN + CRLF;
+                    if (info.emailType == "SMT_CANCEL") tmp += "SMT_CANCEL (공급받는자게에 전자명세서가 취소 되었음을 알려주는 메일) | " + info.sendYN + CRLF;
+                    if (info.emailType == "SMT_CANCEL_ISSUE") tmp += "SMT_CANCEL_ISSUE (공급받는자에게 전자명세서가 발행취소 되었음을 알려주는 메일) | " + info.sendYN + CRLF;
                 }
                 MessageBox.Show(tmp, "알림메일 전송목록 조회");
             }
@@ -2210,7 +2195,8 @@ namespace Popbill.Statement.Example.csharp
         {
             String EmailType = "SMT_ISSUE";
 
-            bool SendYN = false;
+            //전송여부 (True-전송, False-미전송)
+            bool SendYN = true;
 
             try
             {

@@ -3139,116 +3139,38 @@ namespace Popbill.Taxinvoice.Example.csharp
             String tmp = "";
             try
             {
-                List<TIEmailConfig> resultList = taxinvoiceService.ListEmailConfig(txtCorpNum.Text, txtUserId.Text);
+                List<EmailConfig> resultList = taxinvoiceService.ListEmailConfig(txtCorpNum.Text, txtUserId.Text);
 
                 tmp = "메일전송유형 | 전송여부" + CRLF;
 
-                foreach (TIEmailConfig info in resultList)
+                foreach (EmailConfig info in resultList)
                 {
-                    if (info.emailType == "TAX_ISSUE")
-                    {
-                        tmp += "TAX_ISSUE (공급받는자에게 전자세금계산서 발행 메일) | " + info.sendYN + CRLF;
-                    };
-                    if (info.emailType == "TAX_ISSUE_INVOICER")
-                    {
-                        tmp += "TAX_ISSUE_INVOICER (공급자에게 전자세금계산서 발행 메일) | " + info.sendYN + CRLF;
-                    };
-                    if (info.emailType == "TAX_CHECK")
-                    {
-                        tmp += "TAX_CHECK (공급자에게 전자세금계산서 수신확인 메일) | " + info.sendYN + CRLF;
-                    };
-                    if (info.emailType == "TAX_CANCEL_ISSUE")
-                    {
-                        tmp += "TAX_CANCEL_ISSUE (공급받는자에게 전자세금계산서 발행취소 메일) | " + info.sendYN + CRLF;
-                    };
-                    if (info.emailType == "TAX_SEND")
-                    {
-                        tmp += "TAX_SEND (공급받는자에게 [발행예정] 세금계산서 발송 메일) | " + info.sendYN + CRLF;
-                    };
-                    if (info.emailType == "TAX_ACCEPT")
-                    {
-                        tmp += "TAX_ACCEPT (공급자에게 [발행예정] 세금계산서 승인 메일) | " + info.sendYN + CRLF;
-                    };
-                    if (info.emailType == "TAX_ACCEPT_ISSUE")
-                    {
-                        tmp += "TAX_ACCEPT_ISSUE (공급자에게 [발행예정] 세금계산서 자동발행 메일) | " + info.sendYN + CRLF;
-                    };
-                    if (info.emailType == "TAX_DENY")
-                    {
-                        tmp += "TAX_DENY (공급자에게 [발행예정] 세금계산서 거부 메일) | " + info.sendYN + CRLF;
-                    };
-                    if (info.emailType == "TAX_CANCEL_SEND")
-                    {
-                        tmp += "TAX_CANCEL_SEND (공급받는자에게 [발행예정] 세금계산서 취소 메일) | " + info.sendYN + CRLF;
-                    };
-                    if (info.emailType == "TAX_REQUEST")
-                    {
-                        tmp += "TAX_REQUEST (공급자에게 세금계산서를 발행요청 메일) | " + info.sendYN + CRLF;
-                    };
-                    if (info.emailType == "TAX_CANCEL_REQUEST")
-                    {
-                        tmp += "TAX_CANCEL_REQUEST (공급받는자에게 세금계산서 취소 메일) | " + info.sendYN + CRLF;
-                    };
-                    if (info.emailType == "TAX_REFUSE")
-                    {
-                        tmp += "TAX_REFUSE (공급받는자에게 세금계산서 거부 메일) | " + info.sendYN + CRLF;
-                    };
-                    if (info.emailType == "TAX_TRUST_ISSUE")
-                    {
-                        tmp += "TAX_TRUST_ISSUE (공급받는자에게 전자세금계산서 발행 메일) | " + info.sendYN + CRLF;
-                    };
-                    if (info.emailType == "TAX_TRUST_ISSUE_TRUSTEE")
-                    {
-                        tmp += "TAX_TRUST_ISSUE_TRUSTEE (수탁자에게 전자세금계산서 발행 메일) | " + info.sendYN + CRLF;
-                    };
-                    if (info.emailType == "TAX_TRUST_ISSUE_INVOICER")
-                    {
-                        tmp += "TAX_TRUST_ISSUE_INVOICER (공급자에게 전자세금계산서 발행 메일) | " + info.sendYN + CRLF;
-                    };
-                    if (info.emailType == "TAX_TRUST_CANCEL_ISSUE")
-                    {
-                        tmp += "TAX_TRUST_CANCEL_ISSUE (공급받는자에게 전자세금계산서 발행취소 메일) | " + info.sendYN + CRLF;
-                    };
-                    if (info.emailType == "TAX_TRUST_CANCEL_ISSUE_INVOICER")
-                    {
-                        tmp += "TAX_TRUST_CANCEL_ISSUE_INVOICER (공급자에게 전자세금계산서 발행취소 메일) | " + info.sendYN + CRLF;
-                    };
-                    if (info.emailType == "TAX_TRUST_SEND")
-                    {
-                        tmp += "TAX_TRUST_SEND (공급받는자에게 [발행예정] 세금계산서 발송 메일) | " + info.sendYN + CRLF;
-                    };
-                    if (info.emailType == "TAX_TRUST_ACCEPT")
-                    {
-                        tmp += "TAX_TRUST_ACCEPT (수탁자에게 [발행예정] 세금계산서 승인 메일) | " + info.sendYN + CRLF;
-                    };
-                    if (info.emailType == "TAX_TRUST_ACCEPT_ISSUE")
-                    {
-                        tmp += "TAX_TRUST_ACCEPT_ISSUE (수탁자에게 [발행예정] 세금계산서 자동발행 메일) | " + info.sendYN + CRLF;
-                    };
-                    if (info.emailType == "TAX_TRUST_DENY")
-                    {
-                        tmp += "TAX_TRUST_DENY (수탁자에게 [발행예정] 세금계산서 거부 메일) | " + info.sendYN + CRLF;
-                    };
-                    if (info.emailType == "TAX_TRUST_CANCEL_SEND")
-                    {
-                        tmp += "TAX_TRUST_CANCEL_SEND (공급받는자에게 [발행예정] 세금계산서 취소 메일) | " + info.sendYN + CRLF;
-                    };
-                    if (info.emailType == "TAX_CLOSEDOWN")
-                    {
-                        tmp += "TAX_CLOSEDOWN (거래처의 휴폐업 여부 확인 메일) | " + info.sendYN + CRLF;
-                    };
-                    if (info.emailType == "TAX_NTSFAIL_INVOICER")
-                    {
-                        tmp += "TAX_NTSFAIL_INVOICER (전자세금계산서 국세청 전송실패 안내) | " + info.sendYN + CRLF;
-                    };
-                    if (info.emailType == "TAX_SEND_INFO")
-                    {
-                        tmp += "TAX_SEND_INFO (전월 귀속분 [매출 발행 대기] 세금계산서 발행 메일) | " + info.sendYN + CRLF;
-                    };
-                    if (info.emailType == "ETC_CERT_EXPIRATION")
-                    {
-                        tmp += "ETC_CERT_EXPIRATION (팝빌에서 이용중인 공인인증서의 갱신 메일) | " + info.sendYN + CRLF;
-                    };
+                    if (info.emailType == "TAX_ISSUE") tmp += "TAX_ISSUE (공급받는자에게 전자세금계산서 발행 메일) | " + info.sendYN + CRLF;
+                    if (info.emailType == "TAX_ISSUE_INVOICER") tmp += "TAX_ISSUE_INVOICER (공급자에게 전자세금계산서 발행 메일) | " + info.sendYN + CRLF;
+                    if (info.emailType == "TAX_CHECK") tmp += "TAX_CHECK (공급자에게 전자세금계산서 수신확인 메일) | " + info.sendYN + CRLF;
+                    if (info.emailType == "TAX_CANCEL_ISSUE") tmp += "TAX_CANCEL_ISSUE (공급받는자에게 전자세금계산서 발행취소 메일) | " + info.sendYN + CRLF;
+                    if (info.emailType == "TAX_SEND") tmp += "TAX_SEND (공급받는자에게 [발행예정] 세금계산서 발송 메일) | " + info.sendYN + CRLF;
+                    if (info.emailType == "TAX_ACCEPT") tmp += "TAX_ACCEPT (공급자에게 [발행예정] 세금계산서 승인 메일) | " + info.sendYN + CRLF;
+                    if (info.emailType == "TAX_ACCEPT_ISSUE") tmp += "TAX_ACCEPT_ISSUE (공급자에게 [발행예정] 세금계산서 자동발행 메일) | " + info.sendYN + CRLF;
+                    if (info.emailType == "TAX_DENY") tmp += "TAX_DENY (공급자에게 [발행예정] 세금계산서 거부 메일) | " + info.sendYN + CRLF;
+                    if (info.emailType == "TAX_CANCEL_SEND") tmp += "TAX_CANCEL_SEND (공급받는자에게 [발행예정] 세금계산서 취소 메일) | " + info.sendYN + CRLF;
+                    if (info.emailType == "TAX_REQUEST") tmp += "TAX_REQUEST (공급자에게 세금계산서를 발행요청 메일) | " + info.sendYN + CRLF;
+                    if (info.emailType == "TAX_CANCEL_REQUEST") tmp += "TAX_CANCEL_REQUEST (공급받는자에게 세금계산서 취소 메일) | " + info.sendYN + CRLF;
+                    if (info.emailType == "TAX_REFUSE") tmp += "TAX_REFUSE (공급받는자에게 세금계산서 거부 메일) | " + info.sendYN + CRLF;
+                    if (info.emailType == "TAX_TRUST_ISSUE") tmp += "TAX_TRUST_ISSUE (공급받는자에게 전자세금계산서 발행 메일) | " + info.sendYN + CRLF;
+                    if (info.emailType == "TAX_TRUST_ISSUE_TRUSTEE") tmp += "TAX_TRUST_ISSUE_TRUSTEE (수탁자에게 전자세금계산서 발행 메일) | " + info.sendYN + CRLF;
+                    if (info.emailType == "TAX_TRUST_ISSUE_INVOICER") tmp += "TAX_TRUST_ISSUE_INVOICER (공급자에게 전자세금계산서 발행 메일) | " + info.sendYN + CRLF;
+                    if (info.emailType == "TAX_TRUST_CANCEL_ISSUE") tmp += "TAX_TRUST_CANCEL_ISSUE (공급받는자에게 전자세금계산서 발행취소 메일) | " + info.sendYN + CRLF;
+                    if (info.emailType == "TAX_TRUST_CANCEL_ISSUE_INVOICER") tmp += "TAX_TRUST_CANCEL_ISSUE_INVOICER (공급자에게 전자세금계산서 발행취소 메일) | " + info.sendYN + CRLF;
+                    if (info.emailType == "TAX_TRUST_SEND") tmp += "TAX_TRUST_SEND (공급받는자에게 [발행예정] 세금계산서 발송 메일) | " + info.sendYN + CRLF;
+                    if (info.emailType == "TAX_TRUST_ACCEPT") tmp += "TAX_TRUST_ACCEPT (수탁자에게 [발행예정] 세금계산서 승인 메일) | " + info.sendYN + CRLF;
+                    if (info.emailType == "TAX_TRUST_ACCEPT_ISSUE") tmp += "TAX_TRUST_ACCEPT_ISSUE (수탁자에게 [발행예정] 세금계산서 자동발행 메일) | " + info.sendYN + CRLF;
+                    if (info.emailType == "TAX_TRUST_DENY") tmp += "TAX_TRUST_DENY (수탁자에게 [발행예정] 세금계산서 거부 메일) | " + info.sendYN + CRLF;
+                    if (info.emailType == "TAX_TRUST_CANCEL_SEND") tmp += "TAX_TRUST_CANCEL_SEND (공급받는자에게 [발행예정] 세금계산서 취소 메일) | " + info.sendYN + CRLF;
+                    if (info.emailType == "TAX_CLOSEDOWN") tmp += "TAX_CLOSEDOWN (거래처의 휴폐업 여부 확인 메일) | " + info.sendYN + CRLF;
+                    if (info.emailType == "TAX_NTSFAIL_INVOICER") tmp += "TAX_NTSFAIL_INVOICER (전자세금계산서 국세청 전송실패 안내) | " + info.sendYN + CRLF;
+                    if (info.emailType == "TAX_SEND_INFO") tmp += "TAX_SEND_INFO (전월 귀속분 [매출 발행 대기] 세금계산서 발행 메일) | " + info.sendYN + CRLF;
+                    if (info.emailType == "ETC_CERT_EXPIRATION") tmp += "ETC_CERT_EXPIRATION (팝빌에서 이용중인 공인인증서의 갱신 메일) | " + info.sendYN + CRLF;
                 }
 
                 MessageBox.Show(tmp, "알림메일 전송목록 조회");
@@ -3307,7 +3229,8 @@ namespace Popbill.Taxinvoice.Example.csharp
         {
             String EmailType = "TAX_ISSUE";
 
-            bool SendYN = false;
+            //전송여부 (True-전송, False-미전송)
+            bool SendYN = true;
 
             try
             {

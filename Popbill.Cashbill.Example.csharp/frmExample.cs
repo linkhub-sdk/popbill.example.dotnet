@@ -3,7 +3,7 @@
  * 팝빌 현금영수증 API DotNet SDK Example
  * 
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - http://blog.linkhub.co.kr/587
- * - 업데이트 일자 : 2017-11-14
+ * - 업데이트 일자 : 2018-07-02
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
  * 
@@ -1582,20 +1582,14 @@ namespace Popbill.Cashbill.Example.csharp
             String tmp = "";
             try
             {
-                List<CBEmailConfig> resultList = cashbillService.ListEmailConfig(txtCorpNum.Text, txtUserId.Text);
+                List<EmailConfig> resultList = cashbillService.ListEmailConfig(txtCorpNum.Text, txtUserId.Text);
 
                 tmp = "메일전송유형 | 전송여부" + CRLF;
 
-                foreach (CBEmailConfig info in resultList)
+                foreach (EmailConfig info in resultList)
                 {
-                    if (info.emailType == "CSH_ISSUE")
-                    {
-                        tmp += "CSH_ISSUE (고객에게 현금영수증이 발행 되었음을 알려주는 메일) | " + info.sendYN + CRLF;
-                    };
-                    if (info.emailType == "CSH_CANCELISSUE")
-                    {
-                        tmp += "CSH_CANCELISSUE (고객에게 현금영수증이 발행취소 되었음을 알려주는 메일) | " + info.sendYN + CRLF;
-                    };
+                    if (info.emailType == "CSH_ISSUE") tmp += "CSH_ISSUE (고객에게 현금영수증이 발행 되었음을 알려주는 메일) | " + info.sendYN + CRLF;
+                    if (info.emailType == "CSH_CANCELISSUE") tmp += "CSH_CANCELISSUE (고객에게 현금영수증이 발행취소 되었음을 알려주는 메일) | " + info.sendYN + CRLF;
                 }
                 MessageBox.Show(tmp, "알림메일 전송목록 조회");
             }
@@ -1617,7 +1611,8 @@ namespace Popbill.Cashbill.Example.csharp
         {
             String EmailType = "CSH_ISSUE";
 
-            bool SendYN = false;
+            //전송여부 (True-전송, False-미전송)
+            bool SendYN = true;
 
             try
             {
