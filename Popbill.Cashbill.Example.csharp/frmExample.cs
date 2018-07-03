@@ -1321,10 +1321,10 @@ namespace Popbill.Cashbill.Example.csharp
             // 검색일자 유형, R-등록일자, T-거래일자, I-발행일자
             String DType = "T";
 
-            // 시작일자
+            // 시작일자, 날짜형식(yyyyMMdd)
             String SDate = "20160901";
 
-            // 종료일자
+            // 종료일자, 날짜형식(yyyyMMdd)
             String EDate = "20161031";  
 
             // 상태코드 배열, 2,3번째 자리에 와일드카드(*) 사용가능

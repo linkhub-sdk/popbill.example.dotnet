@@ -255,7 +255,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             // 세금계산서 정보 객체 
             Taxinvoice taxinvoice = new Taxinvoice();
 
-            // [필수] 기재상 작성일자, 날자형식(yyyyMMdd)
+            // [필수] 기재상 작성일자, 날짜형식(yyyyMMdd)
             taxinvoice.writeDate = "20161013";
 
             // [필수] 과금방향, {정과금, 역과금}중 선택
@@ -522,7 +522,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             // 세금계산서 정보 객체 
             Taxinvoice taxinvoice = new Taxinvoice();
 
-            // [필수] 기재상 작성일자, 날자형식(yyyyMMdd)
+            // [필수] 기재상 작성일자, 날짜형식(yyyyMMdd)
             taxinvoice.writeDate = "20161013";
 
             // [필수] 과금방향, {정과금, 역과금}중 선택
@@ -1616,7 +1616,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             // 세금계산서 정보 객체 
             Taxinvoice taxinvoice = new Taxinvoice();
 
-            // [필수] 기재상 작성일자, 날자형식(yyyyMMdd)
+            // [필수] 기재상 작성일자, 날짜형식(yyyyMMdd)
             taxinvoice.writeDate = "20161013";
 
             // [필수] 과금방향, {정과금, 역과금}중 선택
@@ -1882,7 +1882,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             // 세금계산서 정보 객체 
             Taxinvoice taxinvoice = new Taxinvoice();
 
-            // [필수] 기재상 작성일자, 날자형식(yyyyMMdd)
+            // [필수] 기재상 작성일자, 날짜형식(yyyyMMdd)
             taxinvoice.writeDate = "20161013";
 
             // [필수] 과금방향, {정과금, 역과금}중 선택
@@ -2531,7 +2531,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             // 세금계산서 정보 객체 
             Taxinvoice taxinvoice = new Taxinvoice();
 
-            // [필수] 기재상 작성일자, 날자형식(yyyyMMdd)
+            // [필수] 기재상 작성일자, 날짜형식(yyyyMMdd)
             taxinvoice.writeDate = "20180117";
 
             // [필수] 과금방향, {정과금, 역과금}중 선택
@@ -2863,10 +2863,10 @@ namespace Popbill.Taxinvoice.Example.csharp
             // [필수] 일자유형, R-등록일자, I-발행일자, W-작성일자 중 1개기입
             String DType = "W";
 
-            // [필수] 시작일자, 날자형식(yyyyMMdd)
+            // [필수] 시작일자, 날짜형식(yyyyMMdd)
             String SDate = "20171101";
 
-            // [필수] 종료일자, 날자형식(yyyyMMdd)
+            // [필수] 종료일자, 날짜형식(yyyyMMdd)
             String EDate = "20171231";  
             
             // 상태코드 배열, 미기재시 전체 상태조회, 문서상태 값 3자리의 배열, 2,3번째 자리에 와일드카드 가능
@@ -3103,7 +3103,7 @@ namespace Popbill.Taxinvoice.Example.csharp
          * 팝빌에서 작성한 세금계산서에 파트너 문서관리번호를 할당합니다.
          * - 문서관리번호가 존재하지 않는 세금계산서만 할당이 가능합니다.
          */
-        private void btnAssignNum_Click(object sender, EventArgs e)
+        private void btnAssignMgtKey_Click(object sender, EventArgs e)
         {
             // 세금계산서 유형 SELL-매출, BUY-매입, TRUSTEE-위수탁
             MgtKeyType KeyType = MgtKeyType.SELL;
@@ -3246,5 +3246,6 @@ namespace Popbill.Taxinvoice.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "알림메일 전송설정 수정");
             }
         }
+
     }
 }

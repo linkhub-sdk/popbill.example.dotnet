@@ -1030,7 +1030,7 @@ namespace Popbill.Message.Example.csharp
         private void btnSearch_Click(object sender, EventArgs e)
         {
             // 최대 검색기간 : 6개월 이내
-            // 시작일자, 날짜형식(yyyMMdd)
+            // 시작일자, 날짜형식(yyyyMMdd)
             String SDate = "20180601";
 
             // 종료일자, 날짜형식(yyyyMMdd)
@@ -1213,6 +1213,9 @@ namespace Popbill.Message.Example.csharp
             }
         }
 
+        /*
+         * 전송요청번호를 할당한 문자 전송결과를 확인 합니다.
+         */
         private void btnGetMessagesRN_Click(object sender, EventArgs e)
         {
             try
@@ -1229,6 +1232,9 @@ namespace Popbill.Message.Example.csharp
             }
         }
 
+        /* 전송요청번호를 할당한 예약문자전송을 취소합니다.
+         * - 예약취소는 예약전송시간 10분전까지만 가능합니다.
+         */ 
         private void btnCancelReserveRN_Click(object sender, EventArgs e)
         {
             try

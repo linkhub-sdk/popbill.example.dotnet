@@ -3,7 +3,7 @@
  * 팝빌 팩스 API DotNet SDK Example
  * 
  * - DotNet C# SDK 연동환경 설정방법 안내 : [개발가이드] - http://blog.linkhub.co.kr/587
- * - 업데이트 일자 : 2018-03-21
+ * - 업데이트 일자 : 2018-07-02
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991~2
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
  * 
@@ -1000,7 +1000,7 @@ namespace Popbill.Fax.Example.csharp
 
             // 전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
             // 최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
-            String assignRequestNum = "";
+            String requestNum = "";
 
             // 발신번호, 공백으로 처리시 기존전송정보로 전송
             String senderNum = "";
@@ -1020,7 +1020,7 @@ namespace Popbill.Fax.Example.csharp
 
             try
             {
-                String receiptNum = faxService.ResendFAXRN(txtCorpNum.Text, txtRequestNum.Text, assignRequestNum,
+                String receiptNum = faxService.ResendFAXRN(txtCorpNum.Text, txtRequestNum.Text, requestNum,
                     senderNum, senderName, receiverNum, receiverName, getReserveDT(), txtUserId.Text, title);
 
                 MessageBox.Show("접수번호 : " + receiptNum, "팩스 전송");
@@ -1042,7 +1042,7 @@ namespace Popbill.Fax.Example.csharp
 
             // 전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
             // 최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
-            String assignRequestNum = "";
+            String requestNum = "";
 
             // 발신번호, 공백으로 처리시 기존전송정보로 전송
             String senderNum = "07043042991";
@@ -1076,7 +1076,7 @@ namespace Popbill.Fax.Example.csharp
 
             try
             {
-                String receiptNum = faxService.ResendFAXRN(txtCorpNum.Text, txtRequestNum.Text, assignRequestNum, senderNum, senderName, receivers, getReserveDT(), txtUserId.Text, title);
+                String receiptNum = faxService.ResendFAXRN(txtCorpNum.Text, txtRequestNum.Text, requestNum, senderNum, senderName, receivers, getReserveDT(), txtUserId.Text, title);
 
                 MessageBox.Show("접수번호 : " + receiptNum, "팩스 전송");
 

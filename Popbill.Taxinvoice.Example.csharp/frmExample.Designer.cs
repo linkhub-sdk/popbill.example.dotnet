@@ -76,7 +76,7 @@
             this.txtMgtKey = new System.Windows.Forms.TextBox();
             this.Label3 = new System.Windows.Forms.Label();
             this.GroupBox11 = new System.Windows.Forms.GroupBox();
-            this.btnAssignNum = new System.Windows.Forms.Button();
+            this.btnAssignMgtKey = new System.Windows.Forms.Button();
             this.btnDetachStmt = new System.Windows.Forms.Button();
             this.btnAttachStmt = new System.Windows.Forms.Button();
             this.GroupBox4 = new System.Windows.Forms.GroupBox();
@@ -699,7 +699,7 @@
             // 
             // GroupBox11
             // 
-            this.GroupBox11.Controls.Add(this.btnAssignNum);
+            this.GroupBox11.Controls.Add(this.btnAssignMgtKey);
             this.GroupBox11.Controls.Add(this.btnDetachStmt);
             this.GroupBox11.Controls.Add(this.btnAttachStmt);
             this.GroupBox11.Controls.Add(this.btnSendFAX);
@@ -712,15 +712,15 @@
             this.GroupBox11.TabStop = false;
             this.GroupBox11.Text = "부가서비스";
             // 
-            // btnAssignNum
+            // btnAssignMgtKey
             // 
-            this.btnAssignNum.Location = new System.Drawing.Point(15, 209);
-            this.btnAssignNum.Name = "btnAssignNum";
-            this.btnAssignNum.Size = new System.Drawing.Size(115, 33);
-            this.btnAssignNum.TabIndex = 13;
-            this.btnAssignNum.Text = "관리번호 할당";
-            this.btnAssignNum.UseVisualStyleBackColor = true;
-            this.btnAssignNum.Click += new System.EventHandler(this.btnAssignNum_Click);
+            this.btnAssignMgtKey.Location = new System.Drawing.Point(15, 209);
+            this.btnAssignMgtKey.Name = "btnAssignMgtKey";
+            this.btnAssignMgtKey.Size = new System.Drawing.Size(115, 33);
+            this.btnAssignMgtKey.TabIndex = 13;
+            this.btnAssignMgtKey.Text = "관리번호 할당";
+            this.btnAssignMgtKey.UseVisualStyleBackColor = true;
+            this.btnAssignMgtKey.Click += new System.EventHandler(this.btnAssignMgtKey_Click);
             // 
             // btnDetachStmt
             // 
@@ -1615,7 +1615,7 @@
         private System.Windows.Forms.GroupBox groupBox17;
         private System.Windows.Forms.GroupBox groupBox18;
         private System.Windows.Forms.Button btnGetPartnerURL_CHRG;
-        private System.Windows.Forms.Button btnAssignNum;
+        private System.Windows.Forms.Button btnAssignMgtKey;
         private System.Windows.Forms.GroupBox groupBox19;
         private System.Windows.Forms.Button btnUpdateEmailConfig;
         private System.Windows.Forms.Button btnListEmailConfig;
