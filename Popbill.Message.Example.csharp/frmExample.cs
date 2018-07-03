@@ -1303,14 +1303,13 @@ namespace Popbill.Message.Example.csharp
             
             try
             {
-
                 List<MessageState> ResultList = messageService.GetStates(txtCorpNum.Text, ReciptNumList, txtUserId.Text);
                 dataGridView1.DataSource = ResultList;
             }
             catch(PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                               "응답메시지(message) : " + ex.Message, "예약문자 전송 취소");
+                               "응답메시지(message) : " + ex.Message, "전송내역 요약정보");
             }
         }
 
