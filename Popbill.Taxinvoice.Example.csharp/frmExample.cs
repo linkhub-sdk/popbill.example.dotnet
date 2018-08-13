@@ -3100,7 +3100,7 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * 팝빌에서 작성한 세금계산서에 파트너 문서관리번호를 할당합니다.
+         * 팝빌사이트 에서 작성한 세금계산서에 파트너 문서관리번호를 할당합니다.
          * - 문서관리번호가 존재하지 않는 세금계산서만 할당이 가능합니다.
          */
         private void btnAssignMgtKey_Click(object sender, EventArgs e)
@@ -3245,6 +3245,11 @@ namespace Popbill.Taxinvoice.Example.csharp
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + ex.Message, "알림메일 전송설정 수정");
             }
+        }
+
+        private void GroupBox13_Enter(object sender, EventArgs e)
+        {
+
         }
 
     }

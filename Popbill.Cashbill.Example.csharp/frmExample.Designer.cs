@@ -80,7 +80,6 @@
             this.txtUserId = new System.Windows.Forms.TextBox();
             this.getPopbillURL_LOGIN = new System.Windows.Forms.Button();
             this.GroupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox16 = new System.Windows.Forms.GroupBox();
             this.btnUpdateEmailConfig = new System.Windows.Forms.Button();
             this.btnListEmailConfig = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -108,7 +107,6 @@
             this.GroupBox13.SuspendLayout();
             this.GroupBox12.SuspendLayout();
             this.GroupBox1.SuspendLayout();
-            this.groupBox16.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.GroupBox6.SuspendLayout();
             this.GroupBox5.SuspendLayout();
@@ -204,7 +202,7 @@
             // 
             this.btnSendFAX.Location = new System.Drawing.Point(7, 84);
             this.btnSendFAX.Name = "btnSendFAX";
-            this.btnSendFAX.Size = new System.Drawing.Size(92, 26);
+            this.btnSendFAX.Size = new System.Drawing.Size(142, 26);
             this.btnSendFAX.TabIndex = 10;
             this.btnSendFAX.Text = "팩스 전송";
             this.btnSendFAX.UseVisualStyleBackColor = true;
@@ -224,7 +222,7 @@
             // 
             this.btnSendSMS.Location = new System.Drawing.Point(7, 52);
             this.btnSendSMS.Name = "btnSendSMS";
-            this.btnSendSMS.Size = new System.Drawing.Size(92, 26);
+            this.btnSendSMS.Size = new System.Drawing.Size(142, 26);
             this.btnSendSMS.TabIndex = 9;
             this.btnSendSMS.Text = "문자 전송";
             this.btnSendSMS.UseVisualStyleBackColor = true;
@@ -234,7 +232,7 @@
             // 
             this.btnSendEmail.Location = new System.Drawing.Point(7, 20);
             this.btnSendEmail.Name = "btnSendEmail";
-            this.btnSendEmail.Size = new System.Drawing.Size(92, 26);
+            this.btnSendEmail.Size = new System.Drawing.Size(142, 26);
             this.btnSendEmail.TabIndex = 8;
             this.btnSendEmail.Text = "이메일 전송";
             this.btnSendEmail.UseVisualStyleBackColor = true;
@@ -268,12 +266,14 @@
             // 
             // GroupBox11
             // 
+            this.GroupBox11.Controls.Add(this.btnUpdateEmailConfig);
+            this.GroupBox11.Controls.Add(this.btnListEmailConfig);
             this.GroupBox11.Controls.Add(this.btnSendFAX);
             this.GroupBox11.Controls.Add(this.btnSendSMS);
             this.GroupBox11.Controls.Add(this.btnSendEmail);
             this.GroupBox11.Location = new System.Drawing.Point(151, 246);
             this.GroupBox11.Name = "GroupBox11";
-            this.GroupBox11.Size = new System.Drawing.Size(107, 154);
+            this.GroupBox11.Size = new System.Drawing.Size(160, 183);
             this.GroupBox11.TabIndex = 10;
             this.GroupBox11.TabStop = false;
             this.GroupBox11.Text = "부가서비스";
@@ -395,7 +395,7 @@
             this.GroupBox7.Controls.Add(this.Label3);
             this.GroupBox7.Location = new System.Drawing.Point(13, 186);
             this.GroupBox7.Name = "GroupBox7";
-            this.GroupBox7.Size = new System.Drawing.Size(654, 448);
+            this.GroupBox7.Size = new System.Drawing.Size(826, 448);
             this.GroupBox7.TabIndex = 12;
             this.GroupBox7.TabStop = false;
             this.GroupBox7.Text = "현금영수증 관련 API";
@@ -586,9 +586,9 @@
             this.GroupBox13.Controls.Add(this.btnGetURL_WRITE);
             this.GroupBox13.Controls.Add(this.btnGetURL_SBOX);
             this.GroupBox13.Controls.Add(this.btnGetURL_TBOX);
-            this.GroupBox13.Location = new System.Drawing.Point(462, 246);
+            this.GroupBox13.Location = new System.Drawing.Point(515, 244);
             this.GroupBox13.Name = "GroupBox13";
-            this.GroupBox13.Size = new System.Drawing.Size(115, 154);
+            this.GroupBox13.Size = new System.Drawing.Size(115, 123);
             this.GroupBox13.TabIndex = 12;
             this.GroupBox13.TabStop = false;
             this.GroupBox13.Text = "기타 URL";
@@ -630,7 +630,7 @@
             this.GroupBox12.Controls.Add(this.btnEPrintURL);
             this.GroupBox12.Controls.Add(this.btnGetPrintURL);
             this.GroupBox12.Controls.Add(this.btnGetPopUpURL);
-            this.GroupBox12.Location = new System.Drawing.Point(264, 248);
+            this.GroupBox12.Location = new System.Drawing.Point(317, 246);
             this.GroupBox12.Name = "GroupBox12";
             this.GroupBox12.Size = new System.Drawing.Size(192, 182);
             this.GroupBox12.TabIndex = 11;
@@ -667,7 +667,6 @@
             // 
             // GroupBox1
             // 
-            this.GroupBox1.Controls.Add(this.groupBox16);
             this.GroupBox1.Controls.Add(this.groupBox4);
             this.GroupBox1.Controls.Add(this.GroupBox6);
             this.GroupBox1.Controls.Add(this.GroupBox3);
@@ -677,39 +676,28 @@
             this.GroupBox1.Controls.Add(this.groupBox15);
             this.GroupBox1.Location = new System.Drawing.Point(13, 33);
             this.GroupBox1.Name = "GroupBox1";
-            this.GroupBox1.Size = new System.Drawing.Size(1129, 147);
+            this.GroupBox1.Size = new System.Drawing.Size(993, 147);
             this.GroupBox1.TabIndex = 11;
             this.GroupBox1.TabStop = false;
             this.GroupBox1.Text = "팝빌 기본 API";
             // 
-            // groupBox16
-            // 
-            this.groupBox16.Controls.Add(this.btnUpdateEmailConfig);
-            this.groupBox16.Controls.Add(this.btnListEmailConfig);
-            this.groupBox16.Location = new System.Drawing.Point(985, 16);
-            this.groupBox16.Name = "groupBox16";
-            this.groupBox16.Size = new System.Drawing.Size(126, 120);
-            this.groupBox16.TabIndex = 5;
-            this.groupBox16.TabStop = false;
-            this.groupBox16.Text = "알림메일 관련";
-            // 
             // btnUpdateEmailConfig
             // 
-            this.btnUpdateEmailConfig.Location = new System.Drawing.Point(7, 53);
+            this.btnUpdateEmailConfig.Location = new System.Drawing.Point(6, 150);
             this.btnUpdateEmailConfig.Name = "btnUpdateEmailConfig";
-            this.btnUpdateEmailConfig.Size = new System.Drawing.Size(111, 30);
+            this.btnUpdateEmailConfig.Size = new System.Drawing.Size(142, 26);
             this.btnUpdateEmailConfig.TabIndex = 1;
-            this.btnUpdateEmailConfig.Text = "전송설정 수정";
+            this.btnUpdateEmailConfig.Text = "알림메일 전송설정 수정";
             this.btnUpdateEmailConfig.UseVisualStyleBackColor = true;
             this.btnUpdateEmailConfig.Click += new System.EventHandler(this.btnUpdateEmailConfig_Click);
             // 
             // btnListEmailConfig
             // 
-            this.btnListEmailConfig.Location = new System.Drawing.Point(7, 20);
+            this.btnListEmailConfig.Location = new System.Drawing.Point(6, 117);
             this.btnListEmailConfig.Name = "btnListEmailConfig";
-            this.btnListEmailConfig.Size = new System.Drawing.Size(111, 30);
+            this.btnListEmailConfig.Size = new System.Drawing.Size(142, 26);
             this.btnListEmailConfig.TabIndex = 0;
-            this.btnListEmailConfig.Text = "전송목록 조회";
+            this.btnListEmailConfig.Text = "알림메일 전송목록 조회";
             this.btnListEmailConfig.UseVisualStyleBackColor = true;
             this.btnListEmailConfig.Click += new System.EventHandler(this.btnListEmailConfig_Click);
             // 
@@ -868,7 +856,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1161, 643);
+            this.ClientSize = new System.Drawing.Size(1035, 643);
             this.Controls.Add(this.GroupBox7);
             this.Controls.Add(this.txtUserId);
             this.Controls.Add(this.GroupBox1);
@@ -889,7 +877,6 @@
             this.GroupBox13.ResumeLayout(false);
             this.GroupBox12.ResumeLayout(false);
             this.GroupBox1.ResumeLayout(false);
-            this.groupBox16.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.GroupBox6.ResumeLayout(false);
             this.GroupBox5.ResumeLayout(false);
@@ -969,7 +956,6 @@
         private System.Windows.Forms.Button btnGetPartnerURL_CHRG;
         private System.Windows.Forms.GroupBox groupBox15;
         internal System.Windows.Forms.Button btnRevokeRegistIssue_part;
-        private System.Windows.Forms.GroupBox groupBox16;
         private System.Windows.Forms.Button btnUpdateEmailConfig;
         private System.Windows.Forms.Button btnListEmailConfig;
     }
