@@ -3,7 +3,7 @@
  * 팝빌 홈택스 현금영수증 연계 API DotNet SDK Example
  * 
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - http://blog.linkhub.co.kr/587
- * - 업데이트 일자 : 2018-07-02
+ * - 업데이트 일자 : 2018-08-20
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
  * 
@@ -757,6 +757,107 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + ex.Message, "팝빌 로그인 URL");
+            }
+        }
+
+        /*
+         *  팝빌에 등록된 공인인증서의 홈택스 로그인을 테스트한다.
+         */
+        private void btnCheckCertValidation_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Response response = htCashbillService.CheckCertValidation(txtCorpNum.Text);
+
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "홈택스 공인인증서 로그인 테스트");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "홈택스 공인인증서 로그인 테스트");
+            }
+        }
+
+        /*
+         *  홈택스 현금영수증 부서사용자 계정을 등록한다.
+         */
+        private void btnRegistDeptUser_Click(object sender, EventArgs e)
+        {
+            // 홈택스에서 생성한 현금영수증 부서사용자 아이디
+            String deptUserID = "userid";
+
+            // 홈택스에서 생성한 현금영수증 부서사용자 비밀번호
+            String deptUserPWD = "passwd";
+
+            try
+            {
+                Response response = htCashbillService.RegistDeptUser(txtCorpNum.Text, deptUserID, deptUserPWD);
+
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "부서사용자 계정등록");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "부서사용자 계정등록");
+            }
+        }
+
+        /*
+         *  팝빌에 등록된 현금영수증 부서사용자 아이디를 확인한다.
+         */
+        private void btnCheckDeptUser_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Response response = htCashbillService.CheckDeptUser(txtCorpNum.Text);
+
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "부서사용자 등록정보 확인");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "부서사용자 등록정보 확인");
+            }
+        }
+
+        /*
+         * 팝빌에 등록된 현금영수증 부서사용자 계정정보를 이용하여 홈택스 로그인을 테스트한다.
+         */
+        private void btnCheckLoginDeptUser_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Response response = htCashbillService.CheckLoginDeptUser(txtCorpNum.Text);
+
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "부서사용자 로그인 테스트");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "부서사용자 로그인 테스트");
+            }
+        }
+
+        /*
+         *  팝빌에 등록된 현금영수증 부서사용자 계정정보를 삭제한다.
+         */ 
+        private void btnDeleteDeptUser_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Response response = htCashbillService.DeleteDeptUser(txtCorpNum.Text);
+
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "부서사용자 등록정보 삭제");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "부서사용자 등록정보 삭제");
             }
         }
     }

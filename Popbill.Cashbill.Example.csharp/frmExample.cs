@@ -3,7 +3,7 @@
  * 팝빌 현금영수증 API DotNet SDK Example
  * 
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - http://blog.linkhub.co.kr/587
- * - 업데이트 일자 : 2018-07-02
+ * - 업데이트 일자 : 2018-08-20
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
  * 
@@ -224,73 +224,74 @@ namespace Popbill.Cashbill.Example.csharp
             // 1~24자리 영문,숫자,'-','_' 조합 구성
             cashbill.mgtKey = txtMgtKey.Text;
 
-            // [필수] 거래유형, {승인거래, 취소거래} 중 기재
-            cashbill.tradeType = "승인거래";
-
-            // [취소거래시 필수] 원본 현금영수증 승인번호
+            // [취소거래시 필수] 원본 현금영수증 국세청승인번호
             cashbill.orgConfirmNum = "";
 
             // [취소거래시 필수] 원본 현금영수증 거래일자
             cashbill.orgTradeDate = "";
 
+            // [필수] 문서형태, { 승인거래, 취소거래 } 중 기재
+            cashbill.tradeType = "승인거래";
+
+            // [필수] 거래구분, { 소득공제용, 지출증빙용 } 중 기재
+            cashbill.tradeUsage = "소득공제용";
+
+            // 거래유형, { 일반, 도서공연, 대중교통 } 중 기재
+            cashbill.tradeOpt = "도서공연";
+
             // [필수] 과세형태, { 과세, 비과세 } 중 기재
             cashbill.taxationType = "과세";
+
+            // [필수] 거래금액 ( 공급가액 + 세액 + 봉사료 ) 
+            cashbill.totalAmount = "11000";
 
             // [필수] 공급가액
             cashbill.supplyCost = "10000";
 
-            // [필수] 세액 
+            // [필수] 부가세 
             cashbill.tax = "1000";
 
             // [필수] 봉사료
             cashbill.serviceFee = "0";
 
-            // [필수] 거래금액 ( 공급가액 + 세액 + 봉사료 ) 
-            cashbill.totalAmount = "11000";
+            // [필수] 가맹점 사업자번호
+            cashbill.franchiseCorpNum = txtCorpNum.Text;
 
-            // [필수] 현금영수증 형태, {소득공제용, 지출증빙용} 중 기재
-            cashbill.tradeUsage = "소득공제용";
+            // 가맹점 상호
+            cashbill.franchiseCorpName = "가맹점 상호_abcd";
 
-            // [필수] 거래처 식별번호
-            // 현금영수증 형태(tradeUsage) - '소득공제용' 인 경우 
+            // 가맹점 대표자 성명
+            cashbill.franchiseCEOName = "가맹점 대표자";
+
+            // 가맹점 주소
+            cashbill.franchiseAddr = "가맹점 주소";
+
+            // 가맹점 전화번호
+            cashbill.franchiseTEL = "070-1234-1234";
+
+            // [필수] 식별번호
+            // 거래구분(tradeUsage) - '소득공제용' 인 경우 
             // - 주민등록/휴대폰/카드번호 기재 가능
-            // 현금영수증 형태(tradeUsage) - '지출증빙용' 인 경우
+            // 거래구분(tradeUsage) - '지출증빙용' 인 경우
             // - 사업자번호/주민등록/휴대폰/카드번호 기재 가능 
             cashbill.identityNum = "0101112222";
 
+            // 주문자명
+            cashbill.customerName = "주문자명";
 
-            // [필수] 발행자 사업자번호
-            cashbill.franchiseCorpNum = txtCorpNum.Text;
-
-            // 발행자 상호
-            cashbill.franchiseCorpName = "발행자 상호";
-
-            // 발행자 대표자 성명
-            cashbill.franchiseCEOName = "발행자 대표자";
-
-            // 발행자 주소
-            cashbill.franchiseAddr = "발행자 주소";
-
-            // 발행자 연락처
-            cashbill.franchiseTEL = "070-1234-1234";
-
-
-            // 고객명
-            cashbill.customerName = "고객명";
-
-            // 상품명
-            cashbill.itemName = "상품명";
+            // 주문상품명
+            cashbill.itemName = "주문상품명";
 
             // 주문번호
             cashbill.orderNumber = "주문번호";
 
-            // 고객 메일
+            // 주문자 이메일
             cashbill.email = "test@test.com";
 
-            // 고객 휴대폰번호
+            // 주문자 휴대폰
             cashbill.hp = "010-111-222";
 
-            // 고객 팩스번호
+            // 주문자 팩스번호
             cashbill.fax = "02-6442-9700";
 
             // 발행시 알림문자 전송여부
@@ -344,29 +345,32 @@ namespace Popbill.Cashbill.Example.csharp
                 string tmp = null;
 
                 tmp += "mgtKey (문서관리번호) : " + cashbill.mgtKey + CRLF;
-                tmp += "tradeType (현금영수증 형태) : " + cashbill.tradeType + CRLF;
-                tmp += "tradeUsage (거래유형) : " + cashbill.tradeUsage + CRLF;
-                tmp += "taxationType (과세형태) : " + cashbill.taxationType + CRLF;
+                tmp += "confirmNum (국세청승인번호) : " + cashbill.confirmNum + CRLF;
+                tmp += "orgConfirmNum (원본 현금영수증 국세청승인번호) : " + cashbill.orgConfirmNum + CRLF;
+                tmp += "orgTradeDate (원본 현금영수증 거래일자) : " + cashbill.orgTradeDate + CRLF;
                 tmp += "tradeDate (거래일자) : " + cashbill.tradeDate + CRLF;
-                tmp += "supplyCost (공급가액) : " + cashbill.supplyCost + CRLF;
-                tmp += "tax (세액) : " + cashbill.tax + CRLF;
-                tmp += "serviceFee (봉사료) : " + cashbill.serviceFee + CRLF;
+                tmp += "tradeType (문서형태) : " + cashbill.tradeType + CRLF;
+                tmp += "tradeUsage (거래구분) : " + cashbill.tradeUsage + CRLF;
+                tmp += "tradeOpt (거래유형) : " + cashbill.tradeOpt + CRLF;
+                tmp += "taxationType (과세형태) : " + cashbill.taxationType + CRLF;
                 tmp += "totalAmount (거래금액) : " + cashbill.totalAmount + CRLF;
+                tmp += "supplyCost (공급가액) : " + cashbill.supplyCost + CRLF;
+                tmp += "tax (부가세) : " + cashbill.tax + CRLF;
+                tmp += "serviceFee (봉사료) : " + cashbill.serviceFee + CRLF;
                 
-                tmp += "franchiseCorpNum (발행자 사업자번호) : " + cashbill.franchiseCorpNum + CRLF;
-                tmp += "franchiseCorpName (발행자 상호) : " + cashbill.franchiseCorpName + CRLF;
-                tmp += "franchiseCEOName (발행자 대표자명) : " + cashbill.franchiseCEOName + CRLF;
-                tmp += "franchiseAddr (발행자 주소) : " + cashbill.franchiseAddr + CRLF;
-                tmp += "franchiseTEL (발행자 연락처) : " + cashbill.franchiseTEL + CRLF;
+                tmp += "franchiseCorpNum (가맹점 사업자번호) : " + cashbill.franchiseCorpNum + CRLF;
+                tmp += "franchiseCorpName (가맹점 상호) : " + cashbill.franchiseCorpName + CRLF;
+                tmp += "franchiseCEOName (가맹점 대표자 성명) : " + cashbill.franchiseCEOName + CRLF;
+                tmp += "franchiseAddr (가맹점 주소) : " + cashbill.franchiseAddr + CRLF;
+                tmp += "franchiseTEL (가맹점 전화번호) : " + cashbill.franchiseTEL + CRLF;
 
-                tmp += "identityNum (거래처식별번호) : " + cashbill.identityNum + CRLF;
-                tmp += "customerName (고객명) : " + cashbill.customerName + CRLF;
-                tmp += "itemName (상품명) : " + cashbill.itemName + CRLF;
-                tmp += "orderNumber (가맹점주문번호) : " + cashbill.orderNumber + CRLF;
+                tmp += "identityNum (식별번호) : " + cashbill.identityNum + CRLF;
+                tmp += "customerName (주문자명) : " + cashbill.customerName + CRLF;
+                tmp += "itemName (주문상품명) : " + cashbill.itemName + CRLF;
+                tmp += "orderNumber (주문번호) : " + cashbill.orderNumber + CRLF;
+                tmp += "email (이메일) : " + cashbill.email + CRLF;
                 tmp += "hp (휴대폰) : " + cashbill.hp + CRLF;
                 
-                tmp += "confirmNum (국세청승인번호) : " + cashbill.confirmNum + CRLF;
-                tmp += "orgConfirmNum (원본현금영수증 국세청승인번호) : " + cashbill.orgConfirmNum + CRLF;
                 tmp += "cancelType (취소사유) : " + cashbill.cancelType + CRLF;
                 tmp += "smssendYN (알림문자 전송여부) : " + cashbill.smssendYN + CRLF;
                 
@@ -398,29 +402,30 @@ namespace Popbill.Cashbill.Example.csharp
                 tmp += "itemKey (현금영수증 아이템키) : " + cashbillInfo.itemKey + CRLF;
                 tmp += "mgtKey (문서관리번호) : " + cashbillInfo.mgtKey + CRLF;
                 tmp += "tradeDate (거래일자) : " + cashbillInfo.tradeDate + CRLF;
-                tmp += "issueDT (발행일시) : " + cashbillInfo.issueDT + CRLF;
-                tmp += "customerName (고객명 : " + cashbillInfo.customerName + CRLF;
-                tmp += "itemName (상품명) : " + cashbillInfo.itemName + CRLF;
-                tmp += "identityNum (거래처 식별번호) : " + cashbillInfo.identityNum + CRLF;
+                tmp += "tradeType (문서형태) : " + cashbillInfo.tradeType + CRLF;
+                tmp += "tradeUsage (거래구분) : " + cashbillInfo.tradeUsage + CRLF;
+                tmp += "tradeOpt (거래유형) : " + cashbillInfo.tradeOpt + CRLF;
                 tmp += "taxationType (과세형태) : " + cashbillInfo.taxationType + CRLF;
-
                 tmp += "totalAmount (거래금액) : " + cashbillInfo.totalAmount + CRLF;
-                tmp += "tradeUsage (거래용도) : " + cashbillInfo.tradeUsage + CRLF;
-                tmp += "tradeType (현금영수증 형태) : " + cashbillInfo.tradeType + CRLF;
+                tmp += "issueDT (발행일시) : " + cashbillInfo.issueDT + CRLF;
+                tmp += "regDT (등록일시) : " + cashbillInfo.regDT + CRLF;
+                tmp += "stateMemo (상태메모) : " + cashbillInfo.stateMemo + CRLF;
                 tmp += "stateCode (상태코드) : " + cashbillInfo.stateCode + CRLF;
                 tmp += "stateDT (상태변경일시) : " + cashbillInfo.stateDT + CRLF;
-                tmp += "printYN (인쇄여부) : " + cashbillInfo.printYN + CRLF;
+
+                tmp += "identityNum (식별번호) : " + cashbillInfo.identityNum + CRLF;
+                tmp += "itemName (주문상품명) : " + cashbillInfo.itemName + CRLF;
+                tmp += "customerName (주문자명) : " + cashbillInfo.customerName + CRLF;
 
                 tmp += "confirmNum (국세청승인번호) : " + cashbillInfo.confirmNum + CRLF;
-                tmp += "orgTradeDate (원본 현금영수증 거래일자 : " + cashbillInfo.orgTradeDate + CRLF;
                 tmp += "orgConfirmNum (원본 현금영수증 국세청승인번호) : " + cashbillInfo.orgConfirmNum + CRLF;
-
+                tmp += "orgTradeDate (원본 현금영수증 거래일자) : " + cashbillInfo.orgTradeDate + CRLF;
                 tmp += "ntssendDT (국세청 전송일시) : " + cashbillInfo.ntssendDT + CRLF;
                 tmp += "ntsresultDT (국세청 처리결과 수신일시) : " + cashbillInfo.ntsresultDT + CRLF;
                 tmp += "ntsresultCode (국세청 처리결과 상태코드) : " + cashbillInfo.ntsresultCode + CRLF;
                 tmp += "ntsresultMessage (국세청 처리결과 메시지) : " + cashbillInfo.ntsresultMessage + CRLF;
 
-                tmp += "regDT (등록일시) : " + cashbillInfo.regDT;
+                tmp += "printYN (인쇄여부) : " + cashbillInfo.printYN + CRLF;
 
                 MessageBox.Show(tmp, "현금영수증 상태/요약 정보 확인");
             }
@@ -542,34 +547,33 @@ namespace Popbill.Cashbill.Example.csharp
 
                 for (int i = 0; i < cashbillInfoList.Count; i++)
                 {
-
                     tmp += "itemKey (현금영수증 아이템키) : " + cashbillInfoList[i].itemKey + CRLF;
                     tmp += "mgtKey (문서관리번호) : " + cashbillInfoList[i].mgtKey + CRLF;
                     tmp += "tradeDate (거래일자) : " + cashbillInfoList[i].tradeDate + CRLF;
-                    tmp += "issueDT (발행일시) : " + cashbillInfoList[i].issueDT + CRLF;
-                    tmp += "customerName (고객명 : " + cashbillInfoList[i].customerName + CRLF;
-                    tmp += "itemName (상품명) : " + cashbillInfoList[i].itemName + CRLF;
-                    tmp += "identityNum (거래처 식별번호) : " + cashbillInfoList[i].identityNum + CRLF;
+                    tmp += "tradeType (문서형태) : " + cashbillInfoList[i].tradeType + CRLF;
+                    tmp += "tradeUsage (거래구분) : " + cashbillInfoList[i].tradeUsage + CRLF;
+                    tmp += "tradeOpt (거래유형) : " + cashbillInfoList[i].tradeOpt + CRLF;
                     tmp += "taxationType (과세형태) : " + cashbillInfoList[i].taxationType + CRLF;
-
                     tmp += "totalAmount (거래금액) : " + cashbillInfoList[i].totalAmount + CRLF;
-                    tmp += "tradeUsage (거래용도) : " + cashbillInfoList[i].tradeUsage + CRLF;
-                    tmp += "tradeType (현금영수증 형태) : " + cashbillInfoList[i].tradeType + CRLF;
+                    tmp += "issueDT (발행일시) : " + cashbillInfoList[i].issueDT + CRLF;
+                    tmp += "regDT (등록일시) : " + cashbillInfoList[i].regDT + CRLF;
+                    tmp += "stateMemo (상태메모) : " + cashbillInfoList[i].stateMemo + CRLF;
                     tmp += "stateCode (상태코드) : " + cashbillInfoList[i].stateCode + CRLF;
                     tmp += "stateDT (상태변경일시) : " + cashbillInfoList[i].stateDT + CRLF;
-                    tmp += "printYN (인쇄여부) : " + cashbillInfoList[i].printYN + CRLF;
+
+                    tmp += "identityNum (식별번호) : " + cashbillInfoList[i].identityNum + CRLF;
+                    tmp += "itemName (주문상품명) : " + cashbillInfoList[i].itemName + CRLF;
+                    tmp += "customerName (주문자명) : " + cashbillInfoList[i].customerName + CRLF;
 
                     tmp += "confirmNum (국세청승인번호) : " + cashbillInfoList[i].confirmNum + CRLF;
-                    tmp += "orgTradeDate (원본 현금영수증 거래일자 : " + cashbillInfoList[i].orgTradeDate + CRLF;
                     tmp += "orgConfirmNum (원본 현금영수증 국세청승인번호) : " + cashbillInfoList[i].orgConfirmNum + CRLF;
-
+                    tmp += "orgTradeDate (원본 현금영수증 거래일자) : " + cashbillInfoList[i].orgTradeDate + CRLF;
                     tmp += "ntssendDT (국세청 전송일시) : " + cashbillInfoList[i].ntssendDT + CRLF;
                     tmp += "ntsresultDT (국세청 처리결과 수신일시) : " + cashbillInfoList[i].ntsresultDT + CRLF;
                     tmp += "ntsresultCode (국세청 처리결과 상태코드) : " + cashbillInfoList[i].ntsresultCode + CRLF;
                     tmp += "ntsresultMessage (국세청 처리결과 메시지) : " + cashbillInfoList[i].ntsresultMessage + CRLF;
 
-                    tmp += "regDT (등록일시) : " + cashbillInfoList[i].regDT + CRLF +CRLF;
-
+                    tmp += "printYN (인쇄여부) : " + cashbillInfoList[i].printYN + CRLF + CRLF;
                 }
 
                 MessageBox.Show(tmp, "현금영수증 상태/요약 정보 조회 - 대량");
@@ -829,67 +833,70 @@ namespace Popbill.Cashbill.Example.csharp
             // 1~24자리 영문,숫자,'-','_' 조합 구성
             cashbill.mgtKey = txtMgtKey.Text;
 
-            // [필수] 거래유형, {승인거래, 취소거래} 중 기재
+            // [필수] 문서형태, {승인거래, 취소거래} 중 기재
             cashbill.tradeType = "승인거래";
+
+            // [필수] 거래구분, {소득공제용, 지출증빙용} 중 기재
+            cashbill.tradeUsage = "소득공제용";
+
+            // 거래유형, {일반, 도서공연, 대중교통} 중 기재
+            cashbill.tradeOpt = "일반";
 
             // [필수] 과세형태, { 과세, 비과세 } 중 기재
             cashbill.taxationType = "과세";
 
+            // [필수] 거래금액 ( 공급가액 + 세액 + 봉사료 ) 
+            cashbill.totalAmount = "11000";
+
             // [필수] 공급가액
             cashbill.supplyCost = "10000";
 
-            // [필수] 세액 
+            // [필수] 부가세 
             cashbill.tax = "1000";
 
             // [필수] 봉사료
             cashbill.serviceFee = "0";
 
-            // [필수] 거래금액 ( 공급가액 + 세액 + 봉사료 ) 
-            cashbill.totalAmount = "11000";
 
-            // [필수] 현금영수증 형태, {소득공제용, 지출증빙용} 중 기재
-            cashbill.tradeUsage = "소득공제용";
-
-            // [필수] 거래처 식별번호
-            // 현금영수증 형태(tradeUsage) - '소득공제용' 인 경우 
+            // [필수] 식별번호
+            // 거래구분(tradeUsage) - '소득공제용' 인 경우 
             // - 주민등록/휴대폰/카드번호 기재 가능
-            // 현금영수증 형태(tradeUsage) - '지출증빙용' 인 경우
+            // 거래구분(tradeUsage) - '지출증빙용' 인 경우
             // - 사업자번호/주민등록/휴대폰/카드번호 기재 가능 
             cashbill.identityNum = "0101112222";
 
-
-            // [필수] 발행자 사업자번호
+            // [필수] 가맹점 사업자번호
             cashbill.franchiseCorpNum = txtCorpNum.Text;
 
-            // 발행자 상호
-            cashbill.franchiseCorpName = "발행자 상호_수정";
+            // 가맹점 상호
+            cashbill.franchiseCorpName = "가맹점 상호_수정";
 
-            // 발행자 대표자 성명
-            cashbill.franchiseCEOName = "발행자 대표자_수정";
+            // 가맹점 대표자 성명
+            cashbill.franchiseCEOName = "가맹점 대표자_수정";
 
-            // 발행자 주소
-            cashbill.franchiseAddr = "발행자 주소";
+            // 가맹점 주소
+            cashbill.franchiseAddr = "가맹점 주소";
 
-            // 발행자 연락처
+            // 가맹점 전화번호 
             cashbill.franchiseTEL = "070-1234-1234";
 
 
-            // 고객명
-            cashbill.customerName = "고객명";
+            // 주문자명
+            cashbill.customerName = "주문자명";
 
-            // 상품명
-            cashbill.itemName = "상품명";
+            // 주문상품명
+            cashbill.itemName = "주문상품명";
 
             // 주문번호
             cashbill.orderNumber = "주문번호";
 
-            // 고객 메일
+            // 주문자 이메일
             cashbill.email = "test@test.com";
 
-            // 고객 휴대폰번호
+            // 주문자 휴대폰
             cashbill.hp = "010-111-222";
 
-            // 고객 팩스번호
+            // 주문자 팩스번호
             cashbill.fax = "070-111-222";
 
             // 발행시 알림문자 전송여부
@@ -1225,73 +1232,74 @@ namespace Popbill.Cashbill.Example.csharp
             // [필수] 문서관리번호, 발행자별 고유번호 할당, 1~24자리 영문,숫자,'-','_' 조합으로 중복없이 구성.
             cashbill.mgtKey = txtMgtKey.Text;
 
-            // [필수] 거래유형, {승인거래, 취소거래} 중 기재
-            cashbill.tradeType = "승인거래";
-
-            // [취소거래시 필수] 원본 현금영수증 승인번호
+            // [취소거래시 필수] 원본 현금영수증 국세청승인번호
             cashbill.orgConfirmNum = "";
 
             // [취소거래시 필수] 원본 현금영수증 거래일자
             cashbill.orgTradeDate = "";
 
+            // [필수] 문서형태, { 승인거래, 취소거래 } 중 기재
+            cashbill.tradeType = "승인거래";
+
+            // [필수] 거래구분, { 소득공제용, 지출증빙용 } 중 기재
+            cashbill.tradeUsage = "소득공제용";
+
+            // 거래유형, { 일반, 도서공연, 대중교통 } 중 기재 
+            cashbill.tradeOpt = "일반";
+
             // [필수] 과세형태, { 과세, 비과세 } 중 기재
             cashbill.taxationType = "과세";
 
-            // [필수] 공급가액
-            cashbill.supplyCost = "10000";          
+            // [필수] 거래금액 ( 공급가액 + 세액 + 봉사료 ) 
+            cashbill.totalAmount = "11000";
 
-            // [필수] 세액 
+            // [필수] 공급가액
+            cashbill.supplyCost = "10000";
+
+            // [필수] 부가세 
             cashbill.tax = "1000";
 
             // [필수] 봉사료
             cashbill.serviceFee = "0";
 
-            // [필수] 거래금액 ( 공급가액 + 세액 + 봉사료 ) 
-            cashbill.totalAmount = "11000";
-
-            // [필수] 현금영수증 형태, {소득공제용, 지출증빙용} 중 기재
-            cashbill.tradeUsage = "소득공제용";
-
-            // [필수] 거래처 식별번호
-            // 현금영수증 형태(tradeUsage) - '소득공제용' 인 경우 
-            // - 주민등록/휴대폰/카드번호 기재 가능
-            // 현금영수증 형태(tradeUsage) - '지출증빙용' 인 경우
-            // - 사업자번호/주민등록/휴대폰/카드번호 기재 가능 
-            cashbill.identityNum = "0101112222";    
-
-
-            // [필수] 발행자 사업자번호
+            // [필수] 가맹점 사업자번호
             cashbill.franchiseCorpNum = txtCorpNum.Text;
 
-            // 발행자 상호
-            cashbill.franchiseCorpName = "발행자 상호";
+            // 가맹점 상호
+            cashbill.franchiseCorpName = "가맹점 상호";
 
-            // 발행자 대표자 성명
-            cashbill.franchiseCEOName = "발행자 대표자";
+            // 가맹점 대표자 성명
+            cashbill.franchiseCEOName = "가맹점 대표자 성명";
 
-            // 발행자 주소
-            cashbill.franchiseAddr = "발행자 주소";
+            // 가맹점 주소
+            cashbill.franchiseAddr = "가맹점 주소";
 
-            // 발행자 연락처
+            // 가맹점 전화번호
             cashbill.franchiseTEL = "070-1234-1234";
 
+            // [필수] 식별번호
+            // 거래구분(tradeUsage) - '소득공제용' 인 경우 
+            // - 주민등록/휴대폰/카드번호 기재 가능
+            // 거래구분(tradeUsage) - '지출증빙용' 인 경우
+            // - 사업자번호/주민등록/휴대폰/카드번호 기재 가능 
+            cashbill.identityNum = "0101112222";
 
-            // 고객명
-            cashbill.customerName = "고객명";
+            // 주문자명
+            cashbill.customerName = "주문자명";
 
-            // 상품명
-            cashbill.itemName = "상품명";
+            // 주문상품명
+            cashbill.itemName = "주문상품명";
 
             // 주문번호
             cashbill.orderNumber = "주문번호";
 
-            // 고객 메일
+            // 주문자 이메일
             cashbill.email = "test@test.com";
 
-            // 고객 휴대폰번호
+            // 주문자 휴대폰
             cashbill.hp = "010-111-222";
 
-            // 고객 팩스번호
+            // 주문자 팩스번호
             cashbill.fax = "02-6442-9700";
 
             // 발행시 알림문자 전송여부
@@ -1322,10 +1330,10 @@ namespace Popbill.Cashbill.Example.csharp
             String DType = "T";
 
             // 시작일자, 날짜형식(yyyyMMdd)
-            String SDate = "20160901";
+            String SDate = "20180801";
 
             // 종료일자, 날짜형식(yyyyMMdd)
-            String EDate = "20161031";  
+            String EDate = "20180820";  
 
             // 상태코드 배열, 2,3번째 자리에 와일드카드(*) 사용가능
             // - 상태코드에 대한 자세한 사항은 "[현금영수증 API 연동매뉴얼] >
@@ -1334,15 +1342,21 @@ namespace Popbill.Cashbill.Example.csharp
             State[0] = "3**";
             State[1] = "4**";
             
-            // 현금영수증형태 배열, N-일반 현금영수증, C-취소 현금영수증
+            // 문서형태 배열, N-일반 현금영수증, C-취소 현금영수증
             String[] TradeType = new String[2];
             TradeType[0] = "N";
             TradeType[1] = "C";
 
-            // 거래용도 배열, P-소득공제용, C-지출증빙용
-            String[] TradeUsage = new String[2];
-            TradeUsage[0] = "P";
-            TradeUsage[1] = "C";
+            // 거래구분 배열, P-소득공제용, C-지출증빙용
+            String[] TradeUsage = new String[0];
+            //TradeUsage[0] = "P";
+            //TradeUsage[1] = "C";
+
+            // 거래유형 배열, N-일반, B-도서공연, T-대중교통
+            String[] TradeOpt = new String[3];
+            TradeOpt[0] = "N";
+            TradeOpt[1] = "B";
+            TradeOpt[0] = "T";
 
             // 과세형태 배열, T-과세, N-비과세 
             String[] TaxationType = new String[2];
@@ -1363,8 +1377,9 @@ namespace Popbill.Cashbill.Example.csharp
 
             try
             {
+
                 CBSearchResult searchResult = cashbillService.Search(txtCorpNum.Text, DType, SDate, EDate, State, TradeType,
-                                                            TradeUsage, TaxationType, QString, Order, Page, PerPage);
+                                            TradeUsage, TradeOpt, TaxationType, QString, Order, Page, PerPage);
 
                 String tmp = null;
 
@@ -1374,26 +1389,38 @@ namespace Popbill.Cashbill.Example.csharp
                 tmp += "perPage (페이지당 검색개수) : " + searchResult.perPage + CRLF;
                 tmp += "pageNum (페이지 번호) : " + searchResult.pageNum + CRLF;
                 tmp += "pageCount (페이지 개수) : " + searchResult.pageCount + CRLF;
-                
-                tmp += "itemKey | mgtKey | tradeDate | issueDT | customerName | itemName | identityNum | taxationType |";
-                tmp += " totalAmount | tradeUsage | tradeType | stateCode | confirmNUm" + CRLF;
+
+                tmp += "itemKey | mgtKey | tradeDate | tradeType | tradeUsage | tradeOpt | taxationType | totalAmount | issueDT | regDT | stateMemo | stateCode | stateDT | ";
+                tmp += "identityNum | itemName | customerName | ";
+                tmp += "confirmNum | orgConfirmNum | orgTradeDate | ntssendDT | ntsresultDT | ntsresultCode | ntsresultMessage | ";
+                tmp += "printYN" + CRLF;
 
                 foreach (CashbillInfo cashbillInfo in searchResult.list)
                 {
                     tmp += cashbillInfo.itemKey + " | ";
                     tmp += cashbillInfo.mgtKey + " | ";
                     tmp += cashbillInfo.tradeDate + " | ";
-                    tmp += cashbillInfo.issueDT + " | ";
-                    tmp += cashbillInfo.customerName + " | ";
-                    tmp += cashbillInfo.itemName + " | ";
-                    tmp += cashbillInfo.identityNum + " | ";
+                    tmp += cashbillInfo.tradeType + " | ";
+                    tmp += cashbillInfo.tradeUsage + " | ";
+                    tmp += cashbillInfo.tradeOpt + " | ";
                     tmp += cashbillInfo.taxationType + " | ";
                     tmp += cashbillInfo.totalAmount + " | ";
-                    tmp += cashbillInfo.tradeUsage + " | ";
-                    tmp += cashbillInfo.tradeType + " | ";
+                    tmp += cashbillInfo.issueDT + " | ";
+                    tmp += cashbillInfo.regDT + " | ";
+                    tmp += cashbillInfo.stateMemo + " | ";
                     tmp += cashbillInfo.stateCode + " | ";
+                    tmp += cashbillInfo.stateDT + " | ";
+                    tmp += cashbillInfo.identityNum + " | ";
+                    tmp += cashbillInfo.itemName + " | ";
+                    tmp += cashbillInfo.customerName + " | ";
                     tmp += cashbillInfo.confirmNum + " | ";
-
+                    tmp += cashbillInfo.orgConfirmNum + " | ";
+                    tmp += cashbillInfo.orgTradeDate + " | ";
+                    tmp += cashbillInfo.ntssendDT + " | ";
+                    tmp += cashbillInfo.ntsresultDT + " | ";
+                    tmp += cashbillInfo.ntsresultCode + " | ";
+                    tmp += cashbillInfo.ntsresultMessage + " | ";
+                    tmp += cashbillInfo.printYN;
                     tmp += CRLF;
                 }
 
@@ -1440,7 +1467,7 @@ namespace Popbill.Cashbill.Example.csharp
         private void btnRevokRegistIssue_Click(object sender, EventArgs e)
         {
             
-            // 원본현금영수증 승인번호
+            // 원본현금영수증 국세청승인번호
             String orgConfirmNum = "820116333";
 
             // 원본현금영수증 거래일자
@@ -1528,7 +1555,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         private void btnRevokeRegistIssue_part_Click(object sender, EventArgs e)
         {
-            // 원본현금영수증 승인번호
+            // 원본 현금영수증 국세청승인번호
             String orgConfirmNum = "820116333";
 
             // 원본현금영수증 거래일자
@@ -1549,7 +1576,7 @@ namespace Popbill.Cashbill.Example.csharp
             // [취소] 공급가액
             String supplyCost = "3000";
 
-            // [취소] 세액
+            // [취소] 부가세
             String tax = "300";
 
             // [취소] 봉사료
@@ -1589,7 +1616,7 @@ namespace Popbill.Cashbill.Example.csharp
                 foreach (EmailConfig info in resultList)
                 {
                     if (info.emailType == "CSH_ISSUE") tmp += "CSH_ISSUE (고객에게 현금영수증이 발행 되었음을 알려주는 메일) | " + info.sendYN + CRLF;
-                    if (info.emailType == "CSH_CANCEL") tmp += "CSH_CANCEL (고객에게 현금영수증이 발행취소 되었음을 알려주는 메일) | " + info.sendYN + CRLF;
+                    if (info.emailType == "CSH_CANCELISSUE") tmp += "CSH_CANCELISSUE (고객에게 현금영수증이 발행취소 되었음을 알려주는 메일) | " + info.sendYN + CRLF;
                 }
                 MessageBox.Show(tmp, "알림메일 전송목록 조회");
             }
@@ -1604,7 +1631,7 @@ namespace Popbill.Cashbill.Example.csharp
            현금영수증 메일전송 항목에 대한 전송여부를 수정한다.
            메일전송유형
            CSH_ISSUE : 고객에게 현금영수증이 발행 되었음을 알려주는 메일 입니다.
-           CSH_CANCEL : 고객에게 현금영수증 발행취소 되었음을 알려주는 메일 입니다.
+           CSH_CANCELISSUE : 고객에게 현금영수증 발행취소 되었음을 알려주는 메일 입니다.
         */
 
         private void btnUpdateEmailConfig_Click(object sender, EventArgs e)
@@ -1627,6 +1654,5 @@ namespace Popbill.Cashbill.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "알림메일 전송설정 수정");
             }
         }
-        
     }
 }

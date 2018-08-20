@@ -3,7 +3,7 @@
  * 팝빌 전자세금계산서 API DotNet SDK Example
  * 
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - http://blog.linkhub.co.kr/587
- * - 업데이트 일자 : 2018-07-02
+ * - 업데이트 일자 : 2018-08-20
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
  * 
@@ -3247,10 +3247,25 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
         }
 
-        private void GroupBox13_Enter(object sender, EventArgs e)
+        /*
+         * 팝빌에 등록된 공인인증서의 유효성을 확인한다.
+         */
+        private void btnCheckCertValidation_Click(object sender, EventArgs e)
         {
+            try
+            {
+                Response response = taxinvoiceService.CheckCertValidation(txtCorpNum.Text);
 
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "공인인증서 유효성 확인");
+
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "공인인증서 유효성 확인");
+
+            }
         }
-
     }
 }

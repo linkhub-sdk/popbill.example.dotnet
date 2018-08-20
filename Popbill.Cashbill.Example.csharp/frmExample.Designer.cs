@@ -44,6 +44,8 @@
             this.txtMgtKey = new System.Windows.Forms.TextBox();
             this.Label3 = new System.Windows.Forms.Label();
             this.GroupBox11 = new System.Windows.Forms.GroupBox();
+            this.btnUpdateEmailConfig = new System.Windows.Forms.Button();
+            this.btnListEmailConfig = new System.Windows.Forms.Button();
             this.btnUnitCost = new System.Windows.Forms.Button();
             this.GroupBox3 = new System.Windows.Forms.GroupBox();
             this.btnGetChargeInfo = new System.Windows.Forms.Button();
@@ -80,8 +82,6 @@
             this.txtUserId = new System.Windows.Forms.TextBox();
             this.getPopbillURL_LOGIN = new System.Windows.Forms.Button();
             this.GroupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnUpdateEmailConfig = new System.Windows.Forms.Button();
-            this.btnListEmailConfig = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnUpdateCorpInfo = new System.Windows.Forms.Button();
             this.btnGetCorpInfo = new System.Windows.Forms.Button();
@@ -277,6 +277,26 @@
             this.GroupBox11.TabIndex = 10;
             this.GroupBox11.TabStop = false;
             this.GroupBox11.Text = "부가서비스";
+            // 
+            // btnUpdateEmailConfig
+            // 
+            this.btnUpdateEmailConfig.Location = new System.Drawing.Point(6, 150);
+            this.btnUpdateEmailConfig.Name = "btnUpdateEmailConfig";
+            this.btnUpdateEmailConfig.Size = new System.Drawing.Size(142, 26);
+            this.btnUpdateEmailConfig.TabIndex = 1;
+            this.btnUpdateEmailConfig.Text = "알림메일 전송설정 수정";
+            this.btnUpdateEmailConfig.UseVisualStyleBackColor = true;
+            this.btnUpdateEmailConfig.Click += new System.EventHandler(this.btnUpdateEmailConfig_Click);
+            // 
+            // btnListEmailConfig
+            // 
+            this.btnListEmailConfig.Location = new System.Drawing.Point(6, 117);
+            this.btnListEmailConfig.Name = "btnListEmailConfig";
+            this.btnListEmailConfig.Size = new System.Drawing.Size(142, 26);
+            this.btnListEmailConfig.TabIndex = 0;
+            this.btnListEmailConfig.Text = "알림메일 전송목록 조회";
+            this.btnListEmailConfig.UseVisualStyleBackColor = true;
+            this.btnListEmailConfig.Click += new System.EventHandler(this.btnListEmailConfig_Click);
             // 
             // btnUnitCost
             // 
@@ -680,26 +700,6 @@
             this.GroupBox1.TabIndex = 11;
             this.GroupBox1.TabStop = false;
             this.GroupBox1.Text = "팝빌 기본 API";
-            // 
-            // btnUpdateEmailConfig
-            // 
-            this.btnUpdateEmailConfig.Location = new System.Drawing.Point(6, 150);
-            this.btnUpdateEmailConfig.Name = "btnUpdateEmailConfig";
-            this.btnUpdateEmailConfig.Size = new System.Drawing.Size(142, 26);
-            this.btnUpdateEmailConfig.TabIndex = 1;
-            this.btnUpdateEmailConfig.Text = "알림메일 전송설정 수정";
-            this.btnUpdateEmailConfig.UseVisualStyleBackColor = true;
-            this.btnUpdateEmailConfig.Click += new System.EventHandler(this.btnUpdateEmailConfig_Click);
-            // 
-            // btnListEmailConfig
-            // 
-            this.btnListEmailConfig.Location = new System.Drawing.Point(6, 117);
-            this.btnListEmailConfig.Name = "btnListEmailConfig";
-            this.btnListEmailConfig.Size = new System.Drawing.Size(142, 26);
-            this.btnListEmailConfig.TabIndex = 0;
-            this.btnListEmailConfig.Text = "알림메일 전송목록 조회";
-            this.btnListEmailConfig.UseVisualStyleBackColor = true;
-            this.btnListEmailConfig.Click += new System.EventHandler(this.btnListEmailConfig_Click);
             // 
             // groupBox4
             // 
