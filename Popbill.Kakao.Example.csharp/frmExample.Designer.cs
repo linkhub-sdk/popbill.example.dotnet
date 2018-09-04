@@ -58,6 +58,7 @@
             this.txtCorpNum = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
             this.txtRequestNum = new System.Windows.Forms.TextBox();
             this.btnCancelReserveRN = new System.Windows.Forms.Button();
@@ -68,7 +69,6 @@
             this.btnCacnelReserve = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.btnGetMessages = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnGetURL_BOX = new System.Windows.Forms.Button();
@@ -104,7 +104,6 @@
             this.groupBox4.SuspendLayout();
             this.groupBox15.SuspendLayout();
             this.groupBox12.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox9.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -414,9 +413,9 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.listBox1);
             this.groupBox4.Controls.Add(this.groupBox15);
             this.groupBox4.Controls.Add(this.groupBox12);
-            this.groupBox4.Controls.Add(this.dataGridView1);
             this.groupBox4.Controls.Add(this.groupBox9);
             this.groupBox4.Controls.Add(this.groupBox8);
             this.groupBox4.Controls.Add(this.groupBox7);
@@ -429,6 +428,16 @@
             this.groupBox4.TabIndex = 22;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "카카오톡 관련 기능";
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.HorizontalScrollbar = true;
+            this.listBox1.ItemHeight = 12;
+            this.listBox1.Location = new System.Drawing.Point(13, 252);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(1126, 244);
+            this.listBox1.TabIndex = 27;
             // 
             // groupBox15
             // 
@@ -527,15 +536,6 @@
             this.btnGetMessages.Text = "전송상태 확인";
             this.btnGetMessages.UseVisualStyleBackColor = true;
             this.btnGetMessages.Click += new System.EventHandler(this.btnGetMessages_Click);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(13, 260);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 21;
-            this.dataGridView1.Size = new System.Drawing.Size(1126, 236);
-            this.dataGridView1.TabIndex = 24;
             // 
             // groupBox9
             // 
@@ -784,7 +784,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1184, 758);
+            this.ClientSize = new System.Drawing.Size(1184, 740);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.txtUserId);
             this.Controls.Add(this.GroupBox1);
@@ -808,7 +808,6 @@
             this.groupBox15.PerformLayout();
             this.groupBox12.ResumeLayout(false);
             this.groupBox12.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox9.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
@@ -877,7 +876,6 @@
         private System.Windows.Forms.TextBox txtReceiptNum;
         private System.Windows.Forms.Button btnGetMessages;
         private System.Windows.Forms.Button btnCacnelReserve;
-        private System.Windows.Forms.DataGridView dataGridView1;
         internal System.Windows.Forms.OpenFileDialog fileDialog;
         private System.Windows.Forms.GroupBox groupBox12;
         private System.Windows.Forms.GroupBox groupBox15;
@@ -885,6 +883,7 @@
         private System.Windows.Forms.Button btnCancelReserveRN;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnGetMessagesRN;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
 

@@ -3,7 +3,7 @@
  * 팝빌 팩스 API DotNet SDK Example
  * 
  * - DotNet C# SDK 연동환경 설정방법 안내 : [개발가이드] - http://blog.linkhub.co.kr/587
- * - 업데이트 일자 : 2018-07-02
+ * - 업데이트 일자 : 2018-09-04
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991~2
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
  * 
@@ -266,12 +266,54 @@ namespace Popbill.Fax.Example.csharp
          */
         private void btnGetFaxResult_Click(object sender, EventArgs e)
         {
+            listBox1.Items.Clear();
             try
             {
                 List<FaxResult> ResultList = faxService.GetFaxResult(txtCorpNum.Text, txtReceiptNum.Text);
 
-                dataGridView1.DataSource = ResultList;
+                string rowStr = "전송상태 코드 | 전송결과 코드 | 발신번호 | 발신자명 | 수신번호 | 수신자명 | 팩스제목 | 전체 페이지수 | 성공 페이지수 | " +
+                                "실패 페이지수 | 환불 페이지수 | 취소 페이지수 | 예약시간 | 접수시간 | 발송시간 | 전송결과 수신시간 | 전송 파일명 리스트 | " +
+                                "접수번호 | 요청번호";
 
+                listBox1.Items.Add(rowStr);
+
+                for (int i = 0; i < ResultList.Count; i++)
+                {
+                    rowStr = null;
+                    rowStr += ResultList[i].state + " | ";
+                    rowStr += ResultList[i].result + " | ";
+                    rowStr += ResultList[i].sendNum + " | ";
+                    rowStr += ResultList[i].senderName + " | ";
+                    rowStr += ResultList[i].receiveNum + " | ";
+                    rowStr += ResultList[i].receiveName + " | ";
+                    rowStr += ResultList[i].title + " | ";
+                    rowStr += ResultList[i].sendPageCnt + " | ";
+                    rowStr += ResultList[i].successPageCnt + " | ";
+                    rowStr += ResultList[i].failPageCnt + " | ";
+                    rowStr += ResultList[i].refundPageCnt + " | ";
+                    rowStr += ResultList[i].cancelPageCnt + " | ";
+                    rowStr += ResultList[i].reserveDT + " | ";
+                    rowStr += ResultList[i].receiptDT + " | ";
+                    rowStr += ResultList[i].sendDT + " | ";
+                    rowStr += ResultList[i].resultDT + " | ";
+
+                    for (int j = 0; j < ResultList[i].fileNames.Count(); j++)
+                    {
+                        if (j == ResultList[i].fileNames.Count() - 1)
+                        {
+                            rowStr += ResultList[i].fileNames[j].ToString() + " | ";
+                        }
+                        else
+                        {
+                            rowStr += ResultList[i].fileNames[j].ToString() + ",";
+                        }
+                    }
+
+                    rowStr += ResultList[i].receiptNum + " | ";
+                    rowStr += ResultList[i].requestNum;
+
+                    listBox1.Items.Add(rowStr);
+                }
             }
             catch (PopbillException ex)
             {
@@ -749,6 +791,7 @@ namespace Popbill.Fax.Example.csharp
             // 조회 검색어, 팩스 전송시 기재한 발신자명 또는 수신자명 기재
             String QString = "";
 
+            listBox1.Items.Clear();
             try
             {
                 FAXSearchResult searchResult = faxService.Search(txtCorpNum.Text, SDate, EDate, State, ReserveYN, SenderOnly, Order, Page, PerPage, QString);
@@ -764,7 +807,49 @@ namespace Popbill.Fax.Example.csharp
 
                 MessageBox.Show(tmp, "팩스 전송내역 조회");
 
-                dataGridView1.DataSource = searchResult.list;
+                string rowStr = "전송상태 코드 | 전송결과 코드 | 발신번호 | 발신자명 | 수신번호 | 수신자명 | 팩스제목 | 전체 페이지수 | 성공 페이지수 | " +
+                                "실패 페이지수 | 환불 페이지수 | 취소 페이지수 | 예약시간 | 접수시간 | 발송시간 | 전송결과 수신시간 | 전송 파일명 리스트 | " +
+                                "접수번호 | 요청번호";
+
+                listBox1.Items.Add(rowStr);
+
+                for (int i = 0; i < searchResult.list.Count; i++)
+                {
+                    rowStr = null;
+                    rowStr += searchResult.list[i].state + " | ";
+                    rowStr += searchResult.list[i].result + " | ";
+                    rowStr += searchResult.list[i].sendNum + " | ";
+                    rowStr += searchResult.list[i].senderName + " | ";
+                    rowStr += searchResult.list[i].receiveNum + " | ";
+                    rowStr += searchResult.list[i].receiveName + " | ";
+                    rowStr += searchResult.list[i].title + " | ";
+                    rowStr += searchResult.list[i].sendPageCnt + " | ";
+                    rowStr += searchResult.list[i].successPageCnt + " | ";
+                    rowStr += searchResult.list[i].failPageCnt + " | ";
+                    rowStr += searchResult.list[i].refundPageCnt + " | ";
+                    rowStr += searchResult.list[i].cancelPageCnt + " | ";
+                    rowStr += searchResult.list[i].reserveDT + " | ";
+                    rowStr += searchResult.list[i].receiptDT + " | ";
+                    rowStr += searchResult.list[i].sendDT + " | ";
+                    rowStr += searchResult.list[i].resultDT + " | ";
+
+                    for (int j = 0; j < searchResult.list[i].fileNames.Count(); j++)
+                    {
+                        if (j == searchResult.list[i].fileNames.Count() - 1)
+                        {
+                            rowStr += searchResult.list[i].fileNames[j].ToString() + " | ";
+                        }
+                        else
+                        {
+                            rowStr += searchResult.list[i].fileNames[j].ToString() + ",";
+                        }
+                    }
+
+                    rowStr += searchResult.list[i].receiptNum + " | ";
+                    rowStr += searchResult.list[i].requestNum;
+
+                    listBox1.Items.Add(rowStr);
+                }
             }
             catch (PopbillException ex)
             {
@@ -957,12 +1042,54 @@ namespace Popbill.Fax.Example.csharp
          */
         private void btnGetFaxResultRN_Click(object sender, EventArgs e)
         {
+            listBox1.Items.Clear();
             try
             {
                 List<FaxResult> ResultList = faxService.GetFaxResultRN(txtCorpNum.Text, txtRequestNum.Text);
 
-                dataGridView1.DataSource = ResultList;
+                string rowStr = "전송상태 코드 | 전송결과 코드 | 발신번호 | 발신자명 | 수신번호 | 수신자명 | 팩스제목 | 전체 페이지수 | 성공 페이지수 | " +
+                                "실패 페이지수 | 환불 페이지수 | 취소 페이지수 | 예약시간 | 접수시간 | 발송시간 | 전송결과 수신시간 | 전송 파일명 리스트 | " +
+                                "접수번호 | 요청번호";
 
+                listBox1.Items.Add(rowStr);
+
+                for (int i = 0; i < ResultList.Count; i++)
+                {
+                    rowStr = null;
+                    rowStr += ResultList[i].state + " | ";
+                    rowStr += ResultList[i].result + " | ";
+                    rowStr += ResultList[i].sendNum + " | ";
+                    rowStr += ResultList[i].senderName + " | ";
+                    rowStr += ResultList[i].receiveNum + " | ";
+                    rowStr += ResultList[i].receiveName + " | ";
+                    rowStr += ResultList[i].title + " | ";
+                    rowStr += ResultList[i].sendPageCnt + " | ";
+                    rowStr += ResultList[i].successPageCnt + " | ";
+                    rowStr += ResultList[i].failPageCnt + " | ";
+                    rowStr += ResultList[i].refundPageCnt + " | ";
+                    rowStr += ResultList[i].cancelPageCnt + " | ";
+                    rowStr += ResultList[i].reserveDT + " | ";
+                    rowStr += ResultList[i].receiptDT + " | ";
+                    rowStr += ResultList[i].sendDT + " | ";
+                    rowStr += ResultList[i].resultDT + " | ";
+
+                    for (int j = 0; j < ResultList[i].fileNames.Count(); j++)
+                    {
+                        if (j == ResultList[i].fileNames.Count() - 1)
+                        {
+                            rowStr += ResultList[i].fileNames[j].ToString() + " | ";
+                        }
+                        else
+                        {
+                            rowStr += ResultList[i].fileNames[j].ToString() + ",";
+                        }
+                    }
+
+                    rowStr += ResultList[i].receiptNum + " | ";
+                    rowStr += ResultList[i].requestNum;
+
+                    listBox1.Items.Add(rowStr);
+                }
             }
             catch (PopbillException ex)
             {

@@ -3,7 +3,7 @@
  * 팝빌 문자 API DotNet SDK Example
  * 
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - http://blog.linkhub.co.kr/587
- * - 업데이트 일자 :  2018-07-02
+ * - 업데이트 일자 :  2018-09-04
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991~2
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
  * 
@@ -1067,6 +1067,7 @@ namespace Popbill.Message.Example.csharp
             // 조회 검색어, 문자 전송시 기재한 수신자명 또는 발신자명 기재
             String QString = "";
 
+            listBox1.Items.Clear();
             try
             {
                 MSGSearchResult searchResult = messageService.Search(txtCorpNum.Text, SDate, EDate, State, 
@@ -1082,7 +1083,33 @@ namespace Popbill.Message.Example.csharp
 
                 MessageBox.Show(tmp, "전송내역조회 결과");
 
-                dataGridView1.DataSource = searchResult.list;
+                string rowStr = "메시지 제목 | 메시지 내용 | 발신번호 | 발신자명 | 수신번호 | 수신자명 | 접수시간 | 발송시간 | 전송결과 수신시간 | " +
+                                "예약일시 | 전송 상태코드 | 전송 결과코드 | 메시지 타입 | 전송처리 이동통신사명 | 접수번호 | 요청번호";
+
+                listBox1.Items.Add(rowStr);
+
+                for (int i = 0; i < searchResult.list.Count; i++)
+                {
+                    rowStr = null;
+                    rowStr += searchResult.list[i].subject + " | ";
+                    rowStr += searchResult.list[i].content + " | ";
+                    rowStr += searchResult.list[i].sendNum + " | ";
+                    rowStr += searchResult.list[i].senderName + " | ";
+                    rowStr += searchResult.list[i].receiveNum + " | ";
+                    rowStr += searchResult.list[i].receiveName + " | ";
+                    rowStr += searchResult.list[i].receiptDT + " | ";
+                    rowStr += searchResult.list[i].sendDT + " | ";
+                    rowStr += searchResult.list[i].resultDT + " | ";
+                    rowStr += searchResult.list[i].reserveDT + " | ";
+                    rowStr += searchResult.list[i].state + " | ";
+                    rowStr += searchResult.list[i].result + " | ";
+                    rowStr += searchResult.list[i].type + " | ";
+                    rowStr += searchResult.list[i].tranNet + " | ";
+                    rowStr += searchResult.list[i].receiptNum + " | ";
+                    rowStr += searchResult.list[i].requestNum;
+
+                    listBox1.Items.Add(rowStr);
+                }
 
             }
             catch (PopbillException ex)
@@ -1218,12 +1245,38 @@ namespace Popbill.Message.Example.csharp
          */
         private void btnGetMessagesRN_Click(object sender, EventArgs e)
         {
+            listBox1.Items.Clear();
             try
             {
                 List<MessageResult> ResultList = messageService.GetMessageResultRN(txtCorpNum.Text, txtRequestNum.Text);
 
-                dataGridView1.DataSource = ResultList;
+                string rowStr = "메시지 제목 | 메시지 내용 | 발신번호 | 발신자명 | 수신번호 | 수신자명 | 접수시간 | 발송시간 | 전송결과 수신시간 | " +
+                                "예약일시 | 전송 상태코드 | 전송 결과코드 | 메시지 타입 | 전송처리 이동통신사명 | 접수번호 | 요청번호";
 
+                listBox1.Items.Add(rowStr);
+
+                for (int i = 0; i < ResultList.Count; i++)
+                {
+                    rowStr = null;
+                    rowStr += ResultList[i].subject + " | ";
+                    rowStr += ResultList[i].content + " | ";
+                    rowStr += ResultList[i].sendNum + " | ";
+                    rowStr += ResultList[i].senderName + " | ";
+                    rowStr += ResultList[i].receiveNum + " | ";
+                    rowStr += ResultList[i].receiveName + " | ";
+                    rowStr += ResultList[i].receiptDT + " | ";
+                    rowStr += ResultList[i].sendDT + " | ";
+                    rowStr += ResultList[i].resultDT + " | ";
+                    rowStr += ResultList[i].reserveDT + " | ";
+                    rowStr += ResultList[i].state + " | ";
+                    rowStr += ResultList[i].result + " | ";
+                    rowStr += ResultList[i].type + " | ";
+                    rowStr += ResultList[i].tranNet + " | ";
+                    rowStr += ResultList[i].receiptNum + " | ";
+                    rowStr += ResultList[i].requestNum;
+
+                    listBox1.Items.Add(rowStr);
+                }
             }
             catch (PopbillException ex)
             {
@@ -1259,12 +1312,38 @@ namespace Popbill.Message.Example.csharp
          */
         private void btnGetMessageResult_Click(object sender, EventArgs e)
         {
+            listBox1.Items.Clear();
             try
             {
                 List<MessageResult> ResultList = messageService.GetMessageResult(txtCorpNum.Text, txtReceiptNum.Text);
 
-                dataGridView1.DataSource = ResultList;
+                string rowStr = "메시지 제목 | 메시지 내용 | 발신번호 | 발신자명 | 수신번호 | 수신자명 | 접수시간 | 발송시간 | 전송결과 수신시간 | " +
+                                "예약일시 | 전송 상태코드 | 전송 결과코드 | 메시지 타입 | 전송처리 이동통신사명 | 접수번호 | 요청번호";
 
+                listBox1.Items.Add(rowStr);
+
+                for (int i = 0; i < ResultList.Count; i++)
+                {
+                    rowStr = null;
+                    rowStr += ResultList[i].subject + " | ";
+                    rowStr += ResultList[i].content + " | ";
+                    rowStr += ResultList[i].sendNum + " | ";
+                    rowStr += ResultList[i].senderName + " | ";
+                    rowStr += ResultList[i].receiveNum + " | ";
+                    rowStr += ResultList[i].receiveName + " | ";
+                    rowStr += ResultList[i].receiptDT + " | ";
+                    rowStr += ResultList[i].sendDT + " | ";
+                    rowStr += ResultList[i].resultDT + " | ";
+                    rowStr += ResultList[i].reserveDT + " | ";
+                    rowStr += ResultList[i].state + " | ";
+                    rowStr += ResultList[i].result + " | ";
+                    rowStr += ResultList[i].type + " | ";
+                    rowStr += ResultList[i].tranNet + " | ";
+                    rowStr += ResultList[i].receiptNum + " | ";
+                    rowStr += ResultList[i].requestNum;
+
+                    listBox1.Items.Add(rowStr);
+                }
             }
             catch (PopbillException ex)
             {
@@ -1304,13 +1383,31 @@ namespace Popbill.Message.Example.csharp
 
             List<string> ReciptNumList = new List<string>();
 
-            ReciptNumList.Add("018041717000000018");
-            ReciptNumList.Add("018041717000000019");
-            
+            ReciptNumList.Add("018090410000000416");
+            ReciptNumList.Add("018090410000000395");
+
+            listBox1.Items.Clear();
             try
             {
                 List<MessageState> ResultList = messageService.GetStates(txtCorpNum.Text, ReciptNumList, txtUserId.Text);
-                dataGridView1.DataSource = ResultList;
+
+                string rowStr = "접수번호 | 일련번호 | 전송 상태코드 | 전송 결과코드 | 전송일시 | 결과코드 수신일시 | 전송 이동통신사명";
+
+                listBox1.Items.Add(rowStr);
+
+                for (int i = 0; i < ResultList.Count; i++)
+                {
+                    rowStr = null;
+                    rowStr += ResultList[i].rNum + " | ";
+                    rowStr += ResultList[i].sn + " | ";
+                    rowStr += ResultList[i].stat + " | ";
+                    rowStr += ResultList[i].rlt + " | ";
+                    rowStr += ResultList[i].sDT + " | ";
+                    rowStr += ResultList[i].rDT + " | "; 
+                    rowStr += ResultList[i].net;
+
+                    listBox1.Items.Add(rowStr);
+                }
             }
             catch(PopbillException ex)
             {

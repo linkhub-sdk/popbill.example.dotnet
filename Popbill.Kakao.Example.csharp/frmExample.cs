@@ -3,7 +3,7 @@
  * 팝빌 카카오톡 API DotNet SDK Example
  * 
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - http://blog.linkhub.co.kr/587
- * - 업데이트 일자 : 2018-07-02
+ * - 업데이트 일자 : 2018-09-04
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991~2
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
  * 
@@ -1338,8 +1338,19 @@ namespace Popbill.Kakao.Example.csharp
 
                 MessageBox.Show(tmp, "전송내역조회 결과");
 
-                dataGridView1.DataSource = searchResult.list;
+                string rowStr = "전송상태 코드 | 전송이시 | 전송결과 코드";
 
+                listBox1.Items.Add(rowStr);
+
+                for (int i = 0; i < searchResult.list.Count; i++)
+                {
+                    rowStr = null;
+                    rowStr += searchResult.list[i].state + " | ";
+                    rowStr += searchResult.list[i].resultDT + " | ";
+                    rowStr += searchResult.list[i].requestNum;
+
+                    listBox1.Items.Add(rowStr);
+                }
             }
             catch (PopbillException ex)
             {
@@ -1372,6 +1383,7 @@ namespace Popbill.Kakao.Example.csharp
          */
         private void btnGetMessages_Click(object sender, EventArgs e)
         {
+            listBox1.Items.Clear();
             try
             {
                 KakaoSentResult info = kakaoService.GetMessages(txtCorpNum.Text, txtReceiptNum.Text);
@@ -1392,21 +1404,33 @@ namespace Popbill.Kakao.Example.csharp
                 tmp += "altCnt (대체문자 건수) : " + info.altCnt + CRLF;
                 tmp += "cancelCnt (취소건수) : " + info.cancelCnt + CRLF + CRLF;
 
-                if (info.btns != null)
-                {
-                    foreach (KakaoButton buttonInfo in info.btns)
-                    {
-                        tmp += "[버튼 정보]" + CRLF;
-                        tmp += "버튼명(n) : " + buttonInfo.n + CRLF;
-                        tmp += "버튼유형(t) : " + buttonInfo.t + CRLF;
-                        tmp += "버튼링크1(u1) : " + buttonInfo.u1 + CRLF;
-                        tmp += "버튼링크1(u2) : " + buttonInfo.u2 + CRLF;
-                    }
-                }
                 MessageBox.Show(tmp, "전송내역 확인");
 
-                dataGridView1.DataSource = info.msgs;
+                string rowStr = "전송상태 코드 | 전송일시 | 수신번호 | 수신자명 | 내용 | 전송결과 코드 | 전송결과 수신일시 | 대체문자 내용 | 대체문자 전송유형 | " +
+                                "대체문자 전송일시 | 대체문자 전송결과 코드 | 대체문자 전송결과 수신일시 | 접수번호 | 요청번호";
 
+                listBox1.Items.Add(rowStr);
+
+                for (int i = 0; i < info.msgs.Count; i++)
+                {
+                    rowStr = null;
+                    rowStr += info.msgs[i].state + " | ";
+                    rowStr += info.msgs[i].sendDT + " | ";
+                    rowStr += info.msgs[i].receiveNum + " | ";
+                    rowStr += info.msgs[i].receiveName + " | ";
+                    rowStr += info.msgs[i].content + " | ";
+                    rowStr += info.msgs[i].result + " | ";
+                    rowStr += info.msgs[i].resultDT + " | ";
+                    rowStr += info.msgs[i].altContent + " | ";
+                    rowStr += info.msgs[i].altContentType + " | ";
+                    rowStr += info.msgs[i].altSendDT + " | ";
+                    rowStr += info.msgs[i].altResult + " | ";
+                    rowStr += info.msgs[i].altResultDT + " | ";
+                    rowStr += info.msgs[i].receiptNum + " | ";
+                    rowStr += info.msgs[i].requestNum;
+
+                    listBox1.Items.Add(rowStr);
+                }
             }
             catch (PopbillException ex)
             {
@@ -1420,6 +1444,7 @@ namespace Popbill.Kakao.Example.csharp
          */
         private void btnGetMessagesRN_Click(object sender, EventArgs e)
         {
+            listBox1.Items.Clear();
             try
             {
                 KakaoSentResult info = kakaoService.GetMessagesRN(txtCorpNum.Text, txtRequestNum.Text);
@@ -1440,21 +1465,31 @@ namespace Popbill.Kakao.Example.csharp
                 tmp += "altCnt (대체문자 건수) : " + info.altCnt + CRLF;
                 tmp += "cancelCnt (취소건수) : " + info.cancelCnt + CRLF + CRLF;
 
-                if (info.btns != null)
+                string rowStr = "전송상태 코드 | 전송일시 | 수신번호 | 수신자명 | 내용 | 전송결과 코드 | 전송결과 수신일시 | 대체문자 내용 | 대체문자 전송유형 | " +
+                                "대체문자 전송일시 | 대체문자 전송결과 코드 | 대체문자 전송결과 수신일시 | 접수번호 | 요청번호";
+
+                listBox1.Items.Add(rowStr);
+
+                for (int i = 0; i < info.msgs.Count; i++)
                 {
-                    foreach (KakaoButton buttonInfo in info.btns)
-                    {
-                        tmp += "[버튼 정보]" + CRLF;
-                        tmp += "버튼명(n) : " + buttonInfo.n + CRLF;
-                        tmp += "버튼유형(t) : " + buttonInfo.t + CRLF;
-                        tmp += "버튼링크1(u1) : " + buttonInfo.u1 + CRLF;
-                        tmp += "버튼링크1(u2) : " + buttonInfo.u2 + CRLF;
-                    }
+                    rowStr = null;
+                    rowStr += info.msgs[i].state + " | ";
+                    rowStr += info.msgs[i].sendDT + " | ";
+                    rowStr += info.msgs[i].receiveNum + " | ";
+                    rowStr += info.msgs[i].receiveName + " | ";
+                    rowStr += info.msgs[i].content + " | ";
+                    rowStr += info.msgs[i].result + " | ";
+                    rowStr += info.msgs[i].resultDT + " | ";
+                    rowStr += info.msgs[i].altContent + " | ";
+                    rowStr += info.msgs[i].altContentType + " | ";
+                    rowStr += info.msgs[i].altSendDT + " | ";
+                    rowStr += info.msgs[i].altResult + " | ";
+                    rowStr += info.msgs[i].altResultDT + " | ";
+                    rowStr += info.msgs[i].receiptNum + " | ";
+                    rowStr += info.msgs[i].requestNum;
+
+                    listBox1.Items.Add(rowStr);
                 }
-                MessageBox.Show(tmp, "전송내역 확인");
-
-                dataGridView1.DataSource = info.msgs;
-
             }
             catch (PopbillException ex)
             {

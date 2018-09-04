@@ -58,6 +58,7 @@
             this.txtCorpNum = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnGetStates = new System.Windows.Forms.Button();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
             this.btnCancelReserve = new System.Windows.Forms.Button();
             this.btnGetMessageResult = new System.Windows.Forms.Button();
@@ -76,7 +77,6 @@
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.btnSendMMS_Same = new System.Windows.Forms.Button();
             this.btnSendMMS = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnGetURL = new System.Windows.Forms.Button();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.btnSendXMS_same = new System.Windows.Forms.Button();
@@ -93,7 +93,7 @@
             this.txtReserveDT = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.fileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.btnGetStates = new System.Windows.Forms.Button();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.GroupBox1.SuspendLayout();
             this.groupBox14.SuspendLayout();
             this.groupBox11.SuspendLayout();
@@ -107,7 +107,6 @@
             this.groupBox15.SuspendLayout();
             this.groupBox12.SuspendLayout();
             this.groupBox9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -415,6 +414,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.listBox1);
             this.groupBox4.Controls.Add(this.btnGetStates);
             this.groupBox4.Controls.Add(this.groupBox16);
             this.groupBox4.Controls.Add(this.groupBox15);
@@ -422,7 +422,6 @@
             this.groupBox4.Controls.Add(this.btnGetAutoDenyList);
             this.groupBox4.Controls.Add(this.btnSearch);
             this.groupBox4.Controls.Add(this.groupBox9);
-            this.groupBox4.Controls.Add(this.dataGridView1);
             this.groupBox4.Controls.Add(this.btnGetURL);
             this.groupBox4.Controls.Add(this.groupBox8);
             this.groupBox4.Controls.Add(this.groupBox7);
@@ -431,10 +430,20 @@
             this.groupBox4.Controls.Add(this.label3);
             this.groupBox4.Location = new System.Drawing.Point(8, 219);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(942, 476);
+            this.groupBox4.Size = new System.Drawing.Size(1162, 447);
             this.groupBox4.TabIndex = 17;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "문자전송 관련 기능";
+            // 
+            // btnGetStates
+            // 
+            this.btnGetStates.Location = new System.Drawing.Point(539, 18);
+            this.btnGetStates.Name = "btnGetStates";
+            this.btnGetStates.Size = new System.Drawing.Size(130, 31);
+            this.btnGetStates.TabIndex = 33;
+            this.btnGetStates.Text = "전송내역 요약정보";
+            this.btnGetStates.UseVisualStyleBackColor = true;
+            this.btnGetStates.Click += new System.EventHandler(this.btnGetStates_Click);
             // 
             // groupBox16
             // 
@@ -616,15 +625,6 @@
             this.btnSendMMS.UseVisualStyleBackColor = true;
             this.btnSendMMS.Click += new System.EventHandler(this.btnSendMMS_Click);
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(16, 248);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 21;
-            this.dataGridView1.Size = new System.Drawing.Size(907, 210);
-            this.dataGridView1.TabIndex = 23;
-            // 
             // btnGetURL
             // 
             this.btnGetURL.Location = new System.Drawing.Point(675, 19);
@@ -781,21 +781,21 @@
             // 
             this.fileDialog.FileName = "OpenFileDialog1";
             // 
-            // btnGetStates
+            // listBox1
             // 
-            this.btnGetStates.Location = new System.Drawing.Point(539, 18);
-            this.btnGetStates.Name = "btnGetStates";
-            this.btnGetStates.Size = new System.Drawing.Size(130, 31);
-            this.btnGetStates.TabIndex = 33;
-            this.btnGetStates.Text = "전송내역 요약정보";
-            this.btnGetStates.UseVisualStyleBackColor = true;
-            this.btnGetStates.Click += new System.EventHandler(this.btnGetStates_Click);
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.HorizontalScrollbar = true;
+            this.listBox1.ItemHeight = 12;
+            this.listBox1.Location = new System.Drawing.Point(22, 249);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(1128, 184);
+            this.listBox1.TabIndex = 34;
             // 
             // frmExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1186, 707);
+            this.ClientSize = new System.Drawing.Size(1186, 673);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.txtUserId);
             this.Controls.Add(this.GroupBox1);
@@ -821,7 +821,6 @@
             this.groupBox15.PerformLayout();
             this.groupBox12.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox8.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
@@ -863,7 +862,6 @@
         private System.Windows.Forms.Button btnSendXMS_hund;
         private System.Windows.Forms.Button btnSendXMS_one;
         private System.Windows.Forms.Button btnGetURL;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.Button btnSendMMS_Same;
         private System.Windows.Forms.Button btnSendMMS;
@@ -898,6 +896,7 @@
         internal System.Windows.Forms.Label label5;
         internal System.Windows.Forms.OpenFileDialog fileDialog;
         private System.Windows.Forms.Button btnGetStates;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
 
