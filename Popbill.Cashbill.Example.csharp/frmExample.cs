@@ -3,7 +3,7 @@
  * 팝빌 현금영수증 API DotNet SDK Example
  * 
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - http://blog.linkhub.co.kr/587
- * - 업데이트 일자 : 2018-08-20
+ * - 업데이트 일자 : 2018-09-10
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
  * 
@@ -1330,10 +1330,10 @@ namespace Popbill.Cashbill.Example.csharp
             String DType = "T";
 
             // 시작일자, 날짜형식(yyyyMMdd)
-            String SDate = "20180801";
+            String SDate = "20180905";
 
             // 종료일자, 날짜형식(yyyyMMdd)
-            String EDate = "20180820";  
+            String EDate = "20180907";  
 
             // 상태코드 배열, 2,3번째 자리에 와일드카드(*) 사용가능
             // - 상태코드에 대한 자세한 사항은 "[현금영수증 API 연동매뉴얼] >
@@ -1348,15 +1348,15 @@ namespace Popbill.Cashbill.Example.csharp
             TradeType[1] = "C";
 
             // 거래구분 배열, P-소득공제용, C-지출증빙용
-            String[] TradeUsage = new String[0];
-            //TradeUsage[0] = "P";
-            //TradeUsage[1] = "C";
+            String[] TradeUsage = new String[2];
+            TradeUsage[0] = "P";
+            TradeUsage[1] = "C";
 
             // 거래유형 배열, N-일반, B-도서공연, T-대중교통
             String[] TradeOpt = new String[3];
             TradeOpt[0] = "N";
             TradeOpt[1] = "B";
-            TradeOpt[0] = "T";
+            TradeOpt[2] = "T";
 
             // 과세형태 배열, T-과세, N-비과세 
             String[] TaxationType = new String[2];
