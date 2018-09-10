@@ -183,6 +183,7 @@
             this.btnGetCertificateExpireDate.TabIndex = 5;
             this.btnGetCertificateExpireDate.Text = "공인인증서 만료일자 확인";
             this.btnGetCertificateExpireDate.UseVisualStyleBackColor = true;
+            this.btnGetCertificateExpireDate.Click += new System.EventHandler(this.btnGetCertificateExpireDate_Click);
             // 
             // btnGetCertificatePopUpURL
             // 
@@ -193,6 +194,7 @@
             this.btnGetCertificatePopUpURL.TabIndex = 4;
             this.btnGetCertificatePopUpURL.Text = "홈택스연동 인증관리 URL";
             this.btnGetCertificatePopUpURL.UseVisualStyleBackColor = true;
+            this.btnGetCertificatePopUpURL.Click += new System.EventHandler(this.btnGetCertificatePopUpURL_Click);
             // 
             // groupBox11
             // 
