@@ -3,7 +3,7 @@
  * 팝빌 팩스 API DotNet SDK Example
  * 
  * - DotNet C# SDK 연동환경 설정방법 안내 : [개발가이드] - http://blog.linkhub.co.kr/587
- * - 업데이트 일자 : 2018-09-04
+ * - 업데이트 일자 : 2018-09-10
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991~2
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
  * 
@@ -773,7 +773,7 @@ namespace Popbill.Fax.Example.csharp
             State[2] = "3";
             State[3] = "4";
 
-            // 예약여부, True-예약전송건 검색
+            // 예약여부, true-예약전송건 검색, false-즉시전송건 검색 
             bool ReserveYN = false;
 
             // 개인조회여부, True-개인조회, False-회사조회

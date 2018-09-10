@@ -3,7 +3,7 @@
  * 팝빌 카카오톡 API DotNet SDK Example
  * 
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - http://blog.linkhub.co.kr/587
- * - 업데이트 일자 : 2018-09-04
+ * - 업데이트 일자 : 2018-09-10
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991~2
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
  * 
@@ -1323,6 +1323,7 @@ namespace Popbill.Kakao.Example.csharp
             // 조회 검색어, 카카오톡 전송시 기재한 수신자명 입력
             String QString = "";
 
+            listBox1.Items.Clear();
             try
             {
                 KakaoSearchResult searchResult = kakaoService.Search(txtCorpNum.Text, SDate, EDate, State,
@@ -1338,7 +1339,8 @@ namespace Popbill.Kakao.Example.csharp
 
                 MessageBox.Show(tmp, "전송내역조회 결과");
 
-                string rowStr = "전송상태 코드 | 전송이시 | 전송결과 코드";
+                string rowStr = "전송상태 코드 | 전송일시 | 전송결과 코드 | 전송결과 수신일시 | 카카오톡 유형 | 수신번호 | 수신자명" +
+                                "내용 | 대체문자 전송타입 | 대체문자 전송일시 | 대체문자 전송결과 코드 | 대체문자 전송결과 수신일시 | 접수번호 | 요청번호";
 
                 listBox1.Items.Add(rowStr);
 
@@ -1346,7 +1348,18 @@ namespace Popbill.Kakao.Example.csharp
                 {
                     rowStr = null;
                     rowStr += searchResult.list[i].state + " | ";
-                    rowStr += searchResult.list[i].resultDT + " | ";
+                    rowStr += searchResult.list[i].sendDT + " | ";
+                    rowStr += searchResult.list[i].result+ " | ";
+                    rowStr += searchResult.list[i].resultDT+ " | ";
+                    rowStr += searchResult.list[i].contentType+ " | ";
+                    rowStr += searchResult.list[i].receiveNum+ " | ";
+                    rowStr += searchResult.list[i].receiveName+ " | ";
+                    rowStr += searchResult.list[i].content+ " | ";
+                    rowStr += searchResult.list[i].altContentType+ " | ";
+                    rowStr += searchResult.list[i].altSendDT+ " | ";
+                    rowStr += searchResult.list[i].altResult+ " | ";
+                    rowStr += searchResult.list[i].altResultDT +" | ";
+                    rowStr += searchResult.list[i].receiptNum+ " | ";
                     rowStr += searchResult.list[i].requestNum;
 
                     listBox1.Items.Add(rowStr);
@@ -1464,6 +1477,8 @@ namespace Popbill.Kakao.Example.csharp
                 tmp += "failCnt (실패건수) : " + info.failCnt + CRLF;
                 tmp += "altCnt (대체문자 건수) : " + info.altCnt + CRLF;
                 tmp += "cancelCnt (취소건수) : " + info.cancelCnt + CRLF + CRLF;
+
+                MessageBox.Show(tmp, "전송내역 확인");
 
                 string rowStr = "전송상태 코드 | 전송일시 | 수신번호 | 수신자명 | 내용 | 전송결과 코드 | 전송결과 수신일시 | 대체문자 내용 | 대체문자 전송유형 | " +
                                 "대체문자 전송일시 | 대체문자 전송결과 코드 | 대체문자 전송결과 수신일시 | 접수번호 | 요청번호";
