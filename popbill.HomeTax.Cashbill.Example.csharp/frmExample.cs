@@ -593,7 +593,7 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
 
                 MessageBox.Show(tmp, "수집 결과 조회");
 
-                string rowStr = "국세청승인번호 | 거래일자 | 거래일시 | 문서형태 | 거래구분 | 거래금액 | 공급가액 | 부가세 | 봉사료 | 매입/매출  ";
+                string rowStr = "국세청승인번호 | 거래일자 | 거래일시 | 문서형태 | 거래구분 | 거래금액 | 공급가액 | 부가세 | 봉사료 | 매입/매출 | ";
                 rowStr += "발행자 사업자번호 | 발행자 상호 | 발행자 사업자유형 | 식별번호 | 식별변호유형 | 고객명 | 카드소유자명 | 공제유형";
                 listBox1.Items.Add(rowStr);
 
