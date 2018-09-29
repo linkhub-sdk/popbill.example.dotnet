@@ -273,7 +273,7 @@ namespace Popbill.Fax.Example.csharp
 
                 string rowStr = "전송상태 코드 | 전송결과 코드 | 발신번호 | 발신자명 | 수신번호 | 수신자명 | 팩스제목 | 전체 페이지수 | 성공 페이지수 | " +
                                 "실패 페이지수 | 환불 페이지수 | 취소 페이지수 | 예약시간 | 접수시간 | 발송시간 | 전송결과 수신시간 | 전송 파일명 리스트 | " +
-                                "접수번호 | 요청번호";
+                                "접수번호 | 요청번호 | 과금 페이지수 | 변환파일용량";
 
                 listBox1.Items.Add(rowStr);
 
@@ -310,7 +310,9 @@ namespace Popbill.Fax.Example.csharp
                     }
 
                     rowStr += ResultList[i].receiptNum + " | ";
-                    rowStr += ResultList[i].requestNum;
+                    rowStr += ResultList[i].requestNum + " | ";
+                    rowStr += ResultList[i].chargePageCnt + " | ";
+                    rowStr += ResultList[i].tiffFileSize;
 
                     listBox1.Items.Add(rowStr);
                 }
@@ -761,10 +763,10 @@ namespace Popbill.Fax.Example.csharp
         {
             // 최대 검색기간 : 6개월 이내 
             // 시작일자, 날짜형식(yyyyMMdd)
-            String SDate = "20180601";
+            String SDate = "20180925";
 
             // 종료일자, 날짜형식(yyyyMMdd)
-            String EDate = "20180630";     
+            String EDate = "20180930";     
 
             //전송상태 배열 1-대기, 2-성공, 3-실패, 4-취소
             String[] State = new String[4];
@@ -809,7 +811,7 @@ namespace Popbill.Fax.Example.csharp
 
                 string rowStr = "전송상태 코드 | 전송결과 코드 | 발신번호 | 발신자명 | 수신번호 | 수신자명 | 팩스제목 | 전체 페이지수 | 성공 페이지수 | " +
                                 "실패 페이지수 | 환불 페이지수 | 취소 페이지수 | 예약시간 | 접수시간 | 발송시간 | 전송결과 수신시간 | 전송 파일명 리스트 | " +
-                                "접수번호 | 요청번호";
+                                "접수번호 | 요청번호 | 과금 페이지수 | 변환파일용량";
 
                 listBox1.Items.Add(rowStr);
 
@@ -846,7 +848,9 @@ namespace Popbill.Fax.Example.csharp
                     }
 
                     rowStr += searchResult.list[i].receiptNum + " | ";
-                    rowStr += searchResult.list[i].requestNum;
+                    rowStr += searchResult.list[i].requestNum + " | ";
+                    rowStr += searchResult.list[i].chargePageCnt + " | ";
+                    rowStr += searchResult.list[i].tiffFileSize;
 
                     listBox1.Items.Add(rowStr);
                 }
@@ -1049,7 +1053,7 @@ namespace Popbill.Fax.Example.csharp
 
                 string rowStr = "전송상태 코드 | 전송결과 코드 | 발신번호 | 발신자명 | 수신번호 | 수신자명 | 팩스제목 | 전체 페이지수 | 성공 페이지수 | " +
                                 "실패 페이지수 | 환불 페이지수 | 취소 페이지수 | 예약시간 | 접수시간 | 발송시간 | 전송결과 수신시간 | 전송 파일명 리스트 | " +
-                                "접수번호 | 요청번호";
+                                "접수번호 | 요청번호 | 과금 페이지수 | 변환파일용량";
 
                 listBox1.Items.Add(rowStr);
 
@@ -1086,7 +1090,9 @@ namespace Popbill.Fax.Example.csharp
                     }
 
                     rowStr += ResultList[i].receiptNum + " | ";
-                    rowStr += ResultList[i].requestNum;
+                    rowStr += ResultList[i].requestNum + " | ";
+                    rowStr += ResultList[i].chargePageCnt + " | ";
+                    rowStr += ResultList[i].tiffFileSize;
 
                     listBox1.Items.Add(rowStr);
                 }

@@ -1391,7 +1391,7 @@ namespace Popbill.Message.Example.csharp
             {
                 List<MessageState> ResultList = messageService.GetStates(txtCorpNum.Text, ReciptNumList, txtUserId.Text);
 
-                string rowStr = "접수번호 | 일련번호 | 전송 상태코드 | 전송 결과코드 | 전송일시 | 결과코드 수신일시 | 전송 이동통신사명";
+                string rowStr = "접수번호 | 일련번호 | 전송 상태코드 | 전송 결과코드 | 전송일시 | 결과코드 수신일시 | 전송 이동통신사명 | 구 전송결과 코드";
 
                 listBox1.Items.Add(rowStr);
 
@@ -1403,8 +1403,9 @@ namespace Popbill.Message.Example.csharp
                     rowStr += ResultList[i].stat + " | ";
                     rowStr += ResultList[i].rlt + " | ";
                     rowStr += ResultList[i].sDT + " | ";
-                    rowStr += ResultList[i].rDT + " | "; 
-                    rowStr += ResultList[i].net;
+                    rowStr += ResultList[i].rDT + " | ";
+                    rowStr += ResultList[i].net + " | ";
+                    rowStr += ResultList[i].srt;
 
                     listBox1.Items.Add(rowStr);
                 }

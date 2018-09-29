@@ -454,10 +454,10 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
             KeyType tiKeyType = KeyType.SELL;
 
             // 시작일자, 표시형식(yyyyMMdd)
-            String SDate = "20160901";
+            String SDate = "20180101";
 
             // 종료일자, 표시형식(yyyyMMdd)
-            String EDate = "20161031";
+            String EDate = "20180930";
 
             try
             {
@@ -593,23 +593,33 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
 
                 MessageBox.Show(tmp, "수집 결과 조회");
 
-                string rowStr = "구분 | 거래유형 | 거래일시 | 거래처 식별번호 | 공급가액 | 세액 | 봉사료 | 거래금액 | 현금영수증 형태 | 국세청승인번호 ";
+                string rowStr = "국세청승인번호 | 거래일자 | 거래일시 | 문서형태 | 거래구분 | 거래금액 | 공급가액 | 부가세 | 봉사료 | 매입/매출  ";
+                rowStr += "발행자 사업자번호 | 발행자 상호 | 발행자 사업자유형 | 식별번호 | 식별변호유형 | 고객명 | 카드소유자명 | 공제유형";
                 listBox1.Items.Add(rowStr);
 
                 // 현금영수증 항목에 대한 추가적인 정보는 [연동매뉴얼 4.1. 응답전문 구성] 를 참조하시기 바랍니다.
                 for (int i = 0; i < searchInfo.list.Count; i++)
                 {
                     rowStr = null;
-                    rowStr += searchInfo.list[i].invoiceType + " | ";
-                    rowStr += searchInfo.list[i].tradeUsage  + " | ";
+                    rowStr += searchInfo.list[i].ntsconfirmNum + " | ";
+                    rowStr += searchInfo.list[i].tradeDate + " | ";
                     rowStr += searchInfo.list[i].tradeDT + " | ";
-                    rowStr += searchInfo.list[i].identityNum + " | ";
+                    rowStr += searchInfo.list[i].tradeType + " | ";
+                    rowStr += searchInfo.list[i].tradeUsage + " | ";
+                    rowStr += searchInfo.list[i].totalAmount + " | ";
                     rowStr += searchInfo.list[i].supplyCost + " | ";
                     rowStr += searchInfo.list[i].tax + " | ";
                     rowStr += searchInfo.list[i].serviceFee + " | ";
-                    rowStr += searchInfo.list[i].totalAmount + " | ";
-                    rowStr += searchInfo.list[i].tradeType + " | ";
-                    rowStr += searchInfo.list[i].ntsconfirmNum;
+                    rowStr += searchInfo.list[i].invoiceType + " | ";
+                    rowStr += searchInfo.list[i].franchiseCorpNum + " | ";
+                    rowStr += searchInfo.list[i].franchiseCorpName + " | ";
+                    rowStr += searchInfo.list[i].franchiseCorpType + " | ";
+                    rowStr += searchInfo.list[i].identityNum + " | ";
+                    rowStr += searchInfo.list[i].identityNumType + " | ";
+                    rowStr += searchInfo.list[i].customerName + " | ";
+                    rowStr += searchInfo.list[i].cardOwnerName + " | ";
+                    rowStr += searchInfo.list[i].deductionType + " | ";
+
 
                     listBox1.Items.Add(rowStr);
                 }
