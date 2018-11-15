@@ -146,6 +146,7 @@
             this.txtCorpNum = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.fileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.btnRegistRequest = new System.Windows.Forms.Button();
             this.GroupBox8.SuspendLayout();
             this.GroupBox9.SuspendLayout();
             this.GroupBox10.SuspendLayout();
@@ -912,6 +913,7 @@
             // 
             // GroupBox7
             // 
+            this.GroupBox7.Controls.Add(this.btnRegistRequest);
             this.GroupBox7.Controls.Add(this.groupBox16);
             this.GroupBox7.Controls.Add(this.GroupBox14);
             this.GroupBox7.Controls.Add(this.btnSendToNTS);
@@ -1489,6 +1491,17 @@
             // 
             this.fileDialog.FileName = "OpenFileDialog1";
             // 
+            // btnRegistRequest
+            // 
+            this.btnRegistRequest.BackColor = System.Drawing.Color.Aquamarine;
+            this.btnRegistRequest.Location = new System.Drawing.Point(875, 72);
+            this.btnRegistRequest.Name = "btnRegistRequest";
+            this.btnRegistRequest.Size = new System.Drawing.Size(95, 40);
+            this.btnRegistRequest.TabIndex = 16;
+            this.btnRegistRequest.Text = "즉시 요청";
+            this.btnRegistRequest.UseVisualStyleBackColor = false;
+            this.btnRegistRequest.Click += new System.EventHandler(this.btnRegistRequest_Click);
+            // 
             // frmExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -1648,6 +1661,7 @@
         private System.Windows.Forms.Button btnCheckCertValidation;
         internal System.Windows.Forms.Label label27;
         internal System.Windows.Forms.Label label25;
+        internal System.Windows.Forms.Button btnRegistRequest;
     }
 }
 
