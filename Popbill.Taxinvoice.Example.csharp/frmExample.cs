@@ -2222,66 +2222,6 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
         }
 
-
-        /*
-         * 팝빌 로그인 팝업 URL을 반환합니다.
-         * - URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
-         */
-        private void getPopbillURL_LOGIN_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string url = taxinvoiceService.GetPopbillURL(txtCorpNum.Text, txtUserId.Text, "LOGIN");
-
-                MessageBox.Show(url, "팝빌 로그인 URL");
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "팝빌 로그인 URL");
-            }
-            
-        }
-
-        /*
-         * 팝빌 포인트충전 팝업 URL을 반환합니다.
-         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
-         */
-        private void getPopbillURL_CHRG_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string url = taxinvoiceService.GetPopbillURL(txtCorpNum.Text, txtUserId.Text, "CHRG");
-
-                MessageBox.Show(url, "연동회원 포인트 충전 URL");
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "포인트 충전 URL");
-            }
-            
-        }
-
-        /*
-         * 공인인증서 등록 팝업창을 호출합니다.
-         */
-        private void getPopbillURL_CERT_Click(object sender, EventArgs e)
-        {
-            string url;
-
-            try
-            {
-                url = taxinvoiceService.GetPopbillURL(txtCorpNum.Text, txtUserId.Text, "CERT");
-                System.Diagnostics.Process.Start("IExplore.exe", url);
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "공인인증서 등록 URL");
-            }            
-        }
-
         /*
          * 연동회원의 담당자를 추가합니다. 
          */
@@ -3061,26 +3001,6 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * 인감 및 첨부문서 등록 URL을 반환합니다.
-         * - 반환된 URL은 보안정책상 30초의 유효시간을 갖습니다.
-         */
-        private void getPopbillURL_SEAL_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string url = taxinvoiceService.GetPopbillURL(txtCorpNum.Text, txtUserId.Text, "SEAL");
-
-                MessageBox.Show(url, "인감 및 첨부문서 등록 URL");
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "인감 및 첨부문서 등록 URL");
-            }
-       
-        }
-
-        /*
          * 파트너 포인트 충전 팝업 URL을 반환합니다. 
          * - 반환된 URL은 보안정책상 30초의 유효시간을 갖습니다.
          */
@@ -3267,5 +3187,85 @@ namespace Popbill.Taxinvoice.Example.csharp
 
             }
         }
+
+        /*
+         * 팝빌 포인트충전 팝업 URL을 반환합니다.
+         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         */
+        private void btnGetChargeURL_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string url = taxinvoiceService.GetChargeURL(txtCorpNum.Text, txtUserId.Text);
+
+                MessageBox.Show(url, "연동회원 포인트 충전 URL");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "포인트 충전 URL");
+            }
+            
+        }
+
+        /*
+         * 공인인증서 등록 팝업창을 호출합니다.
+         */
+        private void btnGetTaxCertURL_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string url = taxinvoiceService.GetTaxCertURL(txtCorpNum.Text, txtUserId.Text);
+
+                System.Diagnostics.Process.Start("IExplore.exe", url);
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "공인인증서 등록 URL");
+            }
+        }
+
+        /*
+         * 팝빌 로그인 팝업 URL을 반환합니다.
+         * - URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         */
+        private void btnGetAccessURL_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string url = taxinvoiceService.GetAccessURL(txtCorpNum.Text, txtUserId.Text);
+
+                MessageBox.Show(url, "팝빌 로그인 URL");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "팝빌 로그인 URL");
+            }
+
+        }
+
+        /*
+        * 인감 및 첨부문서 등록 URL을 반환합니다.
+        * - 반환된 URL은 보안정책상 30초의 유효시간을 갖습니다.
+        */
+        private void btnGetSealURL_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string url = taxinvoiceService.GetSealURL(txtCorpNum.Text, txtUserId.Text);
+
+                MessageBox.Show(url, "인감 및 첨부문서 등록 URL");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "인감 및 첨부문서 등록 URL");
+            }
+        }
+
+        
+         
     }
 }

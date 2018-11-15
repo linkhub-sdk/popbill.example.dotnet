@@ -251,46 +251,6 @@ namespace Popbill.Kakao.Example.csharp
             }
         }
 
-        /*
-         * 연동회원의 잔여포인트를 조회합니다.
-         * - 파트너 과금 방식의 경우 파트너 잔여 포인트 조회(GetPartnerBalance API)를 이용하시기 바랍니다.
-         */
-        private void btnGetBalance_Click(object sender, EventArgs e)
-        {
-
-            try
-            {
-                double remainPoint = kakaoService.GetBalance(txtCorpNum.Text);
-
-                MessageBox.Show("연동회원 잔여포인트 : " + remainPoint.ToString(), "연동회원 잔여포인트 확인");
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "연동회원 잔여포인트 확인");
-
-            }
-        }
-
-        /*
-         * 팝빌 포인트충전 팝업 URL을 반환합니다.
-         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
-         */
-        private void btnGetPopbillURL_CHRG_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string url = kakaoService.GetPopbillURL(txtCorpNum.Text, txtUserId.Text, "CHRG");
-
-                MessageBox.Show(url, "포인트 충전 팝업 URL");
-
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "포인트 충전 팝업 URL");
-            }
-        }
 
         /*
          * 파트너 잔여포인트를 확인합니다.
@@ -331,25 +291,6 @@ namespace Popbill.Kakao.Example.csharp
             }
         }
 
-        /*
-         * 팝빌 로그인 팝업 URL을 반환합니다.
-         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다 
-         */
-        private void getPopbillURL_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string url = kakaoService.GetPopbillURL(txtCorpNum.Text, txtUserId.Text, "LOGIN");
-
-                MessageBox.Show(url, "팝빌 로그인 URL");
-
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "팝빌 로그인 URL");
-            }
-        }
 
         /*
          * 연동회원의 담당자를 추가합니다.
@@ -1102,24 +1043,7 @@ namespace Popbill.Kakao.Example.csharp
             }
         }
 
-        /*
-         * 플러스친구 계정관리 팝업 URL을 반환합니다.
-         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
-         */
-        private void btnGetURL_PLUSFRIEND_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string url = kakaoService.GetURL(txtCorpNum.Text, txtUserId.Text, "PLUSFRIEND");
-                MessageBox.Show(url, "플러스친구 계정관리 팝업 URL");
 
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "플러스친구 계정관리 팝업 URL");
-            }
-        }
 
         /*
          * 팝빌에 등록된 플러스친구 계정 목록을 반환합니다. 
@@ -1149,24 +1073,6 @@ namespace Popbill.Kakao.Example.csharp
             }
         }
 
-        /*
-         * 발신번호 관리 팝업 URL을 반환합니다.
-         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
-         */
-        private void btnGetURL_SENDER_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string url = kakaoService.GetURL(txtCorpNum.Text, txtUserId.Text, "SENDER");
-                MessageBox.Show(url, "발신번호 관리 팝업 URL");
-
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "발신번호 관리 팝업 URL");
-            }
-        }
 
         /*
          * 발신번호 목록을 반환합니다.
@@ -1193,25 +1099,6 @@ namespace Popbill.Kakao.Example.csharp
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + ex.Message, "발신번호 목록 조회");
-            }
-        }
-
-        /*
-         * 알림톡 템플릿관리 팝업 URL을 반환합니다.
-         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
-         */
-        private void btnGetURL_TEMPLATE_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string url = kakaoService.GetURL(txtCorpNum.Text, txtUserId.Text, "TEMPLATE");
-                MessageBox.Show(url, "알림톡 템플릿 관리 팝업 URL");
-
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "알림톡 템플릿 관리 팝업 URL");
             }
         }
 
@@ -1255,26 +1142,6 @@ namespace Popbill.Kakao.Example.csharp
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + ex.Message, "알림톡 템플릿 목록 확인");
-            }
-        }
-
-
-        /*
-         * 카카오톡 전송내역 팝업 URL을 반환합니다.
-         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
-         */
-        private void btnGetURL_BOX_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string url = kakaoService.GetURL(txtCorpNum.Text, txtUserId.Text, "BOX");                
-                MessageBox.Show(url, "카카오톡 전송내역 팝업 URL");
-
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "카카오톡 전송내역 팝업 URL");
             }
         }
 
@@ -1531,6 +1398,152 @@ namespace Popbill.Kakao.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "예약전송 취소");
             }
         }
+
+        /*
+         * 연동회원의 잔여포인트를 조회합니다.
+         * - 파트너 과금 방식의 경우 파트너 잔여 포인트 조회(GetPartnerBalance API)를 이용하시기 바랍니다.
+         */
+        private void btnGetBalance_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                double remainPoint = kakaoService.GetBalance(txtCorpNum.Text);
+
+                MessageBox.Show("연동회원 잔여포인트 : " + remainPoint.ToString(), "연동회원 잔여포인트 확인");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "연동회원 잔여포인트 확인");
+
+            }
+        }
+
+        /*
+         * 팝빌 포인트충전 팝업 URL을 반환합니다.
+         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         */
+        private void btnGetChargeURL_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string url = kakaoService.GetChargeURL(txtCorpNum.Text, txtUserId.Text);
+
+                MessageBox.Show(url, "포인트 충전 팝업 URL");
+
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "포인트 충전 팝업 URL");
+            }
+        }
+
+        /*
+        * 팝빌 로그인 팝업 URL을 반환합니다.
+        * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다 
+        */
+        private void btnGetAccessURL_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string url = kakaoService.GetAccessURL(txtCorpNum.Text, txtUserId.Text);
+
+                MessageBox.Show(url, "팝빌 로그인 URL");
+
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "팝빌 로그인 URL");
+            }
+        }
+
+
+        /*
+         * 플러스친구 계정관리 팝업 URL을 반환합니다.
+         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         */
+        private void btnGetPlusFriendMgtURL_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string url = kakaoService.GetPlusFriendMgtURL(txtCorpNum.Text, txtUserId.Text);
+
+                MessageBox.Show(url, "플러스친구 계정관리 팝업 URL");
+
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "플러스친구 계정관리 팝업 URL");
+            }
+        }
+
+        /*
+         * 알림톡 템플릿관리 팝업 URL을 반환합니다.
+         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         */
+        private void btnGetATSTemplateMgtURL_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string url = kakaoService.GetATSTemplateMgtURL(txtCorpNum.Text, txtUserId.Text);
+
+                MessageBox.Show(url, "알림톡 템플릿 관리 팝업 URL");
+
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "알림톡 템플릿 관리 팝업 URL");
+            }
+
+        }
+
+        /*
+         * 발신번호 관리 팝업 URL을 반환합니다.
+         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         */
+        private void btnGetSenderNumberMgtURL_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string url = kakaoService.GetSenderNumberMgtURL(txtCorpNum.Text, txtUserId.Text);
+                
+                MessageBox.Show(url, "발신번호 관리 팝업 URL");
+
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "발신번호 관리 팝업 URL");
+            }
+        }
+
+        /*
+         * 카카오톡 전송내역 팝업 URL을 반환합니다.
+         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         */
+        private void btnGetSentListURL_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string url = kakaoService.GetSentListURL(txtCorpNum.Text, txtUserId.Text);
+                
+                MessageBox.Show(url, "카카오톡 전송내역 팝업 URL");
+
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "카카오톡 전송내역 팝업 URL");
+            }
+        }
+
+
+
 
     }
 }

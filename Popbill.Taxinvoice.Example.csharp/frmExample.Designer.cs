@@ -84,7 +84,7 @@
             this.GroupBox4 = new System.Windows.Forms.GroupBox();
             this.btnCheckCertValidation = new System.Windows.Forms.Button();
             this.btnGetCertificateExpireDate = new System.Windows.Forms.Button();
-            this.getPopbillURL_CERT = new System.Windows.Forms.Button();
+            this.btnGetTaxCertURL = new System.Windows.Forms.Button();
             this.btnUnitCost = new System.Windows.Forms.Button();
             this.GroupBox3 = new System.Windows.Forms.GroupBox();
             this.btnGetChargeInfo = new System.Windows.Forms.Button();
@@ -97,6 +97,8 @@
             this.btnJoinMember = new System.Windows.Forms.Button();
             this.GroupBox7 = new System.Windows.Forms.GroupBox();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
             this.btnDelete_Sub = new System.Windows.Forms.Button();
             this.btnCancelIssue_Sub = new System.Windows.Forms.Button();
             this.btnRegistIssue = new System.Windows.Forms.Button();
@@ -125,12 +127,12 @@
             this.GroupBox12 = new System.Windows.Forms.GroupBox();
             this.btnGetPrintURL = new System.Windows.Forms.Button();
             this.txtUserId = new System.Windows.Forms.TextBox();
-            this.getPopbillURL_LOGIN = new System.Windows.Forms.Button();
+            this.btnGetAccessURL = new System.Windows.Forms.Button();
             this.GroupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox18 = new System.Windows.Forms.GroupBox();
             this.btnGetPartnerURL_CHRG = new System.Windows.Forms.Button();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
-            this.getPopbillURL_CHRG = new System.Windows.Forms.Button();
+            this.btnGetChargeURL = new System.Windows.Forms.Button();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
             this.btnUpdateCorpInfo = new System.Windows.Forms.Button();
             this.btnGetCorpInfo = new System.Windows.Forms.Button();
@@ -139,13 +141,11 @@
             this.btnListContact = new System.Windows.Forms.Button();
             this.btnRegistContact = new System.Windows.Forms.Button();
             this.GroupBox5 = new System.Windows.Forms.GroupBox();
-            this.getPopbillURL_SEAL = new System.Windows.Forms.Button();
+            this.btnGetSealURL = new System.Windows.Forms.Button();
             this.Label2 = new System.Windows.Forms.Label();
             this.txtCorpNum = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.fileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
             this.GroupBox8.SuspendLayout();
             this.GroupBox9.SuspendLayout();
             this.GroupBox10.SuspendLayout();
@@ -769,7 +769,7 @@
             // 
             this.GroupBox4.Controls.Add(this.btnCheckCertValidation);
             this.GroupBox4.Controls.Add(this.btnGetCertificateExpireDate);
-            this.GroupBox4.Controls.Add(this.getPopbillURL_CERT);
+            this.GroupBox4.Controls.Add(this.btnGetTaxCertURL);
             this.GroupBox4.Location = new System.Drawing.Point(666, 20);
             this.GroupBox4.Name = "GroupBox4";
             this.GroupBox4.Size = new System.Drawing.Size(158, 116);
@@ -797,15 +797,15 @@
             this.btnGetCertificateExpireDate.UseVisualStyleBackColor = true;
             this.btnGetCertificateExpireDate.Click += new System.EventHandler(this.btnGetCertificateExpireDate_Click);
             // 
-            // getPopbillURL_CERT
+            // btnGetTaxCertURL
             // 
-            this.getPopbillURL_CERT.Location = new System.Drawing.Point(9, 19);
-            this.getPopbillURL_CERT.Name = "getPopbillURL_CERT";
-            this.getPopbillURL_CERT.Size = new System.Drawing.Size(142, 27);
-            this.getPopbillURL_CERT.TabIndex = 2;
-            this.getPopbillURL_CERT.Text = "인증서 등록 URL";
-            this.getPopbillURL_CERT.UseVisualStyleBackColor = true;
-            this.getPopbillURL_CERT.Click += new System.EventHandler(this.getPopbillURL_CERT_Click);
+            this.btnGetTaxCertURL.Location = new System.Drawing.Point(9, 19);
+            this.btnGetTaxCertURL.Name = "btnGetTaxCertURL";
+            this.btnGetTaxCertURL.Size = new System.Drawing.Size(142, 27);
+            this.btnGetTaxCertURL.TabIndex = 2;
+            this.btnGetTaxCertURL.Text = "인증서 등록 URL";
+            this.btnGetTaxCertURL.UseVisualStyleBackColor = true;
+            this.btnGetTaxCertURL.Click += new System.EventHandler(this.btnGetTaxCertURL_Click);
             // 
             // btnUnitCost
             // 
@@ -947,6 +947,30 @@
             this.groupBox16.TabIndex = 15;
             this.groupBox16.TabStop = false;
             this.groupBox16.Text = "즉시발행 세금계산서 - (권장)";
+            // 
+            // label27
+            // 
+            this.label27.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.label27.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label27.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label27.Location = new System.Drawing.Point(57, 69);
+            this.label27.Name = "label27";
+            this.label27.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.label27.Size = new System.Drawing.Size(1, 58);
+            this.label27.TabIndex = 16;
+            this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label25
+            // 
+            this.label25.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.label25.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label25.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label25.Location = new System.Drawing.Point(90, 138);
+            this.label25.Name = "label25";
+            this.label25.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.label25.Size = new System.Drawing.Size(33, 1);
+            this.label25.TabIndex = 15;
+            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnDelete_Sub
             // 
@@ -1272,15 +1296,15 @@
             this.txtUserId.TabIndex = 10;
             this.txtUserId.Text = "testkorea";
             // 
-            // getPopbillURL_LOGIN
+            // btnGetAccessURL
             // 
-            this.getPopbillURL_LOGIN.Location = new System.Drawing.Point(9, 19);
-            this.getPopbillURL_LOGIN.Name = "getPopbillURL_LOGIN";
-            this.getPopbillURL_LOGIN.Size = new System.Drawing.Size(142, 27);
-            this.getPopbillURL_LOGIN.TabIndex = 0;
-            this.getPopbillURL_LOGIN.Text = "팝빌 로그인 URL";
-            this.getPopbillURL_LOGIN.UseVisualStyleBackColor = true;
-            this.getPopbillURL_LOGIN.Click += new System.EventHandler(this.getPopbillURL_LOGIN_Click);
+            this.btnGetAccessURL.Location = new System.Drawing.Point(9, 19);
+            this.btnGetAccessURL.Name = "btnGetAccessURL";
+            this.btnGetAccessURL.Size = new System.Drawing.Size(142, 27);
+            this.btnGetAccessURL.TabIndex = 0;
+            this.btnGetAccessURL.Text = "팝빌 로그인 URL";
+            this.btnGetAccessURL.UseVisualStyleBackColor = true;
+            this.btnGetAccessURL.Click += new System.EventHandler(this.btnGetAccessURL_Click);
             // 
             // GroupBox1
             // 
@@ -1323,7 +1347,7 @@
             // groupBox17
             // 
             this.groupBox17.Controls.Add(this.btnGetBalance);
-            this.groupBox17.Controls.Add(this.getPopbillURL_CHRG);
+            this.groupBox17.Controls.Add(this.btnGetChargeURL);
             this.groupBox17.Location = new System.Drawing.Point(336, 20);
             this.groupBox17.Name = "groupBox17";
             this.groupBox17.Size = new System.Drawing.Size(158, 116);
@@ -1331,15 +1355,15 @@
             this.groupBox17.TabStop = false;
             this.groupBox17.Text = "연동과금 포인트";
             // 
-            // getPopbillURL_CHRG
+            // btnGetChargeURL
             // 
-            this.getPopbillURL_CHRG.Location = new System.Drawing.Point(9, 50);
-            this.getPopbillURL_CHRG.Name = "getPopbillURL_CHRG";
-            this.getPopbillURL_CHRG.Size = new System.Drawing.Size(142, 27);
-            this.getPopbillURL_CHRG.TabIndex = 1;
-            this.getPopbillURL_CHRG.Text = "포인트 충전 URL";
-            this.getPopbillURL_CHRG.UseVisualStyleBackColor = true;
-            this.getPopbillURL_CHRG.Click += new System.EventHandler(this.getPopbillURL_CHRG_Click);
+            this.btnGetChargeURL.Location = new System.Drawing.Point(9, 50);
+            this.btnGetChargeURL.Name = "btnGetChargeURL";
+            this.btnGetChargeURL.Size = new System.Drawing.Size(142, 27);
+            this.btnGetChargeURL.TabIndex = 1;
+            this.btnGetChargeURL.Text = "포인트 충전 URL";
+            this.btnGetChargeURL.UseVisualStyleBackColor = true;
+            this.btnGetChargeURL.Click += new System.EventHandler(this.btnGetChargeURL_Click);
             // 
             // groupBox15
             // 
@@ -1416,8 +1440,8 @@
             // 
             // GroupBox5
             // 
-            this.GroupBox5.Controls.Add(this.getPopbillURL_SEAL);
-            this.GroupBox5.Controls.Add(this.getPopbillURL_LOGIN);
+            this.GroupBox5.Controls.Add(this.btnGetSealURL);
+            this.GroupBox5.Controls.Add(this.btnGetAccessURL);
             this.GroupBox5.Location = new System.Drawing.Point(831, 20);
             this.GroupBox5.Name = "GroupBox5";
             this.GroupBox5.Size = new System.Drawing.Size(158, 116);
@@ -1425,15 +1449,15 @@
             this.GroupBox5.TabStop = false;
             this.GroupBox5.Text = "팝빌 기본 URL";
             // 
-            // getPopbillURL_SEAL
+            // btnGetSealURL
             // 
-            this.getPopbillURL_SEAL.Location = new System.Drawing.Point(9, 50);
-            this.getPopbillURL_SEAL.Name = "getPopbillURL_SEAL";
-            this.getPopbillURL_SEAL.Size = new System.Drawing.Size(142, 27);
-            this.getPopbillURL_SEAL.TabIndex = 3;
-            this.getPopbillURL_SEAL.Text = "인감 및 첨부문서 URL";
-            this.getPopbillURL_SEAL.UseVisualStyleBackColor = true;
-            this.getPopbillURL_SEAL.Click += new System.EventHandler(this.getPopbillURL_SEAL_Click);
+            this.btnGetSealURL.Location = new System.Drawing.Point(9, 50);
+            this.btnGetSealURL.Name = "btnGetSealURL";
+            this.btnGetSealURL.Size = new System.Drawing.Size(142, 27);
+            this.btnGetSealURL.TabIndex = 3;
+            this.btnGetSealURL.Text = "인감 및 첨부문서 URL";
+            this.btnGetSealURL.UseVisualStyleBackColor = true;
+            this.btnGetSealURL.Click += new System.EventHandler(this.btnGetSealURL_Click);
             // 
             // Label2
             // 
@@ -1464,30 +1488,6 @@
             // fileDialog
             // 
             this.fileDialog.FileName = "OpenFileDialog1";
-            // 
-            // label25
-            // 
-            this.label25.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label25.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label25.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label25.Location = new System.Drawing.Point(90, 138);
-            this.label25.Name = "label25";
-            this.label25.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.label25.Size = new System.Drawing.Size(33, 1);
-            this.label25.TabIndex = 15;
-            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label27
-            // 
-            this.label27.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label27.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label27.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label27.Location = new System.Drawing.Point(57, 69);
-            this.label27.Name = "label27";
-            this.label27.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.label27.Size = new System.Drawing.Size(1, 58);
-            this.label27.TabIndex = 16;
-            this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // frmExample
             // 
@@ -1611,7 +1611,7 @@
         internal System.Windows.Forms.GroupBox GroupBox12;
         internal System.Windows.Forms.Button btnGetPrintURL;
         internal System.Windows.Forms.TextBox txtUserId;
-        internal System.Windows.Forms.Button getPopbillURL_LOGIN;
+        internal System.Windows.Forms.Button btnGetAccessURL;
         internal System.Windows.Forms.GroupBox GroupBox1;
         internal System.Windows.Forms.GroupBox GroupBox6;
         internal System.Windows.Forms.GroupBox GroupBox5;
@@ -1620,8 +1620,8 @@
         internal System.Windows.Forms.Label Label1;
         private System.Windows.Forms.Button btnCheckID;
         internal System.Windows.Forms.Button btnGetPartnerBalance;
-        internal System.Windows.Forms.Button getPopbillURL_CERT;
-        internal System.Windows.Forms.Button getPopbillURL_CHRG;
+        internal System.Windows.Forms.Button btnGetTaxCertURL;
+        internal System.Windows.Forms.Button btnGetChargeURL;
         private System.Windows.Forms.Button btnRegistContact;
         private System.Windows.Forms.Button btnListContact;
         private System.Windows.Forms.Button btnUpdateContact;
@@ -1637,7 +1637,7 @@
         internal System.Windows.Forms.Button btnDetachStmt;
         internal System.Windows.Forms.Button btnAttachStmt;
         private System.Windows.Forms.Button btnGetChargeInfo;
-        internal System.Windows.Forms.Button getPopbillURL_SEAL;
+        internal System.Windows.Forms.Button btnGetSealURL;
         private System.Windows.Forms.GroupBox groupBox17;
         private System.Windows.Forms.GroupBox groupBox18;
         private System.Windows.Forms.Button btnGetPartnerURL_CHRG;

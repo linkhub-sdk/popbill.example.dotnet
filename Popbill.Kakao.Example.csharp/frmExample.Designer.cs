@@ -41,10 +41,10 @@
             this.btnListContact = new System.Windows.Forms.Button();
             this.btnRegistContact = new System.Windows.Forms.Button();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
-            this.btnGetPopbillURL_CHRG = new System.Windows.Forms.Button();
+            this.btnGetChargeURL = new System.Windows.Forms.Button();
             this.btnGetBalance = new System.Windows.Forms.Button();
             this.GroupBox5 = new System.Windows.Forms.GroupBox();
-            this.getPopbillURL = new System.Windows.Forms.Button();
+            this.btnGetAccessURL = new System.Windows.Forms.Button();
             this.GroupBox3 = new System.Windows.Forms.GroupBox();
             this.btnGetChargeInfo = new System.Windows.Forms.Button();
             this.btn_unitcost_FMS = new System.Windows.Forms.Button();
@@ -71,13 +71,13 @@
             this.btnGetMessages = new System.Windows.Forms.Button();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.btnGetURL_BOX = new System.Windows.Forms.Button();
+            this.btnGetSentListURL = new System.Windows.Forms.Button();
             this.btnListATSTemplate = new System.Windows.Forms.Button();
-            this.btnGetURL_TEMPLATE = new System.Windows.Forms.Button();
+            this.btnGetATSTemplateMgtURL = new System.Windows.Forms.Button();
             this.btnGetSenderNumberList = new System.Windows.Forms.Button();
-            this.btnGetURL_SENDER = new System.Windows.Forms.Button();
+            this.btnGetSenderNumberMgtURL = new System.Windows.Forms.Button();
             this.btnListPlusFriendID = new System.Windows.Forms.Button();
-            this.btnGetURL_PLUSFRIEND = new System.Windows.Forms.Button();
+            this.btnGetPlusFriendMgtURL = new System.Windows.Forms.Button();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.btnSendFMS_multi = new System.Windows.Forms.Button();
             this.btnSendFMS_same = new System.Windows.Forms.Button();
@@ -241,7 +241,7 @@
             // 
             // groupBox13
             // 
-            this.groupBox13.Controls.Add(this.btnGetPopbillURL_CHRG);
+            this.groupBox13.Controls.Add(this.btnGetChargeURL);
             this.groupBox13.Controls.Add(this.btnGetBalance);
             this.groupBox13.Location = new System.Drawing.Point(424, 16);
             this.groupBox13.Name = "groupBox13";
@@ -250,15 +250,15 @@
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "연동과금 포인트";
             // 
-            // btnGetPopbillURL_CHRG
+            // btnGetChargeURL
             // 
-            this.btnGetPopbillURL_CHRG.Location = new System.Drawing.Point(6, 58);
-            this.btnGetPopbillURL_CHRG.Name = "btnGetPopbillURL_CHRG";
-            this.btnGetPopbillURL_CHRG.Size = new System.Drawing.Size(123, 33);
-            this.btnGetPopbillURL_CHRG.TabIndex = 1;
-            this.btnGetPopbillURL_CHRG.Text = "포인트 충전 URL";
-            this.btnGetPopbillURL_CHRG.UseVisualStyleBackColor = true;
-            this.btnGetPopbillURL_CHRG.Click += new System.EventHandler(this.btnGetPopbillURL_CHRG_Click);
+            this.btnGetChargeURL.Location = new System.Drawing.Point(6, 58);
+            this.btnGetChargeURL.Name = "btnGetChargeURL";
+            this.btnGetChargeURL.Size = new System.Drawing.Size(123, 33);
+            this.btnGetChargeURL.TabIndex = 1;
+            this.btnGetChargeURL.Text = "포인트 충전 URL";
+            this.btnGetChargeURL.UseVisualStyleBackColor = true;
+            this.btnGetChargeURL.Click += new System.EventHandler(this.btnGetChargeURL_Click);
             // 
             // btnGetBalance
             // 
@@ -272,7 +272,7 @@
             // 
             // GroupBox5
             // 
-            this.GroupBox5.Controls.Add(this.getPopbillURL);
+            this.GroupBox5.Controls.Add(this.btnGetAccessURL);
             this.GroupBox5.Location = new System.Drawing.Point(725, 16);
             this.GroupBox5.Name = "GroupBox5";
             this.GroupBox5.Size = new System.Drawing.Size(138, 136);
@@ -280,15 +280,15 @@
             this.GroupBox5.TabStop = false;
             this.GroupBox5.Text = "팝빌 기본 URL";
             // 
-            // getPopbillURL
+            // btnGetAccessURL
             // 
-            this.getPopbillURL.Location = new System.Drawing.Point(7, 18);
-            this.getPopbillURL.Name = "getPopbillURL";
-            this.getPopbillURL.Size = new System.Drawing.Size(123, 32);
-            this.getPopbillURL.TabIndex = 0;
-            this.getPopbillURL.Text = "팝빌 로그인 URL";
-            this.getPopbillURL.UseVisualStyleBackColor = true;
-            this.getPopbillURL.Click += new System.EventHandler(this.getPopbillURL_Click);
+            this.btnGetAccessURL.Location = new System.Drawing.Point(7, 18);
+            this.btnGetAccessURL.Name = "btnGetAccessURL";
+            this.btnGetAccessURL.Size = new System.Drawing.Size(123, 32);
+            this.btnGetAccessURL.TabIndex = 0;
+            this.btnGetAccessURL.Text = "팝빌 로그인 URL";
+            this.btnGetAccessURL.UseVisualStyleBackColor = true;
+            this.btnGetAccessURL.Click += new System.EventHandler(this.btnGetAccessURL_Click);
             // 
             // GroupBox3
             // 
@@ -540,13 +540,13 @@
             // groupBox9
             // 
             this.groupBox9.Controls.Add(this.btnSearch);
-            this.groupBox9.Controls.Add(this.btnGetURL_BOX);
+            this.groupBox9.Controls.Add(this.btnGetSentListURL);
             this.groupBox9.Controls.Add(this.btnListATSTemplate);
-            this.groupBox9.Controls.Add(this.btnGetURL_TEMPLATE);
+            this.groupBox9.Controls.Add(this.btnGetATSTemplateMgtURL);
             this.groupBox9.Controls.Add(this.btnGetSenderNumberList);
-            this.groupBox9.Controls.Add(this.btnGetURL_SENDER);
+            this.groupBox9.Controls.Add(this.btnGetSenderNumberMgtURL);
             this.groupBox9.Controls.Add(this.btnListPlusFriendID);
-            this.groupBox9.Controls.Add(this.btnGetURL_PLUSFRIEND);
+            this.groupBox9.Controls.Add(this.btnGetPlusFriendMgtURL);
             this.groupBox9.Location = new System.Drawing.Point(750, 20);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(397, 197);
@@ -564,15 +564,15 @@
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // btnGetURL_BOX
+            // btnGetSentListURL
             // 
-            this.btnGetURL_BOX.Location = new System.Drawing.Point(205, 104);
-            this.btnGetURL_BOX.Name = "btnGetURL_BOX";
-            this.btnGetURL_BOX.Size = new System.Drawing.Size(184, 36);
-            this.btnGetURL_BOX.TabIndex = 9;
-            this.btnGetURL_BOX.Text = "전송내역 조회 팝업 URL";
-            this.btnGetURL_BOX.UseVisualStyleBackColor = true;
-            this.btnGetURL_BOX.Click += new System.EventHandler(this.btnGetURL_BOX_Click);
+            this.btnGetSentListURL.Location = new System.Drawing.Point(205, 104);
+            this.btnGetSentListURL.Name = "btnGetSentListURL";
+            this.btnGetSentListURL.Size = new System.Drawing.Size(184, 36);
+            this.btnGetSentListURL.TabIndex = 9;
+            this.btnGetSentListURL.Text = "전송내역 조회 팝업 URL";
+            this.btnGetSentListURL.UseVisualStyleBackColor = true;
+            this.btnGetSentListURL.Click += new System.EventHandler(this.btnGetSentListURL_Click);
             // 
             // btnListATSTemplate
             // 
@@ -584,15 +584,15 @@
             this.btnListATSTemplate.UseVisualStyleBackColor = true;
             this.btnListATSTemplate.Click += new System.EventHandler(this.btnListATSTemplate_Click);
             // 
-            // btnGetURL_TEMPLATE
+            // btnGetATSTemplateMgtURL
             // 
-            this.btnGetURL_TEMPLATE.Location = new System.Drawing.Point(205, 20);
-            this.btnGetURL_TEMPLATE.Name = "btnGetURL_TEMPLATE";
-            this.btnGetURL_TEMPLATE.Size = new System.Drawing.Size(184, 36);
-            this.btnGetURL_TEMPLATE.TabIndex = 7;
-            this.btnGetURL_TEMPLATE.Text = "알림톡 템플릿관리 팝업 URL";
-            this.btnGetURL_TEMPLATE.UseVisualStyleBackColor = true;
-            this.btnGetURL_TEMPLATE.Click += new System.EventHandler(this.btnGetURL_TEMPLATE_Click);
+            this.btnGetATSTemplateMgtURL.Location = new System.Drawing.Point(205, 20);
+            this.btnGetATSTemplateMgtURL.Name = "btnGetATSTemplateMgtURL";
+            this.btnGetATSTemplateMgtURL.Size = new System.Drawing.Size(184, 36);
+            this.btnGetATSTemplateMgtURL.TabIndex = 7;
+            this.btnGetATSTemplateMgtURL.Text = "알림톡 템플릿관리 팝업 URL";
+            this.btnGetATSTemplateMgtURL.UseVisualStyleBackColor = true;
+            this.btnGetATSTemplateMgtURL.Click += new System.EventHandler(this.btnGetATSTemplateMgtURL_Click);
             // 
             // btnGetSenderNumberList
             // 
@@ -604,15 +604,15 @@
             this.btnGetSenderNumberList.UseVisualStyleBackColor = true;
             this.btnGetSenderNumberList.Click += new System.EventHandler(this.btnGetSenderNumberList_Click);
             // 
-            // btnGetURL_SENDER
+            // btnGetSenderNumberMgtURL
             // 
-            this.btnGetURL_SENDER.Location = new System.Drawing.Point(16, 104);
-            this.btnGetURL_SENDER.Name = "btnGetURL_SENDER";
-            this.btnGetURL_SENDER.Size = new System.Drawing.Size(184, 36);
-            this.btnGetURL_SENDER.TabIndex = 5;
-            this.btnGetURL_SENDER.Text = "발신번호 관리 팝업 URL";
-            this.btnGetURL_SENDER.UseVisualStyleBackColor = true;
-            this.btnGetURL_SENDER.Click += new System.EventHandler(this.btnGetURL_SENDER_Click);
+            this.btnGetSenderNumberMgtURL.Location = new System.Drawing.Point(16, 104);
+            this.btnGetSenderNumberMgtURL.Name = "btnGetSenderNumberMgtURL";
+            this.btnGetSenderNumberMgtURL.Size = new System.Drawing.Size(184, 36);
+            this.btnGetSenderNumberMgtURL.TabIndex = 5;
+            this.btnGetSenderNumberMgtURL.Text = "발신번호 관리 팝업 URL";
+            this.btnGetSenderNumberMgtURL.UseVisualStyleBackColor = true;
+            this.btnGetSenderNumberMgtURL.Click += new System.EventHandler(this.btnGetSenderNumberMgtURL_Click);
             // 
             // btnListPlusFriendID
             // 
@@ -624,15 +624,15 @@
             this.btnListPlusFriendID.UseVisualStyleBackColor = true;
             this.btnListPlusFriendID.Click += new System.EventHandler(this.btnListPlusFriendID_Click);
             // 
-            // btnGetURL_PLUSFRIEND
+            // btnGetPlusFriendMgtURL
             // 
-            this.btnGetURL_PLUSFRIEND.Location = new System.Drawing.Point(16, 20);
-            this.btnGetURL_PLUSFRIEND.Name = "btnGetURL_PLUSFRIEND";
-            this.btnGetURL_PLUSFRIEND.Size = new System.Drawing.Size(184, 36);
-            this.btnGetURL_PLUSFRIEND.TabIndex = 3;
-            this.btnGetURL_PLUSFRIEND.Text = "플러스친구 계정관리 팝업 URL";
-            this.btnGetURL_PLUSFRIEND.UseVisualStyleBackColor = true;
-            this.btnGetURL_PLUSFRIEND.Click += new System.EventHandler(this.btnGetURL_PLUSFRIEND_Click);
+            this.btnGetPlusFriendMgtURL.Location = new System.Drawing.Point(16, 20);
+            this.btnGetPlusFriendMgtURL.Name = "btnGetPlusFriendMgtURL";
+            this.btnGetPlusFriendMgtURL.Size = new System.Drawing.Size(184, 36);
+            this.btnGetPlusFriendMgtURL.TabIndex = 3;
+            this.btnGetPlusFriendMgtURL.Text = "플러스친구 계정관리 팝업 URL";
+            this.btnGetPlusFriendMgtURL.UseVisualStyleBackColor = true;
+            this.btnGetPlusFriendMgtURL.Click += new System.EventHandler(this.btnGetPlusFriendMgtURL_Click);
             // 
             // groupBox8
             // 
@@ -832,10 +832,10 @@
         private System.Windows.Forms.Button btnListContact;
         private System.Windows.Forms.Button btnRegistContact;
         private System.Windows.Forms.GroupBox groupBox13;
-        internal System.Windows.Forms.Button btnGetPopbillURL_CHRG;
+        internal System.Windows.Forms.Button btnGetChargeURL;
         internal System.Windows.Forms.Button btnGetBalance;
         internal System.Windows.Forms.GroupBox GroupBox5;
-        internal System.Windows.Forms.Button getPopbillURL;
+        internal System.Windows.Forms.Button btnGetAccessURL;
         internal System.Windows.Forms.GroupBox GroupBox3;
         private System.Windows.Forms.Button btnGetChargeInfo;
         internal System.Windows.Forms.Button btn_unitcost_FMS;
@@ -865,13 +865,13 @@
         private System.Windows.Forms.Button btnSendATS_one;
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.Button btnListPlusFriendID;
-        private System.Windows.Forms.Button btnGetURL_PLUSFRIEND;
+        private System.Windows.Forms.Button btnGetPlusFriendMgtURL;
         private System.Windows.Forms.Button btnGetSenderNumberList;
-        private System.Windows.Forms.Button btnGetURL_SENDER;
+        private System.Windows.Forms.Button btnGetSenderNumberMgtURL;
         private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.Button btnGetURL_BOX;
+        private System.Windows.Forms.Button btnGetSentListURL;
         private System.Windows.Forms.Button btnListATSTemplate;
-        private System.Windows.Forms.Button btnGetURL_TEMPLATE;
+        private System.Windows.Forms.Button btnGetATSTemplateMgtURL;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtReceiptNum;
         private System.Windows.Forms.Button btnGetMessages;

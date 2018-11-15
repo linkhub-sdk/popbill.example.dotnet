@@ -48,26 +48,6 @@ namespace Popbill.Fax.Example.csharp
         }
 
         /*
-         * 팝빌 로그인 팝업 URL을 반환합니다.
-         * - 반환된 URL은 보안정책에 따라 30초의 유효시간을 갖습니다. 
-         */
-        private void getPopbillURL_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string url = faxService.GetPopbillURL(txtCorpNum.Text, txtUserId.Text, "LOGIN");
-
-                MessageBox.Show(url, "팝빌 로그인 URL");
-
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "팝빌 로그인 URL");
-            }
-        }
-
-        /*
          * 연동회원 신규가입을 요청합니다.
          */
         private void btnJoinMember_Click(object sender, EventArgs e)
@@ -218,25 +198,6 @@ namespace Popbill.Fax.Example.csharp
                 reserveDT = DateTime.ParseExact(txtReserveDT.Text, "yyyyMMddHHmmss", System.Globalization.CultureInfo.InvariantCulture);
             }
             return reserveDT;
-        }
-
-        /*
-         * 팩스 전송내역 팝업 URL을 반환합니다.
-         * - 반환된 URL은 보안정책에 따라 30초의 유효시간을 갖습니다.
-         */
-        private void btnGetURL_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string url = faxService.GetURL(txtCorpNum.Text, txtUserId.Text, "BOX");
-
-                MessageBox.Show(url, "팩스 전송내역 URL");
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "팩스 전송내역 URL");
-            }
         }
 
         /*
@@ -526,24 +487,7 @@ namespace Popbill.Fax.Example.csharp
             }
         }
 
-        /*
-         * 팝빌 포인트충전 팝업 URL을 반환합니다.
-         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
-         */
-        private void btnGetPopbillURL_CHRG_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string url = faxService.GetPopbillURL(txtCorpNum.Text, txtUserId.Text, "CHRG");
 
-                MessageBox.Show(url, "포인트충전 팝업 URL");
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "포인트충전 팝업 URL");
-            }
-        }
 
         /*
          * 팝빌 회원아이디 중복여부를 확인합니다.
@@ -1004,24 +948,6 @@ namespace Popbill.Fax.Example.csharp
         }
 
         /*
-         * 팩스 발신번호 관리 팝업 URL을 확인합니다.
-         */
-        private void btnGetURL_SENDER_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string url = faxService.GetURL(txtCorpNum.Text, txtUserId.Text, "SENDER");
-
-                MessageBox.Show(url, "팩스 발신번호 관리 팝업 URL");
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "팩스 발신번호 관리 팝업 URL");
-            }
-        }
-
-        /*
          * 파트너 포인트 충전 팝업 URL을 반환합니다. 
          * - 반환된 URL은 보안정책상 30초의 유효시간을 갖습니다.
          */
@@ -1222,7 +1148,82 @@ namespace Popbill.Fax.Example.csharp
             }
         }
 
-        
+        /*
+         * 팝빌 포인트충전 팝업 URL을 반환합니다.
+         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         */
+        private void btnGetChargeURL_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string url = faxService.GetChargeURL(txtCorpNum.Text, txtUserId.Text);
 
+                MessageBox.Show(url, "포인트충전 팝업 URL");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "포인트충전 팝업 URL");
+            }
+        }
+
+
+        /*
+         * 팩스 전송내역 팝업 URL을 반환합니다.
+         * - 반환된 URL은 보안정책에 따라 30초의 유효시간을 갖습니다.
+         */
+        private void btnGetSentListURL_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string url = faxService.GetSentListURL(txtCorpNum.Text, txtUserId.Text);
+
+                MessageBox.Show(url, "팩스 전송내역 URL");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "팩스 전송내역 URL");
+            }
+        }
+
+        /*
+         * 팩스 발신번호 관리 팝업 URL을 확인합니다.
+         */
+        private void btnGetSenderNumberMgtURL_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string url = faxService.GetSenderNumberMgtURL(txtCorpNum.Text, txtUserId.Text);
+
+                MessageBox.Show(url, "팩스 발신번호 관리 팝업 URL");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "팩스 발신번호 관리 팝업 URL");
+            }
+        }
+
+        /*
+        * 팝빌 로그인 팝업 URL을 반환합니다.
+        * - 반환된 URL은 보안정책에 따라 30초의 유효시간을 갖습니다. 
+        */
+
+        private void btnGetAccessURL_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string url = faxService.GetAccessURL(txtCorpNum.Text, txtUserId.Text);
+
+                MessageBox.Show(url, "팝빌 로그인 URL");
+
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "팝빌 로그인 URL");
+            }
+        }
     }
 }

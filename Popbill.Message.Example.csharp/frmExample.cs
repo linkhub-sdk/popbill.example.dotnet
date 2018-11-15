@@ -47,25 +47,7 @@ namespace Popbill.Message.Example.csharp
             messageService.IsTest = true;
         }
 
-        /*
-         * 팝빌 로그인 팝업 URL을 반환합니다.
-         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다 
-         */
-        private void getPopbillURL_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string url = messageService.GetPopbillURL(txtCorpNum.Text, txtUserId.Text, "LOGIN");
 
-                MessageBox.Show(url, "팝빌 로그인 URL");
-
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "팝빌 로그인 URL");
-            }
-        }
 
         /*
          * 연동회원 신규가입을 요청합니다.
@@ -652,26 +634,6 @@ namespace Popbill.Message.Example.csharp
             }
         }
 
-        /*
-         * 전송내역 조회 팝업 URL을 반환합니다.
-         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
-         */
-        private void btnGetURL_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string url = messageService.GetURL(txtCorpNum.Text, txtUserId.Text, "BOX");
-
-                MessageBox.Show(url, "문자 전송내역 팝업 URL");
-
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "문자 전송내역 팝업 URL");
-            }
-        }
-
         private void btnSendMMS_Click(object sender, EventArgs e)
         {
             // 발신번호
@@ -1003,26 +965,6 @@ namespace Popbill.Message.Example.csharp
         }
 
         /*
-         * 팝빌 포인트충전 팝업 URL을 반환합니다.
-         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
-         */
-        private void btnGetPopbillURL_CHRG_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string url = messageService.GetPopbillURL(txtCorpNum.Text, txtUserId.Text, "CHRG");
-
-                MessageBox.Show(url, "포인트 충전 팝업 URL");
-
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "포인트 충전 팝업 URL");
-            }
-        }
-
-        /*
          * 검색조건을 사용하여 문자 전송내역을 확인합니다. 
          * - 응답항목에 대한 정보는 "[문자 API 연동매뉴얼] > 3.3.2 Search(전송내역 목록 조회)
          *   를 참조하시기 바랍니다.
@@ -1202,24 +1144,7 @@ namespace Popbill.Message.Example.csharp
             }
         }
 
-        /*
-         * 문자 발신번호 관리 팝업 URL을 확인합니다.
-         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
-         */ 
-        private void btnGetURL_SENDER_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string url = messageService.GetURL(txtCorpNum.Text, txtUserId.Text, "SENDER");
 
-                MessageBox.Show(url, "문자 발신번호 관리 팝업 URL");
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "문자 발신번호 관리 팝업 URL");
-            }
-        }
 
         /*
          * 파트너 포인트 충전 팝업 URL을 반환합니다. 
@@ -1414,6 +1339,88 @@ namespace Popbill.Message.Example.csharp
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
                                "응답메시지(message) : " + ex.Message, "전송내역 요약정보");
+            }
+        }
+
+
+        /*
+         * 팝빌 포인트충전 팝업 URL을 반환합니다.
+         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         */
+        private void btnGetChargeURL_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string url = messageService.GetChargeURL(txtCorpNum.Text, txtUserId.Text);
+
+                MessageBox.Show(url, "포인트 충전 팝업 URL");
+
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "포인트 충전 팝업 URL");
+            }
+        }
+
+
+        /*
+         * 전송내역 조회 팝업 URL을 반환합니다.
+         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         */
+        private void btnGetSentListURL_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string url = messageService.GetSentListURL(txtCorpNum.Text, txtUserId.Text);
+
+                MessageBox.Show(url, "문자 전송내역 팝업 URL");
+
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "문자 전송내역 팝업 URL");
+            }
+        }
+
+        /*
+         * 문자 발신번호 관리 팝업 URL을 확인합니다.
+         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         */ 
+        private void btnGetSenderNumberMgtURL_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string url = messageService.GetSenderNumberMgtURL(txtCorpNum.Text, txtUserId.Text);
+
+                MessageBox.Show(url, "문자 발신번호 관리 팝업 URL");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "문자 발신번호 관리 팝업 URL");
+            }
+        }
+
+
+       /*
+        * 팝빌 로그인 팝업 URL을 반환합니다.
+        * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다 
+        */
+        private void btnGetAccessURL_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string url = messageService.GetAccessURL(txtCorpNum.Text, txtUserId.Text);
+
+                MessageBox.Show(url, "팝빌 로그인 URL");
+
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "팝빌 로그인 URL");
             }
         }
 
