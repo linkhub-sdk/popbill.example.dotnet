@@ -1225,5 +1225,28 @@ namespace Popbill.Fax.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "팝빌 로그인 URL");
             }
         }
+
+
+        /*
+        * 접수한 팩스 전송건에 대한 미리보기 팝업 URL을 반환합니다.
+        * - 반환된 URL은 보안정책에 따라 30초의 유효시간을 갖습니다. 
+        */
+        private void btnGetPreviewURL_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string url = faxService.GetPreviewURL(txtCorpNum.Text, txtReceiptNum.Text, txtUserId.Text);
+
+                MessageBox.Show(url, "팩스 미리보기 URL");
+
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "팩스 미리보기 URL");
+            }
+        }
+
+
     }
 }
