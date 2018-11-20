@@ -1398,7 +1398,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
 
         /*
-         * [임시저장] 상태의 세금계산서를 [발행] 처리합니다.
+         * [(역)발행대기] 상태의 세금계산서를 [발행] 처리합니다.
          * - 발행(Issue API)을 호출하는 시점에서 포인트가 차감됩니다.
          *  - [발행완료] 세금계산서는 연동회원의 국세청 전송설정에 따라
          *    익일/즉시전송 처리됩니다. 기본설정(익일전송)
@@ -3523,6 +3523,154 @@ namespace Popbill.Taxinvoice.Example.csharp
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + ex.Message, "세금계산서 즉시요청");
+            }
+        }
+
+
+        /*
+         * [(역)발행대기] 상태의 세금계산서를 [발행] 처리합니다.
+         * - 발행(Issue API)을 호출하는 시점에서 포인트가 차감됩니다.
+         *  - [발행완료] 세금계산서는 연동회원의 국세청 전송설정에 따라
+         *    익일/즉시전송 처리됩니다. 기본설정(익일전송)
+         * - 국세청 전송설정은 "팝빌 로그인" > [전자세금계산서] > [환경설정] >
+         *   [전자세금계산서 관리] > [국세청 전송 및 지연발행 설정] 탭에서
+         *   확인할 수 있습니다.
+         * - 국세청 전송정책에 대한 사항은 "[전자세금계산서 API 연동매뉴얼] >
+         *   1.3. 국세청 전송 정책" 을 참조하시기 바랍니다
+         */
+        private void btnIssue_Reverse_sub_Click(object sender, EventArgs e)
+        {
+            // 세금계산서 발행유형 
+            MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
+
+            // 메모
+            String memo = "발행메모";
+
+            // 지연발행 강제여부, 기본값 - False
+            // 발행마감일이 지난 세금계산서를 발행하는 경우, 가산세가 부과될 수 있습니다.
+            // 지연발행 세금계산서를 신고해야 하는 경우 forceIssue 값을 True로 선언하여 발행(Issue API)을 호출할 수 있습니다.
+            bool forceIssue = false;
+
+            try
+            {
+
+                Response response = taxinvoiceService.Issue(txtCorpNum.Text, KeyType, txtMgtKey.Text, memo, forceIssue, txtUserId.Text);
+
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "세금계산서 발행");
+
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "세금계산서 발행");
+            }
+        }
+
+        /*
+         * [발행완료] 세금계산서를 [발행취소] 처리합니다.
+         * - [발행취소]는 국세청 전송전에만 가능합니다.
+         * - 발행취소 세금계산서는 국세청에 전송되지 않습니다.
+         * - 발행취소 세금계산서에 사용된 문서관리번호를 재사용 하기 위해서는
+         *   삭제(Delete API)를 호출하여 [삭제] 처리 하셔야 합니다.
+         */
+        private void btnCancelIssue_Reverse_sub_Click(object sender, EventArgs e)
+        {
+            // 세금계산서 발행유형 
+            MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
+
+            // 메모
+            string memo = "발행취소 메모";
+
+            try
+            {
+                Response response = taxinvoiceService.CancelIssue(txtCorpNum.Text, KeyType, txtMgtKey.Text, memo, txtUserId.Text);
+
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "발행취소");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "발행취소");
+            }
+        }
+
+        /*
+         * 역발행 세금계산서를 공급받는자가 [취소] 처리합니다.
+         * - [취소]한 세금계산서의 문서관리번호를 재사용하기 위해서는 
+         *   삭제 (Delete API)를 호출해야 합니다.
+         */
+        private void btnCancelRequest_sub_Click(object sender, EventArgs e)
+        {
+            // 세금계산서 발행유형 
+            MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
+
+            // 메모 
+            string memo = "역발행 요청 취소 메모";
+
+            try
+            {
+                Response response = taxinvoiceService.CancelRequest(txtCorpNum.Text, KeyType, txtMgtKey.Text, memo, txtUserId.Text);
+
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "역발행 요청 취소");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "역발행 요청 취소");
+            }
+        }
+
+
+        /*
+         * 공급받은자로부터 요청받은 역발행 세금계산서를 공급자가 [거부]처리합니다. 
+         */
+        private void btnRefuse_sub_Click(object sender, EventArgs e)
+        {
+            // 세금계산서 발행유형
+            MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
+
+            // 메모 
+            string memo = "역발행 요청 거부 메모";
+
+            try
+            {
+
+                Response response = taxinvoiceService.Refuse(txtCorpNum.Text, KeyType, txtMgtKey.Text, memo, txtUserId.Text);
+
+                MessageBox.Show(response.message);
+
+
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+            }
+        }
+
+        /*
+         * 1건의 세금계산서를 삭제합니다.
+         * - 등록된 문서관리번호는 삭제 이후 재사용할 수 있습니다.
+         */
+        private void btnDelete_Reverse_sub_Click(object sender, EventArgs e)
+        {
+            // 세금계산서 발행유형 
+            MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
+
+            try
+            {
+                Response response = taxinvoiceService.Delete(txtCorpNum.Text, KeyType, txtMgtKey.Text);
+
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "세금계산서 삭제");
+
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "세금계산서 삭제");
             }
         }
 
