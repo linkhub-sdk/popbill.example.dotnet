@@ -96,7 +96,13 @@
             this.btnCheckIsMember = new System.Windows.Forms.Button();
             this.btnJoinMember = new System.Windows.Forms.Button();
             this.GroupBox7 = new System.Windows.Forms.GroupBox();
+            this.groupBox19 = new System.Windows.Forms.GroupBox();
+            this.btnCancelRequest_sub = new System.Windows.Forms.Button();
             this.btnRegistRequest = new System.Windows.Forms.Button();
+            this.btnRefuse_sub = new System.Windows.Forms.Button();
+            this.btnIssue_Reverse_sub = new System.Windows.Forms.Button();
+            this.btnCancelIssue_Reverse_sub = new System.Windows.Forms.Button();
+            this.btnDelete_Reverse_sub = new System.Windows.Forms.Button();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
             this.label27 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
@@ -147,12 +153,11 @@
             this.txtCorpNum = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.fileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.groupBox19 = new System.Windows.Forms.GroupBox();
-            this.btnCancelRequest_sub = new System.Windows.Forms.Button();
-            this.btnRefuse_sub = new System.Windows.Forms.Button();
-            this.btnCancelIssue_Reverse_sub = new System.Windows.Forms.Button();
-            this.btnDelete_Reverse_sub = new System.Windows.Forms.Button();
-            this.btnIssue_Reverse_sub = new System.Windows.Forms.Button();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
             this.GroupBox8.SuspendLayout();
             this.GroupBox9.SuspendLayout();
             this.GroupBox10.SuspendLayout();
@@ -161,6 +166,7 @@
             this.GroupBox3.SuspendLayout();
             this.GroupBox2.SuspendLayout();
             this.GroupBox7.SuspendLayout();
+            this.groupBox19.SuspendLayout();
             this.groupBox16.SuspendLayout();
             this.GroupBox14.SuspendLayout();
             this.GroupBox13.SuspendLayout();
@@ -171,7 +177,6 @@
             this.groupBox15.SuspendLayout();
             this.GroupBox6.SuspendLayout();
             this.GroupBox5.SuspendLayout();
-            this.groupBox19.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnGetInfos
@@ -942,16 +947,90 @@
             this.GroupBox7.TabStop = false;
             this.GroupBox7.Text = "전자세금계산서 관련 API";
             // 
+            // groupBox19
+            // 
+            this.groupBox19.Controls.Add(this.btnRegistRequest);
+            this.groupBox19.Controls.Add(this.btnDelete_Reverse_sub);
+            this.groupBox19.Controls.Add(this.label29);
+            this.groupBox19.Controls.Add(this.btnCancelRequest_sub);
+            this.groupBox19.Controls.Add(this.btnRefuse_sub);
+            this.groupBox19.Controls.Add(this.btnIssue_Reverse_sub);
+            this.groupBox19.Controls.Add(this.btnCancelIssue_Reverse_sub);
+            this.groupBox19.Controls.Add(this.label28);
+            this.groupBox19.Controls.Add(this.label30);
+            this.groupBox19.Controls.Add(this.label32);
+            this.groupBox19.Controls.Add(this.label31);
+            this.groupBox19.Location = new System.Drawing.Point(574, 67);
+            this.groupBox19.Name = "groupBox19";
+            this.groupBox19.Size = new System.Drawing.Size(307, 188);
+            this.groupBox19.TabIndex = 17;
+            this.groupBox19.TabStop = false;
+            this.groupBox19.Text = "역발행 즉시 요청 - (권장)";
+            // 
+            // btnCancelRequest_sub
+            // 
+            this.btnCancelRequest_sub.BackColor = System.Drawing.Color.Aquamarine;
+            this.btnCancelRequest_sub.Location = new System.Drawing.Point(172, 18);
+            this.btnCancelRequest_sub.Name = "btnCancelRequest_sub";
+            this.btnCancelRequest_sub.Size = new System.Drawing.Size(62, 25);
+            this.btnCancelRequest_sub.TabIndex = 25;
+            this.btnCancelRequest_sub.Text = "요청취소";
+            this.btnCancelRequest_sub.UseVisualStyleBackColor = false;
+            this.btnCancelRequest_sub.Click += new System.EventHandler(this.btnCancelRequest_sub_Click);
+            // 
             // btnRegistRequest
             // 
             this.btnRegistRequest.BackColor = System.Drawing.Color.Aquamarine;
-            this.btnRegistRequest.Location = new System.Drawing.Point(24, 27);
+            this.btnRegistRequest.Location = new System.Drawing.Point(24, 25);
             this.btnRegistRequest.Name = "btnRegistRequest";
             this.btnRegistRequest.Size = new System.Drawing.Size(95, 40);
             this.btnRegistRequest.TabIndex = 16;
             this.btnRegistRequest.Text = "즉시 요청";
             this.btnRegistRequest.UseVisualStyleBackColor = false;
             this.btnRegistRequest.Click += new System.EventHandler(this.btnRegistRequest_Click);
+            // 
+            // btnRefuse_sub
+            // 
+            this.btnRefuse_sub.BackColor = System.Drawing.Color.LightCoral;
+            this.btnRefuse_sub.Location = new System.Drawing.Point(182, 48);
+            this.btnRefuse_sub.Name = "btnRefuse_sub";
+            this.btnRefuse_sub.Size = new System.Drawing.Size(41, 25);
+            this.btnRefuse_sub.TabIndex = 24;
+            this.btnRefuse_sub.Text = "거부";
+            this.btnRefuse_sub.UseVisualStyleBackColor = false;
+            this.btnRefuse_sub.Click += new System.EventHandler(this.btnRefuse_sub_Click);
+            // 
+            // btnIssue_Reverse_sub
+            // 
+            this.btnIssue_Reverse_sub.BackColor = System.Drawing.Color.LightCoral;
+            this.btnIssue_Reverse_sub.Location = new System.Drawing.Point(43, 82);
+            this.btnIssue_Reverse_sub.Name = "btnIssue_Reverse_sub";
+            this.btnIssue_Reverse_sub.Size = new System.Drawing.Size(65, 32);
+            this.btnIssue_Reverse_sub.TabIndex = 21;
+            this.btnIssue_Reverse_sub.Text = "발행";
+            this.btnIssue_Reverse_sub.UseVisualStyleBackColor = false;
+            this.btnIssue_Reverse_sub.Click += new System.EventHandler(this.btnIssue_Reverse_sub_Click);
+            // 
+            // btnCancelIssue_Reverse_sub
+            // 
+            this.btnCancelIssue_Reverse_sub.BackColor = System.Drawing.Color.LightCoral;
+            this.btnCancelIssue_Reverse_sub.Location = new System.Drawing.Point(43, 139);
+            this.btnCancelIssue_Reverse_sub.Name = "btnCancelIssue_Reverse_sub";
+            this.btnCancelIssue_Reverse_sub.Size = new System.Drawing.Size(65, 25);
+            this.btnCancelIssue_Reverse_sub.TabIndex = 23;
+            this.btnCancelIssue_Reverse_sub.Text = "발행취소";
+            this.btnCancelIssue_Reverse_sub.UseVisualStyleBackColor = false;
+            this.btnCancelIssue_Reverse_sub.Click += new System.EventHandler(this.btnCancelIssue_Reverse_sub_Click);
+            // 
+            // btnDelete_Reverse_sub
+            // 
+            this.btnDelete_Reverse_sub.Location = new System.Drawing.Point(234, 140);
+            this.btnDelete_Reverse_sub.Name = "btnDelete_Reverse_sub";
+            this.btnDelete_Reverse_sub.Size = new System.Drawing.Size(50, 25);
+            this.btnDelete_Reverse_sub.TabIndex = 22;
+            this.btnDelete_Reverse_sub.Text = "삭제";
+            this.btnDelete_Reverse_sub.UseVisualStyleBackColor = true;
+            this.btnDelete_Reverse_sub.Click += new System.EventHandler(this.btnDelete_Reverse_sub_Click);
             // 
             // groupBox16
             // 
@@ -1053,7 +1132,7 @@
             this.GroupBox14.Controls.Add(this.Label22);
             this.GroupBox14.Controls.Add(this.Label23);
             this.GroupBox14.Controls.Add(this.Label24);
-            this.GroupBox14.Location = new System.Drawing.Point(567, 64);
+            this.GroupBox14.Location = new System.Drawing.Point(904, 67);
             this.GroupBox14.Name = "GroupBox14";
             this.GroupBox14.Size = new System.Drawing.Size(280, 188);
             this.GroupBox14.TabIndex = 14;
@@ -1509,74 +1588,50 @@
             // 
             this.fileDialog.FileName = "OpenFileDialog1";
             // 
-            // groupBox19
+            // label28
             // 
-            this.groupBox19.Controls.Add(this.btnCancelRequest_sub);
-            this.groupBox19.Controls.Add(this.btnRegistRequest);
-            this.groupBox19.Controls.Add(this.btnRefuse_sub);
-            this.groupBox19.Controls.Add(this.btnIssue_Reverse_sub);
-            this.groupBox19.Controls.Add(this.btnCancelIssue_Reverse_sub);
-            this.groupBox19.Controls.Add(this.btnDelete_Reverse_sub);
-            this.groupBox19.Location = new System.Drawing.Point(863, 64);
-            this.groupBox19.Name = "groupBox19";
-            this.groupBox19.Size = new System.Drawing.Size(307, 188);
-            this.groupBox19.TabIndex = 17;
-            this.groupBox19.TabStop = false;
-            this.groupBox19.Text = "역발행 즉시 요청 - (권장)";
+            this.label28.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.label28.Location = new System.Drawing.Point(73, 54);
+            this.label28.Name = "label28";
+            this.label28.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.label28.Size = new System.Drawing.Size(1, 100);
+            this.label28.TabIndex = 26;
             // 
-            // btnCancelRequest_sub
+            // label29
             // 
-            this.btnCancelRequest_sub.BackColor = System.Drawing.Color.Aquamarine;
-            this.btnCancelRequest_sub.Location = new System.Drawing.Point(169, 23);
-            this.btnCancelRequest_sub.Name = "btnCancelRequest_sub";
-            this.btnCancelRequest_sub.Size = new System.Drawing.Size(62, 25);
-            this.btnCancelRequest_sub.TabIndex = 25;
-            this.btnCancelRequest_sub.Text = "요청취소";
-            this.btnCancelRequest_sub.UseVisualStyleBackColor = false;
-            this.btnCancelRequest_sub.Click += new System.EventHandler(this.btnCancelRequest_sub_Click);
+            this.label29.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.label29.Location = new System.Drawing.Point(261, 31);
+            this.label29.Name = "label29";
+            this.label29.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.label29.Size = new System.Drawing.Size(1, 127);
+            this.label29.TabIndex = 27;
             // 
-            // btnRefuse_sub
+            // label30
             // 
-            this.btnRefuse_sub.BackColor = System.Drawing.Color.LightCoral;
-            this.btnRefuse_sub.Location = new System.Drawing.Point(182, 59);
-            this.btnRefuse_sub.Name = "btnRefuse_sub";
-            this.btnRefuse_sub.Size = new System.Drawing.Size(41, 25);
-            this.btnRefuse_sub.TabIndex = 24;
-            this.btnRefuse_sub.Text = "거부";
-            this.btnRefuse_sub.UseVisualStyleBackColor = false;
-            this.btnRefuse_sub.Click += new System.EventHandler(this.btnRefuse_sub_Click);
+            this.label30.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.label30.Location = new System.Drawing.Point(72, 150);
+            this.label30.Name = "label30";
+            this.label30.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.label30.Size = new System.Drawing.Size(200, 1);
+            this.label30.TabIndex = 28;
             // 
-            // btnCancelIssue_Reverse_sub
+            // label31
             // 
-            this.btnCancelIssue_Reverse_sub.BackColor = System.Drawing.Color.LightCoral;
-            this.btnCancelIssue_Reverse_sub.Location = new System.Drawing.Point(43, 135);
-            this.btnCancelIssue_Reverse_sub.Name = "btnCancelIssue_Reverse_sub";
-            this.btnCancelIssue_Reverse_sub.Size = new System.Drawing.Size(65, 25);
-            this.btnCancelIssue_Reverse_sub.TabIndex = 23;
-            this.btnCancelIssue_Reverse_sub.Text = "발행취소";
-            this.btnCancelIssue_Reverse_sub.UseVisualStyleBackColor = false;
-            this.btnCancelIssue_Reverse_sub.Click += new System.EventHandler(this.btnCancelIssue_Reverse_sub_Click);
+            this.label31.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.label31.Location = new System.Drawing.Point(61, 31);
+            this.label31.Name = "label31";
+            this.label31.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.label31.Size = new System.Drawing.Size(200, 1);
+            this.label31.TabIndex = 29;
             // 
-            // btnDelete_Reverse_sub
+            // label32
             // 
-            this.btnDelete_Reverse_sub.Location = new System.Drawing.Point(234, 133);
-            this.btnDelete_Reverse_sub.Name = "btnDelete_Reverse_sub";
-            this.btnDelete_Reverse_sub.Size = new System.Drawing.Size(50, 25);
-            this.btnDelete_Reverse_sub.TabIndex = 22;
-            this.btnDelete_Reverse_sub.Text = "삭제";
-            this.btnDelete_Reverse_sub.UseVisualStyleBackColor = true;
-            this.btnDelete_Reverse_sub.Click += new System.EventHandler(this.btnDelete_Reverse_sub_Click);
-            // 
-            // btnIssue_Reverse_sub
-            // 
-            this.btnIssue_Reverse_sub.BackColor = System.Drawing.Color.LightCoral;
-            this.btnIssue_Reverse_sub.Location = new System.Drawing.Point(43, 82);
-            this.btnIssue_Reverse_sub.Name = "btnIssue_Reverse_sub";
-            this.btnIssue_Reverse_sub.Size = new System.Drawing.Size(65, 32);
-            this.btnIssue_Reverse_sub.TabIndex = 21;
-            this.btnIssue_Reverse_sub.Text = "발행";
-            this.btnIssue_Reverse_sub.UseVisualStyleBackColor = false;
-            this.btnIssue_Reverse_sub.Click += new System.EventHandler(this.btnIssue_Reverse_sub_Click);
+            this.label32.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.label32.Location = new System.Drawing.Point(61, 58);
+            this.label32.Name = "label32";
+            this.label32.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.label32.Size = new System.Drawing.Size(200, 1);
+            this.label32.TabIndex = 30;
             // 
             // frmExample
             // 
@@ -1602,6 +1657,7 @@
             this.GroupBox2.ResumeLayout(false);
             this.GroupBox7.ResumeLayout(false);
             this.GroupBox7.PerformLayout();
+            this.groupBox19.ResumeLayout(false);
             this.groupBox16.ResumeLayout(false);
             this.GroupBox14.ResumeLayout(false);
             this.GroupBox13.ResumeLayout(false);
@@ -1612,7 +1668,6 @@
             this.groupBox15.ResumeLayout(false);
             this.GroupBox6.ResumeLayout(false);
             this.GroupBox5.ResumeLayout(false);
-            this.groupBox19.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1745,6 +1800,11 @@
         internal System.Windows.Forms.Button btnIssue_Reverse_sub;
         internal System.Windows.Forms.Button btnCancelIssue_Reverse_sub;
         internal System.Windows.Forms.Button btnDelete_Reverse_sub;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label31;
     }
 }
 
