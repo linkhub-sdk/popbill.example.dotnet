@@ -1617,7 +1617,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             Taxinvoice taxinvoice = new Taxinvoice();
 
             // [필수] 기재상 작성일자, 날짜형식(yyyyMMdd)
-            taxinvoice.writeDate = "20161013";
+            taxinvoice.writeDate = "20181121";
 
             // [필수] 과금방향, {정과금, 역과금}중 선택
             // - 정과금(공급자과금), 역과금(공급받는자과금)
@@ -1651,9 +1651,9 @@ namespace Popbill.Taxinvoice.Example.csharp
             // [필수] 공급자 상호
             taxinvoice.invoicerCorpName = "공급자 상호";
 
-            // [필수] 공급자 문서관리번호, 숫자, 영문, '-', '_' 조합으로 
-            //        1~24자리까지 사업자번호별 중복없는 고유번호 할당
-            taxinvoice.invoicerMgtKey = txtMgtKey.Text;
+            // 공급자 문서관리번호, 숫자, 영문, '-', '_' 조합으로 
+            // 1~24자리까지 사업자번호별 중복없는 고유번호 할당
+            taxinvoice.invoicerMgtKey = "";
 
             // [필수] 공급자 대표자 성명 
             taxinvoice.invoicerCEOName = "공급자 대표자 성명";
@@ -1699,7 +1699,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
             // [역발행시 필수] 공급받는자 문서관리번호, 숫자, 영문, '-', '_' 조합으로
             //                 1~24자리까지 사업자번호별 중복없는 고유번호 할당
-            taxinvoice.invoiceeMgtKey = "";
+            taxinvoice.invoiceeMgtKey = txtMgtKey.Text;
 
             // [필수] 공급받는자 대표자 성명 
             taxinvoice.invoiceeCEOName = "공급받는자 대표자 성명";
@@ -1803,7 +1803,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             TaxinvoiceDetail detail = new TaxinvoiceDetail();
 
             detail.serialNum = 1;               // 일련번호, 1부터 순차기재 
-            detail.purchaseDT = "20161013";     // 거래일자
+            detail.purchaseDT = "20181121";     // 거래일자
             detail.itemName = "품목명";         // 품목명 
             detail.spec = "규격";               // 규격
             detail.qty = "1";                   // 수량
@@ -1817,7 +1817,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             detail = new TaxinvoiceDetail();
 
             detail.serialNum = 2;               // 일련번호, 1부터 순차기재 
-            detail.purchaseDT = "20161013";     // 거래일자
+            detail.purchaseDT = "20181121";     // 거래일자
             detail.itemName = "품목명";         // 품목명 
             detail.spec = "규격";               // 규격
             detail.qty = "1";                   // 수량
