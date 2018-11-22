@@ -828,9 +828,12 @@ namespace Popbill.Fax.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "과금정보 조회");
             }
         }
-    
+
         /*
-         * 팩스 재전송을 요청합니다.
+         * 팩스를 재전송합니다.
+         * - 전송일로부터 60일이 경과된 경우 재전송할 수 없습니다.
+         * - 팩스 재전송 요청시 포인트가 차감됩니다. (전송실패시 환불처리)
+         * - 팩스전송 문서 파일포맷 안내 : http://blog.linkhub.co.kr/2561
          */
         private void btnResendFAX_Click(object sender, EventArgs e)
         {
@@ -867,7 +870,10 @@ namespace Popbill.Fax.Example.csharp
         }
 
         /*
-         * 팩스 재전송을 요청합니다. (동보전송)
+         * 팩스를 재전송합니다. (동보전송)
+         * - 전송일로부터 60일이 경과된 경우 재전송할 수 없습니다.
+         * - 팩스 재전송 요청시 포인트가 차감됩니다. (전송실패시 환불처리)
+         * - 팩스전송 문서 파일포맷 안내 : http://blog.linkhub.co.kr/2561
          */
         private void btnResendFAXSame_Click(object sender, EventArgs e)
         {
@@ -1052,7 +1058,10 @@ namespace Popbill.Fax.Example.csharp
 
 
         /*
-         * 팩스전송 요청시 기재한 요청번호(requestNum)을 이용하여 팩스 재전송을 요청합니다.
+         * 팩스전송 요청시 기재한 요청번호(requestNum)을 이용하여 팩스 재전송을 요청합니다..
+         * - 전송일로부터 60일이 경과된 경우 재전송할 수 없습니다.
+         * - 팩스 재전송 요청시 포인트가 차감됩니다. (전송실패시 환불처리)
+         * - 팩스전송 문서 파일포맷 안내 : http://blog.linkhub.co.kr/2561
          */
         private void btnResendFAXRN_Click(object sender, EventArgs e)
         {
@@ -1094,7 +1103,10 @@ namespace Popbill.Fax.Example.csharp
         }
 
         /*
-         * 팩스전송 요청시 기재한 요청번호(requestNum)을 이용하여 팩스 재전송을 요청합니다.
+         * 팩스전송 요청시 기재한 요청번호(requestNum)을 이용하여 팩스 재전송을 요청합니다..
+         * - 전송일로부터 60일이 경과된 경우 재전송할 수 없습니다.
+         * - 팩스 재전송 요청시 포인트가 차감됩니다. (전송실패시 환불처리)
+         * - 팩스전송 문서 파일포맷 안내 : http://blog.linkhub.co.kr/2561
          */
         private void btnResendFAXRN_same_Click(object sender, EventArgs e)
         {
