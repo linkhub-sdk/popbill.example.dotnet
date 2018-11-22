@@ -1,5 +1,4 @@
-﻿
-/*
+﻿/*
  * 팝빌 카카오톡 API DotNet SDK Example
  * 
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - http://blog.linkhub.co.kr/587
@@ -1441,7 +1440,7 @@ namespace Popbill.Kakao.Example.csharp
         }
 
         /*
-        * 팝빌 로그인 팝업 URL을 반환합니다.
+        * 팝빌에 로그인 상태로 접근할 수 있는 팝업 URL을 반환합니다.
         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다 
         */
         private void btnGetAccessURL_Click(object sender, EventArgs e)
