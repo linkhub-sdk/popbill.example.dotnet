@@ -3,7 +3,7 @@
  * 팝빌 휴폐업조회 API DotNet SDK Example
  * 
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - http://blog.linkhub.co.kr/587
- * - 업데이트 일자 : 2018-07-02
+ * - 업데이트 일자 : 2018-11-22
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
  * 
@@ -171,11 +171,11 @@ namespace Popbill.Closedown.Example.csharp
         * 팝빌 로그인 팝업 URL을 반환합니다.
         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다 
         */
-        private void btnGetPopbillURL_LOGIN_Click(object sender, EventArgs e)
+        private void btnGetAccessURL_Click(object sender, EventArgs e)
         {
             try
             {
-                string url = closedownService.GetPopbillURL(txtCorpNum.Text, txtUserID.Text, "LOGIN");
+                string url = closedownService.GetAccessURL(txtCorpNum.Text, txtUserID.Text);
 
                 MessageBox.Show(url,"팝빌 로그인 URL");
             }
@@ -186,15 +186,15 @@ namespace Popbill.Closedown.Example.csharp
             }
         }
 
-       /*
-        * 팝빌 포인트충전 팝업 URL을 반환합니다.
-        * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
-        */
-        private void btnGetPopbillURL_CHRG_Click(object sender, EventArgs e)
+        /*
+         * 팝빌 연동회원 포인트충전 팝업 URL을 반환합니다.
+         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         */
+        private void btnGetChargeURL_Click(object sender, EventArgs e)
         {
             try
             {
-                string url = closedownService.GetPopbillURL(txtCorpNum.Text, txtUserID.Text, "CHRG");
+                string url = closedownService.GetChargeURL(txtCorpNum.Text, txtUserID.Text);
 
                 MessageBox.Show(url, "포인트 충전 팝업 URL");
             }

@@ -74,6 +74,8 @@
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.btnUpdateEmailConfig = new System.Windows.Forms.Button();
+            this.btnListEmailConfig = new System.Windows.Forms.Button();
             this.btnDetachStmt = new System.Windows.Forms.Button();
             this.btnAttachStmt = new System.Windows.Forms.Button();
             this.btnFAXSend = new System.Windows.Forms.Button();
@@ -90,15 +92,13 @@
             this.btnGetBalance = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.getPopbillURL_SEAL = new System.Windows.Forms.Button();
-            this.btnGetPopbillURL_LOGIN = new System.Windows.Forms.Button();
-            this.btnGetPopbillURL_CHRG = new System.Windows.Forms.Button();
+            this.btnGetAccessURL = new System.Windows.Forms.Button();
+            this.btnGetChargeURL = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.UpdateContact = new System.Windows.Forms.Button();
             this.ListContact = new System.Windows.Forms.Button();
             this.btnRegistContact = new System.Windows.Forms.Button();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.btnUpdateEmailConfig = new System.Windows.Forms.Button();
-            this.btnListEmailConfig = new System.Windows.Forms.Button();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
             this.btnGetPartnerURL_CHRG = new System.Windows.Forms.Button();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
@@ -606,6 +606,26 @@
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "부가 서비스";
             // 
+            // btnUpdateEmailConfig
+            // 
+            this.btnUpdateEmailConfig.Location = new System.Drawing.Point(159, 120);
+            this.btnUpdateEmailConfig.Name = "btnUpdateEmailConfig";
+            this.btnUpdateEmailConfig.Size = new System.Drawing.Size(145, 30);
+            this.btnUpdateEmailConfig.TabIndex = 1;
+            this.btnUpdateEmailConfig.Text = "알림메일 전송설정 수정";
+            this.btnUpdateEmailConfig.UseVisualStyleBackColor = true;
+            this.btnUpdateEmailConfig.Click += new System.EventHandler(this.btnUpdateEmailConfig_Click);
+            // 
+            // btnListEmailConfig
+            // 
+            this.btnListEmailConfig.Location = new System.Drawing.Point(159, 88);
+            this.btnListEmailConfig.Name = "btnListEmailConfig";
+            this.btnListEmailConfig.Size = new System.Drawing.Size(145, 30);
+            this.btnListEmailConfig.TabIndex = 0;
+            this.btnListEmailConfig.Text = "알림메일 전송목록 조회";
+            this.btnListEmailConfig.UseVisualStyleBackColor = true;
+            this.btnListEmailConfig.Click += new System.EventHandler(this.btnListEmailConfig_Click);
+            // 
             // btnDetachStmt
             // 
             this.btnDetachStmt.Location = new System.Drawing.Point(159, 54);
@@ -757,7 +777,7 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.getPopbillURL_SEAL);
-            this.groupBox3.Controls.Add(this.btnGetPopbillURL_LOGIN);
+            this.groupBox3.Controls.Add(this.btnGetAccessURL);
             this.groupBox3.Location = new System.Drawing.Point(527, 16);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(146, 121);
@@ -775,25 +795,25 @@
             this.getPopbillURL_SEAL.UseVisualStyleBackColor = true;
             this.getPopbillURL_SEAL.Click += new System.EventHandler(this.getPopbillURL_SEAL_Click);
             // 
-            // btnGetPopbillURL_LOGIN
+            // btnGetAccessURL
             // 
-            this.btnGetPopbillURL_LOGIN.Location = new System.Drawing.Point(9, 19);
-            this.btnGetPopbillURL_LOGIN.Name = "btnGetPopbillURL_LOGIN";
-            this.btnGetPopbillURL_LOGIN.Size = new System.Drawing.Size(129, 29);
-            this.btnGetPopbillURL_LOGIN.TabIndex = 8;
-            this.btnGetPopbillURL_LOGIN.Text = "팝빌 로그인 URL";
-            this.btnGetPopbillURL_LOGIN.UseVisualStyleBackColor = true;
-            this.btnGetPopbillURL_LOGIN.Click += new System.EventHandler(this.btnGetPopbillURL_LOGIN_Click);
+            this.btnGetAccessURL.Location = new System.Drawing.Point(9, 19);
+            this.btnGetAccessURL.Name = "btnGetAccessURL";
+            this.btnGetAccessURL.Size = new System.Drawing.Size(129, 29);
+            this.btnGetAccessURL.TabIndex = 8;
+            this.btnGetAccessURL.Text = "팝빌 로그인 URL";
+            this.btnGetAccessURL.UseVisualStyleBackColor = true;
+            this.btnGetAccessURL.Click += new System.EventHandler(this.btnGetAccessURL_Click);
             // 
-            // btnGetPopbillURL_CHRG
+            // btnGetChargeURL
             // 
-            this.btnGetPopbillURL_CHRG.Location = new System.Drawing.Point(6, 49);
-            this.btnGetPopbillURL_CHRG.Name = "btnGetPopbillURL_CHRG";
-            this.btnGetPopbillURL_CHRG.Size = new System.Drawing.Size(105, 29);
-            this.btnGetPopbillURL_CHRG.TabIndex = 9;
-            this.btnGetPopbillURL_CHRG.Text = "포인트 충전 URL";
-            this.btnGetPopbillURL_CHRG.UseVisualStyleBackColor = true;
-            this.btnGetPopbillURL_CHRG.Click += new System.EventHandler(this.btnGetPopbillURL_CHRG_Click);
+            this.btnGetChargeURL.Location = new System.Drawing.Point(6, 49);
+            this.btnGetChargeURL.Name = "btnGetChargeURL";
+            this.btnGetChargeURL.Size = new System.Drawing.Size(105, 29);
+            this.btnGetChargeURL.TabIndex = 9;
+            this.btnGetChargeURL.Text = "포인트 충전 URL";
+            this.btnGetChargeURL.UseVisualStyleBackColor = true;
+            this.btnGetChargeURL.Click += new System.EventHandler(this.btnGetChargeURL_Click);
             // 
             // groupBox4
             // 
@@ -853,26 +873,6 @@
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "팝빌 기본 API";
             // 
-            // btnUpdateEmailConfig
-            // 
-            this.btnUpdateEmailConfig.Location = new System.Drawing.Point(159, 120);
-            this.btnUpdateEmailConfig.Name = "btnUpdateEmailConfig";
-            this.btnUpdateEmailConfig.Size = new System.Drawing.Size(145, 30);
-            this.btnUpdateEmailConfig.TabIndex = 1;
-            this.btnUpdateEmailConfig.Text = "알림메일 전송설정 수정";
-            this.btnUpdateEmailConfig.UseVisualStyleBackColor = true;
-            this.btnUpdateEmailConfig.Click += new System.EventHandler(this.btnUpdateEmailConfig_Click);
-            // 
-            // btnListEmailConfig
-            // 
-            this.btnListEmailConfig.Location = new System.Drawing.Point(159, 88);
-            this.btnListEmailConfig.Name = "btnListEmailConfig";
-            this.btnListEmailConfig.Size = new System.Drawing.Size(145, 30);
-            this.btnListEmailConfig.TabIndex = 0;
-            this.btnListEmailConfig.Text = "알림메일 전송목록 조회";
-            this.btnListEmailConfig.UseVisualStyleBackColor = true;
-            this.btnListEmailConfig.Click += new System.EventHandler(this.btnListEmailConfig_Click);
-            // 
             // groupBox16
             // 
             this.groupBox16.Controls.Add(this.btnGetPartnerURL_CHRG);
@@ -897,7 +897,7 @@
             // groupBox15
             // 
             this.groupBox15.Controls.Add(this.btnGetBalance);
-            this.groupBox15.Controls.Add(this.btnGetPopbillURL_CHRG);
+            this.groupBox15.Controls.Add(this.btnGetChargeURL);
             this.groupBox15.Location = new System.Drawing.Point(276, 15);
             this.groupBox15.Name = "groupBox15";
             this.groupBox15.Size = new System.Drawing.Size(115, 121);
@@ -1140,8 +1140,8 @@
         private System.Windows.Forms.Button btnGetUnitCost;
         private System.Windows.Forms.Button btnGetBalance;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button btnGetPopbillURL_CHRG;
-        private System.Windows.Forms.Button btnGetPopbillURL_LOGIN;
+        private System.Windows.Forms.Button btnGetChargeURL;
+        private System.Windows.Forms.Button btnGetAccessURL;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox11;
         private System.Windows.Forms.GroupBox groupBox12;

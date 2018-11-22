@@ -3,7 +3,7 @@
  * 팝빌 전자세금계산서 API DotNet SDK Example
  * 
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - http://blog.linkhub.co.kr/587
- * - 업데이트 일자 : 2018-08-20
+ * - 업데이트 일자 : 2018-11-22
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
  * 
@@ -13,7 +13,7 @@
  * 2) 팝빌 개발용 사이트(test.popbill.com)에 연동회원으로 가입합니다.
  * 3) 전자세금계산서 발행을 위해 공인인증서를 등록합니다. 두가지 방법 중 선택 
  *    - 팝빌사이트 로그인 > [전자세금계산서] > [환경설정] > [공인인증서 관리]
- *    - 공인인증서 등록 팝업 URL (GetPopbillURL API)을 이용하여 등록
+ *    - 공인인증서 등록 팝업 URL (GetTaxCertURL API)을 이용하여 등록
  */
 
 using System;
@@ -179,6 +179,9 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
         }
 
+        /*
+         * 팝빌에 등록된 공인인증서의 만료일자를 반환합니다.
+         */
         private void btnGetCertificateExpireDate_Click(object sender, EventArgs e)
         {
             try
@@ -3189,7 +3192,7 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * 팝빌 포인트충전 팝업 URL을 반환합니다.
+         * 팝빌 연동회원 포인트충전 팝업 URL을 반환합니다.
          * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
          */
         private void btnGetChargeURL_Click(object sender, EventArgs e)
@@ -3265,6 +3268,13 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
         }
 
+        /*
+         * [공급받는자]가 공급자에게 1건의 역발행 세금계산서를 [즉시 요청]합니다.
+         * - 세금계산서 항목별 정보는 "[전자세금계산서 API 연동매뉴얼] > 4.1. (세금)계산서구성"을 참조하시기 바랍니다.
+         * - 역발행 세금계산서 프로세스를 구현하기 위해서는 공급자/공급받는자가 모두 팝빌에 회원이여야 합니다.
+         * - 역발행 즉시요청후 공급자가 [발행] 처리시 포인트가 차감되며 역발행 세금계산서 항목중 과금방향(ChargeDirection)에 기재한 값에 따라
+         *   정과금(공급자과금) 또는 역과금(공급받는자과금) 처리됩니다.
+         */
         private void btnRegistRequest_Click(object sender, EventArgs e)
         {
             // 세금계산서 정보 객체 

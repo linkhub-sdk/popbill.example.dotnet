@@ -221,11 +221,11 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
         * 팝빌 로그인 팝업 URL을 반환합니다.
         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
         */
-        private void getPopbillURL_LOGIN_Click(object sender, EventArgs e)
+        private void btnGetAccessURL_Click(object sender, EventArgs e)
         {
             try
             {
-                string url = htTaxinvoiceService.GetPopbillURL(txtCorpNum.Text, txtUserId.Text, "LOGIN");
+                string url = htTaxinvoiceService.GetAccessURL(txtCorpNum.Text, txtUserId.Text);
 
                 MessageBox.Show(url, "팝빌 로그인 URL 확인");
             }
@@ -236,15 +236,15 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
             }
         }
 
-       /*
-        * 팝빌 포인트충전 팝업 URL을 반환합니다.
-        * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
-        */
-        private void btnGetPopbillURL_CHRG_Click(object sender, EventArgs e)
+        /*
+         * 팝빌 연동회원 포인트충전 팝업 URL을 반환합니다.
+         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         */
+        private void btnGetChargeURL_Click(object sender, EventArgs e)
         {
             try
             {
-                string url = htTaxinvoiceService.GetPopbillURL(txtCorpNum.Text, txtUserId.Text, "CHRG");
+                string url = htTaxinvoiceService.GetChargeURL(txtCorpNum.Text, txtUserId.Text);
 
                 MessageBox.Show(url, "포인트 충전 URL");
             }
