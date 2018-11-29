@@ -3683,6 +3683,7 @@ namespace Popbill.Taxinvoice.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "세금계산서 삭제");
             }
         }
+
         
          
     }

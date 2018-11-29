@@ -129,17 +129,19 @@
             this.Label22 = new System.Windows.Forms.Label();
             this.Label24 = new System.Windows.Forms.Label();
             this.groupBox19 = new System.Windows.Forms.GroupBox();
-            this.label33 = new System.Windows.Forms.Label();
+            this.btnRefuse_sub = new System.Windows.Forms.Button();
+            this.label32 = new System.Windows.Forms.Label();
             this.btnRegistRequest = new System.Windows.Forms.Button();
             this.btnDelete_Reverse_sub = new System.Windows.Forms.Button();
-            this.label29 = new System.Windows.Forms.Label();
             this.btnCancelRequest_sub = new System.Windows.Forms.Button();
-            this.btnRefuse_sub = new System.Windows.Forms.Button();
             this.btnIssue_Reverse_sub = new System.Windows.Forms.Button();
             this.btnCancelIssue_Reverse_sub = new System.Windows.Forms.Button();
             this.label28 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
             this.txtUserId = new System.Windows.Forms.TextBox();
             this.btnGetAccessURL = new System.Windows.Forms.Button();
             this.GroupBox1 = new System.Windows.Forms.GroupBox();
@@ -160,8 +162,6 @@
             this.txtCorpNum = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.fileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
             this.GroupBox8.SuspendLayout();
             this.GroupBox9.SuspendLayout();
             this.GroupBox10.SuspendLayout();
@@ -1139,9 +1139,9 @@
             // 
             this.groupBox21.Controls.Add(this.GroupBox14);
             this.groupBox21.Controls.Add(this.groupBox19);
-            this.groupBox21.Location = new System.Drawing.Point(646, 63);
+            this.groupBox21.Location = new System.Drawing.Point(657, 57);
             this.groupBox21.Name = "groupBox21";
-            this.groupBox21.Size = new System.Drawing.Size(655, 261);
+            this.groupBox21.Size = new System.Drawing.Size(655, 267);
             this.groupBox21.TabIndex = 19;
             this.groupBox21.TabStop = false;
             this.groupBox21.Text = "역발행 프로세스";
@@ -1351,23 +1351,31 @@
             this.groupBox19.TabStop = false;
             this.groupBox19.Text = "(권장) 즉시요청 프로세스";
             // 
-            // label33
+            // btnRefuse_sub
             // 
-            this.label33.BackColor = System.Drawing.Color.Silver;
-            this.label33.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label33.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label33.Location = new System.Drawing.Point(16, 25);
-            this.label33.Name = "label33";
-            this.label33.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.label33.Size = new System.Drawing.Size(262, 35);
-            this.label33.TabIndex = 31;
-            this.label33.Text = "즉시요청";
-            this.label33.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRefuse_sub.BackColor = System.Drawing.Color.LightCoral;
+            this.btnRefuse_sub.Location = new System.Drawing.Point(129, 91);
+            this.btnRefuse_sub.Name = "btnRefuse_sub";
+            this.btnRefuse_sub.Size = new System.Drawing.Size(49, 27);
+            this.btnRefuse_sub.TabIndex = 24;
+            this.btnRefuse_sub.Text = "거부";
+            this.btnRefuse_sub.UseVisualStyleBackColor = false;
+            this.btnRefuse_sub.Click += new System.EventHandler(this.btnRefuse_sub_Click);
+            // 
+            // label32
+            // 
+            this.label32.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.label32.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label32.Location = new System.Drawing.Point(154, 79);
+            this.label32.Name = "label32";
+            this.label32.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.label32.Size = new System.Drawing.Size(1, 77);
+            this.label32.TabIndex = 32;
             // 
             // btnRegistRequest
             // 
             this.btnRegistRequest.BackColor = System.Drawing.Color.Aquamarine;
-            this.btnRegistRequest.Location = new System.Drawing.Point(89, 29);
+            this.btnRegistRequest.Location = new System.Drawing.Point(88, 26);
             this.btnRegistRequest.Name = "btnRegistRequest";
             this.btnRegistRequest.Size = new System.Drawing.Size(76, 27);
             this.btnRegistRequest.TabIndex = 16;
@@ -1377,7 +1385,7 @@
             // 
             // btnDelete_Reverse_sub
             // 
-            this.btnDelete_Reverse_sub.Location = new System.Drawing.Point(215, 148);
+            this.btnDelete_Reverse_sub.Location = new System.Drawing.Point(216, 145);
             this.btnDelete_Reverse_sub.Name = "btnDelete_Reverse_sub";
             this.btnDelete_Reverse_sub.Size = new System.Drawing.Size(50, 25);
             this.btnDelete_Reverse_sub.TabIndex = 22;
@@ -1385,19 +1393,10 @@
             this.btnDelete_Reverse_sub.UseVisualStyleBackColor = true;
             this.btnDelete_Reverse_sub.Click += new System.EventHandler(this.btnDelete_Reverse_sub_Click);
             // 
-            // label29
-            // 
-            this.label29.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label29.Location = new System.Drawing.Point(238, 34);
-            this.label29.Name = "label29";
-            this.label29.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.label29.Size = new System.Drawing.Size(1, 127);
-            this.label29.TabIndex = 27;
-            // 
             // btnCancelRequest_sub
             // 
             this.btnCancelRequest_sub.BackColor = System.Drawing.Color.Aquamarine;
-            this.btnCancelRequest_sub.Location = new System.Drawing.Point(209, 96);
+            this.btnCancelRequest_sub.Location = new System.Drawing.Point(210, 93);
             this.btnCancelRequest_sub.Name = "btnCancelRequest_sub";
             this.btnCancelRequest_sub.Size = new System.Drawing.Size(62, 25);
             this.btnCancelRequest_sub.TabIndex = 25;
@@ -1405,21 +1404,10 @@
             this.btnCancelRequest_sub.UseVisualStyleBackColor = false;
             this.btnCancelRequest_sub.Click += new System.EventHandler(this.btnCancelRequest_sub_Click);
             // 
-            // btnRefuse_sub
-            // 
-            this.btnRefuse_sub.BackColor = System.Drawing.Color.LightCoral;
-            this.btnRefuse_sub.Location = new System.Drawing.Point(128, 94);
-            this.btnRefuse_sub.Name = "btnRefuse_sub";
-            this.btnRefuse_sub.Size = new System.Drawing.Size(49, 27);
-            this.btnRefuse_sub.TabIndex = 24;
-            this.btnRefuse_sub.Text = "거부";
-            this.btnRefuse_sub.UseVisualStyleBackColor = false;
-            this.btnRefuse_sub.Click += new System.EventHandler(this.btnRefuse_sub_Click);
-            // 
             // btnIssue_Reverse_sub
             // 
             this.btnIssue_Reverse_sub.BackColor = System.Drawing.Color.LightCoral;
-            this.btnIssue_Reverse_sub.Location = new System.Drawing.Point(63, 95);
+            this.btnIssue_Reverse_sub.Location = new System.Drawing.Point(64, 92);
             this.btnIssue_Reverse_sub.Name = "btnIssue_Reverse_sub";
             this.btnIssue_Reverse_sub.Size = new System.Drawing.Size(49, 27);
             this.btnIssue_Reverse_sub.TabIndex = 21;
@@ -1430,7 +1418,7 @@
             // btnCancelIssue_Reverse_sub
             // 
             this.btnCancelIssue_Reverse_sub.BackColor = System.Drawing.Color.LightCoral;
-            this.btnCancelIssue_Reverse_sub.Location = new System.Drawing.Point(57, 141);
+            this.btnCancelIssue_Reverse_sub.Location = new System.Drawing.Point(58, 138);
             this.btnCancelIssue_Reverse_sub.Name = "btnCancelIssue_Reverse_sub";
             this.btnCancelIssue_Reverse_sub.Size = new System.Drawing.Size(65, 25);
             this.btnCancelIssue_Reverse_sub.TabIndex = 23;
@@ -1441,7 +1429,8 @@
             // label28
             // 
             this.label28.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label28.Location = new System.Drawing.Point(90, 82);
+            this.label28.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label28.Location = new System.Drawing.Point(91, 79);
             this.label28.Name = "label28";
             this.label28.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.label28.Size = new System.Drawing.Size(1, 60);
@@ -1450,7 +1439,8 @@
             // label30
             // 
             this.label30.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label30.Location = new System.Drawing.Point(111, 158);
+            this.label30.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label30.Location = new System.Drawing.Point(112, 155);
             this.label30.Name = "label30";
             this.label30.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.label30.Size = new System.Drawing.Size(140, 1);
@@ -1459,11 +1449,43 @@
             // label31
             // 
             this.label31.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label31.Location = new System.Drawing.Point(90, 81);
+            this.label31.Location = new System.Drawing.Point(91, 78);
             this.label31.Name = "label31";
             this.label31.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.label31.Size = new System.Drawing.Size(64, 1);
             this.label31.TabIndex = 29;
+            // 
+            // label33
+            // 
+            this.label33.BackColor = System.Drawing.Color.Silver;
+            this.label33.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label33.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label33.Location = new System.Drawing.Point(17, 22);
+            this.label33.Name = "label33";
+            this.label33.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.label33.Size = new System.Drawing.Size(262, 35);
+            this.label33.TabIndex = 31;
+            this.label33.Text = "즉시요청";
+            this.label33.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label29
+            // 
+            this.label29.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.label29.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label29.Location = new System.Drawing.Point(239, 31);
+            this.label29.Name = "label29";
+            this.label29.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.label29.Size = new System.Drawing.Size(1, 127);
+            this.label29.TabIndex = 27;
+            // 
+            // label34
+            // 
+            this.label34.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.label34.Location = new System.Drawing.Point(122, 29);
+            this.label34.Name = "label34";
+            this.label34.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.label34.Size = new System.Drawing.Size(1, 50);
+            this.label34.TabIndex = 33;
             // 
             // txtUserId
             // 
@@ -1665,24 +1687,6 @@
             // fileDialog
             // 
             this.fileDialog.FileName = "OpenFileDialog1";
-            // 
-            // label32
-            // 
-            this.label32.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label32.Location = new System.Drawing.Point(153, 82);
-            this.label32.Name = "label32";
-            this.label32.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.label32.Size = new System.Drawing.Size(1, 77);
-            this.label32.TabIndex = 32;
-            // 
-            // label34
-            // 
-            this.label34.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label34.Location = new System.Drawing.Point(121, 32);
-            this.label34.Name = "label34";
-            this.label34.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.label34.Size = new System.Drawing.Size(1, 50);
-            this.label34.TabIndex = 33;
             // 
             // frmExample
             // 
