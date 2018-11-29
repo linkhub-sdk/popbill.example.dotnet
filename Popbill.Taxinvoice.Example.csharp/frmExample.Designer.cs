@@ -1164,7 +1164,7 @@
             this.GroupBox14.Controls.Add(this.Label24);
             this.GroupBox14.Location = new System.Drawing.Point(350, 23);
             this.GroupBox14.Name = "GroupBox14";
-            this.GroupBox14.Size = new System.Drawing.Size(280, 188);
+            this.GroupBox14.Size = new System.Drawing.Size(280, 194);
             this.GroupBox14.TabIndex = 14;
             this.GroupBox14.TabStop = false;
             this.GroupBox14.Text = "임시저장 역발행 프로세스";
@@ -1346,7 +1346,7 @@
             this.groupBox19.Controls.Add(this.label34);
             this.groupBox19.Location = new System.Drawing.Point(29, 23);
             this.groupBox19.Name = "groupBox19";
-            this.groupBox19.Size = new System.Drawing.Size(296, 188);
+            this.groupBox19.Size = new System.Drawing.Size(296, 194);
             this.groupBox19.TabIndex = 17;
             this.groupBox19.TabStop = false;
             this.groupBox19.Text = "(권장) 즉시요청 프로세스";
