@@ -1310,10 +1310,10 @@
             this.Label22.BackColor = System.Drawing.SystemColors.ControlDark;
             this.Label22.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Label22.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Label22.Location = new System.Drawing.Point(242, 48);
+            this.Label22.Location = new System.Drawing.Point(242, 75);
             this.Label22.Name = "Label22";
             this.Label22.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.Label22.Size = new System.Drawing.Size(1, 109);
+            this.Label22.Size = new System.Drawing.Size(1, 90);
             this.Label22.TabIndex = 18;
             this.Label22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
