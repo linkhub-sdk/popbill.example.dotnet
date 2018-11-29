@@ -268,7 +268,7 @@
             this.GroupBox8.Controls.Add(this.Label10);
             this.GroupBox8.Location = new System.Drawing.Point(258, 28);
             this.GroupBox8.Name = "GroupBox8";
-            this.GroupBox8.Size = new System.Drawing.Size(330, 188);
+            this.GroupBox8.Size = new System.Drawing.Size(330, 189);
             this.GroupBox8.TabIndex = 7;
             this.GroupBox8.TabStop = false;
             this.GroupBox8.Text = "임시저장 발행, 발행예정 프로세스";
@@ -671,7 +671,7 @@
             // 
             // btnGetEmailPublicKey
             // 
-            this.btnGetEmailPublicKey.Location = new System.Drawing.Point(671, 20);
+            this.btnGetEmailPublicKey.Location = new System.Drawing.Point(1159, 23);
             this.btnGetEmailPublicKey.Name = "btnGetEmailPublicKey";
             this.btnGetEmailPublicKey.Size = new System.Drawing.Size(153, 26);
             this.btnGetEmailPublicKey.TabIndex = 6;
@@ -681,7 +681,7 @@
             // 
             // btnCheckMgtKeyInUse
             // 
-            this.btnCheckMgtKeyInUse.Location = new System.Drawing.Point(400, 20);
+            this.btnCheckMgtKeyInUse.Location = new System.Drawing.Point(385, 20);
             this.btnCheckMgtKeyInUse.Name = "btnCheckMgtKeyInUse";
             this.btnCheckMgtKeyInUse.Size = new System.Drawing.Size(141, 26);
             this.btnCheckMgtKeyInUse.TabIndex = 5;
@@ -696,7 +696,7 @@
             "SELL",
             "BUY",
             "TRUSTEE"});
-            this.cboMgtKeyType.Location = new System.Drawing.Point(174, 23);
+            this.cboMgtKeyType.Location = new System.Drawing.Point(159, 23);
             this.cboMgtKeyType.Name = "cboMgtKeyType";
             this.cboMgtKeyType.Size = new System.Drawing.Size(74, 20);
             this.cboMgtKeyType.TabIndex = 4;
@@ -704,7 +704,7 @@
             // 
             // txtMgtKey
             // 
-            this.txtMgtKey.Location = new System.Drawing.Point(253, 23);
+            this.txtMgtKey.Location = new System.Drawing.Point(238, 23);
             this.txtMgtKey.Name = "txtMgtKey";
             this.txtMgtKey.Size = new System.Drawing.Size(143, 21);
             this.txtMgtKey.TabIndex = 3;
@@ -712,7 +712,7 @@
             // Label3
             // 
             this.Label3.AutoSize = true;
-            this.Label3.Location = new System.Drawing.Point(34, 26);
+            this.Label3.Location = new System.Drawing.Point(19, 26);
             this.Label3.Name = "Label3";
             this.Label3.Size = new System.Drawing.Size(142, 12);
             this.Label3.TabIndex = 2;
@@ -1033,7 +1033,7 @@
             this.groupBox20.Controls.Add(this.btnSendToNTS);
             this.groupBox20.Controls.Add(this.groupBox16);
             this.groupBox20.Controls.Add(this.GroupBox8);
-            this.groupBox20.Location = new System.Drawing.Point(12, 57);
+            this.groupBox20.Location = new System.Drawing.Point(25, 57);
             this.groupBox20.Name = "groupBox20";
             this.groupBox20.Size = new System.Drawing.Size(612, 267);
             this.groupBox20.TabIndex = 18;
@@ -1043,7 +1043,7 @@
             // btnSendToNTS
             // 
             this.btnSendToNTS.BackColor = System.Drawing.Color.LightCoral;
-            this.btnSendToNTS.Location = new System.Drawing.Point(86, 222);
+            this.btnSendToNTS.Location = new System.Drawing.Point(110, 224);
             this.btnSendToNTS.Name = "btnSendToNTS";
             this.btnSendToNTS.Size = new System.Drawing.Size(357, 31);
             this.btnSendToNTS.TabIndex = 13;
@@ -1196,10 +1196,10 @@
             this.label23.BackColor = System.Drawing.SystemColors.ControlDark;
             this.label23.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label23.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label23.Location = new System.Drawing.Point(118, 57);
+            this.label23.Location = new System.Drawing.Point(118, 87);
             this.label23.Name = "label23";
             this.label23.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.label23.Size = new System.Drawing.Size(1, 110);
+            this.label23.Size = new System.Drawing.Size(1, 80);
             this.label23.TabIndex = 21;
             this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
