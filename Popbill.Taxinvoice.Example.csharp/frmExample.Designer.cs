@@ -162,6 +162,16 @@
             this.txtCorpNum = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.fileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.groupBox22 = new System.Windows.Forms.GroupBox();
+            this.groupBox23 = new System.Windows.Forms.GroupBox();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.GroupBox8.SuspendLayout();
             this.GroupBox9.SuspendLayout();
             this.GroupBox10.SuspendLayout();
@@ -183,6 +193,8 @@
             this.groupBox15.SuspendLayout();
             this.GroupBox6.SuspendLayout();
             this.GroupBox5.SuspendLayout();
+            this.groupBox22.SuspendLayout();
+            this.groupBox23.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnGetInfos
@@ -266,7 +278,7 @@
             this.GroupBox8.Controls.Add(this.Label17);
             this.GroupBox8.Controls.Add(this.Label18);
             this.GroupBox8.Controls.Add(this.Label10);
-            this.GroupBox8.Location = new System.Drawing.Point(258, 28);
+            this.GroupBox8.Location = new System.Drawing.Point(258, 56);
             this.GroupBox8.Name = "GroupBox8";
             this.GroupBox8.Size = new System.Drawing.Size(330, 189);
             this.GroupBox8.TabIndex = 7;
@@ -548,7 +560,7 @@
             this.GroupBox9.Controls.Add(this.btnGetLogs);
             this.GroupBox9.Controls.Add(this.btnGetInfo);
             this.GroupBox9.Controls.Add(this.btnGetDetailInfo);
-            this.GroupBox9.Location = new System.Drawing.Point(244, 343);
+            this.GroupBox9.Location = new System.Drawing.Point(244, 369);
             this.GroupBox9.Name = "GroupBox9";
             this.GroupBox9.Size = new System.Drawing.Size(211, 212);
             this.GroupBox9.TabIndex = 8;
@@ -652,7 +664,7 @@
             this.GroupBox10.Controls.Add(this.btnDeleteFile);
             this.GroupBox10.Controls.Add(this.btnAttachFile);
             this.GroupBox10.Controls.Add(this.gtnGetFiles);
-            this.GroupBox10.Location = new System.Drawing.Point(23, 343);
+            this.GroupBox10.Location = new System.Drawing.Point(23, 369);
             this.GroupBox10.Name = "GroupBox10";
             this.GroupBox10.Size = new System.Drawing.Size(211, 212);
             this.GroupBox10.TabIndex = 9;
@@ -728,7 +740,7 @@
             this.GroupBox11.Controls.Add(this.btnSendFAX);
             this.GroupBox11.Controls.Add(this.btnSendSMS);
             this.GroupBox11.Controls.Add(this.btnSendEmail);
-            this.GroupBox11.Location = new System.Drawing.Point(465, 343);
+            this.GroupBox11.Location = new System.Drawing.Point(465, 369);
             this.GroupBox11.Name = "GroupBox11";
             this.GroupBox11.Size = new System.Drawing.Size(405, 212);
             this.GroupBox11.TabIndex = 10;
@@ -946,7 +958,7 @@
             this.GroupBox7.Controls.Add(this.groupBox21);
             this.GroupBox7.Location = new System.Drawing.Point(12, 194);
             this.GroupBox7.Name = "GroupBox7";
-            this.GroupBox7.Size = new System.Drawing.Size(1326, 573);
+            this.GroupBox7.Size = new System.Drawing.Size(1326, 591);
             this.GroupBox7.TabIndex = 12;
             this.GroupBox7.TabStop = false;
             this.GroupBox7.Text = "전자세금계산서 관련 API";
@@ -957,7 +969,7 @@
             this.GroupBox13.Controls.Add(this.btnGetURL_PBOX);
             this.GroupBox13.Controls.Add(this.btnGetURL_SBOX);
             this.GroupBox13.Controls.Add(this.btnGetURL_TBOX);
-            this.GroupBox13.Location = new System.Drawing.Point(1101, 343);
+            this.GroupBox13.Location = new System.Drawing.Point(1101, 369);
             this.GroupBox13.Name = "GroupBox13";
             this.GroupBox13.Size = new System.Drawing.Size(211, 212);
             this.GroupBox13.TabIndex = 12;
@@ -1011,7 +1023,7 @@
             this.GroupBox12.Controls.Add(this.btnEPrintURL);
             this.GroupBox12.Controls.Add(this.btnGetPrintURL);
             this.GroupBox12.Controls.Add(this.btnGetPopUpURL);
-            this.GroupBox12.Location = new System.Drawing.Point(880, 343);
+            this.GroupBox12.Location = new System.Drawing.Point(880, 369);
             this.GroupBox12.Name = "GroupBox12";
             this.GroupBox12.Size = new System.Drawing.Size(211, 212);
             this.GroupBox12.TabIndex = 11;
@@ -1030,12 +1042,13 @@
             // 
             // groupBox20
             // 
+            this.groupBox20.Controls.Add(this.groupBox22);
             this.groupBox20.Controls.Add(this.btnSendToNTS);
             this.groupBox20.Controls.Add(this.groupBox16);
             this.groupBox20.Controls.Add(this.GroupBox8);
             this.groupBox20.Location = new System.Drawing.Point(25, 57);
             this.groupBox20.Name = "groupBox20";
-            this.groupBox20.Size = new System.Drawing.Size(612, 267);
+            this.groupBox20.Size = new System.Drawing.Size(612, 302);
             this.groupBox20.TabIndex = 18;
             this.groupBox20.TabStop = false;
             this.groupBox20.Text = "정발행 프로세스";
@@ -1043,9 +1056,9 @@
             // btnSendToNTS
             // 
             this.btnSendToNTS.BackColor = System.Drawing.Color.LightCoral;
-            this.btnSendToNTS.Location = new System.Drawing.Point(110, 224);
+            this.btnSendToNTS.Location = new System.Drawing.Point(136, 251);
             this.btnSendToNTS.Name = "btnSendToNTS";
-            this.btnSendToNTS.Size = new System.Drawing.Size(357, 31);
+            this.btnSendToNTS.Size = new System.Drawing.Size(287, 32);
             this.btnSendToNTS.TabIndex = 13;
             this.btnSendToNTS.Text = "국세청 즉시 전송";
             this.btnSendToNTS.UseVisualStyleBackColor = false;
@@ -1059,7 +1072,7 @@
             this.groupBox16.Controls.Add(this.btnCancelIssue_Sub);
             this.groupBox16.Controls.Add(this.btnRegistIssue);
             this.groupBox16.Controls.Add(this.label26);
-            this.groupBox16.Location = new System.Drawing.Point(27, 29);
+            this.groupBox16.Location = new System.Drawing.Point(27, 57);
             this.groupBox16.Name = "groupBox16";
             this.groupBox16.Size = new System.Drawing.Size(206, 188);
             this.groupBox16.TabIndex = 15;
@@ -1137,11 +1150,12 @@
             // 
             // groupBox21
             // 
+            this.groupBox21.Controls.Add(this.groupBox23);
             this.groupBox21.Controls.Add(this.GroupBox14);
             this.groupBox21.Controls.Add(this.groupBox19);
             this.groupBox21.Location = new System.Drawing.Point(657, 57);
             this.groupBox21.Name = "groupBox21";
-            this.groupBox21.Size = new System.Drawing.Size(655, 267);
+            this.groupBox21.Size = new System.Drawing.Size(655, 302);
             this.groupBox21.TabIndex = 19;
             this.groupBox21.TabStop = false;
             this.groupBox21.Text = "역발행 프로세스";
@@ -1162,7 +1176,7 @@
             this.GroupBox14.Controls.Add(this.Label21);
             this.GroupBox14.Controls.Add(this.Label22);
             this.GroupBox14.Controls.Add(this.Label24);
-            this.GroupBox14.Location = new System.Drawing.Point(350, 23);
+            this.GroupBox14.Location = new System.Drawing.Point(350, 57);
             this.GroupBox14.Name = "GroupBox14";
             this.GroupBox14.Size = new System.Drawing.Size(280, 194);
             this.GroupBox14.TabIndex = 14;
@@ -1344,7 +1358,7 @@
             this.groupBox19.Controls.Add(this.label33);
             this.groupBox19.Controls.Add(this.label29);
             this.groupBox19.Controls.Add(this.label34);
-            this.groupBox19.Location = new System.Drawing.Point(29, 23);
+            this.groupBox19.Location = new System.Drawing.Point(29, 57);
             this.groupBox19.Name = "groupBox19";
             this.groupBox19.Size = new System.Drawing.Size(296, 194);
             this.groupBox19.TabIndex = 17;
@@ -1688,11 +1702,107 @@
             // 
             this.fileDialog.FileName = "OpenFileDialog1";
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.LightCoral;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Location = new System.Drawing.Point(8, 15);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(30, 15);
+            this.panel1.TabIndex = 16;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Aquamarine;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Location = new System.Drawing.Point(122, 15);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(30, 15);
+            this.panel2.TabIndex = 17;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(40, 18);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(77, 12);
+            this.label35.TabIndex = 18;
+            this.label35.Text = ": 공급자 처리";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(158, 18);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(101, 12);
+            this.label36.TabIndex = 19;
+            this.label36.Text = ": 공급받는자 처리";
+            // 
+            // groupBox22
+            // 
+            this.groupBox22.Controls.Add(this.label36);
+            this.groupBox22.Controls.Add(this.label35);
+            this.groupBox22.Controls.Add(this.panel2);
+            this.groupBox22.Controls.Add(this.panel1);
+            this.groupBox22.Location = new System.Drawing.Point(318, 8);
+            this.groupBox22.Name = "groupBox22";
+            this.groupBox22.Size = new System.Drawing.Size(266, 42);
+            this.groupBox22.TabIndex = 20;
+            this.groupBox22.TabStop = false;
+            // 
+            // groupBox23
+            // 
+            this.groupBox23.Controls.Add(this.label37);
+            this.groupBox23.Controls.Add(this.label38);
+            this.groupBox23.Controls.Add(this.panel3);
+            this.groupBox23.Controls.Add(this.panel4);
+            this.groupBox23.Location = new System.Drawing.Point(364, 8);
+            this.groupBox23.Name = "groupBox23";
+            this.groupBox23.Size = new System.Drawing.Size(266, 42);
+            this.groupBox23.TabIndex = 21;
+            this.groupBox23.TabStop = false;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(158, 18);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(101, 12);
+            this.label37.TabIndex = 19;
+            this.label37.Text = ": 공급받는자 처리";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(40, 18);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(77, 12);
+            this.label38.TabIndex = 18;
+            this.label38.Text = ": 공급자 처리";
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Aquamarine;
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Location = new System.Drawing.Point(122, 15);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(30, 15);
+            this.panel3.TabIndex = 17;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.LightCoral;
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Location = new System.Drawing.Point(8, 15);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(30, 15);
+            this.panel4.TabIndex = 16;
+            // 
             // frmExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1367, 779);
+            this.ClientSize = new System.Drawing.Size(1367, 797);
             this.Controls.Add(this.GroupBox7);
             this.Controls.Add(this.txtUserId);
             this.Controls.Add(this.GroupBox1);
@@ -1725,6 +1835,10 @@
             this.groupBox15.ResumeLayout(false);
             this.GroupBox6.ResumeLayout(false);
             this.GroupBox5.ResumeLayout(false);
+            this.groupBox22.ResumeLayout(false);
+            this.groupBox22.PerformLayout();
+            this.groupBox23.ResumeLayout(false);
+            this.groupBox23.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1866,6 +1980,16 @@
         private System.Windows.Forms.Label label32;
         internal System.Windows.Forms.Label label33;
         private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.GroupBox groupBox22;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.GroupBox groupBox23;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel4;
     }
 }
 
