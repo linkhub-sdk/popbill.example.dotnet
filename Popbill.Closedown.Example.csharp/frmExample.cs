@@ -1,9 +1,8 @@
-﻿
-/*
+﻿/*
  * 팝빌 휴폐업조회 API DotNet SDK Example
  * 
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - http://blog.linkhub.co.kr/587
- * - 업데이트 일자 : 2018-11-22
+ * - 업데이트 일자 : 2019-01-10
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
  * 
@@ -43,189 +42,35 @@ namespace Popbill.Closedown.Example.csharp
             closedownService.IsTest = true;
         }
 
-        /*
-         * 해당사업자의 연동회원 가입여부를 확인합니다.
-         * - 사업자번호는 '-'를 제외한 10자리 숫자 문자열입니다.
-         */
-        private void btnCheckIsMember_Click(object sender, EventArgs e)
+        private void txtCheckCorpNum_KeyDown(object sender, KeyEventArgs e)
         {
-            try
+            if (e.KeyCode == Keys.Enter)
             {
-                Response response = closedownService.CheckIsMember(txtCorpNum.Text, LinkID);
-
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + response.message, "연동회원 가입여부 확인");
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "연동회원 가입여부 확인");
+                btnCheckCorpNum.PerformClick();
             }
         }
 
         /*
-         * 연동회원가입을 요청합니다.
-         */
-        private void btnJoinMember_Click(object sender, EventArgs e)
-        {
-            JoinForm joinInfo = new JoinForm();
-
-            // 링크아이디
-            joinInfo.LinkID = LinkID;
-
-            // 사업자번호 "-" 제외
-            joinInfo.CorpNum = "1231212312";
-
-            // 대표자명 
-            joinInfo.CEOName = "대표자성명";
-
-            // 상호
-            joinInfo.CorpName = "상호";
-
-            // 주소
-            joinInfo.Addr = "주소";
-
-            // 업태
-            joinInfo.BizType = "업태";
-
-            // 종목
-            joinInfo.BizClass = "종목";
-
-            // 아이디, 6자이상 20자 미만
-            joinInfo.ID = "userid";
-
-            // 비밀번호, 6자이상 20자 미만
-            joinInfo.PWD = "pwd_must_be_long_enough";
-
-            // 담당자명
-            joinInfo.ContactName = "담당자명";
-
-            // 담당자 연락처
-            joinInfo.ContactTEL = "070-4304-2991";
-
-            // 담당자 휴대폰번호
-            joinInfo.ContactHP = "010-111-222";
-
-            // 담당자 팩스번호
-            joinInfo.ContactFAX = "02-6442-9700";
-
-            // 담당자 메일주소
-            joinInfo.ContactEmail = "test@test.com";
-
-            try
-            {
-                Response response = closedownService.JoinMember(joinInfo);
-
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + response.message, "연동회원 가입요청");
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "연동회원 가입요청");
-            }
-        }
-
-        /*
-         * 연동회원의 잔여포인트를 조회합니다.
-         * - 파트너 과금 방식의 경우 파트너 잔여 포인트 조회(GetPartnerBalance API)를 이용하시기 바랍니다.
-         */
-        private void btnGetBalance_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                double remainPoint = closedownService.GetBalance(txtCorpNum.Text);
-
-                MessageBox.Show("연동회원 잔여포인트 : " + remainPoint.ToString(), "연동회원 잔여포인트 확인");
-
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "연동회원 잔여포인트 확인");
-            }
-        }
-    
-
-        /*
-         * 휴폐업 조회단가 확인
-         */
-        private void btnUnitCost_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                float unitCost = closedownService.GetUnitCost(txtCorpNum.Text);
-
-                MessageBox.Show("조회단가 : " +unitCost.ToString(), "휴폐업 조회단가 확인");
-
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "휴폐업 조회단가 확인");
-
-            }
-        }
-
-        /*
-         * 팝빌에 로그인 상태로 접근할 수 있는 팝업 URL을 반환합니다.
-         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다 
-         */
-        private void btnGetAccessURL_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string url = closedownService.GetAccessURL(txtCorpNum.Text, txtUserID.Text);
-
-                MessageBox.Show(url,"팝빌 로그인 URL");
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "팝빌 로그인 URL");
-            }
-        }
-
-        /*
-         * 팝빌 연동회원 포인트충전 팝업 URL을 반환합니다.
-         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
-         */
-        private void btnGetChargeURL_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string url = closedownService.GetChargeURL(txtCorpNum.Text, txtUserID.Text);
-
-                MessageBox.Show(url, "포인트 충전 팝업 URL");
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "포인트 충전 팝업 URL");
-            }
-        }
-
-        /*
-         * 1건의 사업자 휴폐업정보를 조회합니다.
+         * 1건의 사업자에 대한 휴폐업여부를 조회합니다.
          */
         private void btnCheckCorpNum_Click(object sender, EventArgs e)
         {
             String tmp = "";
-   
+
             try
             {
                 CorpState result = closedownService.checkCorpNum(txtCorpNum.Text, txtCheckCorpNum.Text);
 
                 tmp += "* state (휴폐업상태) : null-알수없음, 0-등록되지 않은 사업자번호, 1-사업중, 2-폐업, 3-휴업\n";
                 tmp += "* type (사업 유형) : null-알수없음, 1-일반과세자, 2-면세과세자, 3-간이과세자, 4-비영리법인, 국가기관\n\n";
-                tmp += "corpNum(사업자번호) : " + result.corpNum +"\n";
+                tmp += "corpNum(사업자번호) : " + result.corpNum + "\n";
                 tmp += "state(휴폐업상태) : " + result.state + "\n";
                 tmp += "type(사업유형) : " + result.type + "\n";
                 tmp += "stateDate(휴폐업일자) : " + result.stateDate + "\n";
                 tmp += "typeDate(과세유형 전환일자) : " + result.typeDate + "\n";
                 tmp += "checkDate(국세청확인일자) : " + result.checkDate + "\n";
 
-                MessageBox.Show(tmp,"휴폐업조회 - 단건");
+                MessageBox.Show(tmp, "휴폐업조회 - 단건");
             }
 
             catch (PopbillException ex)
@@ -236,7 +81,7 @@ namespace Popbill.Closedown.Example.csharp
         }
 
         /*
-         * 사업자 휴폐업정보를 조회합니다 (대량).
+         * 다수의 사업자에 대한 휴폐업여부를 조회합니다. (최대 1000건)
          */
         private void btnCheckCorpNums_Click(object sender, EventArgs e)
         {
@@ -263,29 +108,59 @@ namespace Popbill.Closedown.Example.csharp
                     tmp += "type(사업유형) : " + corpStateList[i].type + CRLF;
                     tmp += "stateDate(휴폐업일자) : " + corpStateList[i].stateDate + CRLF;
                     tmp += "typeDate(과세유형 전환일자) : " + corpStateList[i].typeDate + CRLF;
-                    tmp += "checkDate(국세청확인일자) : " + corpStateList[i].checkDate+ CRLF + CRLF;
+                    tmp += "checkDate(국세청확인일자) : " + corpStateList[i].checkDate + CRLF + CRLF;
                 }
-                MessageBox.Show(tmp, "휴폐업조회 - 대량");   
+
+                MessageBox.Show(tmp, "휴폐업조회 - 대량");
             }
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + ex.Message, "휴폐업조회 - 대량");
             }
-
         }
 
-        private void txtCheckCorpNum_KeyDown(object sender, KeyEventArgs e)
+        /*
+         * 연동회원 잔여포인트를 확인합니다.
+         */
+        private void btnGetBalance_Click(object sender, EventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            try
             {
-                btnCheckCorpNum.PerformClick();
+                double remainPoint = closedownService.GetBalance(txtCorpNum.Text);
+
+                MessageBox.Show("연동회원 잔여포인트 : " + remainPoint.ToString(), "연동회원 잔여포인트 확인");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "연동회원 잔여포인트 확인");
             }
         }
 
         /*
-         * 파트너 잔여포인트를 확인합니다.
-         * - 연동과금 방식의 경우 연동회원 잔여포인트 조회(GetBalance API)를 이용하시기 바랍니다.
+         * 팝빌 연동회원의 포인트충전 팝업 URL을 반환합니다.
+         * - 반환된 URL은 보안정책에 따라 30초의 유효시간을 갖습니다.
+         */
+        private void btnGetChargeURL_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string url = closedownService.GetChargeURL(txtCorpNum.Text, txtUserID.Text);
+
+                MessageBox.Show(url, "포인트 충전 팝업 URL");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "포인트 충전 팝업 URL");
+            }
+        }
+
+
+        /*
+         * 파트너의 잔여포인트를 확인합니다.
+         * - 과금방식이 연동과금인 경우 연동회원 잔여포인트(GetBalance API)를 이용하시기 바랍니다.
          */
         private void btnGetPartnerBalance_Click(object sender, EventArgs e)
         {
@@ -294,7 +169,6 @@ namespace Popbill.Closedown.Example.csharp
                 double remainPoint = closedownService.GetPartnerBalance(txtCorpNum.Text);
 
                 MessageBox.Show("파트너 잔여포인트 : " + remainPoint.ToString(), "파트너 잔여포인트 확인");
-
             }
             catch (PopbillException ex)
             {
@@ -303,10 +177,90 @@ namespace Popbill.Closedown.Example.csharp
             }
         }
 
+
+        /*
+         * 파트너 포인트 충전 팝업 URL을 반환합니다.
+         * - 반환된 URL은 보안정책에 따라 30초의 유효시간을 갖습니다.
+         */
+        private void btnGetPartnerURL_CHRG_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string url = closedownService.GetPartnerURL(txtCorpNum.Text, "CHRG");
+
+                MessageBox.Show(url, "파트너 포인트충전 URL");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "팝빌 로그인 URL");
+            }
+        }
+
+        /*
+         * 휴폐업조회 조회단가를 확인합니다.
+         */
+        private void btnUnitCost_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                float unitCost = closedownService.GetUnitCost(txtCorpNum.Text);
+
+                MessageBox.Show("조회단가 : " + unitCost.ToString(), "휴폐업 조회단가 확인");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "휴폐업 조회단가 확인");
+            }
+        }
+
+        /*
+         * 휴폐업조회 API 서비스 과금정보를 확인합니다.
+         */
+        private void btnGetChargeInfo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ChargeInfo chrgInf = closedownService.GetChargeInfo(txtCorpNum.Text);
+
+                string tmp = null;
+
+                tmp += "unitCost (조회단가) : " + chrgInf.unitCost + CRLF;
+                tmp += "chargeMethod (과금유형) : " + chrgInf.chargeMethod + CRLF;
+                tmp += "rateSystem (과금제도) : " + chrgInf.rateSystem + CRLF;
+
+                MessageBox.Show(tmp, "과금정보 확인");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "과금정보 확인");
+            }
+        }
+
+
+        /*
+         * 해당 사업자의 파트너 연동회원 가입여부를 확인합니다.
+         */
+        private void btnCheckIsMember_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Response response = closedownService.CheckIsMember(txtCorpNum.Text, LinkID);
+
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "연동회원 가입여부 확인");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "연동회원 가입여부 확인");
+            }
+        }
+
         /*
          * 팝빌 회원아이디 중복여부를 확인합니다.
-         * - 아이디는 6자 이상 20자 미만으로 작성하시기 바랍니다.
-         * - 아이디는 대/소문자 구분되지 않습니다.
          */
         private void btnCheckID_Click(object sender, EventArgs e)
         {
@@ -316,15 +270,139 @@ namespace Popbill.Closedown.Example.csharp
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + response.message, "회원아이디 중복여부 확인");
-		
             }
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + ex.Message, "회원아이디 중복여부 확인");
-
             }
         }
+
+        /*
+         * 파트너의 연동회원으로 신규가입 처리합니다.
+         */
+        private void btnJoinMember_Click(object sender, EventArgs e)
+        {
+            JoinForm joinInfo = new JoinForm();
+
+            // 아이디, 6자이상 50자 미만
+            joinInfo.ID = "userid";
+
+            // 비밀번호, 6자이상 20자 미만
+            joinInfo.PWD = "pwd_must_be_long_enough";
+
+            // 링크아이디
+            joinInfo.LinkID = LinkID;
+
+            // 사업자번호 "-" 제외
+            joinInfo.CorpNum = "1231212312";
+
+            // 대표자명 (최대 100자)
+            joinInfo.CEOName = "대표자성명";
+
+            // 상호 (최대 200자)
+            joinInfo.CorpName = "상호";
+
+            // 사업장 주소 (최대 300자)
+            joinInfo.Addr = "주소";
+
+            // 업태 (최대 100자)
+            joinInfo.BizType = "업태";
+
+            // 종목 (최대 100자)
+            joinInfo.BizClass = "종목";
+
+            // 담당자 성명 (최대 100자)
+            joinInfo.ContactName = "담당자명";
+
+            // 담당자 이메일 (최대 20자)
+            joinInfo.ContactEmail = "test@test.com";
+
+            // 담당자 연락처 (최대 20자)
+            joinInfo.ContactTEL = "070-4304-2991";
+
+            // 담당자 휴대폰번호 (최대 20자)
+            joinInfo.ContactHP = "010-111-222";
+
+            // 담당자 팩스번호 (최대 20자)
+            joinInfo.ContactFAX = "02-6442-9700";
+
+            try
+            {
+                Response response = closedownService.JoinMember(joinInfo);
+
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "연동회원 가입요청");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "연동회원 가입요청");
+            }
+        }
+
+        /*
+         * 연동회원의 회사정보를 조회합니다.
+         */
+        private void btnGetCorpInfo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                CorpInfo corpInfo = closedownService.GetCorpInfo(txtCorpNum.Text, txtUserID.Text);
+
+                string tmp = null;
+
+                tmp += "ceoname (대표자명) : " + corpInfo.ceoname + CRLF;
+                tmp += "corpName (상호명) : " + corpInfo.corpName + CRLF;
+                tmp += "addr (주소) : " + corpInfo.addr + CRLF;
+                tmp += "bizType (업태) : " + corpInfo.bizType + CRLF;
+                tmp += "bizClass (종목) : " + corpInfo.bizClass + CRLF;
+
+                MessageBox.Show(tmp, "회사정보 조회");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "회사정보 조회");
+            }
+        }
+
+        /*
+         * 회사정보를 수정합니다.
+         */
+        private void btnUpdateCorpInfo_Click(object sender, EventArgs e)
+        {
+            CorpInfo corpInfo = new CorpInfo();
+
+            // 대표자성명 (최대 100자)
+            corpInfo.ceoname = "대표자명 테스트";
+
+            // 상호 (최대 200자)
+            corpInfo.corpName = "업체명";
+
+            // 주소 (최대 300자)
+            corpInfo.addr = "주소정보 수정";
+
+            // 업태 (최대 100자)
+            corpInfo.bizType = "업태정보 수정";
+
+            // 종목 (최대 100자)
+            corpInfo.bizClass = "종목 수정";
+
+            try
+            {
+                Response response = closedownService.UpdateCorpInfo(txtCorpNum.Text, corpInfo, txtUserID.Text);
+
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "회사정보 수정");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "회사정보 수정");
+            }
+        }
+
 
         /*
          * 연동회원의 담당자를 추가합니다.
@@ -333,25 +411,25 @@ namespace Popbill.Closedown.Example.csharp
         {
             Contact contactInfo = new Contact();
 
-            // 담당자 아이디, 한글, 영문(대/소), 숫자, '-', '_' 6자 이상 20자 미만 구성
-            contactInfo.id = "test12341234";
+            //담당자 아이디, 6자 이상 50자 미만
+            contactInfo.id = "testkorea_20190110";
 
-            // 비밀번호, 6자 이상 20자 미만 구성
-            contactInfo.pwd = "this_is_password";
+            //비밀번호, 6자 이상 20자 미만
+            contactInfo.pwd = "user_password";
 
-            // 담당자명 
-            contactInfo.personName = "담당자 명";
+            //담당자 성명 (최대 100자) 
+            contactInfo.personName = "담당자명";
 
-            // 연락처
+            //담당자연락처 (최대 20자)
             contactInfo.tel = "070-4304-2991";
 
-            // 휴대폰번호
-            contactInfo.hp = "010-1234-1234";
+            //담당자 휴대폰번호 (최대 20자)
+            contactInfo.hp = "010-111-222";
 
-            // 팩스번호 
-            contactInfo.fax = "070-4321-4321";
+            //담당자 팩스번호 (최대 20자)
+            contactInfo.fax = "070-4304-2991";
 
-            // 이메일주소
+            //담당자 이메일 (최대 100자)
             contactInfo.email = "dev@linkhub.co.kr";
 
             // 회사조회 권한여부, true(회사조회), false(개인조회)
@@ -401,7 +479,6 @@ namespace Popbill.Closedown.Example.csharp
                 }
 
                 MessageBox.Show(tmp, "담당자 목록조회");
-
             }
             catch (PopbillException ex)
             {
@@ -420,26 +497,26 @@ namespace Popbill.Closedown.Example.csharp
             // 담당자 아이디
             contactInfo.id = txtUserID.Text;
 
-            // 담당자명 
+            // 담당자 성명 (최대 100자)
             contactInfo.personName = "담당자123";
 
-            // 연락처
+            // 연락처 (최대 20자)
             contactInfo.tel = "070-4304-2991";
 
-            // 휴대폰번호
+            // 휴대폰번호 (최대 20자)
             contactInfo.hp = "010-1234-1234";
 
-            // 팩스번호 
-            contactInfo.fax = "070-111-222";
+            // 팩스번호 (최대 20자)
+            contactInfo.fax = "02-6442-9700";
 
-            // 이메일주소
+            // 이메일주소 (최대 100자)
             contactInfo.email = "dev@linkhub.co.kr";
 
             // 회사조회 권한여부, true(회사조회), false(개인조회)
             contactInfo.searchAllAllowYN = true;
 
             // 관리자 권한여부 
-            contactInfo.mgrYN = false; 
+            contactInfo.mgrYN = false;
 
             try
             {
@@ -454,104 +531,19 @@ namespace Popbill.Closedown.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "담당자 정보수정");
             }
         }
-    
+
+
         /*
-         * 회사정보를 조회합니다.
+         * 팝빌에 로그인 상태로 접근할 수 있는 팝업 URL을 반환합니다.
+         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다 
          */
-        private void btnGetCorpInfo_Click(object sender, EventArgs e)
+        private void btnGetAccessURL_Click(object sender, EventArgs e)
         {
             try
             {
-                CorpInfo corpInfo = closedownService.GetCorpInfo(txtCorpNum.Text, txtUserID.Text);
+                string url = closedownService.GetAccessURL(txtCorpNum.Text, txtUserID.Text);
 
-                string tmp = null;
-
-                tmp += "ceoname (대표자명) : " + corpInfo.ceoname + CRLF;
-                tmp += "corpName (상호명) : " + corpInfo.corpName + CRLF;
-                tmp += "addr (주소) : " + corpInfo.addr + CRLF;
-                tmp += "bizType (업태) : " + corpInfo.bizType + CRLF;
-                tmp += "bizClass (종목) : " + corpInfo.bizClass + CRLF;
-
-                MessageBox.Show(tmp, "회사정보 조회");
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "회사정보 조회");
-            }
-        }
-
-        /*
-         * 회사정보를 수정합니다.
-         */
-        private void btnUpdateCorpInfo_Click(object sender, EventArgs e)
-        {
-            CorpInfo corpInfo = new CorpInfo();
-
-            // 대표자성명
-            corpInfo.ceoname = "대표자명 테스트";
-
-            // 상호
-            corpInfo.corpName = "업체명";
-
-            // 주소
-            corpInfo.addr = "주소정보 수정";
-
-            // 업태 
-            corpInfo.bizType = "업태정보 수정";
-
-            // 종목
-            corpInfo.bizClass = "종목 수정";
-
-            try
-            {
-                Response response = closedownService.UpdateCorpInfo(txtCorpNum.Text, corpInfo, txtUserID.Text);
-
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + response.message, "회사정보 수정");
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "회사정보 수정");
-            }
-        }
-
-        /*
-         * 휴폐업조회 API 서비스 과금정보를 확인합니다.
-         */
-        private void btnGetChargeInfo_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                ChargeInfo chrgInf = closedownService.GetChargeInfo(txtCorpNum.Text);
-
-                string tmp = null;
-
-                tmp += "unitCost (조회단가) : " + chrgInf.unitCost + CRLF;
-                tmp += "chargeMethod (과금유형) : " + chrgInf.chargeMethod + CRLF;
-                tmp += "rateSystem (과금제도) : " + chrgInf.rateSystem + CRLF;
-
-                MessageBox.Show(tmp, "과금정보 확인");
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "과금정보 확인");
-            }
-        }
-
-        /*
-         * 파트너 포인트 충전 팝업 URL을 반환합니다. 
-         * - 반환된 URL은 보안정책상 30초의 유효시간을 갖습니다.
-         */
-        private void btnGetPartnerURL_CHRG_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string url = closedownService.GetPartnerURL(txtCorpNum.Text, "CHRG");
-
-                MessageBox.Show(url, "파트너 포인트충전 URL");
+                MessageBox.Show(url, "팝빌 로그인 URL");
             }
             catch (PopbillException ex)
             {
