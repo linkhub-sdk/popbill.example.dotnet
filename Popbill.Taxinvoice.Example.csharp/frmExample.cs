@@ -2814,7 +2814,7 @@ namespace Popbill.Taxinvoice.Example.csharp
                 List<AttachedFile> fileList = taxinvoiceService.GetFiles(txtCorpNum.Text, KeyType, txtMgtKey.Text);
 
 
-                string tmp = "일련번호 | 표시명 | 파일아이디 | 등록일자" + CRLF;
+                string tmp = "serialNum(일련번호) | displayName(첨부파일명) | attachedFile(파일아이디) | regDT(등록일자)" + CRLF;
 
                 foreach (AttachedFile file in fileList)
                 {
