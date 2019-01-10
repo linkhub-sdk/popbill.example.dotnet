@@ -143,9 +143,9 @@ namespace Popbill.Kakao.Example.csharp
 
                 foreach (SenderNumber numInfo in SenderNumberList)
                 {
-                    tmp += "발신번호(number) : " + numInfo.number + CRLF;
-                    tmp += "대표번호 지정여부(representYN) : " + numInfo.representYN + CRLF;
-                    tmp += "등록상태(state) : " + numInfo.state + CRLF + CRLF;
+                    tmp += "number (발신번호) : " + numInfo.number + CRLF;
+                    tmp += "representYN (대표번호 지정여부) : " + numInfo.representYN + CRLF;
+                    tmp += "state (등록상태) : " + numInfo.state + CRLF + CRLF;
                 }
 
                 MessageBox.Show(tmp, "발신번호 목록 조회");
@@ -229,7 +229,7 @@ namespace Popbill.Kakao.Example.csharp
         private void btnSendATS_one_Click(object sender, EventArgs e)
         {
             // 알림톡 템플릿 코드, ListATSTemplate API의 templateCode 확인
-            String templateCode = "018060000179";
+            String templateCode = "018110000047";
 
             // 팝빌에 사전 등록된 발신번호
             String senderNum = "07043042991";
@@ -276,10 +276,10 @@ namespace Popbill.Kakao.Example.csharp
         private void btnSendATS_multi_Click(object sender, EventArgs e)
         {
             // 알림톡 템플릿 코드, ListATSTemplate API의 templateCode 확인
-            String templateCode = "018020000001";
+            String templateCode = "018110000047";
 
             // 팝빌에 사전 등록된 발신번호
-            String senderNum = "07043042993";
+            String senderNum = "07043042992";
 
             // 대체문자 유형, 공백-미전송, C-알림톡 내용, A-대체문자 내용
             String altSendType = "A";
@@ -328,10 +328,10 @@ namespace Popbill.Kakao.Example.csharp
         private void btnSendATS_same_Click(object sender, EventArgs e)
         {
             // 알림톡 템플릿 코드, ListATSTemplate API의 templateCode 확인
-            String templateCode = "018020000001";
+            String templateCode = "018110000047";
 
             // 팝빌에 사전 등록된 발신번호
-            String senderNum = "07043042993";
+            String senderNum = "07043042992";
 
             // 알림톡 템플릿 내용, 최대 1000자
             String content = "[테스트] 테스트 템플릿입니다.";
@@ -386,7 +386,7 @@ namespace Popbill.Kakao.Example.csharp
             String plusFriendID = "@팝빌";
 
             // 팝빌에 사전 등록된 발신번호
-            String senderNum = "07043042993";
+            String senderNum = "07043042992";
 
             // 친구톡 내용, 최대 1000자
             String content = "친구톡 내용";
@@ -450,7 +450,7 @@ namespace Popbill.Kakao.Example.csharp
             String plusFriendID = "@팝빌";
 
             // 팝빌에 사전 등록된 발신번호
-            String senderNum = "07043042993";
+            String senderNum = "07043042992";
 
             // 대체문자 유형, 공백-미전송, C-알림톡 내용, A-대체문자 내용
             String altSendType = "C";
@@ -513,7 +513,7 @@ namespace Popbill.Kakao.Example.csharp
             String plusFriendID = "@팝빌";
 
             // 팝빌에 사전 등록된 발신번호
-            String senderNum = "07043042993";
+            String senderNum = "07043042992";
 
             // 친구톡내용, 최대 1000자
             String content = "친구톡 내용";
@@ -582,7 +582,7 @@ namespace Popbill.Kakao.Example.csharp
             String plusFriendID = "@팝빌";
 
             // 팝빌에 사전 등록된 발신번호
-            String senderNum = "07043042993";
+            String senderNum = "07043042992";
 
             // 친구톡 내용, 최대 400자
             String content = "친구톡 내용";
@@ -655,7 +655,7 @@ namespace Popbill.Kakao.Example.csharp
             String plusFriendID = "@팝빌";
 
             // 팝빌에 사전 등록된 발신번호
-            String senderNum = "07043042993";
+            String senderNum = "07043042992";
 
             // 대체문자 유형, 공백-미전송, C-알림톡 내용, A-대체문자 내용
             String altSendType = "C";
@@ -733,7 +733,7 @@ namespace Popbill.Kakao.Example.csharp
             String plusFriendID = "@팝빌";
 
             // 팝빌에 사전 등록된 발신번호
-            String senderNum = "07043042993";
+            String senderNum = "07043042992";
 
             // 친구톡 내용, 최대 400자
             String content = "친구톡 내용";
@@ -870,8 +870,9 @@ namespace Popbill.Kakao.Example.csharp
 
                 MessageBox.Show(tmp, "전송내역 확인");
 
-                string rowStr = "전송상태 코드 | 전송일시 | 수신번호 | 수신자명 | 내용 | 전송결과 코드 | 전송결과 수신일시 | 대체문자 내용 | 대체문자 전송유형 | " +
-                                "대체문자 전송일시 | 대체문자 전송결과 코드 | 대체문자 전송결과 수신일시 | 접수번호 | 요청번호";
+                string rowStr = "state (전송상태 코드) | sendDT (전송일시) | result (전송결과 코드) | resultDT (전송결과 수신일시) | contentType (카카오톡 유형) | " +
+                                "receiveNum (수신번호) | receiveName (수신자명) | content (내용) | altContentType (대체문자 전송타입) | altSendDT (대체문자 전송일시) | " +
+                                "altResult (대체문자 전송결과 코드) | altResultDT (대체문자 전송결과 수신일시) | receiptNum (접수번호) | requestNum (요청번호)";
 
                 listBox1.Items.Add(rowStr);
 
@@ -931,8 +932,9 @@ namespace Popbill.Kakao.Example.csharp
 
                 MessageBox.Show(tmp, "전송내역 확인");
 
-                string rowStr = "전송상태 코드 | 전송일시 | 수신번호 | 수신자명 | 내용 | 전송결과 코드 | 전송결과 수신일시 | 대체문자 내용 | 대체문자 전송유형 | " +
-                                "대체문자 전송일시 | 대체문자 전송결과 코드 | 대체문자 전송결과 수신일시 | 접수번호 | 요청번호";
+                string rowStr = "state (전송상태 코드) | sendDT (전송일시) | result (전송결과 코드) | resultDT (전송결과 수신일시) | contentType (카카오톡 유형) | " +
+                                "receiveNum (수신번호) | receiveName (수신자명) | content (내용) | altContentType (대체문자 전송타입) | altSendDT (대체문자 전송일시) | " +
+                                "altResult (대체문자 전송결과 코드) | altResultDT (대체문자 전송결과 수신일시) | receiptNum (접수번호) | requestNum (요청번호)";
 
                 listBox1.Items.Add(rowStr);
 
@@ -1026,8 +1028,9 @@ namespace Popbill.Kakao.Example.csharp
 
                 MessageBox.Show(tmp, "전송내역조회 결과");
 
-                string rowStr = "전송상태 코드 | 전송일시 | 전송결과 코드 | 전송결과 수신일시 | 카카오톡 유형 | 수신번호 | 수신자명" +
-                                "내용 | 대체문자 전송타입 | 대체문자 전송일시 | 대체문자 전송결과 코드 | 대체문자 전송결과 수신일시 | 접수번호 | 요청번호";
+                string rowStr = "state (전송상태 코드) | sendDT (전송일시) | result (전송결과 코드) | resultDT (전송결과 수신일시) | contentType (카카오톡 유형) | " +
+                                "receiveNum (수신번호) | receiveName (수신자명) | content (내용) | altContentType (대체문자 전송타입) | altSendDT (대체문자 전송일시) | " +
+                                "altResult (대체문자 전송결과 코드) | altResultDT (대체문자 전송결과 수신일시) | receiptNum (접수번호) | requestNum (요청번호)";
 
                 listBox1.Items.Add(rowStr);
 

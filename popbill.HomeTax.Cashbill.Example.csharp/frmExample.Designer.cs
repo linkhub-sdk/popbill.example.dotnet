@@ -329,7 +329,7 @@
             // 
             this.btnListActiveJob.Location = new System.Drawing.Point(7, 90);
             this.btnListActiveJob.Name = "btnListActiveJob";
-            this.btnListActiveJob.Size = new System.Drawing.Size(125, 31);
+            this.btnListActiveJob.Size = new System.Drawing.Size(125, 34);
             this.btnListActiveJob.TabIndex = 0;
             this.btnListActiveJob.Text = "수집 상태 목록 확인";
             this.btnListActiveJob.UseVisualStyleBackColor = true;
@@ -615,7 +615,7 @@
             this.Controls.Add(this.Label1);
             this.Name = "frmExample";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "팝빌 홈택스 현금영수증 연계 API SDK Example";
+            this.Text = "팝빌 홈택스 현금영수증 연동 API SDK Example";
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             this.groupBox10.ResumeLayout(false);

@@ -64,9 +64,9 @@ namespace Popbill.Message.Example.csharp
 
                 foreach (SenderNumber numInfo in SenderNumberList)
                 {
-                    tmp += "발신번호(number) : " + numInfo.number + CRLF;
-                    tmp += "대표번호 지정여부(representYN) : " + numInfo.representYN + CRLF;
-                    tmp += "등록상태(state) : " + numInfo.state + CRLF + CRLF;
+                    tmp += "number (발신번호) : " + numInfo.number + CRLF;
+                    tmp += "representYN (대표번호 지정여부) : " + numInfo.representYN + CRLF;
+                    tmp += "state (등록상태) : " + numInfo.state + CRLF + CRLF;
                 }
 
                 MessageBox.Show(tmp, "발신번호 목록 조회");
@@ -172,7 +172,7 @@ namespace Popbill.Message.Example.csharp
                 Message msg = new Message();
 
                 // 발신번호
-                msg.sendNum = "07043042993";
+                msg.sendNum = "07043042992";
 
                 // 발신자명
                 msg.senderName = "발신자명";
@@ -213,7 +213,7 @@ namespace Popbill.Message.Example.csharp
         private void btnSendSMS_Same_Click(object sender, EventArgs e)
         {
             // 발신번호
-            String senderNum = "07043042993";
+            String senderNum = "07043042992";
 
             // 동보 메시지 내용, 단문(SMS) 메시지는 90byte초과된 내용은 삭제되어 전송됨. 
             String contents = "동보전송 문자메시지 내용";
@@ -263,7 +263,7 @@ namespace Popbill.Message.Example.csharp
         private void btnSendLMS_one_Click(object sender, EventArgs e)
         {
             // 발신번호 
-            String senderNum = "07043042993";
+            String senderNum = "07043042992";
 
             // 수신번호 
             String receiver = "010111222";
@@ -322,7 +322,7 @@ namespace Popbill.Message.Example.csharp
                 Message msg = new Message();
 
                 // 발신번호
-                msg.sendNum = "07043042993";
+                msg.sendNum = "07043042992";
 
                 // 발신자명
                 msg.senderName = "발신자명";
@@ -366,7 +366,7 @@ namespace Popbill.Message.Example.csharp
         private void btnSendLMS_same_Click(object sender, EventArgs e)
         {
             // 발신번호 
-            String senderNum = "07043042993";
+            String senderNum = "07043042992";
 
             // 메시지 제목
             String subject = "동보 메시지 제목";
@@ -420,7 +420,7 @@ namespace Popbill.Message.Example.csharp
         private void btnSendXMS_one_Click(object sender, EventArgs e)
         {
             // 발신번호 
-            String senderNum = "07043042993";
+            String senderNum = "07043042992";
 
             // 수신번호 
             String receiver = "010111222";
@@ -479,7 +479,7 @@ namespace Popbill.Message.Example.csharp
                 Message msg = new Message();
 
                 // 발신번호
-                msg.sendNum = "07043042993";
+                msg.sendNum = "07043042992";
 
                 // 발신자명
                 msg.senderName = "발신자명";
@@ -524,7 +524,7 @@ namespace Popbill.Message.Example.csharp
         private void btnSendXMS_same_Click(object sender, EventArgs e)
         {
             // 발신번호 
-            String senderNum = "07043042993";
+            String senderNum = "07043042992";
 
             // 동보 메시지 제목
             String subject = "동보 메시지 제목";
@@ -578,7 +578,7 @@ namespace Popbill.Message.Example.csharp
         private void btnSendMMS_Click(object sender, EventArgs e)
         {
             // 발신번호
-            String senderNum = "07043042993";
+            String senderNum = "07043042992";
 
             // 수신번호 
             String receiver = "010111222";
@@ -628,7 +628,7 @@ namespace Popbill.Message.Example.csharp
         private void btnSendMMS_Same_Click(object sender, EventArgs e)
         {
             // 발신번호
-            String senderNum = "07043042993";
+            String senderNum = "07043042992";
 
             // 메시지 제목
             String subject = "동보메시지 제목";

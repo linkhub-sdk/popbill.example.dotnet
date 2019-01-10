@@ -624,11 +624,11 @@ namespace Popbill.Statement.Example.csharp
                 Response response = statementService.Update(txtCorpNum.Text, selectedItemCode(), txtMgtKey.Text,
                     statement, txtUserID.Text);
 
-                MessageBox.Show(response.code + " | " + response.message);
+                MessageBox.Show(response.code + " | " + response.message, "전자명세서 수정");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show(ex.code.ToString() + " | " + ex.Message);
+                MessageBox.Show(ex.code.ToString() + " | " + ex.Message, "전자명세서 수정");
             }
         }
 
@@ -969,7 +969,7 @@ namespace Popbill.Statement.Example.csharp
             String DType = "W";
 
             // [필수] 시작일자, 날짜형식(yyyyMMdd)
-            String SDate = "20191201";
+            String SDate = "20181201";
 
             // [필수] 종료일자, 날짜형식(yyyyMMdd)
             String EDate = "20190109";
@@ -1058,6 +1058,8 @@ namespace Popbill.Statement.Example.csharp
 
                 string tmp = "";
 
+                tmp += "docType(로그타입) | log(이력정보) | procType(처리형태) | procContactName(처리담당자) |";
+                tmp += "procMemo(처리메모) | regDT(등록일시) | ip(아이피)" + CRLF + CRLF;
                 foreach (StatementLog log in logList)
                 {
                     tmp += log.docLogType + " | " + log.log + " | " + log.procType + " | " + log.procContactName +
@@ -1394,7 +1396,7 @@ namespace Popbill.Statement.Example.csharp
             string receiverNum = "010111222";
 
             // 문자메시지 내용,이 90Byte초과하는경우 길이가 조정되어 전송됨
-            string msgContents = "dotnet 전자명세서 문자전송 테스트";
+            string msgContents = "전자명세서 문자전송 테스트 dotnet";
 
             try
             {
@@ -1768,7 +1770,7 @@ namespace Popbill.Statement.Example.csharp
             {
                 double remainPoint = statementService.GetBalance(txtCorpNum.Text);
 
-                MessageBox.Show("잔여포인트 : " + remainPoint.ToString());
+                MessageBox.Show("잔여포인트 : " + remainPoint.ToString(), "연동회원 잔여포인트 확인");
             }
             catch (PopbillException ex)
             {

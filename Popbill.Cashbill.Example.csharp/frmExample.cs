@@ -830,11 +830,11 @@ namespace Popbill.Cashbill.Example.csharp
                 String tmp = null;
 
                 tmp += "code (응답코드) : " + searchResult.code + CRLF;
-                tmp += "message (응답메시지) : " + searchResult.message + CRLF + CRLF;
+                tmp += "message (응답메시지) : " + searchResult.message + CRLF;
                 tmp += "total (총 검색결과 건수) : " + searchResult.total + CRLF;
                 tmp += "perPage (페이지당 검색개수) : " + searchResult.perPage + CRLF;
                 tmp += "pageNum (페이지 번호) : " + searchResult.pageNum + CRLF;
-                tmp += "pageCount (페이지 개수) : " + searchResult.pageCount + CRLF;
+                tmp += "pageCount (페이지 개수) : " + searchResult.pageCount + CRLF + CRLF;
 
                 tmp += "itemKey | mgtKey | tradeDate | tradeType | tradeUsage | tradeOpt | taxationType | totalAmount | issueDT | regDT | stateMemo | stateCode | stateDT | ";
                 tmp += "identityNum | itemName | customerName | ";

@@ -127,9 +127,9 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
             {
                 List<HTCashbillJobState> jobList = htCashbillService.ListActiveJob(txtCorpNum.Text);
 
-                String tmp = "jobID | jobState | queryType | queryDateType | queryStDate | queryEnDate | errorCode | ";
-                tmp += "errorReason | jobStartDT | jobEndDT | collectCount | regDT " + CRLF;
-
+                String tmp = "jobID(작업아이디) | jobState(수집상태) | queryType(수집유형) | queryDateType(일자유형) | queryStDate(시작일자) |";
+                tmp += "queryEnDate(종료일자) | errorCode(오류코드) | errorReason(오류메시지) | jobStartDT(작업 시작일시) | jobEndDT(작업 종료일시) |";
+                tmp += "collectCount(수집개수) | regDT(수집 요청일시) " + CRLF;
 
                 for (int i = 0; i < jobList.Count; i++)
                 {
@@ -146,7 +146,7 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
                     tmp += jobList[i].collectCount.ToString() + " | ";
                     tmp += jobList[i].regDT;
 
-                    tmp += CRLF;
+                    tmp += CRLF + CRLF;
                 }
 
                 if (jobList.Count > 0) txtJobID.Text = jobList[0].jobID;
@@ -199,8 +199,10 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
 
                 MessageBox.Show(tmp, "수집 결과 조회");
 
-                string rowStr = "국세청승인번호 | 거래일자 | 거래일시 | 문서형태 | 거래구분 | 거래금액 | 공급가액 | 부가세 | 봉사료 | 매입/매출 | ";
-                rowStr += "발행자 사업자번호 | 발행자 상호 | 발행자 사업자유형 | 식별번호 | 식별변호유형 | 고객명 | 카드소유자명 | 공제유형";
+                string rowStr = "ntsconfirmNum(국세청승인번호) | tradeDate(거래일자) | tradeDT(거래일시) | tradeType(문서형태) | tradeUsage(거래구분) | totalAmount(거래금액) |";
+                rowStr += "supplyCost(공급가액) | tax(부가세) | serviceFee(봉사료) | invoiceType(매입/매출) | franchiseCorpNum(발행자 사업자번호) | franchiseCorpName(발행자 상호) |  ";
+                rowStr += "franchiseCorpType(발행자 사업자유형) | identityNum(식별번호) | identityNumType(식별변호유형) | customerName(고객명) | cardOwnerName(카드소유자명) | deductionType(공제유형)";
+
                 listBox1.Items.Add(rowStr);
 
                 // 현금영수증 항목에 대한 추가적인 정보는 [연동매뉴얼 4.1. 응답전문 구성] 를 참조하시기 바랍니다.
@@ -538,15 +540,15 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
             {
                 HTFlatRate rateInfo = htCashbillService.GetFlatRateState(txtCorpNum.Text, txtUserId.Text);
 
-                String tmp = "사업자번호 (referenceID) : " + rateInfo.referenceID + CRLF;
-                tmp += "정액제 서비스 시작일시 (contractDT) : " + rateInfo.contractDT + CRLF;
-                tmp += "정액제 서비스 종료일 (useEndDate) : " + rateInfo.useEndDate + CRLF;
-                tmp += "자동연장 결제일 (baseDate) : " + rateInfo.baseDate.ToString() + CRLF;
-                tmp += "정액제 서비스 상태 (state) : " + rateInfo.state.ToString() + CRLF;
-                tmp += "정액제 서비스 해지신청 여부 (closeRequestYN) : " + rateInfo.closeRequestYN.ToString() + CRLF;
-                tmp += "정액제 서비스 사용제한 여부 (useRestrictYN) : " + rateInfo.useRestrictYN.ToString() + CRLF;
-                tmp += "정액제 서비스 만료 시 해지 여부 (closeOnExpired) : " + rateInfo.closeOnExpired.ToString() + CRLF;
-                tmp += "미수금 보유 여부 (unPaidYN) : " + rateInfo.unPaidYN.ToString() + CRLF;
+                String tmp = "referenceID(사업자번호) : " + rateInfo.referenceID + CRLF;
+                tmp += "contractDT(정액제 서비스 시작일시) : " + rateInfo.contractDT + CRLF;
+                tmp += "useEndDate(정액제 서비스 종료일) : " + rateInfo.useEndDate + CRLF;
+                tmp += "baseDate(자동연장 결제일) : " + rateInfo.baseDate.ToString() + CRLF;
+                tmp += "state(정액제 서비스 상태) : " + rateInfo.state.ToString() + CRLF;
+                tmp += "closeRequestYN(정액제 서비스 해지신청 여부) : " + rateInfo.closeRequestYN.ToString() + CRLF;
+                tmp += "useRestrictYN(정액제 서비스 사용제한 여부) : " + rateInfo.useRestrictYN.ToString() + CRLF;
+                tmp += "closeOnExpired(정액제 서비스 만료 시 해지 여부) : " + rateInfo.closeOnExpired.ToString() + CRLF;
+                tmp += "unPaidYN(미수금 보유 여부) : " + rateInfo.unPaidYN.ToString() + CRLF;
 
                 MessageBox.Show(tmp, "정액제 서비스 상태 확인");
             }

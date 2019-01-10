@@ -128,8 +128,9 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
             {
                 List<HTTaxinvoiceJobState> jobList = htTaxinvoiceService.ListActiveJob(txtCorpNum.Text);
 
-                String tmp = "jobID | jobState | queryType | queryDateType | queryStDate | queryEnDate | errorCode | ";
-                tmp += "errorReason | jobStartDT | jobEndDT | collectCount | regDT ";
+                String tmp = "jobID(작업아이디) | jobState(수집상태) | queryType(수집유형) | queryDateType(일자유형) | queryStDate(시작일자) |";
+                tmp += "queryEnDate(종료일자) | errorCode(오류코드) | errorReason(오류메시지) | jobStartDT(작업 시작일시) | jobEndDT(작업 종료일시) |";
+                tmp += "collectCount(수집개수) | regDT(수집 요청일시) " + CRLF;
 
                 for (int i = 0; i < jobList.Count; i++)
                 {
@@ -212,7 +213,8 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
 
                 MessageBox.Show(tmp, "수집 결과 조회");
 
-                string rowStr = "구분 | 작성일자 | 발행일자 | 전송일자 | 거래처 | 등록번호 | 과세형태 | 공급가액 | 문서형태 | 국세청승인번호 ";
+                string rowStr = "invoiceType(구분) | writeDate(작성일자) | issueDate(발행일자) | sendDate(전송일자) | invoiceeCorpName(공급자 상호) | invoiceeCorpNum( 공급자 사업자번호) | " +
+                                "taxType(과세형태) | supplyCost(공급가액) | modifyYN(문서형태) | ntsconfirmNum(국세청승인번호) ";
 
                 listBox1.Items.Add(rowStr);
 
@@ -696,15 +698,15 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
             {
                 HTFlatRate rateInfo = htTaxinvoiceService.GetFlatRateState(txtCorpNum.Text, txtUserId.Text);
 
-                String tmp = "사업자번호 (referenceID) : " + rateInfo.referenceID + CRLF;
-                tmp += "정액제 서비스 시작일시 (contractDT) : " + rateInfo.contractDT + CRLF;
-                tmp += "정액제 서비스 종료일 (useEndDate) : " + rateInfo.useEndDate + CRLF;
-                tmp += "자동연장 결제일 (baseDate) : " + rateInfo.baseDate.ToString() + CRLF;
-                tmp += "정액제 서비스 상태 (state) : " + rateInfo.state.ToString() + CRLF;
-                tmp += "정액제 서비스 해지신청 여부 (closeRequestYN) : " + rateInfo.closeRequestYN.ToString() + CRLF;
-                tmp += "정액제 서비스 사용제한 여부 (useRestrictYN) : " + rateInfo.useRestrictYN.ToString() + CRLF;
-                tmp += "정액제 서비스 만료 시 해지 여부 (closeOnExpired) : " + rateInfo.closeOnExpired.ToString() + CRLF;
-                tmp += "미수금 보유 여부 (unPaidYN) : " + rateInfo.unPaidYN.ToString() + CRLF;
+                String tmp = "referenceID(사업자번호) : " + rateInfo.referenceID + CRLF;
+                tmp += "contractDT(정액제 서비스 시작일시) : " + rateInfo.contractDT + CRLF;
+                tmp += "useEndDate(정액제 서비스 종료일) : " + rateInfo.useEndDate + CRLF;
+                tmp += "baseDate(자동연장 결제일) : " + rateInfo.baseDate.ToString() + CRLF;
+                tmp += "state(정액제 서비스 상태) : " + rateInfo.state.ToString() + CRLF;
+                tmp += "closeRequestYN(정액제 서비스 해지신청 여부) : " + rateInfo.closeRequestYN.ToString() + CRLF;
+                tmp += "useRestrictYN(정액제 서비스 사용제한 여부) : " + rateInfo.useRestrictYN.ToString() + CRLF;
+                tmp += "closeOnExpired(정액제 서비스 만료 시 해지 여부) : " + rateInfo.closeOnExpired.ToString() + CRLF;
+                tmp += "unPaidYN(미수금 보유 여부) : " + rateInfo.unPaidYN.ToString() + CRLF;
 
                 MessageBox.Show(tmp, "정액제 서비스 상태 확인");
 

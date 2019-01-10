@@ -79,9 +79,9 @@ namespace Popbill.Fax.Example.csharp
 
                 foreach (SenderNumber numInfo in SenderNumberList)
                 {
-                    tmp += "발신번호(number) : " + numInfo.number + CRLF;
-                    tmp += "대표번호 지정여부(representYN) : " + numInfo.representYN + CRLF;
-                    tmp += "등록상태(state) : " + numInfo.state + CRLF + CRLF;
+                    tmp += "number (발신번호) : " + numInfo.number + CRLF;
+                    tmp += "representYN (대표번호 지정여부) : " + numInfo.representYN + CRLF;
+                    tmp += "state (등록상태) : " + numInfo.state + CRLF + CRLF;
                 }
 
                 MessageBox.Show(tmp, "발신번호 목록 조회");
@@ -570,9 +570,10 @@ namespace Popbill.Fax.Example.csharp
             {
                 List<FaxResult> ResultList = faxService.GetFaxResult(txtCorpNum.Text, txtReceiptNum.Text);
 
-                string rowStr = "전송상태 코드 | 전송결과 코드 | 발신번호 | 발신자명 | 수신번호 | 수신자명 | 팩스제목 | 전체 페이지수 | 성공 페이지수 | " +
-                                "실패 페이지수 | 환불 페이지수 | 취소 페이지수 | 예약시간 | 접수시간 | 발송시간 | 전송결과 수신시간 | 전송 파일명 리스트 | " +
-                                "접수번호 | 요청번호 | 과금 페이지수 | 변환파일용량";
+                string rowStr = "state(전송상태 코드) | result(전송결과 코드) | sendNum(발신번호) | senderName(발신자명) | receiveNum(수신번호) | receiveName(수신자명) | " +
+                                "title(팩스제목) | sendPageCnt(전체 페이지수) | successPageCnt(성공 페이지수) | failPageCnt(실패 페이지수) | refundPageCnt(환불 페이지수) | " +
+                                "cancelPageCnt(취소 페이지수) | reserveDT(예약시간) | receiptDT(접수시간) | sendDT(발송시간) | resultDT(전송결과 수신시간) | fileNames(전송 파일명 리스트) | " +
+                                "receiptNum(접수번호) | requestNum(요청번호) | chargePageCnt(과금 페이지수) | tiffFileSize(변환파일용량(단위:byte))";
 
                 listBox1.Items.Add(rowStr);
 
@@ -634,9 +635,10 @@ namespace Popbill.Fax.Example.csharp
             {
                 List<FaxResult> ResultList = faxService.GetFaxResultRN(txtCorpNum.Text, txtRequestNum.Text);
 
-                string rowStr = "전송상태 코드 | 전송결과 코드 | 발신번호 | 발신자명 | 수신번호 | 수신자명 | 팩스제목 | 전체 페이지수 | 성공 페이지수 | " +
-                                "실패 페이지수 | 환불 페이지수 | 취소 페이지수 | 예약시간 | 접수시간 | 발송시간 | 전송결과 수신시간 | 전송 파일명 리스트 | " +
-                                "접수번호 | 요청번호 | 과금 페이지수 | 변환파일용량";
+                string rowStr = "state(전송상태 코드) | result(전송결과 코드) | sendNum(발신번호) | senderName(발신자명) | receiveNum(수신번호) | receiveName(수신자명) | " +
+                                "title(팩스제목) | sendPageCnt(전체 페이지수) | successPageCnt(성공 페이지수) | failPageCnt(실패 페이지수) | refundPageCnt(환불 페이지수) | " +
+                                "cancelPageCnt(취소 페이지수) | reserveDT(예약시간) | receiptDT(접수시간) | sendDT(발송시간) | resultDT(전송결과 수신시간) | fileNames(전송 파일명 리스트) | " +
+                                "receiptNum(접수번호) | requestNum(요청번호) | chargePageCnt(과금 페이지수) | tiffFileSize(변환파일용량(단위:byte))";
 
                 listBox1.Items.Add(rowStr);
 
@@ -696,10 +698,10 @@ namespace Popbill.Fax.Example.csharp
         {
             // 최대 검색기간 : 6개월 이내 
             // 시작일자, 날짜형식(yyyyMMdd)
-            String SDate = "20180925";
+            String SDate = "20181201";
 
             // 종료일자, 날짜형식(yyyyMMdd)
-            String EDate = "20180930";
+            String EDate = "20190110";
 
             //전송상태 배열 1-대기, 2-성공, 3-실패, 4-취소
             String[] State = new String[4];
@@ -743,9 +745,10 @@ namespace Popbill.Fax.Example.csharp
 
                 MessageBox.Show(tmp, "팩스 전송내역 조회");
 
-                string rowStr = "전송상태 코드 | 전송결과 코드 | 발신번호 | 발신자명 | 수신번호 | 수신자명 | 팩스제목 | 전체 페이지수 | 성공 페이지수 | " +
-                                "실패 페이지수 | 환불 페이지수 | 취소 페이지수 | 예약시간 | 접수시간 | 발송시간 | 전송결과 수신시간 | 전송 파일명 리스트 | " +
-                                "접수번호 | 요청번호 | 과금 페이지수 | 변환파일용량";
+                string rowStr = "state(전송상태 코드) | result(전송결과 코드) | sendNum(발신번호) | senderName(발신자명) | receiveNum(수신번호) | receiveName(수신자명) | "+
+                                "title(팩스제목) | sendPageCnt(전체 페이지수) | successPageCnt(성공 페이지수) | failPageCnt(실패 페이지수) | refundPageCnt(환불 페이지수) | " +
+                                "cancelPageCnt(취소 페이지수) | reserveDT(예약시간) | receiptDT(접수시간) | sendDT(발송시간) | resultDT(전송결과 수신시간) | fileNames(전송 파일명 리스트) | " +
+                                "receiptNum(접수번호) | requestNum(요청번호) | chargePageCnt(과금 페이지수) | tiffFileSize(변환파일용량(단위:byte))";
 
                 listBox1.Items.Add(rowStr);
 

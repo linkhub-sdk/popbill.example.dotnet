@@ -692,7 +692,7 @@
             this.Controls.Add(this.Label1);
             this.Name = "frmExample";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "팝빌 홈택스 전자(세금)계산서 연계 API SDK Example";
+            this.Text = "팝빌 홈택스 전자(세금)계산서 연동 API SDK Example";
             this.GroupBox1.ResumeLayout(false);
             this.groupBox13.ResumeLayout(false);
             this.groupBox12.ResumeLayout(false);
