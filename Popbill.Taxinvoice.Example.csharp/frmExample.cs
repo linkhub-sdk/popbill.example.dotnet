@@ -2177,8 +2177,44 @@ namespace Popbill.Taxinvoice.Example.csharp
 
                 string tmp = null;
 
+                tmp += "itemKey (팝빌 관리번호) : " + taxinvoiceInfo.itemKey + CRLF;
+                tmp += "taxType (과세형태) : " + taxinvoiceInfo.taxType + CRLF;
+                tmp += "writeDate (작성일자) : " + taxinvoiceInfo.writeDate + CRLF;
+                tmp += "regDT (임시저장 일자) : " + taxinvoiceInfo.regDT + CRLF;
+                tmp += "issueType (발행형태) : " + taxinvoiceInfo.issueType + CRLF;
+                tmp += "supplyCostTotal (공급가액 합계) : " + taxinvoiceInfo.supplyCostTotal + CRLF;
+                tmp += "taxTotal (세액 합계) : " + taxinvoiceInfo.taxTotal + CRLF;
+                tmp += "purposeType (영수/청구) : " + taxinvoiceInfo.purposeType + CRLF;
+                tmp += "issueDT (발행일시) : " + taxinvoiceInfo.issueDT + CRLF;
+                tmp += "lateIssueYN (지연발행 여부) : " + taxinvoiceInfo.lateIssueYN + CRLF;
+                tmp += "preIssueDT (발행예정일시) : " + taxinvoiceInfo.preIssueDT + CRLF;
+                tmp += "openYN (개봉 여부) : " + taxinvoiceInfo.openYN + CRLF;
+                tmp += "openDT (개봉 일시) : " + taxinvoiceInfo.openDT + CRLF;
+                tmp += "stateMemo (상태메모) : " + taxinvoiceInfo.stateMemo + CRLF;
+                tmp += "stateCode (상태코드) : " + taxinvoiceInfo.stateCode + CRLF;
+                tmp += "nstconfirmNum (국세청승인번호) : " + taxinvoiceInfo.ntsconfirmNum + CRLF;
+                tmp += "ntsresult (국세청 전송결과) : " + taxinvoiceInfo.ntsresult + CRLF;
+                tmp += "ntssendDT (국세청 전송일시) : " + taxinvoiceInfo.ntssendDT + CRLF;
+                tmp += "ntsresultDT (국세청 결과 수신일시) : " + taxinvoiceInfo.ntsresultDT + CRLF;
+                tmp += "ntssendErrCode (전송실패 사유코드) : " + taxinvoiceInfo.ntssendErrCode + CRLF;
+                tmp += "modifyCode (수정 사유코드) : " + taxinvoiceInfo.modifyCode + CRLF;
+                tmp += "interOPYN (연동문서 여부) : " + taxinvoiceInfo.interOPYN + CRLF;
 
+                tmp += "invoicerCorpName (공급자 상호) : " + taxinvoiceInfo.invoicerCorpName + CRLF;
+                tmp += "invoicerCorpNum (공급자 사업자번호) : " + taxinvoiceInfo.invoicerCorpNum + CRLF;
+                tmp += "invoicerMgtKey (공급자 문서관리번호) : " + taxinvoiceInfo.invoicerMgtKey + CRLF;
+                tmp += "invoicerPrintYN (공급자 인쇄여부) : " + taxinvoiceInfo.invoicerPrintYN + CRLF;
 
+                tmp += "invoiceeCorpName (공급받는자 상호) : " + taxinvoiceInfo.invoiceeCorpName + CRLF;
+                tmp += "invoiceeCorpNum (공급받는자 사업자번호) : " + taxinvoiceInfo.invoiceeCorpNum + CRLF;
+                tmp += "invoiceePrintYN (공급받는자 문서관리번호) : " + taxinvoiceInfo.invoiceePrintYN + CRLF;
+                tmp += "closeDownState (공급받는자 휴패업상태코드) : " + taxinvoiceInfo.closeDownState + CRLF;
+                tmp += "closeDownStateDate (공급받는자 휴폐업일자) : " + taxinvoiceInfo.closeDownStateDate + CRLF;
+
+                tmp += "trusteeCorpName (수탁자 상호) : " + taxinvoiceInfo.trusteeCorpName + CRLF;
+                tmp += "trusteeCorpNum (수탁자 사업자번호) : " + taxinvoiceInfo.trusteeCorpNum + CRLF;
+                tmp += "trusteeMgtKey (수탁자 문서관리번호) : " + taxinvoiceInfo.trusteeMgtKey + CRLF;
+                tmp += "trusteePrintYN (수탁자 인쇄여부) : " + taxinvoiceInfo.trusteePrintYN + CRLF;
 
                 MessageBox.Show(tmp, "문서 상태/요약 정보 조회");
             }
@@ -2814,7 +2850,7 @@ namespace Popbill.Taxinvoice.Example.csharp
                 List<AttachedFile> fileList = taxinvoiceService.GetFiles(txtCorpNum.Text, KeyType, txtMgtKey.Text);
 
 
-                string tmp = "serialNum(일련번호) | displayName(첨부파일명) | attachedFile(파일아이디) | regDT(등록일자)" + CRLF;
+                string tmp = "일련번호 | 표시명 | 파일아이디 | 등록일자" + CRLF;
 
                 foreach (AttachedFile file in fileList)
                 {
