@@ -62,7 +62,6 @@ namespace Popbill.Kakao.Example.csharp
             return reserveDT;
         }
 
-
         /*
          * 플러스친구 계정관리 팝업 URL을 반환합니다.
          * - 반환된 URL은 보안정책에 따라 30초의 유효시간을 갖습니다.
@@ -109,7 +108,6 @@ namespace Popbill.Kakao.Example.csharp
             }
         }
 
-
         /*
          * 발신번호 관리 팝업 URL을 반환합니다.
          * - 반환된 URL은 보안정책에 따라 30초의 유효시간을 갖습니다.
@@ -128,7 +126,6 @@ namespace Popbill.Kakao.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "발신번호 관리 팝업 URL");
             }
         }
-
 
         /*
          * 팝빌에 등록된 발신번호 목록을 반환합니다.
@@ -157,7 +154,6 @@ namespace Popbill.Kakao.Example.csharp
             }
         }
 
-
         /*
          * 알림톡 템플릿관리 팝업 URL을 반환합니다.
          * - 반환된 URL은 보안정책에 따라 30초의 유효시간을 갖습니다.
@@ -176,7 +172,6 @@ namespace Popbill.Kakao.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "알림톡 템플릿 관리 팝업 URL");
             }
         }
-
 
         /*
          * (주)카카오로 부터 승인된 알림톡 템플릿 목록을 확인합니다.
@@ -220,7 +215,6 @@ namespace Popbill.Kakao.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "알림톡 템플릿 목록 확인");
             }
         }
-
 
         /*
          * 알림톡 전송을 요청합니다.
@@ -415,11 +409,11 @@ namespace Popbill.Kakao.Example.csharp
             KakaoButton btnInfo = new KakaoButton();
             // 버튼명
             btnInfo.n = "버튼이름";
-            // 버튼유형
+            // 버튼유형 DS(-배송조회 / WL - 웹링크 / AL - 앱링크 / MD - 메시지전달 / BK - 봇키워드)
             btnInfo.t = "WL";
-            // 버튼링크1
+            // 버튼링크1 [앱링크] Android / [웹링크] Mobile
             btnInfo.u1 = "http://www.popbill.com";
-            // 버튼링크2
+            // 버튼링크2 [앱링크] IOS / [웹링크] PC URL
             btnInfo.u2 = "http://test.popbill.com";
             buttons.Add(btnInfo);
 
@@ -479,11 +473,11 @@ namespace Popbill.Kakao.Example.csharp
             KakaoButton btnInfo = new KakaoButton();
             // 버튼명
             btnInfo.n = "버튼이름";
-            // 버튼유형
+            // 버튼유형 DS(-배송조회 / WL - 웹링크 / AL - 앱링크 / MD - 메시지전달 / BK - 봇키워드)
             btnInfo.t = "WL";
-            // 버튼링크1
+            // 버튼링크1 [앱링크] Android / [웹링크] Mobile
             btnInfo.u1 = "http://www.popbill.com";
-            // 버튼링크2
+            // 버튼링크2 [앱링크] IOS / [웹링크] PC URL
             btnInfo.u2 = "http://test.popbill.com";
             buttons.Add(btnInfo);
 
@@ -546,11 +540,11 @@ namespace Popbill.Kakao.Example.csharp
             KakaoButton btnInfo = new KakaoButton();
             // 버튼명
             btnInfo.n = "버튼이름";
-            // 버튼유형
+            // 버튼유형 DS(-배송조회 / WL - 웹링크 / AL - 앱링크 / MD - 메시지전달 / BK - 봇키워드)
             btnInfo.t = "WL";
-            // 버튼링크1
+            // 버튼링크1 [앱링크] Android / [웹링크] Mobile
             btnInfo.u1 = "http://www.popbill.com";
-            // 버튼링크2
+            // 버튼링크2 [앱링크] IOS / [웹링크] PC URL
             btnInfo.u2 = "http://test.popbill.com";
             buttons.Add(btnInfo);
 
@@ -569,7 +563,6 @@ namespace Popbill.Kakao.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "친구톡(FTS) 전송");
             }
         }
-
 
         /*
          * 친구톡(이미지) 전송을 요청합니다.
@@ -611,11 +604,11 @@ namespace Popbill.Kakao.Example.csharp
             KakaoButton btnInfo = new KakaoButton();
             // 버튼명
             btnInfo.n = "버튼이름";
-            // 버튼유형
+            // 버튼유형 DS(-배송조회 / WL - 웹링크 / AL - 앱링크 / MD - 메시지전달 / BK - 봇키워드)
             btnInfo.t = "WL";
-            // 버튼링크1
+            // 버튼링크1 [앱링크] Android / [웹링크] Mobile
             btnInfo.u1 = "http://www.popbill.com";
-            // 버튼링크2
+            // 버튼링크2 [앱링크] IOS / [웹링크] PC URL
             btnInfo.u2 = "http://test.popbill.com";
             buttons.Add(btnInfo);
 
@@ -689,11 +682,11 @@ namespace Popbill.Kakao.Example.csharp
             KakaoButton btnInfo = new KakaoButton();
             // 버튼명
             btnInfo.n = "버튼이름";
-            // 버튼유형
+            // 버튼유형 DS(-배송조회 / WL - 웹링크 / AL - 앱링크 / MD - 메시지전달 / BK - 봇키워드)
             btnInfo.t = "WL";
-            // 버튼링크1
+            // 버튼링크1 [앱링크] Android / [웹링크] Mobile
             btnInfo.u1 = "http://www.popbill.com";
-            // 버튼링크2
+            // 버튼링크2 [앱링크] IOS / [웹링크] PC URL
             btnInfo.u2 = "http://test.popbill.com";
             buttons.Add(btnInfo);
 
@@ -768,11 +761,11 @@ namespace Popbill.Kakao.Example.csharp
             KakaoButton btnInfo = new KakaoButton();
             // 버튼명
             btnInfo.n = "버튼이름";
-            // 버튼유형
+            // 버튼유형 DS(-배송조회 / WL - 웹링크 / AL - 앱링크 / MD - 메시지전달 / BK - 봇키워드)
             btnInfo.t = "WL";
-            // 버튼링크1
+            // 버튼링크1 [앱링크] Android / [웹링크] Mobile
             btnInfo.u1 = "http://www.popbill.com";
-            // 버튼링크2
+            // 버튼링크2 [앱링크] IOS / [웹링크] PC URL
             btnInfo.u2 = "http://test.popbill.com";
             buttons.Add(btnInfo);
 
@@ -800,7 +793,6 @@ namespace Popbill.Kakao.Example.csharp
                 }
             }
         }
-
 
         /*
          * 알림톡/친구톡 전송요청시 발급받은 접수번호(receiptNum)로 예약전송건을 취소합니다.
@@ -1100,7 +1092,6 @@ namespace Popbill.Kakao.Example.csharp
             }
         }
 
-
         /*
          * 팝빌 연동회원 포인트충전 팝업 URL을 반환합니다.
          * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
@@ -1239,7 +1230,6 @@ namespace Popbill.Kakao.Example.csharp
             }
         }
 
-
         /*
          * 해당 사업자의 파트너 연동회원 가입여부를 확인합니다.
          */
@@ -1340,7 +1330,6 @@ namespace Popbill.Kakao.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "연동회원 가입요청");
             }
         }
-
 
         /*
          * 팝빌에 로그인 상태로 접근할 수 있는 팝업 URL을 반환합니다.

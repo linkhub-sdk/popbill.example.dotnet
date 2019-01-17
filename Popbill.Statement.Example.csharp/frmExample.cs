@@ -177,6 +177,7 @@ namespace Popbill.Statement.Example.csharp
             // 수신자 메일주소 
             statement.receiverEmail = "test@receiver.com";
 
+            
             /**************************************************************************
              *                         전자명세서 기재항목                            *
              **************************************************************************/
@@ -210,8 +211,8 @@ namespace Popbill.Statement.Example.csharp
 
             detail.serialNum = 1; // 일련번호, 1부터 순차기재, 최대 99
             detail.purchaseDT = "20190110"; // 거래일자
-            detail.itemName = "품목명";
-            detail.spec = "규격";
+            detail.itemName = "품목명"; //품목명
+            detail.spec = "규격"; //규격
             detail.qty = "1"; // 수량
             detail.unitCost = "100000"; // 단가
             detail.supplyCost = "100000"; // 공급가액
@@ -229,8 +230,8 @@ namespace Popbill.Statement.Example.csharp
 
             detail.serialNum = 2; // 일련번호, 1부터 순차기재, 최대 99
             detail.purchaseDT = "20190110"; // 거래일자
-            detail.itemName = "품목명";
-            detail.spec = "규격";
+            detail.itemName = "품목명"; //품목명
+            detail.spec = "규격"; //규격
             detail.qty = "1"; // 수량
             detail.unitCost = "100000"; // 단가
             detail.supplyCost = "100000"; // 공급가액
@@ -359,6 +360,7 @@ namespace Popbill.Statement.Example.csharp
             // 수신자 메일주소 
             statement.receiverEmail = "test@receiver.com";
 
+            
             /**************************************************************************
              *                         전자명세서 기재항목                            *
              **************************************************************************/
@@ -392,8 +394,8 @@ namespace Popbill.Statement.Example.csharp
 
             detail.serialNum = 1; // 일련번호, 1부터 순차기재, 최대 99
             detail.purchaseDT = "20190110"; // 거래일자
-            detail.itemName = "품목명";
-            detail.spec = "규격";
+            detail.itemName = "품목명"; //품목명
+            detail.spec = "규격"; //규격
             detail.qty = "1"; // 수량
             detail.unitCost = "100000"; // 단가
             detail.supplyCost = "100000"; // 공급가액
@@ -411,8 +413,8 @@ namespace Popbill.Statement.Example.csharp
 
             detail.serialNum = 2; // 일련번호, 1부터 순차기재, 최대 99
             detail.purchaseDT = "20190110"; // 거래일자
-            detail.itemName = "품목명";
-            detail.spec = "규격";
+            detail.itemName = "품목명"; //품목명
+            detail.spec = "규격"; //규격
             detail.qty = "1"; // 수량
             detail.unitCost = "100000"; // 단가
             detail.supplyCost = "100000"; // 공급가액
@@ -575,8 +577,8 @@ namespace Popbill.Statement.Example.csharp
 
             detail.serialNum = 1; // 일련번호, 1부터 순차기재, 최대 99
             detail.purchaseDT = "20190110"; // 거래일자
-            detail.itemName = "품목명";
-            detail.spec = "규격";
+            detail.itemName = "품목명"; //품목명
+            detail.spec = "규격"; //규격
             detail.qty = "1"; // 수량
             detail.unitCost = "100000"; // 단가
             detail.supplyCost = "100000"; // 공급가액
@@ -594,8 +596,8 @@ namespace Popbill.Statement.Example.csharp
 
             detail.serialNum = 2; // 일련번호, 1부터 순차기재, 최대 99
             detail.purchaseDT = "20190110"; // 거래일자
-            detail.itemName = "품목명";
-            detail.spec = "규격";
+            detail.itemName = "품목명"; //품목명
+            detail.spec = "규격"; //규격
             detail.qty = "1"; // 수량
             detail.unitCost = "100000"; // 단가
             detail.supplyCost = "100000"; // 공급가액
@@ -956,8 +958,6 @@ namespace Popbill.Statement.Example.csharp
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + ex.Message, "전자명세서 상세정보 확인");
             }
-        }
-
 
         /*
          * 검색조건을 사용하여 전자명세서 목록을 조회합니다.
@@ -982,7 +982,7 @@ namespace Popbill.Statement.Example.csharp
             State[3] = "4**";
 
             //명세서 종류코드, 121-거래명세서, 122-청구서, 123-견적서, 124-발주서, 125-입금표, 126-영수증
-            int[] ItemCode = { 121, 122, 123, 124, 125, 126 };
+            int[] ItemCode = {121, 122, 123, 124, 125, 126};
 
             // 거래처 조회, 거래처 등록번호, 상호 조회, 미기재시 전체조회
             String QString = "";
@@ -1009,10 +1009,9 @@ namespace Popbill.Statement.Example.csharp
                 tmp += "pageCount (페이지 개수) : " + searchResult.pageCount + CRLF;
                 tmp += "message (응답메시지) : " + searchResult.message + CRLF + CRLF;
 
-                tmp +=
-                    "itemCode | itemKey | mgtKey | taxType | writeDate | senderCorpName | senderCorpNum | senderPrintYN | ";
-                tmp += " receiverCorpName | receiverCorpNum | receiverPrintYN | supplyCostTotal";
-                tmp += " | taxTotal | stateCode" + CRLF;
+                tmp += "itemCode(문서종류코드) | itemKey(팝빌 관리번호) | mgtKey(문서 관리번호) | taxType(세금형태) | writeDate(작성일자) | senderCorpName(발신자 상호) | ";
+                tmp += "senderCorpNum(발신자 사업자번호) | senderPrintYN(발신자 인쇄여부) |receiverCorpName(수신자 상호) | receiverCorpNum(수신자 사업자번호) | receiverPrintYN(수신자 인쇄여부) | ";
+                tmp += "supplyCostTotal(공급가액 합계) | taxTotal(세액 합계) | stateCode(상태코드)" + CRLF;
 
                 foreach (StatementInfo statementInfo in searchResult.list)
                 {
@@ -1041,7 +1040,6 @@ namespace Popbill.Statement.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "전자명세서 목록조회 결과");
             }
         }
-
 
         /*
          * 전자명세서 상태 변경이력을 확인합니다.
@@ -1134,7 +1132,6 @@ namespace Popbill.Statement.Example.csharp
             }
         }
 
-
         /*
          * 1건의 전자명세서 인쇄팝업 URL을 반환합니다.
          * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다
@@ -1155,7 +1152,6 @@ namespace Popbill.Statement.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "전자명세서 인쇄 팝업 URL");
             }
         }
-
 
         /*
          * 1건의 전자명세서 인쇄 팝업 URL(수신자)을 반환합니다.
@@ -1207,7 +1203,6 @@ namespace Popbill.Statement.Example.csharp
             }
         }
 
-
         /*
          * 수신자 메일링크 URL을 반환합니다.
          * - 메일링크 URL은 유효시간이 존재하지 않습니다.
@@ -1228,7 +1223,6 @@ namespace Popbill.Statement.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "수신자 메일링크 URL");
             }
         }
-
 
         /*
          * 팝빌에 로그인 상태로 접근할 수 있는 팝업 URL을 반환합니다.
@@ -1297,7 +1291,6 @@ namespace Popbill.Statement.Example.csharp
                 }
             }
         }
-
 
         /*
          * 전자명세서에 첨부된 파일을 삭제합니다.
@@ -1378,7 +1371,6 @@ namespace Popbill.Statement.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "발행 안내메일 재전송");
             }
         }
-
 
         /*
          * 알림문자를 전송합니다. (단문/SMS- 한글 최대 45자)
@@ -1692,7 +1684,6 @@ namespace Popbill.Statement.Example.csharp
             }
         }
 
-
         /*
          * 전자명세서 메일전송 항목에 대한 전송여부를 목록으로 반환합니다.
          */
@@ -1759,7 +1750,6 @@ namespace Popbill.Statement.Example.csharp
             }
         }
 
-
         /*
          * 연동회원의 잔여포인트를 조회합니다.
          * - 파트너 과금 방식의 경우 파트너 잔여포인트 조회(GetPartnerBalance API) 기능을 사용하시기 바랍니다.
@@ -1816,7 +1806,6 @@ namespace Popbill.Statement.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "파트너 잔여포인트 확인");
             }
         }
-
 
         /*
          * 파트너 포인트 충전 팝업 URL을 반환합니다. 
@@ -1920,7 +1909,6 @@ namespace Popbill.Statement.Example.csharp
             }
         }
 
-
         /*
          * 팝빌 회원아이디 중복여부를 확인합니다.
          */
@@ -1970,7 +1958,6 @@ namespace Popbill.Statement.Example.csharp
             // 담당자 팩스번호 (최대 20자)
             joinInfo.ContactFAX = "02-6442-9700";
 
-
             try
             {
                 Response response = statementService.JoinMember(joinInfo);
@@ -1984,7 +1971,6 @@ namespace Popbill.Statement.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "연동회원 가입요청");
             }
         }
-
 
         /*
          * 연동회원의 회사정보를 조회합니다.
@@ -2010,7 +1996,6 @@ namespace Popbill.Statement.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "회사정보 조회");
             }
         }
-
 
         /*
          * 연동회원의 회사정보를 수정합니다.
@@ -2130,7 +2115,6 @@ namespace Popbill.Statement.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "담당자 목록조회");
             }
         }
-
 
         /*
          * 담당자 정보를 수정합니다.

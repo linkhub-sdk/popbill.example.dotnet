@@ -270,7 +270,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             detail.unitCost = "50000"; // 단가
             detail.supplyCost = "50000"; // 공급가액
             detail.tax = "5000"; // 세액
-            detail.remark = "품목비고";
+            detail.remark = "품목비고"; //비고
 
             taxinvoice.detailList.Add(detail);
 
@@ -284,7 +284,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             detail.unitCost = "50000"; // 단가
             detail.supplyCost = "50000"; // 공급가액
             detail.tax = "5000"; // 세액
-            detail.remark = "품목비고";
+            detail.remark = "품목비고"; //비고
 
             taxinvoice.detailList.Add(detail);
 
@@ -554,7 +554,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             detail.unitCost = "50000"; // 단가
             detail.supplyCost = "50000"; // 공급가액
             detail.tax = "5000"; // 세액
-            detail.remark = "품목비고";
+            detail.remark = "품목비고"; //비고
 
             taxinvoice.detailList.Add(detail);
 
@@ -568,7 +568,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             detail.unitCost = "50000"; // 단가
             detail.supplyCost = "50000"; // 공급가액
             detail.tax = "5000"; // 세액
-            detail.remark = "품목비고";
+            detail.remark = "품목비고"; //비고
 
             taxinvoice.detailList.Add(detail);
 
@@ -820,7 +820,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             detail.unitCost = "50000"; // 단가
             detail.supplyCost = "50000"; // 공급가액
             detail.tax = "5000"; // 세액
-            detail.remark = "품목비고";
+            detail.remark = "품목비고"; //비고
 
             taxinvoice.detailList.Add(detail);
 
@@ -834,7 +834,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             detail.unitCost = "50000"; // 단가
             detail.supplyCost = "50000"; // 공급가액
             detail.tax = "5000"; // 세액
-            detail.remark = "품목비고";
+            detail.remark = "품목비고"; //비고
 
             taxinvoice.detailList.Add(detail);
 
@@ -1147,7 +1147,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             detail.unitCost = "50000"; // 단가
             detail.supplyCost = "50000"; // 공급가액
             detail.tax = "5000"; // 세액
-            detail.remark = "품목비고";
+            detail.remark = "품목비고"; // 비고
 
             taxinvoice.detailList.Add(detail);
 
@@ -1161,7 +1161,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             detail.unitCost = "50000"; // 단가
             detail.supplyCost = "50000"; // 공급가액
             detail.tax = "5000"; // 세액
-            detail.remark = "품목비고";
+            detail.remark = "품목비고"; // 비고
 
             taxinvoice.detailList.Add(detail);
 
@@ -1416,7 +1416,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             detail.unitCost = "50000"; // 단가
             detail.supplyCost = "50000"; // 공급가액
             detail.tax = "5000"; // 세액
-            detail.remark = "품목비고";
+            detail.remark = "품목비고"; // 비고
 
             taxinvoice.detailList.Add(detail);
 
@@ -1430,7 +1430,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             detail.unitCost = "50000"; // 단가
             detail.supplyCost = "50000"; // 공급가액
             detail.tax = "5000"; // 세액
-            detail.remark = "품목비고";
+            detail.remark = "품목비고"; // 비고
 
             taxinvoice.detailList.Add(detail);
 
@@ -1952,7 +1952,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             detail.unitCost = "50000"; // 단가
             detail.supplyCost = "50000"; // 공급가액
             detail.tax = "5000"; // 세액
-            detail.remark = "품목비고";
+            detail.remark = "품목비고"; // 비고
 
             taxinvoice.detailList.Add(detail);
 
@@ -1966,7 +1966,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             detail.unitCost = "50000"; // 단가
             detail.supplyCost = "50000"; // 공급가액
             detail.tax = "5000"; // 세액
-            detail.remark = "품목비고";
+            detail.remark = "품목비고"; // 비고
 
             taxinvoice.detailList.Add(detail);
 

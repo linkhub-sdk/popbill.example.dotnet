@@ -44,7 +44,6 @@ namespace Popbill.Cashbill.Example.csharp
             cashbillService.IsTest = true;
         }
 
-
         /*
          * 현금영수증 관리번호 중복여부를 확인합니다.
          * - 관리번호는 1~24자리로 숫자, 영문 '-', '_' 조합으로 구성할 수 있습니다.
@@ -462,7 +461,6 @@ namespace Popbill.Cashbill.Example.csharp
             }
         }
 
-
         /*
          * 1건의 현금영수증을 [삭제]합니다.
          * - 현금영수증을 삭제하면 사용된 문서관리번호(mgtKey)를 재사용할 수 있습니다.
@@ -505,7 +503,6 @@ namespace Popbill.Cashbill.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "현금영수증 삭제");
             }
         }
-
 
         /*
          * 1건의 현금영수증을 [삭제]합니다.

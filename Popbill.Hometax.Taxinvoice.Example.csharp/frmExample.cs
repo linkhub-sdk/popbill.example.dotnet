@@ -117,7 +117,6 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
             }
         }
 
-
         /*
          * 수집 요청건들에 대한 상태 목록을 확인합니다.
          * - 수집 요청 작업아이디(JobID)의 유효시간은 1시간 입니다.
@@ -381,7 +380,6 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "상세정보 조회");
             }
         }
-
 
         /*
          * XML 형식의 전자세금계산서 상세정보를 확인합니다.
@@ -648,7 +646,6 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
             }
         }
 
-
         /*
          * 홈택스연동 API 서비스 과금정보를 확인합니다.
          */
@@ -902,7 +899,6 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
             }
         }
 
-
         /*
          * 연동회원의 담당자를 추가합니다. 
          */
@@ -984,7 +980,6 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "담당자 목록조회");
             }
         }
-
 
         /*
          * 담당자 정보를 수정합니다.

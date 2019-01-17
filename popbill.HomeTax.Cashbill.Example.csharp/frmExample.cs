@@ -449,7 +449,6 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
             }
         }
 
-
         /*
          * 파트너의 잔여포인트를 확인합니다.
          * - 과금방식이 연동과금인 경우 연동회원 잔여포인트(GetBalance API)를 이용하시기 바랍니다.
@@ -487,7 +486,6 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "팝빌 로그인 URL");
             }
         }
-
 
         /*
          * 홈택스 현금영수증 연계 서비스 과금정보를 확인합니다. 

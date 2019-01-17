@@ -239,7 +239,6 @@ namespace Popbill.Closedown.Example.csharp
             }
         }
 
-
         /*
          * 해당 사업자의 파트너 연동회원 가입여부를 확인합니다.
          */
@@ -403,7 +402,6 @@ namespace Popbill.Closedown.Example.csharp
             }
         }
 
-
         /*
          * 연동회원의 담당자를 추가합니다.
          */
@@ -531,7 +529,6 @@ namespace Popbill.Closedown.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "담당자 정보수정");
             }
         }
-
 
         /*
          * 팝빌에 로그인 상태로 접근할 수 있는 팝업 URL을 반환합니다.

@@ -77,7 +77,6 @@ namespace Popbill.Message.Example.csharp
             }
         }
 
-
         /*
          * 문자 발신번호 관리 팝업 URL을 반합니다.
          * - 반환된 URL은 보안정책에 따라 30초의 유효시간을 갖습니다.
@@ -96,7 +95,6 @@ namespace Popbill.Message.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "문자 발신번호 관리 팝업 URL");
             }
         }
-
 
         private DateTime? getReserveDT()
         {
@@ -299,7 +297,6 @@ namespace Popbill.Message.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "LMS(장문) 전송");
             }
         }
-
 
         /*
          * [대량전송] LMS(장문)를 전송합니다.
@@ -768,9 +765,9 @@ namespace Popbill.Message.Example.csharp
         }
 
         /*
- * 문자전송요청시 할당한 전송요청번호(requestNum)로 전송상태를 확인합니다
- * - 응답항목에 대한 자세한 사항은 "[문자 API 연동매뉴얼] > 3.3.2. GetMessagesRN (전송내역 확인 - 요청번호 할당)을 참조하시기 바랍니다.
- */
+         * 문자전송요청시 할당한 전송요청번호(requestNum)로 전송상태를 확인합니다
+         * - 응답항목에 대한 자세한 사항은 "[문자 API 연동매뉴얼] > 3.3.2. GetMessagesRN (전송내역 확인 - 요청번호 할당)을 참조하시기 바랍니다.
+         */
         private void btnGetMessagesRN_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
@@ -813,7 +810,6 @@ namespace Popbill.Message.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "문자 전송상태 확인");
             }
         }
-
 
         /*
          * 문자 전송내역 요약정보를 확인합니다. (최대 1000건)
@@ -953,7 +949,6 @@ namespace Popbill.Message.Example.csharp
             }
         }
 
-
         /*
          * 문자 전송내역 팝업 URL을 반환합니다.
          * - 반환된 URL은 보안정책에 따라 30초의 유효시간을 갖습니다.
@@ -972,7 +967,6 @@ namespace Popbill.Message.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "문자 전송내역 팝업 URL");
             }
         }
-
 
         /*
          * 080 서비스 수신거부 목록을 확인합니다.
@@ -1001,7 +995,6 @@ namespace Popbill.Message.Example.csharp
             }
         }
 
-
         /*
          * 연동회원의 잔여포인트를 조회합니다.
          * - 파트너 과금 방식의 경우 파트너 잔여 포인트 조회(GetPartnerBalance API)를 이용하시기 바랍니다.
@@ -1020,7 +1013,6 @@ namespace Popbill.Message.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "연동회원 잔여포인트 확인");
             }
         }
-
 
         /*
          * 팝빌 연동회원 포인트충전 팝업 URL을 반환합니다.
@@ -1041,7 +1033,6 @@ namespace Popbill.Message.Example.csharp
             }
         }
 
-
         /*
          * 파트너 잔여포인트를 확인합니다.
          * - 연동과금 방식의 경우 연동회원 잔여포인트 조회(GetBalance API)를 이용하시기 바랍니다.
@@ -1061,7 +1052,6 @@ namespace Popbill.Message.Example.csharp
             }
         }
 
-
         /*
          * 파트너 포인트 충전 팝업 URL을 반환합니다. 
          * - 반환된 URL은 보안정책상 30초의 유효시간을 갖습니다.
@@ -1080,7 +1070,6 @@ namespace Popbill.Message.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "팝빌 로그인 URL");
             }
         }
-
 
         /*
          * 단문(SMS) 메시지 전송단가를 확인합니다.
@@ -1118,7 +1107,6 @@ namespace Popbill.Message.Example.csharp
             }
         }
 
-
         /*
          * 포토(MMS) 메시지 전송 단가를 확인합니다.
          */
@@ -1136,7 +1124,6 @@ namespace Popbill.Message.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "포토(MMS) 메시지 전송 단가");
             }
         }
-
 
         /*
          * 문자 API 서비스 과금정보를 확인합니다.
@@ -1203,10 +1190,9 @@ namespace Popbill.Message.Example.csharp
             }
         }
 
-
         /*
- * 연동회원 신규가입을 요청합니다.
- */
+         * 연동회원 신규가입을 요청합니다.
+         */
         private void btnJoinMember_Click(object sender, EventArgs e)
         {
             JoinForm joinInfo = new JoinForm();
@@ -1267,7 +1253,6 @@ namespace Popbill.Message.Example.csharp
             }
         }
 
-
         /*
          * 팝빌에 로그인 상태로 접근할 수 있는 팝업 URL을 반환합니다.
          * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다 
@@ -1286,7 +1271,6 @@ namespace Popbill.Message.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "팝빌 로그인 URL");
             }
         }
-
 
         /*
          * 회사정보를 조회합니다.

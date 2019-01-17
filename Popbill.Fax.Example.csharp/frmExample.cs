@@ -46,7 +46,6 @@ namespace Popbill.Fax.Example.csharp
             faxService.IsTest = true;
         }
 
-
         /*
          * 팩스 발신번호 관리 팝업 URL을 반합니다.
          * - 반환된 URL은 보안정책에 따라 30초의 유효시간을 갖습니다.
@@ -150,7 +149,6 @@ namespace Popbill.Fax.Example.csharp
                 }
             }
         }
-
 
         /*
          * [동보전송] 팩스를 전송합니다. (전송할 파일 개수는 최대 20개까지 가능)
@@ -403,7 +401,6 @@ namespace Popbill.Fax.Example.csharp
             }
         }
 
-
         /*
          * [동전송] 팩스를 재전송합니다.
          * - 접수일로부터 60일이 경과된 경우 재전송할 수 없습니다.
@@ -457,7 +454,6 @@ namespace Popbill.Fax.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "팩스 전송");
             }
         }
-
 
         /*
          * [동보전] 전송요청번호(requestNum)을 할당한 팩스를 재전송합니다.
@@ -516,7 +512,6 @@ namespace Popbill.Fax.Example.csharp
             }
         }
 
-
         /*
          * 팩스전송요청시 발급받은 접수번호(receiptNum)로 팩스 예약전송건을 취소합니다.
          * - 예약전송 취소는 예약전송시간 10분전까지 가능하며, 팩스변환 이후 가능합니다.
@@ -537,7 +532,6 @@ namespace Popbill.Fax.Example.csharp
             }
         }
 
-
         /*
          * 팩스전송요청시 할당한 전송요청번호(requestNum)로 팩스 예약전송건을 취소합니다.
          * - 예약전송 취소는 예약전송시간 10분전까지 가능하며, 팩스변환 이후 가능합니다.
@@ -557,7 +551,6 @@ namespace Popbill.Fax.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "팩스 예약전송 취소");
             }
         }
-
 
         /*
          * 팩스전송요청시 발급받은 접수번호(receiptNum)로 전송결과를 확인합니다
@@ -688,7 +681,6 @@ namespace Popbill.Fax.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "팩스 전송상태 확인");
             }
         }
-
 
         /*
          * 검색조건을 사용하여 팩스전송 내역을 조회합니다.
@@ -837,7 +829,6 @@ namespace Popbill.Fax.Example.csharp
             }
         }
 
-
         /*
          * 연동회원의 잔여포인트를 조회합니다.
          * - 파트너 과금 방식의 경우 파트너 잔여포인트 조회(GetPartnerBalance API)를 이용하시기 바랍니다. 
@@ -875,7 +866,6 @@ namespace Popbill.Fax.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "포인트충전 팝업 URL");
             }
         }
-
 
         /*
          * 파트너의 잔여포인트를 확인합니다.
@@ -933,7 +923,6 @@ namespace Popbill.Fax.Example.csharp
             }
         }
 
-
         /*
          * 팩스 APi서비스 과금정보를 확인합니다.
          */
@@ -975,7 +964,6 @@ namespace Popbill.Fax.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "연동회원 가입여부 확인");
             }
         }
-
 
         /*
          * 팝빌 회원아이디 중복여부를 확인합니다.
@@ -1079,8 +1067,8 @@ namespace Popbill.Fax.Example.csharp
         }
 
         /*
-               * 회사정보를 조회합니다.
-               */
+         * 회사정보를 조회합니다.
+         */
         private void btnGetCorpInfo_Click(object sender, EventArgs e)
         {
             try
@@ -1103,6 +1091,9 @@ namespace Popbill.Fax.Example.csharp
             }
         }
 
+        /*
+         * 연동회원의 회사정보를 수정합니다.
+         */
         private void btnUpdateCorpInfo_Click(object sender, EventArgs e)
         {
             CorpInfo corpInfo = new CorpInfo();
