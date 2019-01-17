@@ -7,7 +7,7 @@
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
  * 
  * <테스트 연동개발 준비사항>
- * 1) 30, 33 라인에 선언된 링크아이디(LinkID)와 비밀키(SecretKey)를 
+ * 1) 29, 32 라인에 선언된 링크아이디(LinkID)와 비밀키(SecretKey)를 
  *    링크허브 가입시 메일로 발급받은 인증정보로 변경합니다.
  * 2) 팝빌 개발용 사이트(test.popbill.com)에 연동회원으로 가입합니다.
  */
@@ -216,12 +216,12 @@ namespace Popbill.Statement.Example.csharp
             detail.unitCost = "100000"; // 단가
             detail.supplyCost = "100000"; // 공급가액
             detail.tax = "10000"; // 세액
-            detail.remark = "품목비고";
-            detail.spare1 = "spare1";
-            detail.spare1 = "spare2";
-            detail.spare1 = "spare3";
-            detail.spare1 = "spare4";
-            detail.spare1 = "spare5";
+            detail.remark = "품목비고"; // 비고
+            detail.spare1 = "spare1"; // 여분1
+            detail.spare1 = "spare2"; // 여분2
+            detail.spare1 = "spare3"; // 여분3
+            detail.spare1 = "spare4"; // 여분4
+            detail.spare1 = "spare5"; // 여분5
 
             statement.detailList.Add(detail);
 
@@ -235,12 +235,12 @@ namespace Popbill.Statement.Example.csharp
             detail.unitCost = "100000"; // 단가
             detail.supplyCost = "100000"; // 공급가액
             detail.tax = "10000"; // 세액
-            detail.remark = "품목비고";
-            detail.spare1 = "spare1";
-            detail.spare1 = "spare2";
-            detail.spare1 = "spare3";
-            detail.spare1 = "spare4";
-            detail.spare1 = "spare5";
+            detail.remark = "품목비고"; // 비고
+            detail.spare1 = "spare1"; // 여분1
+            detail.spare1 = "spare2"; // 여분2
+            detail.spare1 = "spare3"; // 여분3
+            detail.spare1 = "spare4"; // 여분4
+            detail.spare1 = "spare5"; // 여분5
 
             statement.detailList.Add(detail);
 
@@ -398,12 +398,12 @@ namespace Popbill.Statement.Example.csharp
             detail.unitCost = "100000"; // 단가
             detail.supplyCost = "100000"; // 공급가액
             detail.tax = "10000"; // 세액
-            detail.remark = "품목비고";
-            detail.spare1 = "spare1";
-            detail.spare1 = "spare2";
-            detail.spare1 = "spare3";
-            detail.spare1 = "spare4";
-            detail.spare1 = "spare5";
+            detail.remark = "품목비고"; // 비고
+            detail.spare1 = "spare1"; // 여분1
+            detail.spare1 = "spare2"; // 여분2
+            detail.spare1 = "spare3"; // 여분3
+            detail.spare1 = "spare4"; // 여분4
+            detail.spare1 = "spare5"; // 여분5
 
             statement.detailList.Add(detail);
 
@@ -417,12 +417,12 @@ namespace Popbill.Statement.Example.csharp
             detail.unitCost = "100000"; // 단가
             detail.supplyCost = "100000"; // 공급가액
             detail.tax = "10000"; // 세액
-            detail.remark = "품목비고";
-            detail.spare1 = "spare1";
-            detail.spare1 = "spare2";
-            detail.spare1 = "spare3";
-            detail.spare1 = "spare4";
-            detail.spare1 = "spare5";
+            detail.remark = "품목비고"; // 비고
+            detail.spare1 = "spare1"; // 여분1
+            detail.spare1 = "spare2"; // 여분2
+            detail.spare1 = "spare3"; // 여분3
+            detail.spare1 = "spare4"; // 여분4
+            detail.spare1 = "spare5"; // 여분5
 
             statement.detailList.Add(detail);
 
@@ -581,12 +581,12 @@ namespace Popbill.Statement.Example.csharp
             detail.unitCost = "100000"; // 단가
             detail.supplyCost = "100000"; // 공급가액
             detail.tax = "10000"; // 세액
-            detail.remark = "품목비고";
-            detail.spare1 = "spare1";
-            detail.spare1 = "spare2";
-            detail.spare1 = "spare3";
-            detail.spare1 = "spare4";
-            detail.spare1 = "spare5";
+            detail.remark = "품목비고"; // 비고
+            detail.spare1 = "spare1"; // 여분1
+            detail.spare1 = "spare2"; // 여분2
+            detail.spare1 = "spare3"; // 여분3
+            detail.spare1 = "spare4"; // 여분4
+            detail.spare1 = "spare5"; // 여분5
 
             statement.detailList.Add(detail);
 
@@ -600,12 +600,12 @@ namespace Popbill.Statement.Example.csharp
             detail.unitCost = "100000"; // 단가
             detail.supplyCost = "100000"; // 공급가액
             detail.tax = "10000"; // 세액
-            detail.remark = "품목비고";
-            detail.spare1 = "spare1";
-            detail.spare1 = "spare2";
-            detail.spare1 = "spare3";
-            detail.spare1 = "spare4";
-            detail.spare1 = "spare5";
+            detail.remark = "품목비고"; // 비고
+            detail.spare1 = "spare1"; // 여분1
+            detail.spare1 = "spare2"; // 여분2
+            detail.spare1 = "spare3"; // 여분3
+            detail.spare1 = "spare4"; // 여분4
+            detail.spare1 = "spare5"; // 여분5
 
             statement.detailList.Add(detail);
 
@@ -1178,7 +1178,7 @@ namespace Popbill.Statement.Example.csharp
         }
 
         /*
-         * 다수건의 전자명세서 인쇄팝업 URL을 반환합니다.
+         * 다수건의 전자명세서 인쇄팝업 URL을 반환합니다. (최대 100건)
          * - 반환된 URL은 보안정책으로 인해 30초의 유효시간 갖습니다.
          */
         private void btnGetMassPrintURL_Click(object sender, EventArgs e)
@@ -1187,7 +1187,7 @@ namespace Popbill.Statement.Example.csharp
 
             List<string> mgtKeyList = new List<string>();
 
-            // 문서관리번호 배열, 최대 1000건
+            // 문서관리번호 배열 (최대 100건)
             mgtKeyList.Add("20190110-01");
             mgtKeyList.Add("20190110-02");
             mgtKeyList.Add("20190110-03");
@@ -1257,7 +1257,7 @@ namespace Popbill.Statement.Example.csharp
         {
             try
             {
-                string url = statementService.GetPopbillURL(txtCorpNum.Text, txtUserID.Text, "SEAL");
+                string url = statementService.GetSealURL(txtCorpNum.Text, txtUserID.Text);
 
                 MessageBox.Show(url, "인감 및 첨부문서 등록 URL");
             }
@@ -1585,12 +1585,12 @@ namespace Popbill.Statement.Example.csharp
             detail.unitCost = "100000"; // 단가
             detail.supplyCost = "100000"; // 공급가액
             detail.tax = "10000"; // 세액
-            detail.remark = "품목비고";
-            detail.spare1 = "spare1";
-            detail.spare1 = "spare2";
-            detail.spare1 = "spare3";
-            detail.spare1 = "spare4";
-            detail.spare1 = "spare5";
+            detail.remark = "품목비고"; // 비고
+            detail.spare1 = "spare1"; // 여분1
+            detail.spare1 = "spare2"; // 여분2
+            detail.spare1 = "spare3"; // 여분3
+            detail.spare1 = "spare4"; // 여분4
+            detail.spare1 = "spare5"; // 여분5
 
             statement.detailList.Add(detail);
 
@@ -1604,12 +1604,12 @@ namespace Popbill.Statement.Example.csharp
             detail.unitCost = "100000"; // 단가
             detail.supplyCost = "100000"; // 공급가액
             detail.tax = "10000"; // 세액
-            detail.remark = "품목비고";
-            detail.spare1 = "spare1";
-            detail.spare1 = "spare2";
-            detail.spare1 = "spare3";
-            detail.spare1 = "spare4";
-            detail.spare1 = "spare5";
+            detail.remark = "품목비고"; // 비고
+            detail.spare1 = "spare1"; // 여분1
+            detail.spare1 = "spare2"; // 여분2
+            detail.spare1 = "spare3"; // 여분3
+            detail.spare1 = "spare4"; // 여분4
+            detail.spare1 = "spare5"; // 여분5
 
             statement.detailList.Add(detail);
 

@@ -7,7 +7,7 @@
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
  * 
  * <테스트 연동개발 준비사항>
- * 1) 29, 32 라인에 선언된 링크아이디(LinkID)와 비밀키(SecretKey)를 
+ * 1) 27, 30 라인에 선언된 링크아이디(LinkID)와 비밀키(SecretKey)를 
  *    링크허브 가입시 메일로 발급받은 인증정보로 변경합니다.
  * 2) 팝빌 개발용 사이트(test.popbill.com)에 연동회원으로 가입합니다.
  * 3) 전자세금계산서 발행을 위해 공인인증서를 등록합니다. 두가지 방법 중 선택 
@@ -222,9 +222,11 @@ namespace Popbill.Taxinvoice.Example.csharp
             taxinvoice.remark3 = "비고3";
 
             // 기재상 권 항목, 최대값 32767
+            // 미기재시 taxinvoice.kwon = null;
             taxinvoice.kwon = 1;
 
             // 기재상 호 항목, 최대값 32767
+            // 미기재시 taxinvoice.ho = null;
             taxinvoice.ho = 1;
 
 
@@ -313,7 +315,9 @@ namespace Popbill.Taxinvoice.Example.csharp
             taxinvoice.addContactList.Add(addContact2);
 
 
-            // 지연발행 강제여부
+            // 지연발행 강제여부, 기본값 - False
+            // 지연발행 세금계산서를 발행하는 경우, 가산세가 부과될 수 있습니다.
+            // 지연발행 세금계산서를 신고해야 하는 경우 forceIssue 값을 true 선언하여 발행(Issue API)을 호출할 수 있습니다.
             bool forceIssue = false;
 
             // 즉시발행 메모 
@@ -502,9 +506,11 @@ namespace Popbill.Taxinvoice.Example.csharp
             taxinvoice.remark3 = "비고3";
 
             // 기재상 권 항목, 최대값 32767
+            // 미기재시 taxinvoice.kwon = null;
             taxinvoice.kwon = 1;
 
             // 기재상 호 항목, 최대값 32767
+            // 미기재시 taxinvoice.ho = null;
             taxinvoice.ho = 1;
 
 
@@ -766,9 +772,11 @@ namespace Popbill.Taxinvoice.Example.csharp
             taxinvoice.remark3 = "비고3";
 
             // 기재상 권 항목, 최대값 32767
+            // 미기재시 taxinvoice.kwon = null;
             taxinvoice.kwon = 1;
 
             // 기재상 호 항목, 최대값 32767
+            // 미기재시 taxinvoice.ho = null;
             taxinvoice.ho = 1;
 
 
@@ -1091,9 +1099,11 @@ namespace Popbill.Taxinvoice.Example.csharp
             taxinvoice.remark3 = "비고3";
 
             // 기재상 권 항목, 최대값 32767
+            // 미기재시 taxinvoice.kwon = null;
             taxinvoice.kwon = 1;
 
             // 기재상 호 항목, 최대값 32767
+            // 미기재시 taxinvoice.ho = null;
             taxinvoice.ho = 1;
 
 
@@ -1358,9 +1368,11 @@ namespace Popbill.Taxinvoice.Example.csharp
             taxinvoice.remark3 = "비고3";
 
             // 기재상 권 항목, 최대값 32767
+            // 미기재시 taxinvoice.kwon = null;
             taxinvoice.kwon = 1;
 
             // 기재상 호 항목, 최대값 32767
+            // 미기재시 taxinvoice.ho = null;
             taxinvoice.ho = 1;
 
 
@@ -1583,7 +1595,7 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * [발행대기] 상태의 세금계산서를 [공급자]가 [취소]합니다.
+         * [승인대기] 상태의 세금계산서를 [공급자]가 [취소]합니다.
          * - [취소]된 세금계산서를 삭제(Delete API)하면 등록된 문서관리번호를 재사용할 수 있습니다.
          */
         private void btnCancelSend_Click(object sender, EventArgs e)
@@ -1893,9 +1905,11 @@ namespace Popbill.Taxinvoice.Example.csharp
             taxinvoice.remark3 = "비고3";
 
             // 기재상 권 항목, 최대값 32767
+            // 미기재시 taxinvoice.kwon = null;
             taxinvoice.kwon = 1;
 
             // 기재상 호 항목, 최대값 32767
+            // 미기재시 taxinvoice.ho = null;
             taxinvoice.ho = 1;
 
             // 사업자등록증 이미지 첨부여부
@@ -2208,7 +2222,7 @@ namespace Popbill.Taxinvoice.Example.csharp
                 tmp += "invoiceeCorpName (공급받는자 상호) : " + taxinvoiceInfo.invoiceeCorpName + CRLF;
                 tmp += "invoiceeCorpNum (공급받는자 사업자번호) : " + taxinvoiceInfo.invoiceeCorpNum + CRLF;
                 tmp += "invoiceePrintYN (공급받는자 문서관리번호) : " + taxinvoiceInfo.invoiceePrintYN + CRLF;
-                tmp += "closeDownState (공급받는자 휴패업상태코드) : " + taxinvoiceInfo.closeDownState + CRLF;
+                tmp += "closeDownState (공급받는자 휴폐업상태코드) : " + taxinvoiceInfo.closeDownState + CRLF;
                 tmp += "closeDownStateDate (공급받는자 휴폐업일자) : " + taxinvoiceInfo.closeDownStateDate + CRLF;
 
                 tmp += "trusteeCorpName (수탁자 상호) : " + taxinvoiceInfo.trusteeCorpName + CRLF;
@@ -2700,7 +2714,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
             List<string> MgtKeyList = new List<string>();
 
-            // 인쇄할 세금계산서 문서관리번호, (최대 1000건)
+            // 인쇄할 세금계산서 문서관리번호, (최대 100건)
             MgtKeyList.Add("20190110-001");
             MgtKeyList.Add("20190110-002");
             MgtKeyList.Add("20190110-003");

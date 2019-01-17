@@ -51,8 +51,7 @@ namespace Popbill.Message.Example.csharp
 
 
         /*
-         * 문자 발신번호 관리 팝업 URL을 반합니다.
-         * - 반환된 URL은 보안정책에 따라 30초의 유효시간을 갖습니다.
+         * 문자 발신번호 목록을 반환합니다.
          */
         private void btnGetSenderNumberList_Click(object sender, EventArgs e)
         {
@@ -80,7 +79,8 @@ namespace Popbill.Message.Example.csharp
 
 
         /*
-         * 문자 발신번호 목록을 반환합니다.
+         * 문자 발신번호 관리 팝업 URL을 반합니다.
+         * - 반환된 URL은 보안정책에 따라 30초의 유효시간을 갖습니다.
          */
         private void btnGetSenderNumberMgtURL_Click(object sender, EventArgs e)
         {

@@ -117,10 +117,12 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
             }
         }
 
+
         /*
-         * 전자세금계산서 매입/매출 내역의 수집 결과를 조회합니다.
-         * - 응답항목에 관한 정보는 "[홈택스연동 (전자세금계산서계산서) API 연동매뉴얼] >
-         *   3.2.1. Search(수집 결과 조회)" 을 참고하시기 바랍니다.
+         * 수집 요청건들에 대한 상태 목록을 확인합니다.
+         * - 수집 요청 작업아이디(JobID)의 유효시간은 1시간 입니다.
+         * - 응답항목에 관한 정보는 "[홈택스연동 (전자세금계산서) API 연동매뉴얼] >
+         *   3.1.3. ListActiveJob(수집 상태 목록 확인)" 을 참고하시기 바랍니다.
          */
         private void btnListActiveJob_Click(object sender, EventArgs e)
         {
@@ -164,9 +166,9 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
         }
 
         /*
-         * 전자세금계산서 매입/매출 내역의 수집 결과 요약정보를 조회합니다.
+         * 전자세금계산서 매입/매출 내역의 수집 결과를 조회합니다.
          * - 응답항목에 관한 정보는 "[홈택스연동 (전자세금계산서계산서) API 연동매뉴얼] >
-         *   3.2.2. Summary(수집 결과 요약정보 조회)" 을 참고하시기 바랍니다.
+         *   3.2.1. Search(수집 결과 조회)" 을 참고하시기 바랍니다.
          */
         private void btnSearch_Click(object sender, EventArgs e)
         {

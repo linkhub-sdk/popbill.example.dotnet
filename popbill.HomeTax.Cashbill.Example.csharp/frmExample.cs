@@ -451,8 +451,8 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
 
 
         /*
-         * 연동회원의 잔여포인트를 조회합니다.
-         * - 파트너 과금 방식의 경우 파트너 잔여포인트 조회(GetPartnerBalance API) 기능을 사용하시기 바랍니다.
+         * 파트너의 잔여포인트를 확인합니다.
+         * - 과금방식이 연동과금인 경우 연동회원 잔여포인트(GetBalance API)를 이용하시기 바랍니다.
          */
         private void btnGetPartnerBalance1_Click(object sender, EventArgs e)
         {
