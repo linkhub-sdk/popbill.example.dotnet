@@ -283,12 +283,12 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
             {
                 String url = htCashbillService.GetCertificatePopUpURL(txtCorpNum.Text, txtUserId.Text);
 
-                MessageBox.Show(url, "홈택스 공인인증서 등록 URL");
+                MessageBox.Show(url, "홈택스연동 인증관리 URL");
             }
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "홈택스 공인인증서 등록 URL");
+                                "응답메시지(message) : " + ex.Message, "홈택스연동 인증관리 URL");
             }
         }
 
@@ -483,7 +483,7 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "팝빌 로그인 URL");
+                                "응답메시지(message) : " + ex.Message, "파트너 포인트충전 URL");
             }
         }
 

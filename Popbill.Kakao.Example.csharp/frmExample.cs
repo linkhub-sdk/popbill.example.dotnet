@@ -862,9 +862,10 @@ namespace Popbill.Kakao.Example.csharp
 
                 MessageBox.Show(tmp, "전송내역 확인");
 
-                string rowStr = "state (전송상태 코드) | sendDT (전송일시) | result (전송결과 코드) | resultDT (전송결과 수신일시) | contentType (카카오톡 유형) | " +
-                                "receiveNum (수신번호) | receiveName (수신자명) | content (내용) | altContentType (대체문자 전송타입) | altSendDT (대체문자 전송일시) | " +
-                                "altResult (대체문자 전송결과 코드) | altResultDT (대체문자 전송결과 수신일시) | receiptNum (접수번호) | requestNum (요청번호)";
+                string rowStr =
+                    "state (전송상태 코드) | sendDT (전송일시) | result (전송결과 코드) | resultDT (전송결과 수신일시) | contentType (카카오톡 유형) | " +
+                    "receiveNum (수신번호) | receiveName (수신자명) | content (내용) | altContentType (대체문자 전송타입) | altSendDT (대체문자 전송일시) | " +
+                    "altResult (대체문자 전송결과 코드) | altResultDT (대체문자 전송결과 수신일시) | receiptNum (접수번호) | requestNum (요청번호)";
 
                 listBox1.Items.Add(rowStr);
 
@@ -924,9 +925,10 @@ namespace Popbill.Kakao.Example.csharp
 
                 MessageBox.Show(tmp, "전송내역 확인");
 
-                string rowStr = "state (전송상태 코드) | sendDT (전송일시) | result (전송결과 코드) | resultDT (전송결과 수신일시) | contentType (카카오톡 유형) | " +
-                                "receiveNum (수신번호) | receiveName (수신자명) | content (내용) | altContentType (대체문자 전송타입) | altSendDT (대체문자 전송일시) | " +
-                                "altResult (대체문자 전송결과 코드) | altResultDT (대체문자 전송결과 수신일시) | receiptNum (접수번호) | requestNum (요청번호)";
+                string rowStr =
+                    "state (전송상태 코드) | sendDT (전송일시) | result (전송결과 코드) | resultDT (전송결과 수신일시) | contentType (카카오톡 유형) | " +
+                    "receiveNum (수신번호) | receiveName (수신자명) | content (내용) | altContentType (대체문자 전송타입) | altSendDT (대체문자 전송일시) | " +
+                    "altResult (대체문자 전송결과 코드) | altResultDT (대체문자 전송결과 수신일시) | receiptNum (접수번호) | requestNum (요청번호)";
 
                 listBox1.Items.Add(rowStr);
 
@@ -1020,9 +1022,10 @@ namespace Popbill.Kakao.Example.csharp
 
                 MessageBox.Show(tmp, "전송내역조회 결과");
 
-                string rowStr = "state (전송상태 코드) | sendDT (전송일시) | result (전송결과 코드) | resultDT (전송결과 수신일시) | contentType (카카오톡 유형) | " +
-                                "receiveNum (수신번호) | receiveName (수신자명) | content (내용) | altContentType (대체문자 전송타입) | altSendDT (대체문자 전송일시) | " +
-                                "altResult (대체문자 전송결과 코드) | altResultDT (대체문자 전송결과 수신일시) | receiptNum (접수번호) | requestNum (요청번호)";
+                string rowStr =
+                    "state (전송상태 코드) | sendDT (전송일시) | result (전송결과 코드) | resultDT (전송결과 수신일시) | contentType (카카오톡 유형) | " +
+                    "receiveNum (수신번호) | receiveName (수신자명) | content (내용) | altContentType (대체문자 전송타입) | altSendDT (대체문자 전송일시) | " +
+                    "altResult (대체문자 전송결과 코드) | altResultDT (대체문자 전송결과 수신일시) | receiptNum (접수번호) | requestNum (요청번호)";
 
                 listBox1.Items.Add(rowStr);
 
@@ -1145,7 +1148,7 @@ namespace Popbill.Kakao.Example.csharp
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "팝빌 로그인 URL");
+                                "응답메시지(message) : " + ex.Message, "파트너 포인트충전 URL");
             }
         }
 
@@ -1226,7 +1229,7 @@ namespace Popbill.Kakao.Example.csharp
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "단문(SMS) 과금정보 확인");
+                                "응답메시지(message) : " + ex.Message, "과금정보 확인");
             }
         }
 
@@ -1245,7 +1248,7 @@ namespace Popbill.Kakao.Example.csharp
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "연동회원 가이병부 확인");
+                                "응답메시지(message) : " + ex.Message, "연동회원 가입여부 확인");
             }
         }
 

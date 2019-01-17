@@ -1303,7 +1303,7 @@ namespace Popbill.Cashbill.Example.csharp
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "팝빌 로그인 URL");
+                                "응답메시지(message) : " + ex.Message, "파트너 포인트충전 URL");
             }
         }
 

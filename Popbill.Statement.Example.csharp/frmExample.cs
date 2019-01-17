@@ -1770,7 +1770,7 @@ namespace Popbill.Statement.Example.csharp
         }
 
         /*
-         * 팝빌 포인트충전 팝업 URL을 반환합니다.
+         * 팝빌 연동회원 포인트충전 팝업 URL을 반환합니다.
          * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
          */
         private void btnGetChargeURL_Click(object sender, EventArgs e)
@@ -1779,12 +1779,12 @@ namespace Popbill.Statement.Example.csharp
             {
                 string url = statementService.GetChargeURL(txtCorpNum.Text, txtUserID.Text);
 
-                MessageBox.Show(url, "포인트충전 팝업 URL");
+                MessageBox.Show(url, "연동회원 포인트충전 팝업 URL");
             }
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "포인트충전 팝업 URL");
+                                "응답메시지(message) : " + ex.Message, "연동회원 포인트충전 팝업 URL");
             }
         }
 

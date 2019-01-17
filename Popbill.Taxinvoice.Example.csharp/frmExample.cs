@@ -2415,7 +2415,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
             // 상태코드 배열, 미기재시 전체 상태조회, 문서상태 값 3자리의 배열, 2,3번째 자리에 와일드카드 가능
             String[] State = new String[5];
-            State[0] = "";
+            State[0] = "100";
             State[1] = "3**";
             State[2] = "4**";
             State[3] = "5**";
@@ -3364,7 +3364,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "팝빌 로그인 URL");
+                                "응답메시지(message) : " + ex.Message, "파트너 포인트충전 URL");
             }
         }
 

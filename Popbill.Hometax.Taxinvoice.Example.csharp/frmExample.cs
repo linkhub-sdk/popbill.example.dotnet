@@ -438,12 +438,12 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
             {
                 String url = htTaxinvoiceService.GetCertificatePopUpURL(txtCorpNum.Text, txtUserId.Text);
 
-                MessageBox.Show(url, "홈택스 공인인증서 등록 URL");
+                MessageBox.Show(url, "홈택스연동 인증관리 URL");
             }
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "홈택스 공인인증서 등록 URL");
+                                "응답메시지(message) : " + ex.Message, "홈택스연동 인증관리 URL");
             }
         }
 

@@ -1067,7 +1067,7 @@ namespace Popbill.Message.Example.csharp
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "팝빌 로그인 URL");
+                                "응답메시지(message) : " + ex.Message, "파트너 포인트충전 URL");
             }
         }
 
@@ -1167,7 +1167,7 @@ namespace Popbill.Message.Example.csharp
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "연동회원 가이병부 확인");
+                                "응답메시지(message) : " + ex.Message, "연동회원 가입여부 확인");
             }
         }
 
