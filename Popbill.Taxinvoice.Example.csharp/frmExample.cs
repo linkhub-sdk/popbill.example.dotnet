@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace Popbill.Taxinvoice.Example.csharp
 {
@@ -3242,7 +3243,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             {
                 string url = taxinvoiceService.GetTaxCertURL(txtCorpNum.Text, txtUserId.Text);
 
-                System.Diagnostics.Process.Start("IExplore.exe", url);
+                Process objProcess = Process.Start("IEXPLORE.EXE", "-nomerge "+url);
             }
             catch (PopbillException ex)
             {

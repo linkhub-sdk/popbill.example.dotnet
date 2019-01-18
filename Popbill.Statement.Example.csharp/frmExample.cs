@@ -958,6 +958,7 @@ namespace Popbill.Statement.Example.csharp
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + ex.Message, "전자명세서 상세정보 확인");
             }
+        }
 
         /*
          * 검색조건을 사용하여 전자명세서 목록을 조회합니다.
