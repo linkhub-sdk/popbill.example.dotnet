@@ -335,7 +335,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
             try
             {
-                Response response = taxinvoiceService.RegistIssue(txtCorpNum.Text, taxinvoice, forceIssue, memo,
+                IssueResponse response = taxinvoiceService.RegistIssue(txtCorpNum.Text, taxinvoice, forceIssue, memo,
                     writeSpecification, dealInvoiceMgtKey, emailSubject);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
@@ -898,7 +898,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
             try
             {
-                Response response = taxinvoiceService.Issue(txtCorpNum.Text, KeyType, txtMgtKey.Text, memo, forceIssue,
+                IssueResponse response = taxinvoiceService.Issue(txtCorpNum.Text, KeyType, txtMgtKey.Text, memo, forceIssue,
                     txtUserId.Text);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
@@ -933,7 +933,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
             try
             {
-                Response response = taxinvoiceService.Issue(txtCorpNum.Text, KeyType, txtMgtKey.Text, memo, forceIssue,
+                IssueResponse response = taxinvoiceService.Issue(txtCorpNum.Text, KeyType, txtMgtKey.Text, memo, forceIssue,
                     txtUserId.Text);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
