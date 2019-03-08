@@ -79,7 +79,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             Taxinvoice taxinvoice = new Taxinvoice();
 
             // [필수] 기재상 작성일자, 날짜형식(yyyyMMdd)
-            taxinvoice.writeDate = "20190110";
+            taxinvoice.writeDate = "20190308";
 
             // [필수] 과금방향, {정과금, 역과금}중 선택
             // - 정과금(공급자과금), 역과금(공급받는자과금)
@@ -339,7 +339,8 @@ namespace Popbill.Taxinvoice.Example.csharp
                     writeSpecification, dealInvoiceMgtKey, emailSubject);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + response.message, "즉시발행");
+                                "응답메시지(message) : " + response.message  + "\r\n" +
+                                "국세청승인번호(ntsConfirmNum) : " + response.ntsConfirmNum, "즉시발행");
             }
             catch (PopbillException ex)
             {
@@ -362,7 +363,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             Taxinvoice taxinvoice = new Taxinvoice();
 
             // [필수] 기재상 작성일자, 날짜형식(yyyyMMdd)
-            taxinvoice.writeDate = "20190110";
+            taxinvoice.writeDate = "20190308";
 
             // [필수] 과금방향, {정과금, 역과금}중 선택
             // - 정과금(공급자과금), 역과금(공급받는자과금)
@@ -902,7 +903,8 @@ namespace Popbill.Taxinvoice.Example.csharp
                     txtUserId.Text);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + response.message, "세금계산서 발행");
+                                "응답메시지(message) : " + response.message + "\r\n" +
+                                "국세청승인번호(ntsConfirmNum) : " + response.ntsConfirmNum, "세금계산서 발행");
             }
             catch (PopbillException ex)
             {
@@ -937,7 +939,8 @@ namespace Popbill.Taxinvoice.Example.csharp
                     txtUserId.Text);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + response.message, "세금계산서 발행");
+                                "응답메시지(message) : " + response.message + "\r\n" +
+                                "국세청승인번호(ntsConfirmNum) : " + response.ntsConfirmNum, "세금계산서 발행");
             }
             catch (PopbillException ex)
             {
@@ -3703,5 +3706,29 @@ namespace Popbill.Taxinvoice.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "담당저 정보 수정");
             }
         }
+
+        /*
+         * 1건의 전자세금계산서 보기 팝업 URL을 반환합니다. (메뉴/버튼 출력되지 않음)
+         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         */
+        private void btnGetViewURL_Click(object sender, EventArgs e)
+        {
+            // 세금계산서 발행유형 
+            MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
+
+            try
+            {
+                string url = taxinvoiceService.GetViewURL(txtCorpNum.Text, KeyType, txtMgtKey.Text, txtUserId.Text);
+
+                MessageBox.Show(url, "세금계산서 보기 팝업 URL");
+                
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "세금계산서 보기 팝업 URL");
+            }
+        }
+
     }
 }

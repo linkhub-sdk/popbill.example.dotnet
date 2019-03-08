@@ -102,6 +102,7 @@
             this.btnGetURL_SBOX = new System.Windows.Forms.Button();
             this.btnGetURL_TBOX = new System.Windows.Forms.Button();
             this.GroupBox12 = new System.Windows.Forms.GroupBox();
+            this.btnGetViewURL = new System.Windows.Forms.Button();
             this.btnGetPrintURL = new System.Windows.Forms.Button();
             this.groupBox20 = new System.Windows.Forms.GroupBox();
             this.groupBox22 = new System.Windows.Forms.GroupBox();
@@ -589,7 +590,7 @@
             // 
             // btnGetEmailURL
             // 
-            this.btnGetEmailURL.Location = new System.Drawing.Point(15, 171);
+            this.btnGetEmailURL.Location = new System.Drawing.Point(15, 206);
             this.btnGetEmailURL.Name = "btnGetEmailURL";
             this.btnGetEmailURL.Size = new System.Drawing.Size(185, 32);
             this.btnGetEmailURL.TabIndex = 13;
@@ -609,7 +610,7 @@
             // 
             // btnGetMassPrintURL
             // 
-            this.btnGetMassPrintURL.Location = new System.Drawing.Point(15, 133);
+            this.btnGetMassPrintURL.Location = new System.Drawing.Point(15, 168);
             this.btnGetMassPrintURL.Name = "btnGetMassPrintURL";
             this.btnGetMassPrintURL.Size = new System.Drawing.Size(185, 32);
             this.btnGetMassPrintURL.TabIndex = 12;
@@ -629,7 +630,7 @@
             // 
             // btnEPrintURL
             // 
-            this.btnEPrintURL.Location = new System.Drawing.Point(15, 95);
+            this.btnEPrintURL.Location = new System.Drawing.Point(15, 130);
             this.btnEPrintURL.Name = "btnEPrintURL";
             this.btnEPrintURL.Size = new System.Drawing.Size(185, 32);
             this.btnEPrintURL.TabIndex = 11;
@@ -896,7 +897,7 @@
             this.btnGetPopUpURL.Name = "btnGetPopUpURL";
             this.btnGetPopUpURL.Size = new System.Drawing.Size(185, 32);
             this.btnGetPopUpURL.TabIndex = 9;
-            this.btnGetPopUpURL.Text = "문서 내용보기 팝업 URL";
+            this.btnGetPopUpURL.Text = "문서 팝업 URL";
             this.btnGetPopUpURL.UseVisualStyleBackColor = true;
             this.btnGetPopUpURL.Click += new System.EventHandler(this.btnGetPopUpURL_Click);
             // 
@@ -958,7 +959,7 @@
             this.GroupBox7.Controls.Add(this.groupBox21);
             this.GroupBox7.Location = new System.Drawing.Point(12, 194);
             this.GroupBox7.Name = "GroupBox7";
-            this.GroupBox7.Size = new System.Drawing.Size(1326, 591);
+            this.GroupBox7.Size = new System.Drawing.Size(1326, 619);
             this.GroupBox7.TabIndex = 12;
             this.GroupBox7.TabStop = false;
             this.GroupBox7.Text = "전자세금계산서 관련 API";
@@ -1018,6 +1019,7 @@
             // 
             // GroupBox12
             // 
+            this.GroupBox12.Controls.Add(this.btnGetViewURL);
             this.GroupBox12.Controls.Add(this.btnGetEmailURL);
             this.GroupBox12.Controls.Add(this.btnGetMassPrintURL);
             this.GroupBox12.Controls.Add(this.btnEPrintURL);
@@ -1025,14 +1027,24 @@
             this.GroupBox12.Controls.Add(this.btnGetPopUpURL);
             this.GroupBox12.Location = new System.Drawing.Point(880, 369);
             this.GroupBox12.Name = "GroupBox12";
-            this.GroupBox12.Size = new System.Drawing.Size(211, 212);
+            this.GroupBox12.Size = new System.Drawing.Size(211, 244);
             this.GroupBox12.TabIndex = 11;
             this.GroupBox12.TabStop = false;
             this.GroupBox12.Text = "문서관련 URL 기능";
             // 
+            // btnGetViewURL
+            // 
+            this.btnGetViewURL.Location = new System.Drawing.Point(15, 57);
+            this.btnGetViewURL.Name = "btnGetViewURL";
+            this.btnGetViewURL.Size = new System.Drawing.Size(185, 32);
+            this.btnGetViewURL.TabIndex = 14;
+            this.btnGetViewURL.Text = "문서 팝업 URL (메뉴x)";
+            this.btnGetViewURL.UseVisualStyleBackColor = true;
+            this.btnGetViewURL.Click += new System.EventHandler(this.btnGetViewURL_Click);
+            // 
             // btnGetPrintURL
             // 
-            this.btnGetPrintURL.Location = new System.Drawing.Point(15, 57);
+            this.btnGetPrintURL.Location = new System.Drawing.Point(15, 92);
             this.btnGetPrintURL.Name = "btnGetPrintURL";
             this.btnGetPrintURL.Size = new System.Drawing.Size(185, 32);
             this.btnGetPrintURL.TabIndex = 10;
@@ -1802,7 +1814,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1367, 797);
+            this.ClientSize = new System.Drawing.Size(1367, 825);
             this.Controls.Add(this.GroupBox7);
             this.Controls.Add(this.txtUserId);
             this.Controls.Add(this.GroupBox1);
@@ -1990,6 +2002,7 @@
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
+        internal System.Windows.Forms.Button btnGetViewURL;
     }
 }
 
