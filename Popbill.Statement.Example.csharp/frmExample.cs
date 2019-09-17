@@ -72,12 +72,12 @@ namespace Popbill.Statement.Example.csharp
             {
                 bool InUse = statementService.CheckMgtKeyInuse(txtCorpNum.Text, itemCode, txtMgtKey.Text);
 
-                MessageBox.Show(InUse ? "사용중" : "미사용중", "문서관리번호 중복여부 확인");
+                MessageBox.Show(InUse ? "사용중" : "미사용중", "문서번호 중복여부 확인");
             }
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "문서관리번호 중복여부 확인");
+                                "응답메시지(message) : " + ex.Message, "문서번호 중복여부 확인");
             }
         }
 
@@ -107,7 +107,7 @@ namespace Popbill.Statement.Example.csharp
             // [필수] 전자명세서 양식코드
             statement.itemCode = selectedItemCode();
 
-            // [필수] 문서관리번호, 1~24자리 숫자, 영문, '-', '_' 조합으로 사업자별로 중복되지 않도록 구성
+            // [필수] 문서번호, 1~24자리 숫자, 영문, '-', '_' 조합으로 사업자별로 중복되지 않도록 구성
             statement.mgtKey = txtMgtKey.Text;
 
 
@@ -290,7 +290,7 @@ namespace Popbill.Statement.Example.csharp
             // [필수] 전자명세서 양식코드
             statement.itemCode = selectedItemCode();
 
-            // [필수] 문서관리번호, 1~24자리 숫자, 영문, '-', '_' 조합으로 사업자별로 중복되지 않도록 구성
+            // [필수] 문서번호, 1~24자리 숫자, 영문, '-', '_' 조합으로 사업자별로 중복되지 않도록 구성
             statement.mgtKey = txtMgtKey.Text;
 
 
@@ -474,7 +474,7 @@ namespace Popbill.Statement.Example.csharp
             // [필수] 전자명세서 양식코드
             statement.itemCode = selectedItemCode();
 
-            // [필수] 문서관리번호, 1~24자리 숫자, 영문, '-', '_' 조합으로 사업자별로 중복되지 않도록 구성
+            // [필수] 문서번호, 1~24자리 숫자, 영문, '-', '_' 조합으로 사업자별로 중복되지 않도록 구성
             statement.mgtKey = txtMgtKey.Text;
 
 
@@ -622,7 +622,7 @@ namespace Popbill.Statement.Example.csharp
 
             try
             {
-                //Update(팝빌회원 사업자번호, 명세서코드, 문서관리번호, 명세서객체, 팝빌회원 아이디)
+                //Update(팝빌회원 사업자번호, 명세서코드, 문서번호, 명세서객체, 팝빌회원 아이디)
                 Response response = statementService.Update(txtCorpNum.Text, selectedItemCode(), txtMgtKey.Text,
                     statement, txtUserID.Text);
 
@@ -662,7 +662,7 @@ namespace Popbill.Statement.Example.csharp
 
         /*
          * [발행완료] 전자명세서를 [발행취소] 처리합니다.
-         * - 발행취소 전자명세서에 사용된 문서관리번호(mgtKey)를 재사용하기 위해서는
+         * - 발행취소 전자명세서에 사용된 문서번호(mgtKey)를 재사용하기 위해서는
          *   삭제 (Delete API)를 호출하여 [삭제] 해야합니다.
          */
         private void btnCancel_Click(object sender, EventArgs e)
@@ -714,7 +714,7 @@ namespace Popbill.Statement.Example.csharp
 
         /*
          * 1건의 전자명세서를 [삭제]합니다.
-         * - 전자명세서를 삭제하면 사용된 문서관리번호(mgtKey)를 재사용할 수 있습니다.
+         * - 전자명세서를 삭제하면 사용된 문서번호(mgtKey)를 재사용할 수 있습니다.
          * - 삭제가능한 문서 상태 : [임시저장], [발행취소]
          */
         private void btnDelete_Click(object sender, EventArgs e)
@@ -737,7 +737,7 @@ namespace Popbill.Statement.Example.csharp
 
         /*
          * 1건의 전자명세서를 [삭제]합니다.
-         * - 전자명세서를 삭제하면 사용된 문서관리번호(mgtKey)를 재사용할 수 있습니다.
+         * - 전자명세서를 삭제하면 사용된 문서번호(mgtKey)를 재사용할 수 있습니다.
          * - 삭제가능한 문서 상태 : [임시저장], [발행취소]
          */
         private void btnDeleteSub_Click(object sender, EventArgs e)
@@ -775,7 +775,7 @@ namespace Popbill.Statement.Example.csharp
                 tmp += "itemCode (문서종류코드) : " + statementInfo.itemCode.ToString() + CRLF;
                 tmp += "itemKey (팝빌 관리번호) : " + statementInfo.itemKey + CRLF;
                 tmp += "invoiceNum (문서고유번호) : " + statementInfo.invoiceNum + CRLF;
-                tmp += "mgtKey (문서관리번호) : " + statementInfo.mgtKey + CRLF;
+                tmp += "mgtKey (문서번호) : " + statementInfo.mgtKey + CRLF;
                 tmp += "taxType (세금형태) : " + statementInfo.taxType + CRLF;
                 tmp += "writeDate (작성일자) : " + statementInfo.writeDate + CRLF;
                 tmp += "regDT (임시저장일시) : " + statementInfo.regDT + CRLF;
@@ -814,7 +814,7 @@ namespace Popbill.Statement.Example.csharp
 
             List<string> MgtKeyList = new List<string>();
 
-            //문서관리번호 배열, 최대 1000건
+            //문서번호 배열, 최대 1000건
             MgtKeyList.Add("20190110-001");
             MgtKeyList.Add("20190110-002");
             MgtKeyList.Add("20190110-003");
@@ -835,7 +835,7 @@ namespace Popbill.Statement.Example.csharp
                         tmp += "itemCode (문서종류코드) : " + statementInfoList[i].itemCode.ToString() + CRLF;
                         tmp += "itemKey (팝빌 관리번호) : " + statementInfoList[i].itemKey + CRLF;
                         tmp += "invoiceNum (문서고유번호) : " + statementInfoList[i].invoiceNum + CRLF;
-                        tmp += "mgtKey (문서관리번호) : " + statementInfoList[i].mgtKey + CRLF;
+                        tmp += "mgtKey (문서번호) : " + statementInfoList[i].mgtKey + CRLF;
                         tmp += "taxType (세금형태) : " + statementInfoList[i].taxType + CRLF;
                         tmp += "writeDate (작성일자) : " + statementInfoList[i].writeDate + CRLF;
                         tmp += "regDT (임시저장일시) : " + statementInfoList[i].regDT + CRLF;
@@ -970,10 +970,10 @@ namespace Popbill.Statement.Example.csharp
             String DType = "W";
 
             // [필수] 시작일자, 날짜형식(yyyyMMdd)
-            String SDate = "20181201";
+            String SDate = "20190901";
 
             // [필수] 종료일자, 날짜형식(yyyyMMdd)
-            String EDate = "20190109";
+            String EDate = "20190930";
 
             // 전송상태값 배열, 미기재시 전체 상태조회, 문서상태 값 3자리의 배열, 2,3번째 자리에 와일드카드 가능
             String[] State = new String[4];
@@ -1184,7 +1184,7 @@ namespace Popbill.Statement.Example.csharp
 
             List<string> mgtKeyList = new List<string>();
 
-            // 문서관리번호 배열 (최대 100건)
+            // 문서번호 배열 (최대 100건)
             mgtKeyList.Add("20190110-01");
             mgtKeyList.Add("20190110-02");
             mgtKeyList.Add("20190110-03");
@@ -1438,7 +1438,7 @@ namespace Popbill.Statement.Example.csharp
         /*
          * 팝빌에 전자명세서를 등록하지 않고 공급받는자에게 팩스전송합니다.
          * - 팩스 전송 요청시 포인트가 차감됩니다. (전송실패시 환불처리)
-         * - 팩스 발행 요청시 작성한 문서관리번호는 팩스전송 파일명으로 사용됩니다.
+         * - 팩스 발행 요청시 작성한 문서번호는 팩스전송 파일명으로 사용됩니다.
          * - 전송내역 확인은 "팝빌 로그인" > [문자 팩스] > [팩스] > [전송내역] 메뉴에서 전송결과를 확인할 수 있습니다.
          * - 팩스 전송결과를 확인하기 위해서는 선팩스 전송 요청 시 반환받은 접수번호를 이용하여
          *   팩스 API의 전송결과 확인 (GetFaxDetail) API를 이용하면 됩니다.
@@ -1469,7 +1469,7 @@ namespace Popbill.Statement.Example.csharp
             // [필수] 전자명세서 양식코드
             statement.itemCode = selectedItemCode();
 
-            // [필수] 문서관리번호, 1~24자리 숫자, 영문, '-', '_' 조합으로 사업자별로 중복되지 않도록 구성
+            // [필수] 문서번호, 1~24자리 숫자, 영문, '-', '_' 조합으로 사업자별로 중복되지 않도록 구성
             statement.mgtKey = txtMgtKey.Text;
 
 

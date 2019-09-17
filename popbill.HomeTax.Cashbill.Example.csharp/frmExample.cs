@@ -61,10 +61,10 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
             KeyType tiKeyType = KeyType.SELL;
 
             // 시작일자, 표시형식(yyyyMMdd)
-            String SDate = "20181201";
+            String SDate = "20190901";
 
             // 종료일자, 표시형식(yyyyMMdd)
-            String EDate = "20190110";
+            String EDate = "20190930";
 
             try
             {

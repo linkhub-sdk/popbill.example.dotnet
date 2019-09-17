@@ -92,7 +92,7 @@ namespace Popbill.Closedown.Example.csharp
             // 조회할 사업자번호 배열, 최대 1000건
             CorpNumList.Add("1234567890");
             CorpNumList.Add("6798700433");
-            CorpNumList.Add("4010394930");
+            CorpNumList.Add("1231212312");
 
             try
             {

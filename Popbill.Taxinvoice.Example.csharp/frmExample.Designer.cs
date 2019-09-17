@@ -35,29 +35,15 @@
             this.btnDeleteFile = new System.Windows.Forms.Button();
             this.btnGetInfo = new System.Windows.Forms.Button();
             this.GroupBox8 = new System.Windows.Forms.GroupBox();
-            this.btnDeny = new System.Windows.Forms.Button();
-            this.btnAccept = new System.Windows.Forms.Button();
             this.btnCancelIssue = new System.Windows.Forms.Button();
             this.btnIssue = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnRegister = new System.Windows.Forms.Button();
-            this.btnCancelSend = new System.Windows.Forms.Button();
-            this.btnSend = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.Label5 = new System.Windows.Forms.Label();
             this.Label6 = new System.Windows.Forms.Label();
             this.Label7 = new System.Windows.Forms.Label();
-            this.Label8 = new System.Windows.Forms.Label();
             this.Label9 = new System.Windows.Forms.Label();
-            this.Label11 = new System.Windows.Forms.Label();
-            this.Label12 = new System.Windows.Forms.Label();
-            this.Label13 = new System.Windows.Forms.Label();
-            this.Label14 = new System.Windows.Forms.Label();
-            this.Label16 = new System.Windows.Forms.Label();
-            this.Label15 = new System.Windows.Forms.Label();
-            this.Label17 = new System.Windows.Forms.Label();
-            this.Label18 = new System.Windows.Forms.Label();
-            this.Label10 = new System.Windows.Forms.Label();
             this.GroupBox9 = new System.Windows.Forms.GroupBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnGetDetailInfo = new System.Windows.Forms.Button();
@@ -256,57 +242,21 @@
             // 
             // GroupBox8
             // 
-            this.GroupBox8.Controls.Add(this.btnDeny);
-            this.GroupBox8.Controls.Add(this.btnAccept);
             this.GroupBox8.Controls.Add(this.btnCancelIssue);
             this.GroupBox8.Controls.Add(this.btnIssue);
             this.GroupBox8.Controls.Add(this.btnUpdate);
             this.GroupBox8.Controls.Add(this.btnRegister);
-            this.GroupBox8.Controls.Add(this.btnCancelSend);
-            this.GroupBox8.Controls.Add(this.btnSend);
             this.GroupBox8.Controls.Add(this.btnDelete);
             this.GroupBox8.Controls.Add(this.Label5);
             this.GroupBox8.Controls.Add(this.Label6);
             this.GroupBox8.Controls.Add(this.Label7);
-            this.GroupBox8.Controls.Add(this.Label8);
             this.GroupBox8.Controls.Add(this.Label9);
-            this.GroupBox8.Controls.Add(this.Label11);
-            this.GroupBox8.Controls.Add(this.Label12);
-            this.GroupBox8.Controls.Add(this.Label13);
-            this.GroupBox8.Controls.Add(this.Label14);
-            this.GroupBox8.Controls.Add(this.Label16);
-            this.GroupBox8.Controls.Add(this.Label15);
-            this.GroupBox8.Controls.Add(this.Label17);
-            this.GroupBox8.Controls.Add(this.Label18);
-            this.GroupBox8.Controls.Add(this.Label10);
             this.GroupBox8.Location = new System.Drawing.Point(254, 62);
             this.GroupBox8.Name = "GroupBox8";
-            this.GroupBox8.Size = new System.Drawing.Size(330, 189);
+            this.GroupBox8.Size = new System.Drawing.Size(260, 189);
             this.GroupBox8.TabIndex = 7;
             this.GroupBox8.TabStop = false;
             this.GroupBox8.Text = "임시저장 발행, 발행예정 프로세스";
-            // 
-            // btnDeny
-            // 
-            this.btnDeny.BackColor = System.Drawing.Color.Aquamarine;
-            this.btnDeny.Location = new System.Drawing.Point(209, 109);
-            this.btnDeny.Name = "btnDeny";
-            this.btnDeny.Size = new System.Drawing.Size(41, 25);
-            this.btnDeny.TabIndex = 10;
-            this.btnDeny.Text = "거부";
-            this.btnDeny.UseVisualStyleBackColor = false;
-            this.btnDeny.Click += new System.EventHandler(this.btnDeny_Click);
-            // 
-            // btnAccept
-            // 
-            this.btnAccept.BackColor = System.Drawing.Color.Aquamarine;
-            this.btnAccept.Location = new System.Drawing.Point(162, 109);
-            this.btnAccept.Name = "btnAccept";
-            this.btnAccept.Size = new System.Drawing.Size(41, 25);
-            this.btnAccept.TabIndex = 9;
-            this.btnAccept.Text = "승인";
-            this.btnAccept.UseVisualStyleBackColor = false;
-            this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
             // 
             // btnCancelIssue
             // 
@@ -352,31 +302,9 @@
             this.btnRegister.UseVisualStyleBackColor = false;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
-            // btnCancelSend
-            // 
-            this.btnCancelSend.BackColor = System.Drawing.Color.LightCoral;
-            this.btnCancelSend.Location = new System.Drawing.Point(256, 109);
-            this.btnCancelSend.Name = "btnCancelSend";
-            this.btnCancelSend.Size = new System.Drawing.Size(41, 25);
-            this.btnCancelSend.TabIndex = 3;
-            this.btnCancelSend.Text = "취소";
-            this.btnCancelSend.UseVisualStyleBackColor = false;
-            this.btnCancelSend.Click += new System.EventHandler(this.btnCancelSend_Click);
-            // 
-            // btnSend
-            // 
-            this.btnSend.BackColor = System.Drawing.Color.LightCoral;
-            this.btnSend.Location = new System.Drawing.Point(92, 78);
-            this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(67, 25);
-            this.btnSend.TabIndex = 2;
-            this.btnSend.Text = "발행예정";
-            this.btnSend.UseVisualStyleBackColor = false;
-            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
-            // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(220, 157);
+            this.btnDelete.Location = new System.Drawing.Point(177, 157);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(50, 25);
             this.btnDelete.TabIndex = 1;
@@ -392,7 +320,7 @@
             this.Label5.Location = new System.Drawing.Point(11, 17);
             this.Label5.Name = "Label5";
             this.Label5.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.Label5.Size = new System.Drawing.Size(310, 37);
+            this.Label5.Size = new System.Drawing.Size(228, 37);
             this.Label5.TabIndex = 5;
             this.Label5.Text = "임시저장";
             this.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -405,7 +333,7 @@
             this.Label6.Location = new System.Drawing.Point(43, 168);
             this.Label6.Name = "Label6";
             this.Label6.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.Label6.Size = new System.Drawing.Size(266, 1);
+            this.Label6.Size = new System.Drawing.Size(171, 1);
             this.Label6.TabIndex = 14;
             this.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -421,138 +349,17 @@
             this.Label7.TabIndex = 15;
             this.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // Label8
-            // 
-            this.Label8.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.Label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Label8.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Label8.Location = new System.Drawing.Point(124, 54);
-            this.Label8.Name = "Label8";
-            this.Label8.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.Label8.Size = new System.Drawing.Size(1, 61);
-            this.Label8.TabIndex = 16;
-            this.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // Label9
             // 
             this.Label9.BackColor = System.Drawing.SystemColors.ControlDark;
             this.Label9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Label9.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Label9.Location = new System.Drawing.Point(309, 51);
+            this.Label9.Location = new System.Drawing.Point(202, 51);
             this.Label9.Name = "Label9";
             this.Label9.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.Label9.Size = new System.Drawing.Size(1, 117);
             this.Label9.TabIndex = 17;
             this.Label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // Label11
-            // 
-            this.Label11.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.Label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Label11.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Label11.Location = new System.Drawing.Point(33, 114);
-            this.Label11.Name = "Label11";
-            this.Label11.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.Label11.Size = new System.Drawing.Size(91, 1);
-            this.Label11.TabIndex = 19;
-            this.Label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // Label12
-            // 
-            this.Label12.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.Label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Label12.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Label12.Location = new System.Drawing.Point(71, 123);
-            this.Label12.Name = "Label12";
-            this.Label12.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.Label12.Size = new System.Drawing.Size(91, 1);
-            this.Label12.TabIndex = 20;
-            this.Label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // Label13
-            // 
-            this.Label13.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.Label13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Label13.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Label13.Location = new System.Drawing.Point(156, 89);
-            this.Label13.Name = "Label13";
-            this.Label13.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.Label13.Size = new System.Drawing.Size(120, 1);
-            this.Label13.TabIndex = 21;
-            this.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // Label14
-            // 
-            this.Label14.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.Label14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Label14.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Label14.Location = new System.Drawing.Point(181, 89);
-            this.Label14.Name = "Label14";
-            this.Label14.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.Label14.Size = new System.Drawing.Size(1, 35);
-            this.Label14.TabIndex = 22;
-            this.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // Label16
-            // 
-            this.Label16.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.Label16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Label16.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Label16.Location = new System.Drawing.Point(276, 89);
-            this.Label16.Name = "Label16";
-            this.Label16.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.Label16.Size = new System.Drawing.Size(1, 35);
-            this.Label16.TabIndex = 24;
-            this.Label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // Label15
-            // 
-            this.Label15.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.Label15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Label15.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Label15.Location = new System.Drawing.Point(229, 89);
-            this.Label15.Name = "Label15";
-            this.Label15.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.Label15.Size = new System.Drawing.Size(1, 35);
-            this.Label15.TabIndex = 23;
-            this.Label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // Label17
-            // 
-            this.Label17.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.Label17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Label17.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Label17.Location = new System.Drawing.Point(235, 128);
-            this.Label17.Name = "Label17";
-            this.Label17.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.Label17.Size = new System.Drawing.Size(1, 35);
-            this.Label17.TabIndex = 25;
-            this.Label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // Label18
-            // 
-            this.Label18.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.Label18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Label18.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Label18.Location = new System.Drawing.Point(262, 128);
-            this.Label18.Name = "Label18";
-            this.Label18.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.Label18.Size = new System.Drawing.Size(1, 35);
-            this.Label18.TabIndex = 26;
-            this.Label18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // Label10
-            // 
-            this.Label10.BackColor = System.Drawing.Color.Silver;
-            this.Label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Label10.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Label10.Location = new System.Drawing.Point(82, 64);
-            this.Label10.Name = "Label10";
-            this.Label10.Padding = new System.Windows.Forms.Padding(0, 5, 5, 0);
-            this.Label10.Size = new System.Drawing.Size(208, 84);
-            this.Label10.TabIndex = 18;
-            this.Label10.Text = "발행예정";
-            this.Label10.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // GroupBox9
             // 
@@ -1060,7 +867,7 @@
             this.groupBox20.Controls.Add(this.GroupBox8);
             this.groupBox20.Location = new System.Drawing.Point(25, 57);
             this.groupBox20.Name = "groupBox20";
-            this.groupBox20.Size = new System.Drawing.Size(612, 302);
+            this.groupBox20.Size = new System.Drawing.Size(531, 294);
             this.groupBox20.TabIndex = 18;
             this.groupBox20.TabStop = false;
             this.groupBox20.Text = "정발행 프로세스";
@@ -1071,7 +878,7 @@
             this.groupBox22.Controls.Add(this.label35);
             this.groupBox22.Controls.Add(this.panel2);
             this.groupBox22.Controls.Add(this.panel1);
-            this.groupBox22.Location = new System.Drawing.Point(318, 11);
+            this.groupBox22.Location = new System.Drawing.Point(248, 14);
             this.groupBox22.Name = "groupBox22";
             this.groupBox22.Size = new System.Drawing.Size(266, 42);
             this.groupBox22.TabIndex = 20;
@@ -1865,29 +1672,15 @@
         internal System.Windows.Forms.Button btnDeleteFile;
         internal System.Windows.Forms.Button btnGetInfo;
         internal System.Windows.Forms.GroupBox GroupBox8;
-        internal System.Windows.Forms.Button btnDeny;
-        internal System.Windows.Forms.Button btnAccept;
         internal System.Windows.Forms.Button btnCancelIssue;
         internal System.Windows.Forms.Button btnIssue;
         internal System.Windows.Forms.Button btnUpdate;
         internal System.Windows.Forms.Button btnRegister;
-        internal System.Windows.Forms.Button btnCancelSend;
-        internal System.Windows.Forms.Button btnSend;
         internal System.Windows.Forms.Button btnDelete;
         internal System.Windows.Forms.Label Label5;
         internal System.Windows.Forms.Label Label6;
         internal System.Windows.Forms.Label Label7;
-        internal System.Windows.Forms.Label Label8;
         internal System.Windows.Forms.Label Label9;
-        internal System.Windows.Forms.Label Label11;
-        internal System.Windows.Forms.Label Label12;
-        internal System.Windows.Forms.Label Label13;
-        internal System.Windows.Forms.Label Label14;
-        internal System.Windows.Forms.Label Label16;
-        internal System.Windows.Forms.Label Label15;
-        internal System.Windows.Forms.Label Label17;
-        internal System.Windows.Forms.Label Label18;
-        internal System.Windows.Forms.Label Label10;
         internal System.Windows.Forms.GroupBox GroupBox9;
         internal System.Windows.Forms.Button btnGetDetailInfo;
         internal System.Windows.Forms.Button btnGetEmailURL;

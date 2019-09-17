@@ -55,13 +55,13 @@ namespace Popbill.Cashbill.Example.csharp
             {
                 bool InUse = cashbillService.CheckMgtKeyInUse(txtCorpNum.Text, txtMgtKey.Text);
 
-                MessageBox.Show((InUse ? "사용중" : "미사용중"), "문서관리번호 중복여부 확인");
+                MessageBox.Show((InUse ? "사용중" : "미사용중"), "문서번호 중복여부 확인");
 
             }
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "문서관리번호 중복여부 확인");
+                                "응답메시지(message) : " + ex.Message, "문서번호 중복여부 확인");
             }
         }
 
@@ -78,7 +78,7 @@ namespace Popbill.Cashbill.Example.csharp
 
             Cashbill cashbill = new Cashbill();
 
-            // [필수] 문서관리번호, 발행자별 고유번호 할당, 1~24자리 영문,숫자,'-','_' 조합으로 중복없이 구성.
+            // [필수] 문서번호, 발행자별 고유번호 할당, 1~24자리 영문,숫자,'-','_' 조합으로 중복없이 구성.
             cashbill.mgtKey = txtMgtKey.Text;
 
             // [취소거래시 필수] 원본 현금영수증 국세청승인번호
@@ -178,7 +178,7 @@ namespace Popbill.Cashbill.Example.csharp
         {
             Cashbill cashbill = new Cashbill();
 
-            // [필수] 문서관리번호, 사업자별로 중복되지 않도록 관리번호 할당
+            // [필수] 문서번호, 사업자별로 중복되지 않도록 관리번호 할당
             // 1~24자리 영문,숫자,'-','_' 조합 구성
             cashbill.mgtKey = txtMgtKey.Text;
 
@@ -278,7 +278,7 @@ namespace Popbill.Cashbill.Example.csharp
         {
             Cashbill cashbill = new Cashbill();
 
-            // [필수] 문서관리번호, 사업자별로 중복되지 않도록 관리번호 할당
+            // [필수] 문서번호, 사업자별로 중복되지 않도록 관리번호 할당
             // 1~24자리 영문,숫자,'-','_' 조합 구성
             cashbill.mgtKey = txtMgtKey.Text;
 
@@ -463,7 +463,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /*
          * 1건의 현금영수증을 [삭제]합니다.
-         * - 현금영수증을 삭제하면 사용된 문서관리번호(mgtKey)를 재사용할 수 있습니다.
+         * - 현금영수증을 삭제하면 사용된 문서번호(mgtKey)를 재사용할 수 있습니다.
          * - 삭제가능한 문서 상태 : [임시저장], [발행취소]
          */
         private void btnDelete_Click(object sender, EventArgs e)
@@ -484,7 +484,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /*
          * 1건의 현금영수증을 [삭제]합니다.
-         * - 현금영수증을 삭제하면 사용된 문서관리번호(mgtKey)를 재사용할 수 있습니다.
+         * - 현금영수증을 삭제하면 사용된 문서번호(mgtKey)를 재사용할 수 있습니다.
          * - 삭제가능한 문서 상태 : [임시저장], [발행취소]
          */
         private void btnDeleteSub_Click(object sender, EventArgs e)
@@ -506,7 +506,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /*
          * 1건의 현금영수증을 [삭제]합니다.
-         * - 현금영수증을 삭제하면 사용된 문서관리번호(mgtKey)를 재사용할 수 있습니다.
+         * - 현금영수증을 삭제하면 사용된 문서번호(mgtKey)를 재사용할 수 있습니다.
          * - 삭제가능한 문서 상태 : [임시저장], [발행취소]
          */
         private void btnDelete02_Click(object sender, EventArgs e)
@@ -622,7 +622,7 @@ namespace Popbill.Cashbill.Example.csharp
                 string tmp = null;
 
                 tmp += "itemKey (현금영수증 아이템키) : " + cashbillInfo.itemKey + CRLF;
-                tmp += "mgtKey (문서관리번호) : " + cashbillInfo.mgtKey + CRLF;
+                tmp += "mgtKey (문서번호) : " + cashbillInfo.mgtKey + CRLF;
                 tmp += "tradeDate (거래일자) : " + cashbillInfo.tradeDate + CRLF;
                 tmp += "tradeType (문서형태) : " + cashbillInfo.tradeType + CRLF;
                 tmp += "tradeUsage (거래구분) : " + cashbillInfo.tradeUsage + CRLF;
@@ -665,7 +665,7 @@ namespace Popbill.Cashbill.Example.csharp
 
             List<string> MgtKeyList = new List<string>();
 
-            // 현금영수증 문서관리번호 배열, 최대 1000건.
+            // 현금영수증 문서번호 배열, 최대 1000건.
             MgtKeyList.Add("20190110-001");
             MgtKeyList.Add("20190110-002");
             MgtKeyList.Add("20190110-003");
@@ -679,7 +679,7 @@ namespace Popbill.Cashbill.Example.csharp
                 for (int i = 0; i < cashbillInfoList.Count; i++)
                 {
                     tmp += "itemKey (현금영수증 아이템키) : " + cashbillInfoList[i].itemKey + CRLF;
-                    tmp += "mgtKey (문서관리번호) : " + cashbillInfoList[i].mgtKey + CRLF;
+                    tmp += "mgtKey (문서번호) : " + cashbillInfoList[i].mgtKey + CRLF;
                     tmp += "tradeDate (거래일자) : " + cashbillInfoList[i].tradeDate + CRLF;
                     tmp += "tradeType (문서형태) : " + cashbillInfoList[i].tradeType + CRLF;
                     tmp += "tradeUsage (거래구분) : " + cashbillInfoList[i].tradeUsage + CRLF;
@@ -727,7 +727,7 @@ namespace Popbill.Cashbill.Example.csharp
 
                 string tmp = null;
 
-                tmp += "mgtKey (문서관리번호) : " + cashbill.mgtKey + CRLF;
+                tmp += "mgtKey (문서번호) : " + cashbill.mgtKey + CRLF;
                 tmp += "confirmNum (국세청승인번호) : " + cashbill.confirmNum + CRLF;
                 tmp += "orgConfirmNum (원본 현금영수증 국세청승인번호) : " + cashbill.orgConfirmNum + CRLF;
                 tmp += "orgTradeDate (원본 현금영수증 거래일자) : " + cashbill.orgTradeDate + CRLF;
@@ -773,10 +773,10 @@ namespace Popbill.Cashbill.Example.csharp
             String DType = "T";
 
             // 시작일자, 날짜형식(yyyyMMdd)
-            String SDate = "20181201";
+            String SDate = "20190901";
 
             // 종료일자, 날짜형식(yyyyMMdd)
-            String EDate = "20190109";
+            String EDate = "20190930";
 
             // 상태코드 배열, 2,3번째 자리에 와일드카드(*) 사용가능
             // - 상태코드에 대한 자세한 사항은 "[현금영수증 API 연동매뉴얼] >
@@ -1030,7 +1030,7 @@ namespace Popbill.Cashbill.Example.csharp
 
             List<string> MgtKeyList = new List<string>();
 
-            // 현금영수증 문서관리번호 배열, 최대 100건.
+            // 현금영수증 문서번호 배열, 최대 100건.
             MgtKeyList.Add("20190110-001");
             MgtKeyList.Add("20190110-002");
             MgtKeyList.Add("20190110-003");

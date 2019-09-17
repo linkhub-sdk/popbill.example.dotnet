@@ -1071,10 +1071,10 @@ namespace Popbill.Kakao.Example.csharp
         {
             // 최대 검색기한 : 6개월 이내
             // 시작일자, 날짜형식(yyyyMMdd)
-            String SDate = "20180601";
+            String SDate = "20190901";
 
             // 종료일자, 날짜형식(yyyyMMdd)
-            String EDate = "20180630";
+            String EDate = "20190930";
 
             // 전송상태값 배열, 0-대기, 1- 전송중, 2-대기, 3-성공, 4-실패, 5-취소
             String[] State = new String[6];

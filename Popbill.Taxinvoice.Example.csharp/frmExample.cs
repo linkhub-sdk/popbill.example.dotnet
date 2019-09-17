@@ -60,12 +60,12 @@ namespace Popbill.Taxinvoice.Example.csharp
             {
                 bool InUse = taxinvoiceService.CheckMgtKeyInUse(txtCorpNum.Text, KeyType, txtMgtKey.Text);
 
-                MessageBox.Show((InUse ? "사용중" : "미사용중"), "문서관리번호 중복확인");
+                MessageBox.Show((InUse ? "사용중" : "미사용중"), "문서번호 중복확인");
             }
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "문서관리번호 중복확인");
+                                "응답메시지(message) : " + ex.Message, "문서번호 중복확인");
             }
         }
 
@@ -113,7 +113,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             // [필수] 공급자 상호
             taxinvoice.invoicerCorpName = "공급자 상호";
 
-            // [필수] 공급자 문서관리번호, 숫자, 영문, '-', '_' 조합으로 1~24자리까지 사업자번호별 중복없는 고유번호 할당
+            // [필수] 공급자 문서번호, 숫자, 영문, '-', '_' 조합으로 1~24자리까지 사업자번호별 중복없는 고유번호 할당
             taxinvoice.invoicerMgtKey = txtMgtKey.Text;
 
             // [필수] 공급자 대표자 성명 
@@ -158,7 +158,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             // [필수] 공급받는자 상호
             taxinvoice.invoiceeCorpName = "공급받는자 상호";
 
-            // [역발행시 필수] 공급받는자 문서관리번호, 숫자, 영문, '-', '_' 조합으로 1~24자리까지 사업자번호별 중복없는 고유번호 할당
+            // [역발행시 필수] 공급받는자 문서번호, 숫자, 영문, '-', '_' 조합으로 1~24자리까지 사업자번호별 중복없는 고유번호 할당
             taxinvoice.invoiceeMgtKey = "";
 
             // [필수] 공급받는자 대표자 성명 
@@ -327,7 +327,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             // 전자거래명세서 동시작성여부
             bool writeSpecification = false;
 
-            // 전자거래명세서 문서관리번호, 1~24자리 영문, 숫자 '_', '-' 조합으로 사업자별로 중복되지 않도록 구성
+            // 전자거래명세서 문서번호, 1~24자리 영문, 숫자 '_', '-' 조합으로 사업자별로 중복되지 않도록 구성
             String dealInvoiceMgtKey = "";
 
             // 발행안내메일 제목, 미기재시 기본양식으로 전송
@@ -397,7 +397,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             // [필수] 공급자 상호
             taxinvoice.invoicerCorpName = "공급자 상호";
 
-            // [필수] 공급자 문서관리번호, 숫자, 영문, '-', '_' 조합으로 1~24자리까지 사업자번호별 중복없는 고유번호 할당
+            // [필수] 공급자 문서번호, 숫자, 영문, '-', '_' 조합으로 1~24자리까지 사업자번호별 중복없는 고유번호 할당
             taxinvoice.invoicerMgtKey = txtMgtKey.Text;
 
             // [필수] 공급자 대표자 성명 
@@ -443,7 +443,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             // [필수] 공급받는자 상호
             taxinvoice.invoiceeCorpName = "공급받는자 상호";
 
-            // [역발행시 필수] 공급받는자 문서관리번호, 숫자, 영문, '-', '_' 조합으로 1~24자리까지 사업자번호별 중복없는 고유번호 할당
+            // [역발행시 필수] 공급받는자 문서번호, 숫자, 영문, '-', '_' 조합으로 1~24자리까지 사업자번호별 중복없는 고유번호 할당
             taxinvoice.invoiceeMgtKey = "";
 
             // [필수] 공급받는자 대표자 성명 
@@ -664,7 +664,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             // [필수] 공급자 상호
             taxinvoice.invoicerCorpName = "공급자 상호";
 
-            // 공급자 문서관리번호, 숫자, 영문, '-', '_' 조합으로 1~24자리까지 사업자번호별 중복없는 고유번호 할당
+            // 공급자 문서번호, 숫자, 영문, '-', '_' 조합으로 1~24자리까지 사업자번호별 중복없는 고유번호 할당
             taxinvoice.invoicerMgtKey = "";
 
             // [필수] 공급자 대표자 성명 
@@ -709,7 +709,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             // [필수] 공급받는자 상호
             taxinvoice.invoiceeCorpName = "공급받는자 상호";
 
-            // [역발행시 필수] 공급받는자 문서관리번호, 숫자, 영문, '-', '_' 조합으로 1~24자리까지 사업자번호별 중복없는 고유번호 할당
+            // [역발행시 필수] 공급받는자 문서번호, 숫자, 영문, '-', '_' 조합으로 1~24자리까지 사업자번호별 중복없는 고유번호 할당
             taxinvoice.invoiceeMgtKey = txtMgtKey.Text;
 
             // [필수] 공급받는자 대표자 성명 
@@ -840,32 +840,6 @@ namespace Popbill.Taxinvoice.Example.csharp
 
             taxinvoice.detailList.Add(detail);
 
-
-            /*************************************************************************
-            *                           추가담당자 정보                              *  
-            * - 세금계산서 발행안내 메일을 수신받을 공급받는자 담당자가 다수인 경우  *
-            *   담당자 정보를 추가하여 발행안내메일을 다수에게 전송할 수 있습니다.   *
-            * - 최대 5개까지 기재가능                                                *
-            *************************************************************************/
-
-            taxinvoice.addContactList = new List<TaxinvoiceAddContact>();
-
-            TaxinvoiceAddContact addContact = new TaxinvoiceAddContact();
-
-            addContact.serialNum = 1; // 일련번호, 1부터 순차기재
-            addContact.email = "test2@invoicee.com"; // 추가담당자 메일주소 
-            addContact.contactName = "추가담당자명"; // 추가담당자 성명 
-
-            taxinvoice.addContactList.Add(addContact);
-
-            TaxinvoiceAddContact addContact2 = new TaxinvoiceAddContact();
-
-            addContact2.serialNum = 2; // 일련번호, 1부터 순차기재 
-            addContact2.email = "test2@invoicee.com"; // 추가담당자 메일주소
-            addContact2.contactName = "추가담당자명"; // 추가담당자 성명
-
-            taxinvoice.addContactList.Add(addContact2);
-
             try
             {
                 Response response = taxinvoiceService.Register(txtCorpNum.Text, taxinvoice, txtUserId.Text);
@@ -881,7 +855,7 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * [임시저장] 또는 [발행대기] 상태의 세금계산서를 [공급자]가 [발행]합니다.
+         * [임시저장] 상태의 세금계산서를 [공급자]가 [발행]합니다.
          * - 세금계산서 항목별 정보는 "[전자세금계산서 API 연동매뉴얼] > 4.1. (세금)계산서구성"을 참조하시기 바랍니다.
          */
         private void btnIssue_Click(object sender, EventArgs e)
@@ -993,7 +967,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             // [필수] 공급자 상호
             taxinvoice.invoicerCorpName = "공급자 상호_수정";
 
-            // [필수] 공급자 문서관리번호, 숫자, 영문, '-', '_' 조합으로 1~24자리까지 사업자번호별 중복없는 고유번호 할당
+            // [필수] 공급자 문서번호, 숫자, 영문, '-', '_' 조합으로 1~24자리까지 사업자번호별 중복없는 고유번호 할당
             taxinvoice.invoicerMgtKey = txtMgtKey.Text;
 
             // [필수] 공급자 대표자 성명 
@@ -1038,7 +1012,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             // [필수] 공급받는자 상호
             taxinvoice.invoiceeCorpName = "공급받는자 상호";
 
-            // [역발행시 필수] 공급받는자 문서관리번호, 숫자, 영문, '-', '_' 조합으로 1~24자리까지 사업자번호별 중복없는 고유번호 할당
+            // [역발행시 필수] 공급받는자 문서번호, 숫자, 영문, '-', '_' 조합으로 1~24자리까지 사업자번호별 중복없는 고유번호 할당
             taxinvoice.invoiceeMgtKey = "";
 
             // [필수] 공급받는자 대표자 성명 
@@ -1262,7 +1236,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             // [필수] 공급자 상호
             taxinvoice.invoicerCorpName = "공급자 상호";
 
-            // [필수] 공급자 문서관리번호, 숫자, 영문, '-', '_' 조합으로 1~24자리까지 사업자번호별 중복없는 고유번호 할당
+            // [필수] 공급자 문서번호, 숫자, 영문, '-', '_' 조합으로 1~24자리까지 사업자번호별 중복없는 고유번호 할당
             taxinvoice.invoicerMgtKey = txtMgtKey.Text;
 
             // [필수] 공급자 대표자 성명 
@@ -1307,7 +1281,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             // [필수] 공급받는자 상호
             taxinvoice.invoiceeCorpName = "공급받는자 상호";
 
-            // [역발행시 필수] 공급받는자 문서관리번호, 숫자, 영문, '-', '_' 조합으로 1~24자리까지 사업자번호별 중복없는 고유번호 할당
+            // [역발행시 필수] 공급받는자 문서번호, 숫자, 영문, '-', '_' 조합으로 1~24자리까지 사업자번호별 중복없는 고유번호 할당
             taxinvoice.invoiceeMgtKey = "";
 
             // [필수] 공급받는자 대표자 성명 
@@ -1439,31 +1413,6 @@ namespace Popbill.Taxinvoice.Example.csharp
             taxinvoice.detailList.Add(detail);
 
 
-            /*************************************************************************
-            *                           추가담당자 정보                              *  
-            * - 세금계산서 발행안내 메일을 수신받을 공급받는자 담당자가 다수인 경우  *
-            *   담당자 정보를 추가하여 발행안내메일을 다수에게 전송할 수 있습니다.   *
-            * - 최대 5개까지 기재가능                                                *
-            *************************************************************************/
-
-            taxinvoice.addContactList = new List<TaxinvoiceAddContact>();
-
-            TaxinvoiceAddContact addContact = new TaxinvoiceAddContact();
-
-            addContact.serialNum = 1; // 일련번호, 1부터 순차기재
-            addContact.email = "test2@invoicee.com"; // 추가담당자 메일주소 
-            addContact.contactName = "추가담당자명"; // 추가담당자 성명 
-
-            taxinvoice.addContactList.Add(addContact);
-
-            TaxinvoiceAddContact addContact2 = new TaxinvoiceAddContact();
-
-            addContact2.serialNum = 2; // 일련번호, 1부터 순차기재 
-            addContact2.email = "test2@invoicee.com"; // 추가담당자 메일주소
-            addContact2.contactName = "추가담당자명"; // 추가담당자 성명
-
-            taxinvoice.addContactList.Add(addContact2);
-
             try
             {
                 Response response = taxinvoiceService.Update(txtCorpNum.Text, KeyType, txtMgtKey.Text, taxinvoice,
@@ -1483,7 +1432,7 @@ namespace Popbill.Taxinvoice.Example.csharp
          * [발행완료] 상태의 세금계산서를 [공급자]가 [발행취소]합니다.
          * - [발행취소]는 국세청 전송전에만 가능합니다.
          * - 발행취소된 세금계산서는 국세청에 전송되지 않습니다.
-         * - 발행취소 세금계산서에 사용된 문서관리번호를 재사용 하기 위해서는 삭제(Delete API)를 호출하여 해당세금계산서를 삭제해야 합니다.
+         * - 발행취소 세금계산서에 사용된 문서번호를 재사용 하기 위해서는 삭제(Delete API)를 호출하여 해당세금계산서를 삭제해야 합니다.
          */
         private void btnCancelIssue_Click(object sender, EventArgs e)
         {
@@ -1513,7 +1462,7 @@ namespace Popbill.Taxinvoice.Example.csharp
          * [발행완료] 상태의 세금계산서를 [공급자]가 [발행취소]합니다.
          * - [발행취소]는 국세청 전송전에만 가능합니다.
          * - 발행취소된 세금계산서는 국세청에 전송되지 않습니다.
-         * - 발행취소 세금계산서에 사용된 문서관리번호를 재사용 하기 위해서는 삭제(Delete API)를 호출하여 해당세금계산서를 삭제해야 합니다.
+         * - 발행취소 세금계산서에 사용된 문서번호를 재사용 하기 위해서는 삭제(Delete API)를 호출하여 해당세금계산서를 삭제해야 합니다.
          */
         private void btnCancelIssue_Reverse_sub_Click(object sender, EventArgs e)
         {
@@ -1542,7 +1491,7 @@ namespace Popbill.Taxinvoice.Example.csharp
          * [발행완료] 상태의 세금계산서를 [공급자]가 [발행취소]합니다.
          * - [발행취소]는 국세청 전송전에만 가능합니다.
          * - 발행취소된 세금계산서는 국세청에 전송되지 않습니다.
-         * - 발행취소 세금계산서에 사용된 문서관리번호를 재사용 하기 위해서는 삭제(Delete API)를 호출하여 해당세금계산서를 삭제해야 합니다.
+         * - 발행취소 세금계산서에 사용된 문서번호를 재사용 하기 위해서는 삭제(Delete API)를 호출하여 해당세금계산서를 삭제해야 합니다.
          */
         private void btnCancelIssue_Sub_Click(object sender, EventArgs e)
         {
@@ -1600,7 +1549,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
         /*
          * [승인대기] 상태의 세금계산서를 [공급자]가 [취소]합니다.
-         * - [취소]된 세금계산서를 삭제(Delete API)하면 등록된 문서관리번호를 재사용할 수 있습니다.
+         * - [취소]된 세금계산서를 삭제(Delete API)하면 등록된 문서번호를 재사용할 수 있습니다.
          */
         private void btnCancelSend_Click(object sender, EventArgs e)
         {
@@ -1653,7 +1602,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
         /*
          * [승인대기] 상태의 세금계산서를 [공급받는자]가 [거부]합니다.
-         * - [거부]처리된 세금계산서를 삭제(Delete API)하면 등록된 문서관리번호를 재사용할 수 있습니다.
+         * - [거부]처리된 세금계산서를 삭제(Delete API)하면 등록된 문서번호를 재사용할 수 있습니다.
          */
         private void btnDeny_Click(object sender, EventArgs e)
         {
@@ -1680,7 +1629,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
         /*
          * 1건의 전자세금계산서를 [삭제]합니다.
-         * - 세금계산서를 삭제해야만 문서관리번호(mgtKey)를 재사용할 수 있습니다.
+         * - 세금계산서를 삭제해야만 문서번호(mgtKey)를 재사용할 수 있습니다.
          * - 삭제가능한 문서 상태 : [임시저장], [발행취소], [발행예정 취소], [발행예정 거부]
          */
         private void btnDelete_Click(object sender, EventArgs e)
@@ -1705,7 +1654,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
         /*
          * 1건의 전자세금계산서를 [삭제]합니다.
-         * - 세금계산서를 삭제해야만 문서관리번호(mgtKey)를 재사용할 수 있습니다.
+         * - 세금계산서를 삭제해야만 문서번호(mgtKey)를 재사용할 수 있습니다.
          * - 삭제가능한 문서 상태 : [임시저장], [발행취소], [발행예정 취소], [발행예정 거부]
          */
         private void btnDelete_Sub_Click(object sender, EventArgs e)
@@ -1729,7 +1678,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
         /*
          * 1건의 전자세금계산서를 [삭제]합니다.
-         * - 세금계산서를 삭제해야만 문서관리번호(mgtKey)를 재사용할 수 있습니다.
+         * - 세금계산서를 삭제해야만 문서번호(mgtKey)를 재사용할 수 있습니다.
          * - 삭제가능한 문서 상태 : [임시저장], [발행취소], [발행예정 취소], [발행예정 거부]
          */
         private void btnDelete_Reverse_sub_Click(object sender, EventArgs e)
@@ -1798,7 +1747,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             // [필수] 공급자 상호
             taxinvoice.invoicerCorpName = "공급자 상호";
 
-            // 공급자 문서관리번호, 숫자, 영문, '-', '_' 조합으로 1~24자리까지 사업자번호별 중복없는 고유번호 할당
+            // 공급자 문서번호, 숫자, 영문, '-', '_' 조합으로 1~24자리까지 사업자번호별 중복없는 고유번호 할당
             taxinvoice.invoicerMgtKey = "";
 
             // [필수] 공급자 대표자 성명 
@@ -1844,7 +1793,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             // [필수] 공급받는자 상호
             taxinvoice.invoiceeCorpName = "공급받는자 상호";
 
-            // [역발행시 필수] 공급받는자 문서관리번호, 숫자, 영문, '-', '_' 조합으로 1~24자리까지 사업자번호별 중복없는 고유번호 할당
+            // [역발행시 필수] 공급받는자 문서번호, 숫자, 영문, '-', '_' 조합으로 1~24자리까지 사업자번호별 중복없는 고유번호 할당
             taxinvoice.invoiceeMgtKey = txtMgtKey.Text;
 
             // [필수] 공급받는자 대표자 성명 
@@ -1975,32 +1924,6 @@ namespace Popbill.Taxinvoice.Example.csharp
             taxinvoice.detailList.Add(detail);
 
 
-            /*************************************************************************
-            *                           추가담당자 정보                              *  
-            * - 세금계산서 발행안내 메일을 수신받을 공급받는자 담당자가 다수인 경우  *
-            *   담당자 정보를 추가하여 발행안내메일을 다수에게 전송할 수 있습니다.   *
-            * - 최대 5개까지 기재가능                                                *
-            *************************************************************************/
-
-            taxinvoice.addContactList = new List<TaxinvoiceAddContact>();
-
-            TaxinvoiceAddContact addContact = new TaxinvoiceAddContact();
-
-            addContact.serialNum = 1; // 일련번호, 1부터 순차기재
-            addContact.email = "test2@invoicee.com"; // 추가담당자 메일주소 
-            addContact.contactName = "추가담당자명"; // 추가담당자 성명 
-
-            taxinvoice.addContactList.Add(addContact);
-
-            TaxinvoiceAddContact addContact2 = new TaxinvoiceAddContact();
-
-            addContact2.serialNum = 2; // 일련번호, 1부터 순차기재 
-            addContact2.email = "test2@invoicee.com"; // 추가담당자 메일주소
-            addContact2.contactName = "추가담당자명"; // 추가담당자 성명
-
-            taxinvoice.addContactList.Add(addContact2);
-
-
             // 메모
             string memo = "즉시요청 메모";
 
@@ -2051,7 +1974,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
         /*
          * [공급받는자]가 역)발행대기 상태의 세금계산서를 [취소]합니다. 
-         * - [취소]한 세금계산서의 문서관리번호를 재사용하기 위해서는 삭제 (Delete API)를 호출해야 합니다.
+         * - [취소]한 세금계산서의 문서번호를 재사용하기 위해서는 삭제 (Delete API)를 호출해야 합니다.
          */
         private void btnCancelRequest_Click(object sender, EventArgs e)
         {
@@ -2078,7 +2001,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
         /*
          * [공급받는자]가 역)발행대기 상태의 세금계산서를 [취소]합니다. 
-         * - [취소]한 세금계산서의 문서관리번호를 재사용하기 위해서는 삭제 (Delete API)를 호출해야 합니다.
+         * - [취소]한 세금계산서의 문서번호를 재사용하기 위해서는 삭제 (Delete API)를 호출해야 합니다.
          */
         private void btnCancelRequest_sub_Click(object sender, EventArgs e)
         {
@@ -2105,7 +2028,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
         /*
          * 공급받는자에게 요청받은 역)발행대기 상태의 세금계산서를 [공급자]가 [거부]합니다.
-         * - 세금계산서의 문서관리번호를 재사용하기 위해서는 삭제 (Delete API)를 호출하여 [삭제] 처리해야 합니다.
+         * - 세금계산서의 문서번호를 재사용하기 위해서는 삭제 (Delete API)를 호출하여 [삭제] 처리해야 합니다.
          */
         private void btnRefuse_Click(object sender, EventArgs e)
         {
@@ -2130,7 +2053,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
         /*
          * 공급받는자에게 요청받은 역)발행대기 상태의 세금계산서를 [공급자]가 [거부]합니다.
-         * - 세금계산서의 문서관리번호를 재사용하기 위해서는 삭제 (Delete API)를 호출하여 [삭제] 처리해야 합니다.
+         * - 세금계산서의 문서번호를 재사용하기 위해서는 삭제 (Delete API)를 호출하여 [삭제] 처리해야 합니다.
          */
         private void btnRefuse_sub_Click(object sender, EventArgs e)
         {
@@ -2205,7 +2128,6 @@ namespace Popbill.Taxinvoice.Example.csharp
                 tmp += "purposeType (영수/청구) : " + taxinvoiceInfo.purposeType + CRLF;
                 tmp += "issueDT (발행일시) : " + taxinvoiceInfo.issueDT + CRLF;
                 tmp += "lateIssueYN (지연발행 여부) : " + taxinvoiceInfo.lateIssueYN + CRLF;
-                tmp += "preIssueDT (발행예정일시) : " + taxinvoiceInfo.preIssueDT + CRLF;
                 tmp += "openYN (개봉 여부) : " + taxinvoiceInfo.openYN + CRLF;
                 tmp += "openDT (개봉 일시) : " + taxinvoiceInfo.openDT + CRLF;
                 tmp += "stateMemo (상태메모) : " + taxinvoiceInfo.stateMemo + CRLF;
@@ -2220,18 +2142,18 @@ namespace Popbill.Taxinvoice.Example.csharp
 
                 tmp += "invoicerCorpName (공급자 상호) : " + taxinvoiceInfo.invoicerCorpName + CRLF;
                 tmp += "invoicerCorpNum (공급자 사업자번호) : " + taxinvoiceInfo.invoicerCorpNum + CRLF;
-                tmp += "invoicerMgtKey (공급자 문서관리번호) : " + taxinvoiceInfo.invoicerMgtKey + CRLF;
+                tmp += "invoicerMgtKey (공급자 문서번호) : " + taxinvoiceInfo.invoicerMgtKey + CRLF;
                 tmp += "invoicerPrintYN (공급자 인쇄여부) : " + taxinvoiceInfo.invoicerPrintYN + CRLF;
 
                 tmp += "invoiceeCorpName (공급받는자 상호) : " + taxinvoiceInfo.invoiceeCorpName + CRLF;
                 tmp += "invoiceeCorpNum (공급받는자 사업자번호) : " + taxinvoiceInfo.invoiceeCorpNum + CRLF;
-                tmp += "invoiceePrintYN (공급받는자 문서관리번호) : " + taxinvoiceInfo.invoiceePrintYN + CRLF;
+                tmp += "invoiceePrintYN (공급받는자 문서번호) : " + taxinvoiceInfo.invoiceePrintYN + CRLF;
                 tmp += "closeDownState (공급받는자 휴폐업상태코드) : " + taxinvoiceInfo.closeDownState + CRLF;
                 tmp += "closeDownStateDate (공급받는자 휴폐업일자) : " + taxinvoiceInfo.closeDownStateDate + CRLF;
 
                 tmp += "trusteeCorpName (수탁자 상호) : " + taxinvoiceInfo.trusteeCorpName + CRLF;
                 tmp += "trusteeCorpNum (수탁자 사업자번호) : " + taxinvoiceInfo.trusteeCorpNum + CRLF;
-                tmp += "trusteeMgtKey (수탁자 문서관리번호) : " + taxinvoiceInfo.trusteeMgtKey + CRLF;
+                tmp += "trusteeMgtKey (수탁자 문서번호) : " + taxinvoiceInfo.trusteeMgtKey + CRLF;
                 tmp += "trusteePrintYN (수탁자 인쇄여부) : " + taxinvoiceInfo.trusteePrintYN + CRLF;
 
                 MessageBox.Show(tmp, "문서 상태/요약 정보 조회");
@@ -2255,7 +2177,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
             List<string> MgtKeyList = new List<string>();
 
-            //  조회할 세금계산서 문서관리번호 배열, (최대 1000건)
+            //  조회할 세금계산서 문서번호 배열, (최대 1000건)
             MgtKeyList.Add("20190110-001");
             MgtKeyList.Add("20190110-002");
             MgtKeyList.Add("20190110-003");
@@ -2337,7 +2259,7 @@ namespace Popbill.Taxinvoice.Example.csharp
                 tmp += "invoicerEmail (담당자 이메일) : " + taxinvoice.invoicerEmail + CRLF;
                 tmp += "invoicerSMSSendYN (문자전송 여부) : " + taxinvoice.invoicerSMSSendYN + CRLF;
 
-                tmp += "invoiceeMgtKey (공급받는자 문서관리번호) : " + taxinvoice.invoiceeMgtKey + CRLF;
+                tmp += "invoiceeMgtKey (공급받는자 문서번호) : " + taxinvoice.invoiceeMgtKey + CRLF;
                 tmp += "invoiceeType (공급받는자 구분) : " + taxinvoice.invoiceeType + CRLF;
                 tmp += "invoiceeCorpNum (공급받는자 사업자번호) : " + taxinvoice.invoiceeCorpNum + CRLF;
                 tmp += "invoiceeTaxRegID (공급받는자 종사업장 식별번호) : " + taxinvoice.invoiceeTaxRegID + CRLF;
@@ -2412,10 +2334,10 @@ namespace Popbill.Taxinvoice.Example.csharp
             String DType = "W";
 
             // [필수] 시작일자, 날짜형식(yyyyMMdd)
-            String SDate = "20181201";
+            String SDate = "20190901";
 
             // [필수] 종료일자, 날짜형식(yyyyMMdd)
-            String EDate = "20190110";
+            String EDate = "20190930";
 
             // 상태코드 배열, 미기재시 전체 상태조회, 문서상태 값 3자리의 배열, 2,3번째 자리에 와일드카드 가능
             String[] State = new String[5];
@@ -2718,7 +2640,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
             List<string> MgtKeyList = new List<string>();
 
-            // 인쇄할 세금계산서 문서관리번호, (최대 100건)
+            // 인쇄할 세금계산서 문서번호, (최대 100건)
             MgtKeyList.Add("20190110-001");
             MgtKeyList.Add("20190110-002");
             MgtKeyList.Add("20190110-003");
@@ -3063,7 +2985,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
 
         /*
-         * 팝빌사이트에서 작성된 세금계산서에 파트너 문서관리번호를 할당합니다.
+         * 팝빌사이트에서 작성된 세금계산서에 파트너 문서번호를 할당합니다.
          */
         private void btnAssignMgtKey_Click(object sender, EventArgs e)
         {
@@ -3073,7 +2995,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             // 세금계산서 아이템키, 목록조회(Search) API의 반환항목중 ItemKey 참조
             String itemKey = "018041823243600001";
 
-            // 할당할 문서관리번호, 숫자, 영문, '-', '_' 조합으로 
+            // 할당할 문서번호, 숫자, 영문, '-', '_' 조합으로 
             // 1~24자리까지 사업자번호별 중복없는 고유번호 할당
             String mgtKey = "1-20190110";
 
