@@ -2,7 +2,7 @@
  * 팝빌 전자명세서 API DotNet SDK Example
  * 
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - http://blog.linkhub.co.kr/587
- * - 업데이트 일자 : 2019-01-10
+ * - 업데이트 일자 : 2019-09-23
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991~2
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
  * 
@@ -44,6 +44,9 @@ namespace Popbill.Statement.Example.csharp
 
             // 연동환경 설정값, true(개발용), false(상업용).
             statementService.IsTest = true;
+
+            // 발급된 토큰에 대한 IP 제한기능 사용여부, 권장(True)
+            statementService.IPRestrictOnOff = true;
         }
 
         // 명세서 종류코드 반환

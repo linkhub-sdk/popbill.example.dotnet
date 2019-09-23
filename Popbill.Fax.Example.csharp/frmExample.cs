@@ -44,6 +44,9 @@ namespace Popbill.Fax.Example.csharp
 
             // 연동환경 설정값 true(개발용), false(상업용)
             faxService.IsTest = true;
+
+            // 발급된 토큰에 대한 IP 제한기능 사용여부, 권장(True)
+            faxService.IPRestrictOnOff = true;
         }
 
         /*

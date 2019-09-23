@@ -47,6 +47,9 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
 
             // 연동환경 설정값, 개발용(true), 상업용(false)
             htCashbillService.IsTest = true;
+
+            // 발급된 토큰에 대한 IP 제한기능 사용여부, 권장(True)
+            htCashbillService.IPRestrictOnOff = true;
         }
 
         /*

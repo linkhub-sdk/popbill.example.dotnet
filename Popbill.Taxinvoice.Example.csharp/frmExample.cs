@@ -39,11 +39,14 @@ namespace Popbill.Taxinvoice.Example.csharp
         {
             InitializeComponent();
 
-            //세금계산서 서비스 객체 초기화
+            // 세금계산서 서비스 객체 초기화
             taxinvoiceService = new TaxinvoiceService(LinkID, SecretKey);
 
-            //연동환경 설정값, 개발용(true), 상업용(false)
+            // 연동환경 설정값, 개발용(true), 상업용(false)
             taxinvoiceService.IsTest = true;
+
+            // 발급된 토큰에 대한 IP 제한기능 사용여부, 권장(True)
+            taxinvoiceService.IPRestrictOnOff = true;
         }
 
 

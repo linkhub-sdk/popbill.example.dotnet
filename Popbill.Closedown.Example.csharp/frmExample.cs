@@ -40,6 +40,9 @@ namespace Popbill.Closedown.Example.csharp
 
             // 연동환경 설정값, 개발용(true), 상업용(false)
             closedownService.IsTest = true;
+
+            // 발급된 토큰에 대한 IP 제한기능 사용여부, 권장(True)
+            closedownService.IPRestrictOnOff = true;
         }
 
         private void txtCheckCorpNum_KeyDown(object sender, KeyEventArgs e)
