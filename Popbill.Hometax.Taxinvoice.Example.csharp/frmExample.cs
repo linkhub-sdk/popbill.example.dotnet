@@ -201,12 +201,15 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
             // 정렬방향 D-내림차순, A-오름차순
             String Order = "D";
 
+            // 조회 검색어, 거래처 사업자번호 또는 거래처명 like 검색
+            String SearchString = "";
+
             listBox1.Items.Clear();
 
             try
             {
                 HTTaxinvoiceSearch searchInfo = htTaxinvoiceService.Search(txtCorpNum.Text, txtJobID.Text, Type, TaxType,
-                                        PurposeType, TaxRegIDYN, TaxRegIDType, TaxRegID, Page, PerPage, Order, txtUserId.Text);
+                                        PurposeType, TaxRegIDYN, TaxRegIDType, TaxRegID, Page, PerPage, Order, txtUserId.Text, SearchString);
 
                 String tmp = "code (응답코드) : " + searchInfo.code.ToString() + CRLF;
                 tmp += "message (응답메시지) : " + searchInfo.message + CRLF;
@@ -282,10 +285,14 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
             // 종사업장번호, 콤마(",")로 구분하여 구성 ex) "0001,1234"
             String TaxRegID = "";
 
+            // 조회 검색어, 거래처 사업자번호 또는 거래처명 like 검색
+            String SearchString = "";
+
             try
             {
                 HTTaxinvoiceSummary summaryInfo = htTaxinvoiceService.Summary(txtCorpNum.Text, txtJobID.Text, Type,
-                                                            TaxType, PurposeType, TaxRegIDYN, TaxRegIDType, TaxRegID);
+                                                            TaxType, PurposeType, TaxRegIDYN, TaxRegIDType, TaxRegID, 
+                                                            txtUserId.Text, SearchString);
 
                 String tmp = "count (수집 결과 건수) : " + summaryInfo.count.ToString() + CRLF;
                 tmp += "supplyCostTotal (공급가액 합계) : " + summaryInfo.supplyCostTotal.ToString() + CRLF;
