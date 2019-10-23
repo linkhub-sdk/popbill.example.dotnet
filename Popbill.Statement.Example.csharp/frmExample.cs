@@ -1,8 +1,8 @@
 ﻿/*
  * 팝빌 전자명세서 API DotNet SDK Example
  * 
- * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - http://blog.linkhub.co.kr/587
- * - 업데이트 일자 : 2019-09-23
+ * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/statement/tutorial/dotnet_csharp
+ * - 업데이트 일자 : 2019-10-23
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991~2
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
  * 
@@ -92,11 +92,14 @@ namespace Popbill.Statement.Example.csharp
             // 즉시발행 메모
             String memo = "즉시발행 메모";
 
+            // 안내메일 제목, 미기재시 기본양식으로 전송
+            String emailSubject = "메일제목 테스트";
+
             // 전자명세서 객체
             Statement statement = new Statement();
 
             // [필수], 기재상 작성일자 날짜형식(yyyyMMdd)
-            statement.writeDate = "20190110";
+            statement.writeDate = "20191023";
 
             // [필수], {영수, 청구} 중 기재 
             statement.purposeType = "영수";
@@ -178,7 +181,7 @@ namespace Popbill.Statement.Example.csharp
             statement.receiverContactName = "수신자 담당자명";
 
             // 수신자 메일주소 
-            statement.receiverEmail = "test@receiver.com";
+            statement.receiverEmail = "test@test.com";
 
             
             /**************************************************************************
@@ -258,7 +261,7 @@ namespace Popbill.Statement.Example.csharp
 
             try
             {
-                Response response = statementService.RegistIssue(txtCorpNum.Text, statement, memo, txtUserID.Text);
+                Response response = statementService.RegistIssue(txtCorpNum.Text, statement, memo, txtUserID.Text, emailSubject);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + response.message, "전자명세서 즉시발행");

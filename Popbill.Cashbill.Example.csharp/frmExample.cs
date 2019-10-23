@@ -2,8 +2,8 @@
 /*
  * 팝빌 현금영수증 API DotNet SDK Example
  * 
- * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - http://blog.linkhub.co.kr/587
- * - 업데이트 일자 : 2019-01-09
+ * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/cashbill/tutorial/dotnet_csharp
+ * - 업데이트 일자 : 2019-10-23
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
  * 
@@ -79,6 +79,9 @@ namespace Popbill.Cashbill.Example.csharp
             // 메모
             String memo = "현금영수증 즉시발행 메모";
 
+            // 안내메일 제목, 공백처리시 기본양식으로 전송
+            String emailSubject = "메일제목 테스트";
+
             Cashbill cashbill = new Cashbill();
 
             // [필수] 문서번호, 발행자별 고유번호 할당, 1~24자리 영문,숫자,'-','_' 조합으로 중복없이 구성.
@@ -146,7 +149,7 @@ namespace Popbill.Cashbill.Example.csharp
             cashbill.orderNumber = "주문번호";
 
             // 주문자 이메일
-            cashbill.email = "test@test.com";
+            cashbill.email = "code@linkhub.co.kr";
 
             // 주문자 휴대폰
             cashbill.hp = "010-111-222";
@@ -159,7 +162,7 @@ namespace Popbill.Cashbill.Example.csharp
 
             try
             {
-                Response response = cashbillService.RegistIssue(txtCorpNum.Text, cashbill, memo, txtUserId.Text);
+                Response response = cashbillService.RegistIssue(txtCorpNum.Text, cashbill, memo, txtUserId.Text, emailSubject);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + response.message, "현금영수증 즉시발행");

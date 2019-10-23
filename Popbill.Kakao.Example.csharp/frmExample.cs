@@ -1,8 +1,8 @@
 ﻿/*
  * 팝빌 카카오톡 API DotNet SDK Example
  * 
- * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - http://blog.linkhub.co.kr/587
- * - 업데이트 일자 : 2019-01-10
+ * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/kakao/tutorial/dotnet_csharp
+ * - 업데이트 일자 : 2019-10-23
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991~2
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
  * 

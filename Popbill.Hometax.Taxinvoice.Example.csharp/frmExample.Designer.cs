@@ -84,6 +84,7 @@
             this.btnRequestJob = new System.Windows.Forms.Button();
             this.btnGetJobState = new System.Windows.Forms.Button();
             this.btnListActiveJob = new System.Windows.Forms.Button();
+            this.btnGetPrintURL = new System.Windows.Forms.Button();
             this.GroupBox1.SuspendLayout();
             this.groupBox13.SuspendLayout();
             this.groupBox12.SuspendLayout();
@@ -380,7 +381,7 @@
             this.groupBox7.Controls.Add(this.groupBox8);
             this.groupBox7.Location = new System.Drawing.Point(12, 200);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(999, 411);
+            this.groupBox7.Size = new System.Drawing.Size(999, 455);
             this.groupBox7.TabIndex = 17;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "홈택스 전자(세금)계산서 연계 관련 API";
@@ -478,7 +479,7 @@
             this.groupBox11.Controls.Add(this.btnGetFlatRatePopUpURL);
             this.groupBox11.Location = new System.Drawing.Point(617, 21);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(177, 159);
+            this.groupBox11.Size = new System.Drawing.Size(177, 196);
             this.groupBox11.TabIndex = 7;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "부가기능";
@@ -505,6 +506,7 @@
             // 
             // groupBox10
             // 
+            this.groupBox10.Controls.Add(this.btnGetPrintURL);
             this.groupBox10.Controls.Add(this.btnGetPopUpURL);
             this.groupBox10.Controls.Add(this.label6);
             this.groupBox10.Controls.Add(this.btnGetXML);
@@ -513,7 +515,7 @@
             this.groupBox10.Controls.Add(this.label5);
             this.groupBox10.Location = new System.Drawing.Point(338, 21);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(265, 158);
+            this.groupBox10.Size = new System.Drawing.Size(265, 196);
             this.groupBox10.TabIndex = 6;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "전자(세금)계산서 상세정보 조회";
@@ -575,7 +577,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(268, 198);
+            this.label4.Location = new System.Drawing.Point(270, 226);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(259, 12);
             this.label4.TabIndex = 5;
@@ -585,7 +587,7 @@
             // 
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 12;
-            this.listBox1.Location = new System.Drawing.Point(11, 227);
+            this.listBox1.Location = new System.Drawing.Point(13, 255);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(783, 172);
             this.listBox1.TabIndex = 4;
@@ -596,7 +598,7 @@
             this.groupBox9.Controls.Add(this.btnSearch);
             this.groupBox9.Location = new System.Drawing.Point(164, 21);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(160, 131);
+            this.groupBox9.Size = new System.Drawing.Size(160, 196);
             this.groupBox9.TabIndex = 3;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "매출/매입 수집결과 조회";
@@ -623,7 +625,7 @@
             // 
             // txtJobID
             // 
-            this.txtJobID.Location = new System.Drawing.Point(130, 195);
+            this.txtJobID.Location = new System.Drawing.Point(132, 223);
             this.txtJobID.Name = "txtJobID";
             this.txtJobID.Size = new System.Drawing.Size(134, 21);
             this.txtJobID.TabIndex = 2;
@@ -631,7 +633,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 198);
+            this.label3.Location = new System.Drawing.Point(11, 226);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(115, 12);
             this.label3.TabIndex = 1;
@@ -644,7 +646,7 @@
             this.groupBox8.Controls.Add(this.btnListActiveJob);
             this.groupBox8.Location = new System.Drawing.Point(11, 21);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(139, 130);
+            this.groupBox8.Size = new System.Drawing.Size(139, 196);
             this.groupBox8.TabIndex = 0;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "매출/매입 내역 수집";
@@ -679,11 +681,21 @@
             this.btnListActiveJob.UseVisualStyleBackColor = true;
             this.btnListActiveJob.Click += new System.EventHandler(this.btnListActiveJob_Click);
             // 
+            // btnGetPrintURL
+            // 
+            this.btnGetPrintURL.Location = new System.Drawing.Point(112, 148);
+            this.btnGetPrintURL.Name = "btnGetPrintURL";
+            this.btnGetPrintURL.Size = new System.Drawing.Size(141, 30);
+            this.btnGetPrintURL.TabIndex = 6;
+            this.btnGetPrintURL.Text = "세금계산서 인쇄 팝업";
+            this.btnGetPrintURL.UseVisualStyleBackColor = true;
+            this.btnGetPrintURL.Click += new System.EventHandler(this.btnGetPrintURL_Click);
+            // 
             // frmExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1025, 622);
+            this.ClientSize = new System.Drawing.Size(1025, 677);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.txtUserId);
             this.Controls.Add(this.GroupBox1);
@@ -772,6 +784,7 @@
         private System.Windows.Forms.Button btnCheckCertValidation;
         private System.Windows.Forms.Button btnGetCertificateExpireDate;
         private System.Windows.Forms.Button btnGetCertificatePopUpURL;
+        private System.Windows.Forms.Button btnGetPrintURL;
     }
 }
 
