@@ -181,6 +181,8 @@ namespace Popbill.Statement.Example.csharp
             statement.receiverContactName = "수신자 담당자명";
 
             // 수신자 메일주소 
+            // 팝빌 개발환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
+            // 실제 거래처의 메일주소가 기재되지 않도록 주의
             statement.receiverEmail = "test@test.com";
 
             
@@ -364,6 +366,8 @@ namespace Popbill.Statement.Example.csharp
             statement.receiverContactName = "수신자 담당자명";
 
             // 수신자 메일주소 
+            // 팝빌 개발환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
+            // 실제 거래처의 메일주소가 기재되지 않도록 주의
             statement.receiverEmail = "test@receiver.com";
 
             
@@ -548,6 +552,8 @@ namespace Popbill.Statement.Example.csharp
             statement.receiverContactName = "수신자 담당자명";
 
             // 수신자 메일주소 
+            // 팝빌 개발환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
+            // 실제 거래처의 메일주소가 기재되지 않도록 주의
             statement.receiverEmail = "test@receiver.com";
 
             /**************************************************************************
@@ -1362,6 +1368,8 @@ namespace Popbill.Statement.Example.csharp
             int itemcode = selectedItemCode();
 
             // 수신메일주소
+            // 팝빌 개발환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
+            // 실제 거래처의 메일주소가 기재되지 않도록 주의
             string ReceiverEmail = "test@test.com";
 
             try
@@ -1543,6 +1551,8 @@ namespace Popbill.Statement.Example.csharp
             statement.receiverContactName = "수신자 담당자명";
 
             // 수신자 메일주소 
+            // 팝빌 개발환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
+            // 실제 거래처의 메일주소가 기재되지 않도록 주의
             statement.receiverEmail = "test@receiver.com";
 
             /**************************************************************************

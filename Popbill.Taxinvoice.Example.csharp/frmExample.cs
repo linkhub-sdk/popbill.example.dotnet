@@ -82,7 +82,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             Taxinvoice taxinvoice = new Taxinvoice();
 
             // [필수] 기재상 작성일자, 날짜형식(yyyyMMdd)
-            taxinvoice.writeDate = "20190308";
+            taxinvoice.writeDate = "20191023";
 
             // [필수] 과금방향, {정과금, 역과금}중 선택
             // - 정과금(공급자과금), 역과금(공급받는자과금)
@@ -183,6 +183,8 @@ namespace Popbill.Taxinvoice.Example.csharp
             taxinvoice.invoiceeContactName1 = "공급받는자 담당자명";
 
             // 공급받는자 담당자 메일주소 
+            // 팝빌 개발환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
+            // 실제 거래처의 메일주소가 기재되지 않도록 주의
             taxinvoice.invoiceeEmail1 = "test@test.com";
 
             // 공급받는자 담당자 휴대폰번호 
@@ -250,9 +252,8 @@ namespace Popbill.Taxinvoice.Example.csharp
             // 수정사유코드, 1~6까지 선택기재.
             taxinvoice.modifyCode = null;
 
-            // 수정세금계산서 작성시 원본세금계산서의 ItemKey기재
-            // - 원본세금계산서의 ItemKey는 문서정보 (GetInfo API) 응답항목으로 확인할 수 있습니다.
-            taxinvoice.originalTaxinvoiceKey = "";
+            // 수정세금계산서 작성시 원본세금계산서의 국세청승인번호
+            taxinvoice.orgNTSConfirmNum = "";
 
 
             /**************************************************************************
@@ -468,6 +469,8 @@ namespace Popbill.Taxinvoice.Example.csharp
             taxinvoice.invoiceeContactName1 = "공급받는자 담당자명";
 
             // 공급받는자 담당자 메일주소 
+            // 팝빌 개발환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
+            // 실제 거래처의 메일주소가 기재되지 않도록 주의
             taxinvoice.invoiceeEmail1 = "test@test.com";
 
             // 공급받는자 담당자 휴대폰번호 
@@ -535,9 +538,8 @@ namespace Popbill.Taxinvoice.Example.csharp
             // 수정사유코드, 1~6까지 선택기재.
             taxinvoice.modifyCode = null;
 
-            // 수정세금계산서 작성시 원본세금계산서의 ItemKey기재
-            // - 원본세금계산서의 ItemKey는 문서정보 (GetInfo API) 응답항목으로 확인할 수 있습니다.
-            taxinvoice.originalTaxinvoiceKey = "";
+            // 수정세금계산서 작성시 원본세금계산서의 국세청승인번호
+            taxinvoice.orgNTSConfirmNum = "";
 
 
             /**************************************************************************
@@ -734,6 +736,8 @@ namespace Popbill.Taxinvoice.Example.csharp
             taxinvoice.invoiceeContactName1 = "공급받는자 담당자명";
 
             // 공급받는자 담당자 메일주소 
+            // 팝빌 개발환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
+            // 실제 거래처의 메일주소가 기재되지 않도록 주의
             taxinvoice.invoiceeEmail1 = "test@test.com";
 
             // 공급받는자 담당자 휴대폰번호 
@@ -801,9 +805,8 @@ namespace Popbill.Taxinvoice.Example.csharp
             // 수정사유코드, 1~6까지 선택기재.
             taxinvoice.modifyCode = null;
 
-            // 수정세금계산서 작성시 원본세금계산서의 ItemKey기재
-            // - 원본세금계산서의 ItemKey는 문서정보 (GetInfo API) 응답항목으로 확인할 수 있습니다.
-            taxinvoice.originalTaxinvoiceKey = "";
+            // 수정세금계산서 작성시 원본세금계산서의 국세청승인번호
+            taxinvoice.orgNTSConfirmNum = "";
 
 
             /**************************************************************************
@@ -1037,6 +1040,8 @@ namespace Popbill.Taxinvoice.Example.csharp
             taxinvoice.invoiceeContactName1 = "공급받는자 담당자명";
 
             // 공급받는자 담당자 메일주소 
+            // 팝빌 개발환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
+            // 실제 거래처의 메일주소가 기재되지 않도록 주의
             taxinvoice.invoiceeEmail1 = "test@test.com";
 
             // 공급받는자 담당자 휴대폰번호 
@@ -1104,9 +1109,9 @@ namespace Popbill.Taxinvoice.Example.csharp
             // 수정사유코드, 1~6까지 선택기재.
             taxinvoice.modifyCode = null;
 
-            // 수정세금계산서 작성시 원본세금계산서의 ItemKey기재
-            // - 원본세금계산서의 ItemKey는 문서정보 (GetInfo API) 응답항목으로 확인할 수 있습니다.
-            taxinvoice.originalTaxinvoiceKey = "";
+            // 수정세금계산서 작성시 원본세금계산서의 국세청승인번호
+            taxinvoice.orgNTSConfirmNum = "";
+
 
 
             /**************************************************************************
@@ -1306,6 +1311,8 @@ namespace Popbill.Taxinvoice.Example.csharp
             taxinvoice.invoiceeContactName1 = "공급받는자 담당자명";
 
             // 공급받는자 담당자 메일주소 
+            // 팝빌 개발환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
+            // 실제 거래처의 메일주소가 기재되지 않도록 주의
             taxinvoice.invoiceeEmail1 = "test@test.com";
 
             // 공급받는자 담당자 휴대폰번호 
@@ -1373,9 +1380,9 @@ namespace Popbill.Taxinvoice.Example.csharp
             // 수정사유코드, 1~6까지 선택기재.
             taxinvoice.modifyCode = null;
 
-            // 수정세금계산서 작성시 원본세금계산서의 ItemKey기재
-            // - 원본세금계산서의 ItemKey는 문서정보 (GetInfo API) 응답항목으로 확인할 수 있습니다.
-            taxinvoice.originalTaxinvoiceKey = "";
+            // 수정세금계산서 작성시 원본세금계산서의 국세청승인번호
+            taxinvoice.orgNTSConfirmNum = "";
+
 
 
             /**************************************************************************
@@ -1818,6 +1825,8 @@ namespace Popbill.Taxinvoice.Example.csharp
             taxinvoice.invoiceeContactName1 = "공급받는자 담당자명";
 
             // 공급받는자 담당자 메일주소 
+            // 팝빌 개발환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
+            // 실제 거래처의 메일주소가 기재되지 않도록 주의
             taxinvoice.invoiceeEmail1 = "test@test.com";
 
             // 공급받는자 담당자 휴대폰번호 
@@ -1884,9 +1893,8 @@ namespace Popbill.Taxinvoice.Example.csharp
             // 수정사유코드, 1~6까지 선택기재.
             taxinvoice.modifyCode = null;
 
-            // 수정세금계산서 작성시 원본세금계산서의 ItemKey기재
-            // - 원본세금계산서의 ItemKey는 문서정보 (GetInfo API) 응답항목으로 확인할 수 있습니다.
-            taxinvoice.originalTaxinvoiceKey = "";
+            // 수정세금계산서 작성시 원본세금계산서의 국세청승인번호
+            taxinvoice.orgNTSConfirmNum = "";
 
 
             /**************************************************************************
