@@ -55,6 +55,11 @@
             this.txtCorpNum = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.txtTID = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtJobID = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.btnGetFlatRateState = new System.Windows.Forms.Button();
             this.btnGetFlatRatePopUpURL = new System.Windows.Forms.Button();
@@ -62,18 +67,13 @@
             this.btnListBankAccount = new System.Windows.Forms.Button();
             this.btnBankAccountMgtURL = new System.Windows.Forms.Button();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.btnSaveMemo = new System.Windows.Forms.Button();
+            this.btnSummary = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.btnListActiveJob = new System.Windows.Forms.Button();
             this.btnGetJobState = new System.Windows.Forms.Button();
             this.btnRequestJob = new System.Windows.Forms.Button();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.btnSummary = new System.Windows.Forms.Button();
-            this.btnSaveMemo = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtJobID = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtTID = new System.Windows.Forms.TextBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.GroupBox1.SuspendLayout();
             this.groupBox13.SuspendLayout();
             this.groupBox12.SuspendLayout();
@@ -374,6 +374,47 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "계좌조회 API";
             // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 12;
+            this.listBox1.Location = new System.Drawing.Point(21, 226);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(936, 196);
+            this.listBox1.TabIndex = 8;
+            // 
+            // txtTID
+            // 
+            this.txtTID.Location = new System.Drawing.Point(444, 181);
+            this.txtTID.Name = "txtTID";
+            this.txtTID.Size = new System.Drawing.Size(251, 21);
+            this.txtTID.TabIndex = 7;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(307, 184);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(134, 12);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "거래내역 아이디(TID) : ";
+            // 
+            // txtJobID
+            // 
+            this.txtJobID.Location = new System.Drawing.Point(97, 181);
+            this.txtJobID.Name = "txtJobID";
+            this.txtJobID.Size = new System.Drawing.Size(193, 21);
+            this.txtJobID.TabIndex = 5;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(14, 184);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 12);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "작업아이디 : ";
+            // 
             // groupBox11
             // 
             this.groupBox11.Controls.Add(this.btnGetFlatRateState);
@@ -448,6 +489,36 @@
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "거래내역 조회";
             // 
+            // btnSaveMemo
+            // 
+            this.btnSaveMemo.Location = new System.Drawing.Point(10, 95);
+            this.btnSaveMemo.Name = "btnSaveMemo";
+            this.btnSaveMemo.Size = new System.Drawing.Size(153, 32);
+            this.btnSaveMemo.TabIndex = 8;
+            this.btnSaveMemo.Text = "거래 내역 메모 저장";
+            this.btnSaveMemo.UseVisualStyleBackColor = true;
+            this.btnSaveMemo.Click += new System.EventHandler(this.btnSaveMemo_Click);
+            // 
+            // btnSummary
+            // 
+            this.btnSummary.Location = new System.Drawing.Point(10, 57);
+            this.btnSummary.Name = "btnSummary";
+            this.btnSummary.Size = new System.Drawing.Size(153, 32);
+            this.btnSummary.TabIndex = 7;
+            this.btnSummary.Text = "거래 내역 요약정보 조회";
+            this.btnSummary.UseVisualStyleBackColor = true;
+            this.btnSummary.Click += new System.EventHandler(this.btnSummary_Click);
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(10, 19);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(153, 32);
+            this.btnSearch.TabIndex = 6;
+            this.btnSearch.Text = "거래 내역 조회";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
             // groupBox8
             // 
             this.groupBox8.Controls.Add(this.btnListActiveJob);
@@ -490,77 +561,6 @@
             this.btnRequestJob.UseVisualStyleBackColor = true;
             this.btnRequestJob.Click += new System.EventHandler(this.btnRequestJob_Click);
             // 
-            // btnSearch
-            // 
-            this.btnSearch.Location = new System.Drawing.Point(10, 19);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(153, 32);
-            this.btnSearch.TabIndex = 6;
-            this.btnSearch.Text = "거래 내역 조회";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // btnSummary
-            // 
-            this.btnSummary.Location = new System.Drawing.Point(10, 57);
-            this.btnSummary.Name = "btnSummary";
-            this.btnSummary.Size = new System.Drawing.Size(153, 32);
-            this.btnSummary.TabIndex = 7;
-            this.btnSummary.Text = "거래 내역 요약정보 조회";
-            this.btnSummary.UseVisualStyleBackColor = true;
-            this.btnSummary.Click += new System.EventHandler(this.btnSummary_Click);
-            // 
-            // btnSaveMemo
-            // 
-            this.btnSaveMemo.Location = new System.Drawing.Point(10, 95);
-            this.btnSaveMemo.Name = "btnSaveMemo";
-            this.btnSaveMemo.Size = new System.Drawing.Size(153, 32);
-            this.btnSaveMemo.TabIndex = 8;
-            this.btnSaveMemo.Text = "거래 내역 메모 저장";
-            this.btnSaveMemo.UseVisualStyleBackColor = true;
-            this.btnSaveMemo.Click += new System.EventHandler(this.btnSaveMemo_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 184);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 12);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "작업아이디 : ";
-            // 
-            // txtJobID
-            // 
-            this.txtJobID.Location = new System.Drawing.Point(97, 181);
-            this.txtJobID.Name = "txtJobID";
-            this.txtJobID.Size = new System.Drawing.Size(193, 21);
-            this.txtJobID.TabIndex = 5;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(307, 184);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(134, 12);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "거래내역 아이디(TID) : ";
-            // 
-            // txtTID
-            // 
-            this.txtTID.Location = new System.Drawing.Point(444, 181);
-            this.txtTID.Name = "txtTID";
-            this.txtTID.Size = new System.Drawing.Size(251, 21);
-            this.txtTID.TabIndex = 7;
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 12;
-            this.listBox1.Location = new System.Drawing.Point(21, 226);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(936, 196);
-            this.listBox1.TabIndex = 8;
-            // 
             // frmExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -574,7 +574,7 @@
             this.Controls.Add(this.Label1);
             this.Name = "frmExample";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "팝빌 간편 계좌조회 API SDK Example";
+            this.Text = "팝빌 계좌조회 API SDK Example";
             this.GroupBox1.ResumeLayout(false);
             this.groupBox13.ResumeLayout(false);
             this.groupBox12.ResumeLayout(false);

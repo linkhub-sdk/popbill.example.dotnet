@@ -1,7 +1,6 @@
 ﻿/*
- * 팝빌 간편 계좌조회 API DotNet SDK Example
+ * 팝빌 계좌조회 API DotNet SDK Example
  * 
- * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/httaxinvoice/tutorial/dotnet_csharp
  * - 업데이트 일자 : 2019-12-24
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
@@ -35,7 +34,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
         {
             InitializeComponent();
 
-            // 간편 계좌조회 서비스 모듈 초기화
+            // 계좌조회 서비스 모듈 초기화
             easyFinBankService = new EasyFinBankService(LinkID, SecretKey);
 
             // 연동환경 설정값, 개발용(true), 상업용(false)
@@ -48,6 +47,10 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
         private void btnCheckIsMember_Click(object sender, EventArgs e)
         {
+            /*
+             * 해당 사업자의 파트너 연동회원 가입여부를 확인합니다.
+             */
+
             try
             {
                 Response response = easyFinBankService.CheckIsMember(txtCorpNum.Text, LinkID);
@@ -64,6 +67,10 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
         private void btnCheckID_Click(object sender, EventArgs e)
         {
+            /*
+             * 팝빌 회원아이디 중복여부를 확인합니다.
+             */
+
             try
             {
                 Response response = easyFinBankService.CheckID(txtUserId.Text);
@@ -80,6 +87,9 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
         private void btnJoinMember_Click(object sender, EventArgs e)
         {
+            /*
+             * 파트너의 연동회원으로 신규가입 처리합니다.
+             */
 
             JoinForm joinInfo = new JoinForm();
 
@@ -141,6 +151,9 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
         private void btnGetChargeInfo_Click(object sender, EventArgs e)
         {
+            /*
+             * 계좌조회 API 서비스 과금정보를 확인합니다.
+             */
             try
             {
                 ChargeInfo chrgInf = easyFinBankService.GetChargeInfo(txtCorpNum.Text);
@@ -161,6 +174,11 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
         private void btnGetBalance_Click(object sender, EventArgs e)
         {
+            /*
+             * 연동회원의 잔여포인트를 조회합니다.
+             * - 파트너 과금 방식의 경우 파트너 잔여포인트 조회(GetPartnerBalance API) 기능을 사용하시기 바랍니다.
+             */
+
             try
             {
                 double remainPoint = easyFinBankService.GetBalance(txtCorpNum.Text);
@@ -178,6 +196,11 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
         private void btnGetChargeURL_Click(object sender, EventArgs e)
         {
+            /*
+             * 팝빌 연동회원 포인트충전 팝업 URL을 반환합니다.
+             * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+             */
+
             try
             {
                 string url = easyFinBankService.GetChargeURL(txtCorpNum.Text, txtUserId.Text);
@@ -193,6 +216,11 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
         private void btnGetPartnerBalance1_Click(object sender, EventArgs e)
         {
+            /*
+             * 파트너 잔여포인트를 확인합니다.
+             * - 연동과금 방식의 경우 연동회원 잔여포인트 조회 (GetBalance API)를 이용하시기 바랍니다. 
+             */
+
             try
             {
                 double remainPoint = easyFinBankService.GetPartnerBalance(txtCorpNum.Text);
@@ -209,6 +237,11 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
         private void btnGetPartnerURL_CHRG_Click(object sender, EventArgs e)
         {
+            /*
+             * 파트너 포인트 충전 팝업 URL을 반환합니다. 
+             * - 반환된 URL은 보안정책상 30초의 유효시간을 갖습니다.
+             */
+
             try
             {
                 string url = easyFinBankService.GetPartnerURL(txtCorpNum.Text, "CHRG");
@@ -224,6 +257,11 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
         private void btnGetAccessURL_Click(object sender, EventArgs e)
         {
+            /*
+             * 팝빌에 로그인 상태로 접근할 수 있는 팝업 URL을 반환합니다.
+             * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+             */
+
             try
             {
                 string url = easyFinBankService.GetAccessURL(txtCorpNum.Text, txtUserId.Text);
@@ -239,6 +277,10 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
         private void btnRegistContact_Click(object sender, EventArgs e)
         {
+            /*
+             * 연동회원의 담당자를 추가합니다. 
+             */
+
             Contact contactInfo = new Contact();
 
             //담당자 아이디, 6자 이상 50자 미만
@@ -284,6 +326,10 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
         private void btnListContact_Click(object sender, EventArgs e)
         {
+            /*
+             * 연동회원의 담당자 정보 목록을 확인합니다.
+             */
+
             try
             {
                 List<Contact> contactList = easyFinBankService.ListContact(txtCorpNum.Text, txtUserId.Text);
@@ -315,6 +361,10 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
         private void btnUpdateContact_Click(object sender, EventArgs e)
         {
+            /*
+             * 담당자 정보를 수정합니다.
+             */
+
             Contact contactInfo = new Contact();
 
             // 담당자 아이디
@@ -357,6 +407,10 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
         private void btnGetCorpInfo_Click(object sender, EventArgs e)
         {
+            /*
+             * 연동회원의 회사정보를 조회합니다.
+             */
+
             try
             {
                 CorpInfo corpInfo = easyFinBankService.GetCorpInfo(txtCorpNum.Text, txtUserId.Text);
@@ -377,8 +431,14 @@ namespace Popbill.EasyFin.Bank.Example.csharp
             }
         }
 
+        
         private void btnUpdateCorpInfo_Click(object sender, EventArgs e)
         {
+
+            /*
+             * 연동회원의 회사정보를 수정합니다.
+             */
+            
             CorpInfo corpInfo = new CorpInfo();
 
             // 대표자성명 (최대 100자)
@@ -412,7 +472,11 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
         private void btnRequestJob_Click(object sender, EventArgs e)
         {
-            
+            /*
+             * 계좌 거래내역 수집을 요청한다
+             * - 검색기간은 현재일 기준 90일 이내로만 요청할 수 있다.
+             */
+
             // 은행코드
             String BankCode = "0048";
 
@@ -420,7 +484,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
             String AccountNumber = "131020538645";
 
             // 시작일자, 표시형식(yyyyMMdd)
-            String SDate = "20190925";
+            String SDate = "20190927";
 
             // 종료일자, 표시형식(yyyyMMdd)
             String EDate = "20191224";
@@ -442,6 +506,10 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
         private void btnGetFlatRatePopUpURL_Click(object sender, EventArgs e)
         {
+            /*
+             * 정액제 서비스 신청 URL을 반환한다.  
+             */
+
             try
             {
                 String url = easyFinBankService.GetFlatRatePopUpURL(txtCorpNum.Text, txtUserId.Text);
@@ -455,8 +523,14 @@ namespace Popbill.EasyFin.Bank.Example.csharp
             }
         }
 
+        
         private void btnGetFlatRateState_Click(object sender, EventArgs e)
         {
+
+            /*
+             * 정액제 서비스 상태를 확인한다
+             */
+
             // 은행코드
             String BankCode = "0048";
 
@@ -489,6 +563,10 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
         private void btnBankAccountMgtURL_Click(object sender, EventArgs e)
         {
+            /*
+             * 은행 계좌 관리 팝업 URL을 반환한다.
+             */
+
             try
             {
                 String url = easyFinBankService.GetBankAccountMgtURL(txtCorpNum.Text, txtUserId.Text);
@@ -506,6 +584,10 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
         private void btnListBankAccount_Click(object sender, EventArgs e)
         {
+            /*
+             * 팝빌에 등록된 은행계좌 목록을 반환한다.
+             */
+
             try
             {
                 List<EasyFinBankAccount> bankAccountList = easyFinBankService.ListBankAccount(txtCorpNum.Text);
@@ -536,6 +618,9 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
         private void btnGetJobState_Click(object sender, EventArgs e)
         {
+            /*
+             * 계좌조회 수집 상태를 확인한다.
+             */
             try
             {
                 EasyFinBankJobState jobState = easyFinBankService.GetJobState(txtCorpNum.Text, txtJobID.Text);
@@ -561,6 +646,9 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
         private void btnListActiveJob_Click(object sender, EventArgs e)
         {
+            /*
+             * 1시간 이내 수집 요청 목록을 반환한다.
+             */
             try
             {
                 List<EasyFinBankJobState> jobList = easyFinBankService.ListActiveJob(txtCorpNum.Text, txtUserId.Text);
@@ -596,6 +684,10 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            /*
+             * 계좌 거래내역을 조회한다.
+             */
+
             // 거래유형 배열
             String[] TradeType = { "I", "O" };
 
@@ -660,6 +752,10 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
         private void btnSummary_Click(object sender, EventArgs e)
         {
+            /*
+             * 거래 내역 요약정보를 조회한다.
+             */
+
             // 거래유형 배열
             String[] TradeType = { "I", "O" };
 
@@ -689,6 +785,10 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
         private void btnSaveMemo_Click(object sender, EventArgs e)
         {
+            /*
+             * 계좌 거래내역에 메모를 저장한다.
+             */
+
             // 거래내역 아이디
             String TID = txtTID.Text; 
 
