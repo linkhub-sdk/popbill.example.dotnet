@@ -2,8 +2,8 @@
 /*
  * 팝빌 현금영수증 API DotNet SDK Example
  * 
- * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/cashbill/tutorial/dotnet_csharp
- * - 업데이트 일자 : 2019-10-23
+ * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/cashbill/tutorial/dotnet#csharp
+ * - 업데이트 일자 : 2020-01-21
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
  * 
@@ -50,6 +50,7 @@ namespace Popbill.Cashbill.Example.csharp
         /*
          * 현금영수증 관리번호 중복여부를 확인합니다.
          * - 관리번호는 1~24자리로 숫자, 영문 '-', '_' 조합으로 구성할 수 있습니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#CheckMgtKeyInUse
          */
         private void btnCheckMgtKeyInUse_Click(object sender, EventArgs e)
         {
@@ -71,7 +72,7 @@ namespace Popbill.Cashbill.Example.csharp
         /*
          * 1건의 현금영수증을 [즉시발행]합니다.
          * - 발행일 기준 오후 5시 이전에 발행된 현금영수증은 다음날 오후 2시에 국세청 전송결과를 확인할 수 있습니다.
-         * - 현금영수증 국세청 전송 정책에 대한 정보는 "[현금영수증 API 연동매뉴얼] > 1.3. 국세청 전송정책"을 참조하시기 바랍니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#RegistIssue
          */
         private void btnRegistIssue_Click(object sender, EventArgs e)
         {
@@ -180,7 +181,7 @@ namespace Popbill.Cashbill.Example.csharp
          * 1건의 현금영수증을 [임시저장]합니다.
          * - [임시저장] 상태의 현금영수증은 발행(Issue API)을 호출해야만 국세청에 전송됩니다.
          * - 발행일 기준 오후 5시 이전에 발행된 현금영수증은 다음날 오후 2시에 국세청 전송결과를 확인할 수 있습니다.
-         * - 현금영수증 국세청 전송 정책에 대한 정보는 "[현금영수증 API 연동매뉴얼] > 1.3. 국세청 전송정책"을 참조하시기 바랍니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#Register
          */
         private void btnRegister_Click(object sender, EventArgs e)
         {
@@ -283,6 +284,7 @@ namespace Popbill.Cashbill.Example.csharp
          * 1건의 현금영수증을 [수정]합니다.
          * - [임시저장] 상태의 현금영수증만 수정할 수 있습니다.
          * - 국세청에 신고된 현금영수증은 수정할 수 없으며, 취소 현금영수증을 발행하여 취소처리 할 수 있습니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#Update
          */
         private void Button7_Click(object sender, EventArgs e)
         {
@@ -380,7 +382,7 @@ namespace Popbill.Cashbill.Example.csharp
         /*
          * 1건의 [임시저장] 현금영수증을 [발행]합니다.
          * - 발행일 기준 오후 5시 이전에 발행된 현금영수증은 다음날 오후 2시에 국세청 전송결과를 확인할 수 있습니다.
-         * - 현금영수증 국세청 전송 정책에 대한 정보는 "[현금영수증 API 연동매뉴얼] > 1.3. 국세청 전송정책"을 참조하시기 바랍니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#CBIssue
          */
         private void btnIssue_Click(object sender, EventArgs e)
         {
@@ -405,6 +407,7 @@ namespace Popbill.Cashbill.Example.csharp
          * [발행완료] 상태의 현금영수증을 [발행취소]합니다.
          * - 발행취소는 국세청 전송전에만 가능합니다.
          * - 발행취소된 현금영수증은 국세청에 전송되지 않습니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#CancelIssue
          */
         private void btnCancelIssue_Click(object sender, EventArgs e)
         {
@@ -429,6 +432,7 @@ namespace Popbill.Cashbill.Example.csharp
          * [발행완료] 상태의 현금영수증을 [발행취소]합니다.
          * - 발행취소는 국세청 전송전에만 가능합니다.
          * - 발행취소된 현금영수증은 국세청에 전송되지 않습니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#CancelIssue
          */
         private void btnCancelIssueSub_Click(object sender, EventArgs e)
         {
@@ -453,6 +457,7 @@ namespace Popbill.Cashbill.Example.csharp
          * [발행완료] 상태의 현금영수증을 [발행취소]합니다.
          * - 발행취소는 국세청 전송전에만 가능합니다.
          * - 발행취소된 현금영수증은 국세청에 전송되지 않습니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#CancelIssue
          */
         private void btnCancelIssue02_Click(object sender, EventArgs e)
         {
@@ -477,6 +482,7 @@ namespace Popbill.Cashbill.Example.csharp
          * 1건의 현금영수증을 [삭제]합니다.
          * - 현금영수증을 삭제하면 사용된 문서번호(mgtKey)를 재사용할 수 있습니다.
          * - 삭제가능한 문서 상태 : [임시저장], [발행취소]
+         * - https://docs.popbill.com/cashbill/dotnet/api#Delete
          */
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -498,6 +504,7 @@ namespace Popbill.Cashbill.Example.csharp
          * 1건의 현금영수증을 [삭제]합니다.
          * - 현금영수증을 삭제하면 사용된 문서번호(mgtKey)를 재사용할 수 있습니다.
          * - 삭제가능한 문서 상태 : [임시저장], [발행취소]
+         * - https://docs.popbill.com/cashbill/dotnet/api#Delete
          */
         private void btnDeleteSub_Click(object sender, EventArgs e)
         {
@@ -520,6 +527,7 @@ namespace Popbill.Cashbill.Example.csharp
          * 1건의 현금영수증을 [삭제]합니다.
          * - 현금영수증을 삭제하면 사용된 문서번호(mgtKey)를 재사용할 수 있습니다.
          * - 삭제가능한 문서 상태 : [임시저장], [발행취소]
+         * - https://docs.popbill.com/cashbill/dotnet/api#Delete
          */
         private void btnDelete02_Click(object sender, EventArgs e)
         {
@@ -541,8 +549,7 @@ namespace Popbill.Cashbill.Example.csharp
         /*
          * 1건의 취소현금영수증을 [즉시발행]합니다.
          * - 발행일 기준 오후 5시 이전에 발행된 현금영수증은 다음날 오후 2시에 국세청 전송결과를 확인할 수 있습니다.
-         * - 현금영수증 국세청 전송 정책에 대한 정보는 "[현금영수증 API 연동매뉴얼] > 1.3. 국세청 전송정책"을 참조하시기 바랍니다.
-         * - 취소현금영수증 작성방법 안내 - http://blog.linkhub.co.kr/702
+         * - https://docs.popbill.com/cashbill/dotnet/api#RevokeRegistIssue
          */
         private void btnRevokRegistIssue_Click(object sender, EventArgs e)
         {
@@ -570,7 +577,7 @@ namespace Popbill.Cashbill.Example.csharp
         /*
          * 1건의 (부분)취소현금영수증을 [즉시발행]합니다.
          * - 발행일 기준 오후 5시 이전에 발행된 현금영수증은 다음날 오후 2시에 국세청 전송결과를 확인할 수 있습니다.
-         * - 현금영수증 국세청 전송 정책에 대한 정보는 "[현금영수증 API 연동매뉴얼] > 1.3. 국세청 전송정책"을 참조하시기 바랍니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#RevokeRegistIssue
          */
         private void btnRevokeRegistIssue_part_Click(object sender, EventArgs e)
         {
@@ -622,7 +629,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /*
          * 1건의 현금영수증 상태/요약 정보를 확인합니다.
-         * - 응답항목에 대한 자세한 정보는 "[현금영수증 API 연동매뉴얼] > 4.2. 현금영수증 상태정보 구성"을 참조하시기 바랍니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#GetInfo
          */
         private void btnGetInfo_Click(object sender, EventArgs e)
         {
@@ -670,7 +677,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /*
          * 대량의 현금영수증 상태/요약 정보를 확인합니다. (최대 1000건)
-         * - 응답항목에 대한 자세한 정보는 "[현금영수증 API 연동매뉴얼] > 4.2. 현금영수증 상태정보 구성"을 참조하시기 바랍니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#GetInfos
          */
         private void btnGetInfos_Click(object sender, EventArgs e)
         {
@@ -729,7 +736,8 @@ namespace Popbill.Cashbill.Example.csharp
 
         /*
          * 현금영수증 1건의 상세정보를 조회합니다.
-         * - 응답항목에 대한 자세한 사항은 "[현금영수증 API 연동매뉴얼] > 4.1. 현금영수증 구성" 을 참조하시기 바랍니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#GetDetailInfo
+         * 
          */
         private void btnGetDetailInfo_Click(object sender, EventArgs e)
         {
@@ -777,7 +785,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /*
          * 검색조건을 사용하여 현금영수증 목록을 조회합니다.
-         * - 응답항목에 대한 자세한 사항은 "[현금영수증 API 연동매뉴얼] > 4.2. 현금영수증 상태정보 구성" 을 참조하시기 바랍니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#Search
          */
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -891,8 +899,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /*
          * 현금영수증 상태 변경이력을 확인합니다.
-         * - 상태 변경이력 확인(GetLogs API) 응답항목에 대한 자세한 정보는
-         *   "[현금영수증 API 연동매뉴얼] > 3.3.5 상태 변경이력 확인" 을 참조하시기 바랍니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#GetLogs
          */
         private void btnGetLogs_Click(object sender, EventArgs e)
         {
@@ -919,7 +926,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /*
          * 팝빌 현금영수증 임시문서함 팝업 URL을 반환합니다.
-         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#GetURL
          */
         private void btnGetURL_TBOX_Click(object sender, EventArgs e)
         {
@@ -939,7 +946,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /*
          * 팝빌 현금영수증 발행문서함 팝업 URL을 반환합니다.
-         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#GetURL
          */
         private void btnGetURL_SBOX_Click(object sender, EventArgs e)
         {
@@ -959,7 +966,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /*
          * 팝빌 현금영수증 매출문서작성 팝업 URL을 반환합니다.
-         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#GetURL
          */
         private void btnGetURL_WRITE_Click(object sender, EventArgs e)
         {
@@ -979,6 +986,7 @@ namespace Popbill.Cashbill.Example.csharp
         /*
          * 1건의 현금영수증 보기 팝업 URL을 반환합니다.
          * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#GetPopUpURL
          */
         private void btnGetPopUpURL_Click(object sender, EventArgs e)
         {
@@ -998,6 +1006,7 @@ namespace Popbill.Cashbill.Example.csharp
         /*
          * 1건의 현금영수증 인쇄 팝업 URL을 반환합니다.
          * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#GetPrintURL
          */
         private void btnGetPrintURL_Click(object sender, EventArgs e)
         {
@@ -1017,6 +1026,7 @@ namespace Popbill.Cashbill.Example.csharp
         /*
          * 1건의 현금영수증 인쇄 팝업 URL을 반환합니다. (공급받는자용)
          * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다
+         * - https://docs.popbill.com/cashbill/dotnet/api#GetPrintURL
          */
         private void btnEPrintURL_Click(object sender, EventArgs e)
         {
@@ -1036,6 +1046,7 @@ namespace Popbill.Cashbill.Example.csharp
         /*
          * 대량의 현금영수증 인쇄 팝업 URL을 반환합니다. (최대100건)
          * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#GetMassPrintURL
          */
         private void btnGetMassPrintURL_Click(object sender, EventArgs e)
         {
@@ -1066,6 +1077,7 @@ namespace Popbill.Cashbill.Example.csharp
         /*
          * 현금영수증 메일링크 URL을 반환합니다.
          * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다. 
+         * - https://docs.popbill.com/cashbill/dotnet/api#GetMailURL
          */
         private void btnGetEmailURL_Click(object sender, EventArgs e)
         {
@@ -1087,6 +1099,7 @@ namespace Popbill.Cashbill.Example.csharp
         /*
          * 팝빌에 로그인 상태로 접근할 수 있는 팝업 URL을 반환합니다.
          * - URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#GetAccessURL
          */
         private void btnGetAccessURL_Click(object sender, EventArgs e)
         {
@@ -1106,6 +1119,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /*
          * 발행 안내메일을 재전송합니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#SendEmail
          */
         private void btnSendEmail_Click(object sender, EventArgs e)
         {
@@ -1131,7 +1145,7 @@ namespace Popbill.Cashbill.Example.csharp
         /*
          * 알림문자를 전송합니다. (단문/SMS - 한글 최대 45자)
          * - 알림문자 전송시 포인트가 차감됩니다. (전송실패시 환불처리)
-         * - 전송내역 확인은 "팝빌 로그인" > [문자 팩스] > [문자] > [전송내역] 탭에서 전송결과를 확인할 수 있습니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#SendSMS
          */
         private void btnSendSMS_Click(object sender, EventArgs e)
         {
@@ -1160,8 +1174,8 @@ namespace Popbill.Cashbill.Example.csharp
 
         /*
          * 알림문자를 전송합니다. (단문/SMS - 한글 최대 45자)
-         * - 알림문자 전송시 포인트가 차감됩니다. (전송실패시 환불처리)
-         * - 전송내역 확인은 "팝빌 로그인" > [문자 팩스] > [문자] > [전송내역] 탭에서 전송결과를 확인할 수 있습니다.
+         * - 현금영수증을 팩스 전송하며 포인트가 차감됩니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#SendFAX
          */
         private void btnSendFAX_Click(object sender, EventArgs e)
         {
@@ -1188,6 +1202,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /*
          * 현금영수증 관련 메일전송 항목에 대한 전송여부를 목록을 반환합니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#ListEmailConfig
          */
         private void btnListEmailConfig_Click(object sender, EventArgs e)
         {
@@ -1214,6 +1229,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /*
          * 현금영수증 관련 메일전송 항목에 대한 전송여부를 수정합니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#UpdateEmailConfig
          *
          * 메일전송유형
          * CSH_ISSUE : 고객에게 현금영수증이 발행 되었음을 알려주는 메일 입니다.
@@ -1244,6 +1260,8 @@ namespace Popbill.Cashbill.Example.csharp
         /*
          * 연동회원의 잔여포인트를 조회합니다.
          * - 파트너 과금 방식의 경우 파트너 잔여포인트 조회(GetPartnerBalance API) 기능을 사용하시기 바랍니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#GetBalance
+         * 
          */
         private void btnGetBalance_Click(object sender, EventArgs e)
         {
@@ -1265,6 +1283,7 @@ namespace Popbill.Cashbill.Example.csharp
         /*
          * 팝빌 연동회원 포인트충전 팝업 URL을 반환합니다.
          * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#GetChargeURL
          */
         private void btnGetChargeURL_Click(object sender, EventArgs e)
         {
@@ -1284,6 +1303,7 @@ namespace Popbill.Cashbill.Example.csharp
         /*
          * 파트너 잔여포인트를 확인합니다.
          * - 연동과금 방식의 경우 연동회원 잔여포인트 조회 (GetBalance API)를 이용하시기 바랍니다. 
+         * - https://docs.popbill.com/cashbill/dotnet/api#GetPartnerBalance
          */
         private void btnGetPartnerBalance1_Click(object sender, EventArgs e)
         {
@@ -1303,6 +1323,7 @@ namespace Popbill.Cashbill.Example.csharp
         /*
          * 파트너 포인트 충전 팝업 URL을 반환합니다. 
          * - 반환된 URL은 보안정책상 30초의 유효시간을 갖습니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#GetPartnerURL
          */
         private void btnGetPartnerURL_CHRG_Click(object sender, EventArgs e)
         {
@@ -1321,6 +1342,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /*
          * 현금영수증 발행단가를 확인합니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#GetUnitCost
          */
         private void btnUnitCost_Click(object sender, EventArgs e)
         {
@@ -1340,6 +1362,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /*
          * 현금영수증 API 서비스 과금정보를 확인합니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#GetChargeInfo
          */
         private void btnGetChargeInfo_Click(object sender, EventArgs e)
         {
@@ -1363,6 +1386,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /*
          * 해당 사업자의 파트너 연동회원 가입여부를 확인합니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#CheckIsMember
          */
         private void btnCheckIsMember_Click(object sender, EventArgs e)
         {
@@ -1385,6 +1409,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /*
          * 팝빌 회원아이디 중복여부를 확인합니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#CheckID
          */
         private void btnCheckID_Click(object sender, EventArgs e)
         {
@@ -1405,6 +1430,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /*
          * 파트너의 연동회원으로 신규가입 처리합니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#JoinMember
          */
         private void btnJoinMember_Click(object sender, EventArgs e)
         {
@@ -1469,6 +1495,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /*
          * 연동회원의 회사정보를 조회합니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#GetCorpInfo
          */
         private void btnGetCorpInfo_Click(object sender, EventArgs e)
         {
@@ -1494,6 +1521,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /*
          * 회사정보를 수정합니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#UpdateCorpInfo
          */
         private void btnUpdateCorpInfo_Click(object sender, EventArgs e)
         {
@@ -1530,6 +1558,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /*
          * 연동회원의 담당자를 추가합니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#RegistContact
          */
         private void btnRegistContact_Click(object sender, EventArgs e)
         {
@@ -1579,6 +1608,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /*
          * 연동회원의 담당자 정보 목록을 확인합니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#ListContact
          */
         private void btnListContact_Click(object sender, EventArgs e)
         {
@@ -1615,6 +1645,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /*
          * 담당자 정보를 수정합니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#UpdateContact
          */
         private void btnUpdateContact_Click(object sender, EventArgs e)
         {

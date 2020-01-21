@@ -1,8 +1,8 @@
 ﻿/*
  * 팝빌 문자 API DotNet SDK Example
  * 
- * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/message/tutorial/dotnet_csharp
- * - 업데이트 일자 :  2019-10-23
+ * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/message/tutorial/dotnet
+ * - 업데이트 일자 :  2020-01-21
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991~2
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
  * 
@@ -55,6 +55,7 @@ namespace Popbill.Message.Example.csharp
 
         /*
          * 문자 발신번호 목록을 반환합니다.
+         * - https://docs.popbill.com/message/dotnet/api#GetSenderNumberList
          */
         private void btnGetSenderNumberList_Click(object sender, EventArgs e)
         {
@@ -83,6 +84,7 @@ namespace Popbill.Message.Example.csharp
         /*
          * 문자 발신번호 관리 팝업 URL을 반합니다.
          * - 반환된 URL은 보안정책에 따라 30초의 유효시간을 갖습니다.
+         * - https://docs.popbill.com/message/dotnet/api#GetSenderNumberMgtURL
          */
         private void btnGetSenderNumberMgtURL_Click(object sender, EventArgs e)
         {
@@ -114,6 +116,7 @@ namespace Popbill.Message.Example.csharp
         /*
          * SMS(단문)를 전송합니다.
          *  - 메시지 내용이 90Byte 초과시 메시지 내용은 자동으로 제거됩니다.
+         *  - https://docs.popbill.com/message/dotnet/api#SendSMS
          */
         private void btnSendSMS_one_Click(object sender, EventArgs e)
         {
@@ -155,7 +158,7 @@ namespace Popbill.Message.Example.csharp
         /*
          * [대량전송] SMS(단문)를 전송합니다.
          *  - 메시지 내용이 90Byte 초과시 메시지 내용은 자동으로 제거됩니다.
-         *  - 단건/대량 전송에 대한 설명은 "[문자 API 연동매뉴얼] > 3.2.1 SendSMS(단문전송)"을 참조하시기 바랍니다.
+         *  - https://docs.popbill.com/message/dotnet/api#SendSMS_Multi
          */
         private void btnSendSMS_hund_Click(object sender, EventArgs e)
         {
@@ -209,7 +212,7 @@ namespace Popbill.Message.Example.csharp
         /*
          * [동보전송] SMS(단문)를 전송합니다.
          *  - 메시지 내용이 90Byte 초과시 메시지 내용은 자동으로 제거됩니다.
-         *  - 단건/대량 전송에 대한 설명은 "[문자 API 연동매뉴얼] > 3.2.1 SendSMS(단문전송)"을 참조하시기 바랍니다.
+         *  - https://docs.popbill.com/message/dotnet/api#SendSMS_Same
          */
         private void btnSendSMS_Same_Click(object sender, EventArgs e)
         {
@@ -260,6 +263,7 @@ namespace Popbill.Message.Example.csharp
         /*
          * LMS(장문)를 전송합니다.
          *  - 메시지 내용이 2,000Byte 초과시 메시지 내용은 자동으로 제거됩니다.
+         *  - https://docs.popbill.com/message/dotnet/api#SendLMS
          */
         private void btnSendLMS_one_Click(object sender, EventArgs e)
         {
@@ -304,7 +308,7 @@ namespace Popbill.Message.Example.csharp
         /*
          * [대량전송] LMS(장문)를 전송합니다.
          *  - 메시지 내용이 2,000Byte 초과시 메시지 내용은 자동으로 제거됩니다.
-         *  - 단건/대량 전송에 대한 설명은 "[문자 API 연동매뉴얼] > 3.2.2 SendLMS(장문전송)"을 참조하시기 바랍니다.
+         *  - https://docs.popbill.com/message/dotnet/api#SendLMS_Multi
          */
         private void btnSendLMS_hund_Click(object sender, EventArgs e)
         {
@@ -361,7 +365,7 @@ namespace Popbill.Message.Example.csharp
         /*
          * [동보전송] LNS(장문)를 전송합니다.
          *  - 메시지 내용이 2,000Byte 초과시 메시지 내용은 자동으로 제거됩니다.
-         *  - 단건/대량 전송에 대한 설명은 "[문자 API 연동매뉴얼] > 3.2.2 SendLMS(장문전송)"을 참조하시기 바랍니다.
+         *  - https://docs.popbill.com/message/dotnet/api#SendLMS_Same
          */
         private void btnSendLMS_same_Click(object sender, EventArgs e)
         {
@@ -416,6 +420,7 @@ namespace Popbill.Message.Example.csharp
          * XMS(단문/장문 자동인식)를 전송합니다.
          *  - 메시지 내용의 길이(90byte)에 따라 SMS/LMS(단문/장문)를 자동인식하여 전송합니다.
          *  - 90byte 초과시 LMS(장문)으로 인식 합니다.
+         *  - https://docs.popbill.com/message/dotnet/api#SendXMS
          */
         private void btnSendXMS_one_Click(object sender, EventArgs e)
         {
@@ -460,8 +465,7 @@ namespace Popbill.Message.Example.csharp
         /*
          * [대량전송] XMS(단문/장문 자동인식)를 전송합니다.
          *  - 메시지 내용의 길이(90byte)에 따라 SMS/LMS(단문/장문)를 자동인식하여 전송합니다.
-         *  - 90byte 초과시 LMS(장문)으로 인식 합니다.
-         *  - 단건/대량 전송에 대한 설명은 "[문자 API 연동매뉴얼] > 3.2.4 SendXMS(단문/장문 자동인식 전송)"을 참조하시기 바랍니다.
+         *  - https://docs.popbill.com/message/dotnet/api#SendXMS_Multi
          */
         private void btnSendXMS_hund_Click(object sender, EventArgs e)
         {
@@ -518,8 +522,7 @@ namespace Popbill.Message.Example.csharp
         /*
          * [동보전송] XMS(단문/장문 자동인식)를 전송합니다.
          *  - 메시지 내용의 길이(90byte)에 따라 SMS/LMS(단문/장문)를 자동인식하여 전송합니다.
-         *  - 90byte 초과시 LMS(장문)으로 인식 합니다.
-         *  - 단건/대량 전송에 대한 설명은 "[문자 API 연동매뉴얼] > 3.2.4 SendXMS(단문/장문 자동인식 전송)"을 참조하시기 바랍니다.
+         *  - https://docs.popbill.com/message/dotnet/api#SendXMS_Same
          */
         private void btnSendXMS_same_Click(object sender, EventArgs e)
         {
@@ -574,6 +577,7 @@ namespace Popbill.Message.Example.csharp
          * MMS(포토)를 전송합니다.
          *  - 메시지 내용이 2,000Byte 초과시 메시지 내용은 자동으로 제거됩니다.
          *  - 이미지 파일의 크기는 최대 300Kbtye (JPEG), 가로/세로 1000px 이하 권장
+         *  - https://docs.popbill.com/message/dotnet/api#SendMMS
          */
         private void btnSendMMS_Click(object sender, EventArgs e)
         {
@@ -624,6 +628,7 @@ namespace Popbill.Message.Example.csharp
          * [동보전송] MMS(포토)를 전송합니다.
          *  - 메시지 내용이 2,000Byte 초과시 메시지 내용은 자동으로 제거됩니다.
          *  - 이미지 파일의 크기는 최대 300Kbtye (JPEG), 가로/세로 1000px 이하 권장
+         *  - https://docs.popbill.com/message/dotnet/api#SendMMS_Same
          */
         private void btnSendMMS_Same_Click(object sender, EventArgs e)
         {
@@ -683,6 +688,7 @@ namespace Popbill.Message.Example.csharp
         /*
          * 문자전송요청시 발급받은 접수번호(receiptNum)로 예약문자 전송을 취소합니다.
          * - 예약취소는 예약전송시간 10분전까지만 가능합니다.
+         * - https://docs.popbill.com/message/dotnet/api#CancelReserve
          */
         private void btnCancelReserve_Click(object sender, EventArgs e)
         {
@@ -703,6 +709,7 @@ namespace Popbill.Message.Example.csharp
         /*
          * 문자전송요청시 할당한 전송요청번호(requestNum)로 예약문자 전송을 취소합니다.
          * - 예예약취소는 예약전송시간 10분전까지만 가능합니다.
+         * - https://docs.popbill.com/message/dotnet/api#CancelReserveRN
          */
         private void btnCancelReserveRN_Click(object sender, EventArgs e)
         {
@@ -722,7 +729,7 @@ namespace Popbill.Message.Example.csharp
 
         /*
          * 문자전송요청시 발급받은 접수번호(receiptNum)로 전송상태를 확인합니다
-         * - 응답항목에 대한 자세한 사항은 "[문자 API 연동매뉴얼] >  3.3.1. GetMessages (전송내역 확인)을 참조하시기 바랍니다.
+         * - https://docs.popbill.com/message/dotnet/api#GetMessageResult
          */
         private void btnGetMessageResult_Click(object sender, EventArgs e)
         {
@@ -769,7 +776,7 @@ namespace Popbill.Message.Example.csharp
 
         /*
          * 문자전송요청시 할당한 전송요청번호(requestNum)로 전송상태를 확인합니다
-         * - 응답항목에 대한 자세한 사항은 "[문자 API 연동매뉴얼] > 3.3.2. GetMessagesRN (전송내역 확인 - 요청번호 할당)을 참조하시기 바랍니다.
+         * - https://docs.popbill.com/message/dotnet/api#GetMessageResultRN
          */
         private void btnGetMessagesRN_Click(object sender, EventArgs e)
         {
@@ -816,6 +823,7 @@ namespace Popbill.Message.Example.csharp
 
         /*
          * 문자 전송내역 요약정보를 확인합니다. (최대 1000건)
+         * - https://docs.popbill.com/message/dotnet/api#GetStates
          */
         private void btnGetStates_Click(object sender, EventArgs e)
         {
@@ -859,6 +867,7 @@ namespace Popbill.Message.Example.csharp
         /*
          * 검색조건을 사용하여 문자전송 내역을 조회합니다.
          * - 최대 검색기간 : 6개월 이내
+         * - https://docs.popbill.com/message/dotnet/api#Search
          */
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -955,6 +964,7 @@ namespace Popbill.Message.Example.csharp
         /*
          * 문자 전송내역 팝업 URL을 반환합니다.
          * - 반환된 URL은 보안정책에 따라 30초의 유효시간을 갖습니다.
+         * - https://docs.popbill.com/message/dotnet/api#GetSentListURL
          */
         private void btnGetSentListURL_Click(object sender, EventArgs e)
         {
@@ -973,6 +983,7 @@ namespace Popbill.Message.Example.csharp
 
         /*
          * 080 서비스 수신거부 목록을 확인합니다.
+         * - https://docs.popbill.com/message/dotnet/api#GetAutoDenyList
          */
         private void btnGetAutoDenyList_Click(object sender, EventArgs e)
         {
@@ -1001,6 +1012,7 @@ namespace Popbill.Message.Example.csharp
         /*
          * 연동회원의 잔여포인트를 조회합니다.
          * - 파트너 과금 방식의 경우 파트너 잔여 포인트 조회(GetPartnerBalance API)를 이용하시기 바랍니다.
+         * - https://docs.popbill.com/message/dotnet/api#GetBalance
          */
         private void btnGetBalance_Click(object sender, EventArgs e)
         {
@@ -1020,6 +1032,7 @@ namespace Popbill.Message.Example.csharp
         /*
          * 팝빌 연동회원 포인트충전 팝업 URL을 반환합니다.
          * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         * - https://docs.popbill.com/message/dotnet/api#GetChargeURL
          */
         private void btnGetChargeURL_Click(object sender, EventArgs e)
         {
@@ -1039,6 +1052,7 @@ namespace Popbill.Message.Example.csharp
         /*
          * 파트너 잔여포인트를 확인합니다.
          * - 연동과금 방식의 경우 연동회원 잔여포인트 조회(GetBalance API)를 이용하시기 바랍니다.
+         * - https://docs.popbill.com/message/dotnet/api#GetPartnerBalance
          */
         private void btnGetPartnerBalance_Click(object sender, EventArgs e)
         {
@@ -1058,6 +1072,7 @@ namespace Popbill.Message.Example.csharp
         /*
          * 파트너 포인트 충전 팝업 URL을 반환합니다. 
          * - 반환된 URL은 보안정책상 30초의 유효시간을 갖습니다.
+         * - https://docs.popbill.com/message/dotnet/api#GetPartnerURL
          */
         private void btnGetPartnerURL_CHRG_Click(object sender, EventArgs e)
         {
@@ -1076,6 +1091,7 @@ namespace Popbill.Message.Example.csharp
 
         /*
          * 단문(SMS) 메시지 전송단가를 확인합니다.
+         * - https://docs.popbill.com/message/dotnet/api#GetUnitCost
          */
         private void btnUnitCost_Click(object sender, EventArgs e)
         {
@@ -1094,6 +1110,7 @@ namespace Popbill.Message.Example.csharp
 
         /*
          * 장문(LMS) 메시지 전송단가를 확인합니다. 
+         * - https://docs.popbill.com/message/dotnet/api#GetUnitCost
          */
         private void btnUnitCost_LMS_Click(object sender, EventArgs e)
         {
@@ -1112,6 +1129,7 @@ namespace Popbill.Message.Example.csharp
 
         /*
          * 포토(MMS) 메시지 전송 단가를 확인합니다.
+         * - https://docs.popbill.com/message/dotnet/api#GetUnitCost
          */
         private void btn_unitcost_mms_Click(object sender, EventArgs e)
         {
@@ -1130,6 +1148,7 @@ namespace Popbill.Message.Example.csharp
 
         /*
          * 문자 API 서비스 과금정보를 확인합니다.
+         * - https://docs.popbill.com/message/dotnet/api#GetChargeInfo
          */
         private void btnGetChargeInfo_Click(object sender, EventArgs e)
         {
@@ -1157,6 +1176,7 @@ namespace Popbill.Message.Example.csharp
 
         /*
          * 해당 사업자의 파트너 연동회원 가입여부를 확인합니다.
+         * - https://docs.popbill.com/message/dotnet/api#CheckIsMember
          */
         private void btnCheckIsMember_Click(object sender, EventArgs e)
         {
@@ -1176,6 +1196,7 @@ namespace Popbill.Message.Example.csharp
 
         /*
          * 팝빌 회원아이디 중복여부를 확인합니다.
+         * - https://docs.popbill.com/message/dotnet/api#CheckID
          */
         private void btnCheckID_Click(object sender, EventArgs e)
         {
@@ -1195,6 +1216,7 @@ namespace Popbill.Message.Example.csharp
 
         /*
          * 연동회원 신규가입을 요청합니다.
+         * - https://docs.popbill.com/message/dotnet/api#JoinMember
          */
         private void btnJoinMember_Click(object sender, EventArgs e)
         {
@@ -1259,6 +1281,7 @@ namespace Popbill.Message.Example.csharp
         /*
          * 팝빌에 로그인 상태로 접근할 수 있는 팝업 URL을 반환합니다.
          * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다 
+         * - https://docs.popbill.com/message/dotnet/api#GetAccessURL
          */
         private void btnGetAccessURL_Click(object sender, EventArgs e)
         {
@@ -1277,6 +1300,7 @@ namespace Popbill.Message.Example.csharp
 
         /*
          * 회사정보를 조회합니다.
+         * - https://docs.popbill.com/message/dotnet/api#GetCorpInfo
          */
         private void btnGetCorpInfo_Click(object sender, EventArgs e)
         {
@@ -1302,6 +1326,7 @@ namespace Popbill.Message.Example.csharp
 
         /*
          * 회사정보를 수정합니다.
+         * - https://docs.popbill.com/message/dotnet/api#UpdateCorpInfo
          */
         private void btnUpdateCorpInfo_Click(object sender, EventArgs e)
         {
@@ -1338,6 +1363,7 @@ namespace Popbill.Message.Example.csharp
 
         /*
          * 연동회원의 담당자를 추가합니다.
+         * - https://docs.popbill.com/message/dotnet/api#RegistContact
          */
         private void btnRegistContact_Click(object sender, EventArgs e)
         {
@@ -1386,6 +1412,7 @@ namespace Popbill.Message.Example.csharp
 
         /*
          * 연동회원의 담당자 목록을 확인합니다.
+         * - https://docs.popbill.com/message/dotnet/api#ListContact
          */
         private void btnListContact_Click(object sender, EventArgs e)
         {
@@ -1421,6 +1448,7 @@ namespace Popbill.Message.Example.csharp
 
         /*
          * 담당자 정보를 수정합니다. 
+         * - https://docs.popbill.com/message/dotnet/api#UpdateContact
          */
         private void btnUpdateContact_Click(object sender, EventArgs e)
         {

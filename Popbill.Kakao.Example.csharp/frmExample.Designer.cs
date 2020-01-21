@@ -620,7 +620,7 @@
             this.btnListPlusFriendID.Name = "btnListPlusFriendID";
             this.btnListPlusFriendID.Size = new System.Drawing.Size(184, 36);
             this.btnListPlusFriendID.TabIndex = 4;
-            this.btnListPlusFriendID.Text = "플러스친구 목록 확인";
+            this.btnListPlusFriendID.Text = "카카오톡채널 목록 확인";
             this.btnListPlusFriendID.UseVisualStyleBackColor = true;
             this.btnListPlusFriendID.Click += new System.EventHandler(this.btnListPlusFriendID_Click);
             // 
@@ -630,7 +630,7 @@
             this.btnGetPlusFriendMgtURL.Name = "btnGetPlusFriendMgtURL";
             this.btnGetPlusFriendMgtURL.Size = new System.Drawing.Size(184, 36);
             this.btnGetPlusFriendMgtURL.TabIndex = 3;
-            this.btnGetPlusFriendMgtURL.Text = "플러스친구 계정관리 팝업 URL";
+            this.btnGetPlusFriendMgtURL.Text = "카카오톡 채널 관리 팝업 URL";
             this.btnGetPlusFriendMgtURL.UseVisualStyleBackColor = true;
             this.btnGetPlusFriendMgtURL.Click += new System.EventHandler(this.btnGetPlusFriendMgtURL_Click);
             // 
