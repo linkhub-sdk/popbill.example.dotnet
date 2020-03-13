@@ -494,16 +494,16 @@ namespace Popbill.EasyFin.Bank.Example.csharp
              */
 
             // 은행코드
-            String BankCode = "0048";
+            String BankCode = "0023";
 
             // 은행 계좌번호
-            String AccountNumber = "131020538645";
+            String AccountNumber = "74620246488";
 
             // 시작일자, 표시형식(yyyyMMdd)
-            String SDate = "20190927";
+            String SDate = "20200113";
 
             // 종료일자, 표시형식(yyyyMMdd)
-            String EDate = "20191224";
+            String EDate = "20200313";
 
             try
             {
