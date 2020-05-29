@@ -74,6 +74,11 @@
             this.btnListActiveJob = new System.Windows.Forms.Button();
             this.btnGetJobState = new System.Windows.Forms.Button();
             this.btnRequestJob = new System.Windows.Forms.Button();
+            this.btnRegistBankAccount = new System.Windows.Forms.Button();
+            this.btnUpdateBankAccount = new System.Windows.Forms.Button();
+            this.btnGetBankAccountInfo = new System.Windows.Forms.Button();
+            this.btnCloseBankAccount = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.GroupBox1.SuspendLayout();
             this.groupBox13.SuspendLayout();
             this.groupBox12.SuspendLayout();
@@ -419,7 +424,7 @@
             // 
             this.groupBox11.Controls.Add(this.btnGetFlatRateState);
             this.groupBox11.Controls.Add(this.btnGetFlatRatePopUpURL);
-            this.groupBox11.Location = new System.Drawing.Point(576, 23);
+            this.groupBox11.Location = new System.Drawing.Point(793, 23);
             this.groupBox11.Name = "groupBox11";
             this.groupBox11.Size = new System.Drawing.Size(173, 142);
             this.groupBox11.TabIndex = 3;
@@ -448,20 +453,25 @@
             // 
             // groupBox10
             // 
+            this.groupBox10.Controls.Add(this.button1);
+            this.groupBox10.Controls.Add(this.btnCloseBankAccount);
+            this.groupBox10.Controls.Add(this.btnGetBankAccountInfo);
+            this.groupBox10.Controls.Add(this.btnUpdateBankAccount);
+            this.groupBox10.Controls.Add(this.btnRegistBankAccount);
             this.groupBox10.Controls.Add(this.btnListBankAccount);
             this.groupBox10.Controls.Add(this.btnBankAccountMgtURL);
             this.groupBox10.Location = new System.Drawing.Point(389, 23);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(174, 142);
+            this.groupBox10.Size = new System.Drawing.Size(398, 142);
             this.groupBox10.TabIndex = 2;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "계좌 관리";
             // 
             // btnListBankAccount
             // 
-            this.btnListBankAccount.Location = new System.Drawing.Point(11, 58);
+            this.btnListBankAccount.Location = new System.Drawing.Point(139, 57);
             this.btnListBankAccount.Name = "btnListBankAccount";
-            this.btnListBankAccount.Size = new System.Drawing.Size(153, 32);
+            this.btnListBankAccount.Size = new System.Drawing.Size(116, 32);
             this.btnListBankAccount.TabIndex = 2;
             this.btnListBankAccount.Text = "계좌 목록 확인";
             this.btnListBankAccount.UseVisualStyleBackColor = true;
@@ -469,9 +479,9 @@
             // 
             // btnBankAccountMgtURL
             // 
-            this.btnBankAccountMgtURL.Location = new System.Drawing.Point(11, 20);
+            this.btnBankAccountMgtURL.Location = new System.Drawing.Point(6, 95);
             this.btnBankAccountMgtURL.Name = "btnBankAccountMgtURL";
-            this.btnBankAccountMgtURL.Size = new System.Drawing.Size(153, 32);
+            this.btnBankAccountMgtURL.Size = new System.Drawing.Size(127, 32);
             this.btnBankAccountMgtURL.TabIndex = 1;
             this.btnBankAccountMgtURL.Text = "계좌 관리 팝업 URL";
             this.btnBankAccountMgtURL.UseVisualStyleBackColor = true;
@@ -561,6 +571,56 @@
             this.btnRequestJob.UseVisualStyleBackColor = true;
             this.btnRequestJob.Click += new System.EventHandler(this.btnRequestJob_Click);
             // 
+            // btnRegistBankAccount
+            // 
+            this.btnRegistBankAccount.Location = new System.Drawing.Point(6, 19);
+            this.btnRegistBankAccount.Name = "btnRegistBankAccount";
+            this.btnRegistBankAccount.Size = new System.Drawing.Size(127, 32);
+            this.btnRegistBankAccount.TabIndex = 3;
+            this.btnRegistBankAccount.Text = "계좌 등록";
+            this.btnRegistBankAccount.UseVisualStyleBackColor = true;
+            this.btnRegistBankAccount.Click += new System.EventHandler(this.btnRegistBankAccount_Click);
+            // 
+            // btnUpdateBankAccount
+            // 
+            this.btnUpdateBankAccount.Location = new System.Drawing.Point(6, 57);
+            this.btnUpdateBankAccount.Name = "btnUpdateBankAccount";
+            this.btnUpdateBankAccount.Size = new System.Drawing.Size(127, 32);
+            this.btnUpdateBankAccount.TabIndex = 4;
+            this.btnUpdateBankAccount.Text = "계좌 정보 수정";
+            this.btnUpdateBankAccount.UseVisualStyleBackColor = true;
+            this.btnUpdateBankAccount.Click += new System.EventHandler(this.btnUpdateBankAccount_Click);
+            // 
+            // btnGetBankAccountInfo
+            // 
+            this.btnGetBankAccountInfo.Location = new System.Drawing.Point(139, 19);
+            this.btnGetBankAccountInfo.Name = "btnGetBankAccountInfo";
+            this.btnGetBankAccountInfo.Size = new System.Drawing.Size(116, 32);
+            this.btnGetBankAccountInfo.TabIndex = 5;
+            this.btnGetBankAccountInfo.Text = "계좌 정보 확인";
+            this.btnGetBankAccountInfo.UseVisualStyleBackColor = true;
+            this.btnGetBankAccountInfo.Click += new System.EventHandler(this.btnGetBankAccountInfo_Click);
+            // 
+            // btnCloseBankAccount
+            // 
+            this.btnCloseBankAccount.Location = new System.Drawing.Point(261, 19);
+            this.btnCloseBankAccount.Name = "btnCloseBankAccount";
+            this.btnCloseBankAccount.Size = new System.Drawing.Size(131, 32);
+            this.btnCloseBankAccount.TabIndex = 6;
+            this.btnCloseBankAccount.Text = "계좌 정액제 해지요청";
+            this.btnCloseBankAccount.UseVisualStyleBackColor = true;
+            this.btnCloseBankAccount.Click += new System.EventHandler(this.btnCloseBankAccount_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(261, 57);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(131, 32);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "정액제 해지요청 취소";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -642,6 +702,11 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtTID;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button btnUpdateBankAccount;
+        private System.Windows.Forms.Button btnRegistBankAccount;
+        private System.Windows.Forms.Button btnGetBankAccountInfo;
+        private System.Windows.Forms.Button btnCloseBankAccount;
+        private System.Windows.Forms.Button button1;
     }
 }
 

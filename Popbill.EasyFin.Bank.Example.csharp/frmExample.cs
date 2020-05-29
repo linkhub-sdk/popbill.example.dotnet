@@ -2,7 +2,7 @@
  * 팝빌 계좌조회 API DotNet SDK Example
  * 
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/easyfinbank/tutorial/dotnet#csharp
- * - 업데이트 일자 : 2020-01-21
+ * - 업데이트 일자 : 2020-05-29
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
  * 
@@ -612,7 +612,9 @@ namespace Popbill.EasyFin.Bank.Example.csharp
                 List<EasyFinBankAccount> bankAccountList = easyFinBankService.ListBankAccount(txtCorpNum.Text);
 
                 String tmp = "bankCode (은행코드) | accountNumber (계좌번호) | accountName (계좌별칭) | accountType (계좌유형) | state (정액제 상태) |";
-                tmp += " regDT (등록일시) | memo (메모) " + CRLF;
+                tmp += " regDT (등록일시) | contractDT (정액제 서비스 시작일시) | useEndDate (정액제 서비스 종료일자) | baseDate (자동연장 결제일) |";
+                tmp += " contractState (정액제 서비스 상태) | closeRequestYN (정액제 해지신청 여부) | useRestrictYN (정액제 사용제한 여부) | closeOnExpired (정액제 만료시 해지여부) | ";
+                tmp += " unPaiedYN (미수금 보유 여부) | memo (메모) " + CRLF + CRLF;
 
                 for (int i = 0; i < bankAccountList.Count; i++)
                 {
@@ -622,7 +624,17 @@ namespace Popbill.EasyFin.Bank.Example.csharp
                     tmp += bankAccountList[i].accountType + " | ";
                     tmp += bankAccountList[i].state.ToString() + " | ";
                     tmp += bankAccountList[i].regDT + " | ";
+                    tmp += bankAccountList[i].contractDT + " | ";
+                    tmp += bankAccountList[i].baseDate.ToString() + " | ";
+                    tmp += bankAccountList[i].useEndDate + " | ";
+                    tmp += bankAccountList[i].contractState.ToString() + " | ";
+                    tmp += bankAccountList[i].closeRequestYN.ToString() + " | ";
+                    tmp += bankAccountList[i].useRestrictYN.ToString() + " | ";
+                    tmp += bankAccountList[i].closeOnExpired.ToString() + " | ";
+                    tmp += bankAccountList[i].unPaidYN.ToString() + " | ";
+                    
                     tmp += bankAccountList[i].memo;
+                    
                     tmp += CRLF ;
                 }
 
@@ -830,6 +842,233 @@ namespace Popbill.EasyFin.Bank.Example.csharp
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + ex.Message, "거래내역 메모저장");
+            }
+        }
+
+        private void btnRegistBankAccount_Click(object sender, EventArgs e)
+        {
+            /*
+             * 계좌조회 서비스를 이용할 은행계좌를 등록한다.
+             */
+
+
+            EasyFinBankAccountForm info = new EasyFinBankAccountForm();
+
+            // [필수] 은행코드
+            // 산업은행-0002 / 기업은행-0003 / 국민은행-0004 /수협은행-0007 / 농협은행-0011 / 우리은행-0020
+            // SC은행-0023 / 대구은행-0031 / 부산은행-0032 / 광주은행-0034 / 제주은행-0035 / 전북은행-0037
+            // 경남은행-0039 / 새마을금고-0045 / 신협은행-0048 / 우체국-0071 / KEB하나은행-0081 / 신한은행-0088 /씨티은행-0027
+            info.BankCode = "";
+
+            // [필수] 계좌번호, 하이픈('-') 제외
+            info.AccountNumber = "";
+
+            // [필수] 계좌비밀번호
+            info.AccountPWD = "";
+
+            // [필수] 계좌유형, "법인" 또는 "개인" 입력
+            info.AccountType = "";
+
+            // [필수] 예금주 식별정보 (‘-‘ 제외)
+            // 계좌유형이 “법인”인 경우 : 사업자번호(10자리)
+            // 계좌유형이 “개인”인 경우 : 예금주 생년월일 (6자리-YYMMDD)
+            info.IdentityNumber = "";
+
+            // 계좌 별칭
+            info.AccountName = "";
+
+            // 인터넷뱅킹 아이디 (국민은행 필수)
+            info.BankID = "";
+
+            // 조회전용 계정 아이디 (대구은행, 신협, 신한은행 필수)
+            info.FastID = "";
+
+            // 조회전용 계정 비밀번호 (대구은행, 신협, 신한은행 필수)
+            info.FastPWD = "";
+
+            // 결제기간(개월), 1~12 입력가능, 미기재시 기본값(1) 처리
+            // - 파트너 과금방식의 경우 입력값에 관계없이 1개월 처리
+            info.UsePeriod = "";
+
+            // 메모
+            info.Memo = "";
+
+
+            try
+            {
+                Response response = easyFinBankService.RegistBankAccount(txtCorpNum.Text, info);
+
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "계좌 등록");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "계좌 등록");
+            }
+        }
+
+        private void btnUpdateBankAccount_Click(object sender, EventArgs e)
+        {
+            /*
+            * 팝빌에 등록된 은행 계좌정보를 수정합니다.
+            */
+
+
+            EasyFinBankAccountForm info = new EasyFinBankAccountForm();
+
+            // [필수] 은행코드
+            // 산업은행-0002 / 기업은행-0003 / 국민은행-0004 /수협은행-0007 / 농협은행-0011 / 우리은행-0020
+            // SC은행-0023 / 대구은행-0031 / 부산은행-0032 / 광주은행-0034 / 제주은행-0035 / 전북은행-0037
+            // 경남은행-0039 / 새마을금고-0045 / 신협은행-0048 / 우체국-0071 / KEB하나은행-0081 / 신한은행-0088 /씨티은행-0027
+            info.BankCode = "";
+
+            // [필수] 계좌번호, 하이픈('-') 제외
+            info.AccountNumber = "";
+
+            // [필수] 계좌비밀번호
+            info.AccountPWD = "";
+
+            // 계좌 별칭
+            info.AccountName = "";
+
+            // 인터넷뱅킹 아이디 (국민은행 필수)
+            info.BankID = "";
+
+            // 조회전용 계정 아이디 (대구은행, 신협, 신한은행 필수)
+            info.FastID = "";
+
+            // 조회전용 계정 비밀번호 (대구은행, 신협, 신한은행 필수)
+            info.FastPWD = "";
+
+            // 메모
+            info.Memo = "";
+
+
+            try
+            {
+                Response response = easyFinBankService.UpdateBankAccount(txtCorpNum.Text, info);
+
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "계좌 수정");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "계좌 수정");
+            }
+        }
+
+        private void btnGetBankAccountInfo_Click(object sender, EventArgs e)
+        {
+
+            /*
+	         * 팝빌에 등록된 은행 계좌정보를 확인합니다.
+	         */
+
+            // [필수] 은행코드
+            // 산업은행-0002 / 기업은행-0003 / 국민은행-0004 /수협은행-0007 / 농협은행-0011 / 우리은행-0020
+            // SC은행-0023 / 대구은행-0031 / 부산은행-0032 / 광주은행-0034 / 제주은행-0035 / 전북은행-0037
+            // 경남은행-0039 / 새마을금고-0045 / 신협은행-0048 / 우체국-0071 / KEB하나은행-0081 / 신한은행-0088 /씨티은행-0027
+            String BankCode = "";
+
+            // [필수] 계좌번호, 하이픈('-') 제외
+            String AccountNumber = "";
+
+            try
+            {
+                EasyFinBankAccount bankInfo = easyFinBankService.GetBankAccountInfo(txtCorpNum.Text, BankCode, AccountNumber);
+
+                String tmp = "bankCode (은행코드) : " + bankInfo.bankCode + CRLF;
+                tmp += "accountNumber (계좌번호) : " + bankInfo.accountNumber + CRLF;
+                tmp += "accountName (계좌별칭) : " + bankInfo.accountName +CRLF;
+                tmp += "accountType (계좌유형) : " +bankInfo.accountType +CRLF;
+                tmp += "state (정액제 상태) : " + bankInfo.state.ToString() + CRLF;
+                tmp += "regDT (등록일시) : " + bankInfo.regDT + CRLF;
+                tmp += "contractDT (정액제 서비스 시작일시) : " + bankInfo.contractDT + CRLF;
+                tmp += "baseDate (자동연장 결제일) : " + bankInfo.baseDate.ToString() + CRLF;
+                tmp += "useEndDate (정액제 서비스 종료일자) : " + bankInfo.useEndDate + CRLF;
+                tmp += "contractState (정액제 서비스 상태) : " + bankInfo.contractState.ToString() + CRLF;
+                tmp += "closeRequestYN (정액제 해지신청 여부) : " + bankInfo.closeRequestYN.ToString() + CRLF;
+                tmp += "useRestrictYN (정액제 사용제한 여부) : " + bankInfo.useRestrictYN.ToString() + CRLF;
+                tmp += "closeOnExpired (정액제 만료시 해지여부) : " +bankInfo.closeOnExpired.ToString() + CRLF;
+                tmp += "unPaiedYN (미수금 보유 여부) : " + bankInfo.unPaidYN.ToString() + CRLF;
+                tmp += "memo (메모) : "+ bankInfo.memo;
+
+
+                MessageBox.Show(tmp, "계좌정보 확인");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "계좌 목록 확인");
+            }
+
+        }
+
+        private void btnCloseBankAccount_Click(object sender, EventArgs e)
+        {
+            /*
+             * 팝빌에 등록된 은행계좌의 정액제 해지를 요청합니다.
+             */
+
+
+            // [필수] 은행코드
+            // 산업은행-0002 / 기업은행-0003 / 국민은행-0004 /수협은행-0007 / 농협은행-0011 / 우리은행-0020
+            // SC은행-0023 / 대구은행-0031 / 부산은행-0032 / 광주은행-0034 / 제주은행-0035 / 전북은행-0037
+            // 경남은행-0039 / 새마을금고-0045 / 신협은행-0048 / 우체국-0071 / KEB하나은행-0081 / 신한은행-0088 /씨티은행-0027
+            String BankCode = "";
+
+            // [필수] 계좌번호, 하이픈('-') 제외
+            String AccountNumber = "";
+
+            // [필수] 해지유형, “일반”, “중도” 중 선택 기재
+            // 일반해지 – 이용중인 정액제 사용기간까지 이용후 정지
+            // 중도해지 – 요청일 기준으로 정지, 정액제 잔여기간은 일할로 계산되어 포인트 환불 (무료 이용기간 중 중도해지 시 전액 환불)
+            String CloseType = "중도";
+
+
+            try
+            {
+                Response response = easyFinBankService.CloseBankAccount(txtCorpNum.Text, BankCode, AccountNumber, CloseType);
+
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "계좌 정액제 해지요청");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "계좌 정액제 해지요청");
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            /*
+             * 계좌 정액제 해지 요청을 취소합니다.
+             */
+
+
+            // [필수] 은행코드
+            // 산업은행-0002 / 기업은행-0003 / 국민은행-0004 /수협은행-0007 / 농협은행-0011 / 우리은행-0020
+            // SC은행-0023 / 대구은행-0031 / 부산은행-0032 / 광주은행-0034 / 제주은행-0035 / 전북은행-0037
+            // 경남은행-0039 / 새마을금고-0045 / 신협은행-0048 / 우체국-0071 / KEB하나은행-0081 / 신한은행-0088 /씨티은행-0027
+            String BankCode = "";
+
+            // [필수] 계좌번호, 하이픈('-') 제외
+            String AccountNumber = "";
+
+            try
+            {
+                Response response = easyFinBankService.RevokeCloseBankAccount(txtCorpNum.Text, BankCode, AccountNumber);
+
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "계좌 정액제 해지요청 취소");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "계좌 정액제 해지요청 취소");
             }
         }
     }
