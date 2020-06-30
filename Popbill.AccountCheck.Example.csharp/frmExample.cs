@@ -69,7 +69,7 @@ namespace Popbill.AccountCheck.Example.csharp
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "휴폐업조회 - 단건");
+                                "응답메시지(message) : " + ex.Message, "예금주조회");
             }
         }
 
@@ -172,12 +172,12 @@ namespace Popbill.AccountCheck.Example.csharp
             {
                 float unitCost = accountCheckService.GetUnitCost(txtCorpNum.Text);
 
-                MessageBox.Show("조회단가 : " + unitCost.ToString(), "휴폐업 조회단가 확인");
+                MessageBox.Show("조회단가 : " + unitCost.ToString(), "조회단가 확인");
             }
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "휴폐업 조회단가 확인");
+                                "응답메시지(message) : " + ex.Message, "조회단가 확인");
             }
         }
 
