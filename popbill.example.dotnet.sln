@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Popbill.Kakao.Example.cshar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Popbill.EasyFin.Bank.Example.csharp", "Popbill.EasyFin.Bank.Example.csharp\Popbill.EasyFin.Bank.Example.csharp.csproj", "{48D836F8-54CA-4EF9-A1EC-14639A49EC57}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Popbill.AccountCheck.Example.csharp", "Popbill.AccountCheck.Example.csharp\Popbill.AccountCheck.Example.csharp.csproj", "{67FD291B-9915-49BE-BF9B-34AD1FCA351C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +81,10 @@ Global
 		{48D836F8-54CA-4EF9-A1EC-14639A49EC57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48D836F8-54CA-4EF9-A1EC-14639A49EC57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48D836F8-54CA-4EF9-A1EC-14639A49EC57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67FD291B-9915-49BE-BF9B-34AD1FCA351C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67FD291B-9915-49BE-BF9B-34AD1FCA351C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67FD291B-9915-49BE-BF9B-34AD1FCA351C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67FD291B-9915-49BE-BF9B-34AD1FCA351C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -312,7 +312,7 @@
             this.groupBox5.Controls.Add(this.groupBox4);
             this.groupBox5.Controls.Add(this.btnGetAccessURL);
             this.groupBox5.Controls.Add(this.groupBox3);
-            this.groupBox5.Location = new System.Drawing.Point(19, 37);
+            this.groupBox5.Location = new System.Drawing.Point(12, 36);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(978, 160);
             this.groupBox5.TabIndex = 20;
@@ -399,6 +399,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1013, 323);
             this.Controls.Add(this.txtUserID);
             this.Controls.Add(this.label2);
