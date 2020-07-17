@@ -2,7 +2,7 @@
  * 팝빌 전자세금계산서 API DotNet SDK Example
  * 
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/taxinvoice/tutorial/dotnet
- * - 업데이트 일자 : 2020-05-29
+ * - 업데이트 일자 : 2020-07-17
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
  * 
@@ -95,10 +95,6 @@ namespace Popbill.Taxinvoice.Example.csharp
 
             // [필수] {영수, 청구} 중 기재
             taxinvoice.purposeType = "영수";
-
-            // [필수] 발행시점, {직접발행, 승인시자동발행} 중 기재 
-            // - {승인시자동발행}은 발행예정 프로세스에서만 이용가능
-            taxinvoice.issueTiming = "직접발행";
 
             // [필수] 과세형태, {과세, 영세, 면세} 중 기재
             taxinvoice.taxType = "과세";
@@ -381,9 +377,6 @@ namespace Popbill.Taxinvoice.Example.csharp
             // [필수] {영수, 청구} 중 기재
             taxinvoice.purposeType = "영수";
 
-            // [필수] 발행시점, {직접발행, 승인시자동발행} 중 기재 
-            // - {승인시자동발행}은 발행예정 프로세스에서만 이용가능
-            taxinvoice.issueTiming = "직접발행";
 
             // [필수] 과세형태, {과세, 영세, 면세} 중 기재
             taxinvoice.taxType = "과세";
@@ -647,10 +640,6 @@ namespace Popbill.Taxinvoice.Example.csharp
 
             // [필수] {영수, 청구} 중 기재
             taxinvoice.purposeType = "영수";
-
-            // [필수] 발행시점, {직접발행, 승인시자동발행} 중 기재 
-            // - {승인시자동발행}은 발행예정 프로세스에서만 이용가능
-            taxinvoice.issueTiming = "직접발행";
 
             // [필수] 과세형태, {과세, 영세, 면세} 중 기재
             taxinvoice.taxType = "과세";
@@ -951,10 +940,6 @@ namespace Popbill.Taxinvoice.Example.csharp
             // [필수] {영수, 청구} 중 기재
             taxinvoice.purposeType = "영수";
 
-            // [필수] 발행시점, {직접발행, 승인시자동발행} 중 기재 
-            // - {승인시자동발행}은 발행예정 프로세스에서만 이용가능
-            taxinvoice.issueTiming = "직접발행";
-
             // [필수] 과세형태, {과세, 영세, 면세} 중 기재
             taxinvoice.taxType = "과세";
 
@@ -1221,10 +1206,6 @@ namespace Popbill.Taxinvoice.Example.csharp
 
             // [필수] {영수, 청구} 중 기재
             taxinvoice.purposeType = "영수";
-
-            // [필수] 발행시점, {직접발행, 승인시자동발행} 중 기재 
-            // - {승인시자동발행}은 발행예정 프로세스에서만 이용가능
-            taxinvoice.issueTiming = "직접발행";
 
             // [필수] 과세형태, {과세, 영세, 면세} 중 기재
             taxinvoice.taxType = "과세";
@@ -1741,10 +1722,6 @@ namespace Popbill.Taxinvoice.Example.csharp
             // [필수] {영수, 청구} 중 기재
             taxinvoice.purposeType = "영수";
 
-            // [필수] 발행시점, {직접발행, 승인시자동발행} 중 기재 
-            // - {승인시자동발행}은 발행예정 프로세스에서만 이용가능
-            taxinvoice.issueTiming = "직접발행";
-
             // [필수] 과세형태, {과세, 영세, 면세} 중 기재
             taxinvoice.taxType = "과세";
 
@@ -2244,7 +2221,6 @@ namespace Popbill.Taxinvoice.Example.csharp
                 tmp += "ntsconfirmNum (국세청승인번호) : " + taxinvoice.ntsconfirmNum + CRLF;
                 tmp += "issueType (발행형태) : " + taxinvoice.issueType + CRLF;
                 tmp += "taxType (과세형태) : " + taxinvoice.taxType + CRLF;
-                tmp += "issueTiming (발행시점) : " + taxinvoice.issueTiming + CRLF;
                 tmp += "chargeDirection (과금방향) : " + taxinvoice.chargeDirection + CRLF;
                 tmp += "serialNum (일련번호) : " + taxinvoice.serialNum + CRLF;
                 tmp += "kwon (권) : " + taxinvoice.kwon + CRLF;
