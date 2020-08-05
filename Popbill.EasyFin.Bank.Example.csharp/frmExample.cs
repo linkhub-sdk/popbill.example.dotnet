@@ -750,6 +750,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
                 tmp += "perPage (페이지당 검색개수) : " + searchInfo.perPage + CRLF;
                 tmp += "pageNum (페이지 번호) : " + searchInfo.pageNum + CRLF;
                 tmp += "pageCount (페이지 개수) : " + searchInfo.pageCount + CRLF;
+                tmp += "lastScrapDT (최종 조회일시) : " + searchInfo.lastScrapDT + CRLF;
 
                 MessageBox.Show(tmp, "수집 결과 조회");
 
