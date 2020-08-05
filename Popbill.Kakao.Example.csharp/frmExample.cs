@@ -404,7 +404,7 @@ namespace Popbill.Kakao.Example.csharp
             String templateCode = "019020000163";
 
             // 팝빌에 사전 등록된 발신번호
-            String senderNum = "07043042991";
+            String senderNum = "01043245117";
 
             String content = "[ 팝빌 ]\n";
             content += "신청하신 #{템플릿코드}에 대한 심사가 완료되어 승인 처리되었습니다.\n";
@@ -434,6 +434,10 @@ namespace Popbill.Kakao.Example.csharp
 
                 // 수신자명
                 receiverInfo.rcvnm = "수신자명";
+
+                // 파트너 지정키, 수신자 구별용 메모
+                receiverInfo.interOPRefKey = "20200805-" + i.ToString();
+
                 receivers.Add(receiverInfo);
             }
 
@@ -989,7 +993,7 @@ namespace Popbill.Kakao.Example.csharp
                 string rowStr =
                     "state (전송상태 코드) | sendDT (전송일시) | result (전송결과 코드) | resultDT (전송결과 수신일시) | contentType (카카오톡 유형) | " +
                     "receiveNum (수신번호) | receiveName (수신자명) | content (내용) | altContentType (대체문자 전송타입) | altSendDT (대체문자 전송일시) | " +
-                    "altResult (대체문자 전송결과 코드) | altResultDT (대체문자 전송결과 수신일시) | receiptNum (접수번호) | requestNum (요청번호)";
+                    "altResult (대체문자 전송결과 코드) | altResultDT (대체문자 전송결과 수신일시) | interOPRefKey (파트너 지정키) | receiptNum (접수번호) | requestNum (요청번호)";
 
                 listBox1.Items.Add(rowStr);
 
@@ -1008,6 +1012,7 @@ namespace Popbill.Kakao.Example.csharp
                     rowStr += info.msgs[i].altSendDT + " | ";
                     rowStr += info.msgs[i].altResult + " | ";
                     rowStr += info.msgs[i].altResultDT + " | ";
+                    rowStr += info.msgs[i].interOPRefKey + " | ";
                     rowStr += info.msgs[i].receiptNum + " | ";
                     rowStr += info.msgs[i].requestNum;
 
