@@ -2,7 +2,7 @@
  * 팝빌 전자세금계산서 API DotNet SDK Example
  * 
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/taxinvoice/tutorial/dotnet
- * - 업데이트 일자 : 2020-07-17
+ * - 업데이트 일자 : 2020-08-05
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
  * 
@@ -2327,10 +2327,10 @@ namespace Popbill.Taxinvoice.Example.csharp
             String DType = "W";
 
             // [필수] 시작일자, 날짜형식(yyyyMMdd)
-            String SDate = "20190901";
+            String SDate = "20200701";
 
             // [필수] 종료일자, 날짜형식(yyyyMMdd)
-            String EDate = "20190930";
+            String EDate = "20200731";
 
             // 상태코드 배열, 미기재시 전체 상태조회, 문서상태 값 3자리의 배열, 2,3번째 자리에 와일드카드 가능
             String[] State = new String[5];
@@ -2357,6 +2357,19 @@ namespace Popbill.Taxinvoice.Example.csharp
             IssueType[1] = "R";
             IssueType[2] = "T";
 
+            // 등록유형 배열, P-팝빌, H-홈택스 또는 외부ASP
+            String[] RegType = new String[2];
+            RegType[0] = "P";
+            RegType[1] = "H";
+
+            // 공급받는자 휴폐업상태 배열, 
+            String[] CloseDownState = new String[5];
+            CloseDownState[0] = "N";
+            CloseDownState[1] = "0";
+            CloseDownState[2] = "1";
+            CloseDownState[3] = "2";
+            CloseDownState[4] = "3";
+
             // 종사업장 유무, 공백-전체조회, 0-종사업장 없는 문서 조회, 1-종사업장번호 조건에 따라 조회
             String TaxRegIDYN = "";
 
@@ -2371,6 +2384,9 @@ namespace Popbill.Taxinvoice.Example.csharp
 
             // 거래처 조회, 거래처 사업자등록번호 또는 상호명 기재, 미기재시 전체조회 
             String QString = "";
+
+            // 문서번호 또는 국세청승인번호 조회
+            String MgtKey = "";
 
             // 정렬방향, A-오름차순, D-내림차순
             String Order = "D";
@@ -2387,9 +2403,8 @@ namespace Popbill.Taxinvoice.Example.csharp
             try
             {
                 TISearchResult searchResult = taxinvoiceService.Search(txtCorpNum.Text, KeyType, DType, SDate, EDate,
-                    State,
-                    Type, TaxType, IssueType, LateOnly, TaxRegIDYN, TaxRegIDType, TaxRegID, QString, Order, Page,
-                    PerPage, InterOPYN, txtUserId.Text);
+                    State, Type, TaxType, IssueType, LateOnly, TaxRegIDYN, TaxRegIDType, TaxRegID, QString, Order, Page,
+                    PerPage, InterOPYN, txtUserId.Text, RegType, CloseDownState, MgtKey);
 
                 String tmp = null;
 
