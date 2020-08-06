@@ -37,7 +37,6 @@
             this.btnGetEmailURL = new System.Windows.Forms.Button();
             this.btnGetMassPrintURL = new System.Windows.Forms.Button();
             this.btnSendFAX = new System.Windows.Forms.Button();
-            this.btnEPrintURL = new System.Windows.Forms.Button();
             this.btnSendSMS = new System.Windows.Forms.Button();
             this.btnSendEmail = new System.Windows.Forms.Button();
             this.btnCheckMgtKeyInUse = new System.Windows.Forms.Button();
@@ -97,6 +96,7 @@
             this.Label2 = new System.Windows.Forms.Label();
             this.txtCorpNum = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
+            this.btnGetPDFURL = new System.Windows.Forms.Button();
             this.GroupBox9.SuspendLayout();
             this.GroupBox11.SuspendLayout();
             this.GroupBox3.SuspendLayout();
@@ -180,7 +180,7 @@
             // 
             // btnGetEmailURL
             // 
-            this.btnGetEmailURL.Location = new System.Drawing.Point(6, 148);
+            this.btnGetEmailURL.Location = new System.Drawing.Point(6, 116);
             this.btnGetEmailURL.Name = "btnGetEmailURL";
             this.btnGetEmailURL.Size = new System.Drawing.Size(180, 26);
             this.btnGetEmailURL.TabIndex = 13;
@@ -190,7 +190,7 @@
             // 
             // btnGetMassPrintURL
             // 
-            this.btnGetMassPrintURL.Location = new System.Drawing.Point(6, 116);
+            this.btnGetMassPrintURL.Location = new System.Drawing.Point(6, 84);
             this.btnGetMassPrintURL.Name = "btnGetMassPrintURL";
             this.btnGetMassPrintURL.Size = new System.Drawing.Size(180, 26);
             this.btnGetMassPrintURL.TabIndex = 12;
@@ -207,16 +207,6 @@
             this.btnSendFAX.Text = "팩스 전송";
             this.btnSendFAX.UseVisualStyleBackColor = true;
             this.btnSendFAX.Click += new System.EventHandler(this.btnSendFAX_Click);
-            // 
-            // btnEPrintURL
-            // 
-            this.btnEPrintURL.Location = new System.Drawing.Point(6, 84);
-            this.btnEPrintURL.Name = "btnEPrintURL";
-            this.btnEPrintURL.Size = new System.Drawing.Size(180, 26);
-            this.btnEPrintURL.TabIndex = 11;
-            this.btnEPrintURL.Text = "공급받는자 인쇄 팝업 URL";
-            this.btnEPrintURL.UseVisualStyleBackColor = true;
-            this.btnEPrintURL.Click += new System.EventHandler(this.btnEPrintURL_Click);
             // 
             // btnSendSMS
             // 
@@ -645,9 +635,9 @@
             // 
             // GroupBox12
             // 
+            this.GroupBox12.Controls.Add(this.btnGetPDFURL);
             this.GroupBox12.Controls.Add(this.btnGetEmailURL);
             this.GroupBox12.Controls.Add(this.btnGetMassPrintURL);
-            this.GroupBox12.Controls.Add(this.btnEPrintURL);
             this.GroupBox12.Controls.Add(this.btnGetPrintURL);
             this.GroupBox12.Controls.Add(this.btnGetPopUpURL);
             this.GroupBox12.Location = new System.Drawing.Point(317, 246);
@@ -852,11 +842,21 @@
             this.Label1.TabIndex = 7;
             this.Label1.Text = "팝빌회원 사업자번호 : ";
             // 
+            // btnGetPDFURL
+            // 
+            this.btnGetPDFURL.Location = new System.Drawing.Point(6, 146);
+            this.btnGetPDFURL.Name = "btnGetPDFURL";
+            this.btnGetPDFURL.Size = new System.Drawing.Size(180, 25);
+            this.btnGetPDFURL.TabIndex = 14;
+            this.btnGetPDFURL.Text = "PDF 다운로드 URL";
+            this.btnGetPDFURL.UseVisualStyleBackColor = true;
+            this.btnGetPDFURL.Click += new System.EventHandler(this.btnGetPDFURL_Click);
+            // 
             // frmExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1035, 643);
+            this.ClientSize = new System.Drawing.Size(1035, 652);
             this.Controls.Add(this.GroupBox7);
             this.Controls.Add(this.txtUserId);
             this.Controls.Add(this.GroupBox1);
@@ -897,7 +897,6 @@
         internal System.Windows.Forms.Button btnGetEmailURL;
         internal System.Windows.Forms.Button btnGetMassPrintURL;
         internal System.Windows.Forms.Button btnSendFAX;
-        internal System.Windows.Forms.Button btnEPrintURL;
         internal System.Windows.Forms.Button btnSendSMS;
         internal System.Windows.Forms.Button btnSendEmail;
         internal System.Windows.Forms.Button btnCheckMgtKeyInUse;
@@ -958,6 +957,7 @@
         internal System.Windows.Forms.Button btnRevokeRegistIssue_part;
         private System.Windows.Forms.Button btnUpdateEmailConfig;
         private System.Windows.Forms.Button btnListEmailConfig;
+        private System.Windows.Forms.Button btnGetPDFURL;
     }
 }
 

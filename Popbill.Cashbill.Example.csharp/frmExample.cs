@@ -1689,5 +1689,24 @@ namespace Popbill.Cashbill.Example.csharp
             }
         }
 
+        /*
+         * 1건의 현금영수증 PDF 다운로드 URL을 반환합니다.
+         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         */
+        private void btnGetPDFURL_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string url = cashbillService.GetPDFURL(txtCorpNum.Text, txtMgtKey.Text, txtUserId.Text);
+
+                MessageBox.Show(url, "현금영수증 PDF 다운로드 URL");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "현금영수증 인쇄 팝업 URL");
+            }
+        }
+
     }
 }

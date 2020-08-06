@@ -101,7 +101,7 @@ namespace Popbill.Statement.Example.csharp
             Statement statement = new Statement();
 
             // [필수], 기재상 작성일자 날짜형식(yyyyMMdd)
-            statement.writeDate = "20191023";
+            statement.writeDate = "20200806";
 
             // [필수], {영수, 청구} 중 기재 
             statement.purposeType = "영수";
@@ -2207,6 +2207,26 @@ namespace Popbill.Statement.Example.csharp
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + ex.Message, "담당자 정보 수정");
+            }
+        }
+
+        /*
+         * 1건의 전자명세서 보기 팝업 URL을 반환합니다. (메뉴/버튼 제외)
+         */
+        private void btnGetViewURL_Click(object sender, EventArgs e)
+        {
+            int itemCode = selectedItemCode();
+
+            try
+            {
+                string url = statementService.GetViewURL(txtCorpNum.Text, itemCode, txtMgtKey.Text, txtUserID.Text);
+
+                MessageBox.Show(url, "전자명세서 보기 팝업 URL");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "전자명세서 보기 팝업 URL");
             }
         }
     }

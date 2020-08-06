@@ -3701,5 +3701,27 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
         }
 
+        /*
+         * 1건의 전자세금계산서 PDF 다운로드 URL을 반환합니다.
+         * - 보안정책으로 인해 반환된 URL의 유효시간은 30초입니다.
+         */
+        private void btnGetPDFURL_Click(object sender, EventArgs e)
+        {
+            // 발행형태
+            MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
+
+            try
+            {
+                string url = taxinvoiceService.GetPDFURL(txtCorpNum.Text, KeyType, txtMgtKey.Text, txtUserId.Text);
+
+                MessageBox.Show(url, "세금계산서 PDF 다운로드 URL");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "세금계산서 인쇄 팝업 URL");
+            }
+        }
+
     }
 }

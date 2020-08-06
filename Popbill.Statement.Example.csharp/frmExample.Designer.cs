@@ -114,6 +114,7 @@
             this.btnCancelIssueSub = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.Label23 = new System.Windows.Forms.Label();
+            this.btnGetViewURL = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -310,7 +311,7 @@
             // 
             // btnGetMassPrintURL
             // 
-            this.btnGetMassPrintURL.Location = new System.Drawing.Point(11, 123);
+            this.btnGetMassPrintURL.Location = new System.Drawing.Point(11, 166);
             this.btnGetMassPrintURL.Name = "btnGetMassPrintURL";
             this.btnGetMassPrintURL.Size = new System.Drawing.Size(183, 32);
             this.btnGetMassPrintURL.TabIndex = 27;
@@ -320,7 +321,7 @@
             // 
             // btnGetEPrintURL
             // 
-            this.btnGetEPrintURL.Location = new System.Drawing.Point(11, 88);
+            this.btnGetEPrintURL.Location = new System.Drawing.Point(11, 131);
             this.btnGetEPrintURL.Name = "btnGetEPrintURL";
             this.btnGetEPrintURL.Size = new System.Drawing.Size(183, 32);
             this.btnGetEPrintURL.TabIndex = 28;
@@ -330,7 +331,7 @@
             // 
             // btnGetPrintURL
             // 
-            this.btnGetPrintURL.Location = new System.Drawing.Point(11, 52);
+            this.btnGetPrintURL.Location = new System.Drawing.Point(11, 95);
             this.btnGetPrintURL.Name = "btnGetPrintURL";
             this.btnGetPrintURL.Size = new System.Drawing.Size(183, 32);
             this.btnGetPrintURL.TabIndex = 29;
@@ -370,7 +371,7 @@
             // 
             // btnGetMailURL
             // 
-            this.btnGetMailURL.Location = new System.Drawing.Point(11, 158);
+            this.btnGetMailURL.Location = new System.Drawing.Point(11, 201);
             this.btnGetMailURL.Name = "btnGetMailURL";
             this.btnGetMailURL.Size = new System.Drawing.Size(183, 32);
             this.btnGetMailURL.TabIndex = 33;
@@ -574,7 +575,7 @@
             this.groupBox7.Controls.Add(this.btnGetDetailInfo);
             this.groupBox7.Location = new System.Drawing.Point(31, 287);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(130, 210);
+            this.groupBox7.Size = new System.Drawing.Size(130, 242);
             this.groupBox7.TabIndex = 48;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "문서 정보";
@@ -601,7 +602,7 @@
             this.groupBox8.Controls.Add(this.btnSendFAX);
             this.groupBox8.Location = new System.Drawing.Point(173, 287);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(317, 166);
+            this.groupBox8.Size = new System.Drawing.Size(317, 242);
             this.groupBox8.TabIndex = 49;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "부가 서비스";
@@ -658,6 +659,7 @@
             // 
             // groupBox9
             // 
+            this.groupBox9.Controls.Add(this.btnGetViewURL);
             this.groupBox9.Controls.Add(this.btnGetMailURL);
             this.groupBox9.Controls.Add(this.btnGetPopUpURL);
             this.groupBox9.Controls.Add(this.btnGetPrintURL);
@@ -665,7 +667,7 @@
             this.groupBox9.Controls.Add(this.btnGetMassPrintURL);
             this.groupBox9.Location = new System.Drawing.Point(506, 284);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(208, 207);
+            this.groupBox9.Size = new System.Drawing.Size(208, 245);
             this.groupBox9.TabIndex = 50;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "인쇄 URL";
@@ -676,7 +678,7 @@
             this.groupBox10.Controls.Add(this.btnGetURL_SBOX);
             this.groupBox10.Location = new System.Drawing.Point(723, 290);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(114, 97);
+            this.groupBox10.Size = new System.Drawing.Size(114, 239);
             this.groupBox10.TabIndex = 51;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "기타 URL";
@@ -954,7 +956,7 @@
             this.groupBox12.Controls.Add(this.btnCheckMgtKeyInUse);
             this.groupBox12.Location = new System.Drawing.Point(15, 200);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(872, 527);
+            this.groupBox12.Size = new System.Drawing.Size(872, 544);
             this.groupBox12.TabIndex = 53;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "전자명세서 관련 API";
@@ -1046,6 +1048,16 @@
             this.Label23.Size = new System.Drawing.Size(131, 1);
             this.Label23.TabIndex = 47;
             this.Label23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // btnGetViewURL
+            // 
+            this.btnGetViewURL.Location = new System.Drawing.Point(11, 55);
+            this.btnGetViewURL.Name = "btnGetViewURL";
+            this.btnGetViewURL.Size = new System.Drawing.Size(183, 34);
+            this.btnGetViewURL.TabIndex = 34;
+            this.btnGetViewURL.Text = "문서 보기 팝업 URL (메뉴/버튼 제외)";
+            this.btnGetViewURL.UseVisualStyleBackColor = true;
+            this.btnGetViewURL.Click += new System.EventHandler(this.btnGetViewURL_Click);
             // 
             // frmExample
             // 
@@ -1176,6 +1188,7 @@
         private System.Windows.Forms.Button btnGetPartnerURL_CHRG;
         private System.Windows.Forms.Button btnUpdateEmailConfig;
         private System.Windows.Forms.Button btnListEmailConfig;
+        private System.Windows.Forms.Button btnGetViewURL;
     }
 }
 

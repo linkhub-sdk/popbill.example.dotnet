@@ -159,6 +159,7 @@
             this.txtCorpNum = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.fileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.btnGetPDFURL = new System.Windows.Forms.Button();
             this.GroupBox8.SuspendLayout();
             this.GroupBox9.SuspendLayout();
             this.GroupBox10.SuspendLayout();
@@ -188,7 +189,7 @@
             // 
             this.btnGetInfos.Location = new System.Drawing.Point(15, 57);
             this.btnGetInfos.Name = "btnGetInfos";
-            this.btnGetInfos.Size = new System.Drawing.Size(185, 32);
+            this.btnGetInfos.Size = new System.Drawing.Size(131, 32);
             this.btnGetInfos.TabIndex = 9;
             this.btnGetInfos.Text = "문서정보(대량)";
             this.btnGetInfos.UseVisualStyleBackColor = true;
@@ -198,7 +199,7 @@
             // 
             this.btnGetLogs.Location = new System.Drawing.Point(15, 133);
             this.btnGetLogs.Name = "btnGetLogs";
-            this.btnGetLogs.Size = new System.Drawing.Size(185, 32);
+            this.btnGetLogs.Size = new System.Drawing.Size(131, 32);
             this.btnGetLogs.TabIndex = 8;
             this.btnGetLogs.Text = "문서이력";
             this.btnGetLogs.UseVisualStyleBackColor = true;
@@ -224,7 +225,7 @@
             // 
             this.btnDeleteFile.Location = new System.Drawing.Point(15, 133);
             this.btnDeleteFile.Name = "btnDeleteFile";
-            this.btnDeleteFile.Size = new System.Drawing.Size(185, 32);
+            this.btnDeleteFile.Size = new System.Drawing.Size(119, 32);
             this.btnDeleteFile.TabIndex = 10;
             this.btnDeleteFile.Text = "첨부파일 삭제";
             this.btnDeleteFile.UseVisualStyleBackColor = true;
@@ -234,7 +235,7 @@
             // 
             this.btnGetInfo.Location = new System.Drawing.Point(15, 20);
             this.btnGetInfo.Name = "btnGetInfo";
-            this.btnGetInfo.Size = new System.Drawing.Size(185, 32);
+            this.btnGetInfo.Size = new System.Drawing.Size(131, 32);
             this.btnGetInfo.TabIndex = 7;
             this.btnGetInfo.Text = "문서정보";
             this.btnGetInfo.UseVisualStyleBackColor = true;
@@ -368,9 +369,9 @@
             this.GroupBox9.Controls.Add(this.btnGetLogs);
             this.GroupBox9.Controls.Add(this.btnGetInfo);
             this.GroupBox9.Controls.Add(this.btnGetDetailInfo);
-            this.GroupBox9.Location = new System.Drawing.Point(244, 369);
+            this.GroupBox9.Location = new System.Drawing.Point(181, 369);
             this.GroupBox9.Name = "GroupBox9";
-            this.GroupBox9.Size = new System.Drawing.Size(211, 212);
+            this.GroupBox9.Size = new System.Drawing.Size(158, 212);
             this.GroupBox9.TabIndex = 8;
             this.GroupBox9.TabStop = false;
             this.GroupBox9.Text = "문서 정보";
@@ -379,7 +380,7 @@
             // 
             this.btnSearch.Location = new System.Drawing.Point(15, 171);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(185, 32);
+            this.btnSearch.Size = new System.Drawing.Size(131, 32);
             this.btnSearch.TabIndex = 10;
             this.btnSearch.Text = "문서목록 조회";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -389,7 +390,7 @@
             // 
             this.btnGetDetailInfo.Location = new System.Drawing.Point(15, 95);
             this.btnGetDetailInfo.Name = "btnGetDetailInfo";
-            this.btnGetDetailInfo.Size = new System.Drawing.Size(185, 32);
+            this.btnGetDetailInfo.Size = new System.Drawing.Size(131, 32);
             this.btnGetDetailInfo.TabIndex = 6;
             this.btnGetDetailInfo.Text = "문서상세정보";
             this.btnGetDetailInfo.UseVisualStyleBackColor = true;
@@ -397,9 +398,9 @@
             // 
             // btnGetEmailURL
             // 
-            this.btnGetEmailURL.Location = new System.Drawing.Point(15, 206);
+            this.btnGetEmailURL.Location = new System.Drawing.Point(15, 95);
             this.btnGetEmailURL.Name = "btnGetEmailURL";
-            this.btnGetEmailURL.Size = new System.Drawing.Size(185, 32);
+            this.btnGetEmailURL.Size = new System.Drawing.Size(174, 32);
             this.btnGetEmailURL.TabIndex = 13;
             this.btnGetEmailURL.Text = "이메일의 보기 버튼 URL";
             this.btnGetEmailURL.UseVisualStyleBackColor = true;
@@ -409,7 +410,7 @@
             // 
             this.gtnGetFiles.Location = new System.Drawing.Point(15, 57);
             this.gtnGetFiles.Name = "gtnGetFiles";
-            this.gtnGetFiles.Size = new System.Drawing.Size(185, 32);
+            this.gtnGetFiles.Size = new System.Drawing.Size(119, 32);
             this.gtnGetFiles.TabIndex = 8;
             this.gtnGetFiles.Text = "첨부파일 목록";
             this.gtnGetFiles.UseVisualStyleBackColor = true;
@@ -417,9 +418,9 @@
             // 
             // btnGetMassPrintURL
             // 
-            this.btnGetMassPrintURL.Location = new System.Drawing.Point(15, 168);
+            this.btnGetMassPrintURL.Location = new System.Drawing.Point(195, 95);
             this.btnGetMassPrintURL.Name = "btnGetMassPrintURL";
-            this.btnGetMassPrintURL.Size = new System.Drawing.Size(185, 32);
+            this.btnGetMassPrintURL.Size = new System.Drawing.Size(174, 32);
             this.btnGetMassPrintURL.TabIndex = 12;
             this.btnGetMassPrintURL.Text = "대량인쇄 팝업 URL";
             this.btnGetMassPrintURL.UseVisualStyleBackColor = true;
@@ -429,7 +430,7 @@
             // 
             this.btnSendFAX.Location = new System.Drawing.Point(15, 95);
             this.btnSendFAX.Name = "btnSendFAX";
-            this.btnSendFAX.Size = new System.Drawing.Size(185, 32);
+            this.btnSendFAX.Size = new System.Drawing.Size(134, 32);
             this.btnSendFAX.TabIndex = 10;
             this.btnSendFAX.Text = "팩스 전송";
             this.btnSendFAX.UseVisualStyleBackColor = true;
@@ -437,9 +438,9 @@
             // 
             // btnEPrintURL
             // 
-            this.btnEPrintURL.Location = new System.Drawing.Point(15, 130);
+            this.btnEPrintURL.Location = new System.Drawing.Point(195, 58);
             this.btnEPrintURL.Name = "btnEPrintURL";
-            this.btnEPrintURL.Size = new System.Drawing.Size(185, 32);
+            this.btnEPrintURL.Size = new System.Drawing.Size(174, 32);
             this.btnEPrintURL.TabIndex = 11;
             this.btnEPrintURL.Text = "공급받는자 인쇄 팝업 URL";
             this.btnEPrintURL.UseVisualStyleBackColor = true;
@@ -449,7 +450,7 @@
             // 
             this.btnAttachFile.Location = new System.Drawing.Point(15, 20);
             this.btnAttachFile.Name = "btnAttachFile";
-            this.btnAttachFile.Size = new System.Drawing.Size(185, 32);
+            this.btnAttachFile.Size = new System.Drawing.Size(119, 32);
             this.btnAttachFile.TabIndex = 9;
             this.btnAttachFile.Text = "파일첨부";
             this.btnAttachFile.UseVisualStyleBackColor = true;
@@ -459,7 +460,7 @@
             // 
             this.btnSendSMS.Location = new System.Drawing.Point(15, 57);
             this.btnSendSMS.Name = "btnSendSMS";
-            this.btnSendSMS.Size = new System.Drawing.Size(185, 32);
+            this.btnSendSMS.Size = new System.Drawing.Size(134, 32);
             this.btnSendSMS.TabIndex = 9;
             this.btnSendSMS.Text = "문자 전송";
             this.btnSendSMS.UseVisualStyleBackColor = true;
@@ -474,7 +475,7 @@
             this.GroupBox10.Controls.Add(this.gtnGetFiles);
             this.GroupBox10.Location = new System.Drawing.Point(23, 369);
             this.GroupBox10.Name = "GroupBox10";
-            this.GroupBox10.Size = new System.Drawing.Size(211, 212);
+            this.GroupBox10.Size = new System.Drawing.Size(152, 212);
             this.GroupBox10.TabIndex = 9;
             this.GroupBox10.TabStop = false;
             this.GroupBox10.Text = "첨부파일";
@@ -483,7 +484,7 @@
             // 
             this.btnSendEmail.Location = new System.Drawing.Point(15, 20);
             this.btnSendEmail.Name = "btnSendEmail";
-            this.btnSendEmail.Size = new System.Drawing.Size(185, 32);
+            this.btnSendEmail.Size = new System.Drawing.Size(134, 32);
             this.btnSendEmail.TabIndex = 8;
             this.btnSendEmail.Text = "이메일 전송";
             this.btnSendEmail.UseVisualStyleBackColor = true;
@@ -548,18 +549,18 @@
             this.GroupBox11.Controls.Add(this.btnSendFAX);
             this.GroupBox11.Controls.Add(this.btnSendSMS);
             this.GroupBox11.Controls.Add(this.btnSendEmail);
-            this.GroupBox11.Location = new System.Drawing.Point(465, 369);
+            this.GroupBox11.Location = new System.Drawing.Point(345, 369);
             this.GroupBox11.Name = "GroupBox11";
-            this.GroupBox11.Size = new System.Drawing.Size(405, 212);
+            this.GroupBox11.Size = new System.Drawing.Size(314, 212);
             this.GroupBox11.TabIndex = 10;
             this.GroupBox11.TabStop = false;
             this.GroupBox11.Text = "부가서비스";
             // 
             // btnUpdateEmailConfig
             // 
-            this.btnUpdateEmailConfig.Location = new System.Drawing.Point(208, 133);
+            this.btnUpdateEmailConfig.Location = new System.Drawing.Point(155, 134);
             this.btnUpdateEmailConfig.Name = "btnUpdateEmailConfig";
-            this.btnUpdateEmailConfig.Size = new System.Drawing.Size(185, 32);
+            this.btnUpdateEmailConfig.Size = new System.Drawing.Size(151, 32);
             this.btnUpdateEmailConfig.TabIndex = 1;
             this.btnUpdateEmailConfig.Text = "알림메일 전송설정 수정";
             this.btnUpdateEmailConfig.UseVisualStyleBackColor = true;
@@ -567,9 +568,9 @@
             // 
             // btnListEmailConfig
             // 
-            this.btnListEmailConfig.Location = new System.Drawing.Point(208, 95);
+            this.btnListEmailConfig.Location = new System.Drawing.Point(155, 96);
             this.btnListEmailConfig.Name = "btnListEmailConfig";
-            this.btnListEmailConfig.Size = new System.Drawing.Size(185, 32);
+            this.btnListEmailConfig.Size = new System.Drawing.Size(151, 32);
             this.btnListEmailConfig.TabIndex = 0;
             this.btnListEmailConfig.Text = "알림메일 전송목록 조회";
             this.btnListEmailConfig.UseVisualStyleBackColor = true;
@@ -579,7 +580,7 @@
             // 
             this.btnAssignMgtKey.Location = new System.Drawing.Point(15, 133);
             this.btnAssignMgtKey.Name = "btnAssignMgtKey";
-            this.btnAssignMgtKey.Size = new System.Drawing.Size(185, 32);
+            this.btnAssignMgtKey.Size = new System.Drawing.Size(134, 32);
             this.btnAssignMgtKey.TabIndex = 13;
             this.btnAssignMgtKey.Text = "관리번호 할당";
             this.btnAssignMgtKey.UseVisualStyleBackColor = true;
@@ -587,9 +588,9 @@
             // 
             // btnDetachStmt
             // 
-            this.btnDetachStmt.Location = new System.Drawing.Point(209, 57);
+            this.btnDetachStmt.Location = new System.Drawing.Point(156, 58);
             this.btnDetachStmt.Name = "btnDetachStmt";
-            this.btnDetachStmt.Size = new System.Drawing.Size(185, 32);
+            this.btnDetachStmt.Size = new System.Drawing.Size(151, 32);
             this.btnDetachStmt.TabIndex = 12;
             this.btnDetachStmt.Text = "명세서 첨부해제";
             this.btnDetachStmt.UseVisualStyleBackColor = true;
@@ -597,9 +598,9 @@
             // 
             // btnAttachStmt
             // 
-            this.btnAttachStmt.Location = new System.Drawing.Point(209, 19);
+            this.btnAttachStmt.Location = new System.Drawing.Point(156, 20);
             this.btnAttachStmt.Name = "btnAttachStmt";
-            this.btnAttachStmt.Size = new System.Drawing.Size(185, 32);
+            this.btnAttachStmt.Size = new System.Drawing.Size(151, 32);
             this.btnAttachStmt.TabIndex = 11;
             this.btnAttachStmt.Text = "명세서 첨부";
             this.btnAttachStmt.UseVisualStyleBackColor = true;
@@ -702,7 +703,7 @@
             // 
             this.btnGetPopUpURL.Location = new System.Drawing.Point(15, 20);
             this.btnGetPopUpURL.Name = "btnGetPopUpURL";
-            this.btnGetPopUpURL.Size = new System.Drawing.Size(185, 32);
+            this.btnGetPopUpURL.Size = new System.Drawing.Size(174, 32);
             this.btnGetPopUpURL.TabIndex = 9;
             this.btnGetPopUpURL.Text = "문서 팝업 URL";
             this.btnGetPopUpURL.UseVisualStyleBackColor = true;
@@ -826,15 +827,16 @@
             // 
             // GroupBox12
             // 
+            this.GroupBox12.Controls.Add(this.btnGetPDFURL);
             this.GroupBox12.Controls.Add(this.btnGetViewURL);
             this.GroupBox12.Controls.Add(this.btnGetEmailURL);
             this.GroupBox12.Controls.Add(this.btnGetMassPrintURL);
             this.GroupBox12.Controls.Add(this.btnEPrintURL);
             this.GroupBox12.Controls.Add(this.btnGetPrintURL);
             this.GroupBox12.Controls.Add(this.btnGetPopUpURL);
-            this.GroupBox12.Location = new System.Drawing.Point(880, 369);
+            this.GroupBox12.Location = new System.Drawing.Point(675, 369);
             this.GroupBox12.Name = "GroupBox12";
-            this.GroupBox12.Size = new System.Drawing.Size(211, 244);
+            this.GroupBox12.Size = new System.Drawing.Size(384, 212);
             this.GroupBox12.TabIndex = 11;
             this.GroupBox12.TabStop = false;
             this.GroupBox12.Text = "문서관련 URL 기능";
@@ -843,7 +845,7 @@
             // 
             this.btnGetViewURL.Location = new System.Drawing.Point(15, 57);
             this.btnGetViewURL.Name = "btnGetViewURL";
-            this.btnGetViewURL.Size = new System.Drawing.Size(185, 32);
+            this.btnGetViewURL.Size = new System.Drawing.Size(174, 32);
             this.btnGetViewURL.TabIndex = 14;
             this.btnGetViewURL.Text = "문서 팝업 URL (메뉴x)";
             this.btnGetViewURL.UseVisualStyleBackColor = true;
@@ -851,9 +853,9 @@
             // 
             // btnGetPrintURL
             // 
-            this.btnGetPrintURL.Location = new System.Drawing.Point(15, 92);
+            this.btnGetPrintURL.Location = new System.Drawing.Point(195, 20);
             this.btnGetPrintURL.Name = "btnGetPrintURL";
-            this.btnGetPrintURL.Size = new System.Drawing.Size(185, 32);
+            this.btnGetPrintURL.Size = new System.Drawing.Size(174, 32);
             this.btnGetPrintURL.TabIndex = 10;
             this.btnGetPrintURL.Text = "인쇄 팝업 URL";
             this.btnGetPrintURL.UseVisualStyleBackColor = true;
@@ -1617,6 +1619,16 @@
             // 
             this.fileDialog.FileName = "OpenFileDialog1";
             // 
+            // btnGetPDFURL
+            // 
+            this.btnGetPDFURL.Location = new System.Drawing.Point(15, 134);
+            this.btnGetPDFURL.Name = "btnGetPDFURL";
+            this.btnGetPDFURL.Size = new System.Drawing.Size(174, 34);
+            this.btnGetPDFURL.TabIndex = 15;
+            this.btnGetPDFURL.Text = "PDF 다운로드 URL";
+            this.btnGetPDFURL.UseVisualStyleBackColor = true;
+            this.btnGetPDFURL.Click += new System.EventHandler(this.btnGetPDFURL_Click);
+            // 
             // frmExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -1796,6 +1808,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         internal System.Windows.Forms.Button btnGetViewURL;
+        private System.Windows.Forms.Button btnGetPDFURL;
     }
 }
 
