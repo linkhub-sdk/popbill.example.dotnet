@@ -1708,5 +1708,31 @@ namespace Popbill.Cashbill.Example.csharp
             }
         }
 
+        /*
+         * 팝빌사이트에서 작성된 현금영수증에 파트너 문서번호를 할당합니다.
+         */
+        private void btnAssignMgtKey_Click(object sender, EventArgs e)
+        {
+            // 현금영수증 아이템키, 목록조회(Search) API의 반환항목중 ItemKey 참조
+            String itemKey = "020080610080500001";
+
+            // 할당할 문서번호, 숫자, 영문, '-', '_' 조합으로 
+            // 1~24자리까지 사업자번호별 중복없는 고유번호 할당
+            String mgtKey = "20200806-02";
+
+            try
+            {
+                Response response = cashbillService.AssignMgtKey(txtCorpNum.Text, itemKey, mgtKey);
+
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "현금영수증 관리번호 할당");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "현금영수증 관리번호 할당");
+            }
+        }
+
     }
 }

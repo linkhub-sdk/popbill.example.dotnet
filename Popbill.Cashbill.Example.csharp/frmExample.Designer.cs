@@ -97,6 +97,7 @@
             this.txtCorpNum = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.btnGetPDFURL = new System.Windows.Forms.Button();
+            this.btnAssignMgtKey = new System.Windows.Forms.Button();
             this.GroupBox9.SuspendLayout();
             this.GroupBox11.SuspendLayout();
             this.GroupBox3.SuspendLayout();
@@ -256,17 +257,18 @@
             // 
             // GroupBox11
             // 
+            this.GroupBox11.Controls.Add(this.btnAssignMgtKey);
             this.GroupBox11.Controls.Add(this.btnUpdateEmailConfig);
             this.GroupBox11.Controls.Add(this.btnListEmailConfig);
             this.GroupBox11.Controls.Add(this.btnSendFAX);
             this.GroupBox11.Controls.Add(this.btnSendSMS);
             this.GroupBox11.Controls.Add(this.btnSendEmail);
-            this.GroupBox11.Location = new System.Drawing.Point(151, 246);
+            this.GroupBox11.Location = new System.Drawing.Point(156, 246);
             this.GroupBox11.Name = "GroupBox11";
-            this.GroupBox11.Size = new System.Drawing.Size(160, 183);
+            this.GroupBox11.Size = new System.Drawing.Size(296, 183);
             this.GroupBox11.TabIndex = 10;
             this.GroupBox11.TabStop = false;
-            this.GroupBox11.Text = "부가서비스";
+            this.GroupBox11.Text = "부가 기능";
             // 
             // btnUpdateEmailConfig
             // 
@@ -405,7 +407,7 @@
             this.GroupBox7.Controls.Add(this.Label3);
             this.GroupBox7.Location = new System.Drawing.Point(13, 186);
             this.GroupBox7.Name = "GroupBox7";
-            this.GroupBox7.Size = new System.Drawing.Size(826, 448);
+            this.GroupBox7.Size = new System.Drawing.Size(993, 448);
             this.GroupBox7.TabIndex = 12;
             this.GroupBox7.TabStop = false;
             this.GroupBox7.Text = "현금영수증 관련 API";
@@ -596,7 +598,7 @@
             this.GroupBox13.Controls.Add(this.btnGetURL_WRITE);
             this.GroupBox13.Controls.Add(this.btnGetURL_SBOX);
             this.GroupBox13.Controls.Add(this.btnGetURL_TBOX);
-            this.GroupBox13.Location = new System.Drawing.Point(515, 244);
+            this.GroupBox13.Location = new System.Drawing.Point(665, 247);
             this.GroupBox13.Name = "GroupBox13";
             this.GroupBox13.Size = new System.Drawing.Size(115, 123);
             this.GroupBox13.TabIndex = 12;
@@ -640,7 +642,7 @@
             this.GroupBox12.Controls.Add(this.btnGetMassPrintURL);
             this.GroupBox12.Controls.Add(this.btnGetPrintURL);
             this.GroupBox12.Controls.Add(this.btnGetPopUpURL);
-            this.GroupBox12.Location = new System.Drawing.Point(317, 246);
+            this.GroupBox12.Location = new System.Drawing.Point(467, 247);
             this.GroupBox12.Name = "GroupBox12";
             this.GroupBox12.Size = new System.Drawing.Size(192, 182);
             this.GroupBox12.TabIndex = 11;
@@ -852,6 +854,16 @@
             this.btnGetPDFURL.UseVisualStyleBackColor = true;
             this.btnGetPDFURL.Click += new System.EventHandler(this.btnGetPDFURL_Click);
             // 
+            // btnAssignMgtKey
+            // 
+            this.btnAssignMgtKey.Location = new System.Drawing.Point(155, 20);
+            this.btnAssignMgtKey.Name = "btnAssignMgtKey";
+            this.btnAssignMgtKey.Size = new System.Drawing.Size(133, 27);
+            this.btnAssignMgtKey.TabIndex = 11;
+            this.btnAssignMgtKey.Text = "문서번호 할당";
+            this.btnAssignMgtKey.UseVisualStyleBackColor = true;
+            this.btnAssignMgtKey.Click += new System.EventHandler(this.btnAssignMgtKey_Click);
+            // 
             // frmExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -958,6 +970,7 @@
         private System.Windows.Forms.Button btnUpdateEmailConfig;
         private System.Windows.Forms.Button btnListEmailConfig;
         private System.Windows.Forms.Button btnGetPDFURL;
+        private System.Windows.Forms.Button btnAssignMgtKey;
     }
 }
 

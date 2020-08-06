@@ -582,7 +582,7 @@
             this.btnAssignMgtKey.Name = "btnAssignMgtKey";
             this.btnAssignMgtKey.Size = new System.Drawing.Size(134, 32);
             this.btnAssignMgtKey.TabIndex = 13;
-            this.btnAssignMgtKey.Text = "관리번호 할당";
+            this.btnAssignMgtKey.Text = "문서번호 할당";
             this.btnAssignMgtKey.UseVisualStyleBackColor = true;
             this.btnAssignMgtKey.Click += new System.EventHandler(this.btnAssignMgtKey_Click);
             // 
