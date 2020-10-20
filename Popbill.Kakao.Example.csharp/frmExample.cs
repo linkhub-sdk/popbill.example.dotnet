@@ -618,7 +618,7 @@ namespace Popbill.Kakao.Example.csharp
             String plusFriendID = "@팝빌";
 
             // 팝빌에 사전 등록된 발신번호
-            String senderNum = "01068444508";
+            String senderNum = "07043042939";
 
             // 대체문자 유형, 공백-미전송, C-알림톡 내용, A-대체문자 내용
             String altSendType = "C";
@@ -887,7 +887,7 @@ namespace Popbill.Kakao.Example.csharp
             String plusFriendID = "@팝빌";
 
             // 팝빌에 사전 등록된 발신번호
-            String senderNum = "01068444508";
+            String senderNum = "07043042939";
 
             // 대체문자 유형, 공백-미전송, C-알림톡 내용, A-대체문자 내용
             String altSendType = "C";
@@ -970,8 +970,9 @@ namespace Popbill.Kakao.Example.csharp
 
             // 버튼정보를 전송하지 않는 경우, null처리
             // 개별 버튼정보 전송하는 경우, null처리
-            List<KakaoButton> buttons = null;
-            /*
+            // List<KakaoButton> buttons = null;
+            
+            
             // 동일 버튼정보, 수신자별 동일 버튼정보 전송하는 경우
             List<KakaoButton> buttons = new List<KakaoButton>();
             // 생성 가능 개수 최대 5개
@@ -985,7 +986,7 @@ namespace Popbill.Kakao.Example.csharp
             // 버튼링크2 [앱링크] IOS / [웹링크] PC URL
             btnInfo.u2 = "http://test.popbill.com";
             buttons.Add(btnInfo);
-            */
+            
             // 첨부된 이미지의 링크 URL
             String imageURL = "http://www.popbill.com";
 
