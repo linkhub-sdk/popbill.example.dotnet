@@ -2610,7 +2610,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             try
             {
                 string url = taxinvoiceService.GetPrintURL(txtCorpNum.Text, KeyType, txtMgtKey.Text, txtUserId.Text);
-
+                
                 MessageBox.Show(url, "세금계산서 인쇄 팝업 URL");
             }
             catch (PopbillException ex)
@@ -2620,6 +2620,29 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
         }
 
+        /*
+        * 1건의 전자세금계산서 구버전 양식 인쇄팝업 URL을 반환합니다.
+        * - 보안정책으로 인해 반환된 URL의 유효시간은 30초입니다.
+        * - https://docs.popbill.com/taxinvoice/dotnet/api#GetOldPrintURL
+        */
+        private void btnGetOldPrintURL_Click(object sender, EventArgs e)
+        {
+            // 발행형태
+            MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
+
+            try
+            {
+                string url = taxinvoiceService.GetOldPrintURL(txtCorpNum.Text, KeyType, txtMgtKey.Text, txtUserId.Text);
+
+                MessageBox.Show(url, "세금계산서 (구)인쇄 팝업 URL");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "세금계산서 인쇄 팝업 URL");
+            }
+
+        }
         /*
          * 세금계산서 인쇄(공급받는자용) URL을 반환합니다.
          * - URL 보안정책에 따라 반환된 URL은 30초의 유효시간을 갖습니다.

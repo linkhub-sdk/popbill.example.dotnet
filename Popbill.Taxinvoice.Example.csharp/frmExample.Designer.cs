@@ -88,6 +88,7 @@
             this.btnGetURL_SBOX = new System.Windows.Forms.Button();
             this.btnGetURL_TBOX = new System.Windows.Forms.Button();
             this.GroupBox12 = new System.Windows.Forms.GroupBox();
+            this.btnGetPDFURL = new System.Windows.Forms.Button();
             this.btnGetViewURL = new System.Windows.Forms.Button();
             this.btnGetPrintURL = new System.Windows.Forms.Button();
             this.groupBox20 = new System.Windows.Forms.GroupBox();
@@ -159,7 +160,7 @@
             this.txtCorpNum = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.fileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.btnGetPDFURL = new System.Windows.Forms.Button();
+            this.btnGetOldPrintURL = new System.Windows.Forms.Button();
             this.GroupBox8.SuspendLayout();
             this.GroupBox9.SuspendLayout();
             this.GroupBox10.SuspendLayout();
@@ -418,7 +419,7 @@
             // 
             // btnGetMassPrintURL
             // 
-            this.btnGetMassPrintURL.Location = new System.Drawing.Point(195, 95);
+            this.btnGetMassPrintURL.Location = new System.Drawing.Point(195, 135);
             this.btnGetMassPrintURL.Name = "btnGetMassPrintURL";
             this.btnGetMassPrintURL.Size = new System.Drawing.Size(174, 32);
             this.btnGetMassPrintURL.TabIndex = 12;
@@ -438,7 +439,7 @@
             // 
             // btnEPrintURL
             // 
-            this.btnEPrintURL.Location = new System.Drawing.Point(195, 58);
+            this.btnEPrintURL.Location = new System.Drawing.Point(195, 96);
             this.btnEPrintURL.Name = "btnEPrintURL";
             this.btnEPrintURL.Size = new System.Drawing.Size(174, 32);
             this.btnEPrintURL.TabIndex = 11;
@@ -827,6 +828,7 @@
             // 
             // GroupBox12
             // 
+            this.GroupBox12.Controls.Add(this.btnGetOldPrintURL);
             this.GroupBox12.Controls.Add(this.btnGetPDFURL);
             this.GroupBox12.Controls.Add(this.btnGetViewURL);
             this.GroupBox12.Controls.Add(this.btnGetEmailURL);
@@ -840,6 +842,16 @@
             this.GroupBox12.TabIndex = 11;
             this.GroupBox12.TabStop = false;
             this.GroupBox12.Text = "문서관련 URL 기능";
+            // 
+            // btnGetPDFURL
+            // 
+            this.btnGetPDFURL.Location = new System.Drawing.Point(15, 134);
+            this.btnGetPDFURL.Name = "btnGetPDFURL";
+            this.btnGetPDFURL.Size = new System.Drawing.Size(174, 34);
+            this.btnGetPDFURL.TabIndex = 15;
+            this.btnGetPDFURL.Text = "PDF 다운로드 URL";
+            this.btnGetPDFURL.UseVisualStyleBackColor = true;
+            this.btnGetPDFURL.Click += new System.EventHandler(this.btnGetPDFURL_Click);
             // 
             // btnGetViewURL
             // 
@@ -1619,15 +1631,15 @@
             // 
             this.fileDialog.FileName = "OpenFileDialog1";
             // 
-            // btnGetPDFURL
+            // btnGetOldPrintURL
             // 
-            this.btnGetPDFURL.Location = new System.Drawing.Point(15, 134);
-            this.btnGetPDFURL.Name = "btnGetPDFURL";
-            this.btnGetPDFURL.Size = new System.Drawing.Size(174, 34);
-            this.btnGetPDFURL.TabIndex = 15;
-            this.btnGetPDFURL.Text = "PDF 다운로드 URL";
-            this.btnGetPDFURL.UseVisualStyleBackColor = true;
-            this.btnGetPDFURL.Click += new System.EventHandler(this.btnGetPDFURL_Click);
+            this.btnGetOldPrintURL.Location = new System.Drawing.Point(195, 58);
+            this.btnGetOldPrintURL.Name = "btnGetOldPrintURL";
+            this.btnGetOldPrintURL.Size = new System.Drawing.Size(174, 32);
+            this.btnGetOldPrintURL.TabIndex = 16;
+            this.btnGetOldPrintURL.Text = "(구)인쇄 팝업 URL";
+            this.btnGetOldPrintURL.UseVisualStyleBackColor = true;
+            this.btnGetOldPrintURL.Click += new System.EventHandler(this.btnGetOldPrintURL_Click);
             // 
             // frmExample
             // 
@@ -1809,6 +1821,7 @@
         private System.Windows.Forms.Panel panel4;
         internal System.Windows.Forms.Button btnGetViewURL;
         private System.Windows.Forms.Button btnGetPDFURL;
+        internal System.Windows.Forms.Button btnGetOldPrintURL;
     }
 }
 
