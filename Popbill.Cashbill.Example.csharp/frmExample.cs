@@ -17,6 +17,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Popbill.Cashbill;
+using System.IO;
 
 namespace Popbill.Cashbill.Example.csharp
 {
@@ -1695,6 +1696,7 @@ namespace Popbill.Cashbill.Example.csharp
         /*
          * 1건의 현금영수증 PDF 다운로드 URL을 반환합니다.
          * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#GetPDFURL
          */
         private void btnGetPDFURL_Click(object sender, EventArgs e)
         {
@@ -1712,7 +1714,36 @@ namespace Popbill.Cashbill.Example.csharp
         }
 
         /*
+         * 1건의 현금영수증을 PDF 파일로 저장하기 위한 Byte Array를 반환합니다..
+         * - https://docs.popbill.com/cashbill/dotnet/api#GetPDF
+         */
+        private void btnGetPDF_Click(object sender, EventArgs e)
+        {
+            String path = @"C:\Users\wjkim\Desktop\Cashbill_Test1.pdf";
+            try
+            {
+                byte[] btPDF = cashbillService.GetPDF(txtCorpNum.Text, txtMgtKey.Text, txtUserId.Text);
+
+                using (FileStream fileStream = new FileStream(path, FileMode.Create))
+                {
+                    fileStream.Write(btPDF, 0, btPDF.Length);
+
+                    fileStream.Close();
+                }
+
+                MessageBox.Show("응답 코드(code) : 1" + "\r\n" +
+                                "다운로드 파일 경로 : " + path);
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "현금영수증 PDF 다운로드");
+            }
+        }
+
+        /*
          * 팝빌사이트에서 작성된 현금영수증에 파트너 문서번호를 할당합니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#AssignMgtKey
          */
         private void btnAssignMgtKey_Click(object sender, EventArgs e)
         {

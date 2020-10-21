@@ -88,6 +88,8 @@
             this.btnGetURL_SBOX = new System.Windows.Forms.Button();
             this.btnGetURL_TBOX = new System.Windows.Forms.Button();
             this.GroupBox12 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnGetOldPrintURL = new System.Windows.Forms.Button();
             this.btnGetPDFURL = new System.Windows.Forms.Button();
             this.btnGetViewURL = new System.Windows.Forms.Button();
             this.btnGetPrintURL = new System.Windows.Forms.Button();
@@ -160,7 +162,6 @@
             this.txtCorpNum = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.fileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.btnGetOldPrintURL = new System.Windows.Forms.Button();
             this.GroupBox8.SuspendLayout();
             this.GroupBox9.SuspendLayout();
             this.GroupBox10.SuspendLayout();
@@ -419,7 +420,7 @@
             // 
             // btnGetMassPrintURL
             // 
-            this.btnGetMassPrintURL.Location = new System.Drawing.Point(195, 135);
+            this.btnGetMassPrintURL.Location = new System.Drawing.Point(195, 134);
             this.btnGetMassPrintURL.Name = "btnGetMassPrintURL";
             this.btnGetMassPrintURL.Size = new System.Drawing.Size(174, 32);
             this.btnGetMassPrintURL.TabIndex = 12;
@@ -828,6 +829,7 @@
             // 
             // GroupBox12
             // 
+            this.GroupBox12.Controls.Add(this.button1);
             this.GroupBox12.Controls.Add(this.btnGetOldPrintURL);
             this.GroupBox12.Controls.Add(this.btnGetPDFURL);
             this.GroupBox12.Controls.Add(this.btnGetViewURL);
@@ -843,9 +845,29 @@
             this.GroupBox12.TabStop = false;
             this.GroupBox12.Text = "문서관련 URL 기능";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(15, 169);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(174, 34);
+            this.button1.TabIndex = 17;
+            this.button1.Text = "PDF 다운로드";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.btnGetPDF_Click);
+            // 
+            // btnGetOldPrintURL
+            // 
+            this.btnGetOldPrintURL.Location = new System.Drawing.Point(195, 58);
+            this.btnGetOldPrintURL.Name = "btnGetOldPrintURL";
+            this.btnGetOldPrintURL.Size = new System.Drawing.Size(174, 32);
+            this.btnGetOldPrintURL.TabIndex = 16;
+            this.btnGetOldPrintURL.Text = "(구)인쇄 팝업 URL";
+            this.btnGetOldPrintURL.UseVisualStyleBackColor = true;
+            this.btnGetOldPrintURL.Click += new System.EventHandler(this.btnGetOldPrintURL_Click);
+            // 
             // btnGetPDFURL
             // 
-            this.btnGetPDFURL.Location = new System.Drawing.Point(15, 134);
+            this.btnGetPDFURL.Location = new System.Drawing.Point(15, 132);
             this.btnGetPDFURL.Name = "btnGetPDFURL";
             this.btnGetPDFURL.Size = new System.Drawing.Size(174, 34);
             this.btnGetPDFURL.TabIndex = 15;
@@ -1631,16 +1653,6 @@
             // 
             this.fileDialog.FileName = "OpenFileDialog1";
             // 
-            // btnGetOldPrintURL
-            // 
-            this.btnGetOldPrintURL.Location = new System.Drawing.Point(195, 58);
-            this.btnGetOldPrintURL.Name = "btnGetOldPrintURL";
-            this.btnGetOldPrintURL.Size = new System.Drawing.Size(174, 32);
-            this.btnGetOldPrintURL.TabIndex = 16;
-            this.btnGetOldPrintURL.Text = "(구)인쇄 팝업 URL";
-            this.btnGetOldPrintURL.UseVisualStyleBackColor = true;
-            this.btnGetOldPrintURL.Click += new System.EventHandler(this.btnGetOldPrintURL_Click);
-            // 
             // frmExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -1822,6 +1834,7 @@
         internal System.Windows.Forms.Button btnGetViewURL;
         private System.Windows.Forms.Button btnGetPDFURL;
         internal System.Windows.Forms.Button btnGetOldPrintURL;
+        private System.Windows.Forms.Button button1;
     }
 }
 

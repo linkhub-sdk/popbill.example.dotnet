@@ -43,6 +43,7 @@
             this.txtMgtKey = new System.Windows.Forms.TextBox();
             this.Label3 = new System.Windows.Forms.Label();
             this.GroupBox11 = new System.Windows.Forms.GroupBox();
+            this.btnAssignMgtKey = new System.Windows.Forms.Button();
             this.btnUpdateEmailConfig = new System.Windows.Forms.Button();
             this.btnListEmailConfig = new System.Windows.Forms.Button();
             this.btnUnitCost = new System.Windows.Forms.Button();
@@ -77,6 +78,7 @@
             this.btnGetURL_SBOX = new System.Windows.Forms.Button();
             this.btnGetURL_TBOX = new System.Windows.Forms.Button();
             this.GroupBox12 = new System.Windows.Forms.GroupBox();
+            this.btnGetPDFURL = new System.Windows.Forms.Button();
             this.btnGetPrintURL = new System.Windows.Forms.Button();
             this.txtUserId = new System.Windows.Forms.TextBox();
             this.btnGetAccessURL = new System.Windows.Forms.Button();
@@ -96,8 +98,7 @@
             this.Label2 = new System.Windows.Forms.Label();
             this.txtCorpNum = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
-            this.btnGetPDFURL = new System.Windows.Forms.Button();
-            this.btnAssignMgtKey = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.GroupBox9.SuspendLayout();
             this.GroupBox11.SuspendLayout();
             this.GroupBox3.SuspendLayout();
@@ -269,6 +270,16 @@
             this.GroupBox11.TabIndex = 10;
             this.GroupBox11.TabStop = false;
             this.GroupBox11.Text = "부가 기능";
+            // 
+            // btnAssignMgtKey
+            // 
+            this.btnAssignMgtKey.Location = new System.Drawing.Point(155, 20);
+            this.btnAssignMgtKey.Name = "btnAssignMgtKey";
+            this.btnAssignMgtKey.Size = new System.Drawing.Size(133, 27);
+            this.btnAssignMgtKey.TabIndex = 11;
+            this.btnAssignMgtKey.Text = "문서번호 할당";
+            this.btnAssignMgtKey.UseVisualStyleBackColor = true;
+            this.btnAssignMgtKey.Click += new System.EventHandler(this.btnAssignMgtKey_Click);
             // 
             // btnUpdateEmailConfig
             // 
@@ -598,7 +609,7 @@
             this.GroupBox13.Controls.Add(this.btnGetURL_WRITE);
             this.GroupBox13.Controls.Add(this.btnGetURL_SBOX);
             this.GroupBox13.Controls.Add(this.btnGetURL_TBOX);
-            this.GroupBox13.Location = new System.Drawing.Point(665, 247);
+            this.GroupBox13.Location = new System.Drawing.Point(860, 247);
             this.GroupBox13.Name = "GroupBox13";
             this.GroupBox13.Size = new System.Drawing.Size(115, 123);
             this.GroupBox13.TabIndex = 12;
@@ -637,6 +648,7 @@
             // 
             // GroupBox12
             // 
+            this.GroupBox12.Controls.Add(this.button1);
             this.GroupBox12.Controls.Add(this.btnGetPDFURL);
             this.GroupBox12.Controls.Add(this.btnGetEmailURL);
             this.GroupBox12.Controls.Add(this.btnGetMassPrintURL);
@@ -644,10 +656,20 @@
             this.GroupBox12.Controls.Add(this.btnGetPopUpURL);
             this.GroupBox12.Location = new System.Drawing.Point(467, 247);
             this.GroupBox12.Name = "GroupBox12";
-            this.GroupBox12.Size = new System.Drawing.Size(192, 182);
+            this.GroupBox12.Size = new System.Drawing.Size(379, 182);
             this.GroupBox12.TabIndex = 11;
             this.GroupBox12.TabStop = false;
             this.GroupBox12.Text = "문서관련 URL 기능";
+            // 
+            // btnGetPDFURL
+            // 
+            this.btnGetPDFURL.Location = new System.Drawing.Point(6, 146);
+            this.btnGetPDFURL.Name = "btnGetPDFURL";
+            this.btnGetPDFURL.Size = new System.Drawing.Size(180, 25);
+            this.btnGetPDFURL.TabIndex = 14;
+            this.btnGetPDFURL.Text = "PDF 다운로드 URL";
+            this.btnGetPDFURL.UseVisualStyleBackColor = true;
+            this.btnGetPDFURL.Click += new System.EventHandler(this.btnGetPDFURL_Click);
             // 
             // btnGetPrintURL
             // 
@@ -844,25 +866,15 @@
             this.Label1.TabIndex = 7;
             this.Label1.Text = "팝빌회원 사업자번호 : ";
             // 
-            // btnGetPDFURL
+            // button1
             // 
-            this.btnGetPDFURL.Location = new System.Drawing.Point(6, 146);
-            this.btnGetPDFURL.Name = "btnGetPDFURL";
-            this.btnGetPDFURL.Size = new System.Drawing.Size(180, 25);
-            this.btnGetPDFURL.TabIndex = 14;
-            this.btnGetPDFURL.Text = "PDF 다운로드 URL";
-            this.btnGetPDFURL.UseVisualStyleBackColor = true;
-            this.btnGetPDFURL.Click += new System.EventHandler(this.btnGetPDFURL_Click);
-            // 
-            // btnAssignMgtKey
-            // 
-            this.btnAssignMgtKey.Location = new System.Drawing.Point(155, 20);
-            this.btnAssignMgtKey.Name = "btnAssignMgtKey";
-            this.btnAssignMgtKey.Size = new System.Drawing.Size(133, 27);
-            this.btnAssignMgtKey.TabIndex = 11;
-            this.btnAssignMgtKey.Text = "문서번호 할당";
-            this.btnAssignMgtKey.UseVisualStyleBackColor = true;
-            this.btnAssignMgtKey.Click += new System.EventHandler(this.btnAssignMgtKey_Click);
+            this.button1.Location = new System.Drawing.Point(190, 21);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(180, 25);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "PDF 다운로드";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.btnGetPDF_Click);
             // 
             // frmExample
             // 
@@ -971,6 +983,7 @@
         private System.Windows.Forms.Button btnListEmailConfig;
         private System.Windows.Forms.Button btnGetPDFURL;
         private System.Windows.Forms.Button btnAssignMgtKey;
+        private System.Windows.Forms.Button button1;
     }
 }
 

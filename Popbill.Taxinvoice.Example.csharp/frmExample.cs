@@ -19,6 +19,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.IO;
 
 namespace Popbill.Taxinvoice.Example.csharp
 {
@@ -3730,6 +3731,7 @@ namespace Popbill.Taxinvoice.Example.csharp
         /*
          * 1건의 전자세금계산서 PDF 다운로드 URL을 반환합니다.
          * - 보안정책으로 인해 반환된 URL의 유효시간은 30초입니다.
+         * - https://docs.popbill.com/taxinvoice/dotnet/api#GetPDFURL
          */
         private void btnGetPDFURL_Click(object sender, EventArgs e)
         {
@@ -3749,5 +3751,35 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
         }
 
+        /*
+         * 1건의 전자세금계산서를 PDF 파일로 저장하기 위한 Byte Array를 반환합니다.
+         * - https://docs.popbill.com/taxinvoice/dotnet/api#GetPDF
+         */
+        private void btnGetPDF_Click(object sender, EventArgs e)
+        {
+            // 발행형태
+            MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
+
+            String path = @"C:\Users\wjkim\Desktop\dotnet_test4.pdf";
+            try
+            {
+                byte[] btPDF = taxinvoiceService.GetPDF(txtCorpNum.Text, KeyType, txtMgtKey.Text, txtUserId.Text);
+
+                using (FileStream fileStream = new FileStream(path, FileMode.Create))
+                {
+                    fileStream.Write(btPDF, 0, btPDF.Length);
+
+                    fileStream.Close();
+                }
+
+                MessageBox.Show("응답 코드(code) : 1" + "\r\n" +
+                                "다운로드 파일 경로 : " + path);
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "세금계산서 PDF 다운로드");
+            }
+        }
     }
 }
