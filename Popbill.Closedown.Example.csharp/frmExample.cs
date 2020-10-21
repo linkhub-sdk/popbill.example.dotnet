@@ -43,6 +43,9 @@ namespace Popbill.Closedown.Example.csharp
 
             // 발급된 토큰에 대한 IP 제한기능 사용여부, 권장(True)
             closedownService.IPRestrictOnOff = true;
+
+            // 로컬PC 시간 사용 여부 true(사용), false(기본값) - 미사용
+            closedownService.UseLocalTimeYN = false;
         }
 
         private void txtCheckCorpNum_KeyDown(object sender, KeyEventArgs e)

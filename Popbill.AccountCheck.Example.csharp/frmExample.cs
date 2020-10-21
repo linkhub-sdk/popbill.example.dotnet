@@ -46,6 +46,9 @@ namespace Popbill.AccountCheck.Example.csharp
 
             // 발급된 토큰에 대한 IP 제한기능 사용여부, 권장(True)
             accountCheckService.IPRestrictOnOff = true;
+
+            // 로컬PC 시간 사용 여부 true(사용), false(기본값) - 미사용
+            accountCheckService.UseLocalTimeYN = false;
         }
 
         private void btnCheckAccountInfo_Click(object sender, EventArgs e)

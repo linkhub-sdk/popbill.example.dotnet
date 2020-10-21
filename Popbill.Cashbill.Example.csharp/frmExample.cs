@@ -45,6 +45,9 @@ namespace Popbill.Cashbill.Example.csharp
 
             // 발급된 토큰에 대한 IP 제한기능 사용여부, 권장(True)
             cashbillService.IPRestrictOnOff = true;
+
+            // 로컬PC 시간 사용 여부 true(사용), false(기본값) - 미사용
+            cashbillService.UseLocalTimeYN = false;
         }
 
         /*
