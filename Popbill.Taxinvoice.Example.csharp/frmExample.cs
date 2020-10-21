@@ -45,8 +45,11 @@ namespace Popbill.Taxinvoice.Example.csharp
             // 연동환경 설정값, 개발용(true), 상업용(false)
             taxinvoiceService.IsTest = true;
 
-            // 발급된 토큰에 대한 IP 제한기능 사용여부, 권장(True)
+            // 발급된 토큰에 대한 IP 제한기능 사용여부, 권장(true)
             taxinvoiceService.IPRestrictOnOff = true;
+
+            // 로컬PC 시간 사용 여부 true(사용), false(기본값) - 미사용
+            taxinvoiceService.UseLocalTimeYN = false;
         }
 
 
