@@ -60,6 +60,8 @@
             this.groupBox13 = new System.Windows.Forms.GroupBox();
             this.btnGetPartnerURL_CHRG = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textURL = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -395,12 +397,30 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "휴폐업조회 API";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(573, 13);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(36, 12);
+            this.label4.TabIndex = 22;
+            this.label4.Text = "URL :";
+            // 
+            // textURL
+            // 
+            this.textURL.Location = new System.Drawing.Point(615, 9);
+            this.textURL.Name = "textURL";
+            this.textURL.Size = new System.Drawing.Size(227, 21);
+            this.textURL.TabIndex = 23;
+            // 
             // frmExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1013, 323);
+            this.Controls.Add(this.textURL);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.txtUserID);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtCorpNum);
@@ -462,6 +482,8 @@
         private System.Windows.Forms.GroupBox groupBox13;
         private System.Windows.Forms.Button btnGetPartnerURL_CHRG;
         private System.Windows.Forms.GroupBox groupBox12;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textURL;
     }
 }
 

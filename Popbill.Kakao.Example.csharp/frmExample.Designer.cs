@@ -93,6 +93,8 @@
             this.txtReserveDT = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.fileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textURL = new System.Windows.Forms.TextBox();
             this.GroupBox1.SuspendLayout();
             this.groupBox14.SuspendLayout();
             this.groupBox11.SuspendLayout();
@@ -780,11 +782,29 @@
             // 
             this.fileDialog.FileName = "OpenFileDialog1";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(739, 16);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(36, 12);
+            this.label6.TabIndex = 23;
+            this.label6.Text = "URL :";
+            // 
+            // textURL
+            // 
+            this.textURL.Location = new System.Drawing.Point(781, 11);
+            this.textURL.Name = "textURL";
+            this.textURL.Size = new System.Drawing.Size(235, 21);
+            this.textURL.TabIndex = 28;
+            // 
             // frmExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 740);
+            this.Controls.Add(this.textURL);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.txtUserId);
             this.Controls.Add(this.GroupBox1);
@@ -884,6 +904,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnGetMessagesRN;
         private System.Windows.Forms.ListBox listBox1;
+        internal System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textURL;
     }
 }
 

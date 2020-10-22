@@ -2,7 +2,7 @@
  * 팝빌 팩스 API DotNet SDK Example
  * 
  * - DotNet C# SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/fax/tutorial/dotnet#csharp
- * - 업데이트 일자 : 2020-08-05
+ * - 업데이트 일자 : 2020-10-22
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991~2
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
  * 
@@ -64,6 +64,7 @@ namespace Popbill.Fax.Example.csharp
                 string url = faxService.GetSenderNumberMgtURL(txtCorpNum.Text, txtUserId.Text);
 
                 MessageBox.Show(url, "팩스 발신번호 관리 팝업 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -822,6 +823,7 @@ namespace Popbill.Fax.Example.csharp
                 string url = faxService.GetSentListURL(txtCorpNum.Text, txtUserId.Text);
 
                 MessageBox.Show(url, "팩스 전송내역 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -842,6 +844,7 @@ namespace Popbill.Fax.Example.csharp
                 string url = faxService.GetPreviewURL(txtCorpNum.Text, txtReceiptNum.Text, txtUserId.Text);
 
                 MessageBox.Show(url, "팩스 미리보기 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -882,6 +885,7 @@ namespace Popbill.Fax.Example.csharp
                 string url = faxService.GetChargeURL(txtCorpNum.Text, txtUserId.Text);
 
                 MessageBox.Show(url, "포인트충전 팝업 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -922,6 +926,7 @@ namespace Popbill.Fax.Example.csharp
                 string url = faxService.GetPartnerURL(txtCorpNum.Text, "CHRG");
 
                 MessageBox.Show(url, "파트너 포인트충전 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -1089,6 +1094,7 @@ namespace Popbill.Fax.Example.csharp
                 string url = faxService.GetAccessURL(txtCorpNum.Text, txtUserId.Text);
 
                 MessageBox.Show(url, "팝빌 로그인 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {

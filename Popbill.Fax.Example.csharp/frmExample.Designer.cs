@@ -69,6 +69,7 @@
             this.txtRequestNum = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.txtReceiptNum = new System.Windows.Forms.TextBox();
             this.btnResendFAXSame = new System.Windows.Forms.Button();
             this.btnResendFAX = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -84,7 +85,8 @@
             this.txtReserveDT = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.fileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.txtReceiptNum = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textURL = new System.Windows.Forms.TextBox();
             this.GroupBox1.SuspendLayout();
             this.groupBox13.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -380,6 +382,8 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.textURL);
+            this.groupBox4.Controls.Add(this.label6);
             this.groupBox4.Controls.Add(this.groupBox11);
             this.groupBox4.Controls.Add(this.listBox1);
             this.groupBox4.Controls.Add(this.groupBox10);
@@ -536,6 +540,13 @@
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "접수번호 관련 기능 (요청번호 미할당)";
             // 
+            // txtReceiptNum
+            // 
+            this.txtReceiptNum.Location = new System.Drawing.Point(74, 16);
+            this.txtReceiptNum.Name = "txtReceiptNum";
+            this.txtReceiptNum.Size = new System.Drawing.Size(182, 21);
+            this.txtReceiptNum.TabIndex = 32;
+            // 
             // btnResendFAXSame
             // 
             this.btnResendFAXSame.Location = new System.Drawing.Point(136, 75);
@@ -676,12 +687,21 @@
             // 
             this.fileDialog.FileName = "OpenFileDialog1";
             // 
-            // txtReceiptNum
+            // label6
             // 
-            this.txtReceiptNum.Location = new System.Drawing.Point(74, 16);
-            this.txtReceiptNum.Name = "txtReceiptNum";
-            this.txtReceiptNum.Size = new System.Drawing.Size(182, 21);
-            this.txtReceiptNum.TabIndex = 32;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(609, 202);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(36, 12);
+            this.label6.TabIndex = 18;
+            this.label6.Text = "URL :";
+            // 
+            // textURL
+            // 
+            this.textURL.Location = new System.Drawing.Point(651, 198);
+            this.textURL.Name = "textURL";
+            this.textURL.Size = new System.Drawing.Size(263, 21);
+            this.textURL.TabIndex = 35;
             // 
             // frmExample
             // 
@@ -777,6 +797,8 @@
         private System.Windows.Forms.GroupBox groupBox11;
         internal System.Windows.Forms.Button btnGetPreviewURL;
         private System.Windows.Forms.TextBox txtReceiptNum;
+        internal System.Windows.Forms.Label label6;
+        internal System.Windows.Forms.TextBox textURL;
     }
 }
 

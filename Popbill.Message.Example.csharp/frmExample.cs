@@ -2,7 +2,7 @@
  * 팝빌 문자 API DotNet SDK Example
  * 
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/message/tutorial/dotnet
- * - 업데이트 일자 : 2020-08-05
+ * - 업데이트 일자 : 2020-10-22
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991~2
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
  * 
@@ -96,6 +96,7 @@ namespace Popbill.Message.Example.csharp
                 string url = messageService.GetSenderNumberMgtURL(txtCorpNum.Text, txtUserId.Text);
 
                 MessageBox.Show(url, "문자 발신번호 관리 팝업 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -976,6 +977,7 @@ namespace Popbill.Message.Example.csharp
                 string url = messageService.GetSentListURL(txtCorpNum.Text, txtUserId.Text);
 
                 MessageBox.Show(url, "문자 전송내역 팝업 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -1044,6 +1046,7 @@ namespace Popbill.Message.Example.csharp
                 string url = messageService.GetChargeURL(txtCorpNum.Text, txtUserId.Text);
 
                 MessageBox.Show(url, "포인트 충전 팝업 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -1084,6 +1087,7 @@ namespace Popbill.Message.Example.csharp
                 string url = messageService.GetPartnerURL(txtCorpNum.Text, "CHRG");
 
                 MessageBox.Show(url, "파트너 포인트충전 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -1293,6 +1297,7 @@ namespace Popbill.Message.Example.csharp
                 string url = messageService.GetAccessURL(txtCorpNum.Text, txtUserId.Text);
 
                 MessageBox.Show(url, "팝빌 로그인 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {

@@ -61,6 +61,8 @@
             this.btnCheckAccountInfo = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtBankCode = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textURL = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -403,11 +405,29 @@
             this.txtBankCode.TabIndex = 17;
             this.txtBankCode.Text = "0004";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(573, 14);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(36, 12);
+            this.label5.TabIndex = 27;
+            this.label5.Text = "URL :";
+            // 
+            // textURL
+            // 
+            this.textURL.Location = new System.Drawing.Point(615, 9);
+            this.textURL.Name = "textURL";
+            this.textURL.Size = new System.Drawing.Size(222, 21);
+            this.textURL.TabIndex = 28;
+            // 
             // frmExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1010, 364);
+            this.Controls.Add(this.textURL);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.btnJoinMember);
             this.Controls.Add(this.btnCheckIsMember);
@@ -470,6 +490,8 @@
         private System.Windows.Forms.TextBox txtBankCode;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtAccountNumber;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textURL;
     }
 }
 

@@ -77,6 +77,8 @@
             this.Label2 = new System.Windows.Forms.Label();
             this.txtCorpNum = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textURL = new System.Windows.Forms.TextBox();
             this.groupBox7.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.groupBox11.SuspendLayout();
@@ -602,11 +604,29 @@
             this.Label1.TabIndex = 18;
             this.Label1.Text = "팝빌회원 사업자번호 : ";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(577, 11);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(36, 12);
+            this.label5.TabIndex = 24;
+            this.label5.Text = "URL :";
+            // 
+            // textURL
+            // 
+            this.textURL.Location = new System.Drawing.Point(621, 6);
+            this.textURL.Name = "textURL";
+            this.textURL.Size = new System.Drawing.Size(222, 21);
+            this.textURL.TabIndex = 9;
+            // 
             // frmExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1001, 688);
+            this.Controls.Add(this.textURL);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.txtUserId);
             this.Controls.Add(this.GroupBox1);
@@ -686,6 +706,8 @@
         private System.Windows.Forms.Button btnCheckLoginDeptUser;
         private System.Windows.Forms.Button btnCheckDeptUser;
         private System.Windows.Forms.Button btnRegistDeptUser;
+        internal System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textURL;
     }
 }
 

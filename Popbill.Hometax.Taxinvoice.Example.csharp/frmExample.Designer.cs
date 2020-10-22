@@ -85,6 +85,8 @@
             this.btnRequestJob = new System.Windows.Forms.Button();
             this.btnGetJobState = new System.Windows.Forms.Button();
             this.btnListActiveJob = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textURL = new System.Windows.Forms.TextBox();
             this.GroupBox1.SuspendLayout();
             this.groupBox13.SuspendLayout();
             this.groupBox12.SuspendLayout();
@@ -691,11 +693,29 @@
             this.btnListActiveJob.UseVisualStyleBackColor = true;
             this.btnListActiveJob.Click += new System.EventHandler(this.btnListActiveJob_Click);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(587, 18);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(36, 12);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "URL :";
+            // 
+            // textURL
+            // 
+            this.textURL.Location = new System.Drawing.Point(629, 15);
+            this.textURL.Name = "textURL";
+            this.textURL.Size = new System.Drawing.Size(227, 21);
+            this.textURL.TabIndex = 7;
+            // 
             // frmExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1025, 677);
+            this.Controls.Add(this.textURL);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.txtUserId);
             this.Controls.Add(this.GroupBox1);
@@ -785,6 +805,8 @@
         private System.Windows.Forms.Button btnGetCertificateExpireDate;
         private System.Windows.Forms.Button btnGetCertificatePopUpURL;
         private System.Windows.Forms.Button btnGetPrintURL;
+        internal System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textURL;
     }
 }
 
