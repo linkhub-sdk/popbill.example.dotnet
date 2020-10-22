@@ -3777,7 +3777,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             // 발행형태
             MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
 
-            String path = @"C:\Users\wjkim\Desktop\dotnet_test4.pdf";
+            String path = @"C:\Users\wjkim\Desktop\Taxinvoice_20201020-001.pdf";
             try
             {
                 byte[] btPDF = taxinvoiceService.GetPDF(txtCorpNum.Text, KeyType, txtMgtKey.Text, txtUserId.Text);

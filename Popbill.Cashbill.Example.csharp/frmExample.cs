@@ -1731,7 +1731,7 @@ namespace Popbill.Cashbill.Example.csharp
          */
         private void btnGetPDF_Click(object sender, EventArgs e)
         {
-            String path = @"C:\Users\wjkim\Desktop\Cashbill_Test1.pdf";
+            String path = @"C:\Users\wjkim\Desktop\Cashbill_20201020-001.pdf";
             try
             {
                 byte[] btPDF = cashbillService.GetPDF(txtCorpNum.Text, txtMgtKey.Text, txtUserId.Text);
