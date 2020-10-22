@@ -16,4 +16,4 @@
 8. 팩스
 9. 카카오톡(알림톡/친구톡)
 
-[C#.NET SDK 적용방법](http://blog.linkhub.co.kr/587/)
+[C#.NET SDK 적용방법](https://docs.popbill.com/taxinvoice/tutorial/dotnet)
