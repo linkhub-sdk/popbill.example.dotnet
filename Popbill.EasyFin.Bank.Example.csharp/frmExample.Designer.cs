@@ -55,7 +55,9 @@
             this.txtCorpNum = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.textURL = new System.Windows.Forms.TextBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.txtTID = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtJobID = new System.Windows.Forms.TextBox();
@@ -79,8 +81,6 @@
             this.btnListActiveJob = new System.Windows.Forms.Button();
             this.btnGetJobState = new System.Windows.Forms.Button();
             this.btnRequestJob = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textURL = new System.Windows.Forms.TextBox();
             this.GroupBox1.SuspendLayout();
             this.groupBox13.SuspendLayout();
             this.groupBox12.SuspendLayout();
@@ -186,7 +186,7 @@
             // 
             this.groupBox4.Controls.Add(this.btnUpdateCorpInfo);
             this.groupBox4.Controls.Add(this.btnGetCorpInfo);
-            this.groupBox4.Location = new System.Drawing.Point(851, 14);
+            this.groupBox4.Location = new System.Drawing.Point(851, 15);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(133, 118);
             this.groupBox4.TabIndex = 4;
@@ -195,7 +195,7 @@
             // 
             // btnUpdateCorpInfo
             // 
-            this.btnUpdateCorpInfo.Location = new System.Drawing.Point(7, 53);
+            this.btnUpdateCorpInfo.Location = new System.Drawing.Point(7, 52);
             this.btnUpdateCorpInfo.Name = "btnUpdateCorpInfo";
             this.btnUpdateCorpInfo.Size = new System.Drawing.Size(119, 29);
             this.btnUpdateCorpInfo.TabIndex = 1;
@@ -280,7 +280,7 @@
             this.GroupBox6.Controls.Add(this.btnUpdateContact);
             this.GroupBox6.Controls.Add(this.btnListContact);
             this.GroupBox6.Controls.Add(this.btnRegistContact);
-            this.GroupBox6.Location = new System.Drawing.Point(711, 14);
+            this.GroupBox6.Location = new System.Drawing.Point(711, 15);
             this.GroupBox6.Name = "GroupBox6";
             this.GroupBox6.Size = new System.Drawing.Size(133, 118);
             this.GroupBox6.TabIndex = 3;
@@ -299,7 +299,7 @@
             // 
             // btnListContact
             // 
-            this.btnListContact.Location = new System.Drawing.Point(6, 51);
+            this.btnListContact.Location = new System.Drawing.Point(6, 52);
             this.btnListContact.Name = "btnListContact";
             this.btnListContact.Size = new System.Drawing.Size(119, 29);
             this.btnListContact.TabIndex = 1;
@@ -365,9 +365,7 @@
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.textURL);
             this.groupBox7.Controls.Add(this.listBox1);
-            this.groupBox7.Controls.Add(this.label5);
             this.groupBox7.Controls.Add(this.txtTID);
             this.groupBox7.Controls.Add(this.label4);
             this.groupBox7.Controls.Add(this.txtJobID);
@@ -383,6 +381,13 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "계좌조회 API";
             // 
+            // textURL
+            // 
+            this.textURL.Location = new System.Drawing.Point(724, 16);
+            this.textURL.Name = "textURL";
+            this.textURL.Size = new System.Drawing.Size(273, 21);
+            this.textURL.TabIndex = 9;
+            // 
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
@@ -391,6 +396,15 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(936, 196);
             this.listBox1.TabIndex = 8;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(654, 20);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(64, 12);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "응답 URL :";
             // 
             // txtTID
             // 
@@ -437,7 +451,7 @@
             // 
             // btnGetFlatRateState
             // 
-            this.btnGetFlatRateState.Location = new System.Drawing.Point(10, 60);
+            this.btnGetFlatRateState.Location = new System.Drawing.Point(10, 57);
             this.btnGetFlatRateState.Name = "btnGetFlatRateState";
             this.btnGetFlatRateState.Size = new System.Drawing.Size(153, 32);
             this.btnGetFlatRateState.TabIndex = 3;
@@ -447,7 +461,7 @@
             // 
             // btnGetFlatRatePopUpURL
             // 
-            this.btnGetFlatRatePopUpURL.Location = new System.Drawing.Point(10, 22);
+            this.btnGetFlatRatePopUpURL.Location = new System.Drawing.Point(10, 19);
             this.btnGetFlatRatePopUpURL.Name = "btnGetFlatRatePopUpURL";
             this.btnGetFlatRatePopUpURL.Size = new System.Drawing.Size(153, 32);
             this.btnGetFlatRatePopUpURL.TabIndex = 2;
@@ -625,29 +639,15 @@
             this.btnRequestJob.UseVisualStyleBackColor = true;
             this.btnRequestJob.Click += new System.EventHandler(this.btnRequestJob_Click);
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(688, 184);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(36, 12);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "URL :";
-            // 
-            // textURL
-            // 
-            this.textURL.Location = new System.Drawing.Point(730, 181);
-            this.textURL.Name = "textURL";
-            this.textURL.Size = new System.Drawing.Size(226, 21);
-            this.textURL.TabIndex = 9;
-            // 
             // frmExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1034, 683);
+            this.Controls.Add(this.textURL);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.txtUserId);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.GroupBox1);
             this.Controls.Add(this.Label2);
             this.Controls.Add(this.txtCorpNum);

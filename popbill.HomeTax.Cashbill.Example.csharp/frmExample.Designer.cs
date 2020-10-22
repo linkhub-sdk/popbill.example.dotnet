@@ -211,9 +211,9 @@
             // 
             // btnGetFlatRateState
             // 
-            this.btnGetFlatRateState.Location = new System.Drawing.Point(8, 56);
+            this.btnGetFlatRateState.Location = new System.Drawing.Point(8, 57);
             this.btnGetFlatRateState.Name = "btnGetFlatRateState";
-            this.btnGetFlatRateState.Size = new System.Drawing.Size(163, 28);
+            this.btnGetFlatRateState.Size = new System.Drawing.Size(163, 31);
             this.btnGetFlatRateState.TabIndex = 1;
             this.btnGetFlatRateState.Text = "정액제 서비스 상태 확인";
             this.btnGetFlatRateState.UseVisualStyleBackColor = true;
@@ -221,9 +221,9 @@
             // 
             // btnGetFlatRatePopUpURL
             // 
-            this.btnGetFlatRatePopUpURL.Location = new System.Drawing.Point(8, 23);
+            this.btnGetFlatRatePopUpURL.Location = new System.Drawing.Point(8, 21);
             this.btnGetFlatRatePopUpURL.Name = "btnGetFlatRatePopUpURL";
-            this.btnGetFlatRatePopUpURL.Size = new System.Drawing.Size(163, 28);
+            this.btnGetFlatRatePopUpURL.Size = new System.Drawing.Size(163, 31);
             this.btnGetFlatRatePopUpURL.TabIndex = 0;
             this.btnGetFlatRatePopUpURL.Text = "정액제 서비스 신청 URL";
             this.btnGetFlatRatePopUpURL.UseVisualStyleBackColor = true;
@@ -263,7 +263,7 @@
             // 
             this.btnSummary.Location = new System.Drawing.Point(6, 55);
             this.btnSummary.Name = "btnSummary";
-            this.btnSummary.Size = new System.Drawing.Size(148, 32);
+            this.btnSummary.Size = new System.Drawing.Size(148, 31);
             this.btnSummary.TabIndex = 1;
             this.btnSummary.Text = "수집 결과 요약정보 조회";
             this.btnSummary.UseVisualStyleBackColor = true;
@@ -376,7 +376,7 @@
             // 
             this.btnGetPartnerURL_CHRG.Location = new System.Drawing.Point(8, 55);
             this.btnGetPartnerURL_CHRG.Name = "btnGetPartnerURL_CHRG";
-            this.btnGetPartnerURL_CHRG.Size = new System.Drawing.Size(119, 32);
+            this.btnGetPartnerURL_CHRG.Size = new System.Drawing.Size(119, 30);
             this.btnGetPartnerURL_CHRG.TabIndex = 0;
             this.btnGetPartnerURL_CHRG.Text = "포인트 충전 URL";
             this.btnGetPartnerURL_CHRG.UseVisualStyleBackColor = true;
@@ -438,7 +438,7 @@
             // 
             this.btnGetChargeURL.Location = new System.Drawing.Point(6, 55);
             this.btnGetChargeURL.Name = "btnGetChargeURL";
-            this.btnGetChargeURL.Size = new System.Drawing.Size(116, 29);
+            this.btnGetChargeURL.Size = new System.Drawing.Size(116, 30);
             this.btnGetChargeURL.TabIndex = 1;
             this.btnGetChargeURL.Text = "포인트 충전 URL";
             this.btnGetChargeURL.UseVisualStyleBackColor = true;
@@ -490,7 +490,7 @@
             // 
             this.btnCheckID.Location = new System.Drawing.Point(6, 52);
             this.btnCheckID.Name = "btnCheckID";
-            this.btnCheckID.Size = new System.Drawing.Size(112, 28);
+            this.btnCheckID.Size = new System.Drawing.Size(112, 30);
             this.btnCheckID.TabIndex = 3;
             this.btnCheckID.Text = "ID 중복 확인";
             this.btnCheckID.UseVisualStyleBackColor = true;
@@ -510,7 +510,7 @@
             // 
             this.btnJoinMember.Location = new System.Drawing.Point(6, 84);
             this.btnJoinMember.Name = "btnJoinMember";
-            this.btnJoinMember.Size = new System.Drawing.Size(112, 31);
+            this.btnJoinMember.Size = new System.Drawing.Size(112, 30);
             this.btnJoinMember.TabIndex = 1;
             this.btnJoinMember.Text = "회원 가입";
             this.btnJoinMember.UseVisualStyleBackColor = true;
@@ -570,9 +570,9 @@
             // 
             // btnGetAccessURL
             // 
-            this.btnGetAccessURL.Location = new System.Drawing.Point(6, 19);
+            this.btnGetAccessURL.Location = new System.Drawing.Point(6, 20);
             this.btnGetAccessURL.Name = "btnGetAccessURL";
-            this.btnGetAccessURL.Size = new System.Drawing.Size(116, 29);
+            this.btnGetAccessURL.Size = new System.Drawing.Size(116, 30);
             this.btnGetAccessURL.TabIndex = 0;
             this.btnGetAccessURL.Text = "팝빌 로그인 URL";
             this.btnGetAccessURL.UseVisualStyleBackColor = true;
@@ -609,15 +609,15 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(577, 11);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(36, 12);
+            this.label5.Size = new System.Drawing.Size(64, 12);
             this.label5.TabIndex = 24;
-            this.label5.Text = "URL :";
+            this.label5.Text = "응답 URL :";
             // 
             // textURL
             // 
-            this.textURL.Location = new System.Drawing.Point(621, 6);
+            this.textURL.Location = new System.Drawing.Point(647, 7);
             this.textURL.Name = "textURL";
-            this.textURL.Size = new System.Drawing.Size(222, 21);
+            this.textURL.Size = new System.Drawing.Size(329, 21);
             this.textURL.TabIndex = 9;
             // 
             // frmExample

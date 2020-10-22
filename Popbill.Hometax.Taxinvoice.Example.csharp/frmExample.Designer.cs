@@ -140,7 +140,7 @@
             // 
             // btnGetPartnerBalance1
             // 
-            this.btnGetPartnerBalance1.Location = new System.Drawing.Point(8, 19);
+            this.btnGetPartnerBalance1.Location = new System.Drawing.Point(8, 20);
             this.btnGetPartnerBalance1.Name = "btnGetPartnerBalance1";
             this.btnGetPartnerBalance1.Size = new System.Drawing.Size(119, 29);
             this.btnGetPartnerBalance1.TabIndex = 4;
@@ -150,7 +150,7 @@
             // 
             // btnGetPartnerURL_CHRG
             // 
-            this.btnGetPartnerURL_CHRG.Location = new System.Drawing.Point(8, 52);
+            this.btnGetPartnerURL_CHRG.Location = new System.Drawing.Point(8, 55);
             this.btnGetPartnerURL_CHRG.Name = "btnGetPartnerURL_CHRG";
             this.btnGetPartnerURL_CHRG.Size = new System.Drawing.Size(119, 29);
             this.btnGetPartnerURL_CHRG.TabIndex = 0;
@@ -212,7 +212,7 @@
             // 
             // btnGetCorpInfo
             // 
-            this.btnGetCorpInfo.Location = new System.Drawing.Point(7, 20);
+            this.btnGetCorpInfo.Location = new System.Drawing.Point(7, 21);
             this.btnGetCorpInfo.Name = "btnGetCorpInfo";
             this.btnGetCorpInfo.Size = new System.Drawing.Size(119, 29);
             this.btnGetCorpInfo.TabIndex = 0;
@@ -306,7 +306,7 @@
             // 
             // btnListContact
             // 
-            this.btnListContact.Location = new System.Drawing.Point(6, 51);
+            this.btnListContact.Location = new System.Drawing.Point(6, 52);
             this.btnListContact.Name = "btnListContact";
             this.btnListContact.Size = new System.Drawing.Size(119, 29);
             this.btnListContact.TabIndex = 1;
@@ -336,7 +336,7 @@
             // 
             // btnGetAccessURL
             // 
-            this.btnGetAccessURL.Location = new System.Drawing.Point(6, 19);
+            this.btnGetAccessURL.Location = new System.Drawing.Point(6, 20);
             this.btnGetAccessURL.Name = "btnGetAccessURL";
             this.btnGetAccessURL.Size = new System.Drawing.Size(119, 29);
             this.btnGetAccessURL.TabIndex = 0;
@@ -524,7 +524,7 @@
             // 
             // btnGetPrintURL
             // 
-            this.btnGetPrintURL.Location = new System.Drawing.Point(112, 148);
+            this.btnGetPrintURL.Location = new System.Drawing.Point(112, 150);
             this.btnGetPrintURL.Name = "btnGetPrintURL";
             this.btnGetPrintURL.Size = new System.Drawing.Size(141, 30);
             this.btnGetPrintURL.TabIndex = 6;
@@ -696,17 +696,17 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(587, 18);
+            this.label7.Location = new System.Drawing.Point(587, 19);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(36, 12);
+            this.label7.Size = new System.Drawing.Size(64, 12);
             this.label7.TabIndex = 18;
-            this.label7.Text = "URL :";
+            this.label7.Text = "응답 URL :";
             // 
             // textURL
             // 
-            this.textURL.Location = new System.Drawing.Point(629, 15);
+            this.textURL.Location = new System.Drawing.Point(657, 15);
             this.textURL.Name = "textURL";
-            this.textURL.Size = new System.Drawing.Size(227, 21);
+            this.textURL.Size = new System.Drawing.Size(339, 21);
             this.textURL.TabIndex = 7;
             // 
             // frmExample
