@@ -82,13 +82,15 @@
             this.btnCheckIsMember = new System.Windows.Forms.Button();
             this.btnJoinMember = new System.Windows.Forms.Button();
             this.GroupBox7 = new System.Windows.Forms.GroupBox();
+            this.textURL = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.GroupBox13 = new System.Windows.Forms.GroupBox();
             this.btnGetURL_WRITE = new System.Windows.Forms.Button();
             this.btnGetURL_PBOX = new System.Windows.Forms.Button();
             this.btnGetURL_SBOX = new System.Windows.Forms.Button();
             this.btnGetURL_TBOX = new System.Windows.Forms.Button();
             this.GroupBox12 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnGetPDF = new System.Windows.Forms.Button();
             this.btnGetOldPrintURL = new System.Windows.Forms.Button();
             this.btnGetPDFURL = new System.Windows.Forms.Button();
             this.btnGetViewURL = new System.Windows.Forms.Button();
@@ -162,8 +164,6 @@
             this.txtCorpNum = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.fileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textURL = new System.Windows.Forms.TextBox();
             this.GroupBox8.SuspendLayout();
             this.GroupBox9.SuspendLayout();
             this.GroupBox10.SuspendLayout();
@@ -211,7 +211,7 @@
             // 
             // txtFileID
             // 
-            this.txtFileID.Location = new System.Drawing.Point(16, 109);
+            this.txtFileID.Location = new System.Drawing.Point(16, 111);
             this.txtFileID.Name = "txtFileID";
             this.txtFileID.Size = new System.Drawing.Size(118, 21);
             this.txtFileID.TabIndex = 12;
@@ -219,7 +219,7 @@
             // Label4
             // 
             this.Label4.AutoSize = true;
-            this.Label4.Location = new System.Drawing.Point(16, 94);
+            this.Label4.Location = new System.Drawing.Point(16, 96);
             this.Label4.Name = "Label4";
             this.Label4.Size = new System.Drawing.Size(109, 12);
             this.Label4.TabIndex = 11;
@@ -227,7 +227,7 @@
             // 
             // btnDeleteFile
             // 
-            this.btnDeleteFile.Location = new System.Drawing.Point(15, 133);
+            this.btnDeleteFile.Location = new System.Drawing.Point(15, 134);
             this.btnDeleteFile.Name = "btnDeleteFile";
             this.btnDeleteFile.Size = new System.Drawing.Size(119, 32);
             this.btnDeleteFile.TabIndex = 10;
@@ -757,8 +757,6 @@
             // 
             // GroupBox7
             // 
-            this.GroupBox7.Controls.Add(this.textURL);
-            this.GroupBox7.Controls.Add(this.label8);
             this.GroupBox7.Controls.Add(this.GroupBox13);
             this.GroupBox7.Controls.Add(this.GroupBox12);
             this.GroupBox7.Controls.Add(this.GroupBox11);
@@ -777,6 +775,22 @@
             this.GroupBox7.TabIndex = 12;
             this.GroupBox7.TabStop = false;
             this.GroupBox7.Text = "전자세금계산서 관련 API";
+            // 
+            // textURL
+            // 
+            this.textURL.Location = new System.Drawing.Point(755, 10);
+            this.textURL.Name = "textURL";
+            this.textURL.Size = new System.Drawing.Size(411, 21);
+            this.textURL.TabIndex = 21;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(685, 15);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(64, 12);
+            this.label8.TabIndex = 20;
+            this.label8.Text = "응답 URL :";
             // 
             // GroupBox13
             // 
@@ -833,7 +847,7 @@
             // 
             // GroupBox12
             // 
-            this.GroupBox12.Controls.Add(this.button1);
+            this.GroupBox12.Controls.Add(this.btnGetPDF);
             this.GroupBox12.Controls.Add(this.btnGetOldPrintURL);
             this.GroupBox12.Controls.Add(this.btnGetPDFURL);
             this.GroupBox12.Controls.Add(this.btnGetViewURL);
@@ -849,15 +863,15 @@
             this.GroupBox12.TabStop = false;
             this.GroupBox12.Text = "문서관련 URL 기능";
             // 
-            // button1
+            // btnGetPDF
             // 
-            this.button1.Location = new System.Drawing.Point(15, 169);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(174, 34);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "PDF 다운로드";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.btnGetPDF_Click);
+            this.btnGetPDF.Location = new System.Drawing.Point(15, 169);
+            this.btnGetPDF.Name = "btnGetPDF";
+            this.btnGetPDF.Size = new System.Drawing.Size(174, 32);
+            this.btnGetPDF.TabIndex = 17;
+            this.btnGetPDF.Text = "PDF 다운로드";
+            this.btnGetPDF.UseVisualStyleBackColor = true;
+            this.btnGetPDF.Click += new System.EventHandler(this.btnGetPDF_Click);
             // 
             // btnGetOldPrintURL
             // 
@@ -873,7 +887,7 @@
             // 
             this.btnGetPDFURL.Location = new System.Drawing.Point(15, 132);
             this.btnGetPDFURL.Name = "btnGetPDFURL";
-            this.btnGetPDFURL.Size = new System.Drawing.Size(174, 34);
+            this.btnGetPDFURL.Size = new System.Drawing.Size(174, 32);
             this.btnGetPDFURL.TabIndex = 15;
             this.btnGetPDFURL.Text = "PDF 다운로드 URL";
             this.btnGetPDFURL.UseVisualStyleBackColor = true;
@@ -1657,28 +1671,14 @@
             // 
             this.fileDialog.FileName = "OpenFileDialog1";
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(684, 594);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(36, 12);
-            this.label8.TabIndex = 20;
-            this.label8.Text = "URL :";
-            // 
-            // textURL
-            // 
-            this.textURL.Location = new System.Drawing.Point(726, 590);
-            this.textURL.Name = "textURL";
-            this.textURL.Size = new System.Drawing.Size(333, 21);
-            this.textURL.TabIndex = 21;
-            // 
             // frmExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1367, 825);
+            this.Controls.Add(this.textURL);
             this.Controls.Add(this.GroupBox7);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.txtUserId);
             this.Controls.Add(this.GroupBox1);
             this.Controls.Add(this.Label2);
@@ -1854,7 +1854,7 @@
         internal System.Windows.Forms.Button btnGetViewURL;
         private System.Windows.Forms.Button btnGetPDFURL;
         internal System.Windows.Forms.Button btnGetOldPrintURL;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnGetPDF;
         internal System.Windows.Forms.Label label8;
         internal System.Windows.Forms.TextBox textURL;
     }
