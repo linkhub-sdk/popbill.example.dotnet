@@ -2,7 +2,7 @@
  * 팝빌 전자세금계산서 API DotNet SDK Example
  * 
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/taxinvoice/tutorial/dotnet
- * - 업데이트 일자 : 2020-08-05
+ * - 업데이트 일자 : 2020-10-22
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
  * 
@@ -87,7 +87,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             Taxinvoice taxinvoice = new Taxinvoice();
 
             // [필수] 기재상 작성일자, 날짜형식(yyyyMMdd)
-            taxinvoice.writeDate = "20191023";
+            taxinvoice.writeDate = "20201022";
 
             // [필수] 과금방향, {정과금, 역과금}중 선택
             // - 정과금(공급자과금), 역과금(공급받는자과금)
@@ -269,7 +269,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             TaxinvoiceDetail detail = new TaxinvoiceDetail();
 
             detail.serialNum = 1; // 일련번호, 1부터 순차기재 
-            detail.purchaseDT = "20190110"; // 거래일자
+            detail.purchaseDT = "20201022"; // 거래일자
             detail.itemName = "품목명"; // 품목명 
             detail.spec = "규격"; // 규격
             detail.qty = "1"; // 수량
@@ -283,7 +283,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             detail = new TaxinvoiceDetail();
 
             detail.serialNum = 2; // 일련번호, 1부터 순차기재 
-            detail.purchaseDT = "20190110"; // 거래일자
+            detail.purchaseDT = "20201022"; // 거래일자
             detail.itemName = "품목명"; // 품목명 
             detail.spec = "규격"; // 규격
             detail.qty = "1"; // 수량
@@ -368,7 +368,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             Taxinvoice taxinvoice = new Taxinvoice();
 
             // [필수] 기재상 작성일자, 날짜형식(yyyyMMdd)
-            taxinvoice.writeDate = "20190308";
+            taxinvoice.writeDate = "20201022";
 
             // [필수] 과금방향, {정과금, 역과금}중 선택
             // - 정과금(공급자과금), 역과금(공급받는자과금)
@@ -552,7 +552,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             TaxinvoiceDetail detail = new TaxinvoiceDetail();
 
             detail.serialNum = 1; // 일련번호, 1부터 순차기재 
-            detail.purchaseDT = "20190110"; // 거래일자
+            detail.purchaseDT = "20201022"; // 거래일자
             detail.itemName = "품목명"; // 품목명 
             detail.spec = "규격"; // 규격
             detail.qty = "1"; // 수량
@@ -566,7 +566,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             detail = new TaxinvoiceDetail();
 
             detail.serialNum = 2; // 일련번호, 1부터 순차기재 
-            detail.purchaseDT = "20190110"; // 거래일자
+            detail.purchaseDT = "20201022"; // 거래일자
             detail.itemName = "품목명"; // 품목명 
             detail.spec = "규격"; // 규격
             detail.qty = "1"; // 수량
@@ -632,7 +632,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             Taxinvoice taxinvoice = new Taxinvoice();
 
             // [필수] 기재상 작성일자, 날짜형식(yyyyMMdd)
-            taxinvoice.writeDate = "20190110";
+            taxinvoice.writeDate = "20201022";
 
             // [필수] 과금방향, {정과금, 역과금}중 선택
             // - 정과금(공급자과금), 역과금(공급받는자과금)
@@ -814,7 +814,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             TaxinvoiceDetail detail = new TaxinvoiceDetail();
 
             detail.serialNum = 1; // 일련번호, 1부터 순차기재 
-            detail.purchaseDT = "20190110"; // 거래일자
+            detail.purchaseDT = "20201022"; // 거래일자
             detail.itemName = "품목명"; // 품목명 
             detail.spec = "규격"; // 규격
             detail.qty = "1"; // 수량
@@ -828,7 +828,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             detail = new TaxinvoiceDetail();
 
             detail.serialNum = 2; // 일련번호, 1부터 순차기재 
-            detail.purchaseDT = "20190110"; // 거래일자
+            detail.purchaseDT = "20201022"; // 거래일자
             detail.itemName = "품목명"; // 품목명 
             detail.spec = "규격"; // 규격
             detail.qty = "1"; // 수량
@@ -931,7 +931,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             Taxinvoice taxinvoice = new Taxinvoice();
 
             // [필수] 기재상 작성일자, 날짜형식(yyyyMMdd)
-            taxinvoice.writeDate = "20190110";
+            taxinvoice.writeDate = "20201022";
 
             // [필수] 과금방향, {정과금, 역과금}중 선택
             // - 정과금(공급자과금), 역과금(공급받는자과금)
@@ -1114,7 +1114,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             TaxinvoiceDetail detail = new TaxinvoiceDetail();
 
             detail.serialNum = 1; // 일련번호, 1부터 순차기재 
-            detail.purchaseDT = "20190110"; // 거래일자
+            detail.purchaseDT = "20201022"; // 거래일자
             detail.itemName = "품목명"; // 품목명 
             detail.spec = "규격"; // 규격
             detail.qty = "1"; // 수량
@@ -1128,7 +1128,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             detail = new TaxinvoiceDetail();
 
             detail.serialNum = 2; // 일련번호, 1부터 순차기재 
-            detail.purchaseDT = "20190110"; // 거래일자
+            detail.purchaseDT = "20201022"; // 거래일자
             detail.itemName = "품목명"; // 품목명 
             detail.spec = "규격"; // 규격
             detail.qty = "1"; // 수량
@@ -1198,7 +1198,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             Taxinvoice taxinvoice = new Taxinvoice();
 
             // [필수] 기재상 작성일자, 날짜형식(yyyyMMdd)
-            taxinvoice.writeDate = "20190110";
+            taxinvoice.writeDate = "20201022";
 
             // [필수] 과금방향, {정과금, 역과금}중 선택
             // - 정과금(공급자과금), 역과금(공급받는자과금)
@@ -1381,7 +1381,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             TaxinvoiceDetail detail = new TaxinvoiceDetail();
 
             detail.serialNum = 1; // 일련번호, 1부터 순차기재 
-            detail.purchaseDT = "20190110"; // 거래일자
+            detail.purchaseDT = "20201022"; // 거래일자
             detail.itemName = "품목명"; // 품목명 
             detail.spec = "규격"; // 규격
             detail.qty = "1"; // 수량
@@ -1395,7 +1395,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             detail = new TaxinvoiceDetail();
 
             detail.serialNum = 2; // 일련번호, 1부터 순차기재 
-            detail.purchaseDT = "20190110"; // 거래일자
+            detail.purchaseDT = "20201022"; // 거래일자
             detail.itemName = "품목명"; // 품목명 
             detail.spec = "규격"; // 규격
             detail.qty = "1"; // 수량
@@ -1713,7 +1713,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             Taxinvoice taxinvoice = new Taxinvoice();
 
             // [필수] 기재상 작성일자, 날짜형식(yyyyMMdd)
-            taxinvoice.writeDate = "20190110";
+            taxinvoice.writeDate = "20201022";
 
             // [필수] 과금방향, {정과금, 역과금}중 선택
             // - 정과금(공급자과금), 역과금(공급받는자과금)
@@ -1895,7 +1895,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             TaxinvoiceDetail detail = new TaxinvoiceDetail();
 
             detail.serialNum = 1; // 일련번호, 1부터 순차기재 
-            detail.purchaseDT = "20190110"; // 거래일자
+            detail.purchaseDT = "20201022"; // 거래일자
             detail.itemName = "품목명"; // 품목명 
             detail.spec = "규격"; // 규격
             detail.qty = "1"; // 수량
@@ -1909,7 +1909,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             detail = new TaxinvoiceDetail();
 
             detail.serialNum = 2; // 일련번호, 1부터 순차기재 
-            detail.purchaseDT = "20190110"; // 거래일자
+            detail.purchaseDT = "20201022"; // 거래일자
             detail.itemName = "품목명"; // 품목명 
             detail.spec = "규격"; // 규격
             detail.qty = "1"; // 수량
@@ -2509,6 +2509,7 @@ namespace Popbill.Taxinvoice.Example.csharp
                 string url = taxinvoiceService.GetURL(txtCorpNum.Text, txtUserId.Text, "TBOX");
 
                 MessageBox.Show(url, "임시연동함 팝업 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -2529,6 +2530,7 @@ namespace Popbill.Taxinvoice.Example.csharp
                 string url = taxinvoiceService.GetURL(txtCorpNum.Text, txtUserId.Text, "SBOX");
 
                 MessageBox.Show(url, "매출문서함 팝업 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -2549,6 +2551,7 @@ namespace Popbill.Taxinvoice.Example.csharp
                 string url = taxinvoiceService.GetURL(txtCorpNum.Text, txtUserId.Text, "PBOX");
 
                 MessageBox.Show(url, "매입문서함 팝업 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -2569,6 +2572,7 @@ namespace Popbill.Taxinvoice.Example.csharp
                 string url = taxinvoiceService.GetURL(txtCorpNum.Text, txtUserId.Text, "WRITE");
 
                 MessageBox.Show(url, "매출문서 작성 팝업 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -2592,6 +2596,7 @@ namespace Popbill.Taxinvoice.Example.csharp
                 string url = taxinvoiceService.GetPopUpURL(txtCorpNum.Text, KeyType, txtMgtKey.Text, txtUserId.Text);
 
                 MessageBox.Show(url, "세금계산서 보기 팝업 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -2616,6 +2621,7 @@ namespace Popbill.Taxinvoice.Example.csharp
                 string url = taxinvoiceService.GetPrintURL(txtCorpNum.Text, KeyType, txtMgtKey.Text, txtUserId.Text);
                 
                 MessageBox.Show(url, "세금계산서 인쇄 팝업 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -2639,6 +2645,7 @@ namespace Popbill.Taxinvoice.Example.csharp
                 string url = taxinvoiceService.GetOldPrintURL(txtCorpNum.Text, KeyType, txtMgtKey.Text, txtUserId.Text);
 
                 MessageBox.Show(url, "세금계산서 (구)인쇄 팝업 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -2662,6 +2669,7 @@ namespace Popbill.Taxinvoice.Example.csharp
                 string url = taxinvoiceService.GetEPrintURL(txtCorpNum.Text, KeyType, txtMgtKey.Text, txtUserId.Text);
 
                 MessageBox.Show(url, "세금계산서 인쇄(공급받는자) 팝업 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -2693,6 +2701,7 @@ namespace Popbill.Taxinvoice.Example.csharp
                 string url = taxinvoiceService.GetMassPrintURL(txtCorpNum.Text, KeyType, MgtKeyList, txtUserId.Text);
 
                 MessageBox.Show(url, "세금계산서 대량인쇄 팝업 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -2716,6 +2725,7 @@ namespace Popbill.Taxinvoice.Example.csharp
                 string url = taxinvoiceService.GetMailURL(txtCorpNum.Text, KeyType, txtMgtKey.Text, txtUserId.Text);
 
                 MessageBox.Show(url, "메일링크 팝업 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -2736,6 +2746,7 @@ namespace Popbill.Taxinvoice.Example.csharp
                 string url = taxinvoiceService.GetAccessURL(txtCorpNum.Text, txtUserId.Text);
 
                 MessageBox.Show(url, "팝빌 로그인 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -2756,6 +2767,7 @@ namespace Popbill.Taxinvoice.Example.csharp
                 string url = taxinvoiceService.GetSealURL(txtCorpNum.Text, txtUserId.Text);
 
                 MessageBox.Show(url, "인감 및 첨부문서 등록 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -3228,6 +3240,7 @@ namespace Popbill.Taxinvoice.Example.csharp
                 string url = taxinvoiceService.GetTaxCertURL(txtCorpNum.Text, txtUserId.Text);
 
                 Process objProcess = Process.Start("IEXPLORE.EXE", "-nomerge "+url);
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -3310,6 +3323,7 @@ namespace Popbill.Taxinvoice.Example.csharp
                 string url = taxinvoiceService.GetChargeURL(txtCorpNum.Text, txtUserId.Text);
 
                 MessageBox.Show(url, "연동회원 포인트 충전 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -3351,6 +3365,7 @@ namespace Popbill.Taxinvoice.Example.csharp
                 string url = taxinvoiceService.GetPartnerURL(txtCorpNum.Text, "CHRG");
 
                 MessageBox.Show(url, "파트너 포인트충전 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -3719,6 +3734,7 @@ namespace Popbill.Taxinvoice.Example.csharp
                 string url = taxinvoiceService.GetViewURL(txtCorpNum.Text, KeyType, txtMgtKey.Text, txtUserId.Text);
 
                 MessageBox.Show(url, "세금계산서 보기 팝업 URL");
+                textURL.Text = url;
                 
             }
             catch (PopbillException ex)
@@ -3743,6 +3759,7 @@ namespace Popbill.Taxinvoice.Example.csharp
                 string url = taxinvoiceService.GetPDFURL(txtCorpNum.Text, KeyType, txtMgtKey.Text, txtUserId.Text);
 
                 MessageBox.Show(url, "세금계산서 PDF 다운로드 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {

@@ -78,6 +78,7 @@
             this.btnGetURL_SBOX = new System.Windows.Forms.Button();
             this.btnGetURL_TBOX = new System.Windows.Forms.Button();
             this.GroupBox12 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.btnGetPDFURL = new System.Windows.Forms.Button();
             this.btnGetPrintURL = new System.Windows.Forms.Button();
             this.txtUserId = new System.Windows.Forms.TextBox();
@@ -98,7 +99,8 @@
             this.Label2 = new System.Windows.Forms.Label();
             this.txtCorpNum = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textURL = new System.Windows.Forms.TextBox();
             this.GroupBox9.SuspendLayout();
             this.GroupBox11.SuspendLayout();
             this.GroupBox3.SuspendLayout();
@@ -236,7 +238,7 @@
             this.btnCheckMgtKeyInUse.Name = "btnCheckMgtKeyInUse";
             this.btnCheckMgtKeyInUse.Size = new System.Drawing.Size(141, 28);
             this.btnCheckMgtKeyInUse.TabIndex = 5;
-            this.btnCheckMgtKeyInUse.Text = "관리번호 사용여부 확인";
+            this.btnCheckMgtKeyInUse.Text = "문서번호 사용여부 확인";
             this.btnCheckMgtKeyInUse.UseVisualStyleBackColor = true;
             this.btnCheckMgtKeyInUse.Click += new System.EventHandler(this.btnCheckMgtKeyInUse_Click);
             // 
@@ -252,9 +254,9 @@
             this.Label3.AutoSize = true;
             this.Label3.Location = new System.Drawing.Point(127, 30);
             this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(142, 12);
+            this.Label3.Size = new System.Drawing.Size(118, 12);
             this.Label3.TabIndex = 2;
-            this.Label3.Text = "문서관리번호(MgtKey) : ";
+            this.Label3.Text = "문서번호(MgtKey) : ";
             // 
             // GroupBox11
             // 
@@ -406,6 +408,8 @@
             // 
             // GroupBox7
             // 
+            this.GroupBox7.Controls.Add(this.textURL);
+            this.GroupBox7.Controls.Add(this.label6);
             this.GroupBox7.Controls.Add(this.label5);
             this.GroupBox7.Controls.Add(this.groupBox14);
             this.GroupBox7.Controls.Add(this.groupBox10);
@@ -418,7 +422,7 @@
             this.GroupBox7.Controls.Add(this.Label3);
             this.GroupBox7.Location = new System.Drawing.Point(13, 186);
             this.GroupBox7.Name = "GroupBox7";
-            this.GroupBox7.Size = new System.Drawing.Size(993, 448);
+            this.GroupBox7.Size = new System.Drawing.Size(993, 454);
             this.GroupBox7.TabIndex = 12;
             this.GroupBox7.TabStop = false;
             this.GroupBox7.Text = "현금영수증 관련 API";
@@ -661,6 +665,16 @@
             this.GroupBox12.TabStop = false;
             this.GroupBox12.Text = "문서관련 URL 기능";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(190, 21);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(180, 25);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "PDF 다운로드";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.btnGetPDF_Click);
+            // 
             // btnGetPDFURL
             // 
             this.btnGetPDFURL.Location = new System.Drawing.Point(6, 146);
@@ -866,15 +880,21 @@
             this.Label1.TabIndex = 7;
             this.Label1.Text = "팝빌회원 사업자번호 : ";
             // 
-            // button1
+            // label6
             // 
-            this.button1.Location = new System.Drawing.Point(190, 21);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(180, 25);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "PDF 다운로드";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.btnGetPDF_Click);
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(471, 433);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(36, 12);
+            this.label6.TabIndex = 21;
+            this.label6.Text = "URL :";
+            // 
+            // textURL
+            // 
+            this.textURL.Location = new System.Drawing.Point(517, 429);
+            this.textURL.Name = "textURL";
+            this.textURL.Size = new System.Drawing.Size(329, 21);
+            this.textURL.TabIndex = 22;
             // 
             // frmExample
             // 
@@ -984,6 +1004,8 @@
         private System.Windows.Forms.Button btnGetPDFURL;
         private System.Windows.Forms.Button btnAssignMgtKey;
         private System.Windows.Forms.Button button1;
+        internal System.Windows.Forms.Label label6;
+        internal System.Windows.Forms.TextBox textURL;
     }
 }
 

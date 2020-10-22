@@ -2,7 +2,7 @@
  * 팝빌 전자명세서 API DotNet SDK Example
  * 
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/statement/tutorial/dotnet
- * - 업데이트 일자 : 2020-08-05
+ * - 업데이트 일자 : 2020-10-22
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991~2
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
  * 
@@ -104,7 +104,7 @@ namespace Popbill.Statement.Example.csharp
             Statement statement = new Statement();
 
             // [필수], 기재상 작성일자 날짜형식(yyyyMMdd)
-            statement.writeDate = "20200806";
+            statement.writeDate = "20201022";
 
             // [필수], {영수, 청구} 중 기재 
             statement.purposeType = "영수";
@@ -223,7 +223,7 @@ namespace Popbill.Statement.Example.csharp
             StatementDetail detail = new StatementDetail();
 
             detail.serialNum = 1; // 일련번호, 1부터 순차기재, 최대 99
-            detail.purchaseDT = "20190110"; // 거래일자
+            detail.purchaseDT = "20201022"; // 거래일자
             detail.itemName = "품목명"; //품목명
             detail.spec = "규격"; //규격
             detail.qty = "1"; // 수량
@@ -242,7 +242,7 @@ namespace Popbill.Statement.Example.csharp
             detail = new StatementDetail();
 
             detail.serialNum = 2; // 일련번호, 1부터 순차기재, 최대 99
-            detail.purchaseDT = "20190110"; // 거래일자
+            detail.purchaseDT = "20201022"; // 거래일자
             detail.itemName = "품목명"; //품목명
             detail.spec = "규격"; //규격
             detail.qty = "1"; // 수량
@@ -290,7 +290,7 @@ namespace Popbill.Statement.Example.csharp
             Statement statement = new Statement();
 
             // [필수], 기재상 작성일자 날짜형식(yyyyMMdd)
-            statement.writeDate = "20190110";
+            statement.writeDate = "20201022";
 
             // [필수], {영수, 청구} 중 기재 
             statement.purposeType = "영수";
@@ -409,7 +409,7 @@ namespace Popbill.Statement.Example.csharp
             StatementDetail detail = new StatementDetail();
 
             detail.serialNum = 1; // 일련번호, 1부터 순차기재, 최대 99
-            detail.purchaseDT = "20190110"; // 거래일자
+            detail.purchaseDT = "20201022"; // 거래일자
             detail.itemName = "품목명"; //품목명
             detail.spec = "규격"; //규격
             detail.qty = "1"; // 수량
@@ -428,7 +428,7 @@ namespace Popbill.Statement.Example.csharp
             detail = new StatementDetail();
 
             detail.serialNum = 2; // 일련번호, 1부터 순차기재, 최대 99
-            detail.purchaseDT = "20190110"; // 거래일자
+            detail.purchaseDT = "20201022"; // 거래일자
             detail.itemName = "품목명"; //품목명
             detail.spec = "규격"; //규격
             detail.qty = "1"; // 수량
@@ -477,7 +477,7 @@ namespace Popbill.Statement.Example.csharp
             Statement statement = new Statement();
 
             // [필수], 기재상 작성일자 날짜형식(yyyyMMdd)
-            statement.writeDate = "20190110";
+            statement.writeDate = "20201022";
 
             // [필수], {영수, 청구} 중 기재 
             statement.purposeType = "영수";
@@ -595,7 +595,7 @@ namespace Popbill.Statement.Example.csharp
             StatementDetail detail = new StatementDetail();
 
             detail.serialNum = 1; // 일련번호, 1부터 순차기재, 최대 99
-            detail.purchaseDT = "20190110"; // 거래일자
+            detail.purchaseDT = "20201022"; // 거래일자
             detail.itemName = "품목명"; //품목명
             detail.spec = "규격"; //규격
             detail.qty = "1"; // 수량
@@ -614,7 +614,7 @@ namespace Popbill.Statement.Example.csharp
             detail = new StatementDetail();
 
             detail.serialNum = 2; // 일련번호, 1부터 순차기재, 최대 99
-            detail.purchaseDT = "20190110"; // 거래일자
+            detail.purchaseDT = "20201022"; // 거래일자
             detail.itemName = "품목명"; //품목명
             detail.spec = "규격"; //규격
             detail.qty = "1"; // 수량
@@ -1108,6 +1108,7 @@ namespace Popbill.Statement.Example.csharp
                 string url = statementService.GetURL(txtCorpNum.Text, txtUserID.Text, "TBOX");
 
                 MessageBox.Show(url, "임시 연동문서함 팝업 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -1127,6 +1128,7 @@ namespace Popbill.Statement.Example.csharp
                 string url = statementService.GetURL(txtCorpNum.Text, txtUserID.Text, "SBOX");
 
                 MessageBox.Show(url, "발행 문서함 팝업 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -1148,6 +1150,7 @@ namespace Popbill.Statement.Example.csharp
                 string url = statementService.GetPopUpURL(txtCorpNum.Text, itemCode, txtMgtKey.Text, txtUserID.Text);
 
                 MessageBox.Show(url, "전자명세서 보기 팝업 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -1169,6 +1172,7 @@ namespace Popbill.Statement.Example.csharp
                 string url = statementService.GetPrintURL(txtCorpNum.Text, itemCode, txtMgtKey.Text, txtUserID.Text);
 
                 MessageBox.Show(url, "전자명세서 인쇄 팝업 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -1189,6 +1193,7 @@ namespace Popbill.Statement.Example.csharp
             {
                 string url = statementService.GetEPrintURL(txtCorpNum.Text, itemCode, txtMgtKey.Text, txtUserID.Text);
                 MessageBox.Show(url, "전자명세서 인쇄 팝업 URL-수신자용");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -1219,6 +1224,7 @@ namespace Popbill.Statement.Example.csharp
                 string url = statementService.GetMassPrintURL(txtCorpNum.Text, itemCode, mgtKeyList, txtUserID.Text);
 
                 MessageBox.Show(url, "전자명세서 인쇄팝업 URL - 대량");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -1241,6 +1247,7 @@ namespace Popbill.Statement.Example.csharp
                 string url = statementService.GetMailURL(txtCorpNum.Text, itemCode, txtMgtKey.Text, txtUserID.Text);
 
                 MessageBox.Show(url, "수신자 메일링크 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -1261,6 +1268,7 @@ namespace Popbill.Statement.Example.csharp
                 string url = statementService.GetAccessURL(txtCorpNum.Text, txtUserID.Text);
 
                 MessageBox.Show(url, "팝빌 로그인 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -1280,6 +1288,7 @@ namespace Popbill.Statement.Example.csharp
                 string url = statementService.GetSealURL(txtCorpNum.Text, txtUserID.Text);
 
                 MessageBox.Show(url, "인감 및 첨부문서 등록 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -1485,7 +1494,7 @@ namespace Popbill.Statement.Example.csharp
             Statement statement = new Statement();
 
             // [필수], 기재상 작성일자 날짜형식(yyyyMMdd)
-            statement.writeDate = "20190110";
+            statement.writeDate = "20201022";
 
             // [필수], {영수, 청구} 중 기재 
             statement.purposeType = "영수";
@@ -1603,7 +1612,7 @@ namespace Popbill.Statement.Example.csharp
             StatementDetail detail = new StatementDetail();
 
             detail.serialNum = 1; // 일련번호, 1부터 순차기재, 최대 99
-            detail.purchaseDT = "20190110"; // 거래일자
+            detail.purchaseDT = "20201022"; // 거래일자
             detail.itemName = "품목명";
             detail.spec = "규격";
             detail.qty = "1"; // 수량
@@ -1622,7 +1631,7 @@ namespace Popbill.Statement.Example.csharp
             detail = new StatementDetail();
 
             detail.serialNum = 2; // 일련번호, 1부터 순차기재, 최대 99
-            detail.purchaseDT = "20190110"; // 거래일자
+            detail.purchaseDT = "20201022"; // 거래일자
             detail.itemName = "품목명";
             detail.spec = "규격";
             detail.qty = "1"; // 수량
@@ -1820,6 +1829,7 @@ namespace Popbill.Statement.Example.csharp
                 string url = statementService.GetChargeURL(txtCorpNum.Text, txtUserID.Text);
 
                 MessageBox.Show(url, "연동회원 포인트충전 팝업 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -1860,6 +1870,7 @@ namespace Popbill.Statement.Example.csharp
                 string url = statementService.GetPartnerURL(txtCorpNum.Text, "CHRG");
 
                 MessageBox.Show(url, "파트너 포인트충전 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -2225,6 +2236,7 @@ namespace Popbill.Statement.Example.csharp
                 string url = statementService.GetViewURL(txtCorpNum.Text, itemCode, txtMgtKey.Text, txtUserID.Text);
 
                 MessageBox.Show(url, "전자명세서 보기 팝업 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {

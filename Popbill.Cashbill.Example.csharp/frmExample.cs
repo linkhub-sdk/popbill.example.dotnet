@@ -3,7 +3,7 @@
  * 팝빌 현금영수증 API DotNet SDK Example
  * 
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/cashbill/tutorial/dotnet#csharp
- * - 업데이트 일자 : 2020-08-05
+ * - 업데이트 일자 : 2020-10-22
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
  * 
@@ -939,6 +939,7 @@ namespace Popbill.Cashbill.Example.csharp
                 string url = cashbillService.GetURL(txtCorpNum.Text, txtUserId.Text, "TBOX");
 
                 MessageBox.Show(url, "팝빌 현금영수증 임시문서함 팝업 URL");
+                textURL.Text = url;
 
             }
             catch (PopbillException ex)
@@ -959,6 +960,7 @@ namespace Popbill.Cashbill.Example.csharp
                 string url = cashbillService.GetURL(txtCorpNum.Text, txtUserId.Text, "PBOX");
 
                 MessageBox.Show(url, "팝빌 현금영수증 발행문서함 팝업 URL");
+                textURL.Text = url;
 
             }
             catch (PopbillException ex)
@@ -979,6 +981,7 @@ namespace Popbill.Cashbill.Example.csharp
                 string url = cashbillService.GetURL(txtCorpNum.Text, txtUserId.Text, "WRITE");
 
                 MessageBox.Show(url, "팝빌 현금영수증 작성 팝업 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -999,6 +1002,7 @@ namespace Popbill.Cashbill.Example.csharp
                 string url = cashbillService.GetPopUpURL(txtCorpNum.Text, txtMgtKey.Text, txtUserId.Text);
 
                 MessageBox.Show(url, "현금영수증 보기 팝업 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -1019,6 +1023,7 @@ namespace Popbill.Cashbill.Example.csharp
                 string url = cashbillService.GetPrintURL(txtCorpNum.Text, txtMgtKey.Text, txtUserId.Text);
 
                 MessageBox.Show(url, "현금영수증 인쇄 팝업 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -1039,6 +1044,7 @@ namespace Popbill.Cashbill.Example.csharp
                 string url = cashbillService.GetEPrintURL(txtCorpNum.Text, txtMgtKey.Text, txtUserId.Text);
 
                 MessageBox.Show(url, "현금영수증 인쇄 팝업 URL - 공급받는자용");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -1058,18 +1064,19 @@ namespace Popbill.Cashbill.Example.csharp
             List<string> MgtKeyList = new List<string>();
 
             // 현금영수증 문서번호 배열, 최대 100건.
-            MgtKeyList.Add("20190110-001");
-            MgtKeyList.Add("20190110-002");
-            MgtKeyList.Add("20190110-003");
-            MgtKeyList.Add("20190110-004");
-            MgtKeyList.Add("20190110-005");
-            MgtKeyList.Add("20190110-006");
+            MgtKeyList.Add("20201019-002");
+            MgtKeyList.Add("20201015-002");
+            MgtKeyList.Add("20201002-01");
+            MgtKeyList.Add("20201014-01");
+            MgtKeyList.Add("20201015-001");
+            MgtKeyList.Add("20201019-003");
 
             try
             {
                 string url = cashbillService.GetMassPrintURL(txtCorpNum.Text, MgtKeyList, txtUserId.Text);
 
                 MessageBox.Show(url, "현금영수증 인쇄 팝업 URL - 대량");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -1090,6 +1097,7 @@ namespace Popbill.Cashbill.Example.csharp
                 string url = cashbillService.GetMailURL(txtCorpNum.Text, txtMgtKey.Text, txtUserId.Text);
 
                 MessageBox.Show(url, "메일링크 URL 확인");
+                textURL.Text = url;
 
             }
             catch (PopbillException ex)
@@ -1112,6 +1120,7 @@ namespace Popbill.Cashbill.Example.csharp
                 string url = cashbillService.GetAccessURL(txtCorpNum.Text, txtUserId.Text);
 
                 MessageBox.Show(url, "팝빌 로그인 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -1296,6 +1305,7 @@ namespace Popbill.Cashbill.Example.csharp
                 string url = cashbillService.GetChargeURL(txtCorpNum.Text, txtUserId.Text);
 
                 MessageBox.Show(url, "포인트충전 팝업 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -1336,6 +1346,7 @@ namespace Popbill.Cashbill.Example.csharp
                 string url = cashbillService.GetPartnerURL(txtCorpNum.Text, "CHRG");
 
                 MessageBox.Show(url, "파트너 포인트충전 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {
@@ -1705,6 +1716,7 @@ namespace Popbill.Cashbill.Example.csharp
                 string url = cashbillService.GetPDFURL(txtCorpNum.Text, txtMgtKey.Text, txtUserId.Text);
 
                 MessageBox.Show(url, "현금영수증 PDF 다운로드 URL");
+                textURL.Text = url;
             }
             catch (PopbillException ex)
             {

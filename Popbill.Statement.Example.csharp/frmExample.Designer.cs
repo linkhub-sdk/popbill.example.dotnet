@@ -80,6 +80,7 @@
             this.btnAttachStmt = new System.Windows.Forms.Button();
             this.btnFAXSend = new System.Windows.Forms.Button();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.btnGetViewURL = new System.Windows.Forms.Button();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnCheckID = new System.Windows.Forms.Button();
@@ -114,7 +115,8 @@
             this.btnCancelIssueSub = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.Label23 = new System.Windows.Forms.Label();
-            this.btnGetViewURL = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textURL = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -163,7 +165,7 @@
             // 
             // txtUserID
             // 
-            this.txtUserID.Location = new System.Drawing.Point(347, 16);
+            this.txtUserID.Location = new System.Drawing.Point(353, 16);
             this.txtUserID.Name = "txtUserID";
             this.txtUserID.Size = new System.Drawing.Size(100, 21);
             this.txtUserID.TabIndex = 3;
@@ -235,7 +237,7 @@
             this.btnCheckMgtKeyInUse.Name = "btnCheckMgtKeyInUse";
             this.btnCheckMgtKeyInUse.Size = new System.Drawing.Size(151, 30);
             this.btnCheckMgtKeyInUse.TabIndex = 19;
-            this.btnCheckMgtKeyInUse.Text = "관리번호 사용여부 확인";
+            this.btnCheckMgtKeyInUse.Text = "문서번호 사용여부 확인";
             this.btnCheckMgtKeyInUse.UseVisualStyleBackColor = true;
             this.btnCheckMgtKeyInUse.Click += new System.EventHandler(this.btnCheckMgtKeyInUse_Click);
             // 
@@ -439,9 +441,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(23, 101);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(138, 12);
+            this.label5.Size = new System.Drawing.Size(114, 12);
             this.label5.TabIndex = 40;
-            this.label5.Text = "문서관리번호(MgtKey) :";
+            this.label5.Text = "문서번호(MgtKey) :";
             // 
             // fileDialog
             // 
@@ -671,6 +673,16 @@
             this.groupBox9.TabIndex = 50;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "인쇄 URL";
+            // 
+            // btnGetViewURL
+            // 
+            this.btnGetViewURL.Location = new System.Drawing.Point(11, 55);
+            this.btnGetViewURL.Name = "btnGetViewURL";
+            this.btnGetViewURL.Size = new System.Drawing.Size(183, 34);
+            this.btnGetViewURL.TabIndex = 34;
+            this.btnGetViewURL.Text = "문서 보기 팝업 URL (메뉴/버튼 제외)";
+            this.btnGetViewURL.UseVisualStyleBackColor = true;
+            this.btnGetViewURL.Click += new System.EventHandler(this.btnGetViewURL_Click);
             // 
             // groupBox10
             // 
@@ -940,6 +952,8 @@
             // 
             // groupBox12
             // 
+            this.groupBox12.Controls.Add(this.textURL);
+            this.groupBox12.Controls.Add(this.label13);
             this.groupBox12.Controls.Add(this.groupBox14);
             this.groupBox12.Controls.Add(this.groupBox10);
             this.groupBox12.Controls.Add(this.groupBox9);
@@ -956,7 +970,7 @@
             this.groupBox12.Controls.Add(this.btnCheckMgtKeyInUse);
             this.groupBox12.Location = new System.Drawing.Point(15, 200);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(872, 544);
+            this.groupBox12.Size = new System.Drawing.Size(872, 554);
             this.groupBox12.TabIndex = 53;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "전자명세서 관련 API";
@@ -1049,15 +1063,21 @@
             this.Label23.TabIndex = 47;
             this.Label23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // btnGetViewURL
+            // label13
             // 
-            this.btnGetViewURL.Location = new System.Drawing.Point(11, 55);
-            this.btnGetViewURL.Name = "btnGetViewURL";
-            this.btnGetViewURL.Size = new System.Drawing.Size(183, 34);
-            this.btnGetViewURL.TabIndex = 34;
-            this.btnGetViewURL.Text = "문서 보기 팝업 URL (메뉴/버튼 제외)";
-            this.btnGetViewURL.UseVisualStyleBackColor = true;
-            this.btnGetViewURL.Click += new System.EventHandler(this.btnGetViewURL_Click);
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(508, 532);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(36, 12);
+            this.label13.TabIndex = 52;
+            this.label13.Text = "URL :";
+            // 
+            // textURL
+            // 
+            this.textURL.Location = new System.Drawing.Point(550, 529);
+            this.textURL.Name = "textURL";
+            this.textURL.Size = new System.Drawing.Size(287, 21);
+            this.textURL.TabIndex = 53;
             // 
             // frmExample
             // 
@@ -1189,6 +1209,8 @@
         private System.Windows.Forms.Button btnUpdateEmailConfig;
         private System.Windows.Forms.Button btnListEmailConfig;
         private System.Windows.Forms.Button btnGetViewURL;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox textURL;
     }
 }
 
