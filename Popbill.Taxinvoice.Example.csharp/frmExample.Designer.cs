@@ -82,8 +82,6 @@
             this.btnCheckIsMember = new System.Windows.Forms.Button();
             this.btnJoinMember = new System.Windows.Forms.Button();
             this.GroupBox7 = new System.Windows.Forms.GroupBox();
-            this.textURL = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.GroupBox13 = new System.Windows.Forms.GroupBox();
             this.btnGetURL_WRITE = new System.Windows.Forms.Button();
             this.btnGetURL_PBOX = new System.Windows.Forms.Button();
@@ -144,6 +142,8 @@
             this.label33 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
+            this.textURL = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.txtUserId = new System.Windows.Forms.TextBox();
             this.btnGetAccessURL = new System.Windows.Forms.Button();
             this.GroupBox1 = new System.Windows.Forms.GroupBox();
@@ -545,6 +545,7 @@
             // 
             // GroupBox11
             // 
+            this.GroupBox11.Controls.Add(this.btnGetPDF);
             this.GroupBox11.Controls.Add(this.btnUpdateEmailConfig);
             this.GroupBox11.Controls.Add(this.btnListEmailConfig);
             this.GroupBox11.Controls.Add(this.btnAssignMgtKey);
@@ -776,22 +777,6 @@
             this.GroupBox7.TabStop = false;
             this.GroupBox7.Text = "전자세금계산서 관련 API";
             // 
-            // textURL
-            // 
-            this.textURL.Location = new System.Drawing.Point(755, 10);
-            this.textURL.Name = "textURL";
-            this.textURL.Size = new System.Drawing.Size(411, 21);
-            this.textURL.TabIndex = 21;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(685, 15);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(64, 12);
-            this.label8.TabIndex = 20;
-            this.label8.Text = "응답 URL :";
-            // 
             // GroupBox13
             // 
             this.GroupBox13.Controls.Add(this.btnGetURL_WRITE);
@@ -847,7 +832,6 @@
             // 
             // GroupBox12
             // 
-            this.GroupBox12.Controls.Add(this.btnGetPDF);
             this.GroupBox12.Controls.Add(this.btnGetOldPrintURL);
             this.GroupBox12.Controls.Add(this.btnGetPDFURL);
             this.GroupBox12.Controls.Add(this.btnGetViewURL);
@@ -865,9 +849,9 @@
             // 
             // btnGetPDF
             // 
-            this.btnGetPDF.Location = new System.Drawing.Point(15, 169);
+            this.btnGetPDF.Location = new System.Drawing.Point(15, 171);
             this.btnGetPDF.Name = "btnGetPDF";
-            this.btnGetPDF.Size = new System.Drawing.Size(174, 32);
+            this.btnGetPDF.Size = new System.Drawing.Size(133, 32);
             this.btnGetPDF.TabIndex = 17;
             this.btnGetPDF.Text = "PDF 다운로드";
             this.btnGetPDF.UseVisualStyleBackColor = true;
@@ -1469,6 +1453,22 @@
             this.label34.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.label34.Size = new System.Drawing.Size(1, 50);
             this.label34.TabIndex = 33;
+            // 
+            // textURL
+            // 
+            this.textURL.Location = new System.Drawing.Point(755, 10);
+            this.textURL.Name = "textURL";
+            this.textURL.Size = new System.Drawing.Size(411, 21);
+            this.textURL.TabIndex = 21;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(685, 15);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(64, 12);
+            this.label8.TabIndex = 20;
+            this.label8.Text = "응답 URL :";
             // 
             // txtUserId
             // 
