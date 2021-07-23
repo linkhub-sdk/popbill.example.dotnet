@@ -2,7 +2,7 @@
  * 팝빌 휴폐업조회 API DotNet SDK Example
  * 
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/closedown/tutorial/dotnet#csharp
- * - 업데이트 일자 : 2020-10-22
+ * - 업데이트 일자 : 2021-07-23
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
  * 
@@ -69,10 +69,10 @@ namespace Popbill.Closedown.Example.csharp
                 CorpState result = closedownService.checkCorpNum(txtCorpNum.Text, txtCheckCorpNum.Text);
 
                 tmp += "* state (휴폐업상태) : null-알수없음, 0-등록되지 않은 사업자번호, 1-사업중, 2-폐업, 3-휴업\n";
-                tmp += "* type (사업 유형) : null-알수없음, 1-일반과세자, 2-면세과세자, 3-간이과세자, 4-비영리법인, 국가기관\n\n";
+                tmp += "* taxType (과세유형) : null-알수없음, 10-일반, 20-면세, 30-간이, 31-간이(세금계산서 발급사업자),  40-비영리법인, 국가기관" + CRLF + CRLF;
                 tmp += "corpNum(사업자번호) : " + result.corpNum + "\n";
                 tmp += "state(휴폐업상태) : " + result.state + "\n";
-                tmp += "type(사업유형) : " + result.type + "\n";
+                tmp += "taxType(과세유형) : " + result.taxType + "\n";
                 tmp += "stateDate(휴폐업일자) : " + result.stateDate + "\n";
                 tmp += "typeDate(과세유형 전환일자) : " + result.typeDate + "\n";
                 tmp += "checkDate(국세청확인일자) : " + result.checkDate + "\n";
@@ -107,13 +107,13 @@ namespace Popbill.Closedown.Example.csharp
                 List<CorpState> corpStateList = closedownService.checkCorpNums(txtCorpNum.Text, CorpNumList);
 
                 tmp += "* state (휴폐업상태) : null-알수없음, 0-등록되지 않은 사업자번호, 1-사업중, 2-폐업, 3-휴업" + CRLF;
-                tmp += "* type (사업 유형) : null-알수없음, 1-일반과세자, 2-면세과세자, 3-간이과세자, 4-비영리법인, 국가기관" + CRLF + CRLF;
+                tmp += "* taxType (과세유형) : null-알수없음, 10-일반, 20-면세, 30-간이, 31-간이(세금계산서 발급사업자),  40-비영리법인, 국가기관" + CRLF + CRLF;
 
                 for (int i = 0; i < corpStateList.Count; i++)
                 {
                     tmp += "corpNum(사업자번호) : " + corpStateList[i].corpNum + CRLF;
                     tmp += "state(휴폐업상태) : " + corpStateList[i].state + CRLF;
-                    tmp += "type(사업유형) : " + corpStateList[i].type + CRLF;
+                    tmp += "taxType(과세유형) : " + corpStateList[i].taxType + CRLF;
                     tmp += "stateDate(휴폐업일자) : " + corpStateList[i].stateDate + CRLF;
                     tmp += "typeDate(과세유형 전환일자) : " + corpStateList[i].typeDate + CRLF;
                     tmp += "checkDate(국세청확인일자) : " + corpStateList[i].checkDate + CRLF + CRLF;

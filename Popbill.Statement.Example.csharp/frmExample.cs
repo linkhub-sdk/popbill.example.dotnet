@@ -268,7 +268,7 @@ namespace Popbill.Statement.Example.csharp
 
             try
             {
-                Response response = statementService.RegistIssue(txtCorpNum.Text, statement, memo, txtUserID.Text, emailSubject);
+                STMIssueResponse response = statementService.RegistIssue(txtCorpNum.Text, statement, memo, txtUserID.Text, emailSubject);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + response.message, "전자명세서 즉시발행");
