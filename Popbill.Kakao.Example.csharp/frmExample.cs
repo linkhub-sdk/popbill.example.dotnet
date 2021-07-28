@@ -69,8 +69,8 @@ namespace Popbill.Kakao.Example.csharp
         }
 
         /*
-         * 카카오톡채널 계정관리 팝업 URL을 반환합니다.
-         * - 반환된 URL은 보안정책에 따라 30초의 유효시간을 갖습니다.
+         * 카카오톡 채널을 등록하고 내역을 확인하는 카카오톡 채널 관리 페이지 팝업 URL을 반환합니다.
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
          * - https://docs.popbill.com/kakao/dotnet/api#GetPlusFriendMgtURL
          */
         private void btnGetPlusFriendMgtURL_Click(object sender, EventArgs e)
@@ -90,7 +90,7 @@ namespace Popbill.Kakao.Example.csharp
         }
 
         /*
-         * 팝빌에 등록된 카카오톡채널 계정목록을 반환합니다.
+         * 팝빌에 등록한 연동회원의 카카오톡 발신번호 목록을 확인합니다.
          * - https://docs.popbill.com/kakao/dotnet/api#ListPlusFriendID
          */
         private void btnListPlusFriendID_Click(object sender, EventArgs e)
@@ -118,8 +118,8 @@ namespace Popbill.Kakao.Example.csharp
         }
 
         /*
-         * 발신번호 관리 팝업 URL을 반환합니다.
-         * - 반환된 URL은 보안정책에 따라 30초의 유효시간을 갖습니다.
+         * 발신번호를 등록하고 내역을 확인하는 카카오톡 발신번호 관리 페이지 팝업 URL을 반환합니다.
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
          * - https://docs.popbill.com/kakao/dotnet/api#GetSenderNumberMgtURL
          */
         private void btnGetSenderNumberMgtURL_Click(object sender, EventArgs e)
@@ -139,7 +139,7 @@ namespace Popbill.Kakao.Example.csharp
         }
 
         /*
-         * 팝빌에 등록된 발신번호 목록을 반환합니다.
+         * 팝빌에 등록한 연동회원의 카카오톡 발신번호 목록을 확인합니다.
          * - https://docs.popbill.com/kakao/dotnet/api#GetSenderNumberList
          */
         private void btnGetSenderNumberList_Click(object sender, EventArgs e)
@@ -167,8 +167,8 @@ namespace Popbill.Kakao.Example.csharp
         }
 
         /*
-         * 알림톡 템플릿관리 팝업 URL을 반환합니다.
-         * - 반환된 URL은 보안정책에 따라 30초의 유효시간을 갖습니다.
+         * 알림톡 템플릿을 신청하고 승인심사 결과를 확인하며 등록 내역을 확인하는 알림톡 템플릿 관리 페이지 팝업 URL을 반환합니다.
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
          * - https://docs.popbill.com/kakao/dotnet/api#GetATSTemplateMgtURL
          */
         private void btnGetATSTemplateMgtURL_Click(object sender, EventArgs e)
@@ -188,7 +188,7 @@ namespace Popbill.Kakao.Example.csharp
         }
 
         /*
-         * (주)카카오로 부터 승인된 알림톡 템플릿 목록을 확인합니다.
+         * 승인된 알림톡 템플릿 목록을 확인합니다.
          * - 반환항목중 템플릿코드(templateCode)는 알림톡 전송시 사용됩니다.
          * - https://docs.popbill.com/kakao/dotnet/api#ListATSTemplate
          */
@@ -232,8 +232,8 @@ namespace Popbill.Kakao.Example.csharp
         }
 
         /*
-         * 알림톡 전송을 요청합니다.
-         * 사전에 승인된 템플릿의 내용과 알림톡 전송내용(content)이 다를 경우 전송실패 처리됩니다.
+         * 승인된 템플릿의 내용을 작성하여 1건의 알림톡 전송을 팝빌에 접수합니다.
+         * - 사전에 승인된 템플릿의 내용과 알림톡 전송내용(content)이 다를 경우 전송실패 처리됩니다.
          * - https://docs.popbill.com/kakao/dotnet/api#SendATS
          */
         private void btnSendATS_one_Click(object sender, EventArgs e)
@@ -310,8 +310,8 @@ namespace Popbill.Kakao.Example.csharp
         }
 
         /*
-         * [대량전송] 알림톡 전송을 요청합니다.
-         * 사전에 승인된 템플릿의 내용과 알림톡 전송내용(content)이 다를 경우 전송실패 처리됩니다.
+         * 승인된 템플릿의 내용을 작성하여 다수건의 알림톡 전송을 팝빌에 접수하며, 수신자 별로 개별 내용을 전송합니다. (최대 1,000건)
+         * - 사전에 승인된 템플릿의 내용과 알림톡 전송내용(content)이 다를 경우 전송실패 처리됩니다.
          * - https://docs.popbill.com/kakao/dotnet/api#SendATS_Multi
          */
         private void btnSendATS_multi_Click(object sender, EventArgs e)
@@ -358,7 +358,7 @@ namespace Popbill.Kakao.Example.csharp
                 receiverInfo.altmsg = "대체문자 내용입니다";
 
                 // 파트너 지정키, 대량전송시, 수신자 구별용 메모
-                receiverInfo.interOPRefKey = "20201020-" + i.ToString();
+                receiverInfo.interOPRefKey = "20210701-" + i.ToString();
 
                 // 수신자별 개별 버튼내용 전송하는 경우
                 // 개별 버튼의 개수는 템플릿 신청 시 승인받은 버튼의 개수와 동일하게 생성, 다를경우 실패 처리
@@ -453,8 +453,8 @@ namespace Popbill.Kakao.Example.csharp
         }
 
         /*
-         * [동보전송] 알림톡 전송을 요청합니다.
-         * 사전에 승인된 템플릿의 내용과 알림톡 전송내용(content)이 다를 경우 전송실패 처리됩니다.
+         * 승인된 템플릿 내용을 작성하여 다수건의 알림톡 전송을 팝빌에 접수하며, 모든 수신자에게 동일 내용을 전송합니다. (최대 1,000건)
+         * - 사전에 승인된 템플릿의 내용과 알림톡 전송내용(content)이 다를 경우 전송실패 처리됩니다.
          * - https://docs.popbill.com/kakao/dotnet/api#SendATS_Same
          */
         private void btnSendATS_same_Click(object sender, EventArgs e)
@@ -495,7 +495,7 @@ namespace Popbill.Kakao.Example.csharp
                 receiverInfo.rcvnm = "수신자명";
 
                 // 파트너 지정키, 수신자 구별용 메모
-                receiverInfo.interOPRefKey = "20200805-" + i.ToString();
+                receiverInfo.interOPRefKey = "20210701-" + i.ToString();
 
                 receivers.Add(receiverInfo);
             }
@@ -543,8 +543,8 @@ namespace Popbill.Kakao.Example.csharp
         }
 
         /*
-         * 친구톡(텍스트) 전송을 요청합니다.
-         * - 친구톡은 심야 전송(20:00~08:00)이 제한됩니다.
+         * 텍스트로 구성된 1건의 친구톡 전송을 팝빌에 접수합니다.
+         * - 친구톡의 경우 야간 전송은 제한됩니다. (20:00 ~ 익일 08:00)
          * - https://docs.popbill.com/kakao/dotnet/api#SendFTS
          */
         private void btnSendFTS_one_Click(object sender, EventArgs e)
@@ -614,8 +614,8 @@ namespace Popbill.Kakao.Example.csharp
         }
 
         /*
-         * [대량전송] 친구톡(텍스트) 전송을 요청합니다.
-         * - 친구톡은 심야 전송(20:00~08:00)이 제한됩니다.
+         * 텍스트로 구성된 다수건의 친구톡 전송을 팝빌에 접수하며, 수신자 별로 개별 내용을 전송합니다. (최대 1,000건)
+         * - 친구톡의 경우 야간 전송은 제한됩니다. (20:00 ~ 익일 08:00)
          * - https://docs.popbill.com/kakao/dotnet/api#SendFTS_Multi
          */
         private void btnSendFTS_multi_Click(object sender, EventArgs e)
@@ -655,7 +655,7 @@ namespace Popbill.Kakao.Example.csharp
                 receiverInfo.altmsg = "대체문자 전송내용" + i.ToString();
 
                 // 파트너 지정키, 대량전송시, 수신자 구별용 메모
-                receiverInfo.interOPRefKey = "20201020-" + i.ToString();
+                receiverInfo.interOPRefKey = "20210701-" + i.ToString();
 
                 // 수신자별 개별 버튼내용 전송하는 경우
                 // 생성 가능 개수 최대 5개
@@ -740,8 +740,8 @@ namespace Popbill.Kakao.Example.csharp
         }
 
         /*
-         * [동보전송] 친구톡(텍스트) 전송을 요청합니다.
-         * - 친구톡은 심야 전송(20:00~08:00)이 제한됩니다.
+         * 텍스트로 구성된 다수건의 친구톡 전송을 팝빌에 접수하며, 모든 수신자에게 동일 내용을 전송합니다. (최대 1,000건)
+         * - 친구톡의 경우 야간 전송은 제한됩니다. (20:00 ~ 익일 08:00)
          * - https://docs.popbill.com/kakao/dotnet/api#SendFTS_Same
          */
         private void btnSendFTS_same_Click(object sender, EventArgs e)
@@ -808,9 +808,9 @@ namespace Popbill.Kakao.Example.csharp
         }
 
         /*
-         * 친구톡(이미지) 전송을 요청합니다.
-         * - 친구톡은 심야 전송(20:00~08:00)이 제한됩니다.
-         * - 이미지 전송규격 / jpg 포맷, 용량 최대 500KByte, 이미지 높이/너비 비율 1.333 이하, 1/2 이상
+         * 이미지가 첨부된 1건의 친구톡 전송을 팝빌에 접수합니다.
+         * - 친구톡의 경우 야간 전송은 제한됩니다. (20:00 ~ 익일 08:00)
+         * - 이미지 파일 규격: 전송 포맷 – JPG 파일 (.jpg, .jpeg), 용량 – 최대 500 Kbyte, 크기 – 가로 500px 이상, 가로 기준으로 세로 0.5~1.3배 비율 가능
          * - https://docs.popbill.com/kakao/dotnet/api#SendFMS
          */
         private void btnSendFMS_one_Click(object sender, EventArgs e)
@@ -882,9 +882,9 @@ namespace Popbill.Kakao.Example.csharp
         }
 
         /*
-         * [대량전송] 친구톡(이미지) 전송을 요청합니다.
-         * - 친구톡은 심야 전송(20:00~08:00)이 제한됩니다.
-         * - 이미지 전송규격 / jpg 포맷, 용량 최대 500KByte, 이미지 높이/너비 비율 1.333 이하, 1/2 이상
+         * 이미지가 첨부된 다수건의 친구톡 전송을 팝빌에 접수하며, 수신자 별로 개별 내용을 전송합니다. (최대 1,000건)
+         * - 친구톡의 경우 야간 전송은 제한됩니다. (20:00 ~ 익일 08:00)
+         * - 이미지 파일 규격: 전송 포맷 – JPG 파일 (.jpg, .jpeg), 용량 – 최대 500 Kbyte, 크기 – 가로 500px 이상, 가로 기준으로 세로 0.5~1.3배 비율 가능
          * - https://docs.popbill.com/kakao/dotnet/api#SendFMS_Multi
          */
         private void btnSendFMS_multi_Click(object sender, EventArgs e)
@@ -924,7 +924,7 @@ namespace Popbill.Kakao.Example.csharp
                 receiverInfo.altmsg = "대체문자 전송내용" + i.ToString();
 
                 // 파트너 지정키, 대량전송시, 수신자 구별용 메모
-                receiverInfo.interOPRefKey = "20201020-" + i.ToString();
+                receiverInfo.interOPRefKey = "20210701-" + i.ToString();
 
                 // 수신자별 개별 버튼내용 전송하는 경우
                 // 생성 가능 개수 최대 5개
@@ -1019,9 +1019,9 @@ namespace Popbill.Kakao.Example.csharp
         }
 
         /*
-         * [동보전송] 친구톡(이미지) 전송을 요청합니다.
-         * - 친구톡은 심야 전송(20:00~08:00)이 제한됩니다.
-         * - 이미지 전송규격 / jpg 포맷, 용량 최대 500KByte, 이미지 높이/너비 비율 1.333 이하, 1/2 이상
+         * 이미지가 첨부된 다수건의 친구톡 전송을 팝빌에 접수하며, 모든 수신자에게 동일 내용을 전송합니다. (최대 1,000건)
+         * - 친구톡의 경우 야간 전송은 제한됩니다. (20:00 ~ 익일 08:00)
+         * - 이미지 파일 규격: 전송 포맷 – JPG 파일 (.jpg, .jpeg), 용량 – 최대 500 Kbyte, 크기 – 가로 500px 이상, 가로 기준으로 세로 0.5~1.3배 비율 가능
          * - https://docs.popbill.com/kakao/dotnet/api#SendFMS_Same
          */
         private void btnSendFMS_same_Click(object sender, EventArgs e)
@@ -1099,8 +1099,7 @@ namespace Popbill.Kakao.Example.csharp
         }
 
         /*
-         * 알림톡/친구톡 전송요청시 발급받은 접수번호(receiptNum)로 예약전송건을 취소합니다.
-         * - 예약취소는 예약전송시간 10분전까지만 가능합니다.
+         * 팝빌에서 반환받은 접수번호를 통해 예약접수된 카카오톡을 전송 취소합니다. (예약시간 10분 전까지 가능)
          * - https://docs.popbill.com/kakao/dotnet/api#CancelReserve
          */
         private void btnCacnelReserve_Click(object sender, EventArgs e)
@@ -1120,8 +1119,7 @@ namespace Popbill.Kakao.Example.csharp
         }
 
         /*
-         * 전송요청번호(requestNum)를 할당한 알림톡/친구톡 예약전송건을 취소합니다.
-         * - 예약전송 취소는 예약시간 10분전까지만 가능합니다.
+         * 파트너가 할당한 전송요청 번호를 통해 예약접수된 카카오톡을 전송 취소합니다. (예약시간 10분 전까지 가능)
          * - https://docs.popbill.com/kakao/dotnet/api#CancelReserveRN
          */
         private void btnCancelReserveRN_Click(object sender, EventArgs e)
@@ -1141,7 +1139,7 @@ namespace Popbill.Kakao.Example.csharp
         }
 
         /*
-         * 알림톡/친구톡 전송요청시 발급받은 접수번호(receiptNum)로 전송결과를 확인합니다.
+         * 팝빌에서 반환받은 접수번호를 통해 알림톡/친구톡 전송상태 및 결과를 확인합니다.
          * - https://docs.popbill.com/kakao/dotnet/api#GetMessages
          */
         private void btnGetMessages_Click(object sender, EventArgs e)
@@ -1206,7 +1204,7 @@ namespace Popbill.Kakao.Example.csharp
         }
 
         /*
-         * 전송요청번호(requestNum)를 할당한 알림톡/친구톡 전송내역 및 전송상태를 확인합니다.
+         * 파트너가 할당한 전송요청 번호를 통해 알림톡/친구톡 전송상태 및 결과를 확인합니다.
          * - https://docs.popbill.com/kakao/dotnet/api#GetMessagesRN
          */
         private void btnGetMessagesRN_Click(object sender, EventArgs e)
@@ -1270,18 +1268,17 @@ namespace Popbill.Kakao.Example.csharp
         }
 
         /*
-         * 검색조건을 사용하여 알림톡/친구톡 전송 내역을 조회합니다.
-         * - 최대 검색기간 : 6개월 이내
+         * 검색조건에 해당하는 카카오톡 전송내역을 조회합니다. (최대 검색기간 : 6개월)
          * - https://docs.popbill.com/kakao/dotnet/api#Search
          */
         private void btnSearch_Click(object sender, EventArgs e)
         {
             // 최대 검색기한 : 6개월 이내
             // 시작일자, 날짜형식(yyyyMMdd)
-            String SDate = "20190901";
+            String SDate = "20210701";
 
             // 종료일자, 날짜형식(yyyyMMdd)
-            String EDate = "20190930";
+            String EDate = "20210730";
 
             // 전송상태값 배열, 0-대기, 1- 전송중, 2-대기, 3-성공, 4-실패, 5-취소
             String[] State = new String[6];
@@ -1368,8 +1365,8 @@ namespace Popbill.Kakao.Example.csharp
         }
 
         /*
-         * 알림톡/친구톡 전송내역 팝업 URL을 반환합니다.
-         * - 반환된 URL은 보안정책에 따라 30초의 유효시간을 갖습니다.
+         * 팝빌 사이트와 동일한 카카오톡 전송내역을 확인하는 페이지의 팝업 URL을 반환합니다.
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
          * - https://docs.popbill.com/kakao/dotnet/api#GetSentListURL
          */
         private void btnGetSentListURL_Click(object sender, EventArgs e)
@@ -1389,8 +1386,8 @@ namespace Popbill.Kakao.Example.csharp
         }
 
         /*
-        * 연동회원의 잔여포인트를 조회합니다.
-        * - 파트너 과금 방식의 경우 파트너 잔여 포인트 조회(GetPartnerBalance API)를 이용하시기 바랍니다.
+        * 연동회원의 잔여포인트를 확인합니다.
+        * - 과금방식이 파트너과금인 경우 파트너 잔여포인트(GetPartnerBalance API)를 통해 확인하시기 바랍니다.
         * - https://docs.popbill.com/kakao/dotnet/api#GetBalance
         */
         private void btnGetBalance_Click(object sender, EventArgs e)
@@ -1409,8 +1406,8 @@ namespace Popbill.Kakao.Example.csharp
         }
 
         /*
-         * 팝빌 연동회원 포인트충전 팝업 URL을 반환합니다.
-         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         * 연동회원 포인트 충전을 위한 페이지의 팝업 URL을 반환합니다.
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
          * - https://docs.popbill.com/kakao/dotnet/api#GetChargeURL
          */
         private void btnGetChargeURL_Click(object sender, EventArgs e)
@@ -1430,8 +1427,8 @@ namespace Popbill.Kakao.Example.csharp
         }
 
         /*
-         * 파트너 잔여포인트를 확인합니다.
-         * - 연동과금 방식의 경우 연동회원 잔여포인트 조회(GetBalance API)를 이용하시기 바랍니다.
+         * 파트너의 잔여포인트를 확인합니다.
+         * - 과금방식이 연동과금인 경우 연동회원 잔여포인트(GetBalance API)를 이용하시기 바랍니다.
          * - https://docs.popbill.com/kakao/dotnet/api#GetPartnerBalance
          */
         private void btnGetPartnerBalance_Click(object sender, EventArgs e)
@@ -1450,8 +1447,8 @@ namespace Popbill.Kakao.Example.csharp
         }
 
         /*
-         * 파트너 포인트 충전 팝업 URL을 반환합니다. 
-         * - 반환된 URL은 보안정책상 30초의 유효시간을 갖습니다.
+         * 파트너 포인트 충전을 위한 페이지의 팝업 URL을 반환합니다.
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
          * - https://docs.popbill.com/kakao/dotnet/api#GetPartnerURL
          */
         private void btnGetPartnerURL_CHRG_Click(object sender, EventArgs e)
@@ -1471,7 +1468,7 @@ namespace Popbill.Kakao.Example.csharp
         }
 
         /*
-         * 알림톡(ATS) 전송단가를 확인합니다.
+         * 카카오톡(알림톡) 전송시 과금되는 포인트 단가를 확인합니다.
          * - https://docs.popbill.com/kakao/dotnet/api#GetUnitCost
          */
         private void btnUnitCost_Click(object sender, EventArgs e)
@@ -1490,7 +1487,7 @@ namespace Popbill.Kakao.Example.csharp
         }
 
         /*
-         * 친구톡 텍스트(FTS) 전송단가를 확인합니다.
+         * 카카오톡(FTS) 전송시 과금되는 포인트 단가를 확인합니다.
          * - https://docs.popbill.com/kakao/dotnet/api#GetUnitCost
          */
         private void btnUnitCost_FTS_Click(object sender, EventArgs e)
@@ -1509,7 +1506,7 @@ namespace Popbill.Kakao.Example.csharp
         }
 
         /*
-         * 친구톡 이미지(FMS) 전송단가를 확인합니다.
+         * 카카오톡(FMS) 전송시 과금되는 포인트 단가를 확인합니다.
          * - https://docs.popbill.com/kakao/dotnet/api#GetUnitCost
          */
         private void btn_unitcost_FMS_Click(object sender, EventArgs e)
@@ -1528,7 +1525,7 @@ namespace Popbill.Kakao.Example.csharp
         }
 
         /*
-         * 카카오톡 API 서비스 과금정보를 확인합니다.
+         * 팝빌 카카오톡 API 서비스 과금정보를 확인합니다.
          * - https://docs.popbill.com/kakao/dotnet/api#GetChargeInfo
          */
         private void btnGetChargeInfo_Click(object sender, EventArgs e)
@@ -1556,7 +1553,7 @@ namespace Popbill.Kakao.Example.csharp
         }
 
         /*
-         * 해당 사업자의 파트너 연동회원 가입여부를 확인합니다.
+         * 사업자번호를 조회하여 연동회원 가입여부를 확인합니다.
          * - https://docs.popbill.com/kakao/dotnet/api#CheckIsMember
          */
         private void btnCheckIsMember_Click(object sender, EventArgs e)
@@ -1576,7 +1573,7 @@ namespace Popbill.Kakao.Example.csharp
         }
 
         /*
-         * 팝빌 회원아이디 중복여부를 확인합니다.
+         * 사용하고자 하는 아이디의 중복여부를 확인합니다.
          * - https://docs.popbill.com/kakao/dotnet/api#CheckID
          */
         private void btnCheckID_Click(object sender, EventArgs e)
@@ -1596,7 +1593,7 @@ namespace Popbill.Kakao.Example.csharp
         }
 
         /*
-         * 파트너의 연동회원으로 회원가입을 요청합니다.
+         * 사용자를 연동회원으로 가입처리합니다.
          * - https://docs.popbill.com/kakao/dotnet/api#JoinMember
          */
         private void btnJoinMember_Click(object sender, EventArgs e)
@@ -1660,8 +1657,8 @@ namespace Popbill.Kakao.Example.csharp
         }
 
         /*
-         * 팝빌에 로그인 상태로 접근할 수 있는 팝업 URL을 반환합니다.
-         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다 
+         * 팝빌 사이트에 로그인 상태로 접근할 수 있는 페이지의 팝업 URL을 반환합니다.
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
          * - https://docs.popbill.com/kakao/dotnet/api#GetAccessURL
          */
         private void btnGetAccessURL_Click(object sender, EventArgs e)
@@ -1681,7 +1678,7 @@ namespace Popbill.Kakao.Example.csharp
         }
 
         /*
-         * 연동회원의 담당자를 추가합니다.
+         * 연동회원 사업자번호에 담당자(팝빌 로그인 계정)를 추가합니다.
          * - https://docs.popbill.com/kakao/dotnet/api#RegistContact
          */
         private void btnRegistContact_Click(object sender, EventArgs e)
@@ -1689,7 +1686,7 @@ namespace Popbill.Kakao.Example.csharp
             Contact contactInfo = new Contact();
 
             //담당자 아이디, 6자 이상 50자 미만
-            contactInfo.id = "testkorea_20190110";
+            contactInfo.id = "testkorea";
 
             //비밀번호, 6자 이상 20자 미만
             contactInfo.pwd = "user_password";
@@ -1731,7 +1728,7 @@ namespace Popbill.Kakao.Example.csharp
         }
 
         /*
-         * 연동회원의 담당자 목록을 확인합니다.
+         * 연동회원 사업자번호에 등록된 담당자(팝빌 로그인 계정) 목록을 확인합니다.
          * - https://docs.popbill.com/kakao/dotnet/api#ListContact
          */
         private void btnListContact_Click(object sender, EventArgs e)
@@ -1767,7 +1764,7 @@ namespace Popbill.Kakao.Example.csharp
         }
 
         /*
-         * 담당자 정보를 수정합니다. 
+         * 연동회원 사업자번호에 등록된 담당자(팝빌 로그인 계정) 정보를 수정합니다.
          * - https://docs.popbill.com/kakao/dotnet/api#UpdateContact
          */
         private void btnUpdateContact_Click(object sender, EventArgs e)
@@ -1813,7 +1810,7 @@ namespace Popbill.Kakao.Example.csharp
         }
 
         /*
-         * 회사정보를 조회합니다.
+         * 연동회원의 회사정보를 확인합니다.
          * - https://docs.popbill.com/kakao/dotnet/api#GetCorpInfo
          */
         private void btnGetCorpInfo_Click(object sender, EventArgs e)
@@ -1839,7 +1836,7 @@ namespace Popbill.Kakao.Example.csharp
         }
 
         /*
-         * 회사정보를 수정합니다.
+         * 연동회원의 회사정보를 수정합니다.
          * - https://docs.popbill.com/kakao/dotnet/api#UpdateCorpInfo
          */
         private void btnUpdateCorpInfo_Click(object sender, EventArgs e)
