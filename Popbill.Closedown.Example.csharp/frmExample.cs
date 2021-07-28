@@ -57,7 +57,7 @@ namespace Popbill.Closedown.Example.csharp
         }
 
         /*
-         * 1건의 사업자에 대한 휴폐업여부를 조회합니다.
+         * 사업자번호 1건에 대한 휴폐업정보를 확인합니다.
          * - https://docs.popbill.com/closedown/dotnet/api#CheckCorpNum
          */
         private void btnCheckCorpNum_Click(object sender, EventArgs e)
@@ -88,7 +88,7 @@ namespace Popbill.Closedown.Example.csharp
         }
 
         /*
-         * 다수의 사업자에 대한 휴폐업여부를 조회합니다. (최대 1000건)
+         * 다수건의 사업자번호에 대한 휴폐업정보를 확인합니다. (최대 1,000건)
          * - https://docs.popbill.com/closedown/dotnet/api#CheckCorpNums
          */
         private void btnCheckCorpNums_Click(object sender, EventArgs e)
@@ -129,7 +129,8 @@ namespace Popbill.Closedown.Example.csharp
         }
 
         /*
-         * 연동회원 잔여포인트를 확인합니다.
+         * 연동회원의 잔여포인트를 확인합니다.
+         * - 과금방식이 파트너과금인 경우 파트너 잔여포인트(GetPartnerBalance API)를 통해 확인하시기 바랍니다.
          * - https://docs.popbill.com/closedown/dotnet/api#GetBalance
          */
         private void btnGetBalance_Click(object sender, EventArgs e)
@@ -148,8 +149,8 @@ namespace Popbill.Closedown.Example.csharp
         }
 
         /*
-         * 팝빌 연동회원의 포인트충전 팝업 URL을 반환합니다.
-         * - 반환된 URL은 보안정책에 따라 30초의 유효시간을 갖습니다.
+         * 연동회원 포인트 충전을 위한 페이지의 팝업 URL을 반환합니다.
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
          * - https://docs.popbill.com/closedown/dotnet/api#GetChargeURL
          */
         private void btnGetChargeURL_Click(object sender, EventArgs e)
@@ -191,8 +192,8 @@ namespace Popbill.Closedown.Example.csharp
 
 
         /*
-         * 파트너 포인트 충전 팝업 URL을 반환합니다.
-         * - 반환된 URL은 보안정책에 따라 30초의 유효시간을 갖습니다.
+         * 파트너 포인트 충전을 위한 페이지의 팝업 URL을 반환합니다.
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
          * - https://docs.popbill.com/closedown/dotnet/api#GetPartnerURL
          */
         private void btnGetPartnerURL_CHRG_Click(object sender, EventArgs e)
@@ -212,7 +213,7 @@ namespace Popbill.Closedown.Example.csharp
         }
 
         /*
-         * 휴폐업조회 조회단가를 확인합니다.
+         * 휴폐업 조회시 과금되는 포인트 단가를 확인합니다.
          * - https://docs.popbill.com/closedown/dotnet/api#GetUnitCost
          */
         private void btnUnitCost_Click(object sender, EventArgs e)
@@ -256,7 +257,7 @@ namespace Popbill.Closedown.Example.csharp
         }
 
         /*
-         * 해당 사업자의 파트너 연동회원 가입여부를 확인합니다.
+         * 사업자번호를 조회하여 연동회원 가입여부를 확인합니다.
          * - https://docs.popbill.com/closedown/dotnet/api#CheckIsMember
          */
         private void btnCheckIsMember_Click(object sender, EventArgs e)
@@ -276,7 +277,7 @@ namespace Popbill.Closedown.Example.csharp
         }
 
         /*
-         * 팝빌 회원아이디 중복여부를 확인합니다.
+         * 사용하고자 하는 아이디의 중복여부를 확인합니다.
          * - https://docs.popbill.com/closedown/dotnet/api#CheckID
          */
         private void btnCheckID_Click(object sender, EventArgs e)
@@ -296,7 +297,7 @@ namespace Popbill.Closedown.Example.csharp
         }
 
         /*
-         * 파트너의 연동회원으로 신규가입 처리합니다.
+         * 사용자를 연동회원으로 가입처리합니다.
          * - https://docs.popbill.com/closedown/dotnet/api#JoinMember
          */
         private void btnJoinMember_Click(object sender, EventArgs e)
@@ -360,7 +361,7 @@ namespace Popbill.Closedown.Example.csharp
         }
 
         /*
-         * 연동회원의 회사정보를 조회합니다.
+         * 연동회원의 회사정보를 확인합니다.
          * - https://docs.popbill.com/closedown/dotnet/api#GetCorpInfo
          */
         private void btnGetCorpInfo_Click(object sender, EventArgs e)
@@ -387,7 +388,7 @@ namespace Popbill.Closedown.Example.csharp
         }
 
         /*
-         * 회사정보를 수정합니다.
+         * 연동회원의 회사정보를 수정합니다.
          * - https://docs.popbill.com/closedown/dotnet/api#UpdateCorpInfo
          */
         private void btnUpdateCorpInfo_Click(object sender, EventArgs e)
@@ -424,7 +425,7 @@ namespace Popbill.Closedown.Example.csharp
         }
 
         /*
-         * 연동회원의 담당자를 추가합니다.
+         * 연동회원 사업자번호에 담당자(팝빌 로그인 계정)를 추가합니다.
          * - https://docs.popbill.com/closedown/dotnet/api#RegistContact
          */
         private void btnRegistContact_Click(object sender, EventArgs e)
@@ -473,7 +474,7 @@ namespace Popbill.Closedown.Example.csharp
         }
 
         /*
-         * 연동회원 담당자 목록을 확인합니다.
+         * 연동회원 사업자번호에 등록된 담당자(팝빌 로그인 계정) 목록을 확인합니다.
          * - https://docs.popbill.com/closedown/dotnet/api#ListContact
          */
         private void btnListContact_Click(object sender, EventArgs e)
@@ -509,7 +510,7 @@ namespace Popbill.Closedown.Example.csharp
         }
 
         /*
-         * 담당자 정보를 수정합니다.
+         * 연동회원 사업자번호에 등록된 담당자(팝빌 로그인 계정) 정보를 수정합니다.
          * - https://docs.popbill.com/closedown/dotnet/api#UpdateContact
          */
         private void btnUpdateContact_Click(object sender, EventArgs e)
@@ -555,8 +556,8 @@ namespace Popbill.Closedown.Example.csharp
         }
 
         /*
-         * 팝빌에 로그인 상태로 접근할 수 있는 팝업 URL을 반환합니다.
-         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다 
+         * 팝빌 사이트에 로그인 상태로 접근할 수 있는 페이지의 팝업 URL을 반환합니다.
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
          * - https://docs.popbill.com/closedown/dotnet/api#GetAccessURL
          */
         private void btnGetAccessURL_Click(object sender, EventArgs e)
