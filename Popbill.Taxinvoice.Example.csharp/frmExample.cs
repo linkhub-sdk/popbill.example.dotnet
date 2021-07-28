@@ -55,8 +55,8 @@ namespace Popbill.Taxinvoice.Example.csharp
 
 
         /*
-         * 세금계산서 관리번호 중복여부를 확인합니다.
-         * - 관리번호는 1~24자리로 숫자, 영문 '-', '_' 조합으로 구성할 수 있습니다.
+         * 파트너가 세금계산서 관리 목적으로 할당하는 문서번호의 사용여부를 확인합니다.
+         * - 문서번호는 최대 24자리 영문 대소문자, 숫자, 특수문자('-','_')로 구성 합니다. 
          * - https://docs.popbill.com/taxinvoice/dotnet/api#CheckMgtKeyInUse
          */
         private void btnCheckMgtKeyInUse_Click(object sender, EventArgs e)
@@ -78,7 +78,8 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * 1건의 세금계산서를 [즉시발행]합니다.
+         * 작성된 세금계산서 데이터를 팝빌에 저장과 동시에 발행(전자서명)하여 "발행완료" 상태로 처리합니다.
+         * - 세금계산서 국세청 전송 정책 : https://docs.popbill.com/taxinvoice/ntsSendPolicy?lang=java
          * - https://docs.popbill.com/taxinvoice/dotnet/api#RegistIssue
          */
         private void btnRegistIssue_Click(object sender, EventArgs e)
@@ -87,7 +88,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             Taxinvoice taxinvoice = new Taxinvoice();
 
             // [필수] 기재상 작성일자, 날짜형식(yyyyMMdd)
-            taxinvoice.writeDate = "20201022";
+            taxinvoice.writeDate = "20210701";
 
             // [필수] 과금방향, {정과금, 역과금}중 선택
             // - 정과금(공급자과금), 역과금(공급받는자과금)
@@ -117,7 +118,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             // [필수] 공급자 상호
             taxinvoice.invoicerCorpName = "공급자 상호";
 
-            // [필수] 공급자 문서번호, 숫자, 영문, '-', '_' 조합으로 1~24자리까지 사업자번호별 중복없는 고유번호 할당
+            // [필수] 공급자 문서번호, 최대 24자리 영문 대소문자, 숫자, 특수문자('-','_')만 이용 가능
             taxinvoice.invoicerMgtKey = txtMgtKey.Text;
 
             // [필수] 공급자 대표자 성명 
@@ -162,7 +163,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             // [필수] 공급받는자 상호
             taxinvoice.invoiceeCorpName = "공급받는자 상호";
 
-            // [역발행시 필수] 공급받는자 문서번호, 숫자, 영문, '-', '_' 조합으로 1~24자리까지 사업자번호별 중복없는 고유번호 할당
+            // [역발행시 필수] 공급받는자 문서번호, 최대 24자리 영문 대소문자, 숫자, 특수문자('-','_')만 이용 가능
             taxinvoice.invoiceeMgtKey = "";
 
             // [필수] 공급받는자 대표자 성명 
@@ -269,7 +270,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             TaxinvoiceDetail detail = new TaxinvoiceDetail();
 
             detail.serialNum = 1; // 일련번호, 1부터 순차기재 
-            detail.purchaseDT = "20201022"; // 거래일자
+            detail.purchaseDT = "20210701"; // 거래일자
             detail.itemName = "품목명"; // 품목명 
             detail.spec = "규격"; // 규격
             detail.qty = "1"; // 수량
@@ -283,7 +284,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             detail = new TaxinvoiceDetail();
 
             detail.serialNum = 2; // 일련번호, 1부터 순차기재 
-            detail.purchaseDT = "20201022"; // 거래일자
+            detail.purchaseDT = "20210701"; // 거래일자
             detail.itemName = "품목명"; // 품목명 
             detail.spec = "규격"; // 규격
             detail.qty = "1"; // 수량
@@ -332,7 +333,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             // 전자거래명세서 동시작성여부
             bool writeSpecification = false;
 
-            // 전자거래명세서 문서번호, 1~24자리 영문, 숫자 '_', '-' 조합으로 사업자별로 중복되지 않도록 구성
+            // 전자거래명세서 문서번호, 최대 24자리 영문 대소문자, 숫자, 특수문자('-','_')만 이용 가능
             String dealInvoiceMgtKey = "";
 
             // 발행안내메일 제목, 미기재시 기본양식으로 전송
@@ -356,8 +357,8 @@ namespace Popbill.Taxinvoice.Example.csharp
 
 
         /* 
-         * 1건의 세금계산서를 [임시저장]합니다.
-         * - 세금계산서 임시저장(Register API) 호출후에는 발행(Issue API)을 호출해야만 국세청으로 전송됩니다.
+         * 작성된 세금계산서 데이터를 팝빌에 저장합니다. 
+         * - "임시저장" 상태의 세금계산서는 발행(Issue)함수를 호출하여 "발행완료" 처리한 경우에만 국세청으로 전송됩니다.
          * - 정발행시 임시저장(Register)과 발행(Issue)을 한번의 호출로 처리하는 즉시발행(RegistIssue API) 프로세스 연동을 권장합니다.
          * - 역발행시 임시저장(Register)과 역발행요청(Request)을 한번의 호출로 처리하는 즉시요청(RegistRequest API) 프로세스 연동을 권장합니다.
          * - https://docs.popbill.com/taxinvoice/dotnet/api#Register
@@ -368,7 +369,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             Taxinvoice taxinvoice = new Taxinvoice();
 
             // [필수] 기재상 작성일자, 날짜형식(yyyyMMdd)
-            taxinvoice.writeDate = "20201022";
+            taxinvoice.writeDate = "20210701";
 
             // [필수] 과금방향, {정과금, 역과금}중 선택
             // - 정과금(공급자과금), 역과금(공급받는자과금)
@@ -399,7 +400,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             // [필수] 공급자 상호
             taxinvoice.invoicerCorpName = "공급자 상호";
 
-            // [필수] 공급자 문서번호, 숫자, 영문, '-', '_' 조합으로 1~24자리까지 사업자번호별 중복없는 고유번호 할당
+            // [필수] 공급자 문서번호, 최대 24자리 영문 대소문자, 숫자, 특수문자('-','_')만 이용 가능
             taxinvoice.invoicerMgtKey = txtMgtKey.Text;
 
             // [필수] 공급자 대표자 성명 
@@ -445,7 +446,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             // [필수] 공급받는자 상호
             taxinvoice.invoiceeCorpName = "공급받는자 상호";
 
-            // [역발행시 필수] 공급받는자 문서번호, 숫자, 영문, '-', '_' 조합으로 1~24자리까지 사업자번호별 중복없는 고유번호 할당
+            // [역발행시 필수] 공급받는자 문서번호, 최대 24자리 영문 대소문자, 숫자, 특수문자('-','_')만 이용 가능
             taxinvoice.invoiceeMgtKey = "";
 
             // [필수] 공급받는자 대표자 성명 
@@ -552,7 +553,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             TaxinvoiceDetail detail = new TaxinvoiceDetail();
 
             detail.serialNum = 1; // 일련번호, 1부터 순차기재 
-            detail.purchaseDT = "20201022"; // 거래일자
+            detail.purchaseDT = "20210701"; // 거래일자
             detail.itemName = "품목명"; // 품목명 
             detail.spec = "규격"; // 규격
             detail.qty = "1"; // 수량
@@ -566,7 +567,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             detail = new TaxinvoiceDetail();
 
             detail.serialNum = 2; // 일련번호, 1부터 순차기재 
-            detail.purchaseDT = "20201022"; // 거래일자
+            detail.purchaseDT = "20210701"; // 거래일자
             detail.itemName = "품목명"; // 품목명 
             detail.spec = "규격"; // 규격
             detail.qty = "1"; // 수량
@@ -623,7 +624,7 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * 1건의 역발행 세금계산서를 [임시저장] 처리합니다.
+         * 작성된 역발행 세금계산서 데이터를 팝빌에 저장합니다. 
          * - https://docs.popbill.com/taxinvoice/dotnet/api#Register
          */
         private void btnRegister_Reverse_Click(object sender, EventArgs e)
@@ -632,7 +633,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             Taxinvoice taxinvoice = new Taxinvoice();
 
             // [필수] 기재상 작성일자, 날짜형식(yyyyMMdd)
-            taxinvoice.writeDate = "20201022";
+            taxinvoice.writeDate = "20210701";
 
             // [필수] 과금방향, {정과금, 역과금}중 선택
             // - 정과금(공급자과금), 역과금(공급받는자과금)
@@ -662,7 +663,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             // [필수] 공급자 상호
             taxinvoice.invoicerCorpName = "공급자 상호";
 
-            // 공급자 문서번호, 숫자, 영문, '-', '_' 조합으로 1~24자리까지 사업자번호별 중복없는 고유번호 할당
+            // 공급자 문서번호, 최대 24자리 영문 대소문자, 숫자, 특수문자('-','_')만 이용 가능
             taxinvoice.invoicerMgtKey = "";
 
             // [필수] 공급자 대표자 성명 
@@ -707,7 +708,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             // [필수] 공급받는자 상호
             taxinvoice.invoiceeCorpName = "공급받는자 상호";
 
-            // [역발행시 필수] 공급받는자 문서번호, 숫자, 영문, '-', '_' 조합으로 1~24자리까지 사업자번호별 중복없는 고유번호 할당
+            // [역발행시 필수] 공급받는자 문서번호, 최대 24자리 영문 대소문자, 숫자, 특수문자('-','_')만 이용 가능
             taxinvoice.invoiceeMgtKey = txtMgtKey.Text;
 
             // [필수] 공급받는자 대표자 성명 
@@ -814,7 +815,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             TaxinvoiceDetail detail = new TaxinvoiceDetail();
 
             detail.serialNum = 1; // 일련번호, 1부터 순차기재 
-            detail.purchaseDT = "20201022"; // 거래일자
+            detail.purchaseDT = "20210701"; // 거래일자
             detail.itemName = "품목명"; // 품목명 
             detail.spec = "규격"; // 규격
             detail.qty = "1"; // 수량
@@ -828,7 +829,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             detail = new TaxinvoiceDetail();
 
             detail.serialNum = 2; // 일련번호, 1부터 순차기재 
-            detail.purchaseDT = "20201022"; // 거래일자
+            detail.purchaseDT = "20210701"; // 거래일자
             detail.itemName = "품목명"; // 품목명 
             detail.spec = "규격"; // 규격
             detail.qty = "1"; // 수량
@@ -854,7 +855,8 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * [임시저장] 상태의 세금계산서를 [공급자]가 [발행]합니다.
+         * "임시저장" 상태의 세금계산서를 발행(전자서명)하며, "발행완료" 상태로 처리합니다.
+         * - 세금계산서 국세청 전송정책 : https://docs.popbill.com/taxinvoice/ntsSendPolicy?lang=php
          * - https://docs.popbill.com/taxinvoice/dotnet/api#TIIssue
          */
         private void btnIssue_Click(object sender, EventArgs e)
@@ -887,9 +889,9 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * [(역)발행대기] 상태의 세금계산서를 [발행] 처리합니다.
+         * "(역)발행대기" 상태의 세금계산서를 발행(전자서명)하며, "발행완료" 상태로 처리합니다.
          * - 발행(Issue API)을 호출하는 시점에서 포인트가 차감됩니다.
-         * - [발행완료] 세금계산서는 연동회원의 국세청 전송설정에 따라 익일/즉시전송 처리됩니다. 기본설정(익일전송)
+         * - 세금계산서 국세청 전송정책 : https://docs.popbill.com/taxinvoice/ntsSendPolicy?lang=php 
          * - https://docs.popbill.com/taxinvoice/dotnet/api#TIIssue
          */
         private void btnIssue_Reverse_sub_Click(object sender, EventArgs e)
@@ -922,7 +924,7 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * [임시저장] 상태의 세금계산서의 항목을 [수정]합니다.
+         * "임시저장" 상태의 세금계산서를 수정합니다. 
          * - https://docs.popbill.com/taxinvoice/dotnet/api#Update
          */
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -931,7 +933,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             Taxinvoice taxinvoice = new Taxinvoice();
 
             // [필수] 기재상 작성일자, 날짜형식(yyyyMMdd)
-            taxinvoice.writeDate = "20201022";
+            taxinvoice.writeDate = "20210701";
 
             // [필수] 과금방향, {정과금, 역과금}중 선택
             // - 정과금(공급자과금), 역과금(공급받는자과금)
@@ -961,7 +963,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             // [필수] 공급자 상호
             taxinvoice.invoicerCorpName = "공급자 상호_수정";
 
-            // [필수] 공급자 문서번호, 숫자, 영문, '-', '_' 조합으로 1~24자리까지 사업자번호별 중복없는 고유번호 할당
+            // [필수] 공급자 문서번호, 최대 24자리 영문 대소문자, 숫자, 특수문자('-','_')만 이용 가능
             taxinvoice.invoicerMgtKey = txtMgtKey.Text;
 
             // [필수] 공급자 대표자 성명 
@@ -1006,7 +1008,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             // [필수] 공급받는자 상호
             taxinvoice.invoiceeCorpName = "공급받는자 상호";
 
-            // [역발행시 필수] 공급받는자 문서번호, 숫자, 영문, '-', '_' 조합으로 1~24자리까지 사업자번호별 중복없는 고유번호 할당
+            // [역발행시 필수] 공급받는자 문서번호, 최대 24자리 영문 대소문자, 숫자, 특수문자('-','_')만 이용 가능
             taxinvoice.invoiceeMgtKey = "";
 
             // [필수] 공급받는자 대표자 성명 
@@ -1114,7 +1116,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             TaxinvoiceDetail detail = new TaxinvoiceDetail();
 
             detail.serialNum = 1; // 일련번호, 1부터 순차기재 
-            detail.purchaseDT = "20201022"; // 거래일자
+            detail.purchaseDT = "20210701"; // 거래일자
             detail.itemName = "품목명"; // 품목명 
             detail.spec = "규격"; // 규격
             detail.qty = "1"; // 수량
@@ -1128,7 +1130,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             detail = new TaxinvoiceDetail();
 
             detail.serialNum = 2; // 일련번호, 1부터 순차기재 
-            detail.purchaseDT = "20201022"; // 거래일자
+            detail.purchaseDT = "20210701"; // 거래일자
             detail.itemName = "품목명"; // 품목명 
             detail.spec = "규격"; // 규격
             detail.qty = "1"; // 수량
@@ -1185,7 +1187,7 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * 1건의 임시저장 역발행 세금계산서의 항목을 수정합니다.
+         * "임시저장" 상태의 역발행 세금계산서를 수정합니다.
          * - https://docs.popbill.com/taxinvoice/dotnet/api#Update
          */
         private void btnUpdate_Reverse_Click(object sender, EventArgs e)
@@ -1198,7 +1200,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             Taxinvoice taxinvoice = new Taxinvoice();
 
             // [필수] 기재상 작성일자, 날짜형식(yyyyMMdd)
-            taxinvoice.writeDate = "20201022";
+            taxinvoice.writeDate = "20210701";
 
             // [필수] 과금방향, {정과금, 역과금}중 선택
             // - 정과금(공급자과금), 역과금(공급받는자과금)
@@ -1228,7 +1230,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             // [필수] 공급자 상호
             taxinvoice.invoicerCorpName = "공급자 상호";
 
-            // [필수] 공급자 문서번호, 숫자, 영문, '-', '_' 조합으로 1~24자리까지 사업자번호별 중복없는 고유번호 할당
+            // [필수] 공급자 문서번호, 최대 24자리 영문 대소문자, 숫자, 특수문자('-','_')만 이용 가능
             taxinvoice.invoicerMgtKey = txtMgtKey.Text;
 
             // [필수] 공급자 대표자 성명 
@@ -1273,7 +1275,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             // [필수] 공급받는자 상호
             taxinvoice.invoiceeCorpName = "공급받는자 상호";
 
-            // [역발행시 필수] 공급받는자 문서번호, 숫자, 영문, '-', '_' 조합으로 1~24자리까지 사업자번호별 중복없는 고유번호 할당
+            // [역발행시 필수] 공급받는자 문서번호, 최대 24자리 영문 대소문자, 숫자, 특수문자('-','_')만 이용 가능
             taxinvoice.invoiceeMgtKey = "";
 
             // [필수] 공급받는자 대표자 성명 
@@ -1381,7 +1383,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             TaxinvoiceDetail detail = new TaxinvoiceDetail();
 
             detail.serialNum = 1; // 일련번호, 1부터 순차기재 
-            detail.purchaseDT = "20201022"; // 거래일자
+            detail.purchaseDT = "20210701"; // 거래일자
             detail.itemName = "품목명"; // 품목명 
             detail.spec = "규격"; // 규격
             detail.qty = "1"; // 수량
@@ -1395,7 +1397,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             detail = new TaxinvoiceDetail();
 
             detail.serialNum = 2; // 일련번호, 1부터 순차기재 
-            detail.purchaseDT = "20201022"; // 거래일자
+            detail.purchaseDT = "20210701"; // 거래일자
             detail.itemName = "품목명"; // 품목명 
             detail.spec = "규격"; // 규격
             detail.qty = "1"; // 수량
@@ -1423,10 +1425,8 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * [발행완료] 상태의 세금계산서를 [공급자]가 [발행취소]합니다.
-         * - [발행취소]는 국세청 전송전에만 가능합니다.
-         * - 발행취소된 세금계산서는 국세청에 전송되지 않습니다.
-         * - 발행취소 세금계산서에 사용된 문서번호를 재사용 하기 위해서는 삭제(Delete API)를 호출하여 해당세금계산서를 삭제해야 합니다.
+         * 국세청 전송 이전 "발행완료" 상태의 전자세금계산서를 "발행취소"하고, 해당 건은 국세청 신고 대상에서 제외됩니다.
+         * - Delete(삭제)함수를 호출하여 "발행취소" 상태의 전자세금계산서를 삭제하면, 문서번호 재사용이 가능합니다.
          * - https://docs.popbill.com/taxinvoice/dotnet/api#CancelIssue
          */
         private void btnCancelIssue_Click(object sender, EventArgs e)
@@ -1454,10 +1454,8 @@ namespace Popbill.Taxinvoice.Example.csharp
 
 
         /*
-         * [발행완료] 상태의 세금계산서를 [공급자]가 [발행취소]합니다.
-         * - [발행취소]는 국세청 전송전에만 가능합니다.
-         * - 발행취소된 세금계산서는 국세청에 전송되지 않습니다.
-         * - 발행취소 세금계산서에 사용된 문서번호를 재사용 하기 위해서는 삭제(Delete API)를 호출하여 해당세금계산서를 삭제해야 합니다.
+         * 국세청 전송 이전 "발행완료" 상태의 전자세금계산서를 "발행취소"하고, 해당 건은 국세청 신고 대상에서 제외됩니다.
+         * - Delete(삭제)함수를 호출하여 "발행취소" 상태의 전자세금계산서를 삭제하면, 문서번호 재사용이 가능합니다. 
          * - https://docs.popbill.com/taxinvoice/dotnet/api#CancelIssue
          */
         private void btnCancelIssue_Reverse_sub_Click(object sender, EventArgs e)
@@ -1484,10 +1482,8 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * [발행완료] 상태의 세금계산서를 [공급자]가 [발행취소]합니다.
-         * - [발행취소]는 국세청 전송전에만 가능합니다.
-         * - 발행취소된 세금계산서는 국세청에 전송되지 않습니다.
-         * - 발행취소 세금계산서에 사용된 문서번호를 재사용 하기 위해서는 삭제(Delete API)를 호출하여 해당세금계산서를 삭제해야 합니다.
+         * 국세청 전송 이전 "발행완료" 상태의 전자세금계산서를 "발행취소"하고, 해당 건은 국세청 신고 대상에서 제외됩니다.
+         * - Delete(삭제)함수를 호출하여 "발행취소" 상태의 전자세금계산서를 삭제하면, 문서번호 재사용이 가능합니다. 
          * - https://docs.popbill.com/taxinvoice/dotnet/api#CancelIssue
          */
         private void btnCancelIssue_Sub_Click(object sender, EventArgs e)
@@ -1625,9 +1621,9 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * 1건의 전자세금계산서를 [삭제]합니다.
-         * - 세금계산서를 삭제해야만 문서번호(mgtKey)를 재사용할 수 있습니다.
-         * - 삭제가능한 문서 상태 : [임시저장], [발행취소], [발행예정 취소], [발행예정 거부]
+         * 삭제 가능한 상태의 세금계산서를 삭제합니다. 
+         * - 삭제 가능한 상태: "임시저장", "발행취소", "역발행거부", "역발행취소", "전송실패"
+         * - 세금계산서를 삭제해야만 문서번호(mgtKey)를 재사용할 수 있습니다. 
          * - https://docs.popbill.com/taxinvoice/dotnet/api#Delete
          */
         private void btnDelete_Click(object sender, EventArgs e)
@@ -1651,9 +1647,10 @@ namespace Popbill.Taxinvoice.Example.csharp
 
 
         /*
-         * 1건의 전자세금계산서를 [삭제]합니다.
+         * 삭제 가능한 상태의 세금계산서를 삭제합니다. 
          * - 세금계산서를 삭제해야만 문서번호(mgtKey)를 재사용할 수 있습니다.
-         * - 삭제가능한 문서 상태 : [임시저장], [발행취소], [발행예정 취소], [발행예정 거부]
+         * - 삭제 가능한 상태: "임시저장", "발행취소", "역발행거부", "역발행취소", "전송실패"
+         * - 세금계산서를 삭제해야만 문서번호(mgtKey)를 재사용할 수 있습니다. 
          * - https://docs.popbill.com/taxinvoice/dotnet/api#Delete
          */
         private void btnDelete_Sub_Click(object sender, EventArgs e)
@@ -1675,12 +1672,13 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
         }
 
-        /*
-         * 1건의 전자세금계산서를 [삭제]합니다.
-         * - 세금계산서를 삭제해야만 문서번호(mgtKey)를 재사용할 수 있습니다.
-         * - 삭제가능한 문서 상태 : [임시저장], [발행취소], [발행예정 취소], [발행예정 거부]
-         * - https://docs.popbill.com/taxinvoice/dotnet/api#Delete
-         */
+       /*
+        * 삭제 가능한 상태의 세금계산서를 삭제합니다. 
+        * - 세금계산서를 삭제해야만 문서번호(mgtKey)를 재사용할 수 있습니다.
+        * - 삭제 가능한 상태: "임시저장", "발행취소", "역발행거부", "역발행취소", "전송실패"
+        * - 세금계산서를 삭제해야만 문서번호(mgtKey)를 재사용할 수 있습니다. 
+        * - https://docs.popbill.com/taxinvoice/dotnet/api#Delete
+        */
         private void btnDelete_Reverse_sub_Click(object sender, EventArgs e)
         {
             // 세금계산서 발행유형 
@@ -1701,9 +1699,9 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * [공급받는자]가 공급자에게 역발행 세금계산서를 [즉시 요청]합니다.
-         * - 역발행 세금계산서 프로세스를 구현하기 위해서는 공급자/공급받는자가 모두 팝빌에 회원이여야 합니다.
-         * - 역발행 즉시요청후 공급자가 [발행] 처리시 포인트가 차감되며 역발행 세금계산서 항목중 과금방향(ChargeDirection)에 기재한 값에 따라
+         * 공급받는자가 작성한 세금계산서 데이터를 팝빌에 저장하고 공급자에게 송부하여 발행을 요청합니다.
+         * - 역발행 세금계산서 프로세스를 구현하기위해서는 공급자/공급받는자가 모두 팝빌에 회원이여야 합니다.
+         * - 역발행 즉시요청후 공급자가 [발행] 처리시 포인트가 차감되며 역발행 세금계산서 항목중 과금방향(ChargeDirection)에 기재한 값에 따라 
          *   정과금(공급자과금) 또는 역과금(공급받는자과금) 처리됩니다.
          * - https://docs.popbill.com/taxinvoice/dotnet/api#RegistRequest
          */
@@ -1713,7 +1711,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             Taxinvoice taxinvoice = new Taxinvoice();
 
             // [필수] 기재상 작성일자, 날짜형식(yyyyMMdd)
-            taxinvoice.writeDate = "20201022";
+            taxinvoice.writeDate = "20210701";
 
             // [필수] 과금방향, {정과금, 역과금}중 선택
             // - 정과금(공급자과금), 역과금(공급받는자과금)
@@ -1743,7 +1741,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             // [필수] 공급자 상호
             taxinvoice.invoicerCorpName = "공급자 상호";
 
-            // 공급자 문서번호, 숫자, 영문, '-', '_' 조합으로 1~24자리까지 사업자번호별 중복없는 고유번호 할당
+            // 공급자 문서번호, 최대 24자리 영문 대소문자, 숫자, 특수문자('-','_')만 이용 가능
             taxinvoice.invoicerMgtKey = "";
 
             // [필수] 공급자 대표자 성명 
@@ -1789,7 +1787,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             // [필수] 공급받는자 상호
             taxinvoice.invoiceeCorpName = "공급받는자 상호";
 
-            // [역발행시 필수] 공급받는자 문서번호, 숫자, 영문, '-', '_' 조합으로 1~24자리까지 사업자번호별 중복없는 고유번호 할당
+            // [역발행시 필수] 공급받는자 문서번호, 최대 24자리 영문 대소문자, 숫자, 특수문자('-','_')만 이용 가능
             taxinvoice.invoiceeMgtKey = txtMgtKey.Text;
 
             // [필수] 공급받는자 대표자 성명 
@@ -1895,7 +1893,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             TaxinvoiceDetail detail = new TaxinvoiceDetail();
 
             detail.serialNum = 1; // 일련번호, 1부터 순차기재 
-            detail.purchaseDT = "20201022"; // 거래일자
+            detail.purchaseDT = "20210701"; // 거래일자
             detail.itemName = "품목명"; // 품목명 
             detail.spec = "규격"; // 규격
             detail.qty = "1"; // 수량
@@ -1909,7 +1907,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             detail = new TaxinvoiceDetail();
 
             detail.serialNum = 2; // 일련번호, 1부터 순차기재 
-            detail.purchaseDT = "20201022"; // 거래일자
+            detail.purchaseDT = "20210701"; // 거래일자
             detail.itemName = "품목명"; // 품목명 
             detail.spec = "규격"; // 규격
             detail.qty = "1"; // 수량
@@ -1940,9 +1938,9 @@ namespace Popbill.Taxinvoice.Example.csharp
 
 
         /*
-         * [공급받는자]가 임시저장 상태의 역발행 세금계산서를 공급자에게 [발행요청] 합니다. 
+         * 공급받는자가 저장된 역발행 세금계산서를 공급자에게 송부하여 발행 요청합니다.
          * - 역발행 세금계산서 프로세스를 구현하기 위해서는 공급자/공급받는자가 모두 팝빌에 회원이여야 합니다.
-         * - 역발행 요청후 공급자가 [발행] 처리시 포인트가 차감되며 역발행 세금계산서 항목중 과금방향(ChargeDirection)에 기재한 값에 따라
+         * - 역발행 요청후 공급자가 [발행] 처리시 포인트가 차감되며 역발행 세금계산서 항목중 과금방향(ChargeDirection)에 기재한 값에 따라 
          *   정과금(공급자과금) 또는 역과금(공급받는자과금) 처리됩니다.
          * - https://docs.popbill.com/taxinvoice/dotnet/api#Request
          */
@@ -1971,7 +1969,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
 
         /*
-         * [공급받는자]가 역)발행대기 상태의 세금계산서를 [취소]합니다. 
+         * 공급자가 요청받은 역발행 세금계산서를 발행하기 전, 공급받는자가 역발행요청을 취소합니다.
          * - [취소]한 세금계산서의 문서번호를 재사용하기 위해서는 삭제 (Delete API)를 호출해야 합니다.
          * - https://docs.popbill.com/taxinvoice/dotnet/api#CancelRequest
          */
@@ -1999,7 +1997,7 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * [공급받는자]가 역)발행대기 상태의 세금계산서를 [취소]합니다. 
+         * 공급자가 요청받은 역발행 세금계산서를 발행하기 전, 공급받는자가 역발행요청을 취소합니다.
          * - [취소]한 세금계산서의 문서번호를 재사용하기 위해서는 삭제 (Delete API)를 호출해야 합니다.
          * - https://docs.popbill.com/taxinvoice/dotnet/api#CancelRequest
          */
@@ -2027,7 +2025,7 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * 공급받는자에게 요청받은 역)발행대기 상태의 세금계산서를 [공급자]가 [거부]합니다.
+         * 공급자가 공급받는자에게 역발행 요청 받은 세금계산서의 발행을 거부합니다.
          * - 세금계산서의 문서번호를 재사용하기 위해서는 삭제 (Delete API)를 호출하여 [삭제] 처리해야 합니다.
          * - https://docs.popbill.com/taxinvoice/dotnet/api#Refuse
          */
@@ -2053,7 +2051,7 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * 공급받는자에게 요청받은 역)발행대기 상태의 세금계산서를 [공급자]가 [거부]합니다.
+         * 공급자가 공급받는자에게 역발행 요청 받은 세금계산서의 발행을 거부합니다.
          * - 세금계산서의 문서번호를 재사용하기 위해서는 삭제 (Delete API)를 호출하여 [삭제] 처리해야 합니다.
          * - https://docs.popbill.com/taxinvoice/dotnet/api#Refuse
          */
@@ -2079,7 +2077,9 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * [발행완료] 상태의 세금계산서를 국세청으로 [즉시전송]합니다.
+         * 공급자가 "발행완료" 상태의 전자세금계산서를 국세청에 즉시 전송하며, 함수 호출 후 최대 30분 이내에 전송 처리가 완료됩니다.
+         * - 국세청 즉시전송을 호출하지 않은 세금계산서는 발행일 기준 익일 오후 3시에 팝빌 시스템에서 일괄적으로 국세청으로 전송합니다. 
+         * - 익일전송시 전송일이 법정공휴일인 경우 다음 영업일에 전송됩니다.
          * - https://docs.popbill.com/taxinvoice/dotnet/api#SendToNTS
          */
         private void btnSendToNTS_Click(object sender, EventArgs e)
@@ -2103,7 +2103,7 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * 1건의 세금계산서 상태/요약 정보를 확인합니다.
+         * 세금계산서 1건의 상태 및 요약정보를 확인합니다.
          * - https://docs.popbill.com/taxinvoice/dotnet/api#GetInfo
          */
         private void btnGetInfo_Click(object sender, EventArgs e)
@@ -2117,7 +2117,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
                 string tmp = null;
 
-                tmp += "itemKey (팝빌 관리번호) : " + taxinvoiceInfo.itemKey + CRLF;
+                tmp += "itemKey (팝빌번호) : " + taxinvoiceInfo.itemKey + CRLF;
                 tmp += "taxType (과세형태) : " + taxinvoiceInfo.taxType + CRLF;
                 tmp += "writeDate (작성일자) : " + taxinvoiceInfo.writeDate + CRLF;
                 tmp += "regDT (임시저장 일자) : " + taxinvoiceInfo.regDT + CRLF;
@@ -2165,7 +2165,7 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * 대량의 세금계산서 상태/요약 정보를 확인합니다. (최대 1000건)
+         * 다수건의 세금계산서 상태 및 요약 정보를 확인합니다. (1회 호출 시 최대 1,000건 확인 가능)
          * - https://docs.popbill.com/taxinvoice/dotnet/api#GetInfos
          */
         private void btnGetInfos_Click(object sender, EventArgs e)
@@ -2176,9 +2176,9 @@ namespace Popbill.Taxinvoice.Example.csharp
             List<string> MgtKeyList = new List<string>();
 
             //  조회할 세금계산서 문서번호 배열, (최대 1000건)
-            MgtKeyList.Add("20190110-001");
-            MgtKeyList.Add("20190110-002");
-            MgtKeyList.Add("20190110-003");
+            MgtKeyList.Add("20210701-001");
+            MgtKeyList.Add("20210701-002");
+            MgtKeyList.Add("20210701-003");
 
 
             string tmp = "";
@@ -2208,7 +2208,7 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * 1건의 세금계산서 상세정보를 확인합니다.
+         * 세금계산서 1건의 상세정보를 확인합니다.
          * - https://docs.popbill.com/taxinvoice/dotnet/api#GetDetailInfo
          */
         private void btnGetDetailInfo_Click(object sender, EventArgs e)
@@ -2242,7 +2242,7 @@ namespace Popbill.Taxinvoice.Example.csharp
                 tmp += "remark2 (비고2) : " + taxinvoice.remark2 + CRLF;
                 tmp += "remakr3 (비고3) : " + taxinvoice.remark3 + CRLF;
 
-                tmp += "invoicerMgtKey (공급자 관리번호) : " + taxinvoice.invoicerMgtKey + CRLF;
+                tmp += "invoicerMgtKey (공급자 문서번호) : " + taxinvoice.invoicerMgtKey + CRLF;
                 tmp += "invoicerCorpNum (공급자 사업자번호) : " + taxinvoice.invoicerCorpNum + CRLF;
                 tmp += "invoicerTaxRegID (공급자 종사업장 식별번호) : " + taxinvoice.invoicerTaxRegID + CRLF;
                 tmp += "invoicerCorpName (공급자 상호) : " + taxinvoice.invoicerCorpName + CRLF;
@@ -2274,7 +2274,6 @@ namespace Popbill.Taxinvoice.Example.csharp
 
                 tmp += "modifyCode (수정 사유코드) : " + taxinvoice.modifyCode + CRLF;
                 tmp += "orgNTSConfirmNum (원본 국세청승인번호) : " + taxinvoice.orgNTSConfirmNum + CRLF;
-                tmp += "originalTaxinvoiceKey (원본 팝빌 관리번호) : " + taxinvoice.originalTaxinvoiceKey + CRLF + CRLF;
 
                 if (!taxinvoice.detailList.Equals(null))
                 {
@@ -2319,7 +2318,7 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * 검색조건을 사용하여 세금계산서 목록을 조회합니다.
+         * 검색조건에 해당하는 세금계산서를 조회합니다. 
          * - https://docs.popbill.com/taxinvoice/dotnet/api#Search
          */
         private void btnSearch_Click(object sender, EventArgs e)
@@ -2331,10 +2330,10 @@ namespace Popbill.Taxinvoice.Example.csharp
             String DType = "W";
 
             // [필수] 시작일자, 날짜형식(yyyyMMdd)
-            String SDate = "20200701";
+            String SDate = "20210701";
 
             // [필수] 종료일자, 날짜형식(yyyyMMdd)
-            String EDate = "20200731";
+            String EDate = "20210730";
 
             // 상태코드 배열, 미기재시 전체 상태조회, 문서상태 값 3자리의 배열, 2,3번째 자리에 와일드카드 가능
             String[] State = new String[5];
@@ -2465,7 +2464,7 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * 세금계산서 상태 변경이력을 확인합니다.
+         * 세금계산서의 상태에 대한 변경이력을 확인합니다.
          * - https://docs.popbill.com/taxinvoice/dotnet/api#GetLogs
          */
         private void btnGetLogs_Click(object sender, EventArgs e)
@@ -2498,8 +2497,8 @@ namespace Popbill.Taxinvoice.Example.csharp
 
 
         /*
-         * 팝빌 > 전자세금계산서 > 임시(연동)문서함 팝업 URL을 반환합니다.
-         * - 보안정책으로 인해 반환된 URL의 유효시간은 30초입니다.
+         * 로그인 상태로 팝빌 사이트의 전자세금계산서 문서함 메뉴에 접근할 수 있는 페이지의 팝업 URL을 반환합니다.
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
          * - https://docs.popbill.com/taxinvoice/dotnet/api#GetURL
          */
         private void btnGetURL_TBOX_Click(object sender, EventArgs e)
@@ -2519,8 +2518,8 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * 팝빌 > 전자세금계산서 > 매출 문서함 팝업 URL을 반환합니다.
-         * - 보안정책으로 인해 반환된 URL의 유효시간은 30초입니다.
+         * 로그인 상태로 팝빌 사이트의 전자세금계산서 문서함 메뉴에 접근할 수 있는 페이지의 팝업 URL을 반환합니다.
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
          * - https://docs.popbill.com/taxinvoice/dotnet/api#GetURL
          */
         private void btnGetURL_SBOX_Click(object sender, EventArgs e)
@@ -2540,8 +2539,8 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * 팝빌 > 전자세금계산서 > 매입 문서함 팝업 URL을 반환합니다.
-         * - 보안정책으로 인해 반환된 URL의 유효시간은 30초입니다.
+         * 로그인 상태로 팝빌 사이트의 전자세금계산서 문서함 메뉴에 접근할 수 있는 페이지의 팝업 URL을 반환합니다.
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
          * - https://docs.popbill.com/taxinvoice/dotnet/api#GetURL
          */
         private void btnGetURL_PBOX_Click(object sender, EventArgs e)
@@ -2561,8 +2560,8 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         *  팝빌 > 전자세금계산서 > 매출 문서작성 팝업 URL을 반환합니다.
-         * - 보안정책으로 인해 반환된 URL의 유효시간은 30초입니다.
+         * 로그인 상태로 팝빌 사이트의 전자세금계산서 문서함 메뉴에 접근할 수 있는 페이지의 팝업 URL을 반환합니다.
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
          * - https://docs.popbill.com/taxinvoice/dotnet/api#GetURL
          */
         private void btnGetURL_WRITE_Click(object sender, EventArgs e)
@@ -2582,8 +2581,8 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * 1건의 전자세금계산서 보기 팝업 URL을 반환합니다.
-         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         * 팝빌 사이트와 동일한 세금계산서 1건의 상세 정보 페이지의 팝업 URL을 반환합니다. 
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다. 
          * - https://docs.popbill.com/taxinvoice/dotnet/api#GetPopUpURL
          */
         private void btnGetPopUpURL_Click(object sender, EventArgs e)
@@ -2607,8 +2606,8 @@ namespace Popbill.Taxinvoice.Example.csharp
 
 
         /*
-         * 1건의 전자세금계산서 인쇄팝업 URL을 반환합니다.
-         * - 보안정책으로 인해 반환된 URL의 유효시간은 30초입니다.
+         * 세금계산서 1건을 인쇄하기 위한 페이지의 팝업 URL을 반환하며, 페이지내에서 인쇄 설정값을 "공급자" / "공급받는자" / "공급자+공급받는자"용 중 하나로 지정할 수 있습니다.
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다. 
          * - https://docs.popbill.com/taxinvoice/dotnet/api#GetPrintURL
          */
         private void btnGetPrintURL_Click(object sender, EventArgs e)
@@ -2631,10 +2630,10 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-        * 1건의 전자세금계산서 구버전 양식 인쇄팝업 URL을 반환합니다.
-        * - 보안정책으로 인해 반환된 URL의 유효시간은 30초입니다.
-        * - https://docs.popbill.com/taxinvoice/dotnet/api#GetOldPrintURL
-        */
+         * 세금계산서 1건을 구버전 양식으로 인쇄하기 위한 페이지의 팝업 URL을 반환하며, 페이지내에서 인쇄 설정값을 "공급자" / "공급받는자" / "공급자+공급받는자"용 중 하나로 지정할 수 있습니다..
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다. 
+         * - https://docs.popbill.com/taxinvoice/dotnet/api#GetOldPrintURL
+         */
         private void btnGetOldPrintURL_Click(object sender, EventArgs e)
         {
             // 발행형태
@@ -2655,8 +2654,8 @@ namespace Popbill.Taxinvoice.Example.csharp
 
         }
         /*
-         * 세금계산서 인쇄(공급받는자용) URL을 반환합니다.
-         * - URL 보안정책에 따라 반환된 URL은 30초의 유효시간을 갖습니다.
+         * "공급받는자" 용 세금계산서 1건을 인쇄하기 위한 페이지의 팝업 URL을 반환합니다. 
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다. 
          * - https://docs.popbill.com/taxinvoice/dotnet/api#GetEPrintURL
          */
         private void btnEPrintURL_Click(object sender, EventArgs e)
@@ -2679,8 +2678,8 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * 대량의 세금계산서 인쇄팝업 URL을 반환합니다. (최대 100건)
-         * - 반환된 URL은 보안정책에 따라 30초의 유효시간을 갖습니다.
+         * 다수건의 세금계산서를 인쇄하기 위한 페이지의 팝업 URL을 반환합니다. (최대 100건) 
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다. 
          * - https://docs.popbill.com/taxinvoice/dotnet/api#GetMassPrintURL
          */
         private void btnGetMassPrintURL_Click(object sender, EventArgs e)
@@ -2691,10 +2690,10 @@ namespace Popbill.Taxinvoice.Example.csharp
             List<string> MgtKeyList = new List<string>();
 
             // 인쇄할 세금계산서 문서번호, (최대 100건)
-            MgtKeyList.Add("20190110-001");
-            MgtKeyList.Add("20190110-002");
-            MgtKeyList.Add("20190110-003");
-            MgtKeyList.Add("20190110-004");
+            MgtKeyList.Add("20210701-001");
+            MgtKeyList.Add("20210701-002");
+            MgtKeyList.Add("20210701-003");
+            MgtKeyList.Add("20210701-004");
 
             try
             {
@@ -2711,8 +2710,8 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * 공급받는자 메일링크 URL을 반환합니다.
-         * - 메일링크 URL은 유효시간이 존재하지 않습니다.
+         * 안내메일과 관련된 전자세금계산서를 확인 할 수 있는 상세 페이지의 팝업 URL을 반환하며, 해당 URL은 메일 하단의 "전자세금계산서 보기" 버튼의 링크와 같습니다. 
+         * - 함수 호출로 반환 받은 URL에는 유효시간이 없습니다. 
          * - https://docs.popbill.com/taxinvoice/dotnet/api#GetMailURL
          */
         private void btnGetEmailURL_Click(object sender, EventArgs e)
@@ -2735,8 +2734,8 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * 팝빌에 로그인 상태로 접근할 수 있는 팝업 URL을 반환합니다.
-         * - 반환된 URL은 보안정책에 따라 30초의 유효시간을 갖습니다.
+         * 팝빌 사이트에 로그인 상태로 접근할 수 있는 페이지의 팝업 URL을 반환합니다.
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
          * - https://docs.popbill.com/taxinvoice/dotnet/api#GetAccessURL
          */
         private void btnGetAccessURL_Click(object sender, EventArgs e)
@@ -2756,10 +2755,10 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-        * 인감 및 첨부문서 등록 URL을 반환합니다.
-        * - 반환된 URL은 보안정책상 30초의 유효시간을 갖습니다.
-        * - https://docs.popbill.com/taxinvoice/dotnet/api#GetSealURL
-        */
+         * 세금계산서에 첨부할 인감, 사업자등록증, 통장사본을 등록하는 페이지의 팝업 URL을 반환합니다.
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
+         * - https://docs.popbill.com/taxinvoice/dotnet/api#GetSealURL
+         */
         private void btnGetSealURL_Click(object sender, EventArgs e)
         {
             try
@@ -2777,9 +2776,7 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * 세금계산서에 첨부파일을 등록합니다.
-         * - [임시저장] 상태의 세금계산서만 파일을 첨부할수 있습니다.
-         * - 첨부파일은 최대 5개까지 등록할 수 있습니다.
+         * "임시저장" 상태의 세금계산서에 1개의 파일을 첨부합니다. (최대 5개)
          * - https://docs.popbill.com/taxinvoice/dotnet/api#AttachFile
          */
         private void btnAttachFile_Click(object sender, EventArgs e)
@@ -2810,8 +2807,8 @@ namespace Popbill.Taxinvoice.Example.csharp
 
 
         /*
-         * 세금계산서에 첨부된 파일을 삭제합니다.
-         * - 파일을 식별하는 파일아이디는 첨부파일 목록(GetFiles API) 의 응답항목 중 파일아이디(AttachedFile) 값을 통해 확인할 수 있습니다.
+         * "임시저장" 상태의 세금계산서에 첨부된 1개의 파일을 삭제합니다. 
+         * - 파일을 식별하는 파일아이디는 첨부파일 목록(GetFiles API) 의 응답항목 중 파일아이디(AttachedFile) 값을 통해 확인할 수 있습니다. 
          * - https://docs.popbill.com/taxinvoice/dotnet/api#DeleteFile
          */
         private void btnDeleteFile_Click(object sender, EventArgs e)
@@ -2836,8 +2833,8 @@ namespace Popbill.Taxinvoice.Example.csharp
 
 
         /*
-         * 세금계산서 첨부파일 목록을 확인합니다.
-         * - 응답항목 중 파일아이디(AttachedFile) 항목은 파일삭제(DeleteFile API) 호출시 이용할 수 있습니다.
+         * 세금계산서에 첨부된 파일목록을 확인합니다.
+         * - 응답항목 중 파일아이디(AttachedFile) 항목은 파일삭제(DeleteFile API) 호출시 이용할 수 있습니다. 
          * - https://docs.popbill.com/taxinvoice/dotnet/api#GetFiles
          */
         private void gtnGetFiles_Click(object sender, EventArgs e)
@@ -2871,7 +2868,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
 
         /*
-         * 세금계산서 발행안내 메일을 재전송합니다.
+         * 세금계산서와 관련된 안내 메일을 재전송 합니다. 
          * - https://docs.popbill.com/taxinvoice/dotnet/api#SendEmail
          */
         private void btnSendEmail_Click(object sender, EventArgs e)
@@ -2898,9 +2895,9 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * 알림문자를 전송합니다. (단문/SMS - 한글 최대 45자)
-         * - 알림문자 전송시 포인트가 차감됩니다. (전송실패시 환불처리)
-         * - 전송내역 확인은 "팝빌 로그인" > [문자 팩스] > [문자] > [전송내역] 메뉴에서 전송결과를 확인할 수 있습니다.
+         * 세금계산서와 관련된 안내 SMS(단문) 문자를 재전송하는 함수로, 팝빌 사이트 [문자·팩스] > [문자] > [전송내역] 메뉴에서 전송결과를 확인 할 수 있습니다. 
+         * - 메시지는 최대 90byte까지 입력 가능하고, 초과한 내용은 자동으로 삭제되어 전송합니다. (한글 최대 45자) 
+         * - 함수 호출시 포인트가 과금됩니다. 
          * - https://docs.popbill.com/taxinvoice/dotnet/api#SendSMS
          */
         private void btnSendSMS_Click(object sender, EventArgs e)
@@ -2933,9 +2930,8 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * 전자세금계산서를 팩스전송합니다.
-         * - 팩스 전송 요청시 포인트가 차감됩니다. (전송실패시 환불처리)
-         * - 전송내역 확인은 "팝빌 로그인" > [문자 팩스] > [팩스] > [전송내역] 메뉴에서 전송결과를 확인할 수 있습니다.
+         * 세금계산서를 팩스로 전송하는 함수로, 팝빌 사이트 [문자·팩스] > [팩스] > [전송내역] 메뉴에서 전송결과를 확인 할 수 있습니다.
+         * - 함수 호출시 포인트가 과금됩니다. 
          * - https://docs.popbill.com/taxinvoice/dotnet/api#SendFAX
          */
         private void btnSendFAX_Click(object sender, EventArgs e)
@@ -2965,7 +2961,7 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * 1건의 전자명세서를 세금계산서에 첨부합니다. 
+         * 팝빌 전자명세서 API를 통해 발행한 전자명세서를 세금계산서에 첨부합니다. 
          * - https://docs.popbill.com/taxinvoice/dotnet/api#AttachStatement
          */
         private void btnAttachStmt_Click(object sender, EventArgs e)
@@ -2976,8 +2972,8 @@ namespace Popbill.Taxinvoice.Example.csharp
             // 첨부할 명세서 종류 코드
             int DocItemCode = 121;
 
-            // 첨부할 명세서 관리번호
-            String DocMgtKey = "20190110-001";
+            // 첨부할 명세서 문서번호
+            String DocMgtKey = "20210701-001";
 
             try
             {
@@ -2994,7 +2990,7 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * 세금계산서에 첨부되어 있는 전자명세서를 [첨부해제]합니다.
+         * 세금계산서에 첨부된 전자명세서를 해제합니다.
          * - https://docs.popbill.com/taxinvoice/dotnet/api#DetachStatement
          */
         private void btnDetachStmt_Click(object sender, EventArgs e)
@@ -3005,8 +3001,8 @@ namespace Popbill.Taxinvoice.Example.csharp
             // 첨부해제할 명세서 종류 코드 
             int DocItemCode = 121;
 
-            // 첨부해제할 명세서 관리번호 
-            String DocMgtKey = "20190110-001";
+            // 첨부해제할 명세서 문서번호 
+            String DocMgtKey = "20210701-001";
 
             try
             {
@@ -3024,7 +3020,7 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * 대용량 연계사업자 유통메일주소 목록을 반환합니다.
+         * 전자세금계산서 유통사업자의 메일 목록을 확인합니다.
          * - https://docs.popbill.com/taxinvoice/dotnet/api#GetEmailPublicKeys
          */
         private void btnGetEmailPublicKey_Click(object sender, EventArgs e)
@@ -3051,7 +3047,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
 
         /*
-         * 팝빌사이트에서 작성된 세금계산서에 파트너 문서번호를 할당합니다.
+         * 팝빌 사이트를 통해 발행하였지만 문서번호가 존재하지 않는 세금계산서에 문서번호를 할당합니다.
          * - https://docs.popbill.com/taxinvoice/dotnet/api#AssignMgtKey
          */
         private void btnAssignMgtKey_Click(object sender, EventArgs e)
@@ -3059,29 +3055,28 @@ namespace Popbill.Taxinvoice.Example.csharp
             // 세금계산서 유형 SELL-매출, BUY-매입, TRUSTEE-위수탁
             MgtKeyType KeyType = MgtKeyType.SELL;
 
-            // 세금계산서 아이템키, 목록조회(Search) API의 반환항목중 ItemKey 참조
-            String itemKey = "018041823243600001";
+            // 세금계산서 팝빌번호, 목록조회(Search) API의 반환항목중 ItemKey 참조
+            String itemKey = "021041823243600001";
 
-            // 할당할 문서번호, 숫자, 영문, '-', '_' 조합으로 
-            // 1~24자리까지 사업자번호별 중복없는 고유번호 할당
-            String mgtKey = "1-20190110";
+            // 할당할 문서번호, 최대 24자리 영문 대소문자, 숫자, 특수문자('-','_')만 이용 가능
+            String mgtKey = "1-20210701";
 
             try
             {
                 Response response = taxinvoiceService.AssignMgtKey(txtCorpNum.Text, KeyType, itemKey, mgtKey);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + response.message, "세금계산서 관리번호 할당");
+                                "응답메시지(message) : " + response.message, "세금계산서 문서번호 할당");
             }
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "세금계산서 관리번호 할당");
+                                "응답메시지(message) : " + ex.Message, "세금계산서 문서번호 할당");
             }
         }
 
         /*
-         * 전자세금계산서 관련 메일전송 항목에 대한 전송여부를 목록으로 반환한다.
+         * 세금계산서 관련 메일 항목에 대한 발송설정을 확인합니다.
          * - https://docs.popbill.com/taxinvoice/dotnet/api#ListEmailConfig
          */
         private void btnListEmailConfig_Click(object sender, EventArgs e)
@@ -3158,8 +3153,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
         }
 
-        /*
-          전자세금계산서 메일전송 항목에 대한 전송여부를 수정합니다.
+        /* 세금계산서 관련 메일 항목에 대한 발송설정을 수정합니다.
          * - https://docs.popbill.com/taxinvoice/dotnet/api#UpdateEmailConfig
          
           메일전송유형
@@ -3227,10 +3221,9 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * 팝빌 회원의 공인인증서를 등록하는 팝업 URL을 반환합니다.
-         * - 반환된 URL은 보안정책에 따라 30초의 유효시간을 갖습니다.
-         * - 팝빌에 등록된 공인인증서가 유효하지 않은 경우 (비밀번호 변경, 인증서 재발급/갱신, 만료일 경과)
-         *   인증서를 재등록해야 정상적으로 전자세금계산서 발행이 가능합니다.
+         * 전자세금계산서 발행에 필요한 인증서를 팝빌 인증서버에 등록하기 위한 페이지의 팝업 URL을 반환합니다.
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
+         * - 인증서 갱신/재발급/비밀번호 변경한 경우, 변경된 인증서를 팝빌 인증서버에 재등록 해야합니다.
          * - https://docs.popbill.com/taxinvoice/dotnet/api#GetTaxCertURL
          */
         private void btnGetTaxCertURL_Click(object sender, EventArgs e)
@@ -3250,9 +3243,7 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * 팝빌에 등록되어 있는 공인인증서의 만료일자를 확인합니다.
-         * - 공인인증서가 갱신/재발급/비밀번호 변경이 되는 경우 해당 인증서를
-         *   재등록 하셔야 정상적으로 세금계산서를 발행할 수 있습니다.
+         * 팝빌 인증서버에 등록된 인증서의 만료일을 확인합니다.
          * - https://docs.popbill.com/taxinvoice/dotnet/api#GetCertificateExpireDate
          */
         private void btnGetCertificateExpireDate_Click(object sender, EventArgs e)
@@ -3272,8 +3263,8 @@ namespace Popbill.Taxinvoice.Example.csharp
 
 
         /*
-         * 팝빌에 등록된 공인인증서의 유효성을 확인합니다.
-         * - https://docs.popbill.com/taxinvoice/dotnet/api#CheckCertValidation
+         * 팝빌 인증서버에 등록된 인증서의 유효성을 확인합니다. 
+         * - https://docs.popbill.com/taxinvoice/java/api#CheckCertValidation
          */
         private void btnCheckCertValidation_Click(object sender, EventArgs e)
         {
@@ -3292,7 +3283,8 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * 연동회원 잔여포인트를 확인합니다.
+         * 연동회원의 잔여포인트를 확인합니다.
+         * - 과금방식이 파트너과금인 경우 파트너 잔여포인트(GetPartnerBalance API)를 통해 확인하시기 바랍니다.
          * - https://docs.popbill.com/taxinvoice/dotnet/api#GetBalance
          */
         private void btnGetBalance_Click(object sender, EventArgs e)
@@ -3312,8 +3304,8 @@ namespace Popbill.Taxinvoice.Example.csharp
 
 
         /*
-         * 팝빌 연동회원의 포인트충전 팝업 URL을 반환합니다.
-         * - 반환된 URL은 보안정책에 따라 30초의 유효시간을 갖습니다.
+         * 연동회원 포인트 충전을 위한 페이지의 팝업 URL을 반환합니다.
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
          * - https://docs.popbill.com/taxinvoice/dotnet/api#GetChargeURL
          */
         private void btnGetChargeURL_Click(object sender, EventArgs e)
@@ -3354,8 +3346,8 @@ namespace Popbill.Taxinvoice.Example.csharp
 
 
         /*
-         * 파트너 포인트 충전 팝업 URL을 반환합니다.
-         * - 반환된 URL은 보안정책에 따라 30초의 유효시간을 갖습니다.
+         * 파트너 포인트 충전을 위한 페이지의 팝업 URL을 반환합니다.
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
          * - https://docs.popbill.com/taxinvoice/dotnet/api#GetPartnerURL
          */
         private void btnGetPartnerURL_CHRG_Click(object sender, EventArgs e)
@@ -3376,7 +3368,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
 
         /*
-         * 전자세금계산서 발행단가를 확인합니다.
+         * 전자세금계산서 발행단가를 확인합니다. 
          * - https://docs.popbill.com/taxinvoice/dotnet/api#GetUnitCost
          */
         private void btnUnitCost_Click(object sender, EventArgs e)
@@ -3396,7 +3388,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
 
         /*
-         * 전자세금계산서 API 서비스 과금정보를 확인합니다.
+         * 팝빌 전자세금계산서 API 서비스 과금정보를 확인합니다. 
          * - https://docs.popbill.com/taxinvoice/dotnet/api#GetChargeInfo
          */
         private void btnGetChargeInfo_Click(object sender, EventArgs e)
@@ -3421,7 +3413,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
 
         /*
-         * 해당 사업자의 파트너 연동회원 가입여부를 확인합니다.
+         * 사업자번호를 조회하여 연동회원 가입여부를 확인합니다.
          * - https://docs.popbill.com/taxinvoice/dotnet/api#CheckIsMember
          */
         private void btnCheckIsMember_Click(object sender, EventArgs e)
@@ -3441,7 +3433,7 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * 팝빌 회원아이디 중복여부를 확인합니다.
+         * 사용하고자 하는 아이디의 중복여부를 확인합니다.
          * - https://docs.popbill.com/taxinvoice/dotnet/api#CheckID
          */
         private void btnCheckID_Click(object sender, EventArgs e)
@@ -3461,7 +3453,7 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * 파트너의 연동회원으로 신규가입 처리합니다.
+         * 사용자를 연동회원으로 가입처리합니다.
          * - https://docs.popbill.com/taxinvoice/dotnet/api#JoinMember
          */
         private void btnJoinMember_Click(object sender, EventArgs e)
@@ -3526,7 +3518,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
 
         /*
-         * 연동회원의 회사정보를 조회합니다.
+         * 연동회원의 회사정보를 확인합니다.
          * - https://docs.popbill.com/taxinvoice/dotnet/api#GetCorpInfo
          */
         private void btnGetCorpInfo_Click(object sender, EventArgs e)
@@ -3589,7 +3581,7 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-        * 연동회원의 담당자를 추가합니다. 
+        * 연동회원 사업자번호에 담당자(팝빌 로그인 계정)를 추가합니다.
         * - https://docs.popbill.com/taxinvoice/dotnet/api#RegistContact
         */
         private void btnRegistContact_Click(object sender, EventArgs e)
@@ -3597,7 +3589,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             Contact contactInfo = new Contact();
 
             //담당자 아이디, 6자 이상 50자 미만
-            contactInfo.id = "testkorea_20190110";
+            contactInfo.id = "testkorea";
 
             //비밀번호, 6자 이상 20자 미만
             contactInfo.pwd = "user_password";
@@ -3638,7 +3630,7 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * 연동회원의 담당자 정보 목록을 확인합니다.
+         * 연동회원 사업자번호에 등록된 담당자(팝빌 로그인 계정) 목록을 확인합니다.
          * - https://docs.popbill.com/taxinvoice/dotnet/api#ListContact
          */
         private void btnListContact_Click(object sender, EventArgs e)
@@ -3674,7 +3666,7 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * 담당자 정보를 수정합니다.
+         * 연동회원 사업자번호에 등록된 담당자(팝빌 로그인 계정) 정보를 수정합니다.
          * - https://docs.popbill.com/taxinvoice/dotnet/api#UpdateContact
          */
         private void btnUpdateContact_Click(object sender, EventArgs e)
@@ -3720,8 +3712,8 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * 1건의 전자세금계산서 보기 팝업 URL을 반환합니다. (메뉴/버튼 출력되지 않음)
-         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         * 팝빌 사이트와 동일한 세금계산서 1건의 상세정보 페이지(사이트 상단, 좌측 메뉴 및 버튼 제외)의 팝업 URL을 반환합니다. 
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다. 
          * - https://docs.popbill.com/taxinvoice/dotnet/api#GetViewURL
          */
         private void btnGetViewURL_Click(object sender, EventArgs e)
@@ -3745,8 +3737,8 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * 1건의 전자세금계산서 PDF 다운로드 URL을 반환합니다.
-         * - 보안정책으로 인해 반환된 URL의 유효시간은 30초입니다.
+         * 전자세금계산서 PDF 파일을 다운 받을 수 있는 URL을 반환합니다. 
+         * - 반환되는 URL은 보안정책상 30초의 유효시간을 갖으며, 유효시간 이후 호출시 정상적으로 페이지가 호출되지 않습니다.
          * - https://docs.popbill.com/taxinvoice/dotnet/api#GetPDFURL
          */
         private void btnGetPDFURL_Click(object sender, EventArgs e)
@@ -3765,37 +3757,6 @@ namespace Popbill.Taxinvoice.Example.csharp
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + ex.Message, "세금계산서 인쇄 팝업 URL");
-            }
-        }
-
-        /*
-         * 1건의 전자세금계산서를 PDF 파일로 저장하기 위한 Byte Array를 반환합니다.
-         * - https://docs.popbill.com/taxinvoice/dotnet/api#GetPDF
-         */
-        private void btnGetPDF_Click(object sender, EventArgs e)
-        {
-            // 발행형태
-            MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
-
-            String path = @"C:\Users\wjkim\Desktop\Taxinvoice_20201020-001.pdf";
-            try
-            {
-                byte[] btPDF = taxinvoiceService.GetPDF(txtCorpNum.Text, KeyType, txtMgtKey.Text, txtUserId.Text);
-
-                using (FileStream fileStream = new FileStream(path, FileMode.Create))
-                {
-                    fileStream.Write(btPDF, 0, btPDF.Length);
-
-                    fileStream.Close();
-                }
-
-                MessageBox.Show("응답 코드(code) : 1" + "\r\n" +
-                                "다운로드 파일 경로 : " + path);
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "세금계산서 PDF 다운로드");
             }
         }
     }
