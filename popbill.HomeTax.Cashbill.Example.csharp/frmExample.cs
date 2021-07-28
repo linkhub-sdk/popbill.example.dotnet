@@ -56,7 +56,7 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         }
 
         /*
-         * 현금영수증 매출/매입 내역 수집을 요청합니다
+         * 홈택스에 신고된 현금영수증 매입/매출 내역 수집을 팝빌에 요청합니다.
          * - https://docs.popbill.com/htcashbill/dotnet/api#RequestJob
          */
         private void btnRequestJob_Click(object sender, EventArgs e)
@@ -65,10 +65,10 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
             KeyType tiKeyType = KeyType.SELL;
 
             // 시작일자, 표시형식(yyyyMMdd)
-            String SDate = "20190901";
+            String SDate = "20210701";
 
             // 종료일자, 표시형식(yyyyMMdd)
-            String EDate = "20190930";
+            String EDate = "20210730";
 
             try
             {
@@ -87,7 +87,7 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         }
 
         /*
-         * 수집 요청 상태를 확인합니다.
+         * 함수 RequestJob(수집 요청)를 통해 반환 받은 작업 아이디의 상태를 확인합니다.
          * - https://docs.popbill.com/htcashbill/dotnet/api#GetJobState
          */
         private void btnGetJobState_Click(object sender, EventArgs e)
@@ -119,8 +119,8 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         }
 
         /*
-         * 수집 요청건들에 대한 상태 목록을 확인합니다.
-         * - 수집 요청 작업아이디(JobID)의 유효시간은 1시간 입니다.
+         * 현금영수증 매입/매출 내역 수집요청에 대한 상태 목록을 확인합니다.
+         * - 수집 요청 후 1시간이 경과한 수집 요청건은 상태정보가 반환되지 않습니다.
          * - https://docs.popbill.com/htcashbill/dotnet/api#ListActiveJob
          */
         private void btnListActiveJob_Click(object sender, EventArgs e)
@@ -164,7 +164,7 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         }
 
         /*
-         * 현금영수증 매입/매출 내역의 수집 결과를 조회합니다.
+         * 함수 GetJobState(수집 상태 확인)를 통해 상태 정보 확인된 작업아이디를 활용하여 현금영수증 매입/매출 내역을 조회합니다.
          * - https://docs.popbill.com/htcashbill/dotnet/api#Search
          */
         private void btnSearch_Click(object sender, EventArgs e)
@@ -241,7 +241,7 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         }
 
         /*
-         * 현금영수증 매입/매출 내역의 수집 결과 요약정보를 조회합니다.
+         * 함수 GetJobState(수집 상태 확인)를 통해 상태 정보가 확인된 작업아이디를 활용하여 수집된 현금영수증 매입/매출 내역의 요약 정보를 조회합니다.
          * - https://docs.popbill.com/htcashbill/dotnet/api#Summary
          */
         private void btnSummary_Click(object sender, EventArgs e)
@@ -273,8 +273,9 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         }
 
         /*
-         * 홈택스연동 인증관리를 위한 URL을 반환합니다.
-         * 인증방식에는 부서사용자/인증서 인증 방식이 있습니다.
+         * 홈택스연동 인증정보를 관리하는 페이지의 팝업 URL을 반환합니다.
+         * - 인증방식에는 부서사용자/공인인증서 인증 방식이 있습니다.
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
          * - https://docs.popbill.com/htcashbill/dotnet/api#GetCertificatePopUpURL
          */
         private void btnGetCertificatePopUpURL_Click(object sender, EventArgs e)
@@ -294,7 +295,7 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         }
 
         /*
-         * 팝빌에 등록된 홈택스 공인인증서의 만료일자를 반환합니다.
+         * 홈택스연동 인증을 위해 팝빌에 등록된 인증서 만료일자를 확인합니다.
          * - https://docs.popbill.com/htcashbill/dotnet/api#GetCertificateExpireDate
          */
         private void btnGetCertificateExpireDate_Click(object sender, EventArgs e)
@@ -313,7 +314,7 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         }
 
         /*
-         * 팝빌에 등록된 공인인증서의 홈택스 로그인을 테스트합니다.
+         * 팝빌에 등록된 인증서로 홈택스 로그인 가능 여부를 확인합니다.
          * - https://docs.popbill.com/htcashbill/dotnet/api#CheckCertValidation
          */
         private void btnCheckCertValidation_Click(object sender, EventArgs e)
@@ -333,7 +334,7 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         }
 
         /*
-         *  홈택스 현금영수증 부서사용자 계정을 등록한다.
+         * 홈택스연동 인증을 위해 팝빌에 현금영수증 자료조회 부서사용자 계정을 등록합니다.
          *  - https://docs.popbill.com/htcashbill/dotnet/api#RegistDeptUser
          */
         private void btnRegistDeptUser_Click(object sender, EventArgs e)
@@ -359,7 +360,7 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         }
 
         /*
-         * 팝빌에 등록된 현금영수증 부서사용자 아이디를 확인합니다.
+         * 홈택스연동 인증을 위해 팝빌에 등록된 현금영수증 자료조회 부서사용자 계정을 확인합니다.
          * - https://docs.popbill.com/htcashbill/dotnet/api#CheckDeptUser
          */
         private void btnCheckDeptUser_Click(object sender, EventArgs e)
@@ -379,7 +380,7 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         }
 
         /*
-         * 팝빌에 등록된 현금영수증 부서사용자 계정정보를 이용하여 홈택스 로그인을 테스트한다.
+         * 팝빌에 등록된 현금영수증 자료조회 부서사용자 계정 정보로 홈택스 로그인 가능 여부를 확인합니다.
          * - https://docs.popbill.com/htcashbill/dotnet/api#CheckLoginDeptUser
          */
         private void btnCheckLoginDeptUser_Click(object sender, EventArgs e)
@@ -399,7 +400,7 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         }
 
         /*
-         *  팝빌에 등록된 현금영수증 부서사용자 계정정보를 삭제한다.
+         * 팝빌에 등록된 홈택스 현금영수증 자료조회 부서사용자 계정을 삭제합니다.
          *  - https://docs.popbill.com/htcashbill/dotnet/api#DeleteDeptUser
          */
         private void btnDeleteDeptUser_Click(object sender, EventArgs e)
@@ -419,8 +420,8 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         }
 
         /*
-         * 연동회원의 잔여포인트를 조회합니다.
-         * - 파트너 과금 방식의 경우 파트너 잔여포인트 조회(GetPartnerBalance API) 기능을 사용하시기 바랍니다.
+         * 연동회원의 잔여포인트를 확인합니다.
+         * - 과금방식이 파트너과금인 경우 파트너 잔여포인트(GetPartnerBalance API)를 통해 확인하시기 바랍니다.
          * - https://docs.popbill.com/htcashbill/dotnet/api#GetBalance
          */
         private void btnGetBalance_Click(object sender, EventArgs e)
@@ -439,8 +440,8 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         }
 
         /*
-         * 팝빌 연동회원 포인트충전 팝업 URL을 반환합니다.
-         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         * 연동회원 포인트 충전을 위한 페이지의 팝업 URL을 반환합니다.
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
          * - https://docs.popbill.com/htcashbill/dotnet/api#GetChargeURL
          */
         private void btnGetChargeURL_Click(object sender, EventArgs e)
@@ -480,8 +481,8 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         }
 
         /*
-         * 파트너 포인트 충전 팝업 URL을 반환합니다. 
-         * - 반환된 URL은 보안정책상 30초의 유효시간을 갖습니다.
+         * 파트너 포인트 충전을 위한 페이지의 팝업 URL을 반환합니다.
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
          * - https://docs.popbill.com/htcashbill/dotnet/api#GetPartnerURL
          */
         private void btnGetPartnerURL_CHRG_Click(object sender, EventArgs e)
@@ -501,7 +502,7 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         }
 
         /*
-         * 홈택스 현금영수증 연계 서비스 과금정보를 확인합니다. 
+         * 팝빌 홈택스연동(현금) API 서비스 과금정보를 확인합니다.
          * - https://docs.popbill.com/htcashbill/dotnet/api#GetChargeInfo
          */
         private void btnGetChargeInfo_Click(object sender, EventArgs e)
@@ -525,8 +526,8 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         }
 
         /*
-         * 정액제 신청 팝업 URL을 반환합니다.
-         * - 반환된 URL은 보안정책에 따라 30초의 유효시간을 갖습니다.
+         * 홈택스연동 정액제 서비스 신청 페이지의 팝업 URL을 반환합니다.
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
          * - https://docs.popbill.com/htcashbill/dotnet/api#GetFlatRatePopUpURL
          */
         private void btnGetFlatRatePopUpURL_Click(object sender, EventArgs e)
@@ -546,7 +547,7 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         }
 
         /*
-         * 연동회원의 정액제 서비스 상태를 확인합니다.
+         * 홈택스연동 정액제 서비스 상태를 확인합니다.
          * - https://docs.popbill.com/htcashbill/dotnet/api#GetFlatRateState
          */
         private void button1_Click(object sender, EventArgs e)
@@ -575,7 +576,7 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         }
 
         /*
-         * 해당 사업자의 파트너 연동회원 가입여부를 확인합니다.
+         * 사업자번호를 조회하여 연동회원 가입여부를 확인합니다.
          * - https://docs.popbill.com/htcashbill/dotnet/api#CheckIsMember
          */
         private void btnCheckIsMember_Click(object sender, EventArgs e)
@@ -595,7 +596,7 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         }
 
         /*
-         * 회원아이디 중복여부를 확인합니다.
+         * 사용하고자 하는 아이디의 중복여부를 확인합니다.
          * - https://docs.popbill.com/htcashbill/dotnet/api#CheckID
          */
         private void btnCheckID_Click(object sender, EventArgs e)
@@ -615,7 +616,7 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         }
 
         /*
-         * 파트너의 연동회원으로 신규가입 처리합니다.
+         * 사용자를 연동회원으로 가입처리합니다.
          * - https://docs.popbill.com/htcashbill/dotnet/api#JoinMember
          */
         private void btnJoinMember_Click(object sender, EventArgs e)
@@ -680,8 +681,8 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
 
 
         /*
-         * 팝빌에 로그인 상태로 접근할 수 있는 팝업 URL을 반환합니다.
-         * - 반환된 URL은 보안정책으로 인해 30초의 유효시간을 갖습니다.
+         * 팝빌 사이트에 로그인 상태로 접근할 수 있는 페이지의 팝업 URL을 반환합니다.
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
          * - https://docs.popbill.com/htcashbill/dotnet/api#GetAccessURL
          */
         private void btnGetAccessURL_Click(object sender, EventArgs e)
@@ -701,7 +702,7 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         }
 
         /*
-         * 연동회원의 회사정보를 조회합니다.
+         * 연동회원의 회사정보를 확인합니다.
          * - https://docs.popbill.com/htcashbill/dotnet/api#GetCorpInfo
          */
         private void btnGetCorpInfo_Click(object sender, EventArgs e)
@@ -764,7 +765,7 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         }
 
         /*
-         * 연동회원의 담당자를 추가합니다. 
+         * 연동회원 사업자번호에 담당자(팝빌 로그인 계정)를 추가합니다.
          * - https://docs.popbill.com/htcashbill/dotnet/api#RegistContact
          */
         private void btnRegistContact_Click(object sender, EventArgs e)
@@ -772,7 +773,7 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
             Contact contactInfo = new Contact();
 
             //담당자 아이디, 6자 이상 50자 미만
-            contactInfo.id = "testkorea_20190110";
+            contactInfo.id = "testkorea";
 
             //비밀번호, 6자 이상 20자 미만
             contactInfo.pwd = "user_password";
@@ -813,7 +814,7 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         }
 
         /*
-         * 연동회원의 담당자 정보 목록을 확인합니다.
+         * 연동회원 사업자번호에 등록된 담당자(팝빌 로그인 계정) 목록을 확인합니다.
          * - https://docs.popbill.com/htcashbill/dotnet/api#ListContact
          */
         private void btnListContact_Click(object sender, EventArgs e)
@@ -849,7 +850,7 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         }
 
         /*
-         * 담당자 정보를 수정합니다.
+         * 연동회원 사업자번호에 등록된 담당자(팝빌 로그인 계정) 정보를 수정합니다.
          * - https://docs.popbill.com/htcashbill/dotnet/api#UpdateContact
          */
         private void btnUpdateContact_Click(object sender, EventArgs e)
