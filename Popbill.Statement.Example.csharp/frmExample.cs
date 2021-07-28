@@ -477,7 +477,7 @@ namespace Popbill.Statement.Example.csharp
             Statement statement = new Statement();
 
             // [필수], 기재상 작성일자 날짜형식(yyyyMMdd)
-            statement.writeDate = "20201022";
+            statement.writeDate = "20210701";
 
             // [필수], {영수, 청구} 중 기재 
             statement.purposeType = "영수";
@@ -595,7 +595,7 @@ namespace Popbill.Statement.Example.csharp
             StatementDetail detail = new StatementDetail();
 
             detail.serialNum = 1; // 일련번호, 1부터 순차기재, 최대 99
-            detail.purchaseDT = "20201022"; // 거래일자
+            detail.purchaseDT = "20210701"; // 거래일자
             detail.itemName = "품목명"; //품목명
             detail.spec = "규격"; //규격
             detail.qty = "1"; // 수량
@@ -614,7 +614,7 @@ namespace Popbill.Statement.Example.csharp
             detail = new StatementDetail();
 
             detail.serialNum = 2; // 일련번호, 1부터 순차기재, 최대 99
-            detail.purchaseDT = "20201022"; // 거래일자
+            detail.purchaseDT = "20210701"; // 거래일자
             detail.itemName = "품목명"; //품목명
             detail.spec = "규격"; //규격
             detail.qty = "1"; // 수량
@@ -839,11 +839,11 @@ namespace Popbill.Statement.Example.csharp
             List<string> MgtKeyList = new List<string>();
 
             //문서번호 배열, 최대 1000건
-            MgtKeyList.Add("20190110-001");
-            MgtKeyList.Add("20190110-002");
-            MgtKeyList.Add("20190110-003");
-            MgtKeyList.Add("20190110-004");
-            MgtKeyList.Add("20190110-005");
+            MgtKeyList.Add("20210701-001");
+            MgtKeyList.Add("20210701-002");
+            MgtKeyList.Add("20210701-003");
+            MgtKeyList.Add("20210701-004");
+            MgtKeyList.Add("20210701-005");
 
             try
             {
@@ -1218,11 +1218,11 @@ namespace Popbill.Statement.Example.csharp
             List<string> mgtKeyList = new List<string>();
 
             // 문서번호 배열 (최대 100건)
-            mgtKeyList.Add("20190110-01");
-            mgtKeyList.Add("20190110-02");
-            mgtKeyList.Add("20190110-03");
-            mgtKeyList.Add("20190110-04");
-            mgtKeyList.Add("20190110-05");
+            mgtKeyList.Add("20210701-01");
+            mgtKeyList.Add("20210701-02");
+            mgtKeyList.Add("20210701-03");
+            mgtKeyList.Add("20210701-04");
+            mgtKeyList.Add("20210701-05");
 
             try
             {
@@ -1497,7 +1497,7 @@ namespace Popbill.Statement.Example.csharp
             Statement statement = new Statement();
 
             // [필수], 기재상 작성일자 날짜형식(yyyyMMdd)
-            statement.writeDate = "20201022";
+            statement.writeDate = "20210701";
 
             // [필수], {영수, 청구} 중 기재 
             statement.purposeType = "영수";
@@ -1615,7 +1615,7 @@ namespace Popbill.Statement.Example.csharp
             StatementDetail detail = new StatementDetail();
 
             detail.serialNum = 1; // 일련번호, 1부터 순차기재, 최대 99
-            detail.purchaseDT = "20201022"; // 거래일자
+            detail.purchaseDT = "20210701"; // 거래일자
             detail.itemName = "품목명";
             detail.spec = "규격";
             detail.qty = "1"; // 수량
@@ -1634,7 +1634,7 @@ namespace Popbill.Statement.Example.csharp
             detail = new StatementDetail();
 
             detail.serialNum = 2; // 일련번호, 1부터 순차기재, 최대 99
-            detail.purchaseDT = "20201022"; // 거래일자
+            detail.purchaseDT = "20210701"; // 거래일자
             detail.itemName = "품목명";
             detail.spec = "규격";
             detail.qty = "1"; // 수량
@@ -1684,8 +1684,8 @@ namespace Popbill.Statement.Example.csharp
             // 첨부할 전자명세서 코드, 121-거래명세서, 122-청구서, 123-견적서, 124-발주서, 125-입금표, 126-영수증
             int SubItemCode = 121;
 
-            // 첨부할 전자명세서 관리번호 
-            String SubMgtKey = "20190109-100";
+            // 첨부할 전자명세서 문서번호 
+            String SubMgtKey = "20210701-100";
 
             try
             {
@@ -1713,8 +1713,8 @@ namespace Popbill.Statement.Example.csharp
             // 첨부해제할 명세서 코드, 121-거래명세서, 122-청구서, 123-견적서, 124-발주서, 125-입금표, 126-영수증
             int SubItemCode = 121;
 
-            // 첨부해제할 명세서 관리번호 
-            String SubMgtKey = "20190109-100";
+            // 첨부해제할 명세서 문서번호 
+            String SubMgtKey = "20210701-100";
 
             try
             {
@@ -2103,7 +2103,7 @@ namespace Popbill.Statement.Example.csharp
             Contact contactInfo = new Contact();
 
             //담당자 아이디, 6자 이상 50자 미만
-            contactInfo.id = "testkorea_20190110";
+            contactInfo.id = "testkorea";
 
             //비밀번호, 6자 이상 20자 미만
             contactInfo.pwd = "user_password";
