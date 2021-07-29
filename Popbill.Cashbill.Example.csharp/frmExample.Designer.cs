@@ -78,7 +78,6 @@
             this.btnGetURL_SBOX = new System.Windows.Forms.Button();
             this.btnGetURL_TBOX = new System.Windows.Forms.Button();
             this.GroupBox12 = new System.Windows.Forms.GroupBox();
-            this.btnGetPDF = new System.Windows.Forms.Button();
             this.btnGetPDFURL = new System.Windows.Forms.Button();
             this.btnGetPrintURL = new System.Windows.Forms.Button();
             this.textURL = new System.Windows.Forms.TextBox();
@@ -260,7 +259,6 @@
             // 
             // GroupBox11
             // 
-            this.GroupBox11.Controls.Add(this.btnGetPDF);
             this.GroupBox11.Controls.Add(this.btnAssignMgtKey);
             this.GroupBox11.Controls.Add(this.btnUpdateEmailConfig);
             this.GroupBox11.Controls.Add(this.btnListEmailConfig);
@@ -663,16 +661,6 @@
             this.GroupBox12.TabStop = false;
             this.GroupBox12.Text = "문서관련 URL 기능";
             // 
-            // btnGetPDF
-            // 
-            this.btnGetPDF.Location = new System.Drawing.Point(155, 53);
-            this.btnGetPDF.Name = "btnGetPDF";
-            this.btnGetPDF.Size = new System.Drawing.Size(133, 30);
-            this.btnGetPDF.TabIndex = 15;
-            this.btnGetPDF.Text = "PDF 다운로드";
-            this.btnGetPDF.UseVisualStyleBackColor = true;
-            this.btnGetPDF.Click += new System.EventHandler(this.btnGetPDF_Click);
-            // 
             // btnGetPDFURL
             // 
             this.btnGetPDFURL.Location = new System.Drawing.Point(6, 149);
@@ -1003,7 +991,6 @@
         private System.Windows.Forms.Button btnListEmailConfig;
         private System.Windows.Forms.Button btnGetPDFURL;
         private System.Windows.Forms.Button btnAssignMgtKey;
-        private System.Windows.Forms.Button btnGetPDF;
         internal System.Windows.Forms.Label label6;
         internal System.Windows.Forms.TextBox textURL;
     }
