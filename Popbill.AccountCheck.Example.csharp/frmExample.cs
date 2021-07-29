@@ -51,6 +51,10 @@ namespace Popbill.AccountCheck.Example.csharp
             accountCheckService.UseLocalTimeYN = false;
         }
 
+        /*
+         * 1건의 예금주성명을 조회합니다.
+         * - https://docs.popbill.com/accountcheck/dotnet/api#CheckAccountInfo
+         */
         private void btnCheckAccountInfo_Click(object sender, EventArgs e)
         {
             String tmp = "";
@@ -76,6 +80,10 @@ namespace Popbill.AccountCheck.Example.csharp
             }
         }
 
+        /*
+         * 사업자번호를 조회하여 연동회원 가입여부를 확인합니다.\
+         * - https://docs.popbill.com/accountcheck/dotnet/api#CheckIsMember
+         */
         private void btnCheckIsMember_Click(object sender, EventArgs e)
         {
             try
@@ -92,6 +100,10 @@ namespace Popbill.AccountCheck.Example.csharp
             }
         }
 
+        /*
+         * 사용하고자 하는 아이디의 중복여부를 확인합니다.
+         * - https://docs.popbill.com/accountcheck/dotnet/api#CheckID
+         */
         private void btnCheckID_Click(object sender, EventArgs e)
         {
             try
@@ -107,7 +119,10 @@ namespace Popbill.AccountCheck.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "회원아이디 중복여부 확인");
             }
         }
-
+        /*
+         * 사용자를 연동회원으로 가입처리합니다.
+         * - https://docs.popbill.com/accountcheck/dotnet/api#JoinMember
+         */
         private void btnJoinMember_Click(object sender, EventArgs e)
         {
             
@@ -169,6 +184,10 @@ namespace Popbill.AccountCheck.Example.csharp
             }
         }
 
+        /*
+         * 예금주 성명 조회시 과금되는 포인트 단가를 확인합니다.
+         * - https://docs.popbill.com/accountcheck/dotnet/api#GetUnitCost
+         */
         private void btnUnitCost_Click(object sender, EventArgs e)
         {
             try
@@ -184,6 +203,10 @@ namespace Popbill.AccountCheck.Example.csharp
             }
         }
 
+        /*
+         * 예금주조회 API 서비스 과금정보를 확인합니다.
+         * - https://docs.popbill.com/accountcheck/dotnet/api#GetChargeInfo
+         */
         private void btnGetChargeInfo_Click(object sender, EventArgs e)
         {
             try
@@ -205,6 +228,11 @@ namespace Popbill.AccountCheck.Example.csharp
             }
         }
 
+        /*
+         * 연동회원의 잔여포인트를 확인합니다.
+         * - 과금방식이 파트너과금인 경우 파트너 잔여포인트(GetPartnerBalance API)를 통해 확인하시기 바랍니다.
+         * - https://docs.popbill.com/accountcheck/dotnet/api#GetBalance
+         */
         private void btnGetBalance_Click(object sender, EventArgs e)
         {
             try
@@ -220,6 +248,11 @@ namespace Popbill.AccountCheck.Example.csharp
             }
         }
 
+        /*
+         * 연동회원 포인트 충전을 위한 페이지의 팝업 URL을 반환합니다.
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
+         * - https://docs.popbill.com/accountcheck/dotnet/api#GetChargeURL
+         */
         private void btnGetChargeURL_Click(object sender, EventArgs e)
         {
             try
@@ -236,6 +269,11 @@ namespace Popbill.AccountCheck.Example.csharp
             }
         }
 
+        /*
+         * 파트너의 잔여포인트를 확인합니다.
+         * - 과금방식이 연동과금인 경우 연동회원 잔여포인트(GetBalance API)를 이용하시기 바랍니다.
+         * - https://docs.popbill.com/accountcheck/dotnet/api#GetPartnerBalance
+         */
         private void btnGetPartnerBalance_Click(object sender, EventArgs e)
         {
             try
@@ -251,6 +289,11 @@ namespace Popbill.AccountCheck.Example.csharp
             }
         }
 
+        /*
+         * 파트너 포인트 충전을 위한 페이지의 팝업 URL을 반환합니다.
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
+         * - https://docs.popbill.com/accountcheck/dotnet/api#GetPartnerURL
+         */
         private void btnGetPartnerURL_CHRG_Click(object sender, EventArgs e)
         {
             try
@@ -267,6 +310,11 @@ namespace Popbill.AccountCheck.Example.csharp
             }
         }
 
+        /*
+         * 팝빌 사이트에 로그인 상태로 접근할 수 있는 페이지의 팝업 URL을 반환합니다.
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
+         * - https://docs.popbill.com/accountcheck/dotnet/api#GetAccessURL
+         */
         private void btnGetAccessURL_Click(object sender, EventArgs e)
         {
             try
@@ -283,6 +331,10 @@ namespace Popbill.AccountCheck.Example.csharp
             }
         }
 
+        /*
+         * 연동회원 사업자번호에 담당자(팝빌 로그인 계정)를 추가합니다.
+         * - https://docs.popbill.com/accountcheck/dotnet/api#RegistContact
+         */
         private void btnRegistContact_Click(object sender, EventArgs e)
         {
             Contact contactInfo = new Contact();
@@ -328,6 +380,10 @@ namespace Popbill.AccountCheck.Example.csharp
             }
         }
 
+        /*
+         * 연동회원 사업자번호에 등록된 담당자(팝빌 로그인 계정) 목록을 확인합니다.
+         * - https://docs.popbill.com/accountcheck/dotnet/api#ListContact
+         */
         private void btnListContact_Click(object sender, EventArgs e)
         {
             try
@@ -360,6 +416,10 @@ namespace Popbill.AccountCheck.Example.csharp
             }
         }
 
+        /*
+         * 연동회원 사업자번호에 등록된 담당자(팝빌 로그인 계정) 정보를 수정합니다.
+         * - https://docs.popbill.com/accountcheck/dotnet/api#UpdateContact
+         */
         private void btnUpdateContact_Click(object sender, EventArgs e)
         {
 
@@ -403,6 +463,10 @@ namespace Popbill.AccountCheck.Example.csharp
             }
         }
 
+        /*
+         * 연동회원의 회사정보를 확인합니다.
+         * - https://docs.popbill.com/accountcheck/dotnet/api#GetCorpInfo
+         */
         private void btnGetCorpInfo_Click(object sender, EventArgs e)
         {
             try
@@ -426,6 +490,10 @@ namespace Popbill.AccountCheck.Example.csharp
             }
         }
 
+        /*
+         * 연동회원의 회사정보를 수정합니다.
+         * - https://docs.popbill.com/accountcheck/dotnet/api#UpdateCorpInfo
+         */
         private void btnUpdateCorpInfo_Click(object sender, EventArgs e)
         {
 
