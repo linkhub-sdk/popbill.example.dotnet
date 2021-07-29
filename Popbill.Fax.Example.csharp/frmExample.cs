@@ -114,7 +114,7 @@ namespace Popbill.Fax.Example.csharp
         }
 
         /*
-          * 팩스 1건을 전송합니다. (최대 전송파일 개수: 20개)
+         * 팩스 1건을 전송합니다. (최대 전송파일 개수: 20개)
          * - 팩스전송 문서 파일포맷 안내 : https://docs.popbill.com/fax/format?lang=dotnet
          * - https://docs.popbill.com/fax/dotnet/api#SendFAX
          */
@@ -161,9 +161,9 @@ namespace Popbill.Fax.Example.csharp
         }
 
         /*
-         * 동일한 팩스파일을 다수의 수신자에게 전송하기 위해 팝빌에 접수합니다. (최대 전송파일 개수 : 20개) (최대 1,000건)
+         * 동일한 팩스파일을 다수의 수신자에게 전송하기 위해 팝빌에 접수합니다. (최대 1,000건)
          * - 팩스전송 문서 파일포맷 안내 : https://docs.popbill.com/fax/format?lang=dotnet
-         * - https://docs.popbill.com/fax/dotnet/api#SendFAX_Multi
+         * - https://docs.popbill.com/fax/dotnet/api#SendFAX_Same
          */
         private void button2_Click(object sender, EventArgs e)
         {
@@ -218,9 +218,9 @@ namespace Popbill.Fax.Example.csharp
         }
 
         /*
-         * [다중파일 전송] 팩스 1건을 전송합니다. (최대 전송파일 개수: 20개)
+         * 팩스 1건을 전송합니다.(다중파일 전송) (최대 전송파일 개수: 20개)
          * - 팩스전송 문서 파일포맷 안내 : https://docs.popbill.com/fax/format?lang=dotnet
-         * - https://docs.popbill.com/fax/dotnet/api#SendFAX
+         * - https://docs.popbill.com/fax/dotnet/api#SendFAX_Multi
          */
         private void button3_Click(object sender, EventArgs e)
         {
@@ -271,9 +271,9 @@ namespace Popbill.Fax.Example.csharp
         }
 
         /*
-         * [다중파일 동보전송] 동일한 팩스파일을 다수의 수신자에게 전송하기 위해 팝빌에 접수합니다. (최대 전송파일 개수 : 20개) (최대 1,000건)
+         * 동일한 팩스파일을 다수의 수신자에게 전송하기 위해 팝빌에 접수합니다.(다중파일 동보전송) (최대 전송파일 개수 : 20개) (최대 1,000건)
          * - 팩스전송 문서 파일포맷 안내 : https://docs.popbill.com/fax/format?lang=dotnet
-         * - https://docs.popbill.com/fax/dotnet/api#SendFAX_Multi
+         * - https://docs.popbill.com/fax/dotnet/api#SendFAX_Multi_Same
          */
         private void button4_Click(object sender, EventArgs e)
         {
@@ -417,10 +417,10 @@ namespace Popbill.Fax.Example.csharp
         }
 
         /*
-         * [동보전송] 팝빌에서 반환받은 접수번호를 통해 팩스 1건을 재전송합니다.
+         * 팝빌에서 반환받은 접수번호를 통해 다수건의 팩스를 재전송합니다. (최대 전송파일 개수: 20개) (최대 1,000건)
          * - 발신/수신 정보 미입력시 기존과 동일한 정보로 팩스가 전송되고, 접수일 기준 최대 60일이 경과되지 않는 건만 재전송이 가능합니다.
          * - 팩스 재전송 요청시 포인트가 차감됩니다. (전송실패시 환불처리)
-         * - https://docs.popbill.com/fax/dotnet/api#ResendFAX_Multi
+         * - https://docs.popbill.com/fax/dotnet/api#ResendFAX_Same
          */
         private void btnResendFAXSame_Click(object sender, EventArgs e)
         {
@@ -472,10 +472,10 @@ namespace Popbill.Fax.Example.csharp
         }
 
         /*
-         * [동보보전] 파트너가 할당한 전송요청 번호를 통해 팩스 1건을 재전송합니다.
+         * 파트너가 할당한 전송요청 번호를 통해 다수건의 팩스를 재전송합니다. (최대 전송파일 개수: 20개) (최대 1,000건)
          * - 발신/수신 정보 미입력시 기존과 동일한 정보로 팩스가 전송되고, 접수일 기준 최대 60일이 경과되지 않는 건만 재전송이 가능합니다.
          * - 팩스 재전송 요청시 포인트가 차감됩니다. (전송실패시 환불처리)
-         * - https://docs.popbill.com/fax/dotnet/api#ResendFAXRN_Multi
+         * - https://docs.popbill.com/fax/dotnet/api#ResendFAXRN_Same
          */
         private void btnResendFAXRN_same_Click(object sender, EventArgs e)
         {

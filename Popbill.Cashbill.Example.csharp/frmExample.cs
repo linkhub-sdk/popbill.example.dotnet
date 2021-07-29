@@ -579,7 +579,7 @@ namespace Popbill.Cashbill.Example.csharp
         }
 
         /*
-         * 1건의 (부분)취소현금영수증을 [즉시발행]합니다.
+         * (부분)취소 현금영수증을 발행하며 취소 현금영수증의 금액은 원본 금액을 넘을 수 없습니다.
          * - 현금영수증 국세청 전송 정책 : https://docs.popbill.com/cashbill/ntsSendPolicy?lang=dotnet
          * - https://docs.popbill.com/cashbill/dotnet/api#RevokeRegistIssue
          */
@@ -1511,7 +1511,7 @@ namespace Popbill.Cashbill.Example.csharp
         }
 
         /*
-         * 연동회원의 회사정보를 조회합니다.
+         * 연동회원의 회사정보를 확인합니다.
          * - https://docs.popbill.com/cashbill/dotnet/api#GetCorpInfo
          */
         private void btnGetCorpInfo_Click(object sender, EventArgs e)

@@ -119,7 +119,7 @@ namespace Popbill.Message.Example.csharp
 
         /*
          * 최대 90byte의 단문(SMS) 메시지 1건 전송을 팝빌에 접수합니다.
-         *  - https://docs.popbill.com/message/dotnet/api#SendSMS
+         * - https://docs.popbill.com/message/dotnet/api#SendSMS
          */
         private void btnSendSMS_one_Click(object sender, EventArgs e)
         {
@@ -160,8 +160,8 @@ namespace Popbill.Message.Example.csharp
 
         /*
          * 최대 90byte의 단문(SMS) 메시지 다수건 전송을 팝빌에 접수합니다. (최대 1,000건)
-         *  - 수신자마다 개별 내용을 전송할 수 있습니다(대량전송).
-         *  - https://docs.popbill.com/message/dotnet/api#SendSMS_Multi
+         * - 수신자마다 개별 내용을 전송할 수 있습니다(대량전송).
+         * - https://docs.popbill.com/message/dotnet/api#SendSMS_Multi
          */
         private void btnSendSMS_hund_Click(object sender, EventArgs e)
         {
@@ -214,8 +214,8 @@ namespace Popbill.Message.Example.csharp
 
         /*
          * 최대 90byte의 단문(SMS) 메시지 다수건 전송을 팝빌에 접수합니다. (최대 1,000건)
-         *  - 모든 수신자에게 동일한 내용을 전송하거나(동보전송).
-         *  - https://docs.popbill.com/message/dotnet/api#SendSMS_Multi
+         * - 모든 수신자에게 동일한 내용을 전송합니다(동보전송).
+         * - https://docs.popbill.com/message/dotnet/api#SendSMS_Multi
          */
         private void btnSendSMS_Same_Click(object sender, EventArgs e)
         {
@@ -265,7 +265,7 @@ namespace Popbill.Message.Example.csharp
 
         /*
          * 최대 2,000byte의 장문(LMS) 메시지 1건 전송을 팝빌에 접수합니다.
-         *  - https://docs.popbill.com/message/dotnet/api#SendLMS
+         * - https://docs.popbill.com/message/dotnet/api#SendLMS
          */
         private void btnSendLMS_one_Click(object sender, EventArgs e)
         {
@@ -309,8 +309,8 @@ namespace Popbill.Message.Example.csharp
 
         /*
          * 최대 2,000byte의 장문(LMS) 메시지 다수건 전송을 팝빌에 접수합니다. (최대 1,000건)
-         *  - 수신자마다 개별 내용을 전송할 수 있습니다(대량전송).
-         *  - https://docs.popbill.com/message/dotnet/api#SendLMS_Multi
+         * - 수신자마다 개별 내용을 전송할 수 있습니다(대량전송).
+         * - https://docs.popbill.com/message/dotnet/api#SendLMS_Multi
          */
         private void btnSendLMS_hund_Click(object sender, EventArgs e)
         {
@@ -366,8 +366,8 @@ namespace Popbill.Message.Example.csharp
 
         /*
          * 최대 2,000byte의 장문(LMS) 메시지 다수건 전송을 팝빌에 접수합니다. (최대 1,000건)
-         *  - 모든 수신자에게 동일한 내용을 전송하거나(동보전송).
-         *  - https://docs.popbill.com/message/dotnet/api#SendLMS_Multi
+         * - 모든 수신자에게 동일한 내용을 전송합니다(동보전송).
+         * - https://docs.popbill.com/message/dotnet/api#SendLMS_Multi
          */
         private void btnSendLMS_same_Click(object sender, EventArgs e)
         {
@@ -420,7 +420,7 @@ namespace Popbill.Message.Example.csharp
 
         /*
          * 메시지 크기(90byte)에 따라 단문/장문(SMS/LMS)을 자동으로 인식하여 1건의 메시지를 전송을 팝빌에 접수합니다.
-         *  - https://docs.popbill.com/message/dotnet/api#SendXMS
+         * - https://docs.popbill.com/message/dotnet/api#SendXMS
          */
         private void btnSendXMS_one_Click(object sender, EventArgs e)
         {
@@ -463,9 +463,9 @@ namespace Popbill.Message.Example.csharp
         }
 
         /*
-         * 시지 크기(90byte)에 따라 단문/장문(SMS/LMS)을 자동으로 인식하여 다수건의 메시지 전송을 팝빌에 접수합니다. (최대 1,000건)
-         *  - 수신자마다 개별 내용을 전송할 수 있습니다(대량전송).
-         *  - https://docs.popbill.com/message/dotnet/api#SendXMS_Multi
+         * 메시지 크기(90byte)에 따라 단문/장문(SMS/LMS)을 자동으로 인식하여 다수건의 메시지 전송을 팝빌에 접수합니다. (최대 1,000건)
+         * - 수신자마다 개별 내용을 전송할 수 있습니다(대량전송).
+         * - https://docs.popbill.com/message/dotnet/api#SendXMS_Multi
          */
         private void btnSendXMS_hund_Click(object sender, EventArgs e)
         {
@@ -521,8 +521,8 @@ namespace Popbill.Message.Example.csharp
 
         /*
          * 메시지 크기(90byte)에 따라 단문/장문(SMS/LMS)을 자동으로 인식하여 다수건의 메시지 전송을 팝빌에 접수합니다. (최대 1,000건)
-         *  - 모든 수신자에게 동일한 내용을 전송하거나(동보전송).
-         *  - https://docs.popbill.com/message/dotnet/api#SendXMS_Same
+         * - 모든 수신자에게 동일한 내용을 전송합니다(동보전송).
+         * - https://docs.popbill.com/message/dotnet/api#SendXMS_Same
          */
         private void btnSendXMS_same_Click(object sender, EventArgs e)
         {
@@ -575,8 +575,8 @@ namespace Popbill.Message.Example.csharp
 
         /*
          * 최대 2,000byte의 메시지와 이미지로 구성된 포토문자(MMS) 1건 전송을 팝빌에 접수합니다.
-         *  - 이미지 파일 포맷/규격 : 최대 300Kbyte(JPEG, JPG), 가로/세로 1,000px 이하 권장
-         *  - https://docs.popbill.com/message/dotnet/api#SendMMS
+         * - 이미지 파일 포맷/규격 : 최대 300Kbyte(JPEG, JPG), 가로/세로 1,000px 이하 권장
+         * - https://docs.popbill.com/message/dotnet/api#SendMMS
          */
         private void btnSendMMS_Click(object sender, EventArgs e)
         {
@@ -625,9 +625,9 @@ namespace Popbill.Message.Example.csharp
 
         /*
          * 최대 2,000byte의 메시지와 이미지로 구성된 포토문자(MMS) 다수건 전송을 팝빌에 접수합니다. (최대 1,000건)
-         *  - 모든 수신자에게 동일한 내용을 전송하거나(동보전송).
-         *  - 이미지 파일 포맷/규격 : 최대 300Kbyte(JPEG), 가로/세로 1,000px 이하 권장
-         *  - https://docs.popbill.com/message/dotnet/api#SendMMS_Same
+         * - 모든 수신자에게 동일한 내용을 전송합니다(동보전송).
+         * - 이미지 파일 포맷/규격 : 최대 300Kbyte(JPEG), 가로/세로 1,000px 이하 권장
+         * - https://docs.popbill.com/message/dotnet/api#SendMMS_Same
          */
         private void btnSendMMS_Same_Click(object sender, EventArgs e)
         {

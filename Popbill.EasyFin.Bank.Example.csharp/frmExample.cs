@@ -207,8 +207,8 @@ namespace Popbill.EasyFin.Bank.Example.csharp
         private void btnGetChargeURL_Click(object sender, EventArgs e)
         {
             /*
-         * 연동회원 포인트 충전을 위한 페이지의 팝업 URL을 반환합니다.
-         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
+             * 연동회원 포인트 충전을 위한 페이지의 팝업 URL을 반환합니다.
+             * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
              * - https://docs.popbill.com/easyfinbank/dotnet/api#GetChargeURL
              */
 
@@ -251,7 +251,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
         private void btnGetPartnerURL_CHRG_Click(object sender, EventArgs e)
         {
             /*
-             * 파트너 포인트 충전을 위한 페이지의 팝업 URL을 반환합니다
+             * 파트너 포인트 충전을 위한 페이지의 팝업 URL을 반환합니다.
              * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
              * - https://docs.popbill.com/easyfinbank/dotnet/api#GetPartnerURL
              */
@@ -302,7 +302,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
             Contact contactInfo = new Contact();
 
             //담당자 아이디, 6자 이상 50자 미만
-            contactInfo.id = "testkorea_20190110";
+            contactInfo.id = "testkorea";
 
             //비밀번호, 6자 이상 20자 미만
             contactInfo.pwd = "user_password";
@@ -507,10 +507,10 @@ namespace Popbill.EasyFin.Bank.Example.csharp
             String AccountNumber = "74620246488";
 
             // 시작일자, 표시형식(yyyyMMdd)
-            String SDate = "20200113";
+            String SDate = "20210701";
 
             // 종료일자, 표시형식(yyyyMMdd)
-            String EDate = "20200313";
+            String EDate = "20210730";
 
             try
             {

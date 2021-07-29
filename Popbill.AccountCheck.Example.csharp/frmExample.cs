@@ -81,7 +81,7 @@ namespace Popbill.AccountCheck.Example.csharp
         }
 
         /*
-         * 사업자번호를 조회하여 연동회원 가입여부를 확인합니다.\
+         * 사업자번호를 조회하여 연동회원 가입여부를 확인합니다.
          * - https://docs.popbill.com/accountcheck/dotnet/api#CheckIsMember
          */
         private void btnCheckIsMember_Click(object sender, EventArgs e)
