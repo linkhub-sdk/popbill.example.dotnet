@@ -163,6 +163,7 @@
             this.txtCorpNum = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.fileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.btnGetSendToNTSConfig = new System.Windows.Forms.Button();
             this.GroupBox8.SuspendLayout();
             this.GroupBox9.SuspendLayout();
             this.GroupBox10.SuspendLayout();
@@ -544,6 +545,7 @@
             // 
             // GroupBox11
             // 
+            this.GroupBox11.Controls.Add(this.btnGetSendToNTSConfig);
             this.GroupBox11.Controls.Add(this.btnUpdateEmailConfig);
             this.GroupBox11.Controls.Add(this.btnListEmailConfig);
             this.GroupBox11.Controls.Add(this.btnAssignMgtKey);
@@ -1659,6 +1661,16 @@
             // 
             this.fileDialog.FileName = "OpenFileDialog1";
             // 
+            // btnGetSendToNTSConfig
+            // 
+            this.btnGetSendToNTSConfig.Location = new System.Drawing.Point(155, 172);
+            this.btnGetSendToNTSConfig.Name = "btnGetSendToNTSConfig";
+            this.btnGetSendToNTSConfig.Size = new System.Drawing.Size(151, 32);
+            this.btnGetSendToNTSConfig.TabIndex = 14;
+            this.btnGetSendToNTSConfig.Text = "국세청 전송 설정 확인";
+            this.btnGetSendToNTSConfig.UseVisualStyleBackColor = true;
+            this.btnGetSendToNTSConfig.Click += new System.EventHandler(this.btnGetSendToNTSConfig_Click);
+            // 
             // frmExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -1844,6 +1856,7 @@
         internal System.Windows.Forms.Button btnGetOldPrintURL;
         internal System.Windows.Forms.Label label8;
         internal System.Windows.Forms.TextBox textURL;
+        private System.Windows.Forms.Button btnGetSendToNTSConfig;
     }
 }
 

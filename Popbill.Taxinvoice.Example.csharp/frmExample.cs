@@ -3221,6 +3221,29 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
+         * 연동회원의 국세청 전송 옵션 설정 상태를 확인합니다.
+         * - 국세청 전송 옵션 설정은 팝빌 사이트 [전자세금계산서] > [환경설정] > [세금계산서 관리] 메뉴에서 설정할 수 있으며, API로 설정은 불가능 합니다.
+         * - https://docs.popbill.com/taxinvoice/dotnet/api#GetSendToNTSConfig
+         */
+        private void btnGetSendToNTSConfig_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bool sendToNTSConfig =
+                    taxinvoiceService.GetSendToNTSConfig(txtCorpNum.Text, txtUserId.Text);
+
+
+                MessageBox.Show("국세청 전송 설정 확인 : " + sendToNTSConfig.ToString() + "\r\n" +
+                                "True(발행 즉시 전송) False(익일 자동전송)");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, ".국세청 전송 설정 확인");
+            }
+        }
+
+        /*
          * 전자세금계산서 발행에 필요한 인증서를 팝빌 인증서버에 등록하기 위한 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
          * - 인증서 갱신/재발급/비밀번호 변경한 경우, 변경된 인증서를 팝빌 인증서버에 재등록 해야합니다.
