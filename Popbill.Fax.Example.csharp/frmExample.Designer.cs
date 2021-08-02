@@ -43,6 +43,8 @@
             this.GroupBox5 = new System.Windows.Forms.GroupBox();
             this.btnGetAccessURL = new System.Windows.Forms.Button();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.btnGetUseHistoryURL = new System.Windows.Forms.Button();
+            this.btnGetPaymentURL = new System.Windows.Forms.Button();
             this.btnGetChargeURL = new System.Windows.Forms.Button();
             this.btnGetBalance = new System.Windows.Forms.Button();
             this.GroupBox3 = new System.Windows.Forms.GroupBox();
@@ -87,8 +89,7 @@
             this.textURL = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.fileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.btnGetPaymentURL = new System.Windows.Forms.Button();
-            this.btnGetUseHistoryURL = new System.Windows.Forms.Button();
+            this.btnGetContactInfo = new System.Windows.Forms.Button();
             this.GroupBox1.SuspendLayout();
             this.groupBox13.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -192,6 +193,7 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.btnGetContactInfo);
             this.groupBox6.Controls.Add(this.btnUpdateContact);
             this.groupBox6.Controls.Add(this.btnListContact);
             this.groupBox6.Controls.Add(this.btnRegistContact);
@@ -204,7 +206,7 @@
             // 
             // btnUpdateContact
             // 
-            this.btnUpdateContact.Location = new System.Drawing.Point(7, 78);
+            this.btnUpdateContact.Location = new System.Drawing.Point(7, 113);
             this.btnUpdateContact.Name = "btnUpdateContact";
             this.btnUpdateContact.Size = new System.Drawing.Size(114, 26);
             this.btnUpdateContact.TabIndex = 2;
@@ -214,7 +216,7 @@
             // 
             // btnListContact
             // 
-            this.btnListContact.Location = new System.Drawing.Point(7, 48);
+            this.btnListContact.Location = new System.Drawing.Point(7, 83);
             this.btnListContact.Name = "btnListContact";
             this.btnListContact.Size = new System.Drawing.Size(114, 26);
             this.btnListContact.TabIndex = 1;
@@ -264,6 +266,26 @@
             this.groupBox12.TabIndex = 18;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "연동과금 포인트";
+            // 
+            // btnGetUseHistoryURL
+            // 
+            this.btnGetUseHistoryURL.Location = new System.Drawing.Point(6, 112);
+            this.btnGetUseHistoryURL.Name = "btnGetUseHistoryURL";
+            this.btnGetUseHistoryURL.Size = new System.Drawing.Size(137, 26);
+            this.btnGetUseHistoryURL.TabIndex = 4;
+            this.btnGetUseHistoryURL.Text = "포인트 사용내역 URL";
+            this.btnGetUseHistoryURL.UseVisualStyleBackColor = true;
+            this.btnGetUseHistoryURL.Click += new System.EventHandler(this.btnGetUseHistoryURL_Click);
+            // 
+            // btnGetPaymentURL
+            // 
+            this.btnGetPaymentURL.Location = new System.Drawing.Point(6, 81);
+            this.btnGetPaymentURL.Name = "btnGetPaymentURL";
+            this.btnGetPaymentURL.Size = new System.Drawing.Size(137, 26);
+            this.btnGetPaymentURL.TabIndex = 3;
+            this.btnGetPaymentURL.Text = "포인트 결제내역 URL";
+            this.btnGetPaymentURL.UseVisualStyleBackColor = true;
+            this.btnGetPaymentURL.Click += new System.EventHandler(this.btnGetPaymentURL_Click);
             // 
             // btnGetChargeURL
             // 
@@ -705,25 +727,15 @@
             // 
             this.fileDialog.FileName = "OpenFileDialog1";
             // 
-            // btnGetPaymentURL
+            // btnGetContactInfo
             // 
-            this.btnGetPaymentURL.Location = new System.Drawing.Point(6, 81);
-            this.btnGetPaymentURL.Name = "btnGetPaymentURL";
-            this.btnGetPaymentURL.Size = new System.Drawing.Size(137, 26);
-            this.btnGetPaymentURL.TabIndex = 3;
-            this.btnGetPaymentURL.Text = "포인트 결제내역 URL";
-            this.btnGetPaymentURL.UseVisualStyleBackColor = true;
-            this.btnGetPaymentURL.Click += new System.EventHandler(this.btnGetPaymentURL_Click);
-            // 
-            // btnGetUseHistoryURL
-            // 
-            this.btnGetUseHistoryURL.Location = new System.Drawing.Point(6, 112);
-            this.btnGetUseHistoryURL.Name = "btnGetUseHistoryURL";
-            this.btnGetUseHistoryURL.Size = new System.Drawing.Size(137, 26);
-            this.btnGetUseHistoryURL.TabIndex = 4;
-            this.btnGetUseHistoryURL.Text = "포인트 사용내역 URL";
-            this.btnGetUseHistoryURL.UseVisualStyleBackColor = true;
-            this.btnGetUseHistoryURL.Click += new System.EventHandler(this.btnGetUseHistoryURL_Click);
+            this.btnGetContactInfo.Location = new System.Drawing.Point(7, 51);
+            this.btnGetContactInfo.Name = "btnGetContactInfo";
+            this.btnGetContactInfo.Size = new System.Drawing.Size(114, 26);
+            this.btnGetContactInfo.TabIndex = 3;
+            this.btnGetContactInfo.Text = "담당자 정보 확인";
+            this.btnGetContactInfo.UseVisualStyleBackColor = true;
+            this.btnGetContactInfo.Click += new System.EventHandler(this.btnGetContactInfo_Click);
             // 
             // frmExample
             // 
@@ -825,6 +837,7 @@
         internal System.Windows.Forms.TextBox textURL;
         internal System.Windows.Forms.Button btnGetUseHistoryURL;
         internal System.Windows.Forms.Button btnGetPaymentURL;
+        private System.Windows.Forms.Button btnGetContactInfo;
     }
 }
 

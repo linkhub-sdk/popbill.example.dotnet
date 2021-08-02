@@ -96,6 +96,7 @@
             this.btnGetAccessURL = new System.Windows.Forms.Button();
             this.btnGetChargeURL = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnGetContactInfo = new System.Windows.Forms.Button();
             this.UpdateContact = new System.Windows.Forms.Button();
             this.ListContact = new System.Windows.Forms.Button();
             this.btnRegistContact = new System.Windows.Forms.Button();
@@ -833,6 +834,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.btnGetContactInfo);
             this.groupBox4.Controls.Add(this.UpdateContact);
             this.groupBox4.Controls.Add(this.ListContact);
             this.groupBox4.Controls.Add(this.btnRegistContact);
@@ -843,9 +845,19 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "담당자 관련";
             // 
+            // btnGetContactInfo
+            // 
+            this.btnGetContactInfo.Location = new System.Drawing.Point(5, 51);
+            this.btnGetContactInfo.Name = "btnGetContactInfo";
+            this.btnGetContactInfo.Size = new System.Drawing.Size(118, 28);
+            this.btnGetContactInfo.TabIndex = 3;
+            this.btnGetContactInfo.Text = "담당자 정보 확인";
+            this.btnGetContactInfo.UseVisualStyleBackColor = true;
+            this.btnGetContactInfo.Click += new System.EventHandler(this.btnGetContactInfo_Click);
+            // 
             // UpdateContact
             // 
-            this.UpdateContact.Location = new System.Drawing.Point(6, 83);
+            this.UpdateContact.Location = new System.Drawing.Point(6, 116);
             this.UpdateContact.Name = "UpdateContact";
             this.UpdateContact.Size = new System.Drawing.Size(118, 28);
             this.UpdateContact.TabIndex = 2;
@@ -855,7 +867,7 @@
             // 
             // ListContact
             // 
-            this.ListContact.Location = new System.Drawing.Point(6, 50);
+            this.ListContact.Location = new System.Drawing.Point(6, 83);
             this.ListContact.Name = "ListContact";
             this.ListContact.Size = new System.Drawing.Size(118, 28);
             this.ListContact.TabIndex = 1;
@@ -1237,6 +1249,7 @@
         private System.Windows.Forms.TextBox textURL;
         private System.Windows.Forms.Button btnGetUseHistoryURL;
         private System.Windows.Forms.Button btnGetPaymentURL;
+        private System.Windows.Forms.Button btnGetContactInfo;
     }
 }
 

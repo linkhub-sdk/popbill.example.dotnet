@@ -1687,6 +1687,42 @@ namespace Popbill.Cashbill.Example.csharp
         }
 
         /*
+         * 연동회원 사업자번호에 등록된 담당자(팝빌 로그인 계정) 정보을 확인합니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#GetContactInfo
+         */
+        private void btnGetContactInfo_Click(object sender, EventArgs e)
+        {
+            // 확인할 담당자 아이디
+            String contactID = "DOTNET_CONTACT_PASS_TEST19";
+
+            try
+            {
+                Contact contactInfo = cashbillService.GetContactInfo(txtCorpNum.Text, contactID, txtUserId.Text);
+
+                String tmp = null;
+
+                tmp += "id (담당자 아이디) : " + contactInfo.id + CRLF;
+                tmp += "personName (담당자명) : " + contactInfo.personName + CRLF;
+                tmp += "email (담당자 이메일) : " + contactInfo.email + CRLF;
+                tmp += "hp (휴대폰번호) : " + contactInfo.hp + CRLF;
+                tmp += "searchRole (담당자 권한) : " + contactInfo.searchRole + CRLF;
+                tmp += "tel (연락처) : " + contactInfo.tel + CRLF;
+                tmp += "fax (팩스번호) : " + contactInfo.fax + CRLF;
+                tmp += "mgrYN (관리자 여부) : " + contactInfo.mgrYN + CRLF;
+                tmp += "regDT (등록일시) : " + contactInfo.regDT + CRLF;
+                tmp += "state (상태) : " + contactInfo.state + CRLF;
+                tmp += CRLF;
+
+                MessageBox.Show(tmp, "담당자 정보 확인");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "담당자 추가등록");
+            }
+        }
+
+        /*
          * 연동회원 사업자번호에 등록된 담당자(팝빌 로그인 계정) 목록을 확인합니다.
          * - https://docs.popbill.com/cashbill/dotnet/api#ListContact
          */

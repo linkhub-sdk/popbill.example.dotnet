@@ -98,6 +98,7 @@
             this.fileDialog = new System.Windows.Forms.OpenFileDialog();
             this.label6 = new System.Windows.Forms.Label();
             this.textURL = new System.Windows.Forms.TextBox();
+            this.btnGetContactInfo = new System.Windows.Forms.Button();
             this.GroupBox1.SuspendLayout();
             this.groupBox14.SuspendLayout();
             this.groupBox11.SuspendLayout();
@@ -204,6 +205,7 @@
             // 
             // groupBox10
             // 
+            this.groupBox10.Controls.Add(this.btnGetContactInfo);
             this.groupBox10.Controls.Add(this.btnUpdateContact);
             this.groupBox10.Controls.Add(this.btnListContact);
             this.groupBox10.Controls.Add(this.btnRegistContact);
@@ -216,7 +218,7 @@
             // 
             // btnUpdateContact
             // 
-            this.btnUpdateContact.Location = new System.Drawing.Point(7, 95);
+            this.btnUpdateContact.Location = new System.Drawing.Point(7, 132);
             this.btnUpdateContact.Name = "btnUpdateContact";
             this.btnUpdateContact.Size = new System.Drawing.Size(120, 31);
             this.btnUpdateContact.TabIndex = 2;
@@ -226,7 +228,7 @@
             // 
             // btnListContact
             // 
-            this.btnListContact.Location = new System.Drawing.Point(7, 58);
+            this.btnListContact.Location = new System.Drawing.Point(7, 95);
             this.btnListContact.Name = "btnListContact";
             this.btnListContact.Size = new System.Drawing.Size(120, 31);
             this.btnListContact.TabIndex = 1;
@@ -834,6 +836,16 @@
             this.textURL.Size = new System.Drawing.Size(347, 21);
             this.textURL.TabIndex = 28;
             // 
+            // btnGetContactInfo
+            // 
+            this.btnGetContactInfo.Location = new System.Drawing.Point(7, 59);
+            this.btnGetContactInfo.Name = "btnGetContactInfo";
+            this.btnGetContactInfo.Size = new System.Drawing.Size(120, 31);
+            this.btnGetContactInfo.TabIndex = 3;
+            this.btnGetContactInfo.Text = "담당자 정보 확인";
+            this.btnGetContactInfo.UseVisualStyleBackColor = true;
+            this.btnGetContactInfo.Click += new System.EventHandler(this.btnGetContactInfo_Click);
+            // 
             // frmExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -945,6 +957,7 @@
         private System.Windows.Forms.Button btnGetATSTemplate;
         internal System.Windows.Forms.Button btnGetUseHistoryURL;
         internal System.Windows.Forms.Button btnGetPaymentURL;
+        private System.Windows.Forms.Button btnGetContactInfo;
     }
 }
 
