@@ -62,6 +62,7 @@
             this.txtMgtKey = new System.Windows.Forms.TextBox();
             this.Label3 = new System.Windows.Forms.Label();
             this.GroupBox11 = new System.Windows.Forms.GroupBox();
+            this.btnGetSendToNTSConfig = new System.Windows.Forms.Button();
             this.btnUpdateEmailConfig = new System.Windows.Forms.Button();
             this.btnListEmailConfig = new System.Windows.Forms.Button();
             this.btnAssignMgtKey = new System.Windows.Forms.Button();
@@ -93,6 +94,10 @@
             this.btnGetViewURL = new System.Windows.Forms.Button();
             this.btnGetPrintURL = new System.Windows.Forms.Button();
             this.groupBox20 = new System.Windows.Forms.GroupBox();
+            this.groupBox24 = new System.Windows.Forms.GroupBox();
+            this.btnBulkSubmit = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtSubmitID = new System.Windows.Forms.TextBox();
             this.groupBox22 = new System.Windows.Forms.GroupBox();
             this.label36 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
@@ -163,7 +168,7 @@
             this.txtCorpNum = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.fileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.btnGetSendToNTSConfig = new System.Windows.Forms.Button();
+            this.btnGetBulkResult = new System.Windows.Forms.Button();
             this.GroupBox8.SuspendLayout();
             this.GroupBox9.SuspendLayout();
             this.GroupBox10.SuspendLayout();
@@ -175,6 +180,7 @@
             this.GroupBox13.SuspendLayout();
             this.GroupBox12.SuspendLayout();
             this.groupBox20.SuspendLayout();
+            this.groupBox24.SuspendLayout();
             this.groupBox22.SuspendLayout();
             this.groupBox16.SuspendLayout();
             this.groupBox21.SuspendLayout();
@@ -256,9 +262,9 @@
             this.GroupBox8.Controls.Add(this.Label6);
             this.GroupBox8.Controls.Add(this.Label7);
             this.GroupBox8.Controls.Add(this.Label9);
-            this.GroupBox8.Location = new System.Drawing.Point(254, 62);
+            this.GroupBox8.Location = new System.Drawing.Point(273, 65);
             this.GroupBox8.Name = "GroupBox8";
-            this.GroupBox8.Size = new System.Drawing.Size(260, 189);
+            this.GroupBox8.Size = new System.Drawing.Size(283, 186);
             this.GroupBox8.TabIndex = 7;
             this.GroupBox8.TabStop = false;
             this.GroupBox8.Text = "임시저장 발행, 발행예정 프로세스";
@@ -368,6 +374,7 @@
             // 
             // GroupBox9
             // 
+            this.GroupBox9.Controls.Add(this.btnGetBulkResult);
             this.GroupBox9.Controls.Add(this.btnSearch);
             this.GroupBox9.Controls.Add(this.btnGetInfos);
             this.GroupBox9.Controls.Add(this.btnGetLogs);
@@ -375,7 +382,7 @@
             this.GroupBox9.Controls.Add(this.btnGetDetailInfo);
             this.GroupBox9.Location = new System.Drawing.Point(181, 369);
             this.GroupBox9.Name = "GroupBox9";
-            this.GroupBox9.Size = new System.Drawing.Size(158, 212);
+            this.GroupBox9.Size = new System.Drawing.Size(158, 244);
             this.GroupBox9.TabIndex = 8;
             this.GroupBox9.TabStop = false;
             this.GroupBox9.Text = "문서 정보";
@@ -479,7 +486,7 @@
             this.GroupBox10.Controls.Add(this.gtnGetFiles);
             this.GroupBox10.Location = new System.Drawing.Point(23, 369);
             this.GroupBox10.Name = "GroupBox10";
-            this.GroupBox10.Size = new System.Drawing.Size(152, 212);
+            this.GroupBox10.Size = new System.Drawing.Size(152, 244);
             this.GroupBox10.TabIndex = 9;
             this.GroupBox10.TabStop = false;
             this.GroupBox10.Text = "첨부파일";
@@ -556,10 +563,20 @@
             this.GroupBox11.Controls.Add(this.btnSendEmail);
             this.GroupBox11.Location = new System.Drawing.Point(345, 369);
             this.GroupBox11.Name = "GroupBox11";
-            this.GroupBox11.Size = new System.Drawing.Size(314, 212);
+            this.GroupBox11.Size = new System.Drawing.Size(314, 244);
             this.GroupBox11.TabIndex = 10;
             this.GroupBox11.TabStop = false;
             this.GroupBox11.Text = "부가서비스";
+            // 
+            // btnGetSendToNTSConfig
+            // 
+            this.btnGetSendToNTSConfig.Location = new System.Drawing.Point(155, 172);
+            this.btnGetSendToNTSConfig.Name = "btnGetSendToNTSConfig";
+            this.btnGetSendToNTSConfig.Size = new System.Drawing.Size(151, 32);
+            this.btnGetSendToNTSConfig.TabIndex = 14;
+            this.btnGetSendToNTSConfig.Text = "국세청 전송 설정 확인";
+            this.btnGetSendToNTSConfig.UseVisualStyleBackColor = true;
+            this.btnGetSendToNTSConfig.Click += new System.EventHandler(this.btnGetSendToNTSConfig_Click);
             // 
             // btnUpdateEmailConfig
             // 
@@ -785,7 +802,7 @@
             this.GroupBox13.Controls.Add(this.btnGetURL_TBOX);
             this.GroupBox13.Location = new System.Drawing.Point(1101, 369);
             this.GroupBox13.Name = "GroupBox13";
-            this.GroupBox13.Size = new System.Drawing.Size(211, 212);
+            this.GroupBox13.Size = new System.Drawing.Size(211, 244);
             this.GroupBox13.TabIndex = 12;
             this.GroupBox13.TabStop = false;
             this.GroupBox13.Text = "기타 URL";
@@ -842,7 +859,7 @@
             this.GroupBox12.Controls.Add(this.btnGetPopUpURL);
             this.GroupBox12.Location = new System.Drawing.Point(675, 369);
             this.GroupBox12.Name = "GroupBox12";
-            this.GroupBox12.Size = new System.Drawing.Size(384, 212);
+            this.GroupBox12.Size = new System.Drawing.Size(384, 244);
             this.GroupBox12.TabIndex = 11;
             this.GroupBox12.TabStop = false;
             this.GroupBox12.Text = "문서관련 URL 기능";
@@ -889,16 +906,56 @@
             // 
             // groupBox20
             // 
+            this.groupBox20.Controls.Add(this.groupBox24);
             this.groupBox20.Controls.Add(this.groupBox22);
             this.groupBox20.Controls.Add(this.btnSendToNTS);
             this.groupBox20.Controls.Add(this.groupBox16);
             this.groupBox20.Controls.Add(this.GroupBox8);
             this.groupBox20.Location = new System.Drawing.Point(25, 57);
             this.groupBox20.Name = "groupBox20";
-            this.groupBox20.Size = new System.Drawing.Size(531, 294);
+            this.groupBox20.Size = new System.Drawing.Size(571, 306);
             this.groupBox20.TabIndex = 18;
             this.groupBox20.TabStop = false;
             this.groupBox20.Text = "정발행 프로세스";
+            // 
+            // groupBox24
+            // 
+            this.groupBox24.Controls.Add(this.btnBulkSubmit);
+            this.groupBox24.Controls.Add(this.label10);
+            this.groupBox24.Controls.Add(this.txtSubmitID);
+            this.groupBox24.Location = new System.Drawing.Point(14, 251);
+            this.groupBox24.Name = "groupBox24";
+            this.groupBox24.Size = new System.Drawing.Size(410, 49);
+            this.groupBox24.TabIndex = 21;
+            this.groupBox24.TabStop = false;
+            this.groupBox24.Text = "초대량 발행";
+            // 
+            // btnBulkSubmit
+            // 
+            this.btnBulkSubmit.BackColor = System.Drawing.Color.LightCoral;
+            this.btnBulkSubmit.Location = new System.Drawing.Point(287, 16);
+            this.btnBulkSubmit.Name = "btnBulkSubmit";
+            this.btnBulkSubmit.Size = new System.Drawing.Size(111, 27);
+            this.btnBulkSubmit.TabIndex = 17;
+            this.btnBulkSubmit.Text = "초대량 발행 접수";
+            this.btnBulkSubmit.UseVisualStyleBackColor = false;
+            this.btnBulkSubmit.Click += new System.EventHandler(this.btnBulkSubmit_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(10, 25);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(133, 12);
+            this.label10.TabIndex = 20;
+            this.label10.Text = "제출아이디(SubmitID) :";
+            // 
+            // txtSubmitID
+            // 
+            this.txtSubmitID.Location = new System.Drawing.Point(146, 19);
+            this.txtSubmitID.Name = "txtSubmitID";
+            this.txtSubmitID.Size = new System.Drawing.Size(135, 21);
+            this.txtSubmitID.TabIndex = 20;
             // 
             // groupBox22
             // 
@@ -906,7 +963,7 @@
             this.groupBox22.Controls.Add(this.label35);
             this.groupBox22.Controls.Add(this.panel2);
             this.groupBox22.Controls.Add(this.panel1);
-            this.groupBox22.Location = new System.Drawing.Point(248, 14);
+            this.groupBox22.Location = new System.Drawing.Point(233, 16);
             this.groupBox22.Name = "groupBox22";
             this.groupBox22.Size = new System.Drawing.Size(266, 42);
             this.groupBox22.TabIndex = 20;
@@ -951,9 +1008,9 @@
             // btnSendToNTS
             // 
             this.btnSendToNTS.BackColor = System.Drawing.Color.LightCoral;
-            this.btnSendToNTS.Location = new System.Drawing.Point(143, 257);
+            this.btnSendToNTS.Location = new System.Drawing.Point(430, 265);
             this.btnSendToNTS.Name = "btnSendToNTS";
-            this.btnSendToNTS.Size = new System.Drawing.Size(287, 32);
+            this.btnSendToNTS.Size = new System.Drawing.Size(126, 29);
             this.btnSendToNTS.TabIndex = 13;
             this.btnSendToNTS.Text = "국세청 즉시 전송";
             this.btnSendToNTS.UseVisualStyleBackColor = false;
@@ -967,9 +1024,9 @@
             this.groupBox16.Controls.Add(this.btnCancelIssue_Sub);
             this.groupBox16.Controls.Add(this.btnRegistIssue);
             this.groupBox16.Controls.Add(this.label26);
-            this.groupBox16.Location = new System.Drawing.Point(27, 62);
+            this.groupBox16.Location = new System.Drawing.Point(14, 63);
             this.groupBox16.Name = "groupBox16";
-            this.groupBox16.Size = new System.Drawing.Size(206, 188);
+            this.groupBox16.Size = new System.Drawing.Size(236, 188);
             this.groupBox16.TabIndex = 15;
             this.groupBox16.TabStop = false;
             this.groupBox16.Text = "(권장) 즉시발행 프로세스";
@@ -1050,7 +1107,7 @@
             this.groupBox21.Controls.Add(this.groupBox19);
             this.groupBox21.Location = new System.Drawing.Point(657, 57);
             this.groupBox21.Name = "groupBox21";
-            this.groupBox21.Size = new System.Drawing.Size(655, 302);
+            this.groupBox21.Size = new System.Drawing.Size(655, 306);
             this.groupBox21.TabIndex = 19;
             this.groupBox21.TabStop = false;
             this.groupBox21.Text = "역발행 프로세스";
@@ -1661,15 +1718,15 @@
             // 
             this.fileDialog.FileName = "OpenFileDialog1";
             // 
-            // btnGetSendToNTSConfig
+            // btnGetBulkResult
             // 
-            this.btnGetSendToNTSConfig.Location = new System.Drawing.Point(155, 172);
-            this.btnGetSendToNTSConfig.Name = "btnGetSendToNTSConfig";
-            this.btnGetSendToNTSConfig.Size = new System.Drawing.Size(151, 32);
-            this.btnGetSendToNTSConfig.TabIndex = 14;
-            this.btnGetSendToNTSConfig.Text = "국세청 전송 설정 확인";
-            this.btnGetSendToNTSConfig.UseVisualStyleBackColor = true;
-            this.btnGetSendToNTSConfig.Click += new System.EventHandler(this.btnGetSendToNTSConfig_Click);
+            this.btnGetBulkResult.Location = new System.Drawing.Point(15, 206);
+            this.btnGetBulkResult.Name = "btnGetBulkResult";
+            this.btnGetBulkResult.Size = new System.Drawing.Size(131, 32);
+            this.btnGetBulkResult.TabIndex = 11;
+            this.btnGetBulkResult.Text = "초대량 접수결과 확인";
+            this.btnGetBulkResult.UseVisualStyleBackColor = true;
+            this.btnGetBulkResult.Click += new System.EventHandler(this.btnGetBulkResult_Click);
             // 
             // frmExample
             // 
@@ -1700,6 +1757,8 @@
             this.GroupBox13.ResumeLayout(false);
             this.GroupBox12.ResumeLayout(false);
             this.groupBox20.ResumeLayout(false);
+            this.groupBox24.ResumeLayout(false);
+            this.groupBox24.PerformLayout();
             this.groupBox22.ResumeLayout(false);
             this.groupBox22.PerformLayout();
             this.groupBox16.ResumeLayout(false);
@@ -1857,6 +1916,11 @@
         internal System.Windows.Forms.Label label8;
         internal System.Windows.Forms.TextBox textURL;
         private System.Windows.Forms.Button btnGetSendToNTSConfig;
+        private System.Windows.Forms.GroupBox groupBox24;
+        internal System.Windows.Forms.Button btnBulkSubmit;
+        internal System.Windows.Forms.Label label10;
+        internal System.Windows.Forms.TextBox txtSubmitID;
+        internal System.Windows.Forms.Button btnGetBulkResult;
     }
 }
 
