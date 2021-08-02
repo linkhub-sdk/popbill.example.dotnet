@@ -1015,6 +1015,27 @@ namespace Popbill.Cashbill.Example.csharp
         }
 
         /*
+         * 팝빌 사이트와 동일한 현금영수증 1건의 상세 정보 페이지(사이트 상단, 좌측 메뉴 및 버튼 제외)의 URL을 반환합니다.
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#GetViewURL
+         */
+        private void btnGetViewURL_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string url = cashbillService.GetViewURL(txtCorpNum.Text, txtMgtKey.Text, txtUserId.Text);
+
+                MessageBox.Show(url, "현금영수증 보기 팝업 URL(메뉴/버튼 제외)");
+                textURL.Text = url;
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "현금영수증 보기 팝업 URL(메뉴/버튼 제외)");
+            }
+        }
+
+        /*
          * 현금영수증 1건을 인쇄하기 위한 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
          * - https://docs.popbill.com/cashbill/dotnet/api#GetPrintURL

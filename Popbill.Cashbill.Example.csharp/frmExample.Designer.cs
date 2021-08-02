@@ -100,6 +100,7 @@
             this.Label2 = new System.Windows.Forms.Label();
             this.txtCorpNum = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
+            this.btnGetViewURL = new System.Windows.Forms.Button();
             this.GroupBox9.SuspendLayout();
             this.GroupBox11.SuspendLayout();
             this.GroupBox3.SuspendLayout();
@@ -183,7 +184,7 @@
             // 
             // btnGetEmailURL
             // 
-            this.btnGetEmailURL.Location = new System.Drawing.Point(6, 117);
+            this.btnGetEmailURL.Location = new System.Drawing.Point(6, 149);
             this.btnGetEmailURL.Name = "btnGetEmailURL";
             this.btnGetEmailURL.Size = new System.Drawing.Size(180, 30);
             this.btnGetEmailURL.TabIndex = 13;
@@ -193,7 +194,7 @@
             // 
             // btnGetMassPrintURL
             // 
-            this.btnGetMassPrintURL.Location = new System.Drawing.Point(6, 85);
+            this.btnGetMassPrintURL.Location = new System.Drawing.Point(6, 117);
             this.btnGetMassPrintURL.Name = "btnGetMassPrintURL";
             this.btnGetMassPrintURL.Size = new System.Drawing.Size(180, 30);
             this.btnGetMassPrintURL.TabIndex = 12;
@@ -359,7 +360,7 @@
             this.btnGetPopUpURL.Name = "btnGetPopUpURL";
             this.btnGetPopUpURL.Size = new System.Drawing.Size(180, 30);
             this.btnGetPopUpURL.TabIndex = 9;
-            this.btnGetPopUpURL.Text = "문서 내용보기 팝업 URL";
+            this.btnGetPopUpURL.Text = "문서 팝업 URL";
             this.btnGetPopUpURL.UseVisualStyleBackColor = true;
             this.btnGetPopUpURL.Click += new System.EventHandler(this.btnGetPopUpURL_Click);
             // 
@@ -649,6 +650,7 @@
             // 
             // GroupBox12
             // 
+            this.GroupBox12.Controls.Add(this.btnGetViewURL);
             this.GroupBox12.Controls.Add(this.btnGetPDFURL);
             this.GroupBox12.Controls.Add(this.btnGetEmailURL);
             this.GroupBox12.Controls.Add(this.btnGetMassPrintURL);
@@ -663,7 +665,7 @@
             // 
             // btnGetPDFURL
             // 
-            this.btnGetPDFURL.Location = new System.Drawing.Point(6, 149);
+            this.btnGetPDFURL.Location = new System.Drawing.Point(192, 20);
             this.btnGetPDFURL.Name = "btnGetPDFURL";
             this.btnGetPDFURL.Size = new System.Drawing.Size(180, 30);
             this.btnGetPDFURL.TabIndex = 14;
@@ -673,7 +675,7 @@
             // 
             // btnGetPrintURL
             // 
-            this.btnGetPrintURL.Location = new System.Drawing.Point(6, 52);
+            this.btnGetPrintURL.Location = new System.Drawing.Point(6, 85);
             this.btnGetPrintURL.Name = "btnGetPrintURL";
             this.btnGetPrintURL.Size = new System.Drawing.Size(180, 30);
             this.btnGetPrintURL.TabIndex = 10;
@@ -882,6 +884,16 @@
             this.Label1.TabIndex = 7;
             this.Label1.Text = "팝빌회원 사업자번호 : ";
             // 
+            // btnGetViewURL
+            // 
+            this.btnGetViewURL.Location = new System.Drawing.Point(6, 53);
+            this.btnGetViewURL.Name = "btnGetViewURL";
+            this.btnGetViewURL.Size = new System.Drawing.Size(180, 30);
+            this.btnGetViewURL.TabIndex = 15;
+            this.btnGetViewURL.Text = "문서 팝업 URL (메뉴x)";
+            this.btnGetViewURL.UseVisualStyleBackColor = true;
+            this.btnGetViewURL.Click += new System.EventHandler(this.btnGetViewURL_Click);
+            // 
             // frmExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -993,6 +1005,7 @@
         private System.Windows.Forms.Button btnAssignMgtKey;
         internal System.Windows.Forms.Label label6;
         internal System.Windows.Forms.TextBox textURL;
+        internal System.Windows.Forms.Button btnGetViewURL;
     }
 }
 
