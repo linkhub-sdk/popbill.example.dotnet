@@ -95,6 +95,7 @@
             this.fileDialog = new System.Windows.Forms.OpenFileDialog();
             this.label6 = new System.Windows.Forms.Label();
             this.textURL = new System.Windows.Forms.TextBox();
+            this.btnGetATSTemplate = new System.Windows.Forms.Button();
             this.GroupBox1.SuspendLayout();
             this.groupBox14.SuspendLayout();
             this.groupBox11.SuspendLayout();
@@ -541,6 +542,7 @@
             // 
             // groupBox9
             // 
+            this.groupBox9.Controls.Add(this.btnGetATSTemplate);
             this.groupBox9.Controls.Add(this.btnSearch);
             this.groupBox9.Controls.Add(this.btnGetSentListURL);
             this.groupBox9.Controls.Add(this.btnListATSTemplate);
@@ -549,16 +551,16 @@
             this.groupBox9.Controls.Add(this.btnGetSenderNumberMgtURL);
             this.groupBox9.Controls.Add(this.btnListPlusFriendID);
             this.groupBox9.Controls.Add(this.btnGetPlusFriendMgtURL);
-            this.groupBox9.Location = new System.Drawing.Point(750, 20);
+            this.groupBox9.Location = new System.Drawing.Point(745, 11);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(397, 197);
+            this.groupBox9.Size = new System.Drawing.Size(397, 230);
             this.groupBox9.TabIndex = 4;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "카카오톡 관리";
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(205, 146);
+            this.btnSearch.Location = new System.Drawing.Point(205, 188);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(184, 36);
             this.btnSearch.TabIndex = 10;
@@ -568,7 +570,7 @@
             // 
             // btnGetSentListURL
             // 
-            this.btnGetSentListURL.Location = new System.Drawing.Point(205, 104);
+            this.btnGetSentListURL.Location = new System.Drawing.Point(207, 146);
             this.btnGetSentListURL.Name = "btnGetSentListURL";
             this.btnGetSentListURL.Size = new System.Drawing.Size(184, 36);
             this.btnGetSentListURL.TabIndex = 9;
@@ -578,7 +580,7 @@
             // 
             // btnListATSTemplate
             // 
-            this.btnListATSTemplate.Location = new System.Drawing.Point(205, 62);
+            this.btnListATSTemplate.Location = new System.Drawing.Point(206, 104);
             this.btnListATSTemplate.Name = "btnListATSTemplate";
             this.btnListATSTemplate.Size = new System.Drawing.Size(184, 36);
             this.btnListATSTemplate.TabIndex = 8;
@@ -798,6 +800,16 @@
             this.textURL.Size = new System.Drawing.Size(347, 21);
             this.textURL.TabIndex = 28;
             // 
+            // btnGetATSTemplate
+            // 
+            this.btnGetATSTemplate.Location = new System.Drawing.Point(205, 62);
+            this.btnGetATSTemplate.Name = "btnGetATSTemplate";
+            this.btnGetATSTemplate.Size = new System.Drawing.Size(184, 36);
+            this.btnGetATSTemplate.TabIndex = 11;
+            this.btnGetATSTemplate.Text = "알림톡 템플릿 정보 확인";
+            this.btnGetATSTemplate.UseVisualStyleBackColor = true;
+            this.btnGetATSTemplate.Click += new System.EventHandler(this.btnGetATSTemplate_Click);
+            // 
             // frmExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -906,6 +918,7 @@
         private System.Windows.Forms.ListBox listBox1;
         internal System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textURL;
+        private System.Windows.Forms.Button btnGetATSTemplate;
     }
 }
 

@@ -175,7 +175,7 @@ namespace Popbill.Kakao.Example.csharp
         {
             try
             {
-                string url = kakaoService.GetATSTemplateMgtURL(txtCorpNum.Text, txtUserId.Text);
+                String url = kakaoService.GetATSTemplateMgtURL(txtCorpNum.Text, txtUserId.Text);
 
                 MessageBox.Show(url, "알림톡 템플릿 관리 팝업 URL");
                 textURL.Text = url;
@@ -184,6 +184,45 @@ namespace Popbill.Kakao.Example.csharp
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + ex.Message, "알림톡 템플릿 관리 팝업 URL");
+            }
+        }
+
+        /*
+         * 승인된 알림톡 템플릿 정보를 확인합니다.
+         * - https://docs.popbill.com/kakao/dotnet/api#getATSTemplate
+         */
+        private void btnGetATSTemplate_Click(object sender, EventArgs e)
+        {
+            // 확인할 템플릿 코드
+            String templateCode = "021030000716";
+
+            try
+            {
+                ATSTemplate templateInfo = kakaoService.GetATSTemplate(txtCorpNum.Text, templateCode, txtUserId.Text);
+
+                String tmp = null;
+
+                tmp += "템플릿 코드(templateCode) : " + templateInfo.templateCode + CRLF;
+                tmp += "템플릿 제목(templateName) : " + templateInfo.templateName + CRLF;
+                tmp += "템플릿 내용(template) : " + templateInfo.template + CRLF;
+                tmp += "카카오톡채널 아이디(plusFriendID) : " + templateInfo.plusFriendID + CRLF;
+                if (templateInfo.btns != null)
+                {
+                    foreach (KakaoButton buttonInfo in templateInfo.btns)
+                    {
+                        tmp += "[알림톡 버튼 정보]" + CRLF;
+                        tmp += "버튼명(n) : " + buttonInfo.n + CRLF;
+                        tmp += "버튼유형(t) : " + buttonInfo.t + CRLF;
+                        tmp += "버튼링크1(u1) : " + buttonInfo.u1 + CRLF;
+                        tmp += "버튼링크1(u2) : " + buttonInfo.u2 + CRLF;
+                    }
+                }
+                MessageBox.Show(tmp, "알림톡 템플릿 정보 확인");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "알림톡 템플릿 정보 확인");
             }
         }
 
