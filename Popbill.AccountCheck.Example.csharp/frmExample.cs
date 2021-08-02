@@ -229,6 +229,48 @@ namespace Popbill.AccountCheck.Example.csharp
         }
 
         /*
+         * 연동회원 포인트 결제내역 확인을 위한 페이지의 팝업 URL을 반환합니다.
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
+         * - https://docs.popbill.com/accountcheck/dotnet/api#GetPaymentURL
+         */
+        private void btnGetPaymentURL_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string url = accountCheckService.GetPaymentURL(txtCorpNum.Text, txtUserID.Text);
+
+                MessageBox.Show(url, "연동회원 포인트 결제내역 URL");
+                textURL.Text = url;
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "연동회원 포인트 결제내역 URL");
+            }
+        }
+
+        /*
+         * 연동회원 포인트 사용내역 확인을 위한 페이지의 팝업 URL을 반환합니다.
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
+         * - https://docs.popbill.com/accountcheck/dotnet/api#GetUseHistoryURL
+         */
+        private void btnGetUseHistoryURL_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string url = accountCheckService.GetUseHistoryURL(txtCorpNum.Text, txtUserID.Text);
+
+                MessageBox.Show(url, "연동회원 포인트 사용내역 URL");
+                textURL.Text = url;
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "연동회원 포인트 사용내역 URL");
+            }
+        }
+
+        /*
          * 연동회원의 잔여포인트를 확인합니다.
          * - 과금방식이 파트너과금인 경우 파트너 잔여포인트(GetPartnerBalance API)를 통해 확인하시기 바랍니다.
          * - https://docs.popbill.com/accountcheck/dotnet/api#GetBalance
@@ -527,6 +569,5 @@ namespace Popbill.AccountCheck.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "회사정보 수정");
             }
         }
-
     }
 }

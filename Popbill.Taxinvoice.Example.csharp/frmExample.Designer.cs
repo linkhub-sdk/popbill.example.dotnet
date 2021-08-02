@@ -45,6 +45,7 @@
             this.Label7 = new System.Windows.Forms.Label();
             this.Label9 = new System.Windows.Forms.Label();
             this.GroupBox9 = new System.Windows.Forms.GroupBox();
+            this.btnGetBulkResult = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnGetDetailInfo = new System.Windows.Forms.Button();
             this.btnGetEmailURL = new System.Windows.Forms.Button();
@@ -154,6 +155,8 @@
             this.groupBox18 = new System.Windows.Forms.GroupBox();
             this.btnGetPartnerURL_CHRG = new System.Windows.Forms.Button();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
+            this.btnGetUseHistoryURL = new System.Windows.Forms.Button();
+            this.btnGetPaymentURL = new System.Windows.Forms.Button();
             this.btnGetChargeURL = new System.Windows.Forms.Button();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
             this.btnUpdateCorpInfo = new System.Windows.Forms.Button();
@@ -168,7 +171,6 @@
             this.txtCorpNum = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.fileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.btnGetBulkResult = new System.Windows.Forms.Button();
             this.GroupBox8.SuspendLayout();
             this.GroupBox9.SuspendLayout();
             this.GroupBox10.SuspendLayout();
@@ -386,6 +388,16 @@
             this.GroupBox9.TabIndex = 8;
             this.GroupBox9.TabStop = false;
             this.GroupBox9.Text = "문서 정보";
+            // 
+            // btnGetBulkResult
+            // 
+            this.btnGetBulkResult.Location = new System.Drawing.Point(15, 206);
+            this.btnGetBulkResult.Name = "btnGetBulkResult";
+            this.btnGetBulkResult.Size = new System.Drawing.Size(131, 32);
+            this.btnGetBulkResult.TabIndex = 11;
+            this.btnGetBulkResult.Text = "초대량 접수결과 확인";
+            this.btnGetBulkResult.UseVisualStyleBackColor = true;
+            this.btnGetBulkResult.Click += new System.EventHandler(this.btnGetBulkResult_Click);
             // 
             // btnSearch
             // 
@@ -635,7 +647,7 @@
             this.GroupBox4.Controls.Add(this.btnGetTaxCertURL);
             this.GroupBox4.Location = new System.Drawing.Point(666, 20);
             this.GroupBox4.Name = "GroupBox4";
-            this.GroupBox4.Size = new System.Drawing.Size(158, 116);
+            this.GroupBox4.Size = new System.Drawing.Size(158, 148);
             this.GroupBox4.TabIndex = 1;
             this.GroupBox4.TabStop = false;
             this.GroupBox4.Text = "공인인증서 관련";
@@ -686,7 +698,7 @@
             this.GroupBox3.Controls.Add(this.btnUnitCost);
             this.GroupBox3.Location = new System.Drawing.Point(171, 20);
             this.GroupBox3.Name = "GroupBox3";
-            this.GroupBox3.Size = new System.Drawing.Size(158, 116);
+            this.GroupBox3.Size = new System.Drawing.Size(158, 148);
             this.GroupBox3.TabIndex = 1;
             this.GroupBox3.TabStop = false;
             this.GroupBox3.Text = "포인트 관련";
@@ -738,7 +750,7 @@
             this.GroupBox2.Controls.Add(this.btnJoinMember);
             this.GroupBox2.Location = new System.Drawing.Point(6, 20);
             this.GroupBox2.Name = "GroupBox2";
-            this.GroupBox2.Size = new System.Drawing.Size(158, 116);
+            this.GroupBox2.Size = new System.Drawing.Size(158, 148);
             this.GroupBox2.TabIndex = 0;
             this.GroupBox2.TabStop = false;
             this.GroupBox2.Text = "회원 정보";
@@ -787,9 +799,9 @@
             this.GroupBox7.Controls.Add(this.Label3);
             this.GroupBox7.Controls.Add(this.groupBox20);
             this.GroupBox7.Controls.Add(this.groupBox21);
-            this.GroupBox7.Location = new System.Drawing.Point(12, 194);
+            this.GroupBox7.Location = new System.Drawing.Point(12, 217);
             this.GroupBox7.Name = "GroupBox7";
-            this.GroupBox7.Size = new System.Drawing.Size(1326, 619);
+            this.GroupBox7.Size = new System.Drawing.Size(1326, 623);
             this.GroupBox7.TabIndex = 12;
             this.GroupBox7.TabStop = false;
             this.GroupBox7.Text = "전자세금계산서 관련 API";
@@ -1547,7 +1559,7 @@
             this.GroupBox1.Controls.Add(this.GroupBox4);
             this.GroupBox1.Location = new System.Drawing.Point(12, 37);
             this.GroupBox1.Name = "GroupBox1";
-            this.GroupBox1.Size = new System.Drawing.Size(1326, 142);
+            this.GroupBox1.Size = new System.Drawing.Size(1326, 174);
             this.GroupBox1.TabIndex = 11;
             this.GroupBox1.TabStop = false;
             this.GroupBox1.Text = "팝빌 기본 API";
@@ -1558,7 +1570,7 @@
             this.groupBox18.Controls.Add(this.btnGetPartnerBalance);
             this.groupBox18.Location = new System.Drawing.Point(501, 20);
             this.groupBox18.Name = "groupBox18";
-            this.groupBox18.Size = new System.Drawing.Size(158, 116);
+            this.groupBox18.Size = new System.Drawing.Size(158, 148);
             this.groupBox18.TabIndex = 6;
             this.groupBox18.TabStop = false;
             this.groupBox18.Text = "파트너과금 포인트";
@@ -1575,14 +1587,36 @@
             // 
             // groupBox17
             // 
+            this.groupBox17.Controls.Add(this.btnGetUseHistoryURL);
+            this.groupBox17.Controls.Add(this.btnGetPaymentURL);
             this.groupBox17.Controls.Add(this.btnGetBalance);
             this.groupBox17.Controls.Add(this.btnGetChargeURL);
             this.groupBox17.Location = new System.Drawing.Point(336, 20);
             this.groupBox17.Name = "groupBox17";
-            this.groupBox17.Size = new System.Drawing.Size(158, 116);
+            this.groupBox17.Size = new System.Drawing.Size(158, 148);
             this.groupBox17.TabIndex = 5;
             this.groupBox17.TabStop = false;
             this.groupBox17.Text = "연동과금 포인트";
+            // 
+            // btnGetUseHistoryURL
+            // 
+            this.btnGetUseHistoryURL.Location = new System.Drawing.Point(9, 114);
+            this.btnGetUseHistoryURL.Name = "btnGetUseHistoryURL";
+            this.btnGetUseHistoryURL.Size = new System.Drawing.Size(142, 27);
+            this.btnGetUseHistoryURL.TabIndex = 4;
+            this.btnGetUseHistoryURL.Text = "포인트 사용내역 URL";
+            this.btnGetUseHistoryURL.UseVisualStyleBackColor = true;
+            this.btnGetUseHistoryURL.Click += new System.EventHandler(this.btnGetUseHistoryURL_Click);
+            // 
+            // btnGetPaymentURL
+            // 
+            this.btnGetPaymentURL.Location = new System.Drawing.Point(9, 81);
+            this.btnGetPaymentURL.Name = "btnGetPaymentURL";
+            this.btnGetPaymentURL.Size = new System.Drawing.Size(142, 27);
+            this.btnGetPaymentURL.TabIndex = 3;
+            this.btnGetPaymentURL.Text = "포인트 결제내역 URL";
+            this.btnGetPaymentURL.UseVisualStyleBackColor = true;
+            this.btnGetPaymentURL.Click += new System.EventHandler(this.btnGetPaymentURL_Click);
             // 
             // btnGetChargeURL
             // 
@@ -1600,7 +1634,7 @@
             this.groupBox15.Controls.Add(this.btnGetCorpInfo);
             this.groupBox15.Location = new System.Drawing.Point(1161, 20);
             this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(158, 116);
+            this.groupBox15.Size = new System.Drawing.Size(158, 148);
             this.groupBox15.TabIndex = 4;
             this.groupBox15.TabStop = false;
             this.groupBox15.Text = "회사정보 관련";
@@ -1632,7 +1666,7 @@
             this.GroupBox6.Controls.Add(this.btnRegistContact);
             this.GroupBox6.Location = new System.Drawing.Point(996, 20);
             this.GroupBox6.Name = "GroupBox6";
-            this.GroupBox6.Size = new System.Drawing.Size(158, 116);
+            this.GroupBox6.Size = new System.Drawing.Size(158, 148);
             this.GroupBox6.TabIndex = 3;
             this.GroupBox6.TabStop = false;
             this.GroupBox6.Text = "담당자 관련";
@@ -1673,7 +1707,7 @@
             this.GroupBox5.Controls.Add(this.btnGetAccessURL);
             this.GroupBox5.Location = new System.Drawing.Point(831, 20);
             this.GroupBox5.Name = "GroupBox5";
-            this.GroupBox5.Size = new System.Drawing.Size(158, 116);
+            this.GroupBox5.Size = new System.Drawing.Size(158, 148);
             this.GroupBox5.TabIndex = 2;
             this.GroupBox5.TabStop = false;
             this.GroupBox5.Text = "팝빌 기본 URL";
@@ -1718,21 +1752,11 @@
             // 
             this.fileDialog.FileName = "OpenFileDialog1";
             // 
-            // btnGetBulkResult
-            // 
-            this.btnGetBulkResult.Location = new System.Drawing.Point(15, 206);
-            this.btnGetBulkResult.Name = "btnGetBulkResult";
-            this.btnGetBulkResult.Size = new System.Drawing.Size(131, 32);
-            this.btnGetBulkResult.TabIndex = 11;
-            this.btnGetBulkResult.Text = "초대량 접수결과 확인";
-            this.btnGetBulkResult.UseVisualStyleBackColor = true;
-            this.btnGetBulkResult.Click += new System.EventHandler(this.btnGetBulkResult_Click);
-            // 
             // frmExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1367, 825);
+            this.ClientSize = new System.Drawing.Size(1367, 852);
             this.Controls.Add(this.textURL);
             this.Controls.Add(this.GroupBox7);
             this.Controls.Add(this.label8);
@@ -1921,6 +1945,8 @@
         internal System.Windows.Forms.Label label10;
         internal System.Windows.Forms.TextBox txtSubmitID;
         internal System.Windows.Forms.Button btnGetBulkResult;
+        internal System.Windows.Forms.Button btnGetPaymentURL;
+        internal System.Windows.Forms.Button btnGetUseHistoryURL;
     }
 }
 
