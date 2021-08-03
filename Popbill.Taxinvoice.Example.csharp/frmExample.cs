@@ -3971,7 +3971,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             Contact contactInfo = new Contact();
 
             //담당자 아이디, 6자 이상 50자 미만
-            contactInfo.id = "testkorea";
+            contactInfo.id = "dotnet_test_002";
 
             //비밀번호, 6자 이상 20자 미만
             contactInfo.pwd = "user_password";
@@ -3991,11 +3991,8 @@ namespace Popbill.Taxinvoice.Example.csharp
             //담당자 이메일 (최대 100자)
             contactInfo.email = "dev@linkhub.co.kr";
 
-            // 회사조회 권한여부, true(회사조회), false(개인조회)
-            contactInfo.searchAllAllowYN = true;
-
-            // 관리자 권한여부 
-            contactInfo.mgrYN = false;
+            // 담당자 권한, 1 : 개인권한, 2 : 읽기권한, 3 : 회사권한
+            contactInfo.searchRole = 3;
 
             try
             {
@@ -4065,7 +4062,7 @@ namespace Popbill.Taxinvoice.Example.csharp
                     tmp += "personName (담당자명) : " + contactInfo.personName + CRLF;
                     tmp += "email (담당자 이메일) : " + contactInfo.email + CRLF;
                     tmp += "hp (휴대폰번호) : " + contactInfo.hp + CRLF;
-                    tmp += "searchAllAllowYN (회사조회 여부) : " + contactInfo.searchAllAllowYN + CRLF;
+                    tmp += "searchRole (담당자 권한) : " + contactInfo.searchRole + CRLF;
                     tmp += "tel (연락처) : " + contactInfo.tel + CRLF;
                     tmp += "fax (팩스번호) : " + contactInfo.fax + CRLF;
                     tmp += "mgrYN (관리자 여부) : " + contactInfo.mgrYN + CRLF;
@@ -4109,11 +4106,8 @@ namespace Popbill.Taxinvoice.Example.csharp
             // 이메일주소 (최대 100자)
             contactInfo.email = "dev@linkhub.co.kr";
 
-            // 회사조회 권한여부, true(회사조회), false(개인조회)
-            contactInfo.searchAllAllowYN = true;
-
-            // 관리자 권한여부 
-            contactInfo.mgrYN = false;
+            // 담당자 권한, 1 : 개인권한, 2 : 읽기권한, 3 : 회사권한
+            contactInfo.searchRole = 3;
 
             try
             {
