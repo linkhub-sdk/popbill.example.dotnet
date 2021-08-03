@@ -104,8 +104,8 @@ namespace Popbill.EasyFin.Bank.Example.csharp
             // 아이디, 6자이상 50자 미만
             joinInfo.ID = "userid";
 
-            // 비밀번호, 6자이상 20자 미만
-            joinInfo.PWD = "pwd_must_be_long_enough";
+            // 비밀번호, 8자 이상 20자 이하(영문, 숫자, 특수문자 조합)
+            joinInfo.Password = "asdf8536!@#";
 
             // 링크아이디
             joinInfo.LinkID = LinkID;
@@ -343,25 +343,25 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
             Contact contactInfo = new Contact();
 
-            //담당자 아이디, 6자 이상 50자 미만
+            // 담당자 아이디, 6자 이상 50자 미만
             contactInfo.id = "testkorea";
 
-            //비밀번호, 6자 이상 20자 미만
-            contactInfo.pwd = "user_password";
+            // 담당자 비밀번호, 8자 이상 20자 이하(영문, 숫자, 특수문자 조합)
+            contactInfo.Password = "asdf8536!@#";
 
-            //담당자 성명 (최대 100자) 
+            // 담당자 성명 (최대 100자) 
             contactInfo.personName = "담당자명";
 
-            //담당자연락처 (최대 20자)
+            // 담당자연락처 (최대 20자)
             contactInfo.tel = "070-4304-2991";
 
-            //담당자 휴대폰번호 (최대 20자)
+            // 담당자 휴대폰번호 (최대 20자)
             contactInfo.hp = "010-111-222";
 
-            //담당자 팩스번호 (최대 20자)
+            // 담당자 팩스번호 (최대 20자)
             contactInfo.fax = "070-4304-2991";
 
-            //담당자 이메일 (최대 100자)
+            // 담당자 이메일 (최대 100자)
             contactInfo.email = "dev@linkhub.co.kr";
 
             // 담당자 권한, 1 : 개인권한, 2 : 읽기권한, 3 : 회사권한
