@@ -74,7 +74,7 @@ namespace Popbill.Cashbill.Example.csharp
         }
 
         /*
-         * 현금영수증 데이터를 팝빌에 전송하여 발행합니다.
+         * 작성된 현금영수증 데이터를 팝빌에 저장과 동시에 발행하여 "발행완료" 상태로 처리합니다.
          * - 현금영수증 국세청 전송 정책 : https://docs.popbill.com/cashbill/ntsSendPolicy?lang=dotnet
          * - https://docs.popbill.com/cashbill/dotnet/api#RegistIssue
          */
@@ -411,9 +411,8 @@ namespace Popbill.Cashbill.Example.csharp
         }
 
         /*
-         * 국세청 전송 이전 "발행완료" 상태의 현금영수증을 "발행취소"하고 국세청 전송 대상에서 제외됩니다.
-         * - 발행취소는 국세청 전송전에만 가능합니다.
-         * - 발행취소된 형금영수증은 국세청에 전송되지 않습니다.
+         * 국세청 전송 이전 "발행완료" 상태의 현금영수증을 "발행취소"하고 국세청 신고 대상에서 제외합니다.
+         * - Delete(삭제)함수를 호출하여 "발행취소" 상태의 현금영수증을 삭제하면, 문서번호 재사용이 가능합니다.
          * - https://docs.popbill.com/cashbill/dotnet/api#CancelIssue
          */
         private void btnCancelIssue_Click(object sender, EventArgs e)
@@ -436,9 +435,8 @@ namespace Popbill.Cashbill.Example.csharp
         }
 
         /*
-         * 국세청 전송 이전 "발행완료" 상태의 현금영수증을 "발행취소"하고 국세청 전송 대상에서 제외됩니다.
-         * - 발행취소는 국세청 전송전에만 가능합니다.
-         * - 발행취소된 형금영수증은 국세청에 전송되지 않습니다.
+         * 국세청 전송 이전 "발행완료" 상태의 현금영수증을 "발행취소"하고 국세청 신고 대상에서 제외합니다.
+         * - Delete(삭제)함수를 호출하여 "발행취소" 상태의 현금영수증을 삭제하면, 문서번호 재사용이 가능합니다.
          * - https://docs.popbill.com/cashbill/dotnet/api#CancelIssue
          */
         private void btnCancelIssueSub_Click(object sender, EventArgs e)
@@ -461,9 +459,8 @@ namespace Popbill.Cashbill.Example.csharp
         }
 
         /*
-         * 국세청 전송 이전 "발행완료" 상태의 현금영수증을 "발행취소"하고 국세청 전송 대상에서 제외됩니다.
-         * - 발행취소는 국세청 전송전에만 가능합니다.
-         * - 발행취소된 형금영수증은 국세청에 전송되지 않습니다.
+         * 국세청 전송 이전 "발행완료" 상태의 현금영수증을 "발행취소"하고 국세청 신고 대상에서 제외합니다.
+         * - Delete(삭제)함수를 호출하여 "발행취소" 상태의 현금영수증을 삭제하면, 문서번호 재사용이 가능합니다.
          * - https://docs.popbill.com/cashbill/dotnet/api#CancelIssue
          */
         private void btnCancelIssue02_Click(object sender, EventArgs e)
@@ -554,7 +551,7 @@ namespace Popbill.Cashbill.Example.csharp
         }
 
         /*
-         * 취소 현금영수증을 발행하며 취소 현금영수증의 금액은 원본 금액을 넘을 수 없습니다.
+         * 취소 현금영수증 데이터를 팝빌에 저장과 동시에 발행하여 "발행완료" 상태로 처리합니다.
          * - 현금영수증 국세청 전송 정책 : https://docs.popbill.com/cashbill/ntsSendPolicy?lang=dotnet
          * - https://docs.popbill.com/cashbill/dotnet/api#RevokeRegistIssue
          */
@@ -584,7 +581,7 @@ namespace Popbill.Cashbill.Example.csharp
         }
 
         /*
-         * (부분)취소 현금영수증을 발행하며 취소 현금영수증의 금액은 원본 금액을 넘을 수 없습니다.
+         * 작성된 (부분)취소 현금영수증 데이터를 팝빌에 저장과 동시에 발행하여 "발행완료" 상태로 처리합니다.
          * - 현금영수증 국세청 전송 정책 : https://docs.popbill.com/cashbill/ntsSendPolicy?lang=dotnet
          * - https://docs.popbill.com/cashbill/dotnet/api#RevokeRegistIssue
          */
