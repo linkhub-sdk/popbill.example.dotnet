@@ -16,7 +16,6 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using Popbill.Cashbill;
 using System.IO;
 
 namespace Popbill.Cashbill.Example.csharp
@@ -157,7 +156,7 @@ namespace Popbill.Cashbill.Example.csharp
             // 주문자 이메일
             // 팝빌 개발환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
             // 실제 거래처의 메일주소가 기재되지 않도록 주의
-            cashbill.email = "code@linkhub.co.kr";
+            cashbill.email = "test@linkhub.co.kr";
 
             // 주문자 휴대폰
             cashbill.hp = "010-111-222";
@@ -170,10 +169,12 @@ namespace Popbill.Cashbill.Example.csharp
 
             try
             {
-                Response response = cashbillService.RegistIssue(txtCorpNum.Text, cashbill, memo, txtUserId.Text, emailSubject);
+                CBIssueResponse response = cashbillService.RegistIssue(txtCorpNum.Text, cashbill, memo, txtUserId.Text, emailSubject);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + response.message, "현금영수증 즉시발행");
+                                "응답메시지(message) : " + response.message + "\r\n" +
+                                "국세청 승인번호(confirmNum) : " + response.confirmNum + "\r\n" +
+                                "거래일자(tradeDate) : " + response.tradeDate, "현금영수증 즉시발행");
             }
             catch (PopbillException ex)
             {
@@ -395,10 +396,12 @@ namespace Popbill.Cashbill.Example.csharp
 
             try
             {
-                Response response = cashbillService.Issue(txtCorpNum.Text, txtMgtKey.Text, memo, txtUserId.Text);
+                CBIssueResponse response = cashbillService.Issue(txtCorpNum.Text, txtMgtKey.Text, memo, txtUserId.Text);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + response.message, "현금영수증 발행");
+                                "응답메시지(message) : " + response.message + "\r\n" +
+                                "국세청 승인번호(confirmNum) : " + response.confirmNum + "\r\n" +
+                                "거래일자(tradeDate) : " + response.tradeDate, "현금영수증 발행");
             }
             catch (PopbillException ex)
             {
@@ -559,17 +562,19 @@ namespace Popbill.Cashbill.Example.csharp
         {
 
             // 원본현금영수증 국세청승인번호
-            String orgConfirmNum = "820116333";
+            String orgConfirmNum = "TB0000001";
 
             // 원본현금영수증 거래일자
-            String orgTradeDate = "20210701";
+            String orgTradeDate = "20210803";
 
             try
             {
-                Response response = cashbillService.RevokeRegistIssue(txtCorpNum.Text, txtMgtKey.Text, orgConfirmNum, orgTradeDate);
+                CBIssueResponse response = cashbillService.RevokeRegistIssue(txtCorpNum.Text, txtMgtKey.Text, orgConfirmNum, orgTradeDate);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + response.message, "취소현금영수증 즉시발행");
+                                "응답메시지(message) : " + response.message + "\r\n" +
+                                "국세청 승인번호(confirmNum) : " + response.confirmNum + "\r\n" +
+                                "거래일자(tradeDate) : " + response.tradeDate, "취소현금영수증 즉시발행");
             }
             catch (PopbillException ex)
             {
@@ -586,10 +591,10 @@ namespace Popbill.Cashbill.Example.csharp
         private void btnRevokeRegistIssue_part_Click(object sender, EventArgs e)
         {
             // 원본 현금영수증 국세청승인번호
-            String orgConfirmNum = "820116333";
+            String orgConfirmNum = "TB0000015";
 
             // 원본현금영수증 거래일자
-            String orgTradeDate = "20210701";
+            String orgTradeDate = "20210803";
 
             // 알림문자 전송여부           
             bool smssendYN = false;
@@ -617,12 +622,14 @@ namespace Popbill.Cashbill.Example.csharp
 
             try
             {
-                Response response = cashbillService.RevokeRegistIssue(txtCorpNum.Text, txtMgtKey.Text,
+                CBIssueResponse response = cashbillService.RevokeRegistIssue(txtCorpNum.Text, txtMgtKey.Text,
                     orgConfirmNum, orgTradeDate, smssendYN, memo, txtUserId.Text, isPartCancel, cancelType,
                     supplyCost, tax, serviceFee, totalAmount);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + response.message, "(부분) 취소현금영수증 즉시발행");
+                                "응답메시지(message) : " + response.message + "\r\n" +
+                                "국세청 승인번호(confirmNum) : " + response.confirmNum + "\r\n" +
+                                "거래일자(tradeDate) : " + response.tradeDate, "(부분) 취소현금영수증 즉시발행");
             }
             catch (PopbillException ex)
             {
