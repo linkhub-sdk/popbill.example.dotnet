@@ -1,14 +1,14 @@
 ﻿
 /*
  * 팝빌 현금영수증 API DotNet SDK Example
- * 
+ *
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/cashbill/tutorial/dotnet#csharp
  * - 업데이트 일자 : 2020-10-22
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
- * 
+ *
  * <테스트 연동개발 준비사항>
- * 1) 27, 30 라인에 선언된 링크아이디(LinkID)와 비밀키(SecretKey)를 
+ * 1) 27, 30 라인에 선언된 링크아이디(LinkID)와 비밀키(SecretKey)를
  *    링크허브 가입시 메일로 발급받은 인증정보로 변경합니다.
  * 2) 팝빌 개발용 사이트(test.popbill.com)에 연동회원으로 가입합니다.
  */
@@ -53,7 +53,7 @@ namespace Popbill.Cashbill.Example.csharp
         /*
          * 파트너가 현금영수증 관리 목적으로 할당하는 문서번호 사용여부를 확인합니다.
          * - 이미 사용 중인 문서번호는 중복 사용이 불가하고, 현금영수증이 삭제된 경우에만 문서번호의 재사용이 가능합니다.
-         * - 문서번호는 최대 24자리 영문 대소문자, 숫자, 특수문자('-','_')만 이용 가능
+         * - 문서번호는 최대 24자리, 영문, 숫자 '-', '_'를 조합하여 사업자별로 중복되지 않도록 구성
          * - https://docs.popbill.com/cashbill/dotnet/api#CheckMgtKeyInUse
          */
         private void btnCheckMgtKeyInUse_Click(object sender, EventArgs e)
@@ -89,7 +89,7 @@ namespace Popbill.Cashbill.Example.csharp
 
             Cashbill cashbill = new Cashbill();
 
-            // [필수] 문서번호, 최대 24자리 영문 대소문자, 숫자, 특수문자('-','_')만 이용 가능
+            // [필수] 문서번호, 최대 24자리, 영문, 숫자 '-', '_'를 조합하여 사업자별로 중복되지 않도록 구성
             cashbill.mgtKey = txtMgtKey.Text;
 
             // [취소거래시 필수] 원본 현금영수증 국세청승인번호
@@ -104,19 +104,19 @@ namespace Popbill.Cashbill.Example.csharp
             // [필수] 거래구분, { 소득공제용, 지출증빙용 } 중 기재
             cashbill.tradeUsage = "소득공제용";
 
-            // 거래유형, { 일반, 도서공연, 대중교통 } 중 기재 
+            // 거래유형, { 일반, 도서공연, 대중교통 } 중 기재
             cashbill.tradeOpt = "일반";
 
             // [필수] 과세형태, { 과세, 비과세 } 중 기재
             cashbill.taxationType = "과세";
 
-            // [필수] 거래금액 ( 공급가액 + 세액 + 봉사료 ) 
+            // [필수] 거래금액 ( 공급가액 + 세액 + 봉사료 )
             cashbill.totalAmount = "11000";
 
             // [필수] 공급가액
             cashbill.supplyCost = "10000";
 
-            // [필수] 부가세 
+            // [필수] 부가세
             cashbill.tax = "1000";
 
             // [필수] 봉사료
@@ -138,10 +138,10 @@ namespace Popbill.Cashbill.Example.csharp
             cashbill.franchiseTEL = "070-1234-1234";
 
             // [필수] 식별번호
-            // 거래구분(tradeUsage) - '소득공제용' 인 경우 
+            // 거래구분(tradeUsage) - '소득공제용' 인 경우
             // - 주민등록/휴대폰/카드번호 기재 가능
             // 거래구분(tradeUsage) - '지출증빙용' 인 경우
-            // - 사업자번호/주민등록/휴대폰/카드번호 기재 가능 
+            // - 사업자번호/주민등록/휴대폰/카드번호 기재 가능
             cashbill.identityNum = "0101112222";
 
             // 주문자명
@@ -193,8 +193,7 @@ namespace Popbill.Cashbill.Example.csharp
         {
             Cashbill cashbill = new Cashbill();
 
-            // [필수] 문서번호, 사업자별로 중복되지 않도록 문서번호 할당
-            // 최대 24자리 영문 대소문자, 숫자, 특수문자('-','_')만 이용 가능
+            // [필수] 문서번호, 최대 24자리, 영문, 숫자 '-', '_'를 조합하여 사업자별로 중복되지 않도록 구성
             cashbill.mgtKey = txtMgtKey.Text;
 
             // [취소거래시 필수] 원본 현금영수증 국세청승인번호
@@ -215,13 +214,13 @@ namespace Popbill.Cashbill.Example.csharp
             // [필수] 과세형태, { 과세, 비과세 } 중 기재
             cashbill.taxationType = "과세";
 
-            // [필수] 거래금액 ( 공급가액 + 세액 + 봉사료 ) 
+            // [필수] 거래금액 ( 공급가액 + 세액 + 봉사료 )
             cashbill.totalAmount = "11000";
 
             // [필수] 공급가액
             cashbill.supplyCost = "10000";
 
-            // [필수] 부가세 
+            // [필수] 부가세
             cashbill.tax = "1000";
 
             // [필수] 봉사료
@@ -243,10 +242,10 @@ namespace Popbill.Cashbill.Example.csharp
             cashbill.franchiseTEL = "070-1234-1234";
 
             // [필수] 식별번호
-            // 거래구분(tradeUsage) - '소득공제용' 인 경우 
+            // 거래구분(tradeUsage) - '소득공제용' 인 경우
             // - 주민등록/휴대폰/카드번호 기재 가능
             // 거래구분(tradeUsage) - '지출증빙용' 인 경우
-            // - 사업자번호/주민등록/휴대폰/카드번호 기재 가능 
+            // - 사업자번호/주민등록/휴대폰/카드번호 기재 가능
             cashbill.identityNum = "0101112222";
 
             // 주문자명
@@ -295,8 +294,7 @@ namespace Popbill.Cashbill.Example.csharp
         {
             Cashbill cashbill = new Cashbill();
 
-            // [필수] 문서번호, 사업자별로 중복되지 않도록 문서번호 할당
-            // 최대 24자리 영문 대소문자, 숫자, 특수문자('-','_')만 이용 가능
+            // [필수] 문서번호, 최대 24자리, 영문, 숫자 '-', '_'를 조합하여 사업자별로 중복되지 않도록 구성
             cashbill.mgtKey = txtMgtKey.Text;
 
             // [필수] 문서형태, {승인거래, 취소거래} 중 기재
@@ -311,13 +309,13 @@ namespace Popbill.Cashbill.Example.csharp
             // [필수] 과세형태, { 과세, 비과세 } 중 기재
             cashbill.taxationType = "과세";
 
-            // [필수] 거래금액 ( 공급가액 + 세액 + 봉사료 ) 
+            // [필수] 거래금액 ( 공급가액 + 세액 + 봉사료 )
             cashbill.totalAmount = "11000";
 
             // [필수] 공급가액
             cashbill.supplyCost = "10000";
 
-            // [필수] 부가세 
+            // [필수] 부가세
             cashbill.tax = "1000";
 
             // [필수] 봉사료
@@ -325,10 +323,10 @@ namespace Popbill.Cashbill.Example.csharp
 
 
             // [필수] 식별번호
-            // 거래구분(tradeUsage) - '소득공제용' 인 경우 
+            // 거래구분(tradeUsage) - '소득공제용' 인 경우
             // - 주민등록/휴대폰/카드번호 기재 가능
             // 거래구분(tradeUsage) - '지출증빙용' 인 경우
-            // - 사업자번호/주민등록/휴대폰/카드번호 기재 가능 
+            // - 사업자번호/주민등록/휴대폰/카드번호 기재 가능
             cashbill.identityNum = "0101112222";
 
             // [필수] 가맹점 사업자번호
@@ -343,7 +341,7 @@ namespace Popbill.Cashbill.Example.csharp
             // 가맹점 주소
             cashbill.franchiseAddr = "가맹점 주소";
 
-            // 가맹점 전화번호 
+            // 가맹점 전화번호
             cashbill.franchiseTEL = "070-1234-1234";
 
 
@@ -594,7 +592,7 @@ namespace Popbill.Cashbill.Example.csharp
             // 원본현금영수증 거래일자
             String orgTradeDate = "20210803";
 
-            // 알림문자 전송여부           
+            // 알림문자 전송여부
             bool smssendYN = false;
 
             // 메모
@@ -746,7 +744,7 @@ namespace Popbill.Cashbill.Example.csharp
         /*
          * 현금영수증 1건의 상세정보를 확인합니다.
          * - https://docs.popbill.com/cashbill/dotnet/api#GetDetailInfo
-         * 
+         *
          */
         private void btnGetDetailInfo_Click(object sender, EventArgs e)
         {
@@ -830,12 +828,12 @@ namespace Popbill.Cashbill.Example.csharp
             TradeOpt[1] = "B";
             TradeOpt[2] = "T";
 
-            // 과세형태 배열, T-과세, N-비과세 
+            // 과세형태 배열, T-과세, N-비과세
             String[] TaxationType = new String[2];
             TaxationType[0] = "T";
             TaxationType[1] = "N";
 
-            // 식별번호 조회, 미기재시 전체조회 
+            // 식별번호 조회, 미기재시 전체조회
             String QString = "";
 
             // 정렬방향, A-오름차순, D-내림차순
@@ -844,7 +842,7 @@ namespace Popbill.Cashbill.Example.csharp
             // 페이지 번호
             int Page = 1;
 
-            // 페이지당 검색개수, 최대 1000개 
+            // 페이지당 검색개수, 최대 1000개
             int PerPage = 30;
 
             try
@@ -1302,7 +1300,7 @@ namespace Popbill.Cashbill.Example.csharp
          * 연동회원의 잔여포인트를 확인합니다.
          * - 과금방식이 파트너과금인 경우 파트너 잔여포인트(GetPartnerBalance API)를 통해 확인하시기 바랍니다.
          * - https://docs.popbill.com/cashbill/dotnet/api#GetBalance
-         * 
+         *
          */
         private void btnGetBalance_Click(object sender, EventArgs e)
         {
@@ -1655,7 +1653,7 @@ namespace Popbill.Cashbill.Example.csharp
             // 담당자 비밀번호, 8자 이상 20자 이하(영문, 숫자, 특수문자 조합)
             contactInfo.Password = "asdf8536!@#";
 
-            //담당자 성명 (최대 100자) 
+            //담당자 성명 (최대 100자)
             contactInfo.personName = "담당자명";
 
             //담당자연락처 (최대 20자)
@@ -1834,7 +1832,7 @@ namespace Popbill.Cashbill.Example.csharp
             // 팝빌번호, 목록조회(Search) API의 반환항목중 ItemKey 참조
             String itemKey = "021080610080500001";
 
-            // 할당할 문서번호, 숫자, 영문, '-', '_' 조합으로 
+            // 할당할 문서번호, 숫자, 영문, '-', '_' 조합으로
             // 1~24자리까지 사업자번호별 중복없는 고유번호 할당
             String mgtKey = "20210701-02";
 
