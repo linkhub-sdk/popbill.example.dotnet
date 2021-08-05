@@ -912,7 +912,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
             String TID = txtTID.Text;
 
             // 메모
-            String Memo = "메모저장-20191224";
+            String Memo = "메모저장-20210801";
 
             try
             {

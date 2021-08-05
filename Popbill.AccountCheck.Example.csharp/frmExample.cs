@@ -382,7 +382,7 @@ namespace Popbill.AccountCheck.Example.csharp
             Contact contactInfo = new Contact();
 
             //담당자 아이디, 6자 이상 50자 미만
-            contactInfo.id = "testkorea_20190110";
+            contactInfo.id = "testkorea110";
 
             // 담당자 비밀번호, 8자 이상 20자 이하(영문, 숫자, 특수문자 조합)
             contactInfo.Password = "asdf8536!@#";
