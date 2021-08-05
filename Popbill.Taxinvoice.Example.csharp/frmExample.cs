@@ -2,7 +2,7 @@
  * 팝빌 전자세금계산서 API DotNet SDK Example
  * 
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/taxinvoice/tutorial/dotnet
- * - 업데이트 일자 : 2020-10-22
+ * - 업데이트 일자 : 2021-08-03
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
  * 
@@ -112,7 +112,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             // [필수] 공급자 사업자번호, '-' 제외 10자리
             taxinvoice.invoicerCorpNum = txtCorpNum.Text;
 
-            // 공급자 종사업자 식별번호. 필요시 기재. 형식은 숫자 4자리.
+            // 공급자 종사업장 식별번호. 필요시 기재. 형식은 숫자 4자리.
             taxinvoice.invoicerTaxRegID = "";
 
             // [필수] 공급자 상호
@@ -355,10 +355,10 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
         }
 
-        /**
-        * 최대 100건의 세금계산서 발행을 한번의 요청으로 접수합니다.
-        * - https://docs.popbill.com/taxinvoice/dotnet/api#BulkSubmit
-        */
+        /*
+         * 최대 100건의 세금계산서 발행을 한번의 요청으로 접수합니다.
+         * - https://docs.popbill.com/taxinvoice/dotnet/api#BulkSubmit
+         */
         private void btnBulkSubmit_Click(object sender, EventArgs e)
         {
             // 세금계산서 객체정보 목록
@@ -399,7 +399,7 @@ namespace Popbill.Taxinvoice.Example.csharp
                 // [필수] 공급자 사업자번호, '-' 제외 10자리
                 taxinvoice.invoicerCorpNum = "1234567890";
 
-                // 공급자 종사업자 식별번호. 필요시 기재. 형식은 숫자 4자리.
+                // 공급자 종사업장 식별번호. 필요시 기재. 형식은 숫자 4자리.
                 taxinvoice.invoicerTaxRegID = "";
 
                 // [필수] 공급자 상호
@@ -711,7 +711,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             // [필수] 공급자 사업자번호, '-' 제외 10자리
             taxinvoice.invoicerCorpNum = txtCorpNum.Text;
 
-            // 공급자 종사업자 식별번호. 필요시 기재. 형식은 숫자 4자리.
+            // 공급자 종사업장 식별번호. 필요시 기재. 형식은 숫자 4자리.
             taxinvoice.invoicerTaxRegID = "";
 
             // [필수] 공급자 상호
@@ -974,7 +974,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             // [필수] 공급자 사업자번호, '-' 제외 10자리
             taxinvoice.invoicerCorpNum = "8888888888";
 
-            // 공급자 종사업자 식별번호. 필요시 기재. 형식은 숫자 4자리.
+            // 공급자 종사업장 식별번호. 필요시 기재. 형식은 숫자 4자리.
             taxinvoice.invoicerTaxRegID = "";
 
             // [필수] 공급자 상호
@@ -1274,7 +1274,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             // [필수] 공급자 사업자번호, '-' 제외 10자리
             taxinvoice.invoicerCorpNum = txtCorpNum.Text;
 
-            // 공급자 종사업자 식별번호. 필요시 기재. 형식은 숫자 4자리.
+            // 공급자 종사업장 식별번호. 필요시 기재. 형식은 숫자 4자리.
             taxinvoice.invoicerTaxRegID = "";
 
             // [필수] 공급자 상호
@@ -1541,7 +1541,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             // [필수] 공급자 사업자번호, '-' 제외 10자리
             taxinvoice.invoicerCorpNum = "8888888888";
 
-            // 공급자 종사업자 식별번호. 필요시 기재. 형식은 숫자 4자리.
+            // 공급자 종사업장 식별번호. 필요시 기재. 형식은 숫자 4자리.
             taxinvoice.invoicerTaxRegID = "";
 
             // [필수] 공급자 상호
@@ -2052,7 +2052,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             // [필수] 공급자 사업자번호, '-' 제외 10자리
             taxinvoice.invoicerCorpNum = "8888888888";
 
-            // 공급자 종사업자 식별번호. 필요시 기재. 형식은 숫자 4자리.
+            // 공급자 종사업장 식별번호. 필요시 기재. 형식은 숫자 4자리.
             taxinvoice.invoicerTaxRegID = "";
 
             // [필수] 공급자 상호
@@ -3551,7 +3551,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
 
                 MessageBox.Show("국세청 전송 설정 확인 : " + sendToNTSConfig.ToString() + "\r\n" +
-                                "True(발행 즉시 전송) False(익일 자동전송)");
+                                "True(발행 즉시 전송) False(익일 자동 전송)");
             }
             catch (PopbillException ex)
             {
