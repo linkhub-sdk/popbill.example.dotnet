@@ -1,18 +1,18 @@
 ﻿/*
  * 팝빌 카카오톡 API DotNet SDK Example
- * 
+ *
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/kakao/tutorial/dotnet
- * - 업데이트 일자 : 2020-10-22
+ * - 업데이트 일자 : 2021-08-05
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991~2
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
- * 
+ *
  * <테스트 연동개발 준비사항>
- * 1) 32, 35 라인에 선언된 링크아이디(LinkID)와 비밀키(SecretKey)를 
+ * 1) 32, 35 라인에 선언된 링크아이디(LinkID)와 비밀키(SecretKey)를
  *    링크허브 가입시 메일로 발급받은 인증정보로 변경합니다.
  * 2) 팝빌 개발용 사이트(test.popbill.com)에 연동회원으로 가입합니다.
  * 3) 발신번호 사전등록을 합니다. (등록방법은 사이트/API 두가지 방식이 있습니다.)
  *    - 1. 팝빌 사이트 로그인 > [문자/팩스] > [카카오톡] > [발신번호 사전등록] 메뉴에서 등록
- *    - 2. getSenderNumberMgtURL API를 통해 반환된 URL을 이용하여 발신번호 등록  
+ *    - 2. getSenderNumberMgtURL API를 통해 반환된 URL을 이용하여 발신번호 등록
  */
 
 using System;
@@ -291,7 +291,7 @@ namespace Popbill.Kakao.Example.csharp
             content += "팝빌 파트너센터 : 1600-8536\n";
             content += "support@linkhub.co.kr".Replace("\n", Environment.NewLine);
 
-            // 대체문자 메시지 내용 
+            // 대체문자 메시지 내용
             String altContent = "대체문자 메시지 내용";
 
             // 대체문자 유형, 공백-미전송, C-알림톡 내용, A-대체문자 내용
@@ -314,7 +314,7 @@ namespace Popbill.Kakao.Example.csharp
             // 버튼링크 URL 에 #{템플릿변수}를 기재하여 승인받은경우 URL 수정하여 전송
             /*
             List<KakaoButton> buttons = new List<KakaoButton>();
-            
+
             KakaoButton btnInfo = new KakaoButton();
 
             // 버튼명
@@ -386,13 +386,13 @@ namespace Popbill.Kakao.Example.csharp
 
                 // 수신번호
                 receiverInfo.rcv = "010111222";
-                
+
                 // 수신자명
                 receiverInfo.rcvnm = "수신자명" + i.ToString();
 
                 // 알림톡 템플릿 내용, 최대 1000자
                 receiverInfo.msg = content;
-                
+
                 // 대체문자 내용
                 receiverInfo.altmsg = "대체문자 내용입니다";
 
@@ -406,10 +406,10 @@ namespace Popbill.Kakao.Example.csharp
                 /*
                 // 수신자별 개별 버튼정보 리스트 생성
                 List<KakaoButton> btns = new List<KakaoButton>();
-                
+
                 // 개별 버튼정보 생성
                 KakaoButton btnInfo1 = new KakaoButton();
-                
+
                 // 버튼명
                 btnInfo1.n = "템플릿 안내";
 
@@ -424,10 +424,10 @@ namespace Popbill.Kakao.Example.csharp
 
                 // 개별 버튼정보 리스트에 개별 버튼정보 추가
                 btns.Add(btnInfo1);
-                
+
                 // 개별 버튼정보 생성
                 KakaoButton btnInfo2 = new KakaoButton();
-                
+
                 // 버튼명
                 btnInfo2.n = "템플릿 안내";
 
@@ -457,7 +457,7 @@ namespace Popbill.Kakao.Example.csharp
             // 버튼링크 URL 에 #{템플릿변수}를 기재하여 승인받은경우 URL 수정하여 전송
             /*
             List<KakaoButton> buttons = new List<KakaoButton>();
-            
+
             KakaoButton btnInfo = new KakaoButton();
 
             // 버튼명
@@ -511,7 +511,7 @@ namespace Popbill.Kakao.Example.csharp
             content += "팝빌 파트너센터 : 1600-8536\n";
             content += "support@linkhub.co.kr".Replace("\n", Environment.NewLine);
 
-            // 대체문자 메시지 내용 
+            // 대체문자 메시지 내용
             String altContent = "대체문자 메시지 내용";
 
             // 대체문자 유형, 공백-미전송, C-알림톡 내용, A-대체문자 내용
@@ -547,7 +547,7 @@ namespace Popbill.Kakao.Example.csharp
             // 버튼링크 URL 에 #{템플릿변수}를 기재하여 승인받은경우 URL 수정하여 전송
             /*
             List<KakaoButton> buttons = new List<KakaoButton>();
-            
+
             KakaoButton btnInfo = new KakaoButton();
 
             // 버튼명
@@ -618,21 +618,21 @@ namespace Popbill.Kakao.Example.csharp
 
             // 버튼배열, 최대 5개
             List<KakaoButton> buttons = new List<KakaoButton>();
-            
+
             KakaoButton btnInfo = new KakaoButton();
 
             // 버튼명
             btnInfo.n = "버튼이름";
-            
+
             // 버튼유형 DS(-배송조회 / WL - 웹링크 / AL - 앱링크 / MD - 메시지전달 / BK - 봇키워드)
             btnInfo.t = "WL";
-            
+
             // 버튼링크1 [앱링크] Android / [웹링크] Mobile
             btnInfo.u1 = "http://www.popbill.com";
-            
+
             // 버튼링크2 [앱링크] IOS / [웹링크] PC URL
             btnInfo.u2 = "http://test.popbill.com";
-            
+
             buttons.Add(btnInfo);
 
             try
@@ -701,10 +701,10 @@ namespace Popbill.Kakao.Example.csharp
                 /*
                 // 수신자별 개별 버튼정보 리스트 생성
                 List<KakaoButton> btns = new List<KakaoButton>();
-                
+
                 // 개별 버튼정보 생성
                 KakaoButton btnInfo1 = new KakaoButton();
-                
+
                 // 버튼명
                 btnInfo1.n = "템플릿 안내";
 
@@ -719,10 +719,10 @@ namespace Popbill.Kakao.Example.csharp
 
                 // 개별 버튼정보 리스트에 개별 버튼정보 추가
                 btns.Add(btnInfo1);
-                
+
                 // 개별 버튼정보 생성
                 KakaoButton btnInfo2 = new KakaoButton();
-                
+
                 // 버튼명
                 btnInfo2.n = "템플릿 안내";
 
@@ -761,7 +761,7 @@ namespace Popbill.Kakao.Example.csharp
             // 버튼링크2 [앱링크] IOS / [웹링크] PC URL
             btnInfo.u2 = "http://test.popbill.com";
             buttons.Add(btnInfo);
-            
+
             try
             {
                 string receiptNum = kakaoService.SendFTS(txtCorpNum.Text, plusFriendID, senderNum,
@@ -794,7 +794,7 @@ namespace Popbill.Kakao.Example.csharp
             // 친구톡내용, 최대 1000자
             String content = "친구톡 내용";
 
-            // 대체문자 메시지 내용 
+            // 대체문자 메시지 내용
             String altContent = "대체문자 내용";
 
             // 대체문자 유형, 공백-미전송, C-알림톡 내용, A-대체문자 내용
@@ -950,7 +950,7 @@ namespace Popbill.Kakao.Example.csharp
             {
                 KakaoReceiver receiverInfo = new KakaoReceiver();
 
-                // 수신번호 
+                // 수신번호
                 receiverInfo.rcv = "010111222";
 
                 // 수신자명
@@ -970,10 +970,10 @@ namespace Popbill.Kakao.Example.csharp
                 /*
                 // 수신자별 개별 버튼정보 리스트 생성
                 List<KakaoButton> btns = new List<KakaoButton>();
-                
+
                 // 개별 버튼정보 생성
                 KakaoButton btnInfo1 = new KakaoButton();
-                
+
                 // 버튼명
                 btnInfo1.n = "템플릿 안내";
 
@@ -988,10 +988,10 @@ namespace Popbill.Kakao.Example.csharp
 
                 // 개별 버튼정보 리스트에 개별 버튼정보 추가
                 btns.Add(btnInfo1);
-                
+
                 // 개별 버튼정보 생성
                 KakaoButton btnInfo2 = new KakaoButton();
-                
+
                 // 버튼명
                 btnInfo2.n = "템플릿 안내";
 
@@ -1016,8 +1016,8 @@ namespace Popbill.Kakao.Example.csharp
             // 버튼정보를 전송하지 않는 경우, null처리
             // 개별 버튼정보 전송하는 경우, null처리
             // List<KakaoButton> buttons = null;
-            
-            
+
+
             // 동일 버튼정보, 수신자별 동일 버튼정보 전송하는 경우
             List<KakaoButton> buttons = new List<KakaoButton>();
             // 생성 가능 개수 최대 5개
@@ -1031,7 +1031,7 @@ namespace Popbill.Kakao.Example.csharp
             // 버튼링크2 [앱링크] IOS / [웹링크] PC URL
             btnInfo.u2 = "http://test.popbill.com";
             buttons.Add(btnInfo);
-            
+
             // 첨부된 이미지의 링크 URL
             String imageURL = "http://www.popbill.com";
 
@@ -1074,7 +1074,7 @@ namespace Popbill.Kakao.Example.csharp
             // 친구톡 내용, 최대 400자
             String content = "친구톡 내용";
 
-            // 대체문자 메시지 내용 
+            // 대체문자 메시지 내용
             String altContent = "대체문자 내용";
 
             // 대체문자 유형, 공백-미전송, C-알림톡 내용, A-대체문자 내용
@@ -1337,7 +1337,7 @@ namespace Popbill.Kakao.Example.csharp
             // 예약여부, 공백-전체조회, 0-일반전송건 조회, 1-예약전송건 조회
             String ReserveYN = "";
 
-            // 개인조회여부 true-개인조회, false-회사조회 
+            // 개인조회여부 true-개인조회, false-회사조회
             bool SenderYN = false;
 
             // 정렬방향, A-오름차순, D-내림차순
@@ -1772,7 +1772,7 @@ namespace Popbill.Kakao.Example.csharp
             // 담당자 비밀번호, 8자 이상 20자 이하(영문, 숫자, 특수문자 조합)
             contactInfo.Password = "asdf8536!@#";
 
-            //담당자 성명 (최대 100자) 
+            //담당자 성명 (최대 100자)
             contactInfo.personName = "담당자명";
 
             //담당자연락처 (최대 20자)

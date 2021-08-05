@@ -1,11 +1,11 @@
 ﻿/*
  * 팝빌 계좌조회 API DotNet SDK Example
- * 
+ *
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/easyfinbank/tutorial/dotnet#csharp
- * - 업데이트 일자 : 2020-10-22
+ * - 업데이트 일자 : 2021-08-05
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
- * 
+ *
   */
 
 using System;
@@ -28,7 +28,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
         private string SecretKey = "SwWxqU+0TErBXy/9TVjIPEnI0VTUMMSQZtJf3Ed8q3I=";
 
         private EasyFinBankService easyFinBankService;
-        
+
         private const string CRLF = "\r\n";
 
         public frmExample()
@@ -349,7 +349,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
             // 담당자 비밀번호, 8자 이상 20자 이하(영문, 숫자, 특수문자 조합)
             contactInfo.Password = "asdf8536!@#";
 
-            // 담당자 성명 (최대 100자) 
+            // 담당자 성명 (최대 100자)
             contactInfo.personName = "담당자명";
 
             // 담당자연락처 (최대 20자)
@@ -524,7 +524,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
             }
         }
 
-        
+
         private void btnUpdateCorpInfo_Click(object sender, EventArgs e)
         {
 
@@ -621,7 +621,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
             }
         }
 
-        
+
         private void btnGetFlatRateState_Click(object sender, EventArgs e)
         {
             /*
@@ -713,9 +713,9 @@ namespace Popbill.EasyFin.Bank.Example.csharp
                     tmp += bankAccountList[i].useRestrictYN.ToString() + " | ";
                     tmp += bankAccountList[i].closeOnExpired.ToString() + " | ";
                     tmp += bankAccountList[i].unPaidYN.ToString() + " | ";
-                    
+
                     tmp += bankAccountList[i].memo;
-                    
+
                     tmp += CRLF ;
                 }
 
@@ -823,7 +823,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
             try
             {
-                EasyFinBankSearchResult searchInfo = easyFinBankService.Search(txtCorpNum.Text, txtJobID.Text, 
+                EasyFinBankSearchResult searchInfo = easyFinBankService.Search(txtCorpNum.Text, txtJobID.Text,
                     TradeType, SearchString, Page, PerPage, Order, txtUserId.Text);
 
                 String tmp = "code (응답코드) : " + searchInfo.code.ToString() + CRLF;
@@ -909,7 +909,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
              */
 
             // 거래내역 아이디
-            String TID = txtTID.Text; 
+            String TID = txtTID.Text;
 
             // 메모
             String Memo = "메모저장-20191224";

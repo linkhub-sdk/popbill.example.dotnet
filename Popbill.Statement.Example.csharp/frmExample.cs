@@ -1,13 +1,13 @@
 ﻿/*
  * 팝빌 전자명세서 API DotNet SDK Example
- * 
+ *
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/statement/tutorial/dotnet
- * - 업데이트 일자 : 2020-10-22
+ * - 업데이트 일자 : 2021-08-05
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991~2
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
- * 
+ *
  * <테스트 연동개발 준비사항>
- * 1) 29, 32 라인에 선언된 링크아이디(LinkID)와 비밀키(SecretKey)를 
+ * 1) 29, 32 라인에 선언된 링크아이디(LinkID)와 비밀키(SecretKey)를
  *    링크허브 가입시 메일로 발급받은 인증정보로 변경합니다.
  * 2) 팝빌 개발용 사이트(test.popbill.com)에 연동회원으로 가입합니다.
  */
@@ -107,7 +107,7 @@ namespace Popbill.Statement.Example.csharp
             // [필수], 기재상 작성일자 날짜형식(yyyyMMdd)
             statement.writeDate = "20210701";
 
-            // [필수], {영수, 청구} 중 기재 
+            // [필수], {영수, 청구} 중 기재
             statement.purposeType = "영수";
 
             // [필수], 과세형태, {과세, 영세, 면세} 중 기재
@@ -136,28 +136,28 @@ namespace Popbill.Statement.Example.csharp
             // 발신자 상호
             statement.senderCorpName = "발신자 상호";
 
-            // 발신자 대표자 성명 
+            // 발신자 대표자 성명
             statement.senderCEOName = "발신자 대표자 성명";
 
-            // 발신자 주소 
+            // 발신자 주소
             statement.senderAddr = "발신자 주소";
 
             // 발신자 종목
             statement.senderBizClass = "발신자 종목";
 
-            // 발신자 업태 
+            // 발신자 업태
             statement.senderBizType = "발신자 업태,업태2";
 
             // 발신자 담당자 성명
             statement.senderContactName = "발신자 담당자명";
 
-            // 발신자 메일주소 
+            // 발신자 메일주소
             statement.senderEmail = "test@test.com";
 
             // 발신자 연락처
             statement.senderTEL = "070-7070-0707";
 
-            // 발신자 휴대폰번호 
+            // 발신자 휴대폰번호
             statement.senderHP = "010-000-2222";
 
 
@@ -174,24 +174,24 @@ namespace Popbill.Statement.Example.csharp
             // 수신자 대표자 성명
             statement.receiverCEOName = "수신자 대표자 성명";
 
-            // 수신자 주소 
+            // 수신자 주소
             statement.receiverAddr = "수신자 주소";
 
             // 수신자 종목
             statement.receiverBizClass = "수신자 종목";
 
-            // 수신자 업태 
+            // 수신자 업태
             statement.receiverBizType = "수신자 업태";
 
-            // 수신자 담당자 성명 
+            // 수신자 담당자 성명
             statement.receiverContactName = "수신자 담당자명";
 
-            // 수신자 메일주소 
+            // 수신자 메일주소
             // 팝빌 개발환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
             // 실제 거래처의 메일주소가 기재되지 않도록 주의
             statement.receiverEmail = "test@test.com";
 
-            
+
             /**************************************************************************
              *                         전자명세서 기재항목                            *
              **************************************************************************/
@@ -216,7 +216,7 @@ namespace Popbill.Statement.Example.csharp
             // 사업자등록증 이미지 첨부여부
             statement.businessLicenseYN = false;
 
-            // 통장사본 이미지 첨부여부 
+            // 통장사본 이미지 첨부여부
             statement.bankBookYN = false;
 
             statement.detailList = new List<StatementDetail>();
@@ -260,7 +260,7 @@ namespace Popbill.Statement.Example.csharp
             statement.detailList.Add(detail);
 
 
-            // 추가속성항목, 자세한사항은 "전자명세서 API 연동매뉴얼> 5.2 기본양식 추가속성 테이블" 참조. 
+            // 추가속성항목, 자세한사항은 "전자명세서 API 연동매뉴얼> 5.2 기본양식 추가속성 테이블" 참조.
             statement.propertyBag = new propertyBag();
 
             statement.propertyBag.Add("Balance", "15000"); // 전잔액
@@ -293,7 +293,7 @@ namespace Popbill.Statement.Example.csharp
             // [필수], 기재상 작성일자 날짜형식(yyyyMMdd)
             statement.writeDate = "20210701";
 
-            // [필수], {영수, 청구} 중 기재 
+            // [필수], {영수, 청구} 중 기재
             statement.purposeType = "영수";
 
             // [필수], 과세형태, {과세, 영세, 면세} 중 기재
@@ -322,28 +322,28 @@ namespace Popbill.Statement.Example.csharp
             // 발신자 상호
             statement.senderCorpName = "발신자 상호";
 
-            // 발신자 대표자 성명 
+            // 발신자 대표자 성명
             statement.senderCEOName = "발신자 대표자 성명";
 
-            // 발신자 주소 
+            // 발신자 주소
             statement.senderAddr = "발신자 주소";
 
             // 발신자 종목
             statement.senderBizClass = "발신자 종목";
 
-            // 발신자 업태 
+            // 발신자 업태
             statement.senderBizType = "발신자 업태,업태2";
 
             // 발신자 담당자 성명
             statement.senderContactName = "발신자 담당자명";
 
-            // 발신자 메일주소 
+            // 발신자 메일주소
             statement.senderEmail = "test@test.com";
 
             // 발신자 연락처
             statement.senderTEL = "070-7070-0707";
 
-            // 발신자 휴대폰번호 
+            // 발신자 휴대폰번호
             statement.senderHP = "010-000-2222";
 
 
@@ -360,24 +360,24 @@ namespace Popbill.Statement.Example.csharp
             // 수신자 대표자 성명
             statement.receiverCEOName = "수신자 대표자 성명";
 
-            // 수신자 주소 
+            // 수신자 주소
             statement.receiverAddr = "수신자 주소";
 
             // 수신자 종목
             statement.receiverBizClass = "수신자 종목";
 
-            // 수신자 업태 
+            // 수신자 업태
             statement.receiverBizType = "수신자 업태";
 
-            // 수신자 담당자 성명 
+            // 수신자 담당자 성명
             statement.receiverContactName = "수신자 담당자명";
 
-            // 수신자 메일주소 
+            // 수신자 메일주소
             // 팝빌 개발환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
             // 실제 거래처의 메일주소가 기재되지 않도록 주의
             statement.receiverEmail = "test@receiver.com";
 
-            
+
             /**************************************************************************
              *                         전자명세서 기재항목                            *
              **************************************************************************/
@@ -402,7 +402,7 @@ namespace Popbill.Statement.Example.csharp
             // 사업자등록증 이미지 첨부여부
             statement.businessLicenseYN = false;
 
-            // 통장사본 이미지 첨부여부 
+            // 통장사본 이미지 첨부여부
             statement.bankBookYN = false;
 
             statement.detailList = new List<StatementDetail>();
@@ -446,7 +446,7 @@ namespace Popbill.Statement.Example.csharp
             statement.detailList.Add(detail);
 
 
-            // 추가속성항목, 자세한사항은 "전자명세서 API 연동매뉴얼> 5.2 기본양식 추가속성 테이블" 참조. 
+            // 추가속성항목, 자세한사항은 "전자명세서 API 연동매뉴얼> 5.2 기본양식 추가속성 테이블" 참조.
             statement.propertyBag = new propertyBag();
 
             statement.propertyBag.Add("Balance", "15000"); // 전잔액
@@ -479,7 +479,7 @@ namespace Popbill.Statement.Example.csharp
             // [필수], 기재상 작성일자 날짜형식(yyyyMMdd)
             statement.writeDate = "20210701";
 
-            // [필수], {영수, 청구} 중 기재 
+            // [필수], {영수, 청구} 중 기재
             statement.purposeType = "영수";
 
             // [필수], 과세형태, {과세, 영세, 면세} 중 기재
@@ -508,28 +508,28 @@ namespace Popbill.Statement.Example.csharp
             // 발신자 상호
             statement.senderCorpName = "발신자 상호_수정";
 
-            // 발신자 대표자 성명 
+            // 발신자 대표자 성명
             statement.senderCEOName = "발신자 대표자 성명_수정";
 
-            // 발신자 주소 
+            // 발신자 주소
             statement.senderAddr = "발신자 주소";
 
             // 발신자 종목
             statement.senderBizClass = "발신자 종목";
 
-            // 발신자 업태 
+            // 발신자 업태
             statement.senderBizType = "발신자 업태,업태2";
 
             // 발신자 담당자 성명
             statement.senderContactName = "발신자 담당자명";
 
-            // 발신자 메일주소 
+            // 발신자 메일주소
             statement.senderEmail = "test@test.com";
 
             // 발신자 연락처
             statement.senderTEL = "070-7070-0707";
 
-            // 발신자 휴대폰번호 
+            // 발신자 휴대폰번호
             statement.senderHP = "010-000-2222";
 
 
@@ -546,19 +546,19 @@ namespace Popbill.Statement.Example.csharp
             // 수신자 대표자 성명
             statement.receiverCEOName = "수신자 대표자 성명";
 
-            // 수신자 주소 
+            // 수신자 주소
             statement.receiverAddr = "수신자 주소";
 
             // 수신자 종목
             statement.receiverBizClass = "수신자 종목";
 
-            // 수신자 업태 
+            // 수신자 업태
             statement.receiverBizType = "수신자 업태";
 
-            // 수신자 담당자 성명 
+            // 수신자 담당자 성명
             statement.receiverContactName = "수신자 담당자명";
 
-            // 수신자 메일주소 
+            // 수신자 메일주소
             // 팝빌 개발환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
             // 실제 거래처의 메일주소가 기재되지 않도록 주의
             statement.receiverEmail = "test@receiver.com";
@@ -587,7 +587,7 @@ namespace Popbill.Statement.Example.csharp
             // 사업자등록증 이미지 첨부여부
             statement.businessLicenseYN = false;
 
-            // 통장사본 이미지 첨부여부 
+            // 통장사본 이미지 첨부여부
             statement.bankBookYN = false;
 
             statement.detailList = new List<StatementDetail>();
@@ -631,7 +631,7 @@ namespace Popbill.Statement.Example.csharp
             statement.detailList.Add(detail);
 
 
-            // 추가속성항목, 자세한사항은 "전자명세서 API 연동매뉴얼> 5.2 기본양식 추가속성 테이블" 참조. 
+            // 추가속성항목, 자세한사항은 "전자명세서 API 연동매뉴얼> 5.2 기본양식 추가속성 테이블" 참조.
             statement.propertyBag = new propertyBag();
 
             statement.propertyBag.Add("Balance", "15000"); // 전잔액
@@ -716,7 +716,7 @@ namespace Popbill.Statement.Example.csharp
         {
             int itemCode = selectedItemCode();
 
-            // 메모 
+            // 메모
             String memo = "발행취소 메모";
 
             try
@@ -1457,7 +1457,7 @@ namespace Popbill.Statement.Example.csharp
         {
             int itemcode = selectedItemCode();
 
-            // 발신번호 
+            // 발신번호
             string senderNum = "07043042991";
 
             // 수신번호
@@ -1491,7 +1491,7 @@ namespace Popbill.Statement.Example.csharp
             // [필수] 팩스 발신번호
             String SendNum = "07043042991";
 
-            // [필수] 선팩스전송 수신팩스번호 
+            // [필수] 선팩스전송 수신팩스번호
             String ReceiveNum = "010111222";
 
             // 전자명세서 객체
@@ -1500,7 +1500,7 @@ namespace Popbill.Statement.Example.csharp
             // [필수], 기재상 작성일자 날짜형식(yyyyMMdd)
             statement.writeDate = "20210701";
 
-            // [필수], {영수, 청구} 중 기재 
+            // [필수], {영수, 청구} 중 기재
             statement.purposeType = "영수";
 
             // [필수], 과세형태, {과세, 영세, 면세} 중 기재
@@ -1529,28 +1529,28 @@ namespace Popbill.Statement.Example.csharp
             // 발신자 상호
             statement.senderCorpName = "발신자 상호";
 
-            // 발신자 대표자 성명 
+            // 발신자 대표자 성명
             statement.senderCEOName = "발신자 대표자 성명";
 
-            // 발신자 주소 
+            // 발신자 주소
             statement.senderAddr = "발신자 주소";
 
             // 발신자 종목
             statement.senderBizClass = "발신자 종목";
 
-            // 발신자 업태 
+            // 발신자 업태
             statement.senderBizType = "발신자 업태,업태2";
 
             // 발신자 담당자 성명
             statement.senderContactName = "발신자 담당자명";
 
-            // 발신자 메일주소 
+            // 발신자 메일주소
             statement.senderEmail = "test@test.com";
 
             // 발신자 연락처
             statement.senderTEL = "070-7070-0707";
 
-            // 발신자 휴대폰번호 
+            // 발신자 휴대폰번호
             statement.senderHP = "010-000-2222";
 
 
@@ -1567,19 +1567,19 @@ namespace Popbill.Statement.Example.csharp
             // 수신자 대표자 성명
             statement.receiverCEOName = "수신자 대표자 성명";
 
-            // 수신자 주소 
+            // 수신자 주소
             statement.receiverAddr = "수신자 주소";
 
             // 수신자 종목
             statement.receiverBizClass = "수신자 종목";
 
-            // 수신자 업태 
+            // 수신자 업태
             statement.receiverBizType = "수신자 업태";
 
-            // 수신자 담당자 성명 
+            // 수신자 담당자 성명
             statement.receiverContactName = "수신자 담당자명";
 
-            // 수신자 메일주소 
+            // 수신자 메일주소
             // 팝빌 개발환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
             // 실제 거래처의 메일주소가 기재되지 않도록 주의
             statement.receiverEmail = "test@receiver.com";
@@ -1608,7 +1608,7 @@ namespace Popbill.Statement.Example.csharp
             // 사업자등록증 이미지 첨부여부
             statement.businessLicenseYN = false;
 
-            // 통장사본 이미지 첨부여부 
+            // 통장사본 이미지 첨부여부
             statement.bankBookYN = false;
 
             statement.detailList = new List<StatementDetail>();
@@ -1652,7 +1652,7 @@ namespace Popbill.Statement.Example.csharp
             statement.detailList.Add(detail);
 
 
-            // 추가속성항목, 자세한사항은 "전자명세서 API 연동매뉴얼> 5.2 기본양식 추가속성 테이블" 참조. 
+            // 추가속성항목, 자세한사항은 "전자명세서 API 연동매뉴얼> 5.2 기본양식 추가속성 테이블" 참조.
             statement.propertyBag = new propertyBag();
 
             statement.propertyBag.Add("Balance", "15000"); // 전잔액
@@ -1685,7 +1685,7 @@ namespace Popbill.Statement.Example.csharp
             // 첨부할 전자명세서 코드, 121-거래명세서, 122-청구서, 123-견적서, 124-발주서, 125-입금표, 126-영수증
             int SubItemCode = 121;
 
-            // 첨부할 전자명세서 문서번호 
+            // 첨부할 전자명세서 문서번호
             String SubMgtKey = "20210701-100";
 
             try
@@ -1714,7 +1714,7 @@ namespace Popbill.Statement.Example.csharp
             // 첨부해제할 명세서 코드, 121-거래명세서, 122-청구서, 123-견적서, 124-발주서, 125-입금표, 126-영수증
             int SubItemCode = 121;
 
-            // 첨부해제할 명세서 문서번호 
+            // 첨부해제할 명세서 문서번호
             String SubMgtKey = "20210701-100";
 
             try
@@ -1770,7 +1770,7 @@ namespace Popbill.Statement.Example.csharp
 
         /* 전자명세서 관련 메일 항목에 대한 발송설정을 수정합니다.
          * - https://docs.popbill.com/statement/dotnet/api#UpdateEmailConfig
-         * 
+         *
            메일전송유형
            SMT_ISSUE : 수신자에게 전자명세서가 발행 되었음을 알려주는 메일입니다.
            SMT_ACCEPT : 발신자에게 전자명세서가 승인 되었음을 알려주는 메일입니다.
@@ -2151,7 +2151,7 @@ namespace Popbill.Statement.Example.csharp
             // 담당자 비밀번호, 8자 이상 20자 이하(영문, 숫자, 특수문자 조합)
             contactInfo.Password = "asdf8536!@#";
 
-            //담당자 성명 (최대 100자) 
+            //담당자 성명 (최대 100자)
             contactInfo.personName = "담당자명";
 
             //담당자연락처 (최대 20자)

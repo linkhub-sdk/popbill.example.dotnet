@@ -1,13 +1,13 @@
 ﻿/*
  * 팝빌 홈택스 전자세금계산서 연계 API DotNet SDK Example
- * 
+ *
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/httaxinvoice/tutorial/dotnet
- * - 업데이트 일자 : 2020-10-22
+ * - 업데이트 일자 : 2021-08-05
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
- * 
+ *
  * <테스트 연동개발 준비사항>
- * 1) 32, 35 라인에 선언된 링크아이디(LinkID)와 비밀키(SecretKey)를 
+ * 1) 32, 35 라인에 선언된 링크아이디(LinkID)와 비밀키(SecretKey)를
  *    링크허브 가입시 메일로 발급받은 인증정보로 변경합니다.
  * 2) 팝빌 개발용 사이트(test.popbill.com)에 연동회원으로 가입합니다.
  * 3) 홈택스 인증 처리를 합니다. (부서사용자등록 / 공인인증서 등록)
@@ -175,7 +175,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
             // 문서형태 배열, N-일반 전자세금계산서, M-수정 전자세금계산서
             String[] Type = { "N", "M" };
 
-            // 과세형태, T-과세, N-면세, Z-영세 
+            // 과세형태, T-과세, N-면세, Z-영세
             String[] TaxType = { "T", "N", "Z" };
 
             // 영수/청구, R-영수, C-청구, N-없음
@@ -267,7 +267,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
             // 문서형태 배열, N-일반 전자세금계산서, M-수정 전자세금계산서
             String[] Type = { "N", "M" };
 
-            // 과세형태, T-과세, N-면세, Z-영세 
+            // 과세형태, T-과세, N-면세, Z-영세
             String[] TaxType = { "T", "N", "Z" };
 
             // 영수/청구, R-영수, C-청구, N-없음
@@ -288,7 +288,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
             try
             {
                 HTTaxinvoiceSummary summaryInfo = htTaxinvoiceService.Summary(txtCorpNum.Text, txtJobID.Text, Type,
-                                                            TaxType, PurposeType, TaxRegIDYN, TaxRegIDType, TaxRegID, 
+                                                            TaxType, PurposeType, TaxRegIDYN, TaxRegIDType, TaxRegID,
                                                             txtUserId.Text, SearchString);
 
                 String tmp = "count (수집 결과 건수) : " + summaryInfo.count.ToString() + CRLF;
@@ -669,7 +669,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
 
         /*
          * 파트너의 잔여포인트를 확인합니다.
-         * - 과금방식이 연동과금인 경우 연동회원 잔여포인트(GetBalance API)를 이용하시기 바랍니다. 
+         * - 과금방식이 연동과금인 경우 연동회원 잔여포인트(GetBalance API)를 이용하시기 바랍니다.
          * - https://docs.popbill.com/httaxinvoice/dotnet/api#GetPartnerBalance
          */
         private void btnGetPartnerBalance1_Click(object sender, EventArgs e)
@@ -987,7 +987,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
             // 담당자 비밀번호, 8자 이상 20자 이하(영문, 숫자, 특수문자 조합)
             contactInfo.Password = "asdf8536!@#";
 
-            //담당자 성명 (최대 100자) 
+            //담당자 성명 (최대 100자)
             contactInfo.personName = "담당자명";
 
             //담당자연락처 (최대 20자)

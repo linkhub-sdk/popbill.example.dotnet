@@ -1,13 +1,13 @@
 ﻿/*
  * 팝빌 문자 API DotNet SDK Example
- * 
+ *
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/message/tutorial/dotnet
- * - 업데이트 일자 : 2020-10-22
+ * - 업데이트 일자 : 2021-08-05
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991~2
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
- * 
+ *
  * <테스트 연동개발 준비사항>
- * 1) 32, 35 라인에 선언된 링크아이디(LinkID)와 비밀키(SecretKey)를 
+ * 1) 32, 35 라인에 선언된 링크아이디(LinkID)와 비밀키(SecretKey)를
  *    링크허브 가입시 메일로 발급받은 인증정보로 변경합니다.
  * 2) 팝빌 개발용 사이트(test.popbill.com)에 연동회원으로 가입합니다.
  * 3) 발신번호 사전등록을 합니다. (등록방법은 사이트/API 두가지 방식이 있습니다.)
@@ -123,16 +123,16 @@ namespace Popbill.Message.Example.csharp
          */
         private void btnSendSMS_one_Click(object sender, EventArgs e)
         {
-            // 발신번호 
+            // 발신번호
             String senderNum = "07043042991";
 
             // 수신번호
             String receiver = "010111222";
 
-            // 수신자명 
+            // 수신자명
             String receiverName = "수신자명";
 
-            // 메시지내용, 단문(SMS) 메시지는 90byte초과된 내용은 삭제되어 전송됨. 
+            // 메시지내용, 단문(SMS) 메시지는 90byte초과된 내용은 삭제되어 전송됨.
             String contents = "단문 문자 메시지 내용. 90byte 초과시 삭제되어 전송";
 
             // 전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
@@ -190,7 +190,7 @@ namespace Popbill.Message.Example.csharp
                 // 수신자명
                 msg.receiveName = "수신자명칭_" + i;
 
-                // 메시지 내용, 단문(SMS) 메시지는 90byte초과된 내용은 삭제되어 전송됨. 
+                // 메시지 내용, 단문(SMS) 메시지는 90byte초과된 내용은 삭제되어 전송됨.
                 msg.content = "단문 문자메시지 내용, 각 메시지마다 개별설정 가능." + i;
 
                 messages.Add(msg);
@@ -222,7 +222,7 @@ namespace Popbill.Message.Example.csharp
             // 발신번호
             String senderNum = "07043042992";
 
-            // 동보 메시지 내용, 단문(SMS) 메시지는 90byte초과된 내용은 삭제되어 전송됨. 
+            // 동보 메시지 내용, 단문(SMS) 메시지는 90byte초과된 내용은 삭제되어 전송됨.
             String contents = "동보전송 문자메시지 내용";
 
             // 전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
@@ -238,7 +238,7 @@ namespace Popbill.Message.Example.csharp
             {
                 Message msg = new Message();
 
-                // 수신번호 
+                // 수신번호
                 msg.receiveNum = "010111222";
 
                 //수신자명
@@ -269,10 +269,10 @@ namespace Popbill.Message.Example.csharp
          */
         private void btnSendLMS_one_Click(object sender, EventArgs e)
         {
-            // 발신번호 
+            // 발신번호
             String senderNum = "07043042992";
 
-            // 수신번호 
+            // 수신번호
             String receiver = "010111222";
 
             //수신자명
@@ -281,7 +281,7 @@ namespace Popbill.Message.Example.csharp
             // 메시지 제목
             String subject = "장문문자 메시지 제목";
 
-            // 메시지 내용, 장문(LMS) 메시지는 2000byte초과된 내용은 삭제되어 전송됨. 
+            // 메시지 내용, 장문(LMS) 메시지는 2000byte초과된 내용은 삭제되어 전송됨.
             String contents = "장문문자 메시지 내용, 2000byte초과시 길이가 조정되어 전송됨";
 
             // 전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
@@ -342,7 +342,7 @@ namespace Popbill.Message.Example.csharp
                 // 메시지 제목
                 msg.subject = "장문 문자메시지 제목";
 
-                // 메시지 내용, 장문(LMS) 메시지는 2000byte초과된 내용은 삭제되어 전송됨. 
+                // 메시지 내용, 장문(LMS) 메시지는 2000byte초과된 내용은 삭제되어 전송됨.
                 msg.content = "장문 문자메시지 내용, 각 메시지마다 개별설정 가능." + i;
 
                 messages.Add(msg);
@@ -371,13 +371,13 @@ namespace Popbill.Message.Example.csharp
          */
         private void btnSendLMS_same_Click(object sender, EventArgs e)
         {
-            // 발신번호 
+            // 발신번호
             String senderNum = "07043042992";
 
             // 메시지 제목
             String subject = "동보 메시지 제목";
 
-            // 메시지 내용, 장문(LMS) 메시지는 2000byte초과된 내용은 삭제되어 전송됨. 
+            // 메시지 내용, 장문(LMS) 메시지는 2000byte초과된 내용은 삭제되어 전송됨.
             String contents = "동보 메시지 내용";
 
             // 전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
@@ -424,10 +424,10 @@ namespace Popbill.Message.Example.csharp
          */
         private void btnSendXMS_one_Click(object sender, EventArgs e)
         {
-            // 발신번호 
+            // 발신번호
             String senderNum = "07043042992";
 
-            // 수신번호 
+            // 수신번호
             String receiver = "010111222";
 
             // 수신자명
@@ -526,7 +526,7 @@ namespace Popbill.Message.Example.csharp
          */
         private void btnSendXMS_same_Click(object sender, EventArgs e)
         {
-            // 발신번호 
+            // 발신번호
             String senderNum = "07043042992";
 
             // 동보 메시지 제목
@@ -583,7 +583,7 @@ namespace Popbill.Message.Example.csharp
             // 발신번호
             String senderNum = "07043042992";
 
-            // 수신번호 
+            // 수신번호
             String receiver = "010111222";
 
             // 수신자명
@@ -592,7 +592,7 @@ namespace Popbill.Message.Example.csharp
             // 메시지 제목
             String subject = "장문문자 메시지 제목";
 
-            // 메시지 내용, 포토(MMS) 메시지는 2000byte초과된 내용은 삭제되어 전송됨. 
+            // 메시지 내용, 포토(MMS) 메시지는 2000byte초과된 내용은 삭제되어 전송됨.
             String contents = "장문 문자 메시지 내용. 최대길이 2000byte";
 
             // 전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
@@ -637,7 +637,7 @@ namespace Popbill.Message.Example.csharp
             // 메시지 제목
             String subject = "동보메시지 제목";
 
-            // 메시지 내용, 포토(MMS) 메시지는 2000byte초과된 내용은 삭제되어 전송됨. 
+            // 메시지 내용, 포토(MMS) 메시지는 2000byte초과된 내용은 삭제되어 전송됨.
             String contents = "동보 문자 메시지 내용, 최대 2000byte";
 
             // 전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
@@ -887,10 +887,10 @@ namespace Popbill.Message.Example.csharp
             Item[1] = "LMS";
             Item[2] = "MMS";
 
-            // 예약여부, true-예약전송건 조회, false-즉시전송건 조회 
+            // 예약여부, true-예약전송건 조회, false-즉시전송건 조회
             bool ReserveYN = false;
 
-            // 개인조회여부 true-개인조회, false-회사조회 
+            // 개인조회여부 true-개인조회, false-회사조회
             bool SenderYN = false;
 
             // 정렬방향, A-오름차순, D-내림차순
@@ -1048,7 +1048,7 @@ namespace Popbill.Message.Example.csharp
         }
 
         /*
-         *  연동회원 포인트 결제내역 확인을 위한 페이지의 팝업 URL을 반환합니다.         
+         *  연동회원 포인트 결제내역 확인을 위한 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
          * - https://docs.popbill.com/message/dotnet/api#GetPaymentURL
          */
@@ -1417,7 +1417,7 @@ namespace Popbill.Message.Example.csharp
             // 담당자 비밀번호, 8자 이상 20자 이하(영문, 숫자, 특수문자 조합)
             contactInfo.Password = "asdf8536!@#";
 
-            //담당자 성명 (최대 100자) 
+            //담당자 성명 (최대 100자)
             contactInfo.personName = "담당자명";
 
             //담당자연락처 (최대 20자)

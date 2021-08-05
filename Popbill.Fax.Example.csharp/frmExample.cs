@@ -1,11 +1,11 @@
 ﻿/*
  * 팝빌 팩스 API DotNet SDK Example
- * 
+ *
  * - DotNet C# SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/fax/tutorial/dotnet#csharp
- * - 업데이트 일자 : 2020-10-22
+ * - 업데이트 일자 : 2021-08-05
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991~2
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
- * 
+ *
  * <테스트 연동개발 준비사항>
  * 1) 29, 32 라인에 선언된 링크아이디(LinkID)와 비밀키(SecretKey)를
  *    링크허브 가입시 메일로 발급받은 인증정보로 변경합니다.
@@ -126,7 +126,7 @@ namespace Popbill.Fax.Example.csharp
             // 수신번호
             String receiverNum = "070111222";
 
-            // 수신자명 
+            // 수신자명
             String receiverName = "수신자명";
 
             // 광고팩스 전송여부
@@ -280,7 +280,7 @@ namespace Popbill.Fax.Example.csharp
             // 발신번호
             String senderNum = "07043042991";
 
-            // 광고팩스 전송여부 
+            // 광고팩스 전송여부
             bool adsYN = false;
 
             // 팩스제목
@@ -350,7 +350,7 @@ namespace Popbill.Fax.Example.csharp
             // 수신번호
             String receiverNum = "";
 
-            // 수신자명 
+            // 수신자명
             String receiverName = "";
 
             // 팩스제목
@@ -394,7 +394,7 @@ namespace Popbill.Fax.Example.csharp
             // 수신번호
             String receiverNum = "";
 
-            // 수신자명 
+            // 수신자명
             String receiverName = "";
 
             // 팩스제목
@@ -441,7 +441,7 @@ namespace Popbill.Fax.Example.csharp
             // 수신자정보 배열 (최대 1000건)
             //List<FaxReceiver> receivers = new List<FaxReceiver>();
 
-            /* 
+            /*
             for (int i = 0; i < 10; i++)
             {
                 FaxReceiver receiver = new FaxReceiver();
@@ -499,7 +499,7 @@ namespace Popbill.Fax.Example.csharp
             // 수신자정보 배열 (최대 1000건)
             //List<FaxReceiver> receivers = new List<FaxReceiver>();
 
-            /* 
+            /*
             for (int i = 0; i < 10; i++)
             {
                 FaxReceiver receiver = new FaxReceiver();
@@ -705,7 +705,7 @@ namespace Popbill.Fax.Example.csharp
          */
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            // 최대 검색기간 :2개월 이내 
+            // 최대 검색기간 :2개월 이내
             // 시작일자, 날짜형식(yyyyMMdd)
             String SDate = "20210701";
 
@@ -719,7 +719,7 @@ namespace Popbill.Fax.Example.csharp
             State[2] = "3";
             State[3] = "4";
 
-            // 예약여부, true-예약전송건 검색, false-즉시전송건 검색 
+            // 예약여부, true-예약전송건 검색, false-즉시전송건 검색
             bool ReserveYN = false;
 
             // 개인조회여부, True-개인조회, False-회사조회
@@ -1219,7 +1219,7 @@ namespace Popbill.Fax.Example.csharp
             // 담당자 비밀번호, 8자 이상 20자 이하(영문, 숫자, 특수문자 조합)
             contactInfo.Password = "asdf8536!@#";
 
-            //담당자 성명 (최대 100자) 
+            //담당자 성명 (최대 100자)
             contactInfo.personName = "담당자명";
 
             //담당자연락처 (최대 20자)
@@ -1334,7 +1334,7 @@ namespace Popbill.Fax.Example.csharp
             // 담당자 아이디
             contactInfo.id = txtUserId.Text;
 
-            // 담당자명 
+            // 담당자명
             contactInfo.personName = "담당자123";
 
             // 연락처
@@ -1343,7 +1343,7 @@ namespace Popbill.Fax.Example.csharp
             // 휴대폰번호
             contactInfo.hp = "010-1234-1234";
 
-            // 팩스번호 
+            // 팩스번호
             contactInfo.fax = "070-111-222";
 
             // 이메일주소
