@@ -557,7 +557,7 @@ namespace Popbill.Taxinvoice.Example.csharp
                 TaxinvoiceDetail detail = new TaxinvoiceDetail();
 
                 detail.serialNum = 1; // 일련번호, 1부터 순차기재
-                detail.purchaseDT = "2021"; // 거래일자
+                detail.purchaseDT = "20210802"; // 거래일자
                 detail.itemName = "품목명"; // 품목명
                 detail.spec = "규격"; // 규격
                 detail.qty = "1"; // 수량
