@@ -286,7 +286,7 @@
             // 
             // btnSendFAX
             // 
-            this.btnSendFAX.Location = new System.Drawing.Point(10, 87);
+            this.btnSendFAX.Location = new System.Drawing.Point(10, 88);
             this.btnSendFAX.Name = "btnSendFAX";
             this.btnSendFAX.Size = new System.Drawing.Size(145, 30);
             this.btnSendFAX.TabIndex = 24;
@@ -316,7 +316,7 @@
             // 
             // btnGetMassPrintURL
             // 
-            this.btnGetMassPrintURL.Location = new System.Drawing.Point(11, 164);
+            this.btnGetMassPrintURL.Location = new System.Drawing.Point(11, 158);
             this.btnGetMassPrintURL.Name = "btnGetMassPrintURL";
             this.btnGetMassPrintURL.Size = new System.Drawing.Size(183, 30);
             this.btnGetMassPrintURL.TabIndex = 27;
@@ -326,7 +326,7 @@
             // 
             // btnGetEPrintURL
             // 
-            this.btnGetEPrintURL.Location = new System.Drawing.Point(11, 128);
+            this.btnGetEPrintURL.Location = new System.Drawing.Point(11, 123);
             this.btnGetEPrintURL.Name = "btnGetEPrintURL";
             this.btnGetEPrintURL.Size = new System.Drawing.Size(183, 30);
             this.btnGetEPrintURL.TabIndex = 28;
@@ -336,7 +336,7 @@
             // 
             // btnGetPrintURL
             // 
-            this.btnGetPrintURL.Location = new System.Drawing.Point(11, 94);
+            this.btnGetPrintURL.Location = new System.Drawing.Point(11, 88);
             this.btnGetPrintURL.Name = "btnGetPrintURL";
             this.btnGetPrintURL.Size = new System.Drawing.Size(183, 30);
             this.btnGetPrintURL.TabIndex = 29;
@@ -346,7 +346,7 @@
             // 
             // btnGetPopUpURL
             // 
-            this.btnGetPopUpURL.Location = new System.Drawing.Point(11, 21);
+            this.btnGetPopUpURL.Location = new System.Drawing.Point(11, 18);
             this.btnGetPopUpURL.Name = "btnGetPopUpURL";
             this.btnGetPopUpURL.Size = new System.Drawing.Size(183, 30);
             this.btnGetPopUpURL.TabIndex = 30;
@@ -356,7 +356,7 @@
             // 
             // btnGetURL_SBOX
             // 
-            this.btnGetURL_SBOX.Location = new System.Drawing.Point(11, 58);
+            this.btnGetURL_SBOX.Location = new System.Drawing.Point(11, 53);
             this.btnGetURL_SBOX.Name = "btnGetURL_SBOX";
             this.btnGetURL_SBOX.Size = new System.Drawing.Size(91, 30);
             this.btnGetURL_SBOX.TabIndex = 31;
@@ -366,7 +366,7 @@
             // 
             // btnGetURL_TBOX
             // 
-            this.btnGetURL_TBOX.Location = new System.Drawing.Point(11, 21);
+            this.btnGetURL_TBOX.Location = new System.Drawing.Point(11, 18);
             this.btnGetURL_TBOX.Name = "btnGetURL_TBOX";
             this.btnGetURL_TBOX.Size = new System.Drawing.Size(91, 30);
             this.btnGetURL_TBOX.TabIndex = 32;
@@ -376,7 +376,7 @@
             // 
             // btnGetMailURL
             // 
-            this.btnGetMailURL.Location = new System.Drawing.Point(11, 200);
+            this.btnGetMailURL.Location = new System.Drawing.Point(11, 194);
             this.btnGetMailURL.Name = "btnGetMailURL";
             this.btnGetMailURL.Size = new System.Drawing.Size(183, 30);
             this.btnGetMailURL.TabIndex = 33;
@@ -614,7 +614,7 @@
             // 
             // btnUpdateEmailConfig
             // 
-            this.btnUpdateEmailConfig.Location = new System.Drawing.Point(159, 122);
+            this.btnUpdateEmailConfig.Location = new System.Drawing.Point(159, 123);
             this.btnUpdateEmailConfig.Name = "btnUpdateEmailConfig";
             this.btnUpdateEmailConfig.Size = new System.Drawing.Size(145, 30);
             this.btnUpdateEmailConfig.TabIndex = 1;
@@ -634,7 +634,7 @@
             // 
             // btnDetachStmt
             // 
-            this.btnDetachStmt.Location = new System.Drawing.Point(159, 54);
+            this.btnDetachStmt.Location = new System.Drawing.Point(159, 53);
             this.btnDetachStmt.Name = "btnDetachStmt";
             this.btnDetachStmt.Size = new System.Drawing.Size(145, 30);
             this.btnDetachStmt.TabIndex = 29;
@@ -654,7 +654,7 @@
             // 
             // btnFAXSend
             // 
-            this.btnFAXSend.Location = new System.Drawing.Point(10, 122);
+            this.btnFAXSend.Location = new System.Drawing.Point(10, 123);
             this.btnFAXSend.Name = "btnFAXSend";
             this.btnFAXSend.Size = new System.Drawing.Size(145, 30);
             this.btnFAXSend.TabIndex = 27;
@@ -670,16 +670,16 @@
             this.groupBox9.Controls.Add(this.btnGetPrintURL);
             this.groupBox9.Controls.Add(this.btnGetEPrintURL);
             this.groupBox9.Controls.Add(this.btnGetMassPrintURL);
-            this.groupBox9.Location = new System.Drawing.Point(506, 284);
+            this.groupBox9.Location = new System.Drawing.Point(506, 287);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(208, 245);
+            this.groupBox9.Size = new System.Drawing.Size(208, 242);
             this.groupBox9.TabIndex = 50;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "인쇄 URL";
             // 
             // btnGetViewURL
             // 
-            this.btnGetViewURL.Location = new System.Drawing.Point(11, 58);
+            this.btnGetViewURL.Location = new System.Drawing.Point(11, 53);
             this.btnGetViewURL.Name = "btnGetViewURL";
             this.btnGetViewURL.Size = new System.Drawing.Size(183, 32);
             this.btnGetViewURL.TabIndex = 34;
@@ -691,9 +691,9 @@
             // 
             this.groupBox10.Controls.Add(this.btnGetURL_TBOX);
             this.groupBox10.Controls.Add(this.btnGetURL_SBOX);
-            this.groupBox10.Location = new System.Drawing.Point(723, 284);
+            this.groupBox10.Location = new System.Drawing.Point(723, 287);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(114, 245);
+            this.groupBox10.Size = new System.Drawing.Size(114, 242);
             this.groupBox10.TabIndex = 51;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "기타 URL";
@@ -712,7 +712,7 @@
             // 
             // btnCheckID
             // 
-            this.btnCheckID.Location = new System.Drawing.Point(7, 49);
+            this.btnCheckID.Location = new System.Drawing.Point(7, 51);
             this.btnCheckID.Name = "btnCheckID";
             this.btnCheckID.Size = new System.Drawing.Size(102, 28);
             this.btnCheckID.TabIndex = 6;
@@ -722,7 +722,7 @@
             // 
             // btnJoinMember
             // 
-            this.btnJoinMember.Location = new System.Drawing.Point(7, 81);
+            this.btnJoinMember.Location = new System.Drawing.Point(7, 83);
             this.btnJoinMember.Name = "btnJoinMember";
             this.btnJoinMember.Size = new System.Drawing.Size(102, 28);
             this.btnJoinMember.TabIndex = 5;
@@ -732,7 +732,7 @@
             // 
             // btnCheckIsMember
             // 
-            this.btnCheckIsMember.Location = new System.Drawing.Point(7, 17);
+            this.btnCheckIsMember.Location = new System.Drawing.Point(7, 20);
             this.btnCheckIsMember.Name = "btnCheckIsMember";
             this.btnCheckIsMember.Size = new System.Drawing.Size(102, 28);
             this.btnCheckIsMember.TabIndex = 4;
@@ -824,7 +824,7 @@
             // 
             // btnGetChargeURL
             // 
-            this.btnGetChargeURL.Location = new System.Drawing.Point(6, 52);
+            this.btnGetChargeURL.Location = new System.Drawing.Point(6, 51);
             this.btnGetChargeURL.Name = "btnGetChargeURL";
             this.btnGetChargeURL.Size = new System.Drawing.Size(136, 28);
             this.btnGetChargeURL.TabIndex = 9;
@@ -857,7 +857,7 @@
             // 
             // UpdateContact
             // 
-            this.UpdateContact.Location = new System.Drawing.Point(6, 116);
+            this.UpdateContact.Location = new System.Drawing.Point(5, 115);
             this.UpdateContact.Name = "UpdateContact";
             this.UpdateContact.Size = new System.Drawing.Size(118, 28);
             this.UpdateContact.TabIndex = 2;
@@ -867,7 +867,7 @@
             // 
             // ListContact
             // 
-            this.ListContact.Location = new System.Drawing.Point(6, 83);
+            this.ListContact.Location = new System.Drawing.Point(5, 83);
             this.ListContact.Name = "ListContact";
             this.ListContact.Size = new System.Drawing.Size(118, 28);
             this.ListContact.TabIndex = 1;
@@ -877,7 +877,7 @@
             // 
             // btnRegistContact
             // 
-            this.btnRegistContact.Location = new System.Drawing.Point(6, 18);
+            this.btnRegistContact.Location = new System.Drawing.Point(6, 19);
             this.btnRegistContact.Name = "btnRegistContact";
             this.btnRegistContact.Size = new System.Drawing.Size(118, 28);
             this.btnRegistContact.TabIndex = 0;
@@ -937,7 +937,7 @@
             // 
             // btnGetUseHistoryURL
             // 
-            this.btnGetUseHistoryURL.Location = new System.Drawing.Point(6, 117);
+            this.btnGetUseHistoryURL.Location = new System.Drawing.Point(6, 115);
             this.btnGetUseHistoryURL.Name = "btnGetUseHistoryURL";
             this.btnGetUseHistoryURL.Size = new System.Drawing.Size(136, 28);
             this.btnGetUseHistoryURL.TabIndex = 11;
@@ -947,7 +947,7 @@
             // 
             // btnGetPaymentURL
             // 
-            this.btnGetPaymentURL.Location = new System.Drawing.Point(6, 84);
+            this.btnGetPaymentURL.Location = new System.Drawing.Point(6, 83);
             this.btnGetPaymentURL.Name = "btnGetPaymentURL";
             this.btnGetPaymentURL.Size = new System.Drawing.Size(136, 28);
             this.btnGetPaymentURL.TabIndex = 10;
@@ -968,7 +968,7 @@
             // 
             // btnUpdateCorpInfo
             // 
-            this.btnUpdateCorpInfo.Location = new System.Drawing.Point(5, 49);
+            this.btnUpdateCorpInfo.Location = new System.Drawing.Point(5, 51);
             this.btnUpdateCorpInfo.Name = "btnUpdateCorpInfo";
             this.btnUpdateCorpInfo.Size = new System.Drawing.Size(115, 28);
             this.btnUpdateCorpInfo.TabIndex = 1;
@@ -978,7 +978,7 @@
             // 
             // btnGetCorpInfo
             // 
-            this.btnGetCorpInfo.Location = new System.Drawing.Point(5, 17);
+            this.btnGetCorpInfo.Location = new System.Drawing.Point(5, 19);
             this.btnGetCorpInfo.Name = "btnGetCorpInfo";
             this.btnGetCorpInfo.Size = new System.Drawing.Size(115, 28);
             this.btnGetCorpInfo.TabIndex = 0;

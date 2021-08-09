@@ -48,6 +48,7 @@
             this.btnCheckIsMember = new System.Windows.Forms.Button();
             this.btnJoinMember = new System.Windows.Forms.Button();
             this.GroupBox6 = new System.Windows.Forms.GroupBox();
+            this.btnGetContactInfo = new System.Windows.Forms.Button();
             this.btnUpdateContact = new System.Windows.Forms.Button();
             this.btnListContact = new System.Windows.Forms.Button();
             this.btnRegistContact = new System.Windows.Forms.Button();
@@ -89,7 +90,6 @@
             this.btnListActiveJob = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.textURL = new System.Windows.Forms.TextBox();
-            this.btnGetContactInfo = new System.Windows.Forms.Button();
             this.GroupBox1.SuspendLayout();
             this.groupBox13.SuspendLayout();
             this.groupBox12.SuspendLayout();
@@ -143,7 +143,7 @@
             // 
             // btnGetPartnerBalance1
             // 
-            this.btnGetPartnerBalance1.Location = new System.Drawing.Point(8, 20);
+            this.btnGetPartnerBalance1.Location = new System.Drawing.Point(8, 19);
             this.btnGetPartnerBalance1.Name = "btnGetPartnerBalance1";
             this.btnGetPartnerBalance1.Size = new System.Drawing.Size(119, 29);
             this.btnGetPartnerBalance1.TabIndex = 4;
@@ -153,7 +153,7 @@
             // 
             // btnGetPartnerURL_CHRG
             // 
-            this.btnGetPartnerURL_CHRG.Location = new System.Drawing.Point(8, 55);
+            this.btnGetPartnerURL_CHRG.Location = new System.Drawing.Point(8, 52);
             this.btnGetPartnerURL_CHRG.Name = "btnGetPartnerURL_CHRG";
             this.btnGetPartnerURL_CHRG.Size = new System.Drawing.Size(119, 29);
             this.btnGetPartnerURL_CHRG.TabIndex = 0;
@@ -176,7 +176,7 @@
             // 
             // btnGetUseHistoryURL
             // 
-            this.btnGetUseHistoryURL.Location = new System.Drawing.Point(8, 123);
+            this.btnGetUseHistoryURL.Location = new System.Drawing.Point(8, 118);
             this.btnGetUseHistoryURL.Name = "btnGetUseHistoryURL";
             this.btnGetUseHistoryURL.Size = new System.Drawing.Size(145, 29);
             this.btnGetUseHistoryURL.TabIndex = 6;
@@ -186,7 +186,7 @@
             // 
             // btnGetChargeURL
             // 
-            this.btnGetChargeURL.Location = new System.Drawing.Point(8, 54);
+            this.btnGetChargeURL.Location = new System.Drawing.Point(8, 52);
             this.btnGetChargeURL.Name = "btnGetChargeURL";
             this.btnGetChargeURL.Size = new System.Drawing.Size(145, 29);
             this.btnGetChargeURL.TabIndex = 1;
@@ -196,7 +196,7 @@
             // 
             // btnGetPaymentURL
             // 
-            this.btnGetPaymentURL.Location = new System.Drawing.Point(8, 89);
+            this.btnGetPaymentURL.Location = new System.Drawing.Point(8, 85);
             this.btnGetPaymentURL.Name = "btnGetPaymentURL";
             this.btnGetPaymentURL.Size = new System.Drawing.Size(145, 29);
             this.btnGetPaymentURL.TabIndex = 5;
@@ -227,7 +227,7 @@
             // 
             // btnUpdateCorpInfo
             // 
-            this.btnUpdateCorpInfo.Location = new System.Drawing.Point(7, 55);
+            this.btnUpdateCorpInfo.Location = new System.Drawing.Point(7, 52);
             this.btnUpdateCorpInfo.Name = "btnUpdateCorpInfo";
             this.btnUpdateCorpInfo.Size = new System.Drawing.Size(119, 29);
             this.btnUpdateCorpInfo.TabIndex = 1;
@@ -237,7 +237,7 @@
             // 
             // btnGetCorpInfo
             // 
-            this.btnGetCorpInfo.Location = new System.Drawing.Point(7, 21);
+            this.btnGetCorpInfo.Location = new System.Drawing.Point(7, 19);
             this.btnGetCorpInfo.Name = "btnGetCorpInfo";
             this.btnGetCorpInfo.Size = new System.Drawing.Size(119, 29);
             this.btnGetCorpInfo.TabIndex = 0;
@@ -257,7 +257,7 @@
             // 
             // btnGetChargeInfo
             // 
-            this.btnGetChargeInfo.Location = new System.Drawing.Point(6, 20);
+            this.btnGetChargeInfo.Location = new System.Drawing.Point(6, 19);
             this.btnGetChargeInfo.Name = "btnGetChargeInfo";
             this.btnGetChargeInfo.Size = new System.Drawing.Size(119, 29);
             this.btnGetChargeInfo.TabIndex = 5;
@@ -299,7 +299,7 @@
             // 
             // btnJoinMember
             // 
-            this.btnJoinMember.Location = new System.Drawing.Point(6, 84);
+            this.btnJoinMember.Location = new System.Drawing.Point(6, 85);
             this.btnJoinMember.Name = "btnJoinMember";
             this.btnJoinMember.Size = new System.Drawing.Size(119, 28);
             this.btnJoinMember.TabIndex = 1;
@@ -320,9 +320,19 @@
             this.GroupBox6.TabStop = false;
             this.GroupBox6.Text = "담당자 관련";
             // 
+            // btnGetContactInfo
+            // 
+            this.btnGetContactInfo.Location = new System.Drawing.Point(7, 52);
+            this.btnGetContactInfo.Name = "btnGetContactInfo";
+            this.btnGetContactInfo.Size = new System.Drawing.Size(119, 29);
+            this.btnGetContactInfo.TabIndex = 3;
+            this.btnGetContactInfo.Text = "담당자 정보 확인";
+            this.btnGetContactInfo.UseVisualStyleBackColor = true;
+            this.btnGetContactInfo.Click += new System.EventHandler(this.btnGetContactInfo_Click);
+            // 
             // btnUpdateContact
             // 
-            this.btnUpdateContact.Location = new System.Drawing.Point(7, 124);
+            this.btnUpdateContact.Location = new System.Drawing.Point(7, 118);
             this.btnUpdateContact.Name = "btnUpdateContact";
             this.btnUpdateContact.Size = new System.Drawing.Size(119, 29);
             this.btnUpdateContact.TabIndex = 2;
@@ -332,7 +342,7 @@
             // 
             // btnListContact
             // 
-            this.btnListContact.Location = new System.Drawing.Point(6, 90);
+            this.btnListContact.Location = new System.Drawing.Point(6, 85);
             this.btnListContact.Name = "btnListContact";
             this.btnListContact.Size = new System.Drawing.Size(119, 29);
             this.btnListContact.TabIndex = 1;
@@ -342,7 +352,7 @@
             // 
             // btnRegistContact
             // 
-            this.btnRegistContact.Location = new System.Drawing.Point(6, 21);
+            this.btnRegistContact.Location = new System.Drawing.Point(6, 19);
             this.btnRegistContact.Name = "btnRegistContact";
             this.btnRegistContact.Size = new System.Drawing.Size(119, 29);
             this.btnRegistContact.TabIndex = 0;
@@ -362,7 +372,7 @@
             // 
             // btnGetAccessURL
             // 
-            this.btnGetAccessURL.Location = new System.Drawing.Point(6, 20);
+            this.btnGetAccessURL.Location = new System.Drawing.Point(6, 19);
             this.btnGetAccessURL.Name = "btnGetAccessURL";
             this.btnGetAccessURL.Size = new System.Drawing.Size(119, 29);
             this.btnGetAccessURL.TabIndex = 0;
@@ -425,14 +435,14 @@
             this.groupBox14.Controls.Add(this.btnGetCertificatePopUpURL);
             this.groupBox14.Location = new System.Drawing.Point(832, 21);
             this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(177, 264);
+            this.groupBox14.Size = new System.Drawing.Size(177, 254);
             this.groupBox14.TabIndex = 8;
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "홈택스 인증관련 기능";
             // 
             // btnDeleteDeptUser
             // 
-            this.btnDeleteDeptUser.Location = new System.Drawing.Point(6, 222);
+            this.btnDeleteDeptUser.Location = new System.Drawing.Point(6, 216);
             this.btnDeleteDeptUser.Name = "btnDeleteDeptUser";
             this.btnDeleteDeptUser.Size = new System.Drawing.Size(163, 29);
             this.btnDeleteDeptUser.TabIndex = 10;
@@ -442,7 +452,7 @@
             // 
             // btnCheckLoginDeptUser
             // 
-            this.btnCheckLoginDeptUser.Location = new System.Drawing.Point(6, 188);
+            this.btnCheckLoginDeptUser.Location = new System.Drawing.Point(6, 184);
             this.btnCheckLoginDeptUser.Name = "btnCheckLoginDeptUser";
             this.btnCheckLoginDeptUser.Size = new System.Drawing.Size(163, 29);
             this.btnCheckLoginDeptUser.TabIndex = 9;
@@ -452,7 +462,7 @@
             // 
             // btnCheckDeptUser
             // 
-            this.btnCheckDeptUser.Location = new System.Drawing.Point(6, 154);
+            this.btnCheckDeptUser.Location = new System.Drawing.Point(6, 152);
             this.btnCheckDeptUser.Name = "btnCheckDeptUser";
             this.btnCheckDeptUser.Size = new System.Drawing.Size(163, 29);
             this.btnCheckDeptUser.TabIndex = 8;
@@ -472,7 +482,7 @@
             // 
             // btnCheckCertValidation
             // 
-            this.btnCheckCertValidation.Location = new System.Drawing.Point(6, 86);
+            this.btnCheckCertValidation.Location = new System.Drawing.Point(6, 88);
             this.btnCheckCertValidation.Name = "btnCheckCertValidation";
             this.btnCheckCertValidation.Size = new System.Drawing.Size(163, 29);
             this.btnCheckCertValidation.TabIndex = 6;
@@ -482,7 +492,7 @@
             // 
             // btnGetCertificateExpireDate
             // 
-            this.btnGetCertificateExpireDate.Location = new System.Drawing.Point(6, 54);
+            this.btnGetCertificateExpireDate.Location = new System.Drawing.Point(6, 56);
             this.btnGetCertificateExpireDate.Name = "btnGetCertificateExpireDate";
             this.btnGetCertificateExpireDate.Size = new System.Drawing.Size(163, 29);
             this.btnGetCertificateExpireDate.TabIndex = 5;
@@ -493,7 +503,7 @@
             // btnGetCertificatePopUpURL
             // 
             this.btnGetCertificatePopUpURL.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGetCertificatePopUpURL.Location = new System.Drawing.Point(6, 21);
+            this.btnGetCertificatePopUpURL.Location = new System.Drawing.Point(6, 23);
             this.btnGetCertificatePopUpURL.Name = "btnGetCertificatePopUpURL";
             this.btnGetCertificatePopUpURL.Size = new System.Drawing.Size(163, 29);
             this.btnGetCertificatePopUpURL.TabIndex = 4;
@@ -734,16 +744,6 @@
             this.textURL.Name = "textURL";
             this.textURL.Size = new System.Drawing.Size(339, 21);
             this.textURL.TabIndex = 7;
-            // 
-            // btnGetContactInfo
-            // 
-            this.btnGetContactInfo.Location = new System.Drawing.Point(7, 55);
-            this.btnGetContactInfo.Name = "btnGetContactInfo";
-            this.btnGetContactInfo.Size = new System.Drawing.Size(119, 29);
-            this.btnGetContactInfo.TabIndex = 3;
-            this.btnGetContactInfo.Text = "담당자 정보 확인";
-            this.btnGetContactInfo.UseVisualStyleBackColor = true;
-            this.btnGetContactInfo.Click += new System.EventHandler(this.btnGetContactInfo_Click);
             // 
             // frmExample
             // 

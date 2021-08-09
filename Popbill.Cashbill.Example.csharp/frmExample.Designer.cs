@@ -90,6 +90,7 @@
             this.btnUpdateCorpInfo = new System.Windows.Forms.Button();
             this.btnGetCorpInfo = new System.Windows.Forms.Button();
             this.GroupBox6 = new System.Windows.Forms.GroupBox();
+            this.btnGetContactInfo = new System.Windows.Forms.Button();
             this.btnUpdateContact = new System.Windows.Forms.Button();
             this.btnListContact = new System.Windows.Forms.Button();
             this.btnRegistContact = new System.Windows.Forms.Button();
@@ -103,7 +104,6 @@
             this.Label2 = new System.Windows.Forms.Label();
             this.txtCorpNum = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
-            this.btnGetContactInfo = new System.Windows.Forms.Button();
             this.GroupBox9.SuspendLayout();
             this.GroupBox11.SuspendLayout();
             this.GroupBox3.SuspendLayout();
@@ -329,7 +329,7 @@
             // 
             // btnGetChargeInfo
             // 
-            this.btnGetChargeInfo.Location = new System.Drawing.Point(6, 52);
+            this.btnGetChargeInfo.Location = new System.Drawing.Point(6, 51);
             this.btnGetChargeInfo.Name = "btnGetChargeInfo";
             this.btnGetChargeInfo.Size = new System.Drawing.Size(118, 28);
             this.btnGetChargeInfo.TabIndex = 5;
@@ -381,7 +381,7 @@
             // 
             // btnCheckID
             // 
-            this.btnCheckID.Location = new System.Drawing.Point(6, 52);
+            this.btnCheckID.Location = new System.Drawing.Point(6, 51);
             this.btnCheckID.Name = "btnCheckID";
             this.btnCheckID.Size = new System.Drawing.Size(112, 28);
             this.btnCheckID.TabIndex = 3;
@@ -401,7 +401,7 @@
             // 
             // btnJoinMember
             // 
-            this.btnJoinMember.Location = new System.Drawing.Point(6, 84);
+            this.btnJoinMember.Location = new System.Drawing.Point(6, 82);
             this.btnJoinMember.Name = "btnJoinMember";
             this.btnJoinMember.Size = new System.Drawing.Size(112, 28);
             this.btnJoinMember.TabIndex = 1;
@@ -722,7 +722,7 @@
             // 
             // btnGetAccessURL
             // 
-            this.btnGetAccessURL.Location = new System.Drawing.Point(6, 19);
+            this.btnGetAccessURL.Location = new System.Drawing.Point(6, 20);
             this.btnGetAccessURL.Name = "btnGetAccessURL";
             this.btnGetAccessURL.Size = new System.Drawing.Size(116, 28);
             this.btnGetAccessURL.TabIndex = 0;
@@ -790,9 +790,19 @@
             this.GroupBox6.TabStop = false;
             this.GroupBox6.Text = "담당자 관련";
             // 
+            // btnGetContactInfo
+            // 
+            this.btnGetContactInfo.Location = new System.Drawing.Point(6, 51);
+            this.btnGetContactInfo.Name = "btnGetContactInfo";
+            this.btnGetContactInfo.Size = new System.Drawing.Size(117, 28);
+            this.btnGetContactInfo.TabIndex = 3;
+            this.btnGetContactInfo.Text = "담당자 정보 확인";
+            this.btnGetContactInfo.UseVisualStyleBackColor = true;
+            this.btnGetContactInfo.Click += new System.EventHandler(this.btnGetContactInfo_Click);
+            // 
             // btnUpdateContact
             // 
-            this.btnUpdateContact.Location = new System.Drawing.Point(6, 114);
+            this.btnUpdateContact.Location = new System.Drawing.Point(6, 113);
             this.btnUpdateContact.Name = "btnUpdateContact";
             this.btnUpdateContact.Size = new System.Drawing.Size(117, 28);
             this.btnUpdateContact.TabIndex = 2;
@@ -812,7 +822,7 @@
             // 
             // btnRegistContact
             // 
-            this.btnRegistContact.Location = new System.Drawing.Point(6, 21);
+            this.btnRegistContact.Location = new System.Drawing.Point(6, 20);
             this.btnRegistContact.Name = "btnRegistContact";
             this.btnRegistContact.Size = new System.Drawing.Size(117, 28);
             this.btnRegistContact.TabIndex = 0;
@@ -843,7 +853,7 @@
             // 
             // btnGetPartnerURL_CHRG
             // 
-            this.btnGetPartnerURL_CHRG.Location = new System.Drawing.Point(8, 52);
+            this.btnGetPartnerURL_CHRG.Location = new System.Drawing.Point(8, 51);
             this.btnGetPartnerURL_CHRG.Name = "btnGetPartnerURL_CHRG";
             this.btnGetPartnerURL_CHRG.Size = new System.Drawing.Size(119, 28);
             this.btnGetPartnerURL_CHRG.TabIndex = 0;
@@ -919,16 +929,6 @@
             this.Label1.Size = new System.Drawing.Size(129, 12);
             this.Label1.TabIndex = 7;
             this.Label1.Text = "팝빌회원 사업자번호 : ";
-            // 
-            // btnGetContactInfo
-            // 
-            this.btnGetContactInfo.Location = new System.Drawing.Point(6, 51);
-            this.btnGetContactInfo.Name = "btnGetContactInfo";
-            this.btnGetContactInfo.Size = new System.Drawing.Size(117, 28);
-            this.btnGetContactInfo.TabIndex = 3;
-            this.btnGetContactInfo.Text = "담당자 정보 확인";
-            this.btnGetContactInfo.UseVisualStyleBackColor = true;
-            this.btnGetContactInfo.Click += new System.EventHandler(this.btnGetContactInfo_Click);
             // 
             // frmExample
             // 

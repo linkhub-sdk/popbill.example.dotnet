@@ -47,6 +47,7 @@
             this.btnGetPartnerBalance = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnGetContactInfo = new System.Windows.Forms.Button();
             this.btnUpdateContact = new System.Windows.Forms.Button();
             this.btnListContact = new System.Windows.Forms.Button();
             this.btnRegistContact = new System.Windows.Forms.Button();
@@ -64,7 +65,6 @@
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.textURL = new System.Windows.Forms.TextBox();
-            this.btnGetContactInfo = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -108,7 +108,7 @@
             // 
             // btnJoinMember
             // 
-            this.btnJoinMember.Location = new System.Drawing.Point(39, 145);
+            this.btnJoinMember.Location = new System.Drawing.Point(39, 148);
             this.btnJoinMember.Name = "btnJoinMember";
             this.btnJoinMember.Size = new System.Drawing.Size(104, 32);
             this.btnJoinMember.TabIndex = 1;
@@ -202,7 +202,7 @@
             // 
             // btnCheckID
             // 
-            this.btnCheckID.Location = new System.Drawing.Point(8, 54);
+            this.btnCheckID.Location = new System.Drawing.Point(8, 56);
             this.btnCheckID.Name = "btnCheckID";
             this.btnCheckID.Size = new System.Drawing.Size(104, 32);
             this.btnCheckID.TabIndex = 22;
@@ -263,6 +263,16 @@
             this.groupBox4.TabIndex = 14;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "담당자 관련";
+            // 
+            // btnGetContactInfo
+            // 
+            this.btnGetContactInfo.Location = new System.Drawing.Point(8, 55);
+            this.btnGetContactInfo.Name = "btnGetContactInfo";
+            this.btnGetContactInfo.Size = new System.Drawing.Size(117, 32);
+            this.btnGetContactInfo.TabIndex = 3;
+            this.btnGetContactInfo.Text = "담당자 정보 확인";
+            this.btnGetContactInfo.UseVisualStyleBackColor = true;
+            this.btnGetContactInfo.Click += new System.EventHandler(this.btnGetContactInfo_Click);
             // 
             // btnUpdateContact
             // 
@@ -439,16 +449,6 @@
             this.textURL.Name = "textURL";
             this.textURL.Size = new System.Drawing.Size(333, 21);
             this.textURL.TabIndex = 23;
-            // 
-            // btnGetContactInfo
-            // 
-            this.btnGetContactInfo.Location = new System.Drawing.Point(8, 55);
-            this.btnGetContactInfo.Name = "btnGetContactInfo";
-            this.btnGetContactInfo.Size = new System.Drawing.Size(117, 32);
-            this.btnGetContactInfo.TabIndex = 3;
-            this.btnGetContactInfo.Text = "담당자 정보 확인";
-            this.btnGetContactInfo.UseVisualStyleBackColor = true;
-            this.btnGetContactInfo.Click += new System.EventHandler(this.btnGetContactInfo_Click);
             // 
             // frmExample
             // 

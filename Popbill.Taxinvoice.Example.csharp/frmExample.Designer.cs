@@ -385,14 +385,14 @@
             this.GroupBox9.Controls.Add(this.btnGetDetailInfo);
             this.GroupBox9.Location = new System.Drawing.Point(181, 369);
             this.GroupBox9.Name = "GroupBox9";
-            this.GroupBox9.Size = new System.Drawing.Size(158, 244);
+            this.GroupBox9.Size = new System.Drawing.Size(158, 254);
             this.GroupBox9.TabIndex = 8;
             this.GroupBox9.TabStop = false;
             this.GroupBox9.Text = "문서 정보";
             // 
             // btnGetBulkResult
             // 
-            this.btnGetBulkResult.Location = new System.Drawing.Point(15, 206);
+            this.btnGetBulkResult.Location = new System.Drawing.Point(15, 209);
             this.btnGetBulkResult.Name = "btnGetBulkResult";
             this.btnGetBulkResult.Size = new System.Drawing.Size(131, 32);
             this.btnGetBulkResult.TabIndex = 11;
@@ -442,7 +442,7 @@
             // 
             // btnGetMassPrintURL
             // 
-            this.btnGetMassPrintURL.Location = new System.Drawing.Point(195, 134);
+            this.btnGetMassPrintURL.Location = new System.Drawing.Point(195, 133);
             this.btnGetMassPrintURL.Name = "btnGetMassPrintURL";
             this.btnGetMassPrintURL.Size = new System.Drawing.Size(174, 32);
             this.btnGetMassPrintURL.TabIndex = 12;
@@ -462,7 +462,7 @@
             // 
             // btnEPrintURL
             // 
-            this.btnEPrintURL.Location = new System.Drawing.Point(195, 96);
+            this.btnEPrintURL.Location = new System.Drawing.Point(195, 95);
             this.btnEPrintURL.Name = "btnEPrintURL";
             this.btnEPrintURL.Size = new System.Drawing.Size(174, 32);
             this.btnEPrintURL.TabIndex = 11;
@@ -499,7 +499,7 @@
             this.GroupBox10.Controls.Add(this.gtnGetFiles);
             this.GroupBox10.Location = new System.Drawing.Point(23, 369);
             this.GroupBox10.Name = "GroupBox10";
-            this.GroupBox10.Size = new System.Drawing.Size(152, 244);
+            this.GroupBox10.Size = new System.Drawing.Size(152, 254);
             this.GroupBox10.TabIndex = 9;
             this.GroupBox10.TabStop = false;
             this.GroupBox10.Text = "첨부파일";
@@ -576,14 +576,14 @@
             this.GroupBox11.Controls.Add(this.btnSendEmail);
             this.GroupBox11.Location = new System.Drawing.Point(345, 369);
             this.GroupBox11.Name = "GroupBox11";
-            this.GroupBox11.Size = new System.Drawing.Size(314, 244);
+            this.GroupBox11.Size = new System.Drawing.Size(314, 254);
             this.GroupBox11.TabIndex = 10;
             this.GroupBox11.TabStop = false;
             this.GroupBox11.Text = "부가서비스";
             // 
             // btnGetSendToNTSConfig
             // 
-            this.btnGetSendToNTSConfig.Location = new System.Drawing.Point(155, 172);
+            this.btnGetSendToNTSConfig.Location = new System.Drawing.Point(155, 171);
             this.btnGetSendToNTSConfig.Name = "btnGetSendToNTSConfig";
             this.btnGetSendToNTSConfig.Size = new System.Drawing.Size(151, 32);
             this.btnGetSendToNTSConfig.TabIndex = 14;
@@ -593,7 +593,7 @@
             // 
             // btnUpdateEmailConfig
             // 
-            this.btnUpdateEmailConfig.Location = new System.Drawing.Point(155, 134);
+            this.btnUpdateEmailConfig.Location = new System.Drawing.Point(155, 133);
             this.btnUpdateEmailConfig.Name = "btnUpdateEmailConfig";
             this.btnUpdateEmailConfig.Size = new System.Drawing.Size(151, 32);
             this.btnUpdateEmailConfig.TabIndex = 1;
@@ -603,7 +603,7 @@
             // 
             // btnListEmailConfig
             // 
-            this.btnListEmailConfig.Location = new System.Drawing.Point(155, 96);
+            this.btnListEmailConfig.Location = new System.Drawing.Point(155, 95);
             this.btnListEmailConfig.Name = "btnListEmailConfig";
             this.btnListEmailConfig.Size = new System.Drawing.Size(151, 32);
             this.btnListEmailConfig.TabIndex = 0;
@@ -623,7 +623,7 @@
             // 
             // btnDetachStmt
             // 
-            this.btnDetachStmt.Location = new System.Drawing.Point(156, 58);
+            this.btnDetachStmt.Location = new System.Drawing.Point(156, 57);
             this.btnDetachStmt.Name = "btnDetachStmt";
             this.btnDetachStmt.Size = new System.Drawing.Size(151, 32);
             this.btnDetachStmt.TabIndex = 12;
@@ -802,7 +802,7 @@
             this.GroupBox7.Controls.Add(this.groupBox21);
             this.GroupBox7.Location = new System.Drawing.Point(12, 217);
             this.GroupBox7.Name = "GroupBox7";
-            this.GroupBox7.Size = new System.Drawing.Size(1326, 623);
+            this.GroupBox7.Size = new System.Drawing.Size(1326, 629);
             this.GroupBox7.TabIndex = 12;
             this.GroupBox7.TabStop = false;
             this.GroupBox7.Text = "전자세금계산서 관련 API";
@@ -815,7 +815,7 @@
             this.GroupBox13.Controls.Add(this.btnGetURL_TBOX);
             this.GroupBox13.Location = new System.Drawing.Point(1101, 369);
             this.GroupBox13.Name = "GroupBox13";
-            this.GroupBox13.Size = new System.Drawing.Size(211, 244);
+            this.GroupBox13.Size = new System.Drawing.Size(211, 254);
             this.GroupBox13.TabIndex = 12;
             this.GroupBox13.TabStop = false;
             this.GroupBox13.Text = "기타 URL";
@@ -872,14 +872,14 @@
             this.GroupBox12.Controls.Add(this.btnGetPopUpURL);
             this.GroupBox12.Location = new System.Drawing.Point(675, 369);
             this.GroupBox12.Name = "GroupBox12";
-            this.GroupBox12.Size = new System.Drawing.Size(384, 244);
+            this.GroupBox12.Size = new System.Drawing.Size(384, 254);
             this.GroupBox12.TabIndex = 11;
             this.GroupBox12.TabStop = false;
             this.GroupBox12.Text = "문서관련 URL 기능";
             // 
             // btnGetOldPrintURL
             // 
-            this.btnGetOldPrintURL.Location = new System.Drawing.Point(195, 58);
+            this.btnGetOldPrintURL.Location = new System.Drawing.Point(195, 57);
             this.btnGetOldPrintURL.Name = "btnGetOldPrintURL";
             this.btnGetOldPrintURL.Size = new System.Drawing.Size(174, 32);
             this.btnGetOldPrintURL.TabIndex = 16;
@@ -889,7 +889,7 @@
             // 
             // btnGetPDFURL
             // 
-            this.btnGetPDFURL.Location = new System.Drawing.Point(15, 132);
+            this.btnGetPDFURL.Location = new System.Drawing.Point(15, 133);
             this.btnGetPDFURL.Name = "btnGetPDFURL";
             this.btnGetPDFURL.Size = new System.Drawing.Size(174, 32);
             this.btnGetPDFURL.TabIndex = 15;
@@ -1601,7 +1601,7 @@
             // 
             // btnGetUseHistoryURL
             // 
-            this.btnGetUseHistoryURL.Location = new System.Drawing.Point(9, 114);
+            this.btnGetUseHistoryURL.Location = new System.Drawing.Point(9, 112);
             this.btnGetUseHistoryURL.Name = "btnGetUseHistoryURL";
             this.btnGetUseHistoryURL.Size = new System.Drawing.Size(142, 27);
             this.btnGetUseHistoryURL.TabIndex = 4;
@@ -1685,7 +1685,7 @@
             // 
             // btnUpdateContact
             // 
-            this.btnUpdateContact.Location = new System.Drawing.Point(9, 114);
+            this.btnUpdateContact.Location = new System.Drawing.Point(9, 112);
             this.btnUpdateContact.Name = "btnUpdateContact";
             this.btnUpdateContact.Size = new System.Drawing.Size(142, 27);
             this.btnUpdateContact.TabIndex = 2;
@@ -1695,7 +1695,7 @@
             // 
             // btnListContact
             // 
-            this.btnListContact.Location = new System.Drawing.Point(9, 82);
+            this.btnListContact.Location = new System.Drawing.Point(9, 81);
             this.btnListContact.Name = "btnListContact";
             this.btnListContact.Size = new System.Drawing.Size(142, 27);
             this.btnListContact.TabIndex = 1;
@@ -1768,7 +1768,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1367, 852);
+            this.ClientSize = new System.Drawing.Size(1367, 858);
             this.Controls.Add(this.textURL);
             this.Controls.Add(this.GroupBox7);
             this.Controls.Add(this.label8);

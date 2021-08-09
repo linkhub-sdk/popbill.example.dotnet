@@ -37,6 +37,7 @@
             this.btnUpdateCorpInfo = new System.Windows.Forms.Button();
             this.btnGetCorpInfo = new System.Windows.Forms.Button();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.btnGetContactInfo = new System.Windows.Forms.Button();
             this.btnUpdateContact = new System.Windows.Forms.Button();
             this.btnListContact = new System.Windows.Forms.Button();
             this.btnRegistContact = new System.Windows.Forms.Button();
@@ -98,7 +99,6 @@
             this.fileDialog = new System.Windows.Forms.OpenFileDialog();
             this.label6 = new System.Windows.Forms.Label();
             this.textURL = new System.Windows.Forms.TextBox();
-            this.btnGetContactInfo = new System.Windows.Forms.Button();
             this.GroupBox1.SuspendLayout();
             this.groupBox14.SuspendLayout();
             this.groupBox11.SuspendLayout();
@@ -163,7 +163,7 @@
             // 
             // btnGetPartnerBalance
             // 
-            this.btnGetPartnerBalance.Location = new System.Drawing.Point(6, 22);
+            this.btnGetPartnerBalance.Location = new System.Drawing.Point(6, 21);
             this.btnGetPartnerBalance.Name = "btnGetPartnerBalance";
             this.btnGetPartnerBalance.Size = new System.Drawing.Size(124, 31);
             this.btnGetPartnerBalance.TabIndex = 3;
@@ -175,16 +175,16 @@
             // 
             this.groupBox11.Controls.Add(this.btnUpdateCorpInfo);
             this.groupBox11.Controls.Add(this.btnGetCorpInfo);
-            this.groupBox11.Location = new System.Drawing.Point(1017, 14);
+            this.groupBox11.Location = new System.Drawing.Point(1017, 16);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(130, 175);
+            this.groupBox11.Size = new System.Drawing.Size(136, 173);
             this.groupBox11.TabIndex = 4;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "회사정보 관련";
             // 
             // btnUpdateCorpInfo
             // 
-            this.btnUpdateCorpInfo.Location = new System.Drawing.Point(7, 60);
+            this.btnUpdateCorpInfo.Location = new System.Drawing.Point(7, 59);
             this.btnUpdateCorpInfo.Name = "btnUpdateCorpInfo";
             this.btnUpdateCorpInfo.Size = new System.Drawing.Size(115, 31);
             this.btnUpdateCorpInfo.TabIndex = 2;
@@ -195,7 +195,7 @@
             // 
             // btnGetCorpInfo
             // 
-            this.btnGetCorpInfo.Location = new System.Drawing.Point(7, 23);
+            this.btnGetCorpInfo.Location = new System.Drawing.Point(7, 21);
             this.btnGetCorpInfo.Name = "btnGetCorpInfo";
             this.btnGetCorpInfo.Size = new System.Drawing.Size(115, 31);
             this.btnGetCorpInfo.TabIndex = 1;
@@ -215,6 +215,16 @@
             this.groupBox10.TabIndex = 3;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "담당자 관련";
+            // 
+            // btnGetContactInfo
+            // 
+            this.btnGetContactInfo.Location = new System.Drawing.Point(7, 59);
+            this.btnGetContactInfo.Name = "btnGetContactInfo";
+            this.btnGetContactInfo.Size = new System.Drawing.Size(120, 31);
+            this.btnGetContactInfo.TabIndex = 3;
+            this.btnGetContactInfo.Text = "담당자 정보 확인";
+            this.btnGetContactInfo.UseVisualStyleBackColor = true;
+            this.btnGetContactInfo.Click += new System.EventHandler(this.btnGetContactInfo_Click);
             // 
             // btnUpdateContact
             // 
@@ -281,7 +291,7 @@
             // 
             // btnGetChargeURL
             // 
-            this.btnGetChargeURL.Location = new System.Drawing.Point(12, 58);
+            this.btnGetChargeURL.Location = new System.Drawing.Point(12, 59);
             this.btnGetChargeURL.Name = "btnGetChargeURL";
             this.btnGetChargeURL.Size = new System.Drawing.Size(131, 31);
             this.btnGetChargeURL.TabIndex = 1;
@@ -311,7 +321,7 @@
             // 
             // btnGetAccessURL
             // 
-            this.btnGetAccessURL.Location = new System.Drawing.Point(7, 22);
+            this.btnGetAccessURL.Location = new System.Drawing.Point(7, 21);
             this.btnGetAccessURL.Name = "btnGetAccessURL";
             this.btnGetAccessURL.Size = new System.Drawing.Size(123, 31);
             this.btnGetAccessURL.TabIndex = 0;
@@ -606,7 +616,7 @@
             // 
             // btnGetSentListURL
             // 
-            this.btnGetSentListURL.Location = new System.Drawing.Point(207, 146);
+            this.btnGetSentListURL.Location = new System.Drawing.Point(205, 146);
             this.btnGetSentListURL.Name = "btnGetSentListURL";
             this.btnGetSentListURL.Size = new System.Drawing.Size(184, 36);
             this.btnGetSentListURL.TabIndex = 9;
@@ -616,7 +626,7 @@
             // 
             // btnListATSTemplate
             // 
-            this.btnListATSTemplate.Location = new System.Drawing.Point(206, 104);
+            this.btnListATSTemplate.Location = new System.Drawing.Point(205, 104);
             this.btnListATSTemplate.Name = "btnListATSTemplate";
             this.btnListATSTemplate.Size = new System.Drawing.Size(184, 36);
             this.btnListATSTemplate.TabIndex = 8;
@@ -835,16 +845,6 @@
             this.textURL.Name = "textURL";
             this.textURL.Size = new System.Drawing.Size(347, 21);
             this.textURL.TabIndex = 28;
-            // 
-            // btnGetContactInfo
-            // 
-            this.btnGetContactInfo.Location = new System.Drawing.Point(7, 59);
-            this.btnGetContactInfo.Name = "btnGetContactInfo";
-            this.btnGetContactInfo.Size = new System.Drawing.Size(120, 31);
-            this.btnGetContactInfo.TabIndex = 3;
-            this.btnGetContactInfo.Text = "담당자 정보 확인";
-            this.btnGetContactInfo.UseVisualStyleBackColor = true;
-            this.btnGetContactInfo.Click += new System.EventHandler(this.btnGetContactInfo_Click);
             // 
             // frmExample
             // 

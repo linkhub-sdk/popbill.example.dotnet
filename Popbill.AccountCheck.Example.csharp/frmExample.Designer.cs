@@ -52,6 +52,7 @@
             this.btnGetPartnerURL_CHRG = new System.Windows.Forms.Button();
             this.btnGetPartnerBalance = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnGetContactInfo = new System.Windows.Forms.Button();
             this.btnUpdateContact = new System.Windows.Forms.Button();
             this.btnListContact = new System.Windows.Forms.Button();
             this.btnRegistContact = new System.Windows.Forms.Button();
@@ -65,7 +66,6 @@
             this.txtBankCode = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textURL = new System.Windows.Forms.TextBox();
-            this.btnGetContactInfo = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -113,7 +113,7 @@
             // 
             // btnJoinMember
             // 
-            this.btnJoinMember.Location = new System.Drawing.Point(39, 145);
+            this.btnJoinMember.Location = new System.Drawing.Point(39, 148);
             this.btnJoinMember.Name = "btnJoinMember";
             this.btnJoinMember.Size = new System.Drawing.Size(104, 32);
             this.btnJoinMember.TabIndex = 22;
@@ -134,16 +134,16 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnCheckID);
-            this.groupBox1.Location = new System.Drawing.Point(31, 55);
+            this.groupBox1.Location = new System.Drawing.Point(31, 58);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(118, 170);
+            this.groupBox1.Size = new System.Drawing.Size(118, 167);
             this.groupBox1.TabIndex = 23;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "회원정보";
             // 
             // btnCheckID
             // 
-            this.btnCheckID.Location = new System.Drawing.Point(8, 55);
+            this.btnCheckID.Location = new System.Drawing.Point(8, 53);
             this.btnCheckID.Name = "btnCheckID";
             this.btnCheckID.Size = new System.Drawing.Size(104, 32);
             this.btnCheckID.TabIndex = 22;
@@ -155,16 +155,16 @@
             // 
             this.groupBox2.Controls.Add(this.btnGetChargeInfo);
             this.groupBox2.Controls.Add(this.btnUnitCost);
-            this.groupBox2.Location = new System.Drawing.Point(156, 55);
+            this.groupBox2.Location = new System.Drawing.Point(156, 58);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(133, 170);
+            this.groupBox2.Size = new System.Drawing.Size(133, 167);
             this.groupBox2.TabIndex = 24;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "포인트 관련";
             // 
             // btnGetChargeInfo
             // 
-            this.btnGetChargeInfo.Location = new System.Drawing.Point(6, 56);
+            this.btnGetChargeInfo.Location = new System.Drawing.Point(6, 53);
             this.btnGetChargeInfo.Name = "btnGetChargeInfo";
             this.btnGetChargeInfo.Size = new System.Drawing.Size(119, 32);
             this.btnGetChargeInfo.TabIndex = 1;
@@ -174,7 +174,7 @@
             // 
             // btnUnitCost
             // 
-            this.btnUnitCost.Location = new System.Drawing.Point(6, 20);
+            this.btnUnitCost.Location = new System.Drawing.Point(6, 17);
             this.btnUnitCost.Name = "btnUnitCost";
             this.btnUnitCost.Size = new System.Drawing.Size(119, 32);
             this.btnUnitCost.TabIndex = 7;
@@ -221,7 +221,7 @@
             // 
             // btnGetPaymentURL
             // 
-            this.btnGetPaymentURL.Location = new System.Drawing.Point(6, 91);
+            this.btnGetPaymentURL.Location = new System.Drawing.Point(6, 90);
             this.btnGetPaymentURL.Name = "btnGetPaymentURL";
             this.btnGetPaymentURL.Size = new System.Drawing.Size(136, 32);
             this.btnGetPaymentURL.TabIndex = 10;
@@ -262,7 +262,7 @@
             // 
             // btnUpdateCorpInfo
             // 
-            this.btnUpdateCorpInfo.Location = new System.Drawing.Point(10, 52);
+            this.btnUpdateCorpInfo.Location = new System.Drawing.Point(10, 53);
             this.btnUpdateCorpInfo.Name = "btnUpdateCorpInfo";
             this.btnUpdateCorpInfo.Size = new System.Drawing.Size(111, 32);
             this.btnUpdateCorpInfo.TabIndex = 1;
@@ -323,6 +323,16 @@
             this.groupBox4.TabIndex = 14;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "담당자 관련";
+            // 
+            // btnGetContactInfo
+            // 
+            this.btnGetContactInfo.Location = new System.Drawing.Point(8, 53);
+            this.btnGetContactInfo.Name = "btnGetContactInfo";
+            this.btnGetContactInfo.Size = new System.Drawing.Size(117, 32);
+            this.btnGetContactInfo.TabIndex = 3;
+            this.btnGetContactInfo.Text = "담당자 정보 확인";
+            this.btnGetContactInfo.UseVisualStyleBackColor = true;
+            this.btnGetContactInfo.Click += new System.EventHandler(this.btnGetContactInfo_Click);
             // 
             // btnUpdateContact
             // 
@@ -447,16 +457,6 @@
             this.textURL.Name = "textURL";
             this.textURL.Size = new System.Drawing.Size(272, 21);
             this.textURL.TabIndex = 28;
-            // 
-            // btnGetContactInfo
-            // 
-            this.btnGetContactInfo.Location = new System.Drawing.Point(8, 53);
-            this.btnGetContactInfo.Name = "btnGetContactInfo";
-            this.btnGetContactInfo.Size = new System.Drawing.Size(117, 32);
-            this.btnGetContactInfo.TabIndex = 3;
-            this.btnGetContactInfo.Text = "담당자 정보 확인";
-            this.btnGetContactInfo.UseVisualStyleBackColor = true;
-            this.btnGetContactInfo.Click += new System.EventHandler(this.btnGetContactInfo_Click);
             // 
             // frmExample
             // 
