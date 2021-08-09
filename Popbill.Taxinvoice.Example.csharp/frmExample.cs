@@ -366,7 +366,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
             // 지연발행 강제여부, 기본값 - False
             // 지연발행 세금계산서를 발행하는 경우, 가산세가 부과될 수 있습니다.
-            // 지연발행 세금계산서를 신고해야 하는 경우 forceIssue 값을 true 선언하여 발행(Issue API)을 호출할 수 있습니다.
+            // 지연발행 세금계산서를 신고해야 하는 경우 forceIssue 값을 true 선언하여 초대량 발행 접수(BulkSubmit API)을 호출할 수 있습니다.
             bool forceIssue = false;
 
             for (int i = 0; i < 100; i++)
@@ -405,7 +405,7 @@ namespace Popbill.Taxinvoice.Example.csharp
                 // [필수] 공급자 상호
                 taxinvoice.invoicerCorpName = "공급자 상호";
 
-                // [필수] 공급자 문서번호, 숫자, 영문, '-', '_' 조합으로 1~24자리까지 사업자번호별 중복없는 고유번호 할당
+                // [필수] 공급자 문서번호, 최대 24자리, 영문, 숫자 '-', '_'를 조합하여 사업자별로 중복되지 않도록 구성
                 taxinvoice.invoicerMgtKey = txtSubmitID.Text + "-" + i;
 
                 // [필수] 공급자 대표자 성명
@@ -450,7 +450,7 @@ namespace Popbill.Taxinvoice.Example.csharp
                 // [필수] 공급받는자 상호
                 taxinvoice.invoiceeCorpName = "공급받는자 상호";
 
-                // [역발행시 필수] 공급받는자 문서번호, 숫자, 영문, '-', '_' 조합으로 1~24자리까지 사업자번호별 중복없는 고유번호 할당
+                // [역발행시 필수] 공급받는자 문서번호, 최대 24자리, 영문, 숫자 '-', '_'를 조합하여 사업자별로 중복되지 않도록 구성
                 taxinvoice.invoiceeMgtKey = "";
 
                 // [필수] 공급받는자 대표자 성명
@@ -610,6 +610,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
                 taxinvoiceList.Add(taxinvoice);
             }
+
             try
             {
                 BulkResponse response = taxinvoiceService.BulkSubmit(txtCorpNum.Text, txtSubmitID.Text, taxinvoiceList, forceIssue,
@@ -4040,7 +4041,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "담당자 추가등록");
+                                "응답메시지(message) : " + ex.Message, "담당자 정보 확인");
             }
         }
 

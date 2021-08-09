@@ -543,7 +543,7 @@ namespace Popbill.Closedown.Example.csharp
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "담당자 추가등록");
+                                "응답메시지(message) : " + ex.Message, "담당자 정보 확인");
             }
         }
 
