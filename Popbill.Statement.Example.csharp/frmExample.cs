@@ -105,7 +105,7 @@ namespace Popbill.Statement.Example.csharp
             Statement statement = new Statement();
 
             // [필수], 기재상 작성일자 날짜형식(yyyyMMdd)
-            statement.writeDate = "20210701";
+            statement.writeDate = "20210809";
 
             // [필수], {영수, 청구} 중 기재
             statement.purposeType = "영수";
@@ -272,7 +272,8 @@ namespace Popbill.Statement.Example.csharp
                 STMIssueResponse response = statementService.RegistIssue(txtCorpNum.Text, statement, memo, txtUserID.Text, emailSubject);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + response.message, "전자명세서 즉시발행");
+                                "응답메시지(message) : " + response.message + "\r\n" +
+                                "팝빌 승인번호(invoiceNum) : " + response.invoiceNum,"전자명세서 즉시발행");
             }
             catch (PopbillException ex)
             {
