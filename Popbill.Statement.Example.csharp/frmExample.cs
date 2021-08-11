@@ -1484,7 +1484,7 @@ namespace Popbill.Statement.Example.csharp
          * - 팝빌 사이트 [문자·팩스] > [팩스] > [전송내역] 메뉴에서 전송결과를 확인 할 수 있습니다.
          * - 함수 호출시 포인트가 과금됩니다.
          * - 팩스 발행 요청시 작성한 문서번호는 팩스전송 파일명으로 사용됩니다.
-         * - 팩스 전송결과를 확인하기 위해서는 선팩스 전송 요청 시 반환받은 접수번호를 이용하여 팩스 API의 전송결과 확인 (GetFaxDetail) API를 이용하면 됩니다.
+         * - 팩스 전송결과를 확인하기 위해서는 선팩스 전송 요청 시 반환받은 접수번호를 이용하여 팩스 API의 전송결과 확인 (GetFaxResult) API를 이용하면 됩니다.
          * - https://docs.popbill.com/statement/dotnet/api#FAXSend
          */
         private void btnFAXSend_Click(object sender, EventArgs e)
