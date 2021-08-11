@@ -79,7 +79,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
         /*
          * 작성된 세금계산서 데이터를 팝빌에 저장과 동시에 발행(전자서명)하여 "발행완료" 상태로 처리합니다.
-         * - 세금계산서 국세청 전송 정책 : https://docs.popbill.com/taxinvoice/ntsSendPolicy?lang=java
+         * - 세금계산서 국세청 전송 정책 : https://docs.popbill.com/taxinvoice/ntsSendPolicy?lang=dotnet
          * - https://docs.popbill.com/taxinvoice/dotnet/api#RegistIssue
          */
         private void btnRegistIssue_Click(object sender, EventArgs e)
@@ -1174,7 +1174,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
         /*
          * "임시저장" 상태의 세금계산서를 발행(전자서명)하며, "발행완료" 상태로 처리합니다.
-         * - 세금계산서 국세청 전송정책 : https://docs.popbill.com/taxinvoice/ntsSendPolicy?lang=php
+         * - 세금계산서 국세청 전송정책 : https://docs.popbill.com/taxinvoice/ntsSendPolicy?lang=dotnet
          * - https://docs.popbill.com/taxinvoice/dotnet/api#TIIssue
          */
         private void btnIssue_Click(object sender, EventArgs e)
@@ -1209,7 +1209,7 @@ namespace Popbill.Taxinvoice.Example.csharp
         /*
          * "(역)발행대기" 상태의 세금계산서를 발행(전자서명)하며, "발행완료" 상태로 처리합니다.
          * - 발행(Issue API)을 호출하는 시점에서 포인트가 차감됩니다.
-         * - 세금계산서 국세청 전송정책 : https://docs.popbill.com/taxinvoice/ntsSendPolicy?lang=php
+         * - 세금계산서 국세청 전송정책 : https://docs.popbill.com/taxinvoice/ntsSendPolicy?lang=dotnet
          * - https://docs.popbill.com/taxinvoice/dotnet/api#TIIssue
          */
         private void btnIssue_Reverse_sub_Click(object sender, EventArgs e)
@@ -3605,7 +3605,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
         /*
          * 팝빌 인증서버에 등록된 인증서의 유효성을 확인합니다.
-         * - https://docs.popbill.com/taxinvoice/java/api#CheckCertValidation
+         * - https://docs.popbill.com/taxinvoice/dotnet/api#CheckCertValidation
          */
         private void btnCheckCertValidation_Click(object sender, EventArgs e)
         {
