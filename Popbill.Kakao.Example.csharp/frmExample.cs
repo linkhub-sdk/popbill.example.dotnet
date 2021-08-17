@@ -189,7 +189,7 @@ namespace Popbill.Kakao.Example.csharp
 
         /*
          * 승인된 알림톡 템플릿 정보를 확인합니다.
-         * - https://docs.popbill.com/kakao/dotnet/api#getATSTemplate
+         * - https://docs.popbill.com/kakao/dotnet/api#GetATSTemplate
          */
         private void btnGetATSTemplate_Click(object sender, EventArgs e)
         {
