@@ -84,22 +84,26 @@
             this.btnCheckIsMember = new System.Windows.Forms.Button();
             this.btnJoinMember = new System.Windows.Forms.Button();
             this.GroupBox7 = new System.Windows.Forms.GroupBox();
+            this.groupBox24 = new System.Windows.Forms.GroupBox();
+            this.btnBulkSubmit = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtSubmitID = new System.Windows.Forms.TextBox();
             this.GroupBox13 = new System.Windows.Forms.GroupBox();
             this.btnGetURL_WRITE = new System.Windows.Forms.Button();
             this.btnGetURL_PBOX = new System.Windows.Forms.Button();
             this.btnGetURL_SBOX = new System.Windows.Forms.Button();
             this.btnGetURL_TBOX = new System.Windows.Forms.Button();
+            this.groupBox22 = new System.Windows.Forms.GroupBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.GroupBox12 = new System.Windows.Forms.GroupBox();
             this.btnGetOldPrintURL = new System.Windows.Forms.Button();
             this.btnGetPDFURL = new System.Windows.Forms.Button();
             this.btnGetViewURL = new System.Windows.Forms.Button();
             this.btnGetPrintURL = new System.Windows.Forms.Button();
             this.groupBox20 = new System.Windows.Forms.GroupBox();
-            this.groupBox22 = new System.Windows.Forms.GroupBox();
-            this.label36 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.btnSendToNTS = new System.Windows.Forms.Button();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
             this.label27 = new System.Windows.Forms.Label();
@@ -109,11 +113,6 @@
             this.btnRegistIssue = new System.Windows.Forms.Button();
             this.label26 = new System.Windows.Forms.Label();
             this.groupBox21 = new System.Windows.Forms.GroupBox();
-            this.groupBox23 = new System.Windows.Forms.GroupBox();
-            this.label37 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.GroupBox14 = new System.Windows.Forms.GroupBox();
             this.btnRefuse = new System.Windows.Forms.Button();
             this.btnRequest = new System.Windows.Forms.Button();
@@ -168,10 +167,6 @@
             this.txtCorpNum = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.fileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.groupBox24 = new System.Windows.Forms.GroupBox();
-            this.btnBulkSubmit = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtSubmitID = new System.Windows.Forms.TextBox();
             this.GroupBox8.SuspendLayout();
             this.GroupBox9.SuspendLayout();
             this.GroupBox10.SuspendLayout();
@@ -180,13 +175,13 @@
             this.GroupBox3.SuspendLayout();
             this.GroupBox2.SuspendLayout();
             this.GroupBox7.SuspendLayout();
+            this.groupBox24.SuspendLayout();
             this.GroupBox13.SuspendLayout();
+            this.groupBox22.SuspendLayout();
             this.GroupBox12.SuspendLayout();
             this.groupBox20.SuspendLayout();
-            this.groupBox22.SuspendLayout();
             this.groupBox16.SuspendLayout();
             this.groupBox21.SuspendLayout();
-            this.groupBox23.SuspendLayout();
             this.GroupBox14.SuspendLayout();
             this.groupBox19.SuspendLayout();
             this.GroupBox1.SuspendLayout();
@@ -195,7 +190,6 @@
             this.groupBox15.SuspendLayout();
             this.GroupBox6.SuspendLayout();
             this.GroupBox5.SuspendLayout();
-            this.groupBox24.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnGetInfos
@@ -809,6 +803,45 @@
             this.GroupBox7.TabStop = false;
             this.GroupBox7.Text = "전자세금계산서 관련 API";
             // 
+            // groupBox24
+            // 
+            this.groupBox24.Controls.Add(this.btnBulkSubmit);
+            this.groupBox24.Controls.Add(this.label10);
+            this.groupBox24.Controls.Add(this.txtSubmitID);
+            this.groupBox24.Location = new System.Drawing.Point(25, 314);
+            this.groupBox24.Name = "groupBox24";
+            this.groupBox24.Size = new System.Drawing.Size(571, 49);
+            this.groupBox24.TabIndex = 22;
+            this.groupBox24.TabStop = false;
+            this.groupBox24.Text = "초대량 발행";
+            // 
+            // btnBulkSubmit
+            // 
+            this.btnBulkSubmit.BackColor = System.Drawing.Color.LightCoral;
+            this.btnBulkSubmit.Location = new System.Drawing.Point(425, 16);
+            this.btnBulkSubmit.Name = "btnBulkSubmit";
+            this.btnBulkSubmit.Size = new System.Drawing.Size(131, 27);
+            this.btnBulkSubmit.TabIndex = 17;
+            this.btnBulkSubmit.Text = "초대량 발행 접수";
+            this.btnBulkSubmit.UseVisualStyleBackColor = false;
+            this.btnBulkSubmit.Click += new System.EventHandler(this.btnBulkSubmit_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(10, 25);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(133, 12);
+            this.label10.TabIndex = 20;
+            this.label10.Text = "제출아이디(SubmitID) :";
+            // 
+            // txtSubmitID
+            // 
+            this.txtSubmitID.Location = new System.Drawing.Point(146, 19);
+            this.txtSubmitID.Name = "txtSubmitID";
+            this.txtSubmitID.Size = new System.Drawing.Size(273, 21);
+            this.txtSubmitID.TabIndex = 20;
+            // 
             // GroupBox13
             // 
             this.GroupBox13.Controls.Add(this.btnGetURL_WRITE);
@@ -861,6 +894,54 @@
             this.btnGetURL_TBOX.Text = "연동문서함";
             this.btnGetURL_TBOX.UseVisualStyleBackColor = true;
             this.btnGetURL_TBOX.Click += new System.EventHandler(this.btnGetURL_TBOX_Click);
+            // 
+            // groupBox22
+            // 
+            this.groupBox22.Controls.Add(this.label36);
+            this.groupBox22.Controls.Add(this.label35);
+            this.groupBox22.Controls.Add(this.panel2);
+            this.groupBox22.Controls.Add(this.panel1);
+            this.groupBox22.Location = new System.Drawing.Point(543, 9);
+            this.groupBox22.Name = "groupBox22";
+            this.groupBox22.Size = new System.Drawing.Size(266, 42);
+            this.groupBox22.TabIndex = 20;
+            this.groupBox22.TabStop = false;
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(158, 18);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(101, 12);
+            this.label36.TabIndex = 19;
+            this.label36.Text = ": 공급받는자 처리";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(40, 18);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(77, 12);
+            this.label35.TabIndex = 18;
+            this.label35.Text = ": 공급자 처리";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Aquamarine;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Location = new System.Drawing.Point(122, 15);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(30, 15);
+            this.panel2.TabIndex = 17;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.LightCoral;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Location = new System.Drawing.Point(8, 15);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(30, 15);
+            this.panel1.TabIndex = 16;
             // 
             // GroupBox12
             // 
@@ -926,58 +1007,10 @@
             this.groupBox20.Controls.Add(this.GroupBox8);
             this.groupBox20.Location = new System.Drawing.Point(25, 57);
             this.groupBox20.Name = "groupBox20";
-            this.groupBox20.Size = new System.Drawing.Size(571, 253);
+            this.groupBox20.Size = new System.Drawing.Size(583, 253);
             this.groupBox20.TabIndex = 18;
             this.groupBox20.TabStop = false;
             this.groupBox20.Text = "정발행 프로세스";
-            // 
-            // groupBox22
-            // 
-            this.groupBox22.Controls.Add(this.label36);
-            this.groupBox22.Controls.Add(this.label35);
-            this.groupBox22.Controls.Add(this.panel2);
-            this.groupBox22.Controls.Add(this.panel1);
-            this.groupBox22.Location = new System.Drawing.Point(657, 9);
-            this.groupBox22.Name = "groupBox22";
-            this.groupBox22.Size = new System.Drawing.Size(266, 42);
-            this.groupBox22.TabIndex = 20;
-            this.groupBox22.TabStop = false;
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(158, 18);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(101, 12);
-            this.label36.TabIndex = 19;
-            this.label36.Text = ": 공급받는자 처리";
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(40, 18);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(77, 12);
-            this.label35.TabIndex = 18;
-            this.label35.Text = ": 공급자 처리";
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Aquamarine;
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Location = new System.Drawing.Point(122, 15);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(30, 15);
-            this.panel2.TabIndex = 17;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.LightCoral;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Location = new System.Drawing.Point(8, 15);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(30, 15);
-            this.panel1.TabIndex = 16;
             // 
             // btnSendToNTS
             // 
@@ -1076,63 +1109,14 @@
             // 
             // groupBox21
             // 
-            this.groupBox21.Controls.Add(this.groupBox23);
             this.groupBox21.Controls.Add(this.GroupBox14);
             this.groupBox21.Controls.Add(this.groupBox19);
             this.groupBox21.Location = new System.Drawing.Point(657, 57);
             this.groupBox21.Name = "groupBox21";
-            this.groupBox21.Size = new System.Drawing.Size(655, 306);
+            this.groupBox21.Size = new System.Drawing.Size(655, 253);
             this.groupBox21.TabIndex = 19;
             this.groupBox21.TabStop = false;
             this.groupBox21.Text = "역발행 프로세스";
-            // 
-            // groupBox23
-            // 
-            this.groupBox23.Controls.Add(this.label37);
-            this.groupBox23.Controls.Add(this.label38);
-            this.groupBox23.Controls.Add(this.panel3);
-            this.groupBox23.Controls.Add(this.panel4);
-            this.groupBox23.Location = new System.Drawing.Point(364, 8);
-            this.groupBox23.Name = "groupBox23";
-            this.groupBox23.Size = new System.Drawing.Size(266, 42);
-            this.groupBox23.TabIndex = 21;
-            this.groupBox23.TabStop = false;
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(158, 18);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(101, 12);
-            this.label37.TabIndex = 19;
-            this.label37.Text = ": 공급받는자 처리";
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(40, 18);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(77, 12);
-            this.label38.TabIndex = 18;
-            this.label38.Text = ": 공급자 처리";
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.Aquamarine;
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Location = new System.Drawing.Point(122, 15);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(30, 15);
-            this.panel3.TabIndex = 17;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.LightCoral;
-            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Location = new System.Drawing.Point(8, 15);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(30, 15);
-            this.panel4.TabIndex = 16;
             // 
             // GroupBox14
             // 
@@ -1150,7 +1134,7 @@
             this.GroupBox14.Controls.Add(this.Label21);
             this.GroupBox14.Controls.Add(this.Label22);
             this.GroupBox14.Controls.Add(this.Label24);
-            this.GroupBox14.Location = new System.Drawing.Point(350, 62);
+            this.GroupBox14.Location = new System.Drawing.Point(348, 26);
             this.GroupBox14.Name = "GroupBox14";
             this.GroupBox14.Size = new System.Drawing.Size(280, 189);
             this.GroupBox14.TabIndex = 14;
@@ -1332,7 +1316,7 @@
             this.groupBox19.Controls.Add(this.label33);
             this.groupBox19.Controls.Add(this.label29);
             this.groupBox19.Controls.Add(this.label34);
-            this.groupBox19.Location = new System.Drawing.Point(29, 62);
+            this.groupBox19.Location = new System.Drawing.Point(29, 26);
             this.groupBox19.Name = "groupBox19";
             this.groupBox19.Size = new System.Drawing.Size(296, 191);
             this.groupBox19.TabIndex = 17;
@@ -1725,45 +1709,6 @@
             // 
             this.fileDialog.FileName = "OpenFileDialog1";
             // 
-            // groupBox24
-            // 
-            this.groupBox24.Controls.Add(this.btnBulkSubmit);
-            this.groupBox24.Controls.Add(this.label10);
-            this.groupBox24.Controls.Add(this.txtSubmitID);
-            this.groupBox24.Location = new System.Drawing.Point(25, 314);
-            this.groupBox24.Name = "groupBox24";
-            this.groupBox24.Size = new System.Drawing.Size(571, 49);
-            this.groupBox24.TabIndex = 22;
-            this.groupBox24.TabStop = false;
-            this.groupBox24.Text = "초대량 발행";
-            // 
-            // btnBulkSubmit
-            // 
-            this.btnBulkSubmit.BackColor = System.Drawing.Color.LightCoral;
-            this.btnBulkSubmit.Location = new System.Drawing.Point(425, 16);
-            this.btnBulkSubmit.Name = "btnBulkSubmit";
-            this.btnBulkSubmit.Size = new System.Drawing.Size(131, 27);
-            this.btnBulkSubmit.TabIndex = 17;
-            this.btnBulkSubmit.Text = "초대량 발행 접수";
-            this.btnBulkSubmit.UseVisualStyleBackColor = false;
-            this.btnBulkSubmit.Click += new System.EventHandler(this.btnBulkSubmit_Click);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(10, 25);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(133, 12);
-            this.label10.TabIndex = 20;
-            this.label10.Text = "제출아이디(SubmitID) :";
-            // 
-            // txtSubmitID
-            // 
-            this.txtSubmitID.Location = new System.Drawing.Point(146, 19);
-            this.txtSubmitID.Name = "txtSubmitID";
-            this.txtSubmitID.Size = new System.Drawing.Size(273, 21);
-            this.txtSubmitID.TabIndex = 20;
-            // 
             // frmExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -1790,15 +1735,15 @@
             this.GroupBox2.ResumeLayout(false);
             this.GroupBox7.ResumeLayout(false);
             this.GroupBox7.PerformLayout();
+            this.groupBox24.ResumeLayout(false);
+            this.groupBox24.PerformLayout();
             this.GroupBox13.ResumeLayout(false);
-            this.GroupBox12.ResumeLayout(false);
-            this.groupBox20.ResumeLayout(false);
             this.groupBox22.ResumeLayout(false);
             this.groupBox22.PerformLayout();
+            this.GroupBox12.ResumeLayout(false);
+            this.groupBox20.ResumeLayout(false);
             this.groupBox16.ResumeLayout(false);
             this.groupBox21.ResumeLayout(false);
-            this.groupBox23.ResumeLayout(false);
-            this.groupBox23.PerformLayout();
             this.GroupBox14.ResumeLayout(false);
             this.groupBox19.ResumeLayout(false);
             this.GroupBox1.ResumeLayout(false);
@@ -1807,8 +1752,6 @@
             this.groupBox15.ResumeLayout(false);
             this.GroupBox6.ResumeLayout(false);
             this.GroupBox5.ResumeLayout(false);
-            this.groupBox24.ResumeLayout(false);
-            this.groupBox24.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1941,11 +1884,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupBox22;
         private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.GroupBox groupBox23;
-        private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel4;
         internal System.Windows.Forms.Button btnGetViewURL;
         private System.Windows.Forms.Button btnGetPDFURL;
         internal System.Windows.Forms.Button btnGetOldPrintURL;
