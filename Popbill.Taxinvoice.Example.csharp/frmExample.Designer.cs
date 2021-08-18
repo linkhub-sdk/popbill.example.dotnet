@@ -377,7 +377,7 @@
             this.GroupBox9.Controls.Add(this.btnGetLogs);
             this.GroupBox9.Controls.Add(this.btnGetInfo);
             this.GroupBox9.Controls.Add(this.btnGetDetailInfo);
-            this.GroupBox9.Location = new System.Drawing.Point(181, 369);
+            this.GroupBox9.Location = new System.Drawing.Point(181, 385);
             this.GroupBox9.Name = "GroupBox9";
             this.GroupBox9.Size = new System.Drawing.Size(158, 254);
             this.GroupBox9.TabIndex = 8;
@@ -491,7 +491,7 @@
             this.GroupBox10.Controls.Add(this.btnDeleteFile);
             this.GroupBox10.Controls.Add(this.btnAttachFile);
             this.GroupBox10.Controls.Add(this.gtnGetFiles);
-            this.GroupBox10.Location = new System.Drawing.Point(23, 369);
+            this.GroupBox10.Location = new System.Drawing.Point(23, 385);
             this.GroupBox10.Name = "GroupBox10";
             this.GroupBox10.Size = new System.Drawing.Size(152, 254);
             this.GroupBox10.TabIndex = 9;
@@ -568,7 +568,7 @@
             this.GroupBox11.Controls.Add(this.btnSendFAX);
             this.GroupBox11.Controls.Add(this.btnSendSMS);
             this.GroupBox11.Controls.Add(this.btnSendEmail);
-            this.GroupBox11.Location = new System.Drawing.Point(345, 369);
+            this.GroupBox11.Location = new System.Drawing.Point(345, 385);
             this.GroupBox11.Name = "GroupBox11";
             this.GroupBox11.Size = new System.Drawing.Size(314, 254);
             this.GroupBox11.TabIndex = 10;
@@ -798,7 +798,7 @@
             this.GroupBox7.Controls.Add(this.groupBox21);
             this.GroupBox7.Location = new System.Drawing.Point(12, 217);
             this.GroupBox7.Name = "GroupBox7";
-            this.GroupBox7.Size = new System.Drawing.Size(1326, 629);
+            this.GroupBox7.Size = new System.Drawing.Size(1326, 652);
             this.GroupBox7.TabIndex = 12;
             this.GroupBox7.TabStop = false;
             this.GroupBox7.Text = "전자세금계산서 관련 API";
@@ -808,9 +808,9 @@
             this.groupBox24.Controls.Add(this.btnBulkSubmit);
             this.groupBox24.Controls.Add(this.label10);
             this.groupBox24.Controls.Add(this.txtSubmitID);
-            this.groupBox24.Location = new System.Drawing.Point(25, 314);
+            this.groupBox24.Location = new System.Drawing.Point(25, 317);
             this.groupBox24.Name = "groupBox24";
-            this.groupBox24.Size = new System.Drawing.Size(571, 49);
+            this.groupBox24.Size = new System.Drawing.Size(583, 62);
             this.groupBox24.TabIndex = 22;
             this.groupBox24.TabStop = false;
             this.groupBox24.Text = "초대량 발행";
@@ -818,9 +818,9 @@
             // btnBulkSubmit
             // 
             this.btnBulkSubmit.BackColor = System.Drawing.Color.LightCoral;
-            this.btnBulkSubmit.Location = new System.Drawing.Point(425, 16);
+            this.btnBulkSubmit.Location = new System.Drawing.Point(426, 18);
             this.btnBulkSubmit.Name = "btnBulkSubmit";
-            this.btnBulkSubmit.Size = new System.Drawing.Size(131, 27);
+            this.btnBulkSubmit.Size = new System.Drawing.Size(148, 31);
             this.btnBulkSubmit.TabIndex = 17;
             this.btnBulkSubmit.Text = "초대량 발행 접수";
             this.btnBulkSubmit.UseVisualStyleBackColor = false;
@@ -829,7 +829,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(10, 25);
+            this.label10.Location = new System.Drawing.Point(10, 30);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(133, 12);
             this.label10.TabIndex = 20;
@@ -837,7 +837,7 @@
             // 
             // txtSubmitID
             // 
-            this.txtSubmitID.Location = new System.Drawing.Point(146, 19);
+            this.txtSubmitID.Location = new System.Drawing.Point(146, 24);
             this.txtSubmitID.Name = "txtSubmitID";
             this.txtSubmitID.Size = new System.Drawing.Size(273, 21);
             this.txtSubmitID.TabIndex = 20;
@@ -848,7 +848,7 @@
             this.GroupBox13.Controls.Add(this.btnGetURL_PBOX);
             this.GroupBox13.Controls.Add(this.btnGetURL_SBOX);
             this.GroupBox13.Controls.Add(this.btnGetURL_TBOX);
-            this.GroupBox13.Location = new System.Drawing.Point(1101, 369);
+            this.GroupBox13.Location = new System.Drawing.Point(1101, 385);
             this.GroupBox13.Name = "GroupBox13";
             this.GroupBox13.Size = new System.Drawing.Size(211, 254);
             this.GroupBox13.TabIndex = 12;
@@ -953,7 +953,7 @@
             this.GroupBox12.Controls.Add(this.btnEPrintURL);
             this.GroupBox12.Controls.Add(this.btnGetPrintURL);
             this.GroupBox12.Controls.Add(this.btnGetPopUpURL);
-            this.GroupBox12.Location = new System.Drawing.Point(675, 369);
+            this.GroupBox12.Location = new System.Drawing.Point(675, 385);
             this.GroupBox12.Name = "GroupBox12";
             this.GroupBox12.Size = new System.Drawing.Size(384, 254);
             this.GroupBox12.TabIndex = 11;
@@ -1015,9 +1015,9 @@
             // btnSendToNTS
             // 
             this.btnSendToNTS.BackColor = System.Drawing.Color.LightCoral;
-            this.btnSendToNTS.Location = new System.Drawing.Point(16, 218);
+            this.btnSendToNTS.Location = new System.Drawing.Point(190, 217);
             this.btnSendToNTS.Name = "btnSendToNTS";
-            this.btnSendToNTS.Size = new System.Drawing.Size(126, 29);
+            this.btnSendToNTS.Size = new System.Drawing.Size(154, 29);
             this.btnSendToNTS.TabIndex = 13;
             this.btnSendToNTS.Text = "국세청 즉시 전송";
             this.btnSendToNTS.UseVisualStyleBackColor = false;
@@ -1713,7 +1713,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1367, 858);
+            this.ClientSize = new System.Drawing.Size(1367, 878);
             this.Controls.Add(this.textURL);
             this.Controls.Add(this.GroupBox7);
             this.Controls.Add(this.label8);
