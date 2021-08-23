@@ -687,7 +687,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             Taxinvoice taxinvoice = new Taxinvoice();
 
             // [필수] 기재상 작성일자, 날짜형식(yyyyMMdd)
-            taxinvoice.writeDate = "20210701";
+            taxinvoice.writeDate = "20210823";
 
             // [필수] 과금방향, {정과금, 역과금}중 선택
             // - 정과금(공급자과금), 역과금(공급받는자과금)
@@ -924,7 +924,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
 
             // 거래명세서 동시작성여부
-            bool writeSpecification = false;
+            bool writeSpecification = true;
 
             try
             {
