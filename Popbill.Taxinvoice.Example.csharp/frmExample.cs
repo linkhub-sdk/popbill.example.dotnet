@@ -924,7 +924,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
 
             // 거래명세서 동시작성여부
-            bool writeSpecification = true;
+            bool writeSpecification = false;
 
             try
             {
