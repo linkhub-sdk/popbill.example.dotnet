@@ -56,7 +56,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
         }
 
         /*
-         * 홈택스에 신고된 전자세금계산서 매입/매출 내역 수집을 팝빌에 요청합니다.
+         * 홈택스에 신고된 전자세금계산서 매입/매출 내역 수집을 팝빌에 요청합니다. (조회기간 단위 : 최대 3개월)
          * - https://docs.popbill.com/httaxinvoice/dotnet/api#RequestJob
          */
         private void btnRequestJob_Click(object sender, EventArgs e)
