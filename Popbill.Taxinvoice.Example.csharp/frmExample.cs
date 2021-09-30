@@ -49,6 +49,9 @@ namespace Popbill.Taxinvoice.Example.csharp
             // 발급된 토큰에 대한 IP 제한기능 사용여부, 권장(true)
             taxinvoiceService.IPRestrictOnOff = true;
 
+            // 팝빌 API 서비스 고정 IP 사용여부, true-사용, false-미사용, 기본값(false)
+            taxinvoiceService.UseStaticIP = false;
+
             // 로컬PC 시간 사용 여부 true(사용), false(기본값) - 미사용
             taxinvoiceService.UseLocalTimeYN = false;
         }
@@ -1173,7 +1176,7 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * "임시저장" 상태의 세금계산서를 발행(전자서명)하며, "발행완료" 상태로 처리합니다.
+         * "임시저장" 상태의 세금계산서를 발행(전자서명)하며, "발행완료" 상태로 처리합니다. 
          * - 세금계산서 국세청 전송정책 : https://docs.popbill.com/taxinvoice/ntsSendPolicy?lang=dotnet
          * - https://docs.popbill.com/taxinvoice/dotnet/api#TIIssue
          */
