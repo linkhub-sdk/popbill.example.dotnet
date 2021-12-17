@@ -210,7 +210,7 @@ namespace Popbill.Kakao.Example.csharp
                 tmp += "템플릿 내용(template) : " + templateInfo.template + CRLF;
                 tmp += "카카오톡채널 아이디(plusFriendID) : " + templateInfo.plusFriendID + CRLF;
                 tmp += "광고 메시지(ads) : " + templateInfo.ads + CRLF;
-                tmp += "부가 메시지 아이디(appendix) : " + templateInfo.appendix + CRLF;
+                tmp += "부가 메시지(appendix) : " + templateInfo.appendix + CRLF;
                 if (templateInfo.btns != null)
                 {
                     foreach (KakaoButton buttonInfo in templateInfo.btns)
@@ -251,7 +251,7 @@ namespace Popbill.Kakao.Example.csharp
                     tmp += "템플릿 내용(template) : " + templateInfo.template + CRLF;
                     tmp += "카카오톡채널 아이디(plusFriendID) : " + templateInfo.plusFriendID + CRLF;
                     tmp += "광고 메시지(ads) : " + templateInfo.ads + CRLF;
-                    tmp += "부가 메시지 아이디(appendix) : " + templateInfo.appendix + CRLF;
+                    tmp += "부가 메시지(appendix) : " + templateInfo.appendix + CRLF;
 
                     if (templateInfo.btns != null)
                     {
