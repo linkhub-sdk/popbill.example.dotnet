@@ -66,6 +66,17 @@
             this.txtBankCode = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textURL = new System.Windows.Forms.TextBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtIdentityNumTypeDC = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtIdentityNumDC = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtAccountNumberDC = new System.Windows.Forms.TextBox();
+            this.btnCheckDepositorInfo = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtBankCodeDC = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -75,6 +86,8 @@
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.groupBox9.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtUserID
@@ -391,12 +404,12 @@
             this.groupBox6.Controls.Add(this.btnCheckAccountInfo);
             this.groupBox6.Controls.Add(this.label3);
             this.groupBox6.Controls.Add(this.txtBankCode);
-            this.groupBox6.Location = new System.Drawing.Point(14, 237);
+            this.groupBox6.Location = new System.Drawing.Point(102, 20);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(410, 95);
+            this.groupBox6.Size = new System.Drawing.Size(347, 95);
             this.groupBox6.TabIndex = 26;
             this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "예금주조회 API";
+            this.groupBox6.Text = "예금주성명 조회";
             // 
             // label4
             // 
@@ -458,14 +471,121 @@
             this.textURL.Size = new System.Drawing.Size(272, 21);
             this.textURL.TabIndex = 28;
             // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.groupBox9);
+            this.groupBox8.Controls.Add(this.groupBox6);
+            this.groupBox8.Location = new System.Drawing.Point(12, 238);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(1000, 181);
+            this.groupBox8.TabIndex = 29;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "예금주 조회 API";
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.label7);
+            this.groupBox9.Controls.Add(this.txtIdentityNumTypeDC);
+            this.groupBox9.Controls.Add(this.label6);
+            this.groupBox9.Controls.Add(this.txtIdentityNumDC);
+            this.groupBox9.Controls.Add(this.label10);
+            this.groupBox9.Controls.Add(this.txtAccountNumberDC);
+            this.groupBox9.Controls.Add(this.btnCheckDepositorInfo);
+            this.groupBox9.Controls.Add(this.label11);
+            this.groupBox9.Controls.Add(this.txtBankCodeDC);
+            this.groupBox9.Location = new System.Drawing.Point(487, 20);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(355, 141);
+            this.groupBox9.TabIndex = 27;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "예금주실명 조회";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(14, 112);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(93, 12);
+            this.label7.TabIndex = 23;
+            this.label7.Text = "등록번호 유형 : ";
+            // 
+            // txtIdentityNumTypeDC
+            // 
+            this.txtIdentityNumTypeDC.Location = new System.Drawing.Point(113, 107);
+            this.txtIdentityNumTypeDC.Name = "txtIdentityNumTypeDC";
+            this.txtIdentityNumTypeDC.Size = new System.Drawing.Size(72, 21);
+            this.txtIdentityNumTypeDC.TabIndex = 24;
+            this.txtIdentityNumTypeDC.Text = "P";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(14, 84);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(65, 12);
+            this.label6.TabIndex = 21;
+            this.label6.Text = "등록번호 : ";
+            // 
+            // txtIdentityNumDC
+            // 
+            this.txtIdentityNumDC.Location = new System.Drawing.Point(85, 80);
+            this.txtIdentityNumDC.Name = "txtIdentityNumDC";
+            this.txtIdentityNumDC.Size = new System.Drawing.Size(100, 21);
+            this.txtIdentityNumDC.TabIndex = 22;
+            this.txtIdentityNumDC.Text = "921102";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(14, 57);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(65, 12);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "계좌번호 : ";
+            // 
+            // txtAccountNumberDC
+            // 
+            this.txtAccountNumberDC.Location = new System.Drawing.Point(85, 53);
+            this.txtAccountNumberDC.Name = "txtAccountNumberDC";
+            this.txtAccountNumberDC.Size = new System.Drawing.Size(100, 21);
+            this.txtAccountNumberDC.TabIndex = 20;
+            this.txtAccountNumberDC.Text = "9432451175860";
+            // 
+            // btnCheckDepositorInfo
+            // 
+            this.btnCheckDepositorInfo.Location = new System.Drawing.Point(199, 26);
+            this.btnCheckDepositorInfo.Name = "btnCheckDepositorInfo";
+            this.btnCheckDepositorInfo.Size = new System.Drawing.Size(137, 50);
+            this.btnCheckDepositorInfo.TabIndex = 18;
+            this.btnCheckDepositorInfo.Text = "예금주실명 조회";
+            this.btnCheckDepositorInfo.UseVisualStyleBackColor = true;
+            this.btnCheckDepositorInfo.Click += new System.EventHandler(this.btnCheckDepositorInfo_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(14, 27);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(65, 12);
+            this.label11.TabIndex = 16;
+            this.label11.Text = "기관코드 : ";
+            // 
+            // txtBankCodeDC
+            // 
+            this.txtBankCodeDC.Location = new System.Drawing.Point(85, 24);
+            this.txtBankCodeDC.Name = "txtBankCodeDC";
+            this.txtBankCodeDC.Size = new System.Drawing.Size(100, 21);
+            this.txtBankCodeDC.TabIndex = 17;
+            this.txtBankCodeDC.Text = "0004";
+            // 
             // frmExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1024, 364);
+            this.ClientSize = new System.Drawing.Size(1024, 426);
+            this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.textURL);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.btnJoinMember);
             this.Controls.Add(this.btnCheckIsMember);
             this.Controls.Add(this.groupBox1);
@@ -488,6 +608,9 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -533,6 +656,17 @@
         private System.Windows.Forms.Button btnGetUseHistoryURL;
         private System.Windows.Forms.Button btnGetPaymentURL;
         private System.Windows.Forms.Button btnGetContactInfo;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtAccountNumberDC;
+        private System.Windows.Forms.Button btnCheckDepositorInfo;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtBankCodeDC;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtIdentityNumTypeDC;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtIdentityNumDC;
     }
 }
 

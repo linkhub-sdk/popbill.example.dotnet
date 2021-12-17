@@ -2,7 +2,7 @@
  * 팝빌 팩스 API DotNet SDK Example
  *
  * - DotNet C# SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/fax/tutorial/dotnet#csharp
- * - 업데이트 일자 : 2021-08-05
+ * - 업데이트 일자 : 2021-12-16
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991~2
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
  *
@@ -583,7 +583,7 @@ namespace Popbill.Fax.Example.csharp
             {
                 List<FaxResult> ResultList = faxService.GetFaxResult(txtCorpNum.Text, txtReceiptNum.Text);
 
-                string rowStr = "state(전송상태 코드) | result(전송결과 코드) | sendNum(발신번호) | senderName(발신자명) | receiveNum(수신번호) | receiveName(수신자명) | " +
+                string rowStr = "state(전송상태 코드) | result(전송결과 코드) | sendNum(발신번호) | senderName(발신자명) | receiveNum(수신번호) | receiveName(수신자명) | receiveNumType(수신번호 유형) | " +
                                 "title(팩스제목) | sendPageCnt(전체 페이지수) | successPageCnt(성공 페이지수) | failPageCnt(실패 페이지수) | refundPageCnt(환불 페이지수) | " +
                                 "cancelPageCnt(취소 페이지수) | reserveDT(예약시간) | receiptDT(접수시간) | sendDT(발송시간) | resultDT(전송결과 수신시간) | fileNames(전송 파일명 리스트) | " +
                                 "receiptNum(접수번호) | requestNum(요청번호) | chargePageCnt(과금 페이지수) | tiffFileSize(변환파일용량(단위:byte))";
@@ -599,6 +599,7 @@ namespace Popbill.Fax.Example.csharp
                     rowStr += ResultList[i].senderName + " | ";
                     rowStr += ResultList[i].receiveNum + " | ";
                     rowStr += ResultList[i].receiveName + " | ";
+                    rowStr += ResultList[i].receiveNumType + " | ";
                     rowStr += ResultList[i].title + " | ";
                     rowStr += ResultList[i].sendPageCnt + " | ";
                     rowStr += ResultList[i].successPageCnt + " | ";
@@ -648,7 +649,7 @@ namespace Popbill.Fax.Example.csharp
             {
                 List<FaxResult> ResultList = faxService.GetFaxResultRN(txtCorpNum.Text, txtRequestNum.Text);
 
-                string rowStr = "state(전송상태 코드) | result(전송결과 코드) | sendNum(발신번호) | senderName(발신자명) | receiveNum(수신번호) | receiveName(수신자명) | " +
+                string rowStr = "state(전송상태 코드) | result(전송결과 코드) | sendNum(발신번호) | senderName(발신자명) | receiveNum(수신번호) | receiveName(수신자명) | receiveNumType(수신번호 유형) | " +
                                 "title(팩스제목) | sendPageCnt(전체 페이지수) | successPageCnt(성공 페이지수) | failPageCnt(실패 페이지수) | refundPageCnt(환불 페이지수) | " +
                                 "cancelPageCnt(취소 페이지수) | reserveDT(예약시간) | receiptDT(접수시간) | sendDT(발송시간) | resultDT(전송결과 수신시간) | fileNames(전송 파일명 리스트) | " +
                                 "receiptNum(접수번호) | requestNum(요청번호) | chargePageCnt(과금 페이지수) | tiffFileSize(변환파일용량(단위:byte))";
@@ -664,6 +665,7 @@ namespace Popbill.Fax.Example.csharp
                     rowStr += ResultList[i].senderName + " | ";
                     rowStr += ResultList[i].receiveNum + " | ";
                     rowStr += ResultList[i].receiveName + " | ";
+                    rowStr += ResultList[i].receiveNumType + " | ";
                     rowStr += ResultList[i].title + " | ";
                     rowStr += ResultList[i].sendPageCnt + " | ";
                     rowStr += ResultList[i].successPageCnt + " | ";
@@ -711,10 +713,10 @@ namespace Popbill.Fax.Example.csharp
         {
             // 최대 검색기간 :2개월 이내
             // 시작일자, 날짜형식(yyyyMMdd)
-            String SDate = "20210701";
+            String SDate = "20211101";
 
             // 종료일자, 날짜형식(yyyyMMdd)
-            String EDate = "20210730";
+            String EDate = "20211216";
 
             //전송상태 배열 1-대기, 2-성공, 3-실패, 4-취소
             String[] State = new String[4];
@@ -758,7 +760,7 @@ namespace Popbill.Fax.Example.csharp
 
                 MessageBox.Show(tmp, "팩스 전송내역 조회");
 
-                string rowStr = "state(전송상태 코드) | result(전송결과 코드) | sendNum(발신번호) | senderName(발신자명) | receiveNum(수신번호) | receiveName(수신자명) | "+
+                string rowStr = "state(전송상태 코드) | result(전송결과 코드) | sendNum(발신번호) | senderName(발신자명) | receiveNum(수신번호) | receiveName(수신자명) | receiveNumType(수신번호 유형) | " +
                                 "title(팩스제목) | sendPageCnt(전체 페이지수) | successPageCnt(성공 페이지수) | failPageCnt(실패 페이지수) | refundPageCnt(환불 페이지수) | " +
                                 "cancelPageCnt(취소 페이지수) | reserveDT(예약시간) | receiptDT(접수시간) | sendDT(발송시간) | resultDT(전송결과 수신시간) | fileNames(전송 파일명 리스트) | " +
                                 "receiptNum(접수번호) | requestNum(요청번호) | chargePageCnt(과금 페이지수) | tiffFileSize(변환파일용량(단위:byte))";
@@ -774,6 +776,7 @@ namespace Popbill.Fax.Example.csharp
                     rowStr += searchResult.list[i].senderName + " | ";
                     rowStr += searchResult.list[i].receiveNum + " | ";
                     rowStr += searchResult.list[i].receiveName + " | ";
+                    rowStr += searchResult.list[i].receiveNumType + " | ";
                     rowStr += searchResult.list[i].title + " | ";
                     rowStr += searchResult.list[i].sendPageCnt + " | ";
                     rowStr += searchResult.list[i].successPageCnt + " | ";

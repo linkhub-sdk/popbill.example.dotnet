@@ -2,7 +2,7 @@
  * 팝빌 카카오톡 API DotNet SDK Example
  *
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/kakao/tutorial/dotnet
- * - 업데이트 일자 : 2021-08-05
+ * - 업데이트 일자 : 2021-12-16
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991~2
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
  *
@@ -197,7 +197,7 @@ namespace Popbill.Kakao.Example.csharp
         private void btnGetATSTemplate_Click(object sender, EventArgs e)
         {
             // 확인할 템플릿 코드
-            String templateCode = "021030000716";
+            String templateCode = "021010000076";
 
             try
             {
@@ -209,6 +209,8 @@ namespace Popbill.Kakao.Example.csharp
                 tmp += "템플릿 제목(templateName) : " + templateInfo.templateName + CRLF;
                 tmp += "템플릿 내용(template) : " + templateInfo.template + CRLF;
                 tmp += "카카오톡채널 아이디(plusFriendID) : " + templateInfo.plusFriendID + CRLF;
+                tmp += "광고 메시지(ads) : " + templateInfo.ads + CRLF;
+                tmp += "부가 메시지 아이디(appendix) : " + templateInfo.appendix + CRLF;
                 if (templateInfo.btns != null)
                 {
                     foreach (KakaoButton buttonInfo in templateInfo.btns)
@@ -248,6 +250,8 @@ namespace Popbill.Kakao.Example.csharp
                     tmp += "템플릿 제목(templateName) : " + templateInfo.templateName + CRLF;
                     tmp += "템플릿 내용(template) : " + templateInfo.template + CRLF;
                     tmp += "카카오톡채널 아이디(plusFriendID) : " + templateInfo.plusFriendID + CRLF;
+                    tmp += "광고 메시지(ads) : " + templateInfo.ads + CRLF;
+                    tmp += "부가 메시지 아이디(appendix) : " + templateInfo.appendix + CRLF;
 
                     if (templateInfo.btns != null)
                     {

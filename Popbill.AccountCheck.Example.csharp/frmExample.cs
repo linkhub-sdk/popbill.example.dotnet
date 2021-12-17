@@ -1,7 +1,7 @@
 ﻿/*
  * 팝빌 예금주조회 API DotNet SDK Example
  *
- * - 업데이트 일자 : 2021-08-05
+ * - 업데이트 일자 : 2021-12-16
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
  *
@@ -64,13 +64,13 @@ namespace Popbill.AccountCheck.Example.csharp
 
             try
             {
-                AccountCheckInfo result = accountCheckService.CheckAccountInfo(txtCorpNum.Text, txtBankCode.Text, txtAccountNumber.Text);
+                AccountCheckInfo result = accountCheckService.CheckAccountInfo(txtCorpNum.Text, txtBankCode.Text, txtAccountNumber.Text, txtUserID.Text);
 
                 tmp += "bankCode (기관코드) : " + result.bankCode + "\n";
                 tmp += "accountNumber (계좌번호) : " + result.accountNumber + "\n";
                 tmp += "accountName (예금주 성명) : " + result.accountName + "\n";
                 tmp += "checkDate (확인일시) : " + result.checkDate + "\n";
-                tmp += "resultCode (응답코드) : " + result.resultCode + "\n";
+                tmp += "result (응답코드) : " + result.result + "\n";
                 tmp += "resultMessage (응답메시지) : " + result.resultMessage + "\n";
 
                 MessageBox.Show(tmp, "예금주성명 조회");
@@ -79,7 +79,38 @@ namespace Popbill.AccountCheck.Example.csharp
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "예금주조회");
+                                "응답메시지(message) : " + ex.Message, "예금주성명 조회");
+            }
+        }
+
+        /*
+         * 1건의 예금주실명을 조회합니다.
+         * - https://docs.popbill.com/accountcheck/dotnet/api#CheckDepositorInfo
+         */
+        private void btnCheckDepositorInfo_Click(object sender, EventArgs e)
+        {
+            String tmp = "";
+
+            try
+            {
+                DepositorCheckInfo result = accountCheckService.CheckDepositorInfo(txtCorpNum.Text, txtBankCodeDC.Text, txtAccountNumberDC.Text, txtIdentityNumTypeDC.Text, txtIdentityNumDC.Text, txtUserID.Text);
+
+                tmp += "bankCode (기관코드) : " + result.bankCode + "\n";
+                tmp += "accountNumber (계좌번호) : " + result.accountNumber + "\n";
+                tmp += "accountName (예금주 성명) : " + result.accountName + "\n";
+                tmp += "checkDate (확인일시) : " + result.checkDate + "\n";
+                tmp += "identityNumType (등록번호 유형) : " + result.identityNumType + "\n";
+                tmp += "identityNum (등록번호) : " + result.identityNum + "\n";
+                tmp += "result (응답코드) : " + result.result + "\n";
+                tmp += "resultMessage (응답메시지) : " + result.resultMessage + "\n";
+
+                MessageBox.Show(tmp, "예금주실명 조회");
+            }
+
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "예금주실명 조회");
             }
         }
 
@@ -193,9 +224,12 @@ namespace Popbill.AccountCheck.Example.csharp
          */
         private void btnUnitCost_Click(object sender, EventArgs e)
         {
+            // 서비스 유형, 성명 / 실명 중 택 1
+            String serviceType = "실명";
+
             try
             {
-                float unitCost = accountCheckService.GetUnitCost(txtCorpNum.Text);
+                float unitCost = accountCheckService.GetUnitCost(txtCorpNum.Text, serviceType, txtUserID.Text);
 
                 MessageBox.Show("조회단가 : " + unitCost.ToString(), "조회단가 확인");
             }
@@ -212,9 +246,12 @@ namespace Popbill.AccountCheck.Example.csharp
          */
         private void btnGetChargeInfo_Click(object sender, EventArgs e)
         {
+            // 서비스 유형, 성명 / 실명 중 택 1
+            String serviceType = "실명";
+
             try
             {
-                ChargeInfo chrgInf = accountCheckService.GetChargeInfo(txtCorpNum.Text);
+                ChargeInfo chrgInf = accountCheckService.GetChargeInfo(txtCorpNum.Text, txtUserID.Text, serviceType);
 
                 string tmp = null;
 
@@ -602,5 +639,6 @@ namespace Popbill.AccountCheck.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "회사정보 수정");
             }
         }
+
     }
 }
