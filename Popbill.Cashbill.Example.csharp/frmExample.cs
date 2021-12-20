@@ -3,7 +3,7 @@
  * 팝빌 현금영수증 API DotNet SDK Example
  *
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/cashbill/tutorial/dotnet#csharp
- * - 업데이트 일자 : 2021-08-05
+ * - 업데이트 일자 : 2021-12-20
  * - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991
  * - 연동 기술지원 이메일 : code@linkhub.co.kr
  *
@@ -128,6 +128,9 @@ namespace Popbill.Cashbill.Example.csharp
             // [필수] 가맹점 사업자번호
             cashbill.franchiseCorpNum = txtCorpNum.Text;
 
+            // 가맹점 종사업장 식별번호
+            cashbill.franchiseTaxRegID = "0002";
+
             // 가맹점 상호
             cashbill.franchiseCorpName = "가맹점 상호";
 
@@ -230,6 +233,9 @@ namespace Popbill.Cashbill.Example.csharp
 
             // [필수] 가맹점 사업자번호
             cashbill.franchiseCorpNum = txtCorpNum.Text;
+
+            // 가맹점 종사업장 식별변호
+            cashbill.franchiseTaxRegID = "";
 
             // 가맹점 상호
             cashbill.franchiseCorpName = "가맹점 상호_abcd";
@@ -770,6 +776,7 @@ namespace Popbill.Cashbill.Example.csharp
                 tmp += "tax (부가세) : " + cashbill.tax + CRLF;
                 tmp += "serviceFee (봉사료) : " + cashbill.serviceFee + CRLF;
                 tmp += "franchiseCorpNum (가맹점 사업자번호) : " + cashbill.franchiseCorpNum + CRLF;
+                tmp += "franchiseTaxRegID  (가맹점 종사업장 식별번호) : " + cashbill.franchiseTaxRegID + CRLF;
                 tmp += "franchiseCorpName (가맹점 상호) : " + cashbill.franchiseCorpName + CRLF;
                 tmp += "franchiseCEOName (가맹점 대표자 성명) : " + cashbill.franchiseCEOName + CRLF;
                 tmp += "franchiseAddr (가맹점 주소) : " + cashbill.franchiseAddr + CRLF;
@@ -802,10 +809,10 @@ namespace Popbill.Cashbill.Example.csharp
             String DType = "T";
 
             // 시작일자, 날짜형식(yyyyMMdd)
-            String SDate = "20210701";
+            String SDate = "20211201";
 
             // 종료일자, 날짜형식(yyyyMMdd)
-            String EDate = "20210730";
+            String EDate = "20211220";
 
             // 상태코드 배열, 2,3번째 자리에 와일드카드(*) 사용가능
             // - 상태코드에 대한 자세한 사항은 "[현금영수증 API 연동매뉴얼] >
@@ -847,11 +854,14 @@ namespace Popbill.Cashbill.Example.csharp
             // 페이지당 검색개수, 최대 1000개
             int PerPage = 30;
 
+            // 가맹점 종사업장 번호, 다수건 검색시 콤마(",")로 구분. 예) 1234,1000
+            String FranchiseTaxRegID = "";
+
             try
             {
 
                 CBSearchResult searchResult = cashbillService.Search(txtCorpNum.Text, DType, SDate, EDate, State, TradeType,
-                                            TradeUsage, TradeOpt, TaxationType, QString, Order, Page, PerPage);
+                                            TradeUsage, TradeOpt, TaxationType, QString, Order, Page, PerPage, FranchiseTaxRegID);
 
                 String tmp = null;
 
