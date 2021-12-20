@@ -219,7 +219,7 @@ namespace Popbill.AccountCheck.Example.csharp
         }
 
         /*
-         * 예금주 성명 조회시 과금되는 포인트 단가를 확인합니다.
+         * 예금주 성명/실명 조회시 과금되는 포인트 단가를 확인합니다.
          * - https://docs.popbill.com/accountcheck/dotnet/api#GetUnitCost
          */
         private void btnUnitCost_Click(object sender, EventArgs e)
@@ -231,7 +231,7 @@ namespace Popbill.AccountCheck.Example.csharp
             {
                 float unitCost = accountCheckService.GetUnitCost(txtCorpNum.Text, serviceType, txtUserID.Text);
 
-                MessageBox.Show("조회단가 : " + unitCost.ToString(), "조회단가 확인");
+                MessageBox.Show(serviceType + " 조회단가 : " + unitCost.ToString(), "조회단가 확인");
             }
             catch (PopbillException ex)
             {
