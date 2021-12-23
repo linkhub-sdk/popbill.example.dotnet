@@ -129,7 +129,7 @@ namespace Popbill.Cashbill.Example.csharp
             cashbill.franchiseCorpNum = txtCorpNum.Text;
 
             // 가맹점 종사업장 식별번호
-            cashbill.franchiseTaxRegID = "0002";
+            cashbill.franchiseTaxRegID = "";
 
             // 가맹점 상호
             cashbill.franchiseCorpName = "가맹점 상호";
@@ -339,6 +339,9 @@ namespace Popbill.Cashbill.Example.csharp
 
             // [필수] 가맹점 사업자번호
             cashbill.franchiseCorpNum = txtCorpNum.Text;
+
+            // 가맹점 종사업장 식별변호
+            cashbill.franchiseTaxRegID = "";
 
             // 가맹점 상호
             cashbill.franchiseCorpName = "가맹점 상호_수정";
