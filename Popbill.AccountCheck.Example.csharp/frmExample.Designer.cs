@@ -409,7 +409,7 @@
             this.groupBox6.Size = new System.Drawing.Size(347, 95);
             this.groupBox6.TabIndex = 26;
             this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "예금주성명 조회";
+            this.groupBox6.Text = "계좌성명조회";
             // 
             // label4
             // 
@@ -434,7 +434,7 @@
             this.btnCheckAccountInfo.Name = "btnCheckAccountInfo";
             this.btnCheckAccountInfo.Size = new System.Drawing.Size(137, 50);
             this.btnCheckAccountInfo.TabIndex = 18;
-            this.btnCheckAccountInfo.Text = "예금주성명 조회";
+            this.btnCheckAccountInfo.Text = "계좌성명조회";
             this.btnCheckAccountInfo.UseVisualStyleBackColor = true;
             this.btnCheckAccountInfo.Click += new System.EventHandler(this.btnCheckAccountInfo_Click);
             // 
@@ -498,7 +498,7 @@
             this.groupBox9.Size = new System.Drawing.Size(355, 141);
             this.groupBox9.TabIndex = 27;
             this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "예금주실명 조회";
+            this.groupBox9.Text = "계좌실명조회";
             // 
             // label7
             // 
@@ -557,7 +557,7 @@
             this.btnCheckDepositorInfo.Name = "btnCheckDepositorInfo";
             this.btnCheckDepositorInfo.Size = new System.Drawing.Size(137, 50);
             this.btnCheckDepositorInfo.TabIndex = 18;
-            this.btnCheckDepositorInfo.Text = "예금주실명 조회";
+            this.btnCheckDepositorInfo.Text = "계좌실명조회";
             this.btnCheckDepositorInfo.UseVisualStyleBackColor = true;
             this.btnCheckDepositorInfo.Click += new System.EventHandler(this.btnCheckDepositorInfo_Click);
             // 
