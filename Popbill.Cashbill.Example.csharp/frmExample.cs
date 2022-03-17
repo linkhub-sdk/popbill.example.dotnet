@@ -189,6 +189,167 @@ namespace Popbill.Cashbill.Example.csharp
             }
         }
 
+
+        /*
+         * 최대 100건의 현금영수증 발행을 한번의 요청으로 접수합니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#BulkSubmit
+         */
+        private void btnBulkSubmit_Click(object sender, EventArgs e)
+        {
+            // 현금영수증 객체정보 목록
+            List<Cashbill> cashbillList = new List<Cashbill>();
+
+            for (int i = 0; i < 100; i++)
+            {
+                Cashbill cashbill = new Cashbill();
+
+                // [필수] 문서번호, 최대 24자리, 영문, 숫자 '-', '_'를 조합하여 사업자별로 중복되지 않도록 구성
+                cashbill.mgtKey = txtSubmitID.Text + "-" + i;
+
+                // [취소거래시 필수] 원본 현금영수증 국세청승인번호
+                cashbill.orgConfirmNum = "";
+
+                // [취소거래시 필수] 원본 현금영수증 거래일자
+                cashbill.orgTradeDate = "";
+
+                // [필수] 문서형태, { 승인거래, 취소거래 } 중 기재
+                cashbill.tradeType = "승인거래";
+
+                // [필수] 거래구분, { 소득공제용, 지출증빙용 } 중 기재
+                cashbill.tradeUsage = "소득공제용";
+
+                // 거래유형, { 일반, 도서공연, 대중교통 } 중 기재
+                cashbill.tradeOpt = "일반";
+
+                // [필수] 과세형태, { 과세, 비과세 } 중 기재
+                cashbill.taxationType = "과세";
+
+                // [필수] 거래금액 ( 공급가액 + 세액 + 봉사료 )
+                cashbill.totalAmount = "11000";
+
+                // [필수] 공급가액
+                cashbill.supplyCost = "10000";
+
+                // [필수] 부가세
+                cashbill.tax = "1000";
+
+                // [필수] 봉사료
+                cashbill.serviceFee = "0";
+
+                // [필수] 가맹점 사업자번호
+                cashbill.franchiseCorpNum = txtCorpNum.Text;
+
+                // 가맹점 종사업장 식별번호
+                cashbill.franchiseTaxRegID = "";
+
+                // 가맹점 상호
+                cashbill.franchiseCorpName = "가맹점 상호";
+
+                // 가맹점 대표자 성명
+                cashbill.franchiseCEOName = "가맹점 대표자 성명";
+
+                // 가맹점 주소
+                cashbill.franchiseAddr = "가맹점 주소";
+
+                // 가맹점 전화번호
+                cashbill.franchiseTEL = "070-1234-1234";
+
+                // [필수] 식별번호
+                // 거래구분(tradeUsage) - '소득공제용' 인 경우
+                // - 주민등록/휴대폰/카드번호 기재 가능
+                // 거래구분(tradeUsage) - '지출증빙용' 인 경우
+                // - 사업자번호/주민등록/휴대폰/카드번호 기재 가능
+                cashbill.identityNum = "0101112222";
+
+                // 주문자명
+                cashbill.customerName = "주문자명";
+
+                // 주문상품명
+                cashbill.itemName = "주문상품명";
+
+                // 주문번호
+                cashbill.orderNumber = "주문번호";
+
+                // 주문자 이메일
+                // 팝빌 개발환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
+                // 실제 거래처의 메일주소가 기재되지 않도록 주의
+                cashbill.email = "test@test.com";
+
+                // 주문자 휴대폰
+                cashbill.hp = "010-111-222";
+
+                // 주문자 팩스번호
+                cashbill.fax = "02-6442-9700";
+
+                // 발행시 알림문자 전송여부
+                cashbill.smssendYN = false;
+
+                cashbillList.Add(cashbill);
+            }
+
+            try
+            {
+                BulkResponse response = cashbillService.BulkSubmit(txtCorpNum.Text, txtSubmitID.Text, cashbillList, txtUserId.Text);
+
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message + "\r\n" +
+                                "접수아이디(receiptID) : " + response.receiptID, "초대량 발행 접수");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "초대량 발행 접수");
+            }
+        }
+
+        /*
+         * 접수시 기재한 SubmitID를 사용하여 현금영수증 접수결과를 확인합니다.
+         * - 개별 현금영수증 처리상태는 접수상태(txState)가 완료(2) 시 반환됩니다.
+         * - https://docs.popbill.com/cashbill/dotnet/api#GetBulkResult
+         */
+        private void btnGetBulkResult_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                BulkCashbillResult result = cashbillService.GetBulkResult(txtCorpNum.Text, txtSubmitID.Text, txtUserId.Text);
+
+                String tmp = null;
+
+                tmp += "응답 코드(code) : " + result.code + CRLF;
+                tmp += "응답메시지(message) : " + result.message + CRLF;
+                tmp += "제출아이디(submitID) : " + result.submitID + CRLF;
+                tmp += "현금영수증 접수 건수(submitCount) : " + result.submitCount + CRLF;
+                tmp += "현금영수증 발행 성공 건수(successCount) : " + result.successCount + CRLF;
+                tmp += "현금영수증 발행 실패 건수(failCount) : " + result.failCount + CRLF;
+                tmp += "접수상태코드(txState) : " + result.txState + CRLF;
+                tmp += "접수 결과코드(txResultCode) : " + result.txResultCode + CRLF;
+                tmp += "발행처리 시작일시(txStartDT) : " + result.txStartDT + CRLF;
+                tmp += "발행처리 완료일시(txEndDT) : " + result.txEndDT + CRLF;
+                tmp += "접수일시(receiptDT) : " + result.receiptDT + CRLF;
+                tmp += "접수아이디(receiptID) : " + result.receiptID + CRLF;
+
+                if (result.issueResult != null)
+                {
+                    int i = 1;
+                    foreach (BulkCashbillIssueResult issueResult in result.issueResult)
+                    {
+                        tmp += "===========발행결과[" + i.ToString() + "/" + result.issueResult.Count + "]===========" + CRLF;
+                        tmp += "문서번호(MgtKey) : " + issueResult.mgtKey + CRLF;
+                        tmp += "응답코드(code) : " + issueResult.code + CRLF;
+                        tmp += "국세청승인번호(confirmNum) : " + issueResult.confirmNum + CRLF;
+                        tmp += "거래일자(tradeDate) : " + issueResult.tradeDate + CRLF;
+                        i++;
+                    }
+                }
+                MessageBox.Show(tmp, "초대량 접수결과 확인");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "초대량 접수결과 확인");
+            }
+        }
+
         /*
          * 1건의 현금영수증을 [임시저장]합니다.
          * - [임시저장] 상태의 현금영수증은 발행(Issue API)을 호출해야만 국세청에 전송됩니다.
