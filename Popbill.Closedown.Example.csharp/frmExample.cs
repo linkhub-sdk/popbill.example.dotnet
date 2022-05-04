@@ -2,7 +2,7 @@
  * 팝빌 휴폐업조회 API DotNet SDK Example
  *
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/closedown/tutorial/dotnet#csharp
- * - 업데이트 일자 : 2021-08-05
+ * - 업데이트 일자 : 2022-05-04
  * - 연동 기술지원 연락처 : 1600-9854
  * - 연동 기술지원 이메일 : code@linkhubcorp.com
  *
@@ -38,16 +38,16 @@ namespace Popbill.Closedown.Example.csharp
             // 휴폐업조회 서비스 모듈 초기화
             closedownService = new ClosedownService(LinkID, SecretKey);
 
-            // 연동환경 설정값, 개발용(true), 상업용(false)
+            // 연동환경 설정값, true-개발용, false-상업용
             closedownService.IsTest = true;
 
-            // 발급된 토큰에 대한 IP 제한기능 사용여부, 권장(True)
+            // 인증토큰 발급 IP 제한 On/Off, true-사용, false-미사용, 기본값(true)
             closedownService.IPRestrictOnOff = true;
 
             // 팝빌 API 서비스 고정 IP 사용여부, true-사용, false-미사용, 기본값(false)
             closedownService.UseStaticIP = false;
 
-            // 로컬PC 시간 사용 여부 true(사용), false(기본값) - 미사용
+            // 로컬시스템 시간 사용여부, true-사용, false-미사용, 기본값(false)
             closedownService.UseLocalTimeYN = false;
         }
 
@@ -74,8 +74,8 @@ namespace Popbill.Closedown.Example.csharp
                 tmp += "* state (휴폐업상태) : null-알수없음, 0-등록되지 않은 사업자번호, 1-사업중, 2-폐업, 3-휴업\n";
                 tmp += "* taxType (과세유형) : null-알수없음, 10-일반, 20-면세, 30-간이, 31-간이(세금계산서 발급사업자),  40-비영리법인, 국가기관" + CRLF + CRLF;
                 tmp += "corpNum(사업자번호) : " + result.corpNum + "\n";
-                tmp += "state(휴폐업상태) : " + result.state + "\n";
                 tmp += "taxType(과세유형) : " + result.taxType + "\n";
+                tmp += "state(휴폐업상태) : " + result.state + "\n";
                 tmp += "stateDate(휴폐업일자) : " + result.stateDate + "\n";
                 tmp += "typeDate(과세유형 전환일자) : " + result.typeDate + "\n";
                 tmp += "checkDate(국세청확인일자) : " + result.checkDate + "\n";
@@ -103,7 +103,6 @@ namespace Popbill.Closedown.Example.csharp
             // 조회할 사업자번호 배열, 최대 1000건
             CorpNumList.Add("1234567890");
             CorpNumList.Add("6798700433");
-            CorpNumList.Add("1231212312");
 
             try
             {
@@ -114,12 +113,12 @@ namespace Popbill.Closedown.Example.csharp
 
                 for (int i = 0; i < corpStateList.Count; i++)
                 {
-                    tmp += "corpNum(사업자번호) : " + corpStateList[i].corpNum + CRLF;
-                    tmp += "state(휴폐업상태) : " + corpStateList[i].state + CRLF;
-                    tmp += "taxType(과세유형) : " + corpStateList[i].taxType + CRLF;
-                    tmp += "stateDate(휴폐업일자) : " + corpStateList[i].stateDate + CRLF;
-                    tmp += "typeDate(과세유형 전환일자) : " + corpStateList[i].typeDate + CRLF;
-                    tmp += "checkDate(국세청확인일자) : " + corpStateList[i].checkDate + CRLF + CRLF;
+                    tmp += "corpNum (사업자번호) : " + corpStateList[i].corpNum + CRLF;
+                    tmp += "taxType (과세유형) : " + corpStateList[i].taxType + CRLF;
+                    tmp += "typeDate (과세유형 전환일자) : " + corpStateList[i].typeDate + CRLF;
+                    tmp += "state (휴폐업상태) : " + corpStateList[i].state + CRLF;
+                    tmp += "stateDate (휴폐업일자) : " + corpStateList[i].stateDate + CRLF;
+                    tmp += "checkDate (국세청확인일자) : " + corpStateList[i].checkDate + CRLF + CRLF;
                 }
 
                 MessageBox.Show(tmp, "휴폐업조회 - 대량");
@@ -133,7 +132,7 @@ namespace Popbill.Closedown.Example.csharp
 
         /*
          * 연동회원의 잔여포인트를 확인합니다.
-         * - 과금방식이 파트너과금인 경우 파트너 잔여포인트(GetPartnerBalance API)를 통해 확인하시기 바랍니다.
+         * - 과금방식이 파트너과금인 경우 파트너 잔여포인트 확인(GetPartnerBalance API) 함수를 통해 확인하시기 바랍니다.
          * - https://docs.popbill.com/closedown/dotnet/api#GetBalance
          */
         private void btnGetBalance_Click(object sender, EventArgs e)
@@ -216,7 +215,7 @@ namespace Popbill.Closedown.Example.csharp
 
         /*
          * 파트너의 잔여포인트를 확인합니다.
-         * - 과금방식이 연동과금인 경우 연동회원 잔여포인트(GetBalance API)를 이용하시기 바랍니다.
+         * - 과금방식이 연동과금인 경우 연동회원 잔여포인트 확인(GetBalance API) 함수를 이용하시기 바랍니다.
          * - https://docs.popbill.com/closedown/dotnet/api#GetPartnerBalance
          */
         private void btnGetPartnerBalance_Click(object sender, EventArgs e)
@@ -240,7 +239,7 @@ namespace Popbill.Closedown.Example.csharp
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
          * - https://docs.popbill.com/closedown/dotnet/api#GetPartnerURL
          */
-        private void btnGetPartnerURL_CHRG_Click(object sender, EventArgs e)
+        private void btnGetPartnerURL_Click(object sender, EventArgs e)
         {
             try
             {
@@ -276,7 +275,7 @@ namespace Popbill.Closedown.Example.csharp
         }
 
         /*
-         * 휴폐업조회 API 서비스 과금정보를 확인합니다.
+         * 팝빌 휴폐업조회 API 서비스 과금정보를 확인합니다.
          * - https://docs.popbill.com/closedown/dotnet/api#GetChargeInfo
          */
         private void btnGetChargeInfo_Click(object sender, EventArgs e)
@@ -379,16 +378,10 @@ namespace Popbill.Closedown.Example.csharp
             joinInfo.ContactName = "담당자명";
 
             // 담당자 이메일 (최대 20자)
-            joinInfo.ContactEmail = "test@test.com";
+            joinInfo.ContactEmail = "";
 
             // 담당자 연락처 (최대 20자)
-            joinInfo.ContactTEL = "070-4304-2991";
-
-            // 담당자 휴대폰번호 (최대 20자)
-            joinInfo.ContactHP = "010-111-222";
-
-            // 담당자 팩스번호 (최대 20자)
-            joinInfo.ContactFAX = "02-6442-9700";
+            joinInfo.ContactTEL = "";
 
             try
             {
@@ -401,6 +394,27 @@ namespace Popbill.Closedown.Example.csharp
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + ex.Message, "연동회원 가입요청");
+            }
+        }
+
+        /*
+         * 팝빌 사이트에 로그인 상태로 접근할 수 있는 페이지의 팝업 URL을 반환합니다.
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
+         * - https://docs.popbill.com/closedown/dotnet/api#GetAccessURL
+         */
+        private void btnGetAccessURL_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string url = closedownService.GetAccessURL(txtCorpNum.Text, txtUserID.Text);
+
+                MessageBox.Show(url, "팝빌 로그인 URL");
+                textURL.Text = url;
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "팝빌 로그인 URL");
             }
         }
 
@@ -486,16 +500,10 @@ namespace Popbill.Closedown.Example.csharp
             contactInfo.personName = "담당자명";
 
             //담당자연락처 (최대 20자)
-            contactInfo.tel = "070-4304-2991";
-
-            //담당자 휴대폰번호 (최대 20자)
-            contactInfo.hp = "010-111-222";
-
-            //담당자 팩스번호 (최대 20자)
-            contactInfo.fax = "070-4304-2991";
+            contactInfo.tel = "";
 
             //담당자 이메일 (최대 100자)
-            contactInfo.email = "dev@linkhub.co.kr";
+            contactInfo.email = "";
 
             // 담당자 권한, 1 : 개인권한, 2 : 읽기권한, 3 : 회사권한
             contactInfo.searchRole = 3;
@@ -531,13 +539,11 @@ namespace Popbill.Closedown.Example.csharp
 
                 tmp += "id (담당자 아이디) : " + contactInfo.id + CRLF;
                 tmp += "personName (담당자명) : " + contactInfo.personName + CRLF;
-                tmp += "email (담당자 이메일) : " + contactInfo.email + CRLF;
-                tmp += "hp (휴대폰번호) : " + contactInfo.hp + CRLF;
-                tmp += "searchRole (담당자 권한) : " + contactInfo.searchRole + CRLF;
                 tmp += "tel (연락처) : " + contactInfo.tel + CRLF;
-                tmp += "fax (팩스번호) : " + contactInfo.fax + CRLF;
-                tmp += "mgrYN (관리자 여부) : " + contactInfo.mgrYN + CRLF;
+                tmp += "email (담당자 이메일) : " + contactInfo.email + CRLF;
                 tmp += "regDT (등록일시) : " + contactInfo.regDT + CRLF;
+                tmp += "searchRole (담당자 권한) : " + contactInfo.searchRole + CRLF;
+                tmp += "mgrYN (관리자 여부) : " + contactInfo.mgrYN + CRLF;
                 tmp += "state (상태) : " + contactInfo.state + CRLF;
                 tmp += CRLF;
 
@@ -566,13 +572,11 @@ namespace Popbill.Closedown.Example.csharp
                 {
                     tmp += "id (담당자 아이디) : " + contactInfo.id + CRLF;
                     tmp += "personName (담당자명) : " + contactInfo.personName + CRLF;
-                    tmp += "email (담당자 이메일) : " + contactInfo.email + CRLF;
-                    tmp += "hp (휴대폰번호) : " + contactInfo.hp + CRLF;
-                    tmp += "searchRole (담당자 권한) : " + contactInfo.searchRole + CRLF;
                     tmp += "tel (연락처) : " + contactInfo.tel + CRLF;
-                    tmp += "fax (팩스번호) : " + contactInfo.fax + CRLF;
-                    tmp += "mgrYN (관리자 여부) : " + contactInfo.mgrYN + CRLF;
+                    tmp += "email (담당자 이메일) : " + contactInfo.email + CRLF;
                     tmp += "regDT (등록일시) : " + contactInfo.regDT + CRLF;
+                    tmp += "searchRole (담당자 권한) : " + contactInfo.searchRole + CRLF;
+                    tmp += "mgrYN (관리자 여부) : " + contactInfo.mgrYN + CRLF;
                     tmp += "state (상태) : " + contactInfo.state + CRLF;
                     tmp += CRLF;
                 }
@@ -601,16 +605,10 @@ namespace Popbill.Closedown.Example.csharp
             contactInfo.personName = "담당자123";
 
             // 연락처 (최대 20자)
-            contactInfo.tel = "070-4304-2991";
-
-            // 휴대폰번호 (최대 20자)
-            contactInfo.hp = "010-1234-1234";
-
-            // 팩스번호 (최대 20자)
-            contactInfo.fax = "02-6442-9700";
+            contactInfo.tel = "";
 
             // 이메일주소 (최대 100자)
-            contactInfo.email = "dev@linkhub.co.kr";
+            contactInfo.email = "";
 
             // 담당자 권한, 1 : 개인권한, 2 : 읽기권한, 3 : 회사권한
             contactInfo.searchRole = 3;
@@ -626,27 +624,6 @@ namespace Popbill.Closedown.Example.csharp
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + ex.Message, "담당자 정보수정");
-            }
-        }
-
-        /*
-         * 팝빌 사이트에 로그인 상태로 접근할 수 있는 페이지의 팝업 URL을 반환합니다.
-         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://docs.popbill.com/closedown/dotnet/api#GetAccessURL
-         */
-        private void btnGetAccessURL_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string url = closedownService.GetAccessURL(txtCorpNum.Text, txtUserID.Text);
-
-                MessageBox.Show(url, "팝빌 로그인 URL");
-                textURL.Text = url;
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "팝빌 로그인 URL");
             }
         }
     }

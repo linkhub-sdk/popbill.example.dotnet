@@ -2,7 +2,7 @@
  * 팝빌 홈택스 전자세금계산서 연계 API DotNet SDK Example
  *
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/httaxinvoice/tutorial/dotnet
- * - 업데이트 일자 : 2021-08-05
+ * - 업데이트 일자 : 2022-05-04
  * - 연동 기술지원 연락처 : 1600-9854
  * - 연동 기술지원 이메일 : code@linkhubcorp.com
  *
@@ -45,16 +45,16 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
             // 홈택스 전자세금계산서 연계 서비스 모듈 초기화
             htTaxinvoiceService = new HTTaxinvoiceService(LinkID, SecretKey);
 
-            // 연동환경 설정값, 개발용(true), 상업용(false)
+            // 연동환경 설정값, true-개발용, false-상업용
             htTaxinvoiceService.IsTest = true;
 
-            // 발급된 토큰에 대한 IP 제한기능 사용여부, 권장(True)
+            // 인증토큰 발급 IP 제한 On/Off, true-사용, false-미사용, 기본값(true)
             htTaxinvoiceService.IPRestrictOnOff = true;
 
             // 팝빌 API 서비스 고정 IP 사용여부, true-사용, false-미사용, 기본값(false)
             htTaxinvoiceService.UseStaticIP = false;
 
-            // 로컬PC 시간 사용 여부 true(사용), false(기본값) - 미사용
+            // 로컬시스템 시간 사용여부, true-사용, false-미사용, 기본값(false)
             htTaxinvoiceService.UseLocalTimeYN = false;
         }
 
@@ -71,10 +71,10 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
             String DType = "S";
 
             // 시작일자, 표시형식(yyyyMMdd)
-            String SDate = "20210701";
+            String SDate = "20220501";
 
             // 종료일자, 표시형식(yyyyMMdd)
-            String EDate = "20210730";
+            String EDate = "20220504";
 
             try
             {
@@ -92,7 +92,13 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
         }
 
         /*
-         * 함수 RequestJob(수집 요청)를 통해 반환 받은 작업 아이디의 상태를 확인합니다.
+         * 수집 요청(RequestJob API) 함수를 통해 반환 받은 작업 아이디의 상태를 확인합니다.
+         * - 수집 결과 조회(Search API) 함수 또는 수집 결과 요약 정보 조회(Summary API) 함수를 사용하기 전에
+         *   수집 작업의 진행 상태, 수집 작업의 성공 여부를 확인해야 합니다.
+         * - 작업 상태(jobState) = 3(완료)이고 수집 결과 코드(errorCode) = 1(수집성공)이면
+         *   수집 결과 내역 조회(Search) 또는 수집 결과 요약 정보 조회(Summary)를 해야합니다.
+         * - 작업 상태(jobState)가 3(완료)이지만 수집 결과 코드(errorCode)가 1(수집성공)이 아닌 경우에는
+         *   오류메시지(errorReason)로 수집 실패에 대한 원인을 파악할 수 있습니다.
          * - https://docs.popbill.com/httaxinvoice/dotnet/api#GetJobState
          */
         private void btnGetJobState_Click(object sender, EventArgs e)
@@ -112,7 +118,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
                 tmp += "jobStartDT (작업 시작일시) : " + jobState.jobStartDT + CRLF;
                 tmp += "jobEndDT (작업 종료일시) : " + jobState.jobEndDT + CRLF;
                 tmp += "collectCount (수집개수) : " + jobState.collectCount.ToString() + CRLF;
-                tmp += "regDT (수집유형) : " + jobState.regDT + CRLF;
+                tmp += "regDT (수집 요청일시) : " + jobState.regDT + CRLF;
 
                 MessageBox.Show(tmp, "수집 상태 확인");
             }
@@ -170,27 +176,37 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
         }
 
         /*
-         * 함수 GetJobState(수집 상태 확인)를 통해 상태 정보가 확인된 작업아이디를 활용하여 수집된 전자세금계산서 매입/매출 내역을 조회합니다.
+         * 수집 상태 확인(GetJobState API) 함수를 통해 상태 정보가 확인된 작업아이디를 활용하여 수집된 전자세금계산서 매입/매출 내역을 조회합니다.
          * - https://docs.popbill.com/httaxinvoice/dotnet/api#Search
          */
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            // 문서형태 배열, N-일반 전자세금계산서, M-수정 전자세금계산서
+            // 문서형태 배열 ("N" 와 "M" 중 선택, 다중 선택 가능)
+            // └ N = 일반 , M = 수정
+            // - 미입력 시 전체조회
             String[] Type = { "N", "M" };
 
-            // 과세형태, T-과세, N-면세, Z-영세
+            // 과세형태 배열 ("T" , "N" , "Z" 중 선택, 다중 선택 가능)
+            // └ T = 과세, N = 면세, Z = 영세
+            // - 미입력 시 전체조회
             String[] TaxType = { "T", "N", "Z" };
 
-            // 영수/청구, R-영수, C-청구, N-없음
+            // 발행목적 배열 ("R" , "C", "N" 중 선택, 다중 선택 가능)
+            // └ R = 영수, C = 청구, N = 없음
+            // - 미입력 시 전체조회
             String[] PurposeType = { "R", "C", "N" };
 
-            // 종사업장유무, 공백-전체조회 0-종사업장번호 없는 경우 조회, 1-종사업장번호 조건에 따라 조회
+            // 종사업장번호 유무 (null , "0" , "1" 중 택 1)
+            // - null = 전체조회 , 0 = 없음, 1 = 있음
             String TaxRegIDYN = "";
 
-            // 종사업장번호 사업자 유형, S-공급자, B-공급받는자, T-수탁자
+            // 종사업장번호의 주체 ("S" , "B" , "T" 중 택 1)
+            // - S = 공급자 , B = 공급받는자 , T = 수탁자
             String TaxRegIDType = "S";
 
-            // 종사업장번호, 콤마(",")로 구분하여 구성 ex) "0001,1234"
+            // 종사업장번호
+            // - 다수기재 시 콤마(",")로 구분. ex) "0001,0002"
+            // - 미입력 시 전체조회
             String TaxRegID = "";
 
             // 페이지번호
@@ -202,7 +218,9 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
             // 정렬방향 D-내림차순, A-오름차순
             String Order = "D";
 
-            // 조회 검색어, 거래처 사업자번호 또는 거래처명 like 검색
+            // 거래처 상호 / 사업자번호 (사업자) / 주민등록번호 (개인) / "9999999999999" (외국인) 중 검색하고자 하는 정보 입력
+            // - 사업자번호 / 주민등록번호는 하이픈('-')을 제외한 숫자만 입력
+            // - 미입력시 전체조회
             String SearchString = "";
 
             listBox1.Items.Clear();
@@ -261,31 +279,44 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
         }
 
         /*
-         * 함수 GetJobState(수집 상태 확인)를 통해 상태 정보가 확인된 작업아이디를 활용하여 수집된 전자세금계산서 매입/매출 내역의 요약 정보를 조회합니다.
+         * 수집 상태 확인(GetJobState API) 함수를 통해 상태 정보가 확인된 작업아이디를 활용하여 수집된 전자세금계산서 매입/매출 내역의 요약 정보를 조회합니다.
+         * - 요약 정보 : 전자세금계산서 수집 건수, 공급가액 합계, 세액 합계, 합계 금액
          * - https://docs.popbill.com/httaxinvoice/dotnet/api#Summary
          */
         private void btnSummary_Click(object sender, EventArgs e)
         {
 
-            // 문서형태 배열, N-일반 전자세금계산서, M-수정 전자세금계산서
+            // 문서형태 배열 ("N" 와 "M" 중 선택, 다중 선택 가능)
+            // └ N = 일반 , M = 수정
+            // - 미입력 시 전체조회
             String[] Type = { "N", "M" };
 
-            // 과세형태, T-과세, N-면세, Z-영세
+            // 과세형태 배열 ("T" , "N" , "Z" 중 선택, 다중 선택 가능)
+            // └ T = 과세, N = 면세, Z = 영세
+            // - 미입력 시 전체조회
             String[] TaxType = { "T", "N", "Z" };
 
-            // 영수/청구, R-영수, C-청구, N-없음
+            // 발행목적 배열 ("R" , "C", "N" 중 선택, 다중 선택 가능)
+            // └ R = 영수, C = 청구, N = 없음
+            // - 미입력 시 전체조회
             String[] PurposeType = { "R", "C", "N" };
 
-            // 종사업장유무, 공백-전체조회 0-종사업장번호 없는 경우 조회, 1-종사업장번호 조건에 따라 조회
+            // 종사업장번호 유무 (null , "0" , "1" 중 택 1)
+            // - null = 전체조회 , 0 = 없음, 1 = 있음
             String TaxRegIDYN = "";
 
-            // 종사업장번호 사업자 유형, S-공급자, B-공급받는자, T-수탁자
+            // 종사업장번호의 주체 ("S" , "B" , "T" 중 택 1)
+            // - S = 공급자 , B = 공급받는자 , T = 수탁자
             String TaxRegIDType = "S";
 
-            // 종사업장번호, 콤마(",")로 구분하여 구성 ex) "0001,1234"
+            // 종사업장번호
+            // - 다수기재 시 콤마(",")로 구분. ex) "0001,0002"
+            // - 미입력 시 전체조회
             String TaxRegID = "";
 
-            // 조회 검색어, 거래처 사업자번호 또는 거래처명 like 검색
+            // 거래처 상호 / 사업자번호 (사업자) / 주민등록번호 (개인) / "9999999999999" (외국인) 중 검색하고자 하는 정보 입력
+            // - 사업자번호 / 주민등록번호는 하이픈('-')을 제외한 숫자만 입력
+            // - 미입력시 전체조회
             String SearchString = "";
 
             try
@@ -321,7 +352,8 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
                 String tmp = "writeDate (작성일자) : " + tiInfo.writeDate + CRLF;
                 tmp += "issueDT (발행일시) : " + tiInfo.issueDT + CRLF;
                 tmp += "invoiceType (전자세금계산서 종류) : " + tiInfo.invoiceType.ToString() + CRLF;
-                tmp += "taxTotal (과세형태) : " + tiInfo.taxTotal + CRLF;
+                tmp += "taxType (과세형태) : " + tiInfo.taxType + CRLF;
+                tmp += "taxTotal (세액 합계) : " + tiInfo.taxTotal + CRLF;
                 tmp += "supplyCostTotal (공급가액 합계) : " + tiInfo.supplyCostTotal + CRLF;
                 tmp += "totalAmount (합계금액) : " + tiInfo.totalAmount + CRLF;
                 tmp += "purposeType (영수/청구) : " + tiInfo.purposeType + CRLF;
@@ -345,6 +377,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
                 tmp += "invoicerBizType (업태) : " + tiInfo.invoicerBizType + CRLF;
                 tmp += "invoicerBizClass (종목) : " + tiInfo.invoicerBizClass + CRLF;
                 tmp += "invoicerContactName (담당자 성명) : " + tiInfo.invoicerContactName + CRLF;
+                tmp += "invoicerDeptName (담당자 부서명) : " + tiInfo.invoicerDeptName + CRLF;
                 tmp += "invoicerTEL (담당자 연락처) : " + tiInfo.invoicerTEL + CRLF;
                 tmp += "invoicerEmail (담당자 이메일) : " + tiInfo.invoicerEmail + CRLF + CRLF;
 
@@ -359,6 +392,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
                 tmp += "invoiceeBizType (업태) : " + tiInfo.invoiceeBizType + CRLF;
                 tmp += "invoiceeBizClass (종목) : " + tiInfo.invoiceeBizClass + CRLF;
                 tmp += "invoiceeContactName1 (담당자 성명) : " + tiInfo.invoiceeContactName1 + CRLF;
+                tmp += "invoiceeDeptName1 (담당자 부서명) : " + tiInfo.invoiceeDeptName1 + CRLF;
                 tmp += "invoiceeTEL1 (담당자 연락처) : " + tiInfo.invoiceeTEL1 + CRLF;
                 tmp += "invoiceeEmail1 (담당자 이메일) : " + tiInfo.invoiceeEmail1 + CRLF + CRLF;
 
@@ -438,8 +472,31 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
         }
 
         /*
+         * 수집된 전자세금계산서 1건의 상세내역을 인쇄하는 페이지의 URL을 반환합니다.
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
+         * - https://docs.popbill.com/httaxinvoice/dotnet/api#GetPrintURL
+         */
+        private void btnGetPrintURL_Click(object sender, EventArgs e)
+        {
+            // 인쇄할 전자세금계산서 국세청승인번호
+            String NTSConfirmNum = txtNTSconfirmNum.Text;
+
+            try
+            {
+                String url = htTaxinvoiceService.GetPrintURL(txtCorpNum.Text, NTSConfirmNum);
+
+                MessageBox.Show(url, "홈택스 전자세금계산서 인쇄 팝업 URL");
+                textURL.Text = url;
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "홈택스 전자세금계산서 인쇄 팝업 URL");
+            }
+        }
+
+        /*
          * 홈택스연동 인증정보를 관리하는 페이지의 팝업 URL을 반환합니다.
-         * - 인증방식에는 부서사용자/공인인증서 인증 방식이 있습니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
          * - https://docs.popbill.com/httaxinvoice/dotnet/api#GetCertificatePopUpURL
          */
@@ -460,7 +517,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
         }
 
         /*
-         * 홈택스연동 인증을 위해 팝빌에 등록된 인증서 만료일자를 확인합니다.
+         * 팝빌에 등록된 인증서 만료일자를 확인합니다.
          * - https://docs.popbill.com/httaxinvoice/dotnet/api#GetCertificateExpireDate
          */
         private void btnGetCertificateExpireDate_Click(object sender, EventArgs e)
@@ -586,8 +643,59 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
         }
 
         /*
+         * 홈택스연동 정액제 서비스 신청 페이지의 팝업 URL을 반환합니다.
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
+         * - https://docs.popbill.com/httaxinvoice/dotnet/api#GetFlatRatePopUpURL
+         */
+        private void btnGetFlatRatePopUpURL_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                String url = htTaxinvoiceService.GetFlatRatePopUpURL(txtCorpNum.Text, txtUserId.Text);
+
+                MessageBox.Show(url, "정액제 서비스 신청 팝업 URL");
+                textURL.Text = url;
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "정액제 서비스 신청 팝업 URL");
+            }
+        }
+
+        /*
+         * 홈택스연동 정액제 서비스 상태를 확인합니다.
+         * - https://docs.popbill.com/httaxinvoice/dotnet/api#GetFlatRateState
+         */
+        private void btnGetFlatRateState_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                HTFlatRate rateInfo = htTaxinvoiceService.GetFlatRateState(txtCorpNum.Text, txtUserId.Text);
+
+                String tmp = "referenceID (사업자번호) : " + rateInfo.referenceID + CRLF;
+                tmp += "contractDT (정액제 서비스 시작일시) : " + rateInfo.contractDT + CRLF;
+                tmp += "useEndDate (정액제 서비스 종료일) : " + rateInfo.useEndDate + CRLF;
+                tmp += "baseDate (자동연장 결제일) : " + rateInfo.baseDate.ToString() + CRLF;
+                tmp += "state (정액제 서비스 상태) : " + rateInfo.state.ToString() + CRLF;
+                tmp += "closeRequestYN (정액제 서비스 해지신청 여부) : " + rateInfo.closeRequestYN.ToString() + CRLF;
+                tmp += "useRestrictYN (정액제 서비스 사용제한 여부) : " + rateInfo.useRestrictYN.ToString() + CRLF;
+                tmp += "closeOnExpired (정액제 서비스 만료 시 해지 여부) : " + rateInfo.closeOnExpired.ToString() + CRLF;
+                tmp += "unPaidYN (미수금 보유 여부) : " + rateInfo.unPaidYN.ToString() + CRLF;
+
+                MessageBox.Show(tmp, "정액제 서비스 상태 확인");
+
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "정액제 서비스 상태 확인");
+            }
+        }
+
+        /*
          * 연동회원의 잔여포인트를 확인합니다.
-         * - 과금방식이 파트너과금인 경우 파트너 잔여포인트(GetPartnerBalance API)를 통해 확인하시기 바랍니다.
+         * - 과금방식이 파트너과금인 경우 파트너 잔여포인트 확인(GetPartnerBalance API) 함수를 통해 확인하시기 바랍니다.
          * - https://docs.popbill.com/httaxinvoice/dotnet/api#GetBalance
          */
         private void btnGetBalance_Click(object sender, EventArgs e)
@@ -672,7 +780,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
 
         /*
          * 파트너의 잔여포인트를 확인합니다.
-         * - 과금방식이 연동과금인 경우 연동회원 잔여포인트(GetBalance API)를 이용하시기 바랍니다.
+         * - 과금방식이 연동과금인 경우 연동회원 잔여포인트 확인(GetBalance API) 함수를 이용하시기 바랍니다.
          * - https://docs.popbill.com/httaxinvoice/dotnet/api#GetPartnerBalance
          */
         private void btnGetPartnerBalance1_Click(object sender, EventArgs e)
@@ -696,7 +804,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
          * - https://docs.popbill.com/httaxinvoice/dotnet/api#GetPartnerURL
          */
-        private void btnGetPartnerURL_CHRG_Click(object sender, EventArgs e)
+        private void btnGetPartnerURL_Click(object sender, EventArgs e)
         {
             try
             {
@@ -733,57 +841,6 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + ex.Message, "과금정보 확인");
-            }
-        }
-
-        /*
-         * 홈택스연동 정액제 서비스 신청 페이지의 팝업 URL을 반환합니다.
-         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://docs.popbill.com/httaxinvoice/dotnet/api#GetFlatRatePopUpURL
-         */
-        private void btnGetFlatRatePopUpURL_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                String url = htTaxinvoiceService.GetFlatRatePopUpURL(txtCorpNum.Text, txtUserId.Text);
-
-                MessageBox.Show(url, "정액제 서비스 신청 팝업 URL");
-                textURL.Text = url;
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "정액제 서비스 신청 팝업 URL");
-            }
-        }
-
-        /*
-         * 홈택스연동 정액제 서비스 상태를 확인합니다.
-         * - https://docs.popbill.com/httaxinvoice/dotnet/api#GetFlatRateState
-         */
-        private void button1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                HTFlatRate rateInfo = htTaxinvoiceService.GetFlatRateState(txtCorpNum.Text, txtUserId.Text);
-
-                String tmp = "referenceID(사업자번호) : " + rateInfo.referenceID + CRLF;
-                tmp += "contractDT(정액제 서비스 시작일시) : " + rateInfo.contractDT + CRLF;
-                tmp += "useEndDate(정액제 서비스 종료일) : " + rateInfo.useEndDate + CRLF;
-                tmp += "baseDate(자동연장 결제일) : " + rateInfo.baseDate.ToString() + CRLF;
-                tmp += "state(정액제 서비스 상태) : " + rateInfo.state.ToString() + CRLF;
-                tmp += "closeRequestYN(정액제 서비스 해지신청 여부) : " + rateInfo.closeRequestYN.ToString() + CRLF;
-                tmp += "useRestrictYN(정액제 서비스 사용제한 여부) : " + rateInfo.useRestrictYN.ToString() + CRLF;
-                tmp += "closeOnExpired(정액제 서비스 만료 시 해지 여부) : " + rateInfo.closeOnExpired.ToString() + CRLF;
-                tmp += "unPaidYN(미수금 보유 여부) : " + rateInfo.unPaidYN.ToString() + CRLF;
-
-                MessageBox.Show(tmp, "정액제 서비스 상태 확인");
-
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "정액제 서비스 상태 확인");
             }
         }
 
@@ -867,16 +924,10 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
             joinInfo.ContactName = "담당자명";
 
             // 담당자 이메일 (최대 20자)
-            joinInfo.ContactEmail = "test@test.com";
+            joinInfo.ContactEmail = "";
 
             // 담당자 연락처 (최대 20자)
-            joinInfo.ContactTEL = "070-4304-2991";
-
-            // 담당자 휴대폰번호 (최대 20자)
-            joinInfo.ContactHP = "010-111-222";
-
-            // 담당자 팩스번호 (최대 20자)
-            joinInfo.ContactFAX = "02-6442-9700";
+            joinInfo.ContactTEL = "";
 
             try
             {
@@ -994,16 +1045,10 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
             contactInfo.personName = "담당자명";
 
             //담당자연락처 (최대 20자)
-            contactInfo.tel = "070-4304-2991";
-
-            //담당자 휴대폰번호 (최대 20자)
-            contactInfo.hp = "010-111-222";
-
-            //담당자 팩스번호 (최대 20자)
-            contactInfo.fax = "070-4304-2991";
+            contactInfo.tel = "";
 
             //담당자 이메일 (최대 100자)
-            contactInfo.email = "dev@linkhub.co.kr";
+            contactInfo.email = "";
 
             // 담당자 권한, 1 : 개인권한, 2 : 읽기권한, 3 : 회사권한
             contactInfo.searchRole = 3;
@@ -1039,13 +1084,11 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
 
                 tmp += "id (담당자 아이디) : " + contactInfo.id + CRLF;
                 tmp += "personName (담당자명) : " + contactInfo.personName + CRLF;
-                tmp += "email (담당자 이메일) : " + contactInfo.email + CRLF;
-                tmp += "hp (휴대폰번호) : " + contactInfo.hp + CRLF;
-                tmp += "searchRole (담당자 권한) : " + contactInfo.searchRole + CRLF;
                 tmp += "tel (연락처) : " + contactInfo.tel + CRLF;
-                tmp += "fax (팩스번호) : " + contactInfo.fax + CRLF;
-                tmp += "mgrYN (관리자 여부) : " + contactInfo.mgrYN + CRLF;
+                tmp += "email (담당자 이메일) : " + contactInfo.email + CRLF;
                 tmp += "regDT (등록일시) : " + contactInfo.regDT + CRLF;
+                tmp += "searchRole (담당자 권한) : " + contactInfo.searchRole + CRLF;
+                tmp += "mgrYN (관리자 여부) : " + contactInfo.mgrYN + CRLF;
                 tmp += "state (상태) : " + contactInfo.state + CRLF;
                 tmp += CRLF;
 
@@ -1074,13 +1117,11 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
                 {
                     tmp += "id (담당자 아이디) : " + contactInfo.id + CRLF;
                     tmp += "personName (담당자명) : " + contactInfo.personName + CRLF;
-                    tmp += "email (담당자 이메일) : " + contactInfo.email + CRLF;
-                    tmp += "hp (휴대폰번호) : " + contactInfo.hp + CRLF;
-                    tmp += "searchRole (담당자 권한) : " + contactInfo.searchRole + CRLF;
                     tmp += "tel (연락처) : " + contactInfo.tel + CRLF;
-                    tmp += "fax (팩스번호) : " + contactInfo.fax + CRLF;
-                    tmp += "mgrYN (관리자 여부) : " + contactInfo.mgrYN + CRLF;
+                    tmp += "email (담당자 이메일) : " + contactInfo.email + CRLF;
                     tmp += "regDT (등록일시) : " + contactInfo.regDT + CRLF;
+                    tmp += "searchRole (담당자 권한) : " + contactInfo.searchRole + CRLF;
+                    tmp += "mgrYN (관리자 여부) : " + contactInfo.mgrYN + CRLF;
                     tmp += "state (상태) : " + contactInfo.state + CRLF;
                     tmp += CRLF;
                 }
@@ -1108,16 +1149,10 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
             contactInfo.personName = "담당자123";
 
             // 연락처 (최대 20자)
-            contactInfo.tel = "070-4304-2991";
-
-            // 휴대폰번호 (최대 20자)
-            contactInfo.hp = "010-1234-1234";
-
-            // 팩스번호 (최대 20자)
-            contactInfo.fax = "02-6442-9700";
+            contactInfo.tel = "";
 
             // 이메일주소 (최대 100자)
-            contactInfo.email = "dev@linkhub.co.kr";
+            contactInfo.email = "";
 
             // 담당자 권한, 1 : 개인권한, 2 : 읽기권한, 3 : 회사권한
             contactInfo.searchRole = 3;
@@ -1133,31 +1168,6 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + ex.Message, "담당자 정보 수정");
-            }
-        }
-
-        /*
-         * 수집된 전자세금계산서 1건의 상세내역을 인쇄하는 페이지의 URL을 반환합니다.
-         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://docs.popbill.com/httaxinvoice/dotnet/api#GetPrintURL
-         */
-
-        private void btnGetPrintURL_Click(object sender, EventArgs e)
-        {
-            // 인쇄할 전자세금계산서 국세청승인번호
-            String NTSConfirmNum = txtNTSconfirmNum.Text;
-
-            try
-            {
-                String url = htTaxinvoiceService.GetPrintURL(txtCorpNum.Text, NTSConfirmNum);
-
-                MessageBox.Show(url, "홈택스 전자세금계산서 인쇄 팝업 URL");
-                textURL.Text = url;
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "홈택스 전자세금계산서 인쇄 팝업 URL");
             }
         }
     }

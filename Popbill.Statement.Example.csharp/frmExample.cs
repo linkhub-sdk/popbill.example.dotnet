@@ -2,7 +2,7 @@
  * 팝빌 전자명세서 API DotNet SDK Example
  *
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/statement/tutorial/dotnet
- * - 업데이트 일자 : 2021-08-05
+ * - 업데이트 일자 : 2022-05-04
  * - 연동 기술지원 연락처 : 1600-9854
  * - 연동 기술지원 이메일 : code@linkhubcorp.com
  *
@@ -42,16 +42,16 @@ namespace Popbill.Statement.Example.csharp
             // 전자명세서 모듈 초기화
             statementService = new StatementService(LinkID, SecretKey);
 
-            // 연동환경 설정값, true(개발용), false(상업용).
+            // 연동환경 설정값, true-개발용, false-상업용.
             statementService.IsTest = true;
 
-            // 발급된 토큰에 대한 IP 제한기능 사용여부, 권장(True)
+            // 인증토큰 발급 IP 제한 On/Off, true-사용, false-미사용, 기본값(true)
             statementService.IPRestrictOnOff = true;
 
             // 팝빌 API 서비스 고정 IP 사용여부, true-사용, false-미사용, 기본값(false)
             statementService.UseStaticIP = false;
 
-            // 로컬PC 시간 사용 여부 true(사용), false(기본값) - 미사용
+            // 로컬시스템 시간 사용여부, true-사용, false-미사용, 기본값(false)
             statementService.UseLocalTimeYN = false;
         }
 
@@ -71,7 +71,7 @@ namespace Popbill.Statement.Example.csharp
 
         /*
          * 파트너가 전자명세서 관리 목적으로 할당하는 문서번호의 사용여부를 확인합니다.
-         * - 최대 24자, 영문 대소문자, 숫자, 특수문자('-','_')만 이용 가능
+         * - 이미 사용 중인 문서번호는 중복 사용이 불가하고, 전자명세서가 삭제된 경우에만 문서번호의 재사용이 가능합니다.
          * - https://docs.popbill.com/statement/dotnet/api#CheckMgtKeyInUse
          */
         private void btnCheckMgtKeyInUse_Click(object sender, EventArgs e)
@@ -107,22 +107,22 @@ namespace Popbill.Statement.Example.csharp
             // 전자명세서 객체
             Statement statement = new Statement();
 
-            // [필수], 기재상 작성일자 날짜형식(yyyyMMdd)
-            statement.writeDate = "20210809";
+            // 기재상 작성일자 날짜형식(yyyyMMdd)
+            statement.writeDate = "20220504";
 
-            // [필수], {영수, 청구} 중 기재
+            // {영수, 청구, 없음} 중 기재
             statement.purposeType = "영수";
 
-            // [필수], 과세형태, {과세, 영세, 면세} 중 기재
+            // 과세형태, {과세, 영세, 면세} 중 기재
             statement.taxType = "과세";
 
-            // 맞춤양식코드, 기본값을 공백('')으로 처리하면 기본양식으로 처리.
+            // 맞춤양식코드, 미기재시 기본양식으로 처리.
             statement.formCode = txtFormCode.Text;
 
-            // [필수] 전자명세서 양식코드
+            // 전자명세서 양식코드
             statement.itemCode = selectedItemCode();
 
-            // [필수] 문서번호, 최대 24자리, 영문, 숫자 '-', '_'를 조합하여 사업자별로 중복되지 않도록 구성
+            // 문서번호, 최대 24자리, 영문, 숫자 '-', '_'를 조합하여 사업자별로 중복되지 않도록 구성
             statement.mgtKey = txtMgtKey.Text;
 
 
@@ -130,7 +130,7 @@ namespace Popbill.Statement.Example.csharp
              *                          발신자 정보                                   *
              **************************************************************************/
 
-            // [필수] 발신자 사업자번호
+            // 발신자 사업자번호
             statement.senderCorpNum = txtCorpNum.Text;
 
             // 종사업자 식별번호. 필요시 기재. 형식은 숫자 4자리.
@@ -155,13 +155,13 @@ namespace Popbill.Statement.Example.csharp
             statement.senderContactName = "발신자 담당자명";
 
             // 발신자 메일주소
-            statement.senderEmail = "test@test.com";
+            statement.senderEmail = "";
 
             // 발신자 연락처
-            statement.senderTEL = "070-7070-0707";
+            statement.senderTEL = "";
 
             // 발신자 휴대폰번호
-            statement.senderHP = "010-000-2222";
+            statement.senderHP = "";
 
 
             /**************************************************************************
@@ -171,7 +171,7 @@ namespace Popbill.Statement.Example.csharp
             // 수신자 사업자번호
             statement.receiverCorpNum = "8888888888";
 
-            // [필수] 수신자 상호
+            // 수신자 상호
             statement.receiverCorpName = "수신자 상호";
 
             // 수신자 대표자 성명
@@ -192,17 +192,16 @@ namespace Popbill.Statement.Example.csharp
             // 수신자 메일주소
             // 팝빌 개발환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
             // 실제 거래처의 메일주소가 기재되지 않도록 주의
-            statement.receiverEmail = "test@test.com";
-
+            statement.receiverEmail = "";
 
             /**************************************************************************
              *                         전자명세서 기재항목                            *
              **************************************************************************/
 
-            // [필수] 공급가액 합계
+            // 공급가액 합계
             statement.supplyCostTotal = "200000";
 
-            // [필수] 세액 합계
+            // 세액 합계
             statement.taxTotal = "20000";
 
             // 합계금액
@@ -216,18 +215,26 @@ namespace Popbill.Statement.Example.csharp
             statement.remark2 = "비고2";
             statement.remark3 = "비고3";
 
-            // 사업자등록증 이미지 첨부여부
+            // 사업자등록증 이미지 첨부여부 (true / false 중 택 1)
+            // └ true = 첨부 , false = 미첨부(기본값)
+            // - 팝빌 사이트 또는 인감 및 첨부문서 등록 팝업 URL (GetSealURL API) 함수를 이용하여 등록
             statement.businessLicenseYN = false;
 
-            // 통장사본 이미지 첨부여부
+            // 통장사본 이미지 첨부여부 (true / false 중 택 1)
+            // └ true = 첨부 , false = 미첨부(기본값)
+            // - 팝빌 사이트 또는 인감 및 첨부문서 등록 팝업 URL (GetSealURL API) 함수를 이용하여 등록
             statement.bankBookYN = false;
+
+            // 문자 자동전송 여부 (true / false 중 택 1)
+            // └ true = 전송 , false = 미전송(기본값)
+            statement.smssendYN = false;
 
             statement.detailList = new List<StatementDetail>();
 
             StatementDetail detail = new StatementDetail();
 
             detail.serialNum = 1; // 일련번호, 1부터 순차기재, 최대 99
-            detail.purchaseDT = "20210701"; // 거래일자
+            detail.purchaseDT = "20220504"; // 거래일자
             detail.itemName = "품목명"; //품목명
             detail.spec = "규격"; //규격
             detail.qty = "1"; // 수량
@@ -246,7 +253,7 @@ namespace Popbill.Statement.Example.csharp
             detail = new StatementDetail();
 
             detail.serialNum = 2; // 일련번호, 1부터 순차기재, 최대 99
-            detail.purchaseDT = "20210701"; // 거래일자
+            detail.purchaseDT = "20220504"; // 거래일자
             detail.itemName = "품목명"; //품목명
             detail.spec = "규격"; //규격
             detail.qty = "1"; // 수량
@@ -263,7 +270,12 @@ namespace Popbill.Statement.Example.csharp
             statement.detailList.Add(detail);
 
 
-            // 추가속성항목, 자세한사항은 "전자명세서 API 연동매뉴얼> 5.2 기본양식 추가속성 테이블" 참조.
+            /************************************************************
+             * 전자명세서 추가속성
+             * - 추가속성에 관한 자세한 사항은 "[전자명세서 API 연동매뉴얼] >
+             *   기본양식 추가속성 테이블"을 참조하시기 바랍니다.
+             * [https://docs.popbill.com/statement/propertyBag?lang=dotnet]
+             ************************************************************/
             statement.propertyBag = new propertyBag();
 
             statement.propertyBag.Add("Balance", "15000"); // 전잔액
@@ -287,6 +299,7 @@ namespace Popbill.Statement.Example.csharp
 
         /*
          * 작성된 전자명세서 데이터를 팝빌에 저장합니다.
+         * - "임시저장" 상태의 전자명세서는 발행(Issue API) 함수를 호출하여 "발행완료"처리한 경우에만 수신자에게 발행 안내 메일이 발송됩니다.
          * - https://docs.popbill.com/statement/dotnet/api#Register
          */
         private void btnRegister_Click(object sender, EventArgs e)
@@ -294,22 +307,22 @@ namespace Popbill.Statement.Example.csharp
             // 전자명세서 객체
             Statement statement = new Statement();
 
-            // [필수], 기재상 작성일자 날짜형식(yyyyMMdd)
-            statement.writeDate = "20210701";
+            // 기재상 작성일자 날짜형식(yyyyMMdd)
+            statement.writeDate = "20220504";
 
-            // [필수], {영수, 청구} 중 기재
+            // {영수, 청구, 없음} 중 기재
             statement.purposeType = "영수";
 
-            // [필수], 과세형태, {과세, 영세, 면세} 중 기재
+            // 과세형태, {과세, 영세, 면세} 중 기재
             statement.taxType = "과세";
 
-            // 맞춤양식코드, 기본값을 공백('')으로 처리하면 기본양식으로 처리.
+            // 맞춤양식코드, 미기재시 기본양식으로 처리.
             statement.formCode = txtFormCode.Text;
 
-            // [필수] 전자명세서 양식코드
+            // 전자명세서 양식코드
             statement.itemCode = selectedItemCode();
 
-            // [필수] 문서번호, 최대 24자리, 영문, 숫자 '-', '_'를 조합하여 사업자별로 중복되지 않도록 구성
+            // 문서번호, 최대 24자리, 영문, 숫자 '-', '_'를 조합하여 사업자별로 중복되지 않도록 구성
             statement.mgtKey = txtMgtKey.Text;
 
 
@@ -317,7 +330,7 @@ namespace Popbill.Statement.Example.csharp
              *                              발신자 정보                               *
              **************************************************************************/
 
-            // [필수] 발신자 사업자번호
+            // 발신자 사업자번호
             statement.senderCorpNum = txtCorpNum.Text;
 
             // 종사업자 식별번호. 필요시 기재. 형식은 숫자 4자리.
@@ -342,13 +355,13 @@ namespace Popbill.Statement.Example.csharp
             statement.senderContactName = "발신자 담당자명";
 
             // 발신자 메일주소
-            statement.senderEmail = "test@test.com";
+            statement.senderEmail = "";
 
             // 발신자 연락처
-            statement.senderTEL = "070-7070-0707";
+            statement.senderTEL = "";
 
             // 발신자 휴대폰번호
-            statement.senderHP = "010-000-2222";
+            statement.senderHP = "";
 
 
             /**************************************************************************
@@ -358,7 +371,7 @@ namespace Popbill.Statement.Example.csharp
             // 수신자 사업자번호
             statement.receiverCorpNum = "8888888888";
 
-            // [필수] 수신자 상호
+            // 수신자 상호
             statement.receiverCorpName = "수신자 상호";
 
             // 수신자 대표자 성명
@@ -379,17 +392,16 @@ namespace Popbill.Statement.Example.csharp
             // 수신자 메일주소
             // 팝빌 개발환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
             // 실제 거래처의 메일주소가 기재되지 않도록 주의
-            statement.receiverEmail = "test@receiver.com";
-
+            statement.receiverEmail = "";
 
             /**************************************************************************
              *                         전자명세서 기재항목                            *
              **************************************************************************/
 
-            // [필수] 공급가액 합계
+            // 공급가액 합계
             statement.supplyCostTotal = "200000";
 
-            // [필수] 세액 합계
+            // 세액 합계
             statement.taxTotal = "20000";
 
             // 합계금액
@@ -403,18 +415,26 @@ namespace Popbill.Statement.Example.csharp
             statement.remark2 = "비고2";
             statement.remark3 = "비고3";
 
-            // 사업자등록증 이미지 첨부여부
+            // 사업자등록증 이미지 첨부여부 (true / false 중 택 1)
+            // └ true = 첨부 , false = 미첨부(기본값)
+            // - 팝빌 사이트 또는 인감 및 첨부문서 등록 팝업 URL (GetSealURL API) 함수를 이용하여 등록
             statement.businessLicenseYN = false;
 
-            // 통장사본 이미지 첨부여부
+            // 통장사본 이미지 첨부여부 (true / false 중 택 1)
+            // └ true = 첨부 , false = 미첨부(기본값)
+            // - 팝빌 사이트 또는 인감 및 첨부문서 등록 팝업 URL (GetSealURL API) 함수를 이용하여 등록
             statement.bankBookYN = false;
+
+            // 문자 자동전송 여부 (true / false 중 택 1)
+            // └ true = 전송 , false = 미전송(기본값)
+            statement.smssendYN = false;
 
             statement.detailList = new List<StatementDetail>();
 
             StatementDetail detail = new StatementDetail();
 
             detail.serialNum = 1; // 일련번호, 1부터 순차기재, 최대 99
-            detail.purchaseDT = "20210701"; // 거래일자
+            detail.purchaseDT = "20220504"; // 거래일자
             detail.itemName = "품목명"; //품목명
             detail.spec = "규격"; //규격
             detail.qty = "1"; // 수량
@@ -433,7 +453,7 @@ namespace Popbill.Statement.Example.csharp
             detail = new StatementDetail();
 
             detail.serialNum = 2; // 일련번호, 1부터 순차기재, 최대 99
-            detail.purchaseDT = "20210701"; // 거래일자
+            detail.purchaseDT = "20220504"; // 거래일자
             detail.itemName = "품목명"; //품목명
             detail.spec = "규격"; //규격
             detail.qty = "1"; // 수량
@@ -450,7 +470,12 @@ namespace Popbill.Statement.Example.csharp
             statement.detailList.Add(detail);
 
 
-            // 추가속성항목, 자세한사항은 "전자명세서 API 연동매뉴얼> 5.2 기본양식 추가속성 테이블" 참조.
+            /************************************************************
+             * 전자명세서 추가속성
+             * - 추가속성에 관한 자세한 사항은 "[전자명세서 API 연동매뉴얼] >
+             *   기본양식 추가속성 테이블"을 참조하시기 바랍니다.
+             * [https://docs.popbill.com/statement/propertyBag?lang=dotnet]
+             ************************************************************/
             statement.propertyBag = new propertyBag();
 
             statement.propertyBag.Add("Balance", "15000"); // 전잔액
@@ -472,7 +497,7 @@ namespace Popbill.Statement.Example.csharp
         }
 
         /*
-         * "임시저장" 상태의 전자명세서를 수정합니다.건의 전자명세서를 [수정]합니다.
+         * "임시저장" 상태의 전자명세서를 수정합니다.
          * - https://docs.popbill.com/statement/dotnet/api#Update
          */
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -480,22 +505,22 @@ namespace Popbill.Statement.Example.csharp
             // 전자명세서 객체
             Statement statement = new Statement();
 
-            // [필수], 기재상 작성일자 날짜형식(yyyyMMdd)
-            statement.writeDate = "20210701";
+            // 기재상 작성일자 날짜형식(yyyyMMdd)
+            statement.writeDate = "20220504";
 
-            // [필수], {영수, 청구} 중 기재
+            // {영수, 청구, 없음} 중 기재
             statement.purposeType = "영수";
 
-            // [필수], 과세형태, {과세, 영세, 면세} 중 기재
+            // 과세형태, {과세, 영세, 면세} 중 기재
             statement.taxType = "과세";
 
-            // 맞춤양식코드, 기본값을 공백('')으로 처리하면 기본양식으로 처리.
+            // 맞춤양식코드, 미기재시 기본양식으로 처리.
             statement.formCode = txtFormCode.Text;
 
-            // [필수] 전자명세서 양식코드
+            // 전자명세서 양식코드
             statement.itemCode = selectedItemCode();
 
-            // [필수] 문서번호, 최대 24자리, 영문, 숫자 '-', '_'를 조합하여 사업자별로 중복되지 않도록 구성
+            // 문서번호, 최대 24자리, 영문, 숫자 '-', '_'를 조합하여 사업자별로 중복되지 않도록 구성
             statement.mgtKey = txtMgtKey.Text;
 
 
@@ -503,7 +528,7 @@ namespace Popbill.Statement.Example.csharp
              *                          발신자 정보                                   *
              **************************************************************************/
 
-            // [필수] 발신자 사업자번호
+            // 발신자 사업자번호
             statement.senderCorpNum = txtCorpNum.Text;
 
             // 종사업자 식별번호. 필요시 기재. 형식은 숫자 4자리.
@@ -528,13 +553,13 @@ namespace Popbill.Statement.Example.csharp
             statement.senderContactName = "발신자 담당자명";
 
             // 발신자 메일주소
-            statement.senderEmail = "test@test.com";
+            statement.senderEmail = "";
 
             // 발신자 연락처
-            statement.senderTEL = "070-7070-0707";
+            statement.senderTEL = "";
 
             // 발신자 휴대폰번호
-            statement.senderHP = "010-000-2222";
+            statement.senderHP = "";
 
 
             /**************************************************************************
@@ -544,7 +569,7 @@ namespace Popbill.Statement.Example.csharp
             // 수신자 사업자번호
             statement.receiverCorpNum = "8888888888";
 
-            // [필수] 수신자 상호
+            // 수신자 상호
             statement.receiverCorpName = "수신자 상호";
 
             // 수신자 대표자 성명
@@ -565,16 +590,16 @@ namespace Popbill.Statement.Example.csharp
             // 수신자 메일주소
             // 팝빌 개발환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
             // 실제 거래처의 메일주소가 기재되지 않도록 주의
-            statement.receiverEmail = "test@receiver.com";
+            statement.receiverEmail = "";
 
             /**************************************************************************
              *                         전자명세서 기재항목                            *
              **************************************************************************/
 
-            // [필수] 공급가액 합계
+            // 공급가액 합계
             statement.supplyCostTotal = "200000";
 
-            // [필수] 세액 합계
+            // 세액 합계
             statement.taxTotal = "20000";
 
             // 합계금액
@@ -588,18 +613,26 @@ namespace Popbill.Statement.Example.csharp
             statement.remark2 = "비고2";
             statement.remark3 = "비고3";
 
-            // 사업자등록증 이미지 첨부여부
+            // 사업자등록증 이미지 첨부여부 (true / false 중 택 1)
+            // └ true = 첨부 , false = 미첨부(기본값)
+            // - 팝빌 사이트 또는 인감 및 첨부문서 등록 팝업 URL (GetSealURL API) 함수를 이용하여 등록
             statement.businessLicenseYN = false;
 
-            // 통장사본 이미지 첨부여부
+            // 통장사본 이미지 첨부여부 (true / false 중 택 1)
+            // └ true = 첨부 , false = 미첨부(기본값)
+            // - 팝빌 사이트 또는 인감 및 첨부문서 등록 팝업 URL (GetSealURL API) 함수를 이용하여 등록
             statement.bankBookYN = false;
+
+            // 문자 자동전송 여부 (true / false 중 택 1)
+            // └ true = 전송 , false = 미전송(기본값)
+            statement.smssendYN = false;
 
             statement.detailList = new List<StatementDetail>();
 
             StatementDetail detail = new StatementDetail();
 
             detail.serialNum = 1; // 일련번호, 1부터 순차기재, 최대 99
-            detail.purchaseDT = "20210701"; // 거래일자
+            detail.purchaseDT = "20220504"; // 거래일자
             detail.itemName = "품목명"; //품목명
             detail.spec = "규격"; //규격
             detail.qty = "1"; // 수량
@@ -618,7 +651,7 @@ namespace Popbill.Statement.Example.csharp
             detail = new StatementDetail();
 
             detail.serialNum = 2; // 일련번호, 1부터 순차기재, 최대 99
-            detail.purchaseDT = "20210701"; // 거래일자
+            detail.purchaseDT = "20220504"; // 거래일자
             detail.itemName = "품목명"; //품목명
             detail.spec = "규격"; //규격
             detail.qty = "1"; // 수량
@@ -635,7 +668,12 @@ namespace Popbill.Statement.Example.csharp
             statement.detailList.Add(detail);
 
 
-            // 추가속성항목, 자세한사항은 "전자명세서 API 연동매뉴얼> 5.2 기본양식 추가속성 테이블" 참조.
+            /************************************************************
+             * 전자명세서 추가속성
+             * - 추가속성에 관한 자세한 사항은 "[전자명세서 API 연동매뉴얼] >
+             *   기본양식 추가속성 테이블"을 참조하시기 바랍니다.
+             * [https://docs.popbill.com/statement/propertyBag?lang=dotnet]
+             ************************************************************/
             statement.propertyBag = new propertyBag();
 
             statement.propertyBag.Add("Balance", "15000"); // 전잔액
@@ -645,7 +683,6 @@ namespace Popbill.Statement.Example.csharp
 
             try
             {
-                //Update(팝빌회원 사업자번호, 명세서코드, 문서번호, 명세서객체, 팝빌회원 아이디)
                 Response response = statementService.Update(txtCorpNum.Text, selectedItemCode(), txtMgtKey.Text,
                     statement, txtUserID.Text);
 
@@ -843,11 +880,8 @@ namespace Popbill.Statement.Example.csharp
             List<string> MgtKeyList = new List<string>();
 
             //문서번호 배열, 최대 1000건
-            MgtKeyList.Add("20210701-001");
-            MgtKeyList.Add("20210701-002");
-            MgtKeyList.Add("20210701-003");
-            MgtKeyList.Add("20210701-004");
-            MgtKeyList.Add("20210701-005");
+            MgtKeyList.Add("20220504-001");
+            MgtKeyList.Add("20220504-002");
 
             try
             {
@@ -908,48 +942,48 @@ namespace Popbill.Statement.Example.csharp
 
                 string tmp = null;
 
-                tmp += "itemCode(명세서 코드): " + statement.itemCode + CRLF;
-                tmp += "mgtKey(문서번호): " + statement.mgtKey + CRLF;
-                tmp += "invoiceNum(팝빌 승인번호): " + statement.invoiceNum + CRLF;
-                tmp += "formCode(맞춤양식 코드): " + statement.formCode + CRLF;
-                tmp += "writeDate(작성일자): " + statement.writeDate + CRLF;
-                tmp += "taxType(세금형태): " + statement.taxType + CRLF;
-                tmp += "purposeType(영수/청구): " + statement.purposeType + CRLF;
-                tmp += "serialNum(일련번호): " + statement.serialNum + CRLF;
-                tmp += "taxTotal(세액 합계): " + statement.taxTotal + CRLF;
-                tmp += "supplyCostTotal(공급가액 합계): " + statement.supplyCostTotal + CRLF;
-                tmp += "totalAmount(합계금액): " + statement.totalAmount + CRLF;
-                tmp += "remark1(비고1): " + statement.remark1 + CRLF;
-                tmp += "remark2(비고2): " + statement.remark2 + CRLF;
-                tmp += "remark3(비고3): " + statement.remark3 + CRLF;
+                tmp += "itemCode (명세서 코드): " + statement.itemCode + CRLF;
+                tmp += "mgtKey (문서번호): " + statement.mgtKey + CRLF;
+                tmp += "invoiceNum (팝빌 승인번호): " + statement.invoiceNum + CRLF;
+                tmp += "formCode (맞춤양식 코드): " + statement.formCode + CRLF;
+                tmp += "writeDate (작성일자): " + statement.writeDate + CRLF;
+                tmp += "taxType (세금형태): " + statement.taxType + CRLF;
+                tmp += "purposeType (영수/청구): " + statement.purposeType + CRLF;
+                tmp += "serialNum (일련번호): " + statement.serialNum + CRLF;
+                tmp += "taxTotal (세액 합계): " + statement.taxTotal + CRLF;
+                tmp += "supplyCostTotal (공급가액 합계): " + statement.supplyCostTotal + CRLF;
+                tmp += "totalAmount (합계금액): " + statement.totalAmount + CRLF;
+                tmp += "remark1 (비고1): " + statement.remark1 + CRLF;
+                tmp += "remark2 (비고2): " + statement.remark2 + CRLF;
+                tmp += "remark3 (비고3): " + statement.remark3 + CRLF;
 
-                tmp += "senderCorpNum(발신자 사업자번호): " + statement.senderCorpNum + CRLF;
-                tmp += "senderTaxRegID(발신자 종사업장번호): " + statement.senderTaxRegID + CRLF;
-                tmp += "senderCorpName(발신자 상호): " + statement.senderCorpName + CRLF;
-                tmp += "senderCEOName(발신자 대표자 성명): " + statement.senderCEOName + CRLF;
-                tmp += "senderAddr(발신자 주소): " + statement.senderAddr + CRLF;
-                tmp += "senderBizType(발신자 업태): " + statement.senderBizType + CRLF;
-                tmp += "senderBizClass(발신자 종목): " + statement.senderBizClass + CRLF;
-                tmp += "senderContactName(발신자 성명): " + statement.senderContactName + CRLF;
-                tmp += "senderDeptName(발신자 부서명): " + statement.senderDeptName + CRLF;
-                tmp += "senderTEL(발신자 연락처): " + statement.senderTEL + CRLF;
-                tmp += "senderHP(발신자 휴대전화): " + statement.senderHP + CRLF;
-                tmp += "senderEmail(발신자 이메일주소): " + statement.senderEmail + CRLF;
-                tmp += "senderFAX(발신자 팩스번호): " + statement.senderFAX + CRLF;
+                tmp += "senderCorpNum (발신자 사업자번호): " + statement.senderCorpNum + CRLF;
+                tmp += "senderTaxRegID (발신자 종사업장번호): " + statement.senderTaxRegID + CRLF;
+                tmp += "senderCorpName (발신자 상호): " + statement.senderCorpName + CRLF;
+                tmp += "senderCEOName (발신자 대표자 성명): " + statement.senderCEOName + CRLF;
+                tmp += "senderAddr (발신자 주소): " + statement.senderAddr + CRLF;
+                tmp += "senderBizType (발신자 업태): " + statement.senderBizType + CRLF;
+                tmp += "senderBizClass (발신자 종목): " + statement.senderBizClass + CRLF;
+                tmp += "senderContactName (발신자 성명): " + statement.senderContactName + CRLF;
+                tmp += "senderDeptName (발신자 부서명): " + statement.senderDeptName + CRLF;
+                tmp += "senderTEL (발신자 연락처): " + statement.senderTEL + CRLF;
+                tmp += "senderHP (발신자 휴대전화): " + statement.senderHP + CRLF;
+                tmp += "senderEmail (발신자 이메일주소): " + statement.senderEmail + CRLF;
+                tmp += "senderFAX (발신자 팩스번호): " + statement.senderFAX + CRLF;
 
-                tmp += "receiverCorpNum(수신자 사업자번호): " + statement.receiverCorpNum + CRLF;
-                tmp += "receiverTaxRegID(수신자 종사업장번호): " + statement.receiverTaxRegID + CRLF;
-                tmp += "receiverCorpName(수신자 상호): " + statement.receiverCorpName + CRLF;
-                tmp += "receiverCEOName(수신자 대표자 성명): " + statement.receiverCEOName + CRLF;
-                tmp += "receiverAddr(수신자 주소): " + statement.receiverAddr + CRLF;
-                tmp += "receiverBizType(수신자 업태): " + statement.receiverBizType + CRLF;
-                tmp += "receiverBizClass(수신자 종목): " + statement.receiverBizClass + CRLF;
-                tmp += "receiverContactName(수신자 성명): " + statement.receiverContactName + CRLF;
-                tmp += "receiverDeptName(수신자 부서명): " + statement.receiverDeptName + CRLF;
-                tmp += "receiverTEL(수신자 연락처): " + statement.receiverTEL + CRLF;
-                tmp += "receiverHP(수신자 휴대전화): " + statement.receiverHP + CRLF;
-                tmp += "receiverEmail(수신자 이메일주소): " + statement.receiverEmail + CRLF;
-                tmp += "receiverFAX(수신자 팩스번호): " + statement.receiverFAX + CRLF + CRLF;
+                tmp += "receiverCorpNum (수신자 사업자번호): " + statement.receiverCorpNum + CRLF;
+                tmp += "receiverTaxRegID (수신자 종사업장번호): " + statement.receiverTaxRegID + CRLF;
+                tmp += "receiverCorpName (수신자 상호): " + statement.receiverCorpName + CRLF;
+                tmp += "receiverCEOName (수신자 대표자 성명): " + statement.receiverCEOName + CRLF;
+                tmp += "receiverAddr (수신자 주소): " + statement.receiverAddr + CRLF;
+                tmp += "receiverBizType (수신자 업태): " + statement.receiverBizType + CRLF;
+                tmp += "receiverBizClass (수신자 종목): " + statement.receiverBizClass + CRLF;
+                tmp += "receiverContactName (수신자 성명): " + statement.receiverContactName + CRLF;
+                tmp += "receiverDeptName (수신자 부서명): " + statement.receiverDeptName + CRLF;
+                tmp += "receiverTEL (수신자 연락처): " + statement.receiverTEL + CRLF;
+                tmp += "receiverHP (수신자 휴대전화): " + statement.receiverHP + CRLF;
+                tmp += "receiverEmail (수신자 이메일주소): " + statement.receiverEmail + CRLF;
+                tmp += "receiverFAX (수신자 팩스번호): " + statement.receiverFAX + CRLF + CRLF;
 
                 if (!statement.detailList.Equals(null))
                 {
@@ -994,26 +1028,29 @@ namespace Popbill.Statement.Example.csharp
          */
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            // [필수] 검색일자 유형, R-등록일자, W-작성일자, I-발행일자
+            // 일자 유형 ("R" , "W" , "I" 중 택 1)
+             // └ R = 등록일자 , W = 작성일자 , I = 발행일자
             String DType = "W";
 
-            // [필수] 시작일자, 날짜형식(yyyyMMdd)
-            String SDate = "20210701";
+            // 시작일자, 날짜형식(yyyyMMdd)
+            String SDate = "20220504";
 
-            // [필수] 종료일자, 날짜형식(yyyyMMdd)
-            String EDate = "20210730";
+            // 종료일자, 날짜형식(yyyyMMdd)
+            String EDate = "20220531";
 
-            // 전송상태값 배열, 미기재시 전체 상태조회, 문서상태 값 3자리의 배열, 2,3번째 자리에 와일드카드 가능
+            // 전자명세서 상태코드 배열 (2,3번째 자리에 와일드카드(*) 사용 가능)
+            // - 미입력시 전체조회
             String[] State = new String[4];
             State[0] = "100";
             State[1] = "2**";
             State[2] = "3**";
             State[3] = "4**";
 
-            //명세서 종류코드, 121-거래명세서, 122-청구서, 123-견적서, 124-발주서, 125-입금표, 126-영수증
+            // 명세서 코드배열 - 121(거래명세서), 122(청구서), 123(견적서) 124(발주서), 125(입금표), 126(영수증)
             int[] ItemCode = {121, 122, 123, 124, 125, 126};
 
-            // 거래처 조회, 거래처 등록번호, 상호 조회, 미기재시 전체조회
+            // 통합검색어, 거래처 상호명 또는 거래처 사업자번호로 조회
+            // - 미입력시 전체조회
             String QString = "";
 
             // 정렬방향, A-오름차순, D-내림차순
@@ -1112,13 +1149,13 @@ namespace Popbill.Statement.Example.csharp
             {
                 string url = statementService.GetURL(txtCorpNum.Text, txtUserID.Text, "TBOX");
 
-                MessageBox.Show(url, "임시 연동문서함 팝업 URL");
+                MessageBox.Show(url, "임시 문서함 팝업 URL");
                 textURL.Text = url;
             }
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "임시 연동문서함 팝업 URL");
+                                "응답메시지(message) : " + ex.Message, "임시 문서함 팝업 URL");
             }
         }
 
@@ -1144,7 +1181,7 @@ namespace Popbill.Statement.Example.csharp
         }
 
         /*
-         * 팝빌 사이트와 동일한 전자명세서 1건의 상세 정보 페이지의 팝업 URL을 반환합니다.
+         * 전자명세서 1건의 상세 정보 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
          * - https://docs.popbill.com/statement/dotnet/api#GetPopUpURL
          */
@@ -1167,8 +1204,32 @@ namespace Popbill.Statement.Example.csharp
         }
 
         /*
+         * 전자명세서 1건의 상세 정보 페이지(사이트 상단, 좌측 메뉴 및 버튼 제외)의 팝업 URL을 반환합니다.
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
+         * - https://docs.popbill.com/statement/dotnet/api#GetViewURL
+         */
+        private void btnGetViewURL_Click(object sender, EventArgs e)
+        {
+            int itemCode = selectedItemCode();
+
+            try
+            {
+                string url = statementService.GetViewURL(txtCorpNum.Text, itemCode, txtMgtKey.Text, txtUserID.Text);
+
+                MessageBox.Show(url, "전자명세서 보기 팝업 URL");
+                textURL.Text = url;
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "전자명세서 보기 팝업 URL");
+            }
+        }
+
+        /*
          * 전자명세서 1건을 인쇄하기 위한 페이지의 팝업 URL을 반환하며, 페이지내에서 인쇄 설정값을 "공급자" / "공급받는자" / "공급자+공급받는자"용 중 하나로 지정할 수 있습니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
+         * - 전자명세서의 공급자는 "발신자", 공급받는자는 "수신자"를 나타내는 용어입니다.
          * - https://docs.popbill.com/statement/dotnet/api#GetPrintURL
          */
         private void btnGetPrintURL_Click(object sender, EventArgs e)
@@ -1192,6 +1253,7 @@ namespace Popbill.Statement.Example.csharp
         /*
          * "공급받는자" 용 전자명세서 1건을 인쇄하기 위한 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
+         * - 전자명세서의 공급받는자는 "수신자"를 나타내는 용어입니다.
          * - https://docs.popbill.com/statement/dotnet/api#GetEPrintURL
          */
         private void btnGetEPrintURL_Click(object sender, EventArgs e)
@@ -1223,11 +1285,8 @@ namespace Popbill.Statement.Example.csharp
             List<string> mgtKeyList = new List<string>();
 
             // 문서번호 배열 (최대 100건)
-            mgtKeyList.Add("20210701-01");
-            mgtKeyList.Add("20210701-02");
-            mgtKeyList.Add("20210701-03");
-            mgtKeyList.Add("20210701-04");
-            mgtKeyList.Add("20210701-05");
+            mgtKeyList.Add("20220504-001");
+            mgtKeyList.Add("20220504-002");
 
             try
             {
@@ -1244,7 +1303,7 @@ namespace Popbill.Statement.Example.csharp
         }
 
         /*
-         * 안내메일과 관련된 전자명세서를 확인 할 수 있는 상세 페이지의 팝업 URL을 반환하며, 해당 URL은 메일 하단의 파란색 버튼의 링크와 같습니다.
+         * 전자명세서 안내메일의 상세보기 링크 URL을 반환합니다.
          * - 함수 호출로 반환 받은 URL에는 유효시간이 없습니다.
          * - https://docs.popbill.com/statement/dotnet/api#GetMailURL
          */
@@ -1290,8 +1349,9 @@ namespace Popbill.Statement.Example.csharp
         /*
          * 인감 및 첨부문서 등록 URL을 반환합니다.
          * - 반환된 URL은 보안정책상 30초의 유효시간을 갖습니다.
+         * - https://docs.popbill.com/statement/dotnet/api#GetSealURL
          */
-        private void getPopbillURL_SEAL_Click(object sender, EventArgs e)
+        private void btnGetSealURL_Click(object sender, EventArgs e)
         {
             try
             {
@@ -1402,7 +1462,7 @@ namespace Popbill.Statement.Example.csharp
             // 수신메일주소
             // 팝빌 개발환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
             // 실제 거래처의 메일주소가 기재되지 않도록 주의
-            string ReceiverEmail = "test@test.com";
+            string ReceiverEmail = "";
 
             try
             {
@@ -1429,13 +1489,13 @@ namespace Popbill.Statement.Example.csharp
         {
             int itemcode = selectedItemCode();
 
-            // 발신번호, [참고] 발신번호 세칙안내 - http://blog.linkhub.co.kr/3064
-            string senderNum = "07043042991";
+            // 발신번호
+            string senderNum = "";
 
             // 수신번호
-            string receiverNum = "010111222";
+            string receiverNum = "";
 
-            // 문자메시지 내용,이 90Byte초과하는경우 길이가 조정되어 전송됨
+            // 메시지 내용, 90byte 초과시 길이가 조정되어 전송됨
             string msgContents = "전자명세서 문자전송 테스트 dotnet";
 
             try
@@ -1462,10 +1522,10 @@ namespace Popbill.Statement.Example.csharp
             int itemcode = selectedItemCode();
 
             // 발신번호
-            string senderNum = "07043042991";
+            string senderNum = "";
 
             // 수신번호
-            string receiverNum = "000111222";
+            string receiverNum = "";
 
             try
             {
@@ -1485,38 +1545,35 @@ namespace Popbill.Statement.Example.csharp
         /*
          * 전자명세서를 팩스로 전송하는 함수로, 팝빌에 데이터를 저장하는 과정이 없습니다.
          * - 팝빌 사이트 [문자·팩스] > [팩스] > [전송내역] 메뉴에서 전송결과를 확인 할 수 있습니다.
-         * - 함수 호출시 포인트가 과금됩니다.
-         * - 팩스 발행 요청시 작성한 문서번호는 팩스전송 파일명으로 사용됩니다.
-         * - 팩스 전송결과를 확인하기 위해서는 선팩스 전송 요청 시 반환받은 접수번호를 이용하여 팩스 API의 전송결과 확인 (GetFaxResult) API를 이용하면 됩니다.
          * - https://docs.popbill.com/statement/dotnet/api#FAXSend
          */
         private void btnFAXSend_Click(object sender, EventArgs e)
         {
-            // [필수] 팩스 발신번호
-            String SendNum = "07043042991";
+            // 팩스 발신번호
+            String SendNum = "";
 
-            // [필수] 선팩스전송 수신팩스번호
-            String ReceiveNum = "010111222";
+            // 선팩스전송 수신팩스번호
+            String ReceiveNum = "";
 
             // 전자명세서 객체
             Statement statement = new Statement();
 
-            // [필수], 기재상 작성일자 날짜형식(yyyyMMdd)
-            statement.writeDate = "20210701";
+            // 기재상 작성일자 날짜형식(yyyyMMdd)
+            statement.writeDate = "20220504";
 
-            // [필수], {영수, 청구} 중 기재
+            // {영수, 청구, 없음} 중 기재
             statement.purposeType = "영수";
 
-            // [필수], 과세형태, {과세, 영세, 면세} 중 기재
+            // 과세형태, {과세, 영세, 면세} 중 기재
             statement.taxType = "과세";
 
-            // 맞춤양식코드, 기본값을 공백('')으로 처리하면 기본양식으로 처리.
+            // 맞춤양식코드, 미기재시 기본양식으로 처리.
             statement.formCode = txtFormCode.Text;
 
-            // [필수] 전자명세서 양식코드
+            // 전자명세서 양식코드
             statement.itemCode = selectedItemCode();
 
-            // [필수] 문서번호, 최대 24자리, 영문, 숫자 '-', '_'를 조합하여 사업자별로 중복되지 않도록 구성
+            // 문서번호, 최대 24자리, 영문, 숫자 '-', '_'를 조합하여 사업자별로 중복되지 않도록 구성
             statement.mgtKey = txtMgtKey.Text;
 
 
@@ -1524,7 +1581,7 @@ namespace Popbill.Statement.Example.csharp
              *                          발신자 정보                                   *
              **************************************************************************/
 
-            // [필수] 발신자 사업자번호
+            // 발신자 사업자번호
             statement.senderCorpNum = txtCorpNum.Text;
 
             // 종사업자 식별번호. 필요시 기재. 형식은 숫자 4자리.
@@ -1549,13 +1606,13 @@ namespace Popbill.Statement.Example.csharp
             statement.senderContactName = "발신자 담당자명";
 
             // 발신자 메일주소
-            statement.senderEmail = "test@test.com";
+            statement.senderEmail = "";
 
             // 발신자 연락처
-            statement.senderTEL = "070-7070-0707";
+            statement.senderTEL = "";
 
             // 발신자 휴대폰번호
-            statement.senderHP = "010-000-2222";
+            statement.senderHP = "";
 
 
             /**************************************************************************
@@ -1565,7 +1622,7 @@ namespace Popbill.Statement.Example.csharp
             // 수신자 사업자번호
             statement.receiverCorpNum = "8888888888";
 
-            // [필수] 수신자 상호
+            // 수신자 상호
             statement.receiverCorpName = "수신자 상호";
 
             // 수신자 대표자 성명
@@ -1586,16 +1643,16 @@ namespace Popbill.Statement.Example.csharp
             // 수신자 메일주소
             // 팝빌 개발환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
             // 실제 거래처의 메일주소가 기재되지 않도록 주의
-            statement.receiverEmail = "test@receiver.com";
+            statement.receiverEmail = "";
 
             /**************************************************************************
              *                         전자명세서 기재항목                            *
              **************************************************************************/
 
-            // [필수] 공급가액 합계
+            // 공급가액 합계
             statement.supplyCostTotal = "200000";
 
-            // [필수] 세액 합계
+            // 세액 합계
             statement.taxTotal = "20000";
 
             // 합계금액
@@ -1609,18 +1666,26 @@ namespace Popbill.Statement.Example.csharp
             statement.remark2 = "비고2";
             statement.remark3 = "비고3";
 
-            // 사업자등록증 이미지 첨부여부
+            // 사업자등록증 이미지 첨부여부 (true / false 중 택 1)
+            // └ true = 첨부 , false = 미첨부(기본값)
+            // - 팝빌 사이트 또는 인감 및 첨부문서 등록 팝업 URL (GetSealURL API) 함수를 이용하여 등록
             statement.businessLicenseYN = false;
 
-            // 통장사본 이미지 첨부여부
+            // 통장사본 이미지 첨부여부 (true / false 중 택 1)
+            // └ true = 첨부 , false = 미첨부(기본값)
+            // - 팝빌 사이트 또는 인감 및 첨부문서 등록 팝업 URL (GetSealURL API) 함수를 이용하여 등록
             statement.bankBookYN = false;
+
+            // 문자 자동전송 여부 (true / false 중 택 1)
+            // └ true = 전송 , false = 미전송(기본값)
+            statement.smssendYN = false;
 
             statement.detailList = new List<StatementDetail>();
 
             StatementDetail detail = new StatementDetail();
 
             detail.serialNum = 1; // 일련번호, 1부터 순차기재, 최대 99
-            detail.purchaseDT = "20210701"; // 거래일자
+            detail.purchaseDT = "20220504"; // 거래일자
             detail.itemName = "품목명";
             detail.spec = "규격";
             detail.qty = "1"; // 수량
@@ -1639,7 +1704,7 @@ namespace Popbill.Statement.Example.csharp
             detail = new StatementDetail();
 
             detail.serialNum = 2; // 일련번호, 1부터 순차기재, 최대 99
-            detail.purchaseDT = "20210701"; // 거래일자
+            detail.purchaseDT = "20220504"; // 거래일자
             detail.itemName = "품목명";
             detail.spec = "규격";
             detail.qty = "1"; // 수량
@@ -1656,7 +1721,12 @@ namespace Popbill.Statement.Example.csharp
             statement.detailList.Add(detail);
 
 
-            // 추가속성항목, 자세한사항은 "전자명세서 API 연동매뉴얼> 5.2 기본양식 추가속성 테이블" 참조.
+            /************************************************************
+             * 전자명세서 추가속성
+             * - 추가속성에 관한 자세한 사항은 "[전자명세서 API 연동매뉴얼] >
+             *   기본양식 추가속성 테이블"을 참조하시기 바랍니다.
+             * [https://docs.popbill.com/statement/propertyBag?lang=dotnet]
+             ************************************************************/
             statement.propertyBag = new propertyBag();
 
             statement.propertyBag.Add("Balance", "15000"); // 전잔액
@@ -1690,7 +1760,7 @@ namespace Popbill.Statement.Example.csharp
             int SubItemCode = 121;
 
             // 첨부할 전자명세서 문서번호
-            String SubMgtKey = "20210701-100";
+            String SubMgtKey = "20220504-001";
 
             try
             {
@@ -1719,7 +1789,7 @@ namespace Popbill.Statement.Example.csharp
             int SubItemCode = 121;
 
             // 첨부해제할 명세서 문서번호
-            String SubMgtKey = "20210701-100";
+            String SubMgtKey = "20220504-001";
 
             try
             {
@@ -1806,7 +1876,7 @@ namespace Popbill.Statement.Example.csharp
 
         /*
          * 연동회원의 잔여포인트를 확인합니다.
-         * - 과금방식이 파트너과금인 경우 파트너 잔여포인트(GetPartnerBalance API)를 통해 확인하시기 바랍니다.
+         * - 과금방식이 파트너과금인 경우 파트너 잔여포인트 확인(GetPartnerBalance API) 함수를 통해 확인하시기 바랍니다.
          * - https://docs.popbill.com/statement/dotnet/api#GetBalance
          */
         private void btnGetBalance_Click(object sender, EventArgs e)
@@ -1889,7 +1959,7 @@ namespace Popbill.Statement.Example.csharp
 
         /*
          * 파트너의 잔여포인트를 확인합니다.
-         * - 과금방식이 연동과금인 경우 연동회원 잔여포인트(GetBalance API)를 이용하시기 바랍니다.
+         * - 과금방식이 연동과금인 경우 연동회원 잔여포인트 확인(GetBalance API) 함수를 이용하시기 바랍니다.
          * - https://docs.popbill.com/statement/dotnet/api#GetPartnerBalance
          */
         private void btnGetPartnerPoint_Click(object sender, EventArgs e)
@@ -1912,7 +1982,7 @@ namespace Popbill.Statement.Example.csharp
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
          * - https://docs.popbill.com/statement/dotnet/api#GetPartnerURL
          */
-        private void btnGetPartnerURL_CHRG_Click(object sender, EventArgs e)
+        private void btnGetPartnerURL_Click(object sender, EventArgs e)
         {
             try
             {
@@ -2053,16 +2123,10 @@ namespace Popbill.Statement.Example.csharp
             joinInfo.ContactName = "담당자명";
 
             // 담당자 이메일 (최대 20자)
-            joinInfo.ContactEmail = "test@test.com";
+            joinInfo.ContactEmail = "";
 
             // 담당자 연락처 (최대 20자)
-            joinInfo.ContactTEL = "070-4304-2991";
-
-            // 담당자 휴대폰번호 (최대 20자)
-            joinInfo.ContactHP = "010-111-222";
-
-            // 담당자 팩스번호 (최대 20자)
-            joinInfo.ContactFAX = "02-6442-9700";
+            joinInfo.ContactTEL = "";
 
             try
             {
@@ -2159,16 +2223,10 @@ namespace Popbill.Statement.Example.csharp
             contactInfo.personName = "담당자명";
 
             //담당자연락처 (최대 20자)
-            contactInfo.tel = "070-4304-2991";
-
-            //담당자 휴대폰번호 (최대 20자)
-            contactInfo.hp = "010-111-222";
-
-            //담당자 팩스번호 (최대 20자)
-            contactInfo.fax = "070-4304-2991";
+            contactInfo.tel = "";
 
             //담당자 이메일 (최대 100자)
-            contactInfo.email = "dev@linkhub.co.kr";
+            contactInfo.email = "";
 
             // 담당자 권한, 1 : 개인권한, 2 : 읽기권한, 3: 회사권한
             contactInfo.searchRole = 3;
@@ -2204,13 +2262,11 @@ namespace Popbill.Statement.Example.csharp
 
                 tmp += "id (담당자 아이디) : " + contactInfo.id + CRLF;
                 tmp += "personName (담당자명) : " + contactInfo.personName + CRLF;
-                tmp += "email (담당자 이메일) : " + contactInfo.email + CRLF;
-                tmp += "hp (휴대폰번호) : " + contactInfo.hp + CRLF;
-                tmp += "searchRole (담당자 권한) : " + contactInfo.searchRole + CRLF;
                 tmp += "tel (연락처) : " + contactInfo.tel + CRLF;
-                tmp += "fax (팩스번호) : " + contactInfo.fax + CRLF;
-                tmp += "mgrYN (관리자 여부) : " + contactInfo.mgrYN + CRLF;
+                tmp += "email (담당자 이메일) : " + contactInfo.email + CRLF;
                 tmp += "regDT (등록일시) : " + contactInfo.regDT + CRLF;
+                tmp += "searchRole (담당자 권한) : " + contactInfo.searchRole + CRLF;
+                tmp += "mgrYN (관리자 여부) : " + contactInfo.mgrYN + CRLF;
                 tmp += "state (상태) : " + contactInfo.state + CRLF;
                 tmp += CRLF;
 
@@ -2239,13 +2295,11 @@ namespace Popbill.Statement.Example.csharp
                 {
                     tmp += "id (담당자 아이디) : " + contactInfo.id + CRLF;
                     tmp += "personName (담당자명) : " + contactInfo.personName + CRLF;
-                    tmp += "email (담당자 이메일) : " + contactInfo.email + CRLF;
-                    tmp += "hp (휴대폰번호) : " + contactInfo.hp + CRLF;
-                    tmp += "searchRole (담당자 권한) : " + contactInfo.searchRole + CRLF;
                     tmp += "tel (연락처) : " + contactInfo.tel + CRLF;
-                    tmp += "fax (팩스번호) : " + contactInfo.fax + CRLF;
-                    tmp += "mgrYN (관리자 여부) : " + contactInfo.mgrYN + CRLF;
+                    tmp += "email (담당자 이메일) : " + contactInfo.email + CRLF;
                     tmp += "regDT (등록일시) : " + contactInfo.regDT + CRLF;
+                    tmp += "searchRole (담당자 권한) : " + contactInfo.searchRole + CRLF;
+                    tmp += "mgrYN (관리자 여부) : " + contactInfo.mgrYN + CRLF;
                     tmp += "state (상태) : " + contactInfo.state + CRLF;
                     tmp += CRLF;
                 }
@@ -2274,16 +2328,10 @@ namespace Popbill.Statement.Example.csharp
             contactInfo.personName = "담당자123";
 
             // 연락처 (최대 20자)
-            contactInfo.tel = "070-4304-2991";
-
-            // 휴대폰번호 (최대 20자)
-            contactInfo.hp = "010-1234-1234";
-
-            // 팩스번호 (최대 20자)
-            contactInfo.fax = "02-6442-9700";
+            contactInfo.tel = "";
 
             // 이메일주소 (최대 100자)
-            contactInfo.email = "dev@linkhub.co.kr";
+            contactInfo.email = "";
 
             // 담당자 권한, 1 : 개인권한, 2 : 읽기권한, 3 : 회사권한
             contactInfo.searchRole = 3;
@@ -2299,29 +2347,6 @@ namespace Popbill.Statement.Example.csharp
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + ex.Message, "담당자 정보 수정");
-            }
-        }
-
-        /*
-         * 팝빌 사이트와 동일한 전자명세서 1건의 상세 정보 페이지(사이트 상단, 좌측 메뉴 및 버튼 제외)의 팝업 URL을 반환합니다.
-         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://docs.popbill.com/statement/dotnet/api#GetViewURL
-         */
-        private void btnGetViewURL_Click(object sender, EventArgs e)
-        {
-            int itemCode = selectedItemCode();
-
-            try
-            {
-                string url = statementService.GetViewURL(txtCorpNum.Text, itemCode, txtMgtKey.Text, txtUserID.Text);
-
-                MessageBox.Show(url, "전자명세서 보기 팝업 URL");
-                textURL.Text = url;
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "전자명세서 보기 팝업 URL");
             }
         }
     }

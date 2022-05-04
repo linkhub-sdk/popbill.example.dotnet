@@ -2,7 +2,7 @@
  * 팝빌 팩스 API DotNet SDK Example
  *
  * - DotNet C# SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/fax/tutorial/dotnet#csharp
- * - 업데이트 일자 : 2021-12-23
+ * - 업데이트 일자 : 2022-05-04
  * - 연동 기술지원 연락처 : 1600-9854
  * - 연동 기술지원 이메일 : code@linkhubcorp.com
  *
@@ -42,16 +42,16 @@ namespace Popbill.Fax.Example.csharp
             // 팩스 서비스 모듈 초기화
             faxService = new FaxService(LinkID, SecretKey);
 
-            // 연동환경 설정값 true(개발용), false(상업용)
+            // 연동환경 설정값, true-개발용, false-상업용
             faxService.IsTest = true;
 
-            // 발급된 토큰에 대한 IP 제한기능 사용여부, 권장(True)
+            // 인증토큰 발급 IP 제한 On/Off, true-사용, false-미사용, 기본값(true)
             faxService.IPRestrictOnOff = true;
 
             // 팝빌 API 서비스 고정 IP 사용여부, true-사용, false-미사용, 기본값(false)
             faxService.UseStaticIP = false;
 
-            // 로컬PC 시간 사용 여부 true(사용), false(기본값) - 미사용
+            // 로컬시스템 시간 사용여부, true-사용, false-미사용, 기본값(false)
             faxService.UseLocalTimeYN = false;
         }
 
@@ -92,7 +92,8 @@ namespace Popbill.Fax.Example.csharp
                 {
                     tmp += "number (발신번호) : " + numInfo.number + CRLF;
                     tmp += "representYN (대표번호 지정여부) : " + numInfo.representYN + CRLF;
-                    tmp += "state (등록상태) : " + numInfo.state + CRLF + CRLF;
+                    tmp += "state (등록상태) : " + numInfo.state + CRLF;
+                    tmp += "memo (메모) : " + numInfo.memo + CRLF + CRLF;
                 }
 
                 MessageBox.Show(tmp, "발신번호 목록 조회");
@@ -124,10 +125,10 @@ namespace Popbill.Fax.Example.csharp
         private void button1_Click(object sender, EventArgs e)
         {
             // 발신번호
-            String senderNum = "07043042991";
+            String senderNum = "";
 
             // 수신번호
-            String receiverNum = "070111222";
+            String receiverNum = "";
 
             // 수신자명
             String receiverName = "수신자명";
@@ -171,7 +172,7 @@ namespace Popbill.Fax.Example.csharp
         private void button2_Click(object sender, EventArgs e)
         {
             // 발신번호
-            String senderNum = "07043042991";
+            String senderNum = "";
 
             // 팩스제목
             String title = "팩스 동보전송 제목";
@@ -193,7 +194,7 @@ namespace Popbill.Fax.Example.csharp
                     FaxReceiver receiver = new FaxReceiver();
 
                     // 수신번호
-                    receiver.receiveNum = "070111222";
+                    receiver.receiveNum = "";
 
                     // 수신자명
                     receiver.receiveName = "수신자명칭_" + i;
@@ -228,10 +229,10 @@ namespace Popbill.Fax.Example.csharp
         private void button3_Click(object sender, EventArgs e)
         {
             // 발신번호
-            String senderNum = "07043042991";
+            String senderNum = "";
 
             // 수신번호
-            String receiverNum = "070111222";
+            String receiverNum = "";
 
             // 수신자명
             String receiverName = "수신자명";
@@ -281,7 +282,7 @@ namespace Popbill.Fax.Example.csharp
         private void button4_Click(object sender, EventArgs e)
         {
             // 발신번호
-            String senderNum = "07043042991";
+            String senderNum = "";
 
             // 광고팩스 전송여부
             bool adsYN = false;
@@ -311,7 +312,7 @@ namespace Popbill.Fax.Example.csharp
                     FaxReceiver receiver = new FaxReceiver();
 
                     // 수신번호
-                    receiver.receiveNum = "070111222";
+                    receiver.receiveNum = "";
 
                     // 수신자명
                     receiver.receiveName = "수신자명칭_" + i;
@@ -339,6 +340,7 @@ namespace Popbill.Fax.Example.csharp
          * 팝빌에서 반환받은 접수번호를 통해 팩스 1건을 재전송합니다.
          * - 발신/수신 정보 미입력시 기존과 동일한 정보로 팩스가 전송되고, 접수일 기준 최대 60일이 경과되지 않는 건만 재전송이 가능합니다.
          * - 팩스 재전송 요청시 포인트가 차감됩니다. (전송실패시 환불처리)
+         * - 변환실패 사유로 전송실패한 팩스 접수건은 재전송이 불가합니다.
          * - https://docs.popbill.com/fax/dotnet/api#ResendFAX
          */
         private void btnResendFAX_Click(object sender, EventArgs e)
@@ -379,6 +381,7 @@ namespace Popbill.Fax.Example.csharp
          * 파트너가 할당한 전송요청 번호를 통해 팩스 1건을 재전송합니다.
          * - 발신/수신 정보 미입력시 기존과 동일한 정보로 팩스가 전송되고, 접수일 기준 최대 60일이 경과되지 않는 건만 재전송이 가능합니다.
          * - 팩스 재전송 요청시 포인트가 차감됩니다. (전송실패시 환불처리)
+         * - 변환실패 사유로 전송실패한 팩스 접수건은 재전송이 불가합니다.
          * - https://docs.popbill.com/fax/dotnet/api#ResendFAXRN
          */
         private void btnResendFAXRN_Click(object sender, EventArgs e)
@@ -423,12 +426,13 @@ namespace Popbill.Fax.Example.csharp
          * 팝빌에서 반환받은 접수번호를 통해 다수건의 팩스를 재전송합니다. (최대 전송파일 개수: 20개) (최대 1,000건)
          * - 발신/수신 정보 미입력시 기존과 동일한 정보로 팩스가 전송되고, 접수일 기준 최대 60일이 경과되지 않는 건만 재전송이 가능합니다.
          * - 팩스 재전송 요청시 포인트가 차감됩니다. (전송실패시 환불처리)
+         * - 변환실패 사유로 전송실패한 팩스 접수건은 재전송이 불가합니다.
          * - https://docs.popbill.com/fax/dotnet/api#ResendFAX_Same
          */
         private void btnResendFAXSame_Click(object sender, EventArgs e)
         {
             // 발신번호, 공백으로 처리시 기존전송정보로 전송
-            String senderNum = "07043042991";
+            String senderNum = "";
 
             // 발신자명, 공백으로 처리시 기존전송정보로 전송
             String senderName = "발신자명";
@@ -450,7 +454,7 @@ namespace Popbill.Fax.Example.csharp
                 FaxReceiver receiver = new FaxReceiver();
 
                 // 수신번호
-                receiver.receiveNum = "111-2222-3333";
+                receiver.receiveNum = "";
 
                 // 수신자명
                 receiver.receiveName = "수신자명칭_" + i;
@@ -478,6 +482,7 @@ namespace Popbill.Fax.Example.csharp
          * 파트너가 할당한 전송요청 번호를 통해 다수건의 팩스를 재전송합니다. (최대 전송파일 개수: 20개) (최대 1,000건)
          * - 발신/수신 정보 미입력시 기존과 동일한 정보로 팩스가 전송되고, 접수일 기준 최대 60일이 경과되지 않는 건만 재전송이 가능합니다.
          * - 팩스 재전송 요청시 포인트가 차감됩니다. (전송실패시 환불처리)
+         * - 변환실패 사유로 전송실패한 팩스 접수건은 재전송이 불가합니다.
          * - https://docs.popbill.com/fax/dotnet/api#ResendFAXRN_Same
          */
         private void btnResendFAXRN_same_Click(object sender, EventArgs e)
@@ -487,7 +492,7 @@ namespace Popbill.Fax.Example.csharp
             String requestNum = "";
 
             // 발신번호, 공백으로 처리시 기존전송정보로 전송
-            String senderNum = "07043042991";
+            String senderNum = "";
 
             // 발신자명, 공백으로 처리시 기존전송정보로 전송
             String senderName = "발신자명";
@@ -508,7 +513,7 @@ namespace Popbill.Fax.Example.csharp
                 FaxReceiver receiver = new FaxReceiver();
 
                 // 수신번호
-                receiver.receiveNum = "111-2222-3333";
+                receiver.receiveNum = "";
 
                 // 수신자명
                 receiver.receiveName = "수신자명칭_" + i;
@@ -713,22 +718,29 @@ namespace Popbill.Fax.Example.csharp
         {
             // 최대 검색기간 :2개월 이내
             // 시작일자, 날짜형식(yyyyMMdd)
-            String SDate = "20211101";
+            String SDate = "20220501";
 
             // 종료일자, 날짜형식(yyyyMMdd)
-            String EDate = "20211216";
+            String EDate = "20220531";
 
-            //전송상태 배열 1-대기, 2-성공, 3-실패, 4-취소
+            // 전송상태 배열 ("1" , "2" , "3" , "4" 중 선택, 다중 선택 가능)
+            // └ 1 = 대기 , 2 = 성공 , 3 = 실패 , 4 = 취소
+            // - 미입력 시 전체조회
             String[] State = new String[4];
             State[0] = "1";
             State[1] = "2";
             State[2] = "3";
             State[3] = "4";
 
-            // 예약여부, true-예약전송건 검색, false-즉시전송건 검색
+            // 예약여부 (false , true 중 택 1)
+            // └ false = 전체조회, true = 예약전송건 조회
+            // - 미입력시 기본값 false 처리
             bool ReserveYN = false;
 
-            // 개인조회여부, True-개인조회, False-회사조회
+            // 개인조회 여부 (false , true 중 택 1)
+            // false = 접수한 팩스 전체 조회 (관리자권한)
+            // true = 해당 담당자 계정으로 접수한 팩스만 조회 (개인권한)
+            // 미입력시 기본값 false 처리
             bool SenderOnly = false;
 
             // 정렬방향, A-오름차순, D-내림차순
@@ -740,7 +752,8 @@ namespace Popbill.Fax.Example.csharp
             // 페이지당 검색개수, 최대 1000개
             int PerPage = 100;
 
-            // 조회 검색어, 팩스 전송시 기재한 발신자명 또는 수신자명 기재
+            // 조회하고자 하는 발신자명 또는 수신자명
+            // - 미입력시 전체조회
             String QString = "";
 
             listBox1.Items.Clear();
@@ -816,7 +829,7 @@ namespace Popbill.Fax.Example.csharp
         }
 
         /*
-         * 팝빌 사이트와 동일한 팩스 전송내역 확인 페이지의 팝업 URL을 반환합니다.
+         * 팩스 전송내역 확인 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
          * - https://docs.popbill.com/fax/dotnet/api#GetSentListURL
          */
@@ -859,7 +872,7 @@ namespace Popbill.Fax.Example.csharp
 
         /*
          * 연동회원의 잔여포인트를 확인합니다.
-         * - 과금방식이 파트너과금인 경우 파트너 잔여포인트(GetPartnerBalance API)를 통해 확인하시기 바랍니다.
+         * - 과금방식이 파트너과금인 경우 파트너 잔여포인트 확인(GetPartnerBalance API) 함수를 통해 확인하시기 바랍니다.
          * - https://docs.popbill.com/fax/dotnet/api#GetBalance
          */
         private void btnGetBalance_Click(object sender, EventArgs e)
@@ -942,7 +955,7 @@ namespace Popbill.Fax.Example.csharp
 
         /*
          * 파트너의 잔여포인트를 확인합니다.
-         * - 과금방식이 연동과금인 경우 연동회원 잔여포인트(GetBalance API)를 이용하시기 바랍니다.
+         * - 과금방식이 연동과금인 경우 연동회원 잔여포인트 확인(GetBalance API) 함수를 이용하시기 바랍니다.
          * - https://docs.popbill.com/fax/dotnet/api#GetPartnerBalance
          */
         private void btnGetPartnerBalance_Click(object sender, EventArgs e)
@@ -965,7 +978,7 @@ namespace Popbill.Fax.Example.csharp
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
          * - https://docs.popbill.com/fax/dotnet/api#GetPartnerURL
          */
-        private void btnGetPartnerURL_CHRG_Click(object sender, EventArgs e)
+        private void btnGetPartnerURL_Click(object sender, EventArgs e)
         {
             try
             {
@@ -1103,16 +1116,10 @@ namespace Popbill.Fax.Example.csharp
             joinInfo.ContactName = "담당자명";
 
             // 담당자 이메일 (최대 20자)
-            joinInfo.ContactEmail = "test@test.com";
+            joinInfo.ContactEmail = "";
 
             // 담당자 연락처 (최대 20자)
-            joinInfo.ContactTEL = "070-4304-2991";
-
-            // 담당자 휴대폰번호 (최대 20자)
-            joinInfo.ContactHP = "010-111-222";
-
-            // 담당자 팩스번호 (최대 20자)
-            joinInfo.ContactFAX = "02-6442-9700";
+            joinInfo.ContactTEL = "";
 
             try
             {
@@ -1230,16 +1237,10 @@ namespace Popbill.Fax.Example.csharp
             contactInfo.personName = "담당자명";
 
             //담당자연락처 (최대 20자)
-            contactInfo.tel = "070-4304-2991";
-
-            //담당자 휴대폰번호 (최대 20자)
-            contactInfo.hp = "010-111-222";
-
-            //담당자 팩스번호 (최대 20자)
-            contactInfo.fax = "070-4304-2991";
+            contactInfo.tel = "";
 
             //담당자 이메일 (최대 100자)
-            contactInfo.email = "dev@linkhub.co.kr";
+            contactInfo.email = "";
 
             // 담당자 권한, 1 : 개인권한, 2 : 읽기권한, 3 : 회사권한
             contactInfo.searchRole = 3;
@@ -1275,13 +1276,11 @@ namespace Popbill.Fax.Example.csharp
 
                 tmp += "id (담당자 아이디) : " + contactInfo.id + CRLF;
                 tmp += "personName (담당자명) : " + contactInfo.personName + CRLF;
-                tmp += "email (담당자 이메일) : " + contactInfo.email + CRLF;
-                tmp += "hp (휴대폰번호) : " + contactInfo.hp + CRLF;
-                tmp += "searchRole (담당자 권한) : " + contactInfo.searchRole + CRLF;
                 tmp += "tel (연락처) : " + contactInfo.tel + CRLF;
-                tmp += "fax (팩스번호) : " + contactInfo.fax + CRLF;
-                tmp += "mgrYN (관리자 여부) : " + contactInfo.mgrYN + CRLF;
+                tmp += "email (담당자 이메일) : " + contactInfo.email + CRLF;
                 tmp += "regDT (등록일시) : " + contactInfo.regDT + CRLF;
+                tmp += "searchRole (담당자 권한) : " + contactInfo.searchRole + CRLF;
+                tmp += "mgrYN (관리자 여부) : " + contactInfo.mgrYN + CRLF;
                 tmp += "state (상태) : " + contactInfo.state + CRLF;
                 tmp += CRLF;
 
@@ -1310,13 +1309,11 @@ namespace Popbill.Fax.Example.csharp
                 {
                     tmp += "id (담당자 아이디) : " + contactInfo.id + CRLF;
                     tmp += "personName (담당자명) : " + contactInfo.personName + CRLF;
-                    tmp += "email (담당자 이메일) : " + contactInfo.email + CRLF;
-                    tmp += "hp (휴대폰번호) : " + contactInfo.hp + CRLF;
-                    tmp += "searchRole (담당자 권한) : " + contactInfo.searchRole + CRLF;
                     tmp += "tel (연락처) : " + contactInfo.tel + CRLF;
-                    tmp += "fax (팩스번호) : " + contactInfo.fax + CRLF;
-                    tmp += "mgrYN (관리자 여부) : " + contactInfo.mgrYN + CRLF;
+                    tmp += "email (담당자 이메일) : " + contactInfo.email + CRLF;
                     tmp += "regDT (등록일시) : " + contactInfo.regDT + CRLF;
+                    tmp += "searchRole (담당자 권한) : " + contactInfo.searchRole + CRLF;
+                    tmp += "mgrYN (관리자 여부) : " + contactInfo.mgrYN + CRLF;
                     tmp += "state (상태) : " + contactInfo.state + CRLF;
                     tmp += CRLF;
                 }
@@ -1345,16 +1342,10 @@ namespace Popbill.Fax.Example.csharp
             contactInfo.personName = "담당자123";
 
             // 연락처
-            contactInfo.tel = "070-4304-2991";
-
-            // 휴대폰번호
-            contactInfo.hp = "010-1234-1234";
-
-            // 팩스번호
-            contactInfo.fax = "070-111-222";
+            contactInfo.tel = "";
 
             // 이메일주소
-            contactInfo.email = "dev@linkhub.co.kr";
+            contactInfo.email = "";
 
             // 담당자 권한, 1 : 개인권한, 2 : 읽기권한, 3 : 회사권한
             contactInfo.searchRole = 3;
