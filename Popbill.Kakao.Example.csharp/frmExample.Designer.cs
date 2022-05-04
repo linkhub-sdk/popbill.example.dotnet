@@ -99,6 +99,7 @@
             this.fileDialog = new System.Windows.Forms.OpenFileDialog();
             this.label6 = new System.Windows.Forms.Label();
             this.textURL = new System.Windows.Forms.TextBox();
+            this.btnCheckSenderNumber = new System.Windows.Forms.Button();
             this.GroupBox1.SuspendLayout();
             this.groupBox14.SuspendLayout();
             this.groupBox11.SuspendLayout();
@@ -578,6 +579,7 @@
             // 
             // groupBox9
             // 
+            this.groupBox9.Controls.Add(this.btnCheckSenderNumber);
             this.groupBox9.Controls.Add(this.btnGetATSTemplate);
             this.groupBox9.Controls.Add(this.btnSearch);
             this.groupBox9.Controls.Add(this.btnGetSentListURL);
@@ -846,6 +848,16 @@
             this.textURL.Size = new System.Drawing.Size(347, 21);
             this.textURL.TabIndex = 28;
             // 
+            // btnCheckSenderNumber
+            // 
+            this.btnCheckSenderNumber.Location = new System.Drawing.Point(16, 188);
+            this.btnCheckSenderNumber.Name = "btnCheckSenderNumber";
+            this.btnCheckSenderNumber.Size = new System.Drawing.Size(184, 36);
+            this.btnCheckSenderNumber.TabIndex = 12;
+            this.btnCheckSenderNumber.Text = "발신번호 등록여부 확인";
+            this.btnCheckSenderNumber.UseVisualStyleBackColor = true;
+            this.btnCheckSenderNumber.Click += new System.EventHandler(this.btnCheckSenderNumber_Click);
+            // 
             // frmExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -958,6 +970,7 @@
         internal System.Windows.Forms.Button btnGetUseHistoryURL;
         internal System.Windows.Forms.Button btnGetPaymentURL;
         private System.Windows.Forms.Button btnGetContactInfo;
+        private System.Windows.Forms.Button btnCheckSenderNumber;
     }
 }
 

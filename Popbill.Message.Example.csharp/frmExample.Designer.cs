@@ -37,6 +37,7 @@
             this.btnUpdateCorpInfo = new System.Windows.Forms.Button();
             this.btnGetCorpInfo = new System.Windows.Forms.Button();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.btnGetContactInfo = new System.Windows.Forms.Button();
             this.btnUpdateContact = new System.Windows.Forms.Button();
             this.btnListContact = new System.Windows.Forms.Button();
             this.btnRegistContact = new System.Windows.Forms.Button();
@@ -73,6 +74,7 @@
             this.btnCancelReserveRN = new System.Windows.Forms.Button();
             this.btnGetMessagesRN = new System.Windows.Forms.Button();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.btnCheckSenderNumber = new System.Windows.Forms.Button();
             this.btnGetSenderNumberMgtURL = new System.Windows.Forms.Button();
             this.btnGetSenderNumberList = new System.Windows.Forms.Button();
             this.btnGetAutoDenyList = new System.Windows.Forms.Button();
@@ -98,7 +100,6 @@
             this.fileDialog = new System.Windows.Forms.OpenFileDialog();
             this.label6 = new System.Windows.Forms.Label();
             this.textURL = new System.Windows.Forms.TextBox();
-            this.btnGetContactInfo = new System.Windows.Forms.Button();
             this.GroupBox1.SuspendLayout();
             this.groupBox14.SuspendLayout();
             this.groupBox11.SuspendLayout();
@@ -215,6 +216,16 @@
             this.groupBox10.TabIndex = 3;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "담당자 관련";
+            // 
+            // btnGetContactInfo
+            // 
+            this.btnGetContactInfo.Location = new System.Drawing.Point(7, 60);
+            this.btnGetContactInfo.Name = "btnGetContactInfo";
+            this.btnGetContactInfo.Size = new System.Drawing.Size(120, 31);
+            this.btnGetContactInfo.TabIndex = 3;
+            this.btnGetContactInfo.Text = "담당자 정보 확인";
+            this.btnGetContactInfo.UseVisualStyleBackColor = true;
+            this.btnGetContactInfo.Click += new System.EventHandler(this.btnGetContactInfo_Click);
             // 
             // btnUpdateContact
             // 
@@ -583,20 +594,31 @@
             // 
             // groupBox12
             // 
+            this.groupBox12.Controls.Add(this.btnCheckSenderNumber);
             this.groupBox12.Controls.Add(this.btnGetSenderNumberMgtURL);
             this.groupBox12.Controls.Add(this.btnGetSenderNumberList);
             this.groupBox12.Location = new System.Drawing.Point(791, 66);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(139, 96);
+            this.groupBox12.Size = new System.Drawing.Size(166, 132);
             this.groupBox12.TabIndex = 28;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "발신번호 관리";
+            // 
+            // btnCheckSenderNumber
+            // 
+            this.btnCheckSenderNumber.Location = new System.Drawing.Point(8, 91);
+            this.btnCheckSenderNumber.Name = "btnCheckSenderNumber";
+            this.btnCheckSenderNumber.Size = new System.Drawing.Size(150, 32);
+            this.btnCheckSenderNumber.TabIndex = 29;
+            this.btnCheckSenderNumber.Text = "발신번호 등록여부 확인";
+            this.btnCheckSenderNumber.UseVisualStyleBackColor = true;
+            this.btnCheckSenderNumber.Click += new System.EventHandler(this.btnCheckSenderNumber_Click);
             // 
             // btnGetSenderNumberMgtURL
             // 
             this.btnGetSenderNumberMgtURL.Location = new System.Drawing.Point(8, 53);
             this.btnGetSenderNumberMgtURL.Name = "btnGetSenderNumberMgtURL";
-            this.btnGetSenderNumberMgtURL.Size = new System.Drawing.Size(121, 32);
+            this.btnGetSenderNumberMgtURL.Size = new System.Drawing.Size(150, 32);
             this.btnGetSenderNumberMgtURL.TabIndex = 28;
             this.btnGetSenderNumberMgtURL.Text = "발신번호 관리 팝업";
             this.btnGetSenderNumberMgtURL.UseVisualStyleBackColor = true;
@@ -606,7 +628,7 @@
             // 
             this.btnGetSenderNumberList.Location = new System.Drawing.Point(8, 15);
             this.btnGetSenderNumberList.Name = "btnGetSenderNumberList";
-            this.btnGetSenderNumberList.Size = new System.Drawing.Size(121, 32);
+            this.btnGetSenderNumberList.Size = new System.Drawing.Size(150, 32);
             this.btnGetSenderNumberList.TabIndex = 27;
             this.btnGetSenderNumberList.Text = "발신번호 목록 조회";
             this.btnGetSenderNumberList.UseVisualStyleBackColor = true;
@@ -835,16 +857,6 @@
             this.textURL.Size = new System.Drawing.Size(348, 21);
             this.textURL.TabIndex = 35;
             // 
-            // btnGetContactInfo
-            // 
-            this.btnGetContactInfo.Location = new System.Drawing.Point(7, 60);
-            this.btnGetContactInfo.Name = "btnGetContactInfo";
-            this.btnGetContactInfo.Size = new System.Drawing.Size(120, 31);
-            this.btnGetContactInfo.TabIndex = 3;
-            this.btnGetContactInfo.Text = "담당자 정보 확인";
-            this.btnGetContactInfo.UseVisualStyleBackColor = true;
-            this.btnGetContactInfo.Click += new System.EventHandler(this.btnGetContactInfo_Click);
-            // 
             // frmExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -958,6 +970,7 @@
         internal System.Windows.Forms.Button btnGetUseHistoryURL;
         internal System.Windows.Forms.Button btnGetPaymentURL;
         private System.Windows.Forms.Button btnGetContactInfo;
+        private System.Windows.Forms.Button btnCheckSenderNumber;
     }
 }
 
