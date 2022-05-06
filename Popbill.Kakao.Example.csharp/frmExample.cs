@@ -222,7 +222,7 @@ namespace Popbill.Kakao.Example.csharp
         private void btnGetATSTemplate_Click(object sender, EventArgs e)
         {
             // 확인할 템플릿 코드
-            String templateCode = "021010000076";
+            String templateCode = "022040000005";
 
             try
             {
@@ -1370,6 +1370,7 @@ namespace Popbill.Kakao.Example.csharp
                 tmp += "templateCode (템플릿 코드) : " + info.templateCode + CRLF;
                 tmp += "plusFriendID (검색용 아이디) : " + info.plusFriendID + CRLF;
                 tmp += "sendNum (발신번호) : " + info.sendNum + CRLF;
+                tmp += "altSubject (대체문자 제목) : " + info.altSubject + CRLF;
                 tmp += "altContent (대체문자 내용) : " + info.altContent + CRLF;
                 tmp += "altSendType (대체문자 유형) : " + info.altSendType + CRLF;
                 tmp += "reserveDT (예약일시) : " + info.reserveDT + CRLF;
@@ -1384,9 +1385,9 @@ namespace Popbill.Kakao.Example.csharp
                 MessageBox.Show(tmp, "전송내역 확인");
 
                 string rowStr =
-                    "state (전송상태 코드) | sendDT (전송일시) | result (전송결과 코드) | resultDT (전송결과 수신일시) | contentType (카카오톡 유형) | " +
-                    "receiveNum (수신번호) | receiveName (수신자명) | content (내용) | altContentType (대체문자 전송타입) | altSendDT (대체문자 전송일시) | " +
-                    "altResult (대체문자 전송결과 코드) | altResultDT (대체문자 전송결과 수신일시) | interOPRefKey (파트너 지정키) | receiptNum (접수번호) | requestNum (요청번호)";
+                    "state (전송상태 코드) | sendDT (전송일시) | result (전송결과 코드) | resultDT (전송결과 수신일시) | contentType (카카오톡 유형) | receiveNum (수신번호) | " +
+                    "receiveName (수신자명) | content (내용) | altSubject (대체문자 제목) | altContent(대체문자 내용) | altContentType (대체문자 전송타입) | altSendDT (대체문자 전송일시) | " +
+                    "altResult (대체문자 전송결과 코드) | altResultDT (대체문자 전송결과 수신일시) | receiptNum (접수번호) | requestNum (요청번호) | interOPRefKey (파트너 지정키)";
 
                 listBox1.Items.Add(rowStr);
 
@@ -1395,19 +1396,21 @@ namespace Popbill.Kakao.Example.csharp
                     rowStr = null;
                     rowStr += info.msgs[i].state + " | ";
                     rowStr += info.msgs[i].sendDT + " | ";
+                    rowStr += info.msgs[i].result + " | ";
+                    rowStr += info.msgs[i].resultDT + " | ";
+                    rowStr += info.msgs[i].contentType + " | ";
                     rowStr += info.msgs[i].receiveNum + " | ";
                     rowStr += info.msgs[i].receiveName + " | ";
                     rowStr += info.msgs[i].content + " | ";
-                    rowStr += info.msgs[i].result + " | ";
-                    rowStr += info.msgs[i].resultDT + " | ";
+                    rowStr += info.msgs[i].altSubject + " | ";
                     rowStr += info.msgs[i].altContent + " | ";
                     rowStr += info.msgs[i].altContentType + " | ";
                     rowStr += info.msgs[i].altSendDT + " | ";
                     rowStr += info.msgs[i].altResult + " | ";
                     rowStr += info.msgs[i].altResultDT + " | ";
-                    rowStr += info.msgs[i].interOPRefKey + " | ";
                     rowStr += info.msgs[i].receiptNum + " | ";
-                    rowStr += info.msgs[i].requestNum;
+                    rowStr += info.msgs[i].requestNum + " | ";
+                    rowStr += info.msgs[i].interOPRefKey;
 
                     listBox1.Items.Add(rowStr);
                 }
@@ -1435,6 +1438,7 @@ namespace Popbill.Kakao.Example.csharp
                 tmp += "templateCode (템플릿 코드) : " + info.templateCode + CRLF;
                 tmp += "plusFriendID (검색용 아이디) : " + info.plusFriendID + CRLF;
                 tmp += "sendNum (발신번호) : " + info.sendNum + CRLF;
+                tmp += "altSubject (대체문자 제목) : " + info.altSubject + CRLF;
                 tmp += "altContent (대체문자 내용) : " + info.altContent + CRLF;
                 tmp += "altSendType (대체문자 유형) : " + info.altSendType + CRLF;
                 tmp += "reserveDT (예약일시) : " + info.reserveDT + CRLF;
@@ -1449,9 +1453,9 @@ namespace Popbill.Kakao.Example.csharp
                 MessageBox.Show(tmp, "전송내역 확인");
 
                 string rowStr =
-                    "state (전송상태 코드) | sendDT (전송일시) | result (전송결과 코드) | resultDT (전송결과 수신일시) | contentType (카카오톡 유형) | " +
-                    "receiveNum (수신번호) | receiveName (수신자명) | content (내용) | altContentType (대체문자 전송타입) | altSendDT (대체문자 전송일시) | " +
-                    "altResult (대체문자 전송결과 코드) | altResultDT (대체문자 전송결과 수신일시) | receiptNum (접수번호) | requestNum (요청번호)";
+                    "state (전송상태 코드) | sendDT (전송일시) | result (전송결과 코드) | resultDT (전송결과 수신일시) | contentType (카카오톡 유형) | receiveNum (수신번호) | " +
+                    "receiveName (수신자명) | content (내용) | altSubject (대체문자 제목) | altContent(대체문자 내용) | altContentType (대체문자 전송타입) | altSendDT (대체문자 전송일시) | " +
+                    "altResult (대체문자 전송결과 코드) | altResultDT (대체문자 전송결과 수신일시) | receiptNum (접수번호) | requestNum (요청번호) | interOPRefKey (파트너 지정키)";
 
                 listBox1.Items.Add(rowStr);
 
@@ -1460,18 +1464,21 @@ namespace Popbill.Kakao.Example.csharp
                     rowStr = null;
                     rowStr += info.msgs[i].state + " | ";
                     rowStr += info.msgs[i].sendDT + " | ";
+                    rowStr += info.msgs[i].result + " | ";
+                    rowStr += info.msgs[i].resultDT + " | ";
+                    rowStr += info.msgs[i].contentType + " | ";
                     rowStr += info.msgs[i].receiveNum + " | ";
                     rowStr += info.msgs[i].receiveName + " | ";
                     rowStr += info.msgs[i].content + " | ";
-                    rowStr += info.msgs[i].result + " | ";
-                    rowStr += info.msgs[i].resultDT + " | ";
+                    rowStr += info.msgs[i].altSubject + " | ";
                     rowStr += info.msgs[i].altContent + " | ";
                     rowStr += info.msgs[i].altContentType + " | ";
                     rowStr += info.msgs[i].altSendDT + " | ";
                     rowStr += info.msgs[i].altResult + " | ";
                     rowStr += info.msgs[i].altResultDT + " | ";
                     rowStr += info.msgs[i].receiptNum + " | ";
-                    rowStr += info.msgs[i].requestNum;
+                    rowStr += info.msgs[i].requestNum + " | ";
+                    rowStr += info.msgs[i].interOPRefKey;
 
                     listBox1.Items.Add(rowStr);
                 }
@@ -1557,30 +1564,32 @@ namespace Popbill.Kakao.Example.csharp
                 MessageBox.Show(tmp, "전송내역조회 결과");
 
                 string rowStr =
-                    "state (전송상태 코드) | sendDT (전송일시) | result (전송결과 코드) | resultDT (전송결과 수신일시) | contentType (카카오톡 유형) | " +
-                    "receiveNum (수신번호) | receiveName (수신자명) | content (내용) | altContnet (대체문자 내용) | altContentType (대체문자 전송타입) | altSendDT (대체문자 전송일시) | " +
-                    "altResult (대체문자 전송결과 코드) | altResultDT (대체문자 전송결과 수신일시) | receiptNum (접수번호) | requestNum (요청번호)";
+                    "state (전송상태 코드) | sendDT (전송일시) | result (전송결과 코드) | resultDT (전송결과 수신일시) | contentType (카카오톡 유형) | receiveNum (수신번호) | " +
+                    "receiveName (수신자명) | content (내용) | altSubject (대체문자 제목) | altContent(대체문자 내용) | altContentType (대체문자 전송타입) | altSendDT (대체문자 전송일시) | " +
+                    "altResult (대체문자 전송결과 코드) | altResultDT (대체문자 전송결과 수신일시) | receiptNum (접수번호) | requestNum (요청번호) | interOPRefKey (파트너 지정키)";
 
                 listBox1.Items.Add(rowStr);
 
-                for (int i = 0; i < searchResult.list.Count; i++)
+                for (int i = 0; i < info.msgs.Count; i++)
                 {
                     rowStr = null;
-                    rowStr += searchResult.list[i].state + " | ";
-                    rowStr += searchResult.list[i].sendDT + " | ";
-                    rowStr += searchResult.list[i].result + " | ";
-                    rowStr += searchResult.list[i].resultDT + " | ";
-                    rowStr += searchResult.list[i].contentType + " | ";
-                    rowStr += searchResult.list[i].receiveNum + " | ";
-                    rowStr += searchResult.list[i].receiveName + " | ";
-                    rowStr += searchResult.list[i].content + " | ";
-                    rowStr += searchResult.list[i].altContent + " | ";
-                    rowStr += searchResult.list[i].altContentType + " | ";
-                    rowStr += searchResult.list[i].altSendDT + " | ";
-                    rowStr += searchResult.list[i].altResult + " | ";
-                    rowStr += searchResult.list[i].altResultDT + " | ";
-                    rowStr += searchResult.list[i].receiptNum + " | ";
-                    rowStr += searchResult.list[i].requestNum;
+                    rowStr += info.msgs[i].state + " | ";
+                    rowStr += info.msgs[i].sendDT + " | ";
+                    rowStr += info.msgs[i].result + " | ";
+                    rowStr += info.msgs[i].resultDT + " | ";
+                    rowStr += info.msgs[i].contentType + " | ";
+                    rowStr += info.msgs[i].receiveNum + " | ";
+                    rowStr += info.msgs[i].receiveName + " | ";
+                    rowStr += info.msgs[i].content + " | ";
+                    rowStr += info.msgs[i].altSubject + " | ";
+                    rowStr += info.msgs[i].altContent + " | ";
+                    rowStr += info.msgs[i].altContentType + " | ";
+                    rowStr += info.msgs[i].altSendDT + " | ";
+                    rowStr += info.msgs[i].altResult + " | ";
+                    rowStr += info.msgs[i].altResultDT + " | ";
+                    rowStr += info.msgs[i].receiptNum + " | ";
+                    rowStr += info.msgs[i].requestNum + " | ";
+                    rowStr += info.msgs[i].interOPRefKey;
 
                     listBox1.Items.Add(rowStr);
                 }
