@@ -312,7 +312,7 @@ namespace Popbill.Kakao.Example.csharp
             // 승인된 알림톡 템플릿코드
             // └ 알림톡 템플릿 관리 팝업 URL(GetATSTemplateMgtURL API) 함수, 알림톡 템플릿 목록 확인(ListATStemplate API) 함수를 호출하거나
             //   팝빌사이트에서 승인된 알림톡 템플릿 코드를  확인 가능.
-            String templateCode = "019020000163";
+            String templateCode = "022040000005";
 
             // 팝빌에 사전 등록된 발신번호
             String senderNum = "";
@@ -325,9 +325,18 @@ namespace Popbill.Kakao.Example.csharp
             content += "팝빌 파트너센터 : 1600-8536\n";
             content += "support@linkhub.co.kr".Replace("\n", Environment.NewLine);
 
+            // 대체문자 제목
+            // - 메시지 길이(90byte)에 따라 장문(LMS)인 경우에만 적용.
+            String altSubject = "대체문자 제목";
+
             // 대체문자 유형(altSendType)이 "A"일 경우, 대체문자로 전송할 내용 (최대 2000byte)
             // └ 팝빌이 메시지 길이에 따라 단문(90byte 이하) 또는 장문(90byte 초과)으로 전송처리
-            String altContent = "대체문자 메시지 내용";
+            String altContent = "카카오톡이 실패하여 문자로 전송됩니다.\n";
+            altContent += "[팝빌]\n";
+            altContent += "신청하신 템플릿에 대한 심사가 완료되어 승인 처리되었습니다.\n";
+            altContent += "해당 템플릿으로 카카오톡 전송이 가능합니다.\n\n";
+            altContent += "문의사항 있으시면 파트너센터로 편하게 연락주시기 바랍니다.\n\n";
+            altContent += "팝빌 파트너센터 : 1600-8536\n";
 
             // 대체문자 유형 (null , "C" , "A" 중 택 1)
             // null = 미전송, C = 알림톡과 동일 내용 전송 , A = 대체문자 내용(altContent)에 입력한 내용 전송
@@ -371,7 +380,7 @@ namespace Popbill.Kakao.Example.csharp
 
             try
             {
-                string receiptNum = kakaoService.SendATS(txtCorpNum.Text, templateCode, senderNum, altSendType,
+                string receiptNum = kakaoService.SendATS(txtCorpNum.Text, templateCode, senderNum, altSubject, altSendType,
                     getReserveDT(), receiverNum, receiverName, content, altContent, requestNum, buttons);
 
                 MessageBox.Show("접수번호 : " + receiptNum, "알림톡(ATS) 전송");
@@ -396,18 +405,10 @@ namespace Popbill.Kakao.Example.csharp
             // 승인된 알림톡 템플릿코드
             // └ 알림톡 템플릿 관리 팝업 URL(GetATSTemplateMgtURL API) 함수, 알림톡 템플릿 목록 확인(ListATStemplate API) 함수를 호출하거나
             //   팝빌사이트에서 승인된 알림톡 템플릿 코드를  확인 가능.
-            String templateCode = "019020000163";
+            String templateCode = "022040000005";
 
             // 팝빌에 사전 등록된 발신번호
             String senderNum = "";
-
-            // 알림톡 템플릿 내용, 최대 1000자
-            String content = "[ 팝빌 ]\n";
-            content += "신청하신 #{템플릿코드}에 대한 심사가 완료되어 승인 처리되었습니다.\n";
-            content += "해당 템플릿으로 전송 가능합니다.\n\n";
-            content += "문의사항 있으시면 파트너센터로 편하게 연락주시기 바랍니다.\n\n";
-            content += "팝빌 파트너센터 : 1600-8536\n";
-            content += "support@linkhub.co.kr".Replace("\n", Environment.NewLine);
 
             // 대체문자 유형 (null , "C" , "A" 중 택 1)
             // null = 미전송, C = 알림톡과 동일 내용 전송 , A = 대체문자 내용(altContent)에 입력한 내용 전송
@@ -422,7 +423,7 @@ namespace Popbill.Kakao.Example.csharp
             List<KakaoReceiver> receivers = new List<KakaoReceiver>();
 
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 2; i++)
             {
                 KakaoReceiver receiverInfo = new KakaoReceiver();
 
@@ -433,10 +434,27 @@ namespace Popbill.Kakao.Example.csharp
                 receiverInfo.rcvnm = "수신자명" + i.ToString();
 
                 // 알림톡 템플릿 내용, 최대 1000자
+                String content = "[ 팝빌 ]\n";
+                content += "신청하신 #{템플릿코드}에 대한 심사가 완료되어 승인 처리되었습니다.\n";
+                content += "해당 템플릿으로 전송 가능합니다.\n\n";
+                content += "문의사항 있으시면 파트너센터로 편하게 연락주시기 바랍니다.\n\n";
+                content += "팝빌 파트너센터 : 1600-8536\n";
+                content += "support@linkhub.co.kr".Replace("\n", Environment.NewLine);
                 receiverInfo.msg = content;
 
-                // 대체문자 내용
-                receiverInfo.altmsg = "대체문자 내용입니다";
+                // 대체문자 제목
+                // - 메시지 길이(90byte)에 따라 장문(LMS)인 경우에만 적용.
+                receiverInfo.altsjt = "대체문자 제목" + i;
+
+                // 대체문자 유형(altSendType)이 "A"일 경우, 대체문자로 전송할 내용 (최대 2000byte)
+                // └ 팝빌이 메시지 길이에 따라 단문(90byte 이하) 또는 장문(90byte 초과)으로 전송처리
+                String altMessage = "카카오톡이 실패하여 문자로 전송됩니다.\n";
+                altMessage += "[팝빌]\n";
+                altMessage += "신청하신 템플릿에 대한 심사가 완료되어 승인 처리되었습니다.\n";
+                altMessage += "해당 템플릿으로 카카오톡 전송이 가능합니다.\n\n";
+                altMessage += "문의사항 있으시면 파트너센터로 편하게 연락주시기 바랍니다.\n\n";
+                altMessage += "팝빌 파트너센터 : 1600-8536\n";
+                receiverInfo.altmsg = altMessage;
 
                 // 파트너 지정키, 대량전송시, 수신자 구별용 메모
                 receiverInfo.interOPRefKey = "20220504-" + i.ToString();
@@ -544,7 +562,7 @@ namespace Popbill.Kakao.Example.csharp
             // 승인된 알림톡 템플릿코드
             // └ 알림톡 템플릿 관리 팝업 URL(GetATSTemplateMgtURL API) 함수, 알림톡 템플릿 목록 확인(ListATStemplate API) 함수를 호출하거나
             //   팝빌사이트에서 승인된 알림톡 템플릿 코드를  확인 가능.
-            String templateCode = "019020000163";
+            String templateCode = "022040000005";
 
             // 팝빌에 사전 등록된 발신번호
             String senderNum = "";
@@ -556,9 +574,18 @@ namespace Popbill.Kakao.Example.csharp
             content += "팝빌 파트너센터 : 1600-8536\n";
             content += "support@linkhub.co.kr".Replace("\n", Environment.NewLine);
 
+            // 대체문자 제목
+            // - 메시지 길이(90byte)에 따라 장문(LMS)인 경우에만 적용.
+            String altSubject = "대체문자 제목";
+
             // 대체문자 유형(altSendType)이 "A"일 경우, 대체문자로 전송할 내용 (최대 2000byte)
             // └ 팝빌이 메시지 길이에 따라 단문(90byte 이하) 또는 장문(90byte 초과)으로 전송처리
-            String altContent = "대체문자 메시지 내용";
+            String altContent = "카카오톡이 실패하여 문자로 전송됩니다.\n";
+            altContent += "[팝빌]\n";
+            altContent += "신청하신 템플릿에 대한 심사가 완료되어 승인 처리되었습니다.\n";
+            altContent += "해당 템플릿으로 카카오톡 전송이 가능합니다.\n\n";
+            altContent += "문의사항 있으시면 파트너센터로 편하게 연락주시기 바랍니다.\n\n";
+            altContent += "팝빌 파트너센터 : 1600-8536\n";
 
             // 대체문자 유형 (null , "C" , "A" 중 택 1)
             // null = 미전송, C = 알림톡과 동일 내용 전송 , A = 대체문자 내용(altContent)에 입력한 내용 전송
@@ -571,7 +598,7 @@ namespace Popbill.Kakao.Example.csharp
 
             // 수신자정보 배열, 최대 1000건
             List<KakaoReceiver> receivers = new List<KakaoReceiver>();
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 2; i++)
             {
                 KakaoReceiver receiverInfo = new KakaoReceiver();
 
@@ -615,7 +642,7 @@ namespace Popbill.Kakao.Example.csharp
 
             try
             {
-                string receiptNum = kakaoService.SendATS(txtCorpNum.Text, templateCode, senderNum, content,
+                string receiptNum = kakaoService.SendATS(txtCorpNum.Text, templateCode, senderNum, content, altSubject,
                     altContent, altSendType, getReserveDT(), receivers, txtUserId.Text, requestNum, buttons);
 
                 MessageBox.Show("접수번호 : " + receiptNum, "알림톡(ATS) 전송");
@@ -644,7 +671,10 @@ namespace Popbill.Kakao.Example.csharp
             String senderNum = "";
 
             // 친구톡 내용, 최대 1000자
-            String content = "친구톡 내용";
+            String content = "[팝빌]\n";
+            content += "알림톡이 아닌 친구톡입니다.\n";
+            content += "템플릿을 등록하지 않아도 전송할 수 있습니다.\n";
+            content += "하지만 채널이 친구로 등록되어 있지 않으면 친구톡이 전송되지 않습니다.\n";
 
             // 수신번호
             String receiverNum = "";
@@ -652,9 +682,19 @@ namespace Popbill.Kakao.Example.csharp
             // 수신자명
             String receiverName = "수신자명";
 
+            // 대체문자 제목
+            // - 메시지 길이(90byte)에 따라 장문(LMS)인 경우에만 적용.
+            String altSubject = "대체문자 제목";
+
             // 대체문자 유형(altSendType)이 "A"일 경우, 대체문자로 전송할 내용 (최대 2000byte)
             // └ 팝빌이 메시지 길이에 따라 단문(90byte 이하) 또는 장문(90byte 초과)으로 전송처리
-            String altContent = "대체문자 내용";
+            String altContent = "카카오톡이 실패하여 문자로 전송됩니다.\n";
+            altContent += "[팝빌]\n";
+            altContent += "친구톡을 접수하였으나 실패하여 문자로 전송되었습니다.\n";
+            altContent += "채널이 친구로 등록되어 있는지 확인해 주시길 바랍니다.\n\n";
+            altContent += "문의사항 있으시면 파트너센터로 편하게 연락주시기 바랍니다.\n\n";
+            altContent += "팝빌 파트너센터 : 1600-8536\n";
+
 
             // 대체문자 유형 (null , "C" , "A" 중 택 1)
             // null = 미전송, C = 알림톡과 동일 내용 전송 , A = 대체문자 내용(altContent)에 입력한 내용 전송
@@ -691,7 +731,7 @@ namespace Popbill.Kakao.Example.csharp
 
             try
             {
-                string receiptNum = kakaoService.SendFTS(txtCorpNum.Text, plusFriendID, senderNum, content,
+                string receiptNum = kakaoService.SendFTS(txtCorpNum.Text, plusFriendID, senderNum, content, altSubject,
                     altContent, altSendType, receiverNum, receiverName, adsYN, getReserveDT(), buttons, txtUserId.Text,
                     requestNum);
 
@@ -722,7 +762,7 @@ namespace Popbill.Kakao.Example.csharp
 
             // 대체문자 유형 (null , "C" , "A" 중 택 1)
             // null = 미전송, C = 친구톡과 동일 내용 전송 , A = 대체문자 내용(altContent)에 입력한 내용 전송
-            String altSendType = "C";
+            String altSendType = "A";
 
             // 광고성 메시지 여부 ( true , false 중 택 1)
             // └ true = 광고 , false = 일반
@@ -736,7 +776,7 @@ namespace Popbill.Kakao.Example.csharp
 
             // 수신자정보 배열, 최대 1000건
             List<KakaoReceiver> receivers = new List<KakaoReceiver>();
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 2; i++)
             {
                 KakaoReceiver receiverInfo = new KakaoReceiver();
 
@@ -749,8 +789,19 @@ namespace Popbill.Kakao.Example.csharp
                 // 친구톡 내용
                 receiverInfo.msg = "개별 친구톡 내용" + i.ToString();
 
-                // 대체문자 내용
-                receiverInfo.altmsg = "대체문자 전송내용" + i.ToString();
+                // 대체문자 제목
+                // - 메시지 길이(90byte)에 따라 장문(LMS)인 경우에만 적용.
+                receiverInfo.altsjt = "대체문자 제목" + i;
+
+                // 대체문자 유형(altSendType)이 "A"일 경우, 대체문자로 전송할 내용 (최대 2000byte)
+                // └ 팝빌이 메시지 길이에 따라 단문(90byte 이하) 또는 장문(90byte 초과)으로 전송처리
+                String altContent = "카카오톡이 실패하여 문자로 전송됩니다.\n";
+                altContent += "[팝빌]\n";
+                altContent += "친구톡을 접수하였으나 실패하여 문자로 전송되었습니다.\n";
+                altContent += "채널이 친구로 등록되어 있는지 확인해 주시길 바랍니다.\n\n";
+                altContent += "문의사항 있으시면 파트너센터로 편하게 연락주시기 바랍니다.\n\n";
+                altContent += "팝빌 파트너센터 : 1600-8536\n";
+                receiverInfo.altmsg = altContent;
 
                 // 파트너 지정키, 대량전송시, 수신자 구별용 메모
                 receiverInfo.interOPRefKey = "20220504-" + i.ToString();
@@ -854,12 +905,22 @@ namespace Popbill.Kakao.Example.csharp
             // 친구톡내용, 최대 1000자
             String content = "친구톡 내용";
 
-            // 대체문자 메시지 내용
-            String altContent = "대체문자 내용";
+            // 대체문자 제목
+            // - 메시지 길이(90byte)에 따라 장문(LMS)인 경우에만 적용.
+            String altSubject = "대체문자 제목";
+
+            // 대체문자 유형(altSendType)이 "A"일 경우, 대체문자로 전송할 내용 (최대 2000byte)
+            // └ 팝빌이 메시지 길이에 따라 단문(90byte 이하) 또는 장문(90byte 초과)으로 전송처리
+            String altContent = "카카오톡이 실패하여 문자로 전송됩니다.\n";
+            altContent += "[팝빌]\n";
+            altContent += "친구톡을 접수하였으나 실패하여 문자로 전송되었습니다.\n";
+            altContent += "채널이 친구로 등록되어 있는지 확인해 주시길 바랍니다.\n\n";
+            altContent += "문의사항 있으시면 파트너센터로 편하게 연락주시기 바랍니다.\n\n";
+            altContent += "팝빌 파트너센터 : 1600-8536\n";
 
             // 대체문자 유형 (null , "C" , "A" 중 택 1)
             // null = 미전송, C = 친구톡과 동일 내용 전송 , A = 대체문자 내용(altContent)에 입력한 내용 전송
-            String altSendType = "C";
+            String altSendType = "A";
 
             // 광고성 메시지 여부 ( true , false 중 택 1)
             // └ true = 광고 , false = 일반
@@ -873,7 +934,7 @@ namespace Popbill.Kakao.Example.csharp
 
             // 수신자정보 배열, 최대 1000건
             List<KakaoReceiver> receivers = new List<KakaoReceiver>();
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 2; i++)
             {
                 KakaoReceiver receiverInfo = new KakaoReceiver();
                 receiverInfo.rcv = "";
@@ -896,7 +957,7 @@ namespace Popbill.Kakao.Example.csharp
 
             try
             {
-                string receiptNum = kakaoService.SendFTS(txtCorpNum.Text, plusFriendID, senderNum, content,
+                string receiptNum = kakaoService.SendFTS(txtCorpNum.Text, plusFriendID, senderNum, content, altSubject,
                     altContent, altSendType, adsYN, getReserveDT(), receivers, buttons, txtUserId.Text, requestNum);
 
                 MessageBox.Show("접수번호 : " + receiptNum, "친구톡(FTS) 전송");
@@ -934,13 +995,22 @@ namespace Popbill.Kakao.Example.csharp
             // 수신자명
             String receiverName = "수신자명";
 
+            // 대체문자 제목
+            // - 메시지 길이(90byte)에 따라 장문(LMS)인 경우에만 적용.
+            String altSubject = "대체문자 제목";
+
             // 대체문자 유형(altSendType)이 "A"일 경우, 대체문자로 전송할 내용 (최대 2000byte)
             // └ 팝빌이 메시지 길이에 따라 단문(90byte 이하) 또는 장문(90byte 초과)으로 전송처리
-            String altContent = "대체문자 내용";
+            String altContent = "카카오톡이 실패하여 문자로 전송됩니다.\n";
+            altContent += "[팝빌]\n";
+            altContent += "친구톡을 접수하였으나 실패하여 문자로 전송되었습니다.\n";
+            altContent += "채널이 친구로 등록되어 있는지 확인해 주시길 바랍니다.\n\n";
+            altContent += "문의사항 있으시면 파트너센터로 편하게 연락주시기 바랍니다.\n\n";
+            altContent += "팝빌 파트너센터 : 1600-8536\n";
 
             // 대체문자 유형 (null , "C" , "A" 중 택 1)
             // null = 미전송, C = 친구톡과 동일 내용 전송 , A = 대체문자 내용(altContent)에 입력한 내용 전송
-            String altSendType = "C";
+            String altSendType = "A";
 
             // 광고성 메시지 여부 ( true , false 중 택 1)
             // └ true = 광고 , false = 일반
@@ -976,7 +1046,7 @@ namespace Popbill.Kakao.Example.csharp
 
                 try
                 {
-                    string receiptNum = kakaoService.SendFMS(txtCorpNum.Text, plusFriendID, senderNum, content,
+                    string receiptNum = kakaoService.SendFMS(txtCorpNum.Text, plusFriendID, senderNum, content, altSubject,
                         altContent, altSendType, receiverNum, receiverName, adsYN, getReserveDT(), buttons,
                         strFileName, imageURL, txtUserId.Text, requestNum);
 
@@ -1009,7 +1079,7 @@ namespace Popbill.Kakao.Example.csharp
 
             // 대체문자 유형 (null , "C" , "A" 중 택 1)
             // null = 미전송, C = 친구톡과 동일 내용 전송 , A = 대체문자 내용(altContent)에 입력한 내용 전송
-            String altSendType = "C";
+            String altSendType = "A";
 
             // 광고성 메시지 여부 ( true , false 중 택 1)
             // └ true = 광고 , false = 일반
@@ -1023,7 +1093,7 @@ namespace Popbill.Kakao.Example.csharp
 
             // 수신자정보 배열, 최대 1000건
             List<KakaoReceiver> receivers = new List<KakaoReceiver>();
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 2; i++)
             {
                 KakaoReceiver receiverInfo = new KakaoReceiver();
 
@@ -1036,8 +1106,19 @@ namespace Popbill.Kakao.Example.csharp
                 // 친구톡내용, 최대 400자
                 receiverInfo.msg = "개별 친구톡 내용" + i.ToString();
 
-                // 대체문자 내용
-                receiverInfo.altmsg = "대체문자 전송내용" + i.ToString();
+                // 대체문자 제목
+                // - 메시지 길이(90byte)에 따라 장문(LMS)인 경우에만 적용.
+                receiverInfo.altsjt = "대체문자 제목";
+
+                // 대체문자 유형(altSendType)이 "A"일 경우, 대체문자로 전송할 내용 (최대 2000byte)
+                // └ 팝빌이 메시지 길이에 따라 단문(90byte 이하) 또는 장문(90byte 초과)으로 전송처리
+                String altContent = "카카오톡이 실패하여 문자로 전송됩니다.\n";
+                altContent += "[팝빌]\n";
+                altContent += "친구톡을 접수하였으나 실패하여 문자로 전송되었습니다.\n";
+                altContent += "채널이 친구로 등록되어 있는지 확인해 주시길 바랍니다.\n\n";
+                altContent += "문의사항 있으시면 파트너센터로 편하게 연락주시기 바랍니다.\n\n";
+                altContent += "팝빌 파트너센터 : 1600-8536\n";
+                receiverInfo.altmsg = altContent;
 
                 // 파트너 지정키, 대량전송시, 수신자 구별용 메모
                 receiverInfo.interOPRefKey = "20220504-" + i.ToString();
@@ -1154,13 +1235,22 @@ namespace Popbill.Kakao.Example.csharp
             // 친구톡 내용, 최대 400자
             String content = "친구톡 내용";
 
+            // 대체문자 제목
+            // - 메시지 길이(90byte)에 따라 장문(LMS)인 경우에만 적용.
+            String altSubject = "대체문자 제목";
+
             // 대체문자 유형(altSendType)이 "A"일 경우, 대체문자로 전송할 내용 (최대 2000byte)
             // └ 팝빌이 메시지 길이에 따라 단문(90byte 이하) 또는 장문(90byte 초과)으로 전송처리
-            String altContent = "대체문자 내용";
+            String altContent = "카카오톡이 실패하여 문자로 전송됩니다.\n";
+            altContent += "[팝빌]\n";
+            altContent += "친구톡을 접수하였으나 실패하여 문자로 전송되었습니다.\n";
+            altContent += "채널이 친구로 등록되어 있는지 확인해 주시길 바랍니다.\n\n";
+            altContent += "문의사항 있으시면 파트너센터로 편하게 연락주시기 바랍니다.\n\n";
+            altContent += "팝빌 파트너센터 : 1600-8536\n";
 
             // 대체문자 유형 (null , "C" , "A" 중 택 1)
             // null = 미전송, C = 친구톡과 동일 내용 전송 , A = 대체문자 내용(altContent)에 입력한 내용 전송
-            String altSendType = "C";
+            String altSendType = "A";
 
             // 광고성 메시지 여부 ( true , false 중 택 1)
             // └ true = 광고 , false = 일반
@@ -1208,7 +1298,7 @@ namespace Popbill.Kakao.Example.csharp
 
                 try
                 {
-                    string receiptNum = kakaoService.SendFMS(txtCorpNum.Text, plusFriendID, senderNum, content,
+                    string receiptNum = kakaoService.SendFMS(txtCorpNum.Text, plusFriendID, senderNum, content, altSubject,
                         altContent, altSendType, adsYN, getReserveDT(), receivers, buttons, strFileName, imageURL,
                         txtUserId.Text, requestNum);
 
