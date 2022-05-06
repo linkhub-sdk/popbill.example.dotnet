@@ -3646,6 +3646,36 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
+         * 팝빌 인증서버에 등록된 공동인증서의 정보를 확인합니다.
+         * - https://docs.popbill.com/taxinvoice/dotnet/api#GetTaxCertInfo
+         */
+        private void btnGetTaxCertInfo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TaxinvoiceCertificate taxinvoiceCertificate = taxinvoiceService.GetTaxCertInfo(txtCorpNum.Text, txtUserId.Text);
+
+                string tmp = null;
+
+                tmp += "regDT (등록일시) : " + taxinvoiceCertificate.regDT + CRLF;
+                tmp += "expireDT (만료일시) : " + taxinvoiceCertificate.expireDT + CRLF;
+                tmp += "issuerDN (인증서 발급자 DN) : " + taxinvoiceCertificate.issuerDN + CRLF;
+                tmp += "subjectDN (등록된 인증서 DN) : " + taxinvoiceCertificate.subjectDN + CRLF;
+                tmp += "issuerName (인증서 종류) : " + taxinvoiceCertificate.issuerName + CRLF;
+                tmp += "oid (OID) : " + taxinvoiceCertificate.oid + CRLF;
+                tmp += "regContactName (등록 담당자 성명) : " + taxinvoiceCertificate.regContactName + CRLF;
+                tmp += "regContactID (등록 담당자 아이디) : " + taxinvoiceCertificate.regContactID + CRLF;
+
+                MessageBox.Show(tmp, "공인인증서 정보 확인");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "공인인증서 정보 확인");
+            }
+        }
+
+        /*
          * 연동회원의 잔여포인트를 확인합니다.
          * - 과금방식이 파트너과금인 경우 파트너 잔여포인트 확인(GetPartnerBalance API) 함수를 통해 확인하시기 바랍니다.
          * - https://docs.popbill.com/taxinvoice/dotnet/api#GetBalance

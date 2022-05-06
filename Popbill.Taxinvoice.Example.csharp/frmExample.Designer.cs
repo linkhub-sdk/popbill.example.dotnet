@@ -167,6 +167,7 @@
             this.txtCorpNum = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.fileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.btnGetTaxCertInfo = new System.Windows.Forms.Button();
             this.GroupBox8.SuspendLayout();
             this.GroupBox9.SuspendLayout();
             this.GroupBox10.SuspendLayout();
@@ -637,6 +638,7 @@
             // 
             // GroupBox4
             // 
+            this.GroupBox4.Controls.Add(this.btnGetTaxCertInfo);
             this.GroupBox4.Controls.Add(this.btnCheckCertValidation);
             this.GroupBox4.Controls.Add(this.btnGetCertificateExpireDate);
             this.GroupBox4.Controls.Add(this.btnGetTaxCertURL);
@@ -1709,6 +1711,16 @@
             // 
             this.fileDialog.FileName = "OpenFileDialog1";
             // 
+            // btnGetTaxCertInfo
+            // 
+            this.btnGetTaxCertInfo.Location = new System.Drawing.Point(9, 112);
+            this.btnGetTaxCertInfo.Name = "btnGetTaxCertInfo";
+            this.btnGetTaxCertInfo.Size = new System.Drawing.Size(142, 27);
+            this.btnGetTaxCertInfo.TabIndex = 5;
+            this.btnGetTaxCertInfo.Text = "인증서 정보 확인";
+            this.btnGetTaxCertInfo.UseVisualStyleBackColor = true;
+            this.btnGetTaxCertInfo.Click += new System.EventHandler(this.btnGetTaxCertInfo_Click);
+            // 
             // frmExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -1898,6 +1910,7 @@
         internal System.Windows.Forms.Button btnBulkSubmit;
         internal System.Windows.Forms.Label label10;
         internal System.Windows.Forms.TextBox txtSubmitID;
+        private System.Windows.Forms.Button btnGetTaxCertInfo;
     }
 }
 
