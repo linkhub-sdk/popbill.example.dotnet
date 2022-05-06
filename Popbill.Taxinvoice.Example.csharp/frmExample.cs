@@ -2629,6 +2629,35 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
+         * 세금계산서 1건의 상세정보를 XML로 반환합니다.
+         * - https://docs.popbill.com/taxinvoice/dotnet/api#GetXML
+         */
+        private void btnGetXML_Click(object sender, EventArgs e)
+        {
+            // 세금계산서 발행유형
+            MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
+
+            try
+            {
+                TaxinvoiceXML taxinvoiceXML = taxinvoiceService.GetXML(txtCorpNum.Text, KeyType, txtMgtKey.Text);
+
+                string tmp = null;
+
+                tmp += "code (응답코드) : " + taxinvoiceXML.code + CRLF;
+                tmp += "message (응답메시지) : " + taxinvoiceXML.message + CRLF;
+                tmp += "retObject (전자세금계산서 XML 문서) : " + taxinvoiceXML.retObject + CRLF;
+
+                MessageBox.Show(tmp, "세금계산서 상세정보 확인(XML)");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "세금계산서 상세정보 확인(XML)");
+            }
+
+        }
+
+        /*
          * 검색조건에 해당하는 세금계산서를 조회합니다. (조회기간 단위 : 최대 6개월)
          * - https://docs.popbill.com/taxinvoice/dotnet/api#Search
          */
