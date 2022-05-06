@@ -247,6 +247,10 @@ namespace Popbill.Kakao.Example.csharp
                         tmp += "버튼링크2 (u2) : " + buttonInfo.u2 + CRLF;
                     }
                 }
+                tmp += "보안템플릿 여부(sercureYN) : " + templateInfo.secureYN + CRLF;
+                tmp += "템플릿 상태(state) : " + templateInfo.state + CRLF;
+                tmp += "템플릿 상태 일시(stateDT) : " + templateInfo.stateDT + CRLF;
+
                 MessageBox.Show(tmp, "알림톡 템플릿 정보 확인");
             }
             catch (PopbillException ex)
@@ -289,6 +293,10 @@ namespace Popbill.Kakao.Example.csharp
                         }
                     }
 
+                    tmp += "보안템플릿 여부(sercureYN) : " + templateInfo.secureYN + CRLF;
+                    tmp += "템플릿 상태(state) : " + templateInfo.state + CRLF;
+                    tmp += "템플릿 상태 일시(stateDT) : " + templateInfo.stateDT + CRLF;
+                    
                     tmp += CRLF + CRLF;
                 }
 
