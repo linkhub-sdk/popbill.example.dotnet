@@ -79,6 +79,7 @@
             this.btnCancelReserve = new System.Windows.Forms.Button();
             this.btnGetFaxResult = new System.Windows.Forms.Button();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.btnCheckSenderNumber = new System.Windows.Forms.Button();
             this.btnGetSenderNumberMgtURL = new System.Windows.Forms.Button();
             this.btnGetSenderNumberList = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -90,7 +91,6 @@
             this.textURL = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.fileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.btnCheckSenderNumber = new System.Windows.Forms.Button();
             this.GroupBox1.SuspendLayout();
             this.groupBox13.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -643,6 +643,16 @@
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "발신번호 관리";
             // 
+            // btnCheckSenderNumber
+            // 
+            this.btnCheckSenderNumber.Location = new System.Drawing.Point(9, 96);
+            this.btnCheckSenderNumber.Name = "btnCheckSenderNumber";
+            this.btnCheckSenderNumber.Size = new System.Drawing.Size(150, 32);
+            this.btnCheckSenderNumber.TabIndex = 23;
+            this.btnCheckSenderNumber.Text = "발신번호 등록여부 확인";
+            this.btnCheckSenderNumber.UseVisualStyleBackColor = true;
+            this.btnCheckSenderNumber.Click += new System.EventHandler(this.btnCheckSenderNumber_Click);
+            // 
             // btnGetSenderNumberMgtURL
             // 
             this.btnGetSenderNumberMgtURL.Location = new System.Drawing.Point(9, 58);
@@ -738,16 +748,6 @@
             // fileDialog
             // 
             this.fileDialog.FileName = "OpenFileDialog1";
-            // 
-            // btnCheckSenderNumber
-            // 
-            this.btnCheckSenderNumber.Location = new System.Drawing.Point(9, 96);
-            this.btnCheckSenderNumber.Name = "btnCheckSenderNumber";
-            this.btnCheckSenderNumber.Size = new System.Drawing.Size(150, 32);
-            this.btnCheckSenderNumber.TabIndex = 23;
-            this.btnCheckSenderNumber.Text = "발신번호 등록여부 확인";
-            this.btnCheckSenderNumber.UseVisualStyleBackColor = true;
-            this.btnCheckSenderNumber.Click += new System.EventHandler(this.btnCheckSenderNumber_Click);
             // 
             // frmExample
             // 

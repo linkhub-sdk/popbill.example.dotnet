@@ -1578,26 +1578,26 @@ namespace Popbill.Kakao.Example.csharp
 
                 listBox1.Items.Add(rowStr);
 
-                for (int i = 0; i < info.msgs.Count; i++)
+                for (int i = 0; i < searchResult.list.Count; i++)
                 {
                     rowStr = null;
-                    rowStr += info.msgs[i].state + " | ";
-                    rowStr += info.msgs[i].sendDT + " | ";
-                    rowStr += info.msgs[i].result + " | ";
-                    rowStr += info.msgs[i].resultDT + " | ";
-                    rowStr += info.msgs[i].contentType + " | ";
-                    rowStr += info.msgs[i].receiveNum + " | ";
-                    rowStr += info.msgs[i].receiveName + " | ";
-                    rowStr += info.msgs[i].content + " | ";
-                    rowStr += info.msgs[i].altSubject + " | ";
-                    rowStr += info.msgs[i].altContent + " | ";
-                    rowStr += info.msgs[i].altContentType + " | ";
-                    rowStr += info.msgs[i].altSendDT + " | ";
-                    rowStr += info.msgs[i].altResult + " | ";
-                    rowStr += info.msgs[i].altResultDT + " | ";
-                    rowStr += info.msgs[i].receiptNum + " | ";
-                    rowStr += info.msgs[i].requestNum + " | ";
-                    rowStr += info.msgs[i].interOPRefKey;
+                    rowStr += searchResult.list[i].state + " | ";
+                    rowStr += searchResult.list[i].sendDT + " | ";
+                    rowStr += searchResult.list[i].result + " | ";
+                    rowStr += searchResult.list[i].resultDT + " | ";
+                    rowStr += searchResult.list[i].contentType + " | ";
+                    rowStr += searchResult.list[i].receiveNum + " | ";
+                    rowStr += searchResult.list[i].receiveName + " | ";
+                    rowStr += searchResult.list[i].content + " | ";
+                    rowStr += searchResult.list[i].altSubject + " | ";
+                    rowStr += searchResult.list[i].altContent + " | ";
+                    rowStr += searchResult.list[i].altContentType + " | ";
+                    rowStr += searchResult.list[i].altSendDT + " | ";
+                    rowStr += searchResult.list[i].altResult + " | ";
+                    rowStr += searchResult.list[i].altResultDT + " | ";
+                    rowStr += searchResult.list[i].receiptNum + " | ";
+                    rowStr += searchResult.list[i].requestNum + " | ";
+                    rowStr += searchResult.list[i].interOPRefKey;
 
                     listBox1.Items.Add(rowStr);
                 }

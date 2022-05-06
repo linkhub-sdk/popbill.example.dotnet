@@ -205,24 +205,27 @@ namespace Popbill.Message.Example.csharp
 
             List<Message> messages = new List<Message>();
 
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 2; i++)
             {
                 Message msg = new Message();
 
                 // 발신번호
-                msg.sendNum = "";
+                msg.sendNum = "07043042991";
 
                 // 발신자명
                 msg.senderName = "발신자명";
 
                 // 수신번호
-                msg.receiveNum = "";
+                msg.receiveNum = "01042847884";
 
                 // 수신자명
                 msg.receiveName = "수신자명칭_" + i;
 
                 // 메시지 내용, 단문(SMS) 메시지는 90byte초과된 내용은 삭제되어 전송됨.
                 msg.content = "단문 문자메시지 내용, 각 메시지마다 개별설정 가능." + i;
+
+                // 파트너 지정키, 대량전송시, 수신자 구별용 메모
+                msg.interOPRefKey = "20220504" + i;
 
                 messages.Add(msg);
             }
@@ -277,6 +280,9 @@ namespace Popbill.Message.Example.csharp
 
                 //수신자명
                 msg.receiveName = "수신자명칭_" + i;
+
+                // 파트너 지정키, 대량전송시, 수신자 구별용 메모
+                msg.interOPRefKey = "20220504" + i;
 
                 messages.Add(msg);
             }
@@ -384,6 +390,9 @@ namespace Popbill.Message.Example.csharp
                 // 메시지 내용, 장문(LMS) 메시지는 2000byte초과된 내용은 삭제되어 전송됨.
                 msg.content = "장문 문자메시지 내용, 각 메시지마다 개별설정 가능." + i;
 
+                // 파트너 지정키, 대량전송시, 수신자 구별용 메모
+                msg.interOPRefKey = "20220504" + i;
+
                 messages.Add(msg);
             }
 
@@ -440,6 +449,9 @@ namespace Popbill.Message.Example.csharp
 
                 // 수신자명
                 msg.receiveName = "수신자명칭_" + i;
+
+                // 파트너 지정키, 대량전송시, 수신자 구별용 메모
+                msg.interOPRefKey = "20220504" + i;
 
                 messages.Add(msg);
             }
@@ -548,6 +560,9 @@ namespace Popbill.Message.Example.csharp
                 // 메시지내용, 90byte 기준으로 단문/장문이 자동으로 인식되어 전송됨, 최대 2000byte
                 msg.content = "문자메시지 내용, 각 메시지마다 개별설정 가능." + i;
 
+                // 파트너 지정키, 대량전송시, 수신자 구별용 메모
+                msg.interOPRefKey = "20220504" + i;
+
                 messages.Add(msg);
             }
 
@@ -604,6 +619,9 @@ namespace Popbill.Message.Example.csharp
 
                 // 수신자명
                 msg.receiveName = "수신자명칭_" + i;
+
+                // 파트너 지정키, 대량전송시, 수신자 구별용 메모
+                msg.interOPRefKey = "20220504" + i;
 
                 messages.Add(msg);
             }
@@ -716,6 +734,9 @@ namespace Popbill.Message.Example.csharp
                 // 수신자명
                 msg.receiveName = "수신자명칭_" + i;
 
+                // 파트너 지정키, 대량전송시, 수신자 구별용 메모
+                msg.interOPRefKey = "20220504" + i;
+
                 messages.Add(msg);
             }
 
@@ -794,7 +815,7 @@ namespace Popbill.Message.Example.csharp
 
                 string rowStr = "subject(메시지 제목) | content(메시지 내용) | sendNum(발신번호) | senderName(발신자명) | receiveNum(수신번호) | receiveName(수신자명) |" +
                                 "receiptDT(접수시간) | sendDT(전송일시) | resultDT(전송결과 수신시간) | reserveDT(예약일시) | state(전송 상태코드) | result(전송 결과코드) |" +
-                                "type(메시지 타입) | tranNet(전송처리 이동통신사명) | receiptNum(접수번호) | requestNum(요청번호)";
+                                "type(메시지 타입) | tranNet(전송처리 이동통신사명) | receiptNum(접수번호) | requestNum(요청번호) | interOPRefKey(파트너 지정키)";
 
                 listBox1.Items.Add(rowStr);
 
@@ -816,7 +837,8 @@ namespace Popbill.Message.Example.csharp
                     rowStr += ResultList[i].type + " | ";
                     rowStr += ResultList[i].tranNet + " | ";
                     rowStr += ResultList[i].receiptNum + " | ";
-                    rowStr += ResultList[i].requestNum;
+                    rowStr += ResultList[i].requestNum + " | ";
+                    rowStr += ResultList[i].interOPRefKey;
 
                     listBox1.Items.Add(rowStr);
                 }
@@ -841,7 +863,7 @@ namespace Popbill.Message.Example.csharp
 
                 string rowStr = "subject(메시지 제목) | content(메시지 내용) | sendNum(발신번호) | senderName(발신자명) | receiveNum(수신번호) | receiveName(수신자명) |" +
                                 "receiptDT(접수시간) | sendDT(전송일시) | resultDT(전송결과 수신시간) | reserveDT(예약일시) | state(전송 상태코드) | result(전송 결과코드) |" +
-                                "type(메시지 타입) | tranNet(전송처리 이동통신사명) | receiptNum(접수번호) | requestNum(요청번호)";
+                                "type(메시지 타입) | tranNet(전송처리 이동통신사명) | receiptNum(접수번호) | requestNum(요청번호) | interOPRefKey(파트너 지정키)";
 
                 listBox1.Items.Add(rowStr);
 
@@ -863,7 +885,8 @@ namespace Popbill.Message.Example.csharp
                     rowStr += ResultList[i].type + " | ";
                     rowStr += ResultList[i].tranNet + " | ";
                     rowStr += ResultList[i].receiptNum + " | ";
-                    rowStr += ResultList[i].requestNum;
+                    rowStr += ResultList[i].requestNum + " | ";
+                    rowStr += ResultList[i].interOPRefKey;
 
                     listBox1.Items.Add(rowStr);
                 }
@@ -947,7 +970,7 @@ namespace Popbill.Message.Example.csharp
 
                 string rowStr = "subject(메시지 제목) | content(메시지 내용) | sendNum(발신번호) | senderName(발신자명) | receiveNum(수신번호) | receiveName(수신자명) |" +
                                 "receiptDT(접수시간) | sendDT(전송일시) | resultDT(전송결과 수신시간) | reserveDT(예약일시) | state(전송 상태코드) | result(전송 결과코드) |" +
-                                "type(메시지 타입) | tranNet(전송처리 이동통신사명) | receiptNum(접수번호) | requestNum(요청번호)";
+                                "type(메시지 타입) | tranNet(전송처리 이동통신사명) | receiptNum(접수번호) | requestNum(요청번호) | interOPRefKey(파트너 지정키)";
 
                 listBox1.Items.Add(rowStr);
 
@@ -969,7 +992,8 @@ namespace Popbill.Message.Example.csharp
                     rowStr += searchResult.list[i].type + " | ";
                     rowStr += searchResult.list[i].tranNet + " | ";
                     rowStr += searchResult.list[i].receiptNum + " | ";
-                    rowStr += searchResult.list[i].requestNum;
+                    rowStr += searchResult.list[i].requestNum + " | ";
+                    rowStr += searchResult.list[i].interOPRefKey;
 
                     listBox1.Items.Add(rowStr);
                 }

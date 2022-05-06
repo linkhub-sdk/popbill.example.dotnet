@@ -221,6 +221,10 @@ namespace Popbill.Fax.Example.csharp
 
                     // 수신자명
                     receiver.receiveName = "수신자명칭_" + i;
+
+                    // 파트너 지정키, 대량전송시, 수신자 구별용 메모
+                    receiver.interOPRefKey = "20220504" + i;
+
                     receivers.Add(receiver);
                 }
 
@@ -339,6 +343,10 @@ namespace Popbill.Fax.Example.csharp
 
                     // 수신자명
                     receiver.receiveName = "수신자명칭_" + i;
+
+                    // 파트너 지정키, 대량전송시, 수신자 구별용 메모
+                    receiver.interOPRefKey = "20220504" + i;
+
                     receivers.Add(receiver);
                 }
 
@@ -481,6 +489,10 @@ namespace Popbill.Fax.Example.csharp
 
                 // 수신자명
                 receiver.receiveName = "수신자명칭_" + i;
+
+                // 파트너 지정키, 대량전송시, 수신자 구별용 메모
+                receiver.interOPRefKey = "20220504" + i;
+
                 receivers.Add(receiver);
             }
             */
@@ -540,6 +552,10 @@ namespace Popbill.Fax.Example.csharp
 
                 // 수신자명
                 receiver.receiveName = "수신자명칭_" + i;
+
+                // 파트너 지정키, 대량전송시, 수신자 구별용 메모
+                receiver.interOPRefKey = "20220504" + i;
+
                 receivers.Add(receiver);
             }
             */
@@ -611,10 +627,10 @@ namespace Popbill.Fax.Example.csharp
             {
                 List<FaxResult> ResultList = faxService.GetFaxResult(txtCorpNum.Text, txtReceiptNum.Text);
 
-                string rowStr = "state(전송상태 코드) | result(전송결과 코드) | sendNum(발신번호) | senderName(발신자명) | receiveNum(수신번호) | receiveName(수신자명) | receiveNumType(수신번호 유형) | " +
-                                "title(팩스제목) | sendPageCnt(전체 페이지수) | successPageCnt(성공 페이지수) | failPageCnt(실패 페이지수) | refundPageCnt(환불 페이지수) | " +
-                                "cancelPageCnt(취소 페이지수) | reserveDT(예약시간) | receiptDT(접수시간) | sendDT(발송시간) | resultDT(전송결과 수신시간) | fileNames(전송 파일명 리스트) | " +
-                                "receiptNum(접수번호) | requestNum(요청번호) | chargePageCnt(과금 페이지수) | tiffFileSize(변환파일용량(단위:byte))";
+                string rowStr = "state(전송상태 코드) | result(전송결과 코드) | sendNum(발신번호) | senderName(발신자명) | receiveNum(수신번호) | receiveNumType(수신번호 유형) | receiveName(수신자명) | " +
+                                "title(팩스제목) | sendPageCnt(전체 페이지수) | successPageCnt(성공 페이지수) | failPageCnt(실패 페이지수) | cancelPageCnt(취소 페이지수) | reserveDT(예약시간) | " +
+                                "receiptDT(접수시간) | sendDT(발송시간) | resultDT(전송결과 수신시간) | fileNames(전송 파일명 리스트) | receiptNum(접수번호) | requestNum(요청번호) | " +
+                                "chargePageCnt(과금 페이지수) | refundPageCnt(환불 페이지수) | tiffFileSize(변환파일용량(단위:byte)) | interOPRefKey(파트너 지정키)";
 
                 listBox1.Items.Add(rowStr);
 
@@ -626,13 +642,12 @@ namespace Popbill.Fax.Example.csharp
                     rowStr += ResultList[i].sendNum + " | ";
                     rowStr += ResultList[i].senderName + " | ";
                     rowStr += ResultList[i].receiveNum + " | ";
-                    rowStr += ResultList[i].receiveName + " | ";
                     rowStr += ResultList[i].receiveNumType + " | ";
+                    rowStr += ResultList[i].receiveName + " | ";
                     rowStr += ResultList[i].title + " | ";
                     rowStr += ResultList[i].sendPageCnt + " | ";
                     rowStr += ResultList[i].successPageCnt + " | ";
                     rowStr += ResultList[i].failPageCnt + " | ";
-                    rowStr += ResultList[i].refundPageCnt + " | ";
                     rowStr += ResultList[i].cancelPageCnt + " | ";
                     rowStr += ResultList[i].reserveDT + " | ";
                     rowStr += ResultList[i].receiptDT + " | ";
@@ -654,7 +669,9 @@ namespace Popbill.Fax.Example.csharp
                     rowStr += ResultList[i].receiptNum + " | ";
                     rowStr += ResultList[i].requestNum + " | ";
                     rowStr += ResultList[i].chargePageCnt + " | ";
-                    rowStr += ResultList[i].tiffFileSize;
+                    rowStr += ResultList[i].refundPageCnt + " | ";
+                    rowStr += ResultList[i].tiffFileSize + " | ";
+                    rowStr += ResultList[i].interOPRefKey;
 
                     listBox1.Items.Add(rowStr);
                 }
@@ -677,10 +694,10 @@ namespace Popbill.Fax.Example.csharp
             {
                 List<FaxResult> ResultList = faxService.GetFaxResultRN(txtCorpNum.Text, txtRequestNum.Text);
 
-                string rowStr = "state(전송상태 코드) | result(전송결과 코드) | sendNum(발신번호) | senderName(발신자명) | receiveNum(수신번호) | receiveName(수신자명) | receiveNumType(수신번호 유형) | " +
-                                "title(팩스제목) | sendPageCnt(전체 페이지수) | successPageCnt(성공 페이지수) | failPageCnt(실패 페이지수) | refundPageCnt(환불 페이지수) | " +
-                                "cancelPageCnt(취소 페이지수) | reserveDT(예약시간) | receiptDT(접수시간) | sendDT(발송시간) | resultDT(전송결과 수신시간) | fileNames(전송 파일명 리스트) | " +
-                                "receiptNum(접수번호) | requestNum(요청번호) | chargePageCnt(과금 페이지수) | tiffFileSize(변환파일용량(단위:byte))";
+                string rowStr = "state(전송상태 코드) | result(전송결과 코드) | sendNum(발신번호) | senderName(발신자명) | receiveNum(수신번호) | receiveNumType(수신번호 유형) | receiveName(수신자명) | " +
+                                "title(팩스제목) | sendPageCnt(전체 페이지수) | successPageCnt(성공 페이지수) | failPageCnt(실패 페이지수) | cancelPageCnt(취소 페이지수) | reserveDT(예약시간) | " +
+                                "receiptDT(접수시간) | sendDT(발송시간) | resultDT(전송결과 수신시간) | fileNames(전송 파일명 리스트) | receiptNum(접수번호) | requestNum(요청번호) | " +
+                                "chargePageCnt(과금 페이지수) | refundPageCnt(환불 페이지수) | tiffFileSize(변환파일용량(단위:byte)) | interOPRefKey(파트너 지정키)";
 
                 listBox1.Items.Add(rowStr);
 
@@ -698,7 +715,6 @@ namespace Popbill.Fax.Example.csharp
                     rowStr += ResultList[i].sendPageCnt + " | ";
                     rowStr += ResultList[i].successPageCnt + " | ";
                     rowStr += ResultList[i].failPageCnt + " | ";
-                    rowStr += ResultList[i].refundPageCnt + " | ";
                     rowStr += ResultList[i].cancelPageCnt + " | ";
                     rowStr += ResultList[i].reserveDT + " | ";
                     rowStr += ResultList[i].receiptDT + " | ";
@@ -720,7 +736,9 @@ namespace Popbill.Fax.Example.csharp
                     rowStr += ResultList[i].receiptNum + " | ";
                     rowStr += ResultList[i].requestNum + " | ";
                     rowStr += ResultList[i].chargePageCnt + " | ";
-                    rowStr += ResultList[i].tiffFileSize;
+                    rowStr += ResultList[i].refundPageCnt + " | ";
+                    rowStr += ResultList[i].tiffFileSize + " | ";
+                    rowStr += ResultList[i].interOPRefKey;
 
                     listBox1.Items.Add(rowStr);
                 }
@@ -796,10 +814,10 @@ namespace Popbill.Fax.Example.csharp
 
                 MessageBox.Show(tmp, "팩스 전송내역 조회");
 
-                string rowStr = "state(전송상태 코드) | result(전송결과 코드) | sendNum(발신번호) | senderName(발신자명) | receiveNum(수신번호) | receiveName(수신자명) | receiveNumType(수신번호 유형) | " +
-                                "title(팩스제목) | sendPageCnt(전체 페이지수) | successPageCnt(성공 페이지수) | failPageCnt(실패 페이지수) | refundPageCnt(환불 페이지수) | " +
-                                "cancelPageCnt(취소 페이지수) | reserveDT(예약시간) | receiptDT(접수시간) | sendDT(발송시간) | resultDT(전송결과 수신시간) | fileNames(전송 파일명 리스트) | " +
-                                "receiptNum(접수번호) | requestNum(요청번호) | chargePageCnt(과금 페이지수) | tiffFileSize(변환파일용량(단위:byte))";
+                string rowStr = "state(전송상태 코드) | result(전송결과 코드) | sendNum(발신번호) | senderName(발신자명) | receiveNum(수신번호) | receiveNumType(수신번호 유형) | receiveName(수신자명) | " +
+                                "title(팩스제목) | sendPageCnt(전체 페이지수) | successPageCnt(성공 페이지수) | failPageCnt(실패 페이지수) | cancelPageCnt(취소 페이지수) | reserveDT(예약시간) | " +
+                                "receiptDT(접수시간) | sendDT(발송시간) | resultDT(전송결과 수신시간) | fileNames(전송 파일명 리스트) | receiptNum(접수번호) | requestNum(요청번호) | " +
+                                "chargePageCnt(과금 페이지수) | refundPageCnt(환불 페이지수) | tiffFileSize(변환파일용량(단위:byte)) | interOPRefKey(파트너 지정키)";
 
                 listBox1.Items.Add(rowStr);
 
@@ -817,7 +835,6 @@ namespace Popbill.Fax.Example.csharp
                     rowStr += searchResult.list[i].sendPageCnt + " | ";
                     rowStr += searchResult.list[i].successPageCnt + " | ";
                     rowStr += searchResult.list[i].failPageCnt + " | ";
-                    rowStr += searchResult.list[i].refundPageCnt + " | ";
                     rowStr += searchResult.list[i].cancelPageCnt + " | ";
                     rowStr += searchResult.list[i].reserveDT + " | ";
                     rowStr += searchResult.list[i].receiptDT + " | ";
@@ -839,7 +856,9 @@ namespace Popbill.Fax.Example.csharp
                     rowStr += searchResult.list[i].receiptNum + " | ";
                     rowStr += searchResult.list[i].requestNum + " | ";
                     rowStr += searchResult.list[i].chargePageCnt + " | ";
-                    rowStr += searchResult.list[i].tiffFileSize;
+                    rowStr += searchResult.list[i].refundPageCnt + " | ";
+                    rowStr += searchResult.list[i].tiffFileSize + " | ";
+                    rowStr += searchResult.list[i].interOPRefKey;
 
                     listBox1.Items.Add(rowStr);
                 }
