@@ -108,7 +108,9 @@ namespace Popbill.Kakao.Example.csharp
                 {
                     tmp += "검색용 아이디 (plusFriendID) : " + friendInfo.plusFriendID + CRLF;
                     tmp += "채널명 (plusFriendName) : " + friendInfo.plusFriendName + CRLF;
-                    tmp += "등록일시 (regDT) : " + friendInfo.regDT + CRLF + CRLF;
+                    tmp += "등록일시 (regDT) : " + friendInfo.regDT + CRLF;
+                    tmp += "채널 상태 (state) : " + friendInfo.state + CRLF;
+                    tmp += "채널 상태 일시 (stateDT) : " + friendInfo.stateDT + CRLF + CRLF;
                 }
 
                 MessageBox.Show(tmp, "카카오톡채널 목록 확인");
