@@ -486,7 +486,7 @@
             this.btnCheckCertValidation.Name = "btnCheckCertValidation";
             this.btnCheckCertValidation.Size = new System.Drawing.Size(163, 29);
             this.btnCheckCertValidation.TabIndex = 6;
-            this.btnCheckCertValidation.Text = "공인인증서 로그인 테스트";
+            this.btnCheckCertValidation.Text = "인증서 로그인 테스트";
             this.btnCheckCertValidation.UseVisualStyleBackColor = true;
             this.btnCheckCertValidation.Click += new System.EventHandler(this.btnCheckCertValidation_Click);
             //
@@ -496,7 +496,7 @@
             this.btnGetCertificateExpireDate.Name = "btnGetCertificateExpireDate";
             this.btnGetCertificateExpireDate.Size = new System.Drawing.Size(163, 29);
             this.btnGetCertificateExpireDate.TabIndex = 5;
-            this.btnGetCertificateExpireDate.Text = "공인인증서 만료일자 확인";
+            this.btnGetCertificateExpireDate.Text = "인증서 만료일자 확인";
             this.btnGetCertificateExpireDate.UseVisualStyleBackColor = true;
             this.btnGetCertificateExpireDate.Click += new System.EventHandler(this.btnGetCertificateExpireDate_Click);
             //

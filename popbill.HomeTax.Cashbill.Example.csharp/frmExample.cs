@@ -10,7 +10,7 @@
  * 1) 32, 35 라인에 선언된 링크아이디(LinkID)와 비밀키(SecretKey)를
  *    링크허브 가입시 메일로 발급받은 인증정보로 변경합니다.
  * 2) 팝빌 개발용 사이트(test.popbill.com)에 연동회원으로 가입합니다.
- * 3) 홈택스 인증 처리를 합니다. (부서사용자등록 / 공인인증서 등록)
+ * 3) 홈택스 인증 처리를 합니다. (부서사용자 인증 / 인증서 인증)
  *    - 팝빌로그인 > [홈택스연동] > [환경설정] > [인증 관리] 메뉴
  *    - 홈택스연동 인증 관리 팝업 URL(GetCertificatePopUpURL API) 반환된 URL을 이용하여 홈택스 인증 처리를 합니다.
  */
@@ -321,12 +321,12 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
             {
                 DateTime expiration = htCashbillService.GetCertificateExpireDate(txtCorpNum.Text);
 
-                MessageBox.Show(expiration.ToString(), "공인인증서 만료일시 확인");
+                MessageBox.Show(expiration.ToString(), "인증서 만료일시 확인");
             }
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "공인인증서 만료일시 확인");
+                                "응답메시지(message) : " + ex.Message, "인증서 만료일시 확인");
             }
         }
 
@@ -341,12 +341,12 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
                 Response response = htCashbillService.CheckCertValidation(txtCorpNum.Text);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + response.message, "홈택스 공인인증서 로그인 테스트");
+                                "응답메시지(message) : " + response.message, "인증서 로그인 테스트");
             }
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "홈택스 공인인증서 로그인 테스트");
+                                "응답메시지(message) : " + ex.Message, "인증서 로그인 테스트");
             }
         }
 

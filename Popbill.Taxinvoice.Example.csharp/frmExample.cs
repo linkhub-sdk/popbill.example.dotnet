@@ -10,9 +10,9 @@
  * 1) 29, 32 라인에 선언된 링크아이디(LinkID)와 비밀키(SecretKey)를
  *    링크허브 가입시 메일로 발급받은 인증정보로 변경합니다.
  * 2) 팝빌 개발용 사이트(test.popbill.com)에 연동회원으로 가입합니다.
- * 3) 전자세금계산서 발행을 위해 공인인증서를 등록합니다. 두가지 방법 중 선택
- *    - 팝빌사이트 로그인 > [전자세금계산서] > [환경설정] > [공인인증서 관리]
- *    - 공인인증서 등록 팝업 URL (GetTaxCertURL API)을 이용하여 등록
+ * 3) 전자세금계산서 발행을 위해 인증서를 등록합니다. 두가지 방법 중 선택
+ *    - 팝빌사이트 로그인 > [전자세금계산서] > [환경설정] > [인증서 관리]
+ *    - 인증서 등록 팝업 URL (GetTaxCertURL API)을 이용하여 등록
  */
 
 using System;
@@ -3496,7 +3496,7 @@ namespace Popbill.Taxinvoice.Example.csharp
                     if (info.emailType == "TAX_NTSFAIL_INVOICER")
                         tmp += "[처리결과] TAX_NTSFAIL_INVOICER (전자세금계산서 국세청 전송실패 안내) | " + info.sendYN + CRLF;
                     if (info.emailType == "ETC_CERT_EXPIRATION")
-                        tmp += "[정기발송] ETC_CERT_EXPIRATION (팝빌에서 이용중인 공인인증서의 갱신 메일) | " + info.sendYN + CRLF;
+                        tmp += "[정기발송] ETC_CERT_EXPIRATION (팝빌에서 이용중인 인증서의 갱신 메일) | " + info.sendYN + CRLF;
                 }
 
                 MessageBox.Show(tmp, "알림메일 전송목록 조회");
@@ -3601,7 +3601,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "공인인증서 등록 URL");
+                                "응답메시지(message) : " + ex.Message, "인증서 등록 URL");
             }
         }
 
@@ -3615,12 +3615,12 @@ namespace Popbill.Taxinvoice.Example.csharp
             {
                 DateTime expiration = taxinvoiceService.GetCertificateExpireDate(txtCorpNum.Text);
 
-                MessageBox.Show("공인인증서 만료일시 : " + expiration.ToString(), "공인인증서 만료일시 확인");
+                MessageBox.Show("인증서 만료일시 : " + expiration.ToString(), "인증서 만료일시 확인");
             }
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "공인인증서 만료일시 확인");
+                                "응답메시지(message) : " + ex.Message, "인증서 만료일시 확인");
             }
         }
 
@@ -3636,17 +3636,17 @@ namespace Popbill.Taxinvoice.Example.csharp
                 Response response = taxinvoiceService.CheckCertValidation(txtCorpNum.Text);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + response.message, "공인인증서 유효성 확인");
+                                "응답메시지(message) : " + response.message, "인증서 유효성 확인");
             }
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "공인인증서 유효성 확인");
+                                "응답메시지(message) : " + ex.Message, "인증서 유효성 확인");
             }
         }
 
         /*
-         * 팝빌 인증서버에 등록된 공동인증서의 정보를 확인합니다.
+         * 팝빌 인증서버에 등록된 인증서의 정보를 확인합니다.
          * - https://docs.popbill.com/taxinvoice/dotnet/api#GetTaxCertInfo
          */
         private void btnGetTaxCertInfo_Click(object sender, EventArgs e)
@@ -3666,12 +3666,12 @@ namespace Popbill.Taxinvoice.Example.csharp
                 tmp += "regContactName (등록 담당자 성명) : " + taxinvoiceCertificate.regContactName + CRLF;
                 tmp += "regContactID (등록 담당자 아이디) : " + taxinvoiceCertificate.regContactID + CRLF;
 
-                MessageBox.Show(tmp, "공인인증서 정보 확인");
+                MessageBox.Show(tmp, "인증서 정보 확인");
             }
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "공인인증서 정보 확인");
+                                "응답메시지(message) : " + ex.Message, "인증서 정보 확인");
             }
         }
 
