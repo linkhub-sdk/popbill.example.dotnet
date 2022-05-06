@@ -1044,9 +1044,12 @@ namespace Popbill.Fax.Example.csharp
         {
             try
             {
-                float unitCost = faxService.GetUnitCost(txtCorpNum.Text);
+                // 서비스 유형, 일반 / 지능 중 택 1
+                String receiveNumType = "일반";
 
-                MessageBox.Show("팩스 전송단가 확인 : " + unitCost.ToString(), "팩스 전송단가 확인");
+                float unitCost = faxService.GetUnitCost(txtCorpNum.Text, receiveNumType);
+
+                MessageBox.Show(receiveNumType + "망 전송단가 : " + unitCost.ToString(), "팩스 전송단가 확인");
             }
             catch (PopbillException ex)
             {
@@ -1063,7 +1066,10 @@ namespace Popbill.Fax.Example.csharp
         {
             try
             {
-                ChargeInfo chrgInf = faxService.GetChargeInfo(txtCorpNum.Text, txtUserId.Text);
+                // 서비스 유형, 일반 / 지능 중 택 1
+                String receiveNumType = "일반";
+
+                ChargeInfo chrgInf = faxService.GetChargeInfo(txtCorpNum.Text, receiveNumType, txtUserId.Text);
 
                 string tmp = null;
                 tmp += "unitCost (전송단가) : " + chrgInf.unitCost + CRLF;
