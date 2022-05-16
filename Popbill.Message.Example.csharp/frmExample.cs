@@ -1,7 +1,7 @@
 ﻿/*
  * 팝빌 문자 API DotNet SDK Example
  *
- * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/message/tutorial/dotnet
+ * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/message/tutorial/dotnet_csharp
  * - 업데이트 일자 : 2022-05-04
  * - 연동 기술지원 연락처 : 1600-9854
  * - 연동 기술지원 이메일 : code@linkhubcorp.com

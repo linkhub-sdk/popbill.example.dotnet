@@ -1,7 +1,7 @@
 ﻿/*
  * 팝빌 계좌조회 API DotNet SDK Example
  *
- * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/easyfinbank/tutorial/dotnet#csharp
+ * - DotNet C# SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/easyfinbank/tutorial/dotnet_csharp
  * - 업데이트 일자 : 2022-05-04
  * - 연동 기술지원 연락처 : 1600-9854
  * - 연동 기술지원 이메일 : code@linkhubcorp.com
@@ -78,9 +78,9 @@ namespace Popbill.EasyFin.Bank.Example.csharp
             // 계좌유형, "법인" 또는 "개인" 입력
             info.AccountType = "";
 
-            // 예금주 식별정보 (‘-‘ 제외)
-            // 계좌유형이 “법인”인 경우 : 사업자번호(10자리)
-            // 계좌유형이 “개인”인 경우 : 예금주 생년월일 (6자리-YYMMDD)
+            // 예금주 식별정보 ('-' 제외)
+            // 계좌유형이 "법인"인 경우 : 사업자번호(10자리)
+            // 계좌유형이 "개인"인 경우 : 예금주 생년월일 (6자리-YYMMDD)
             info.IdentityNumber = "";
 
             // 계좌 별칭
@@ -97,7 +97,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
             // 정액제 이용할 개월수, 1~12 입력가능
             // - 미입력시 기본값 1개월 처리
-            // - 파트너 과금방식의 경우 입력값에 관계없이 1개월 처리리
+            // - 파트너 과금방식의 경우 입력값에 관계없이 1개월 처리
             info.UsePeriod = "";
 
             // 메모
@@ -564,7 +564,8 @@ namespace Popbill.EasyFin.Bank.Example.csharp
         }
 
         /*
-         * GetJobState(수집 상태 확인)를 통해 상태 정보가 확인된 작업아이디를 활용하여 계좌 거래내역의 요약 정보를 조회합니다.
+         * 수집 상태 확인(GetJobState API) 함수를 통해 상태 정보가 확인된 작업아이디를 활용하여 계좌 거래내역의 요약 정보를 조회합니다.
+         * - 요약 정보는 입·출 금액 합계, 입·출 거래 건수를 가리킵니다.
          * - https://docs.popbill.com/easyfinbank/dotnet/api#Summary
          */
         private void btnSummary_Click(object sender, EventArgs e)

@@ -1,7 +1,7 @@
 ﻿/*
  * 팝빌 전자세금계산서 API DotNet SDK Example
  *
- * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/taxinvoice/tutorial/dotnet
+ * - DotNet C# SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/taxinvoice/tutorial/dotnet_csharp
  * - 업데이트 일자 : 2022-05-04
  * - 연동 기술지원 연락처 : 1600-9854
  * - 연동 기술지원 이메일 : code@linkhubcorp.com
@@ -177,9 +177,6 @@ namespace Popbill.Taxinvoice.Example.csharp
             // 공급받는자 상호
             taxinvoice.invoiceeCorpName = "공급받는자 상호";
 
-            // [역발행시 필수] 공급받는자 문서번호, 최대 24자리, 영문, 숫자 '-', '_'를 조합하여 사업자별로 중복되지 않도록 구성
-            taxinvoice.invoiceeMgtKey = "";
-
             // 공급받는자 대표자 성명
             taxinvoice.invoiceeCEOName = "공급받는자 대표자 성명";
 
@@ -205,13 +202,6 @@ namespace Popbill.Taxinvoice.Example.csharp
 
             // 공급받는자 담당자 휴대폰번호
             taxinvoice.invoiceeHP1 = "";
-
-            // 역발행 안내 문자 전송여부 (true / false 중 택 1)
-            // └ true = 전송 , false = 미전송
-            // └ 공급자 담당자 휴대폰번호 {invoicerHP} 값으로 문자 전송
-            // - 전송 시 포인트 차감되며, 전송실패시 환불처리
-            taxinvoice.invoiceeSMSSendYN = false;
-
 
             /*********************************************************************
              *                          세금계산서 정보                          *
@@ -241,7 +231,9 @@ namespace Popbill.Taxinvoice.Example.csharp
             // 기재상 외상미수금 항목
             taxinvoice.credit = "";
 
-            // 기재상 비고 항목
+            // 비고
+            // {invoiceeType}이 "외국인" 이면 remark1 필수
+            // - 외국인 등록번호 또는 여권번호 입력
             taxinvoice.remark1 = "비고1";
             taxinvoice.remark2 = "비고2";
             taxinvoice.remark3 = "비고3";
@@ -484,9 +476,6 @@ namespace Popbill.Taxinvoice.Example.csharp
                 // 공급받는자 상호
                 taxinvoice.invoiceeCorpName = "공급받는자 상호";
 
-                // [역발행시 필수] 공급받는자 문서번호, 최대 24자리, 영문, 숫자 '-', '_'를 조합하여 사업자별로 중복되지 않도록 구성
-                taxinvoice.invoiceeMgtKey = "";
-
                 // 공급받는자 대표자 성명
                 taxinvoice.invoiceeCEOName = "공급받는자 대표자 성명";
 
@@ -512,13 +501,6 @@ namespace Popbill.Taxinvoice.Example.csharp
 
                 // 공급받는자 담당자 휴대폰번호
                 taxinvoice.invoiceeHP1 = "";
-
-                // 역발행 안내 문자 전송여부 (true / false 중 택 1)
-                // └ true = 전송 , false = 미전송
-                // └ 공급자 담당자 휴대폰번호 {invoicerHP} 값으로 문자 전송
-                // - 전송 시 포인트 차감되며, 전송실패시 환불처리
-                taxinvoice.invoiceeSMSSendYN = false;
-
 
                 /*********************************************************************
                  *                          세금계산서 정보                          *
@@ -548,7 +530,9 @@ namespace Popbill.Taxinvoice.Example.csharp
                 // 기재상 외상미수금 항목
                 taxinvoice.credit = "";
 
-                // 기재상 비고 항목
+                // 비고
+                // {invoiceeType}이 "외국인" 이면 remark1 필수
+                // - 외국인 등록번호 또는 여권번호 입력
                 taxinvoice.remark1 = "비고1";
                 taxinvoice.remark2 = "비고2";
                 taxinvoice.remark3 = "비고3";
@@ -711,13 +695,10 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * 작성된 세금계산서 데이터를 팝빌에 저장합니다.
+         * 작성된 정발행 세금계산서 데이터를 팝빌에 저장합니다.
          * - "임시저장" 상태의 세금계산서는 발행(Issue) 함수를 호출하여 "발행완료" 처리한 경우에만 국세청으로 전송됩니다.
          * - 정발행 시 임시저장(Register)과 발행(Issue)을 한번의 호출로 처리하는 즉시발행(RegistIssue API) 프로세스 연동을 권장합니다.
-         * - 역발행 시 임시저장(Register)과 역발행요청(Request)을 한번의 호출로 처리하는 즉시요청(RegistRequest API) 프로세스 연동을 권장합니다.
          * - 세금계산서 파일첨부 기능을 구현하는 경우, 임시저장(Register API) -> 파일첨부(AttachFile API) -> 발행(Issue API) 함수를 차례로 호출합니다.
-         * - 역발행 세금계산서를 저장하는 경우, 객체 'Taxinvoice'의 변수 'chargeDirection' 값을 통해 과금 주체를 지정할 수 있습니다.
-         *   └ 정과금 : 공급자 과금 , 역과금 : 공급받는자 과금
          * - 임시저장된 세금계산서는 팝빌 사이트 '임시문서함'에서 확인 가능합니다.
          * - https://docs.popbill.com/taxinvoice/dotnet/api#Register
          */
@@ -811,9 +792,6 @@ namespace Popbill.Taxinvoice.Example.csharp
             // 공급받는자 상호
             taxinvoice.invoiceeCorpName = "공급받는자 상호";
 
-            // [역발행시 필수] 공급받는자 문서번호, 최대 24자리, 영문, 숫자 '-', '_'를 조합하여 사업자별로 중복되지 않도록 구성
-            taxinvoice.invoiceeMgtKey = "";
-
             // 공급받는자 대표자 성명
             taxinvoice.invoiceeCEOName = "공급받는자 대표자 성명";
 
@@ -839,13 +817,6 @@ namespace Popbill.Taxinvoice.Example.csharp
 
             // 공급받는자 담당자 휴대폰번호
             taxinvoice.invoiceeHP1 = "";
-
-            // 역발행 안내 문자 전송여부 (true / false 중 택 1)
-            // └ true = 전송 , false = 미전송
-            // └ 공급자 담당자 휴대폰번호 {invoicerHP} 값으로 문자 전송
-            // - 전송 시 포인트 차감되며, 전송실패시 환불처리
-            taxinvoice.invoiceeSMSSendYN = false;
-
 
             /*********************************************************************
              *                          세금계산서 정보                          *
@@ -875,7 +846,9 @@ namespace Popbill.Taxinvoice.Example.csharp
             // 기재상 외상미수금 항목
             taxinvoice.credit = "";
 
-            // 기재상 비고 항목
+            // 비고
+            // {invoiceeType}이 "외국인" 이면 remark1 필수
+            // - 외국인 등록번호 또는 여권번호 입력
             taxinvoice.remark1 = "비고1";
             taxinvoice.remark2 = "비고2";
             taxinvoice.remark3 = "비고3";
@@ -995,6 +968,13 @@ namespace Popbill.Taxinvoice.Example.csharp
 
         /*
          * 작성된 역발행 세금계산서 데이터를 팝빌에 저장합니다.
+         * - "임시저장" 상태의 세금계산서는 역발행요청(Request) 함수를 호출하여 "(역)발행대기" 상태가 되며
+         *    공급자가 팝빌 사이트 또는 발행(Issue) 함수를 호출하여 발행한 경우에만 국세청으로 전송됩니다.
+         * - 역발행 시 임시저장(Register)과 역발행요청(Request)을 한번의 호출로 처리하는 즉시요청(RegistRequest API) 프로세스 연동을 권장합니다.
+         * - 세금계산서 파일첨부 기능을 구현하는 경우, 임시저장(Register API) -> 파일첨부(AttachFile API) -> 역발행 요청(Request API) 함수를 차례로 호출합니다.
+         * - 역발행 세금계산서를 저장하는 경우, 객체 'Taxinvoice'의 변수 'chargeDirection' 값을 통해 과금 주체를 지정할 수 있습니다.
+         *   └ 정과금 : 공급자 과금 , 역과금 : 공급받는자 과금
+         * - 임시저장된 세금계산서는 팝빌 사이트 '임시문서함'에서 확인 가능합니다.
          * - https://docs.popbill.com/taxinvoice/dotnet/api#Register
          */
         private void btnRegister_Reverse_Click(object sender, EventArgs e)
@@ -1150,7 +1130,9 @@ namespace Popbill.Taxinvoice.Example.csharp
             // 기재상 외상미수금 항목
             taxinvoice.credit = "";
 
-            // 기재상 비고 항목
+            // 비고
+            // {invoiceeType}이 "외국인" 이면 remark1 필수
+            // - 외국인 등록번호 또는 여권번호 입력
             taxinvoice.remark1 = "비고1";
             taxinvoice.remark2 = "비고2";
             taxinvoice.remark3 = "비고3";
@@ -1236,7 +1218,7 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-        * "임시저장" 또는 "(역)발행대기" 상태의 세금계산서를 발행(전자서명)하며, "발행완료" 상태로 처리합니다.
+        * "임시저장" 상태의 세금계산서를 발행(전자서명)하며, "발행완료" 상태로 처리합니다.
         * - 세금계산서 국세청 전송정책 [https://docs.popbill.com/taxinvoice/ntsSendPolicy?lang=dotnet]
         * - "발행완료" 된 전자세금계산서는 국세청 전송 이전에 발행취소(CancelIssue API) 함수로 국세청 신고 대상에서 제외할 수 있습니다.
         * - 세금계산서 발행을 위해서 공급자의 인증서가 팝빌 인증서버에 사전등록 되어야 합니다.
@@ -1277,9 +1259,12 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * "(역)발행대기" 상태의 세금계산서를 발행(전자서명)하며, "발행완료" 상태로 처리합니다.
-         * - 발행(Issue API)을 호출하는 시점에서 포인트가 차감됩니다.
-         * - 세금계산서 국세청 전송정책 : https://docs.popbill.com/taxinvoice/ntsSendPolicy?lang=dotnet
+        * "(역)발행대기" 상태의 세금계산서를 발행(전자서명)하며, "발행완료" 상태로 처리합니다.
+        * - 세금계산서 국세청 전송정책 [https://docs.popbill.com/taxinvoice/ntsSendPolicy?lang=dotnet]
+        * - "발행완료" 된 전자세금계산서는 국세청 전송 이전에 발행취소(CancelIssue API) 함수로 국세청 신고 대상에서 제외할 수 있습니다.
+        * - 세금계산서 발행을 위해서 공급자의 인증서가 팝빌 인증서버에 사전등록 되어야 합니다.
+        *   └ 위수탁발행의 경우, 수탁자의 인증서 등록이 필요합니다.
+        * - 세금계산서 발행 시 공급받는자에게 발행 메일이 발송됩니다.
          * - https://docs.popbill.com/taxinvoice/dotnet/api#TIIssue
          */
         private void btnIssue_Reverse_sub_Click(object sender, EventArgs e)
@@ -1315,7 +1300,7 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * "임시저장" 상태의 세금계산서를 수정합니다.
+         * "임시저장" 상태의 정발행 세금계산서를 수정합니다.
          * - https://docs.popbill.com/taxinvoice/dotnet/api#Update
          */
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -1407,9 +1392,6 @@ namespace Popbill.Taxinvoice.Example.csharp
             // 공급받는자 상호
             taxinvoice.invoiceeCorpName = "공급받는자 상호";
 
-            // [역발행시 필수] 공급받는자 문서번호, 최대 24자리, 영문, 숫자 '-', '_'를 조합하여 사업자별로 중복되지 않도록 구성
-            taxinvoice.invoiceeMgtKey = "";
-
             // 공급받는자 대표자 성명
             taxinvoice.invoiceeCEOName = "공급받는자 대표자 성명";
 
@@ -1435,13 +1417,6 @@ namespace Popbill.Taxinvoice.Example.csharp
 
             // 공급받는자 담당자 휴대폰번호
             taxinvoice.invoiceeHP1 = "";
-
-            // 역발행 안내 문자 전송여부 (true / false 중 택 1)
-            // └ true = 전송 , false = 미전송
-            // └ 공급자 담당자 휴대폰번호 {invoicerHP} 값으로 문자 전송
-            // - 전송 시 포인트 차감되며, 전송실패시 환불처리
-            taxinvoice.invoiceeSMSSendYN = false;
-
 
             /*********************************************************************
              *                          세금계산서 정보                          *
@@ -1471,7 +1446,9 @@ namespace Popbill.Taxinvoice.Example.csharp
             // 기재상 외상미수금 항목
             taxinvoice.credit = "";
 
-            // 기재상 비고 항목
+            // 비고
+            // {invoiceeType}이 "외국인" 이면 remark1 필수
+            // - 외국인 등록번호 또는 여권번호 입력
             taxinvoice.remark1 = "비고1";
             taxinvoice.remark2 = "비고2";
             taxinvoice.remark3 = "비고3";
@@ -1748,7 +1725,9 @@ namespace Popbill.Taxinvoice.Example.csharp
             // 기재상 외상미수금 항목
             taxinvoice.credit = "";
 
-            // 기재상 비고 항목
+            // 비고
+            // {invoiceeType}이 "외국인" 이면 remark1 필수
+            // - 외국인 등록번호 또는 여권번호 입력
             taxinvoice.remark1 = "비고1";
             taxinvoice.remark2 = "비고2";
             taxinvoice.remark3 = "비고3";
@@ -2156,7 +2135,9 @@ namespace Popbill.Taxinvoice.Example.csharp
             // 기재상 외상미수금 항목
             taxinvoice.credit = "";
 
-            // 기재상 비고 항목
+            // 비고
+            // {invoiceeType}이 "외국인" 이면 remark1 필수
+            // - 외국인 등록번호 또는 여권번호 입력
             taxinvoice.remark1 = "비고1";
             taxinvoice.remark2 = "비고2";
             taxinvoice.remark3 = "비고3";

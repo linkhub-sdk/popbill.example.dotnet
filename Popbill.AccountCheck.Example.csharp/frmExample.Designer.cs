@@ -426,7 +426,6 @@
             this.txtAccountNumber.Name = "txtAccountNumber";
             this.txtAccountNumber.Size = new System.Drawing.Size(100, 21);
             this.txtAccountNumber.TabIndex = 20;
-            this.txtAccountNumber.Text = "9432451175860";
             // 
             // btnCheckAccountInfo
             // 
@@ -453,7 +452,6 @@
             this.txtBankCode.Name = "txtBankCode";
             this.txtBankCode.Size = new System.Drawing.Size(100, 21);
             this.txtBankCode.TabIndex = 17;
-            this.txtBankCode.Text = "0004";
             // 
             // label5
             // 
@@ -515,7 +513,6 @@
             this.txtIdentityNumTypeDC.Name = "txtIdentityNumTypeDC";
             this.txtIdentityNumTypeDC.Size = new System.Drawing.Size(72, 21);
             this.txtIdentityNumTypeDC.TabIndex = 24;
-            this.txtIdentityNumTypeDC.Text = "P";
             // 
             // label6
             // 
@@ -532,7 +529,6 @@
             this.txtIdentityNumDC.Name = "txtIdentityNumDC";
             this.txtIdentityNumDC.Size = new System.Drawing.Size(100, 21);
             this.txtIdentityNumDC.TabIndex = 22;
-            this.txtIdentityNumDC.Text = "921102";
             // 
             // label10
             // 
@@ -549,7 +545,6 @@
             this.txtAccountNumberDC.Name = "txtAccountNumberDC";
             this.txtAccountNumberDC.Size = new System.Drawing.Size(100, 21);
             this.txtAccountNumberDC.TabIndex = 20;
-            this.txtAccountNumberDC.Text = "9432451175860";
             // 
             // btnCheckDepositorInfo
             // 
@@ -576,7 +571,6 @@
             this.txtBankCodeDC.Name = "txtBankCodeDC";
             this.txtBankCodeDC.Size = new System.Drawing.Size(100, 21);
             this.txtBankCodeDC.TabIndex = 17;
-            this.txtBankCodeDC.Text = "0004";
             // 
             // frmExample
             // 

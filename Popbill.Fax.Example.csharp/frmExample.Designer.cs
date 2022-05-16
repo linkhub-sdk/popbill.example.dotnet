@@ -31,7 +31,7 @@
             this.txtUserId = new System.Windows.Forms.TextBox();
             this.GroupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
-            this.btnGetPartnerURL_CHRG = new System.Windows.Forms.Button();
+            this.btnGetPartnerURL = new System.Windows.Forms.Button();
             this.btnGetPartnerBalance = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.btnUpdateCorpInfo = new System.Windows.Forms.Button();
@@ -132,7 +132,7 @@
             // 
             // groupBox13
             // 
-            this.groupBox13.Controls.Add(this.btnGetPartnerURL_CHRG);
+            this.groupBox13.Controls.Add(this.btnGetPartnerURL);
             this.groupBox13.Controls.Add(this.btnGetPartnerBalance);
             this.groupBox13.Location = new System.Drawing.Point(446, 16);
             this.groupBox13.Name = "groupBox13";
@@ -141,15 +141,15 @@
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "파트너과금 포인트";
             // 
-            // btnGetPartnerURL_CHRG
+            // btnGetPartnerURL
             // 
-            this.btnGetPartnerURL_CHRG.Location = new System.Drawing.Point(8, 49);
-            this.btnGetPartnerURL_CHRG.Name = "btnGetPartnerURL_CHRG";
-            this.btnGetPartnerURL_CHRG.Size = new System.Drawing.Size(119, 26);
-            this.btnGetPartnerURL_CHRG.TabIndex = 0;
-            this.btnGetPartnerURL_CHRG.Text = "포인트 충전 URL";
-            this.btnGetPartnerURL_CHRG.UseVisualStyleBackColor = true;
-            this.btnGetPartnerURL_CHRG.Click += new System.EventHandler(this.btnGetPartnerURL_Click);
+            this.btnGetPartnerURL.Location = new System.Drawing.Point(8, 49);
+            this.btnGetPartnerURL.Name = "btnGetPartnerURL";
+            this.btnGetPartnerURL.Size = new System.Drawing.Size(119, 26);
+            this.btnGetPartnerURL.TabIndex = 0;
+            this.btnGetPartnerURL.Text = "포인트 충전 URL";
+            this.btnGetPartnerURL.UseVisualStyleBackColor = true;
+            this.btnGetPartnerURL.Click += new System.EventHandler(this.btnGetPartnerURL_Click);
             // 
             // btnGetPartnerBalance
             // 
@@ -831,7 +831,7 @@
         private System.Windows.Forms.Button btnGetSenderNumberList;
         private System.Windows.Forms.Button btnGetSenderNumberMgtURL;
         private System.Windows.Forms.GroupBox groupBox13;
-        private System.Windows.Forms.Button btnGetPartnerURL_CHRG;
+        private System.Windows.Forms.Button btnGetPartnerURL;
         private System.Windows.Forms.GroupBox groupBox12;
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.GroupBox groupBox10;

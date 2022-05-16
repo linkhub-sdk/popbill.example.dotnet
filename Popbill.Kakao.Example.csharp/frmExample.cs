@@ -1,7 +1,7 @@
 ﻿/*
  * 팝빌 카카오톡 API DotNet SDK Example
  *
- * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/kakao/tutorial/dotnet
+ * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/kakao/tutorial/dotnet_csharp
  * - 업데이트 일자 : 2022-05-04
  * - 연동 기술지원 연락처 : 1600-9854
  * - 연동 기술지원 이메일 : code@linkhubcorp.com
@@ -296,7 +296,7 @@ namespace Popbill.Kakao.Example.csharp
                     tmp += "보안템플릿 여부(sercureYN) : " + templateInfo.secureYN + CRLF;
                     tmp += "템플릿 상태(state) : " + templateInfo.state + CRLF;
                     tmp += "템플릿 상태 일시(stateDT) : " + templateInfo.stateDT + CRLF;
-                    
+
                     tmp += CRLF + CRLF;
                 }
 

@@ -1,8 +1,7 @@
-﻿
-/*
+﻿/*
  * 팝빌 현금영수증 API DotNet SDK Example
  *
- * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/cashbill/tutorial/dotnet#csharp
+ * - DotNet C# SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/cashbill/tutorial/dotnet_csharp
  * - 업데이트 일자 : 2022-05-04
  * - 연동 기술지원 연락처 : 1600-9854
  * - 연동 기술지원 이메일 : code@linkhubcorp.com
@@ -159,6 +158,7 @@ namespace Popbill.Cashbill.Example.csharp
             cashbill.email = "";
 
             // 발행시 알림문자 전송여부
+            // 미입력시 기본값 False 처리
             cashbill.smssendYN = false;
 
             // 주문자 휴대폰
@@ -268,6 +268,7 @@ namespace Popbill.Cashbill.Example.csharp
                 cashbill.email = "";
 
                 // 발행시 알림문자 전송여부
+                // 미입력시 기본값 False 처리
                 cashbill.smssendYN = false;
 
                 // 주문자 휴대폰
@@ -294,6 +295,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /*
          * 접수시 기재한 SubmitID를 사용하여 현금영수증 접수결과를 확인합니다.
+         * - 개별 현금영수증 처리상태는 접수상태(txState)가 완료(2) 시 반환됩니다.
          * - https://docs.popbill.com/cashbill/dotnet/api#GetBulkResult
          */
         private void btnGetBulkResult_Click(object sender, EventArgs e)
