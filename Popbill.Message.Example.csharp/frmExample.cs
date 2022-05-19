@@ -210,13 +210,13 @@ namespace Popbill.Message.Example.csharp
                 Message msg = new Message();
 
                 // 발신번호
-                msg.sendNum = "07043042991";
+                msg.sendNum = "";
 
                 // 발신자명
                 msg.senderName = "발신자명";
 
                 // 수신번호
-                msg.receiveNum = "01042847884";
+                msg.receiveNum = "";
 
                 // 수신자명
                 msg.receiveName = "수신자명칭_" + i;
@@ -225,7 +225,7 @@ namespace Popbill.Message.Example.csharp
                 msg.content = "단문 문자메시지 내용, 각 메시지마다 개별설정 가능." + i;
 
                 // 파트너 지정키, 대량전송시, 수신자 구별용 메모
-                msg.interOPRefKey = "20220504" + i;
+                msg.interOPRefKey = "20220504-" + i;
 
                 messages.Add(msg);
             }
@@ -249,7 +249,7 @@ namespace Popbill.Message.Example.csharp
         /*
          * 최대 90byte의 단문(SMS) 메시지 다수건 전송을 팝빌에 접수합니다. (최대 1,000건)
          * - 모든 수신자에게 동일한 내용을 전송합니다(동보전송).
-         * - https://docs.popbill.com/message/dotnet/api#SendSMS_Multi
+         * - https://docs.popbill.com/message/dotnet/api#SendSMS_Same
          */
         private void btnSendSMS_Same_Click(object sender, EventArgs e)
         {
@@ -282,7 +282,7 @@ namespace Popbill.Message.Example.csharp
                 msg.receiveName = "수신자명칭_" + i;
 
                 // 파트너 지정키, 대량전송시, 수신자 구별용 메모
-                msg.interOPRefKey = "20220504" + i;
+                msg.interOPRefKey = "20220504-" + i;
 
                 messages.Add(msg);
             }
@@ -391,7 +391,7 @@ namespace Popbill.Message.Example.csharp
                 msg.content = "장문 문자메시지 내용, 각 메시지마다 개별설정 가능." + i;
 
                 // 파트너 지정키, 대량전송시, 수신자 구별용 메모
-                msg.interOPRefKey = "20220504" + i;
+                msg.interOPRefKey = "20220504-" + i;
 
                 messages.Add(msg);
             }
@@ -451,7 +451,7 @@ namespace Popbill.Message.Example.csharp
                 msg.receiveName = "수신자명칭_" + i;
 
                 // 파트너 지정키, 대량전송시, 수신자 구별용 메모
-                msg.interOPRefKey = "20220504" + i;
+                msg.interOPRefKey = "20220504-" + i;
 
                 messages.Add(msg);
             }
@@ -561,7 +561,7 @@ namespace Popbill.Message.Example.csharp
                 msg.content = "문자메시지 내용, 각 메시지마다 개별설정 가능." + i;
 
                 // 파트너 지정키, 대량전송시, 수신자 구별용 메모
-                msg.interOPRefKey = "20220504" + i;
+                msg.interOPRefKey = "20220504-" + i;
 
                 messages.Add(msg);
             }
@@ -621,7 +621,7 @@ namespace Popbill.Message.Example.csharp
                 msg.receiveName = "수신자명칭_" + i;
 
                 // 파트너 지정키, 대량전송시, 수신자 구별용 메모
-                msg.interOPRefKey = "20220504" + i;
+                msg.interOPRefKey = "20220504-" + i;
 
                 messages.Add(msg);
             }
@@ -735,7 +735,7 @@ namespace Popbill.Message.Example.csharp
                 msg.receiveName = "수신자명칭_" + i;
 
                 // 파트너 지정키, 대량전송시, 수신자 구별용 메모
-                msg.interOPRefKey = "20220504" + i;
+                msg.interOPRefKey = "20220504-" + i;
 
                 messages.Add(msg);
             }

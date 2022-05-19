@@ -1044,7 +1044,7 @@ namespace Popbill.Fax.Example.csharp
         {
             try
             {
-                // 서비스 유형, 일반 / 지능 중 택 1
+                // 수신번호 유형, 일반 / 지능 중 택 1
                 String receiveNumType = "일반";
 
                 float unitCost = faxService.GetUnitCost(txtCorpNum.Text, receiveNumType);
@@ -1066,7 +1066,7 @@ namespace Popbill.Fax.Example.csharp
         {
             try
             {
-                // 서비스 유형, 일반 / 지능 중 택 1
+                // 수신번호 유형, 일반 / 지능 중 택 1
                 String receiveNumType = "일반";
 
                 ChargeInfo chrgInf = faxService.GetChargeInfo(txtCorpNum.Text, receiveNumType, txtUserId.Text);
