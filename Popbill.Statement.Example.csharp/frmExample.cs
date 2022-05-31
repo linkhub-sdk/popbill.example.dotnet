@@ -1815,7 +1815,7 @@ namespace Popbill.Statement.Example.csharp
             String tmp = "";
             try
             {
-                List<EmailConfig> resultList = statementService.ListEmailConfig(txtCorpNum.Text, txtUserID.Text);
+                List<EmailConfig> resultList = statementService.ListEmailConfig(txtCorpNum.Text);
 
                 tmp = "메일전송유형 | 전송여부" + CRLF;
 
@@ -1862,7 +1862,7 @@ namespace Popbill.Statement.Example.csharp
             try
             {
                 Response response =
-                    statementService.UpdateEmailConfig(txtCorpNum.Text, EmailType, SendYN, txtUserID.Text);
+                    statementService.UpdateEmailConfig(txtCorpNum.Text, EmailType, SendYN);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + response.message, "알림메일 전송설정 수정");
@@ -2256,7 +2256,7 @@ namespace Popbill.Statement.Example.csharp
 
             try
             {
-                Contact contactInfo = statementService.GetContactInfo(txtCorpNum.Text, contactID, txtUserID.Text);
+                Contact contactInfo = statementService.GetContactInfo(txtCorpNum.Text, contactID);
 
                 String tmp = null;
 

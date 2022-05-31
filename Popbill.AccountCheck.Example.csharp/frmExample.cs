@@ -65,7 +65,7 @@ namespace Popbill.AccountCheck.Example.csharp
 
             try
             {
-                AccountCheckInfo result = accountCheckService.CheckAccountInfo(txtCorpNum.Text, txtBankCode.Text, txtAccountNumber.Text, txtUserID.Text);
+                AccountCheckInfo result = accountCheckService.CheckAccountInfo(txtCorpNum.Text, txtBankCode.Text, txtAccountNumber.Text);
 
                 tmp += "bankCode (기관코드) : " + result.bankCode + "\n";
                 tmp += "accountNumber (계좌번호) : " + result.accountNumber + "\n";
@@ -94,7 +94,7 @@ namespace Popbill.AccountCheck.Example.csharp
 
             try
             {
-                DepositorCheckInfo result = accountCheckService.CheckDepositorInfo(txtCorpNum.Text, txtBankCodeDC.Text, txtAccountNumberDC.Text, txtIdentityNumTypeDC.Text, txtIdentityNumDC.Text, txtUserID.Text);
+                DepositorCheckInfo result = accountCheckService.CheckDepositorInfo(txtCorpNum.Text, txtBankCodeDC.Text, txtAccountNumberDC.Text, txtIdentityNumTypeDC.Text, txtIdentityNumDC.Text);
 
                 tmp += "bankCode (기관코드) : " + result.bankCode + "\n";
                 tmp += "accountNumber (계좌번호) : " + result.accountNumber + "\n";
@@ -523,7 +523,7 @@ namespace Popbill.AccountCheck.Example.csharp
 
             try
             {
-                Contact contactInfo = accountCheckService.GetContactInfo(txtCorpNum.Text, contactID, txtUserID.Text);
+                Contact contactInfo = accountCheckService.GetContactInfo(txtCorpNum.Text, contactID);
 
                 String tmp = null;
 

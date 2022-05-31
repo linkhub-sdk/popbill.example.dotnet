@@ -633,8 +633,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
             try
             {
-                BulkResponse response = taxinvoiceService.BulkSubmit(txtCorpNum.Text, txtSubmitID.Text, taxinvoiceList, forceIssue,
-                    txtUserId.Text);
+                BulkResponse response = taxinvoiceService.BulkSubmit(txtCorpNum.Text, txtSubmitID.Text, taxinvoiceList, forceIssue);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + response.message + "\r\n" +
@@ -655,7 +654,7 @@ namespace Popbill.Taxinvoice.Example.csharp
         {
             try
             {
-                BulkTaxinvoiceResult result = taxinvoiceService.GetBulkResult(txtCorpNum.Text, txtSubmitID.Text, txtUserId.Text);
+                BulkTaxinvoiceResult result = taxinvoiceService.GetBulkResult(txtCorpNum.Text, txtSubmitID.Text);
 
                 String tmp = null;
 
@@ -1205,7 +1204,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
             try
             {
-                Response response = taxinvoiceService.Register(txtCorpNum.Text, taxinvoice, txtUserId.Text);
+                Response response = taxinvoiceService.Register(txtCorpNum.Text, taxinvoice);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + response.message, "역발행 세금계산서 임시저장");
@@ -2214,7 +2213,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
             try
             {
-                Response response = taxinvoiceService.RegistRequest(txtCorpNum.Text, taxinvoice, memo, txtUserId.Text);
+                Response response = taxinvoiceService.RegistRequest(txtCorpNum.Text, taxinvoice, memo);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + response.message, "세금계산서 즉시요청");
@@ -3471,7 +3470,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             String tmp = "";
             try
             {
-                List<EmailConfig> resultList = taxinvoiceService.ListEmailConfig(txtCorpNum.Text, txtUserId.Text);
+                List<EmailConfig> resultList = taxinvoiceService.ListEmailConfig(txtCorpNum.Text);
 
                 tmp = "메일전송유형 | 전송여부" + CRLF;
 
@@ -3557,7 +3556,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             try
             {
                 Response response =
-                    taxinvoiceService.UpdateEmailConfig(txtCorpNum.Text, EmailType, SendYN, txtUserId.Text);
+                    taxinvoiceService.UpdateEmailConfig(txtCorpNum.Text, EmailType, SendYN);
 
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
@@ -3580,7 +3579,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             try
             {
                 bool sendToNTSConfig =
-                    taxinvoiceService.GetSendToNTSConfig(txtCorpNum.Text, txtUserId.Text);
+                    taxinvoiceService.GetSendToNTSConfig(txtCorpNum.Text);
 
 
                 MessageBox.Show("국세청 전송 설정 확인 : " + sendToNTSConfig.ToString() + "\r\n" +
@@ -3663,7 +3662,7 @@ namespace Popbill.Taxinvoice.Example.csharp
         {
             try
             {
-                TaxinvoiceCertificate taxinvoiceCertificate = taxinvoiceService.GetTaxCertInfo(txtCorpNum.Text, txtUserId.Text);
+                TaxinvoiceCertificate taxinvoiceCertificate = taxinvoiceService.GetTaxCertInfo(txtCorpNum.Text);
 
                 string tmp = null;
 
@@ -4069,7 +4068,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
             try
             {
-                Contact contactInfo = taxinvoiceService.GetContactInfo(txtCorpNum.Text, contactID, txtUserId.Text);
+                Contact contactInfo = taxinvoiceService.GetContactInfo(txtCorpNum.Text, contactID);
 
                 String tmp = null;
 

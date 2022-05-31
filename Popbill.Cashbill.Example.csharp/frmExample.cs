@@ -280,7 +280,7 @@ namespace Popbill.Cashbill.Example.csharp
 
             try
             {
-                BulkResponse response = cashbillService.BulkSubmit(txtCorpNum.Text, txtSubmitID.Text, cashbillList, txtUserId.Text);
+                BulkResponse response = cashbillService.BulkSubmit(txtCorpNum.Text, txtSubmitID.Text, cashbillList);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + response.message + "\r\n" +
@@ -302,7 +302,7 @@ namespace Popbill.Cashbill.Example.csharp
         {
             try
             {
-                BulkCashbillResult result = cashbillService.GetBulkResult(txtCorpNum.Text, txtSubmitID.Text, txtUserId.Text);
+                BulkCashbillResult result = cashbillService.GetBulkResult(txtCorpNum.Text, txtSubmitID.Text);
 
                 String tmp = null;
 
@@ -1161,7 +1161,7 @@ namespace Popbill.Cashbill.Example.csharp
             String tmp = "";
             try
             {
-                List<EmailConfig> resultList = cashbillService.ListEmailConfig(txtCorpNum.Text, txtUserId.Text);
+                List<EmailConfig> resultList = cashbillService.ListEmailConfig(txtCorpNum.Text);
 
                 tmp = "메일전송유형 | 전송여부" + CRLF;
 
@@ -1196,7 +1196,7 @@ namespace Popbill.Cashbill.Example.csharp
 
             try
             {
-                Response response = cashbillService.UpdateEmailConfig(txtCorpNum.Text, EmailType, SendYN, txtUserId.Text);
+                Response response = cashbillService.UpdateEmailConfig(txtCorpNum.Text, EmailType, SendYN);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + response.message, "알림메일 전송설정 수정");

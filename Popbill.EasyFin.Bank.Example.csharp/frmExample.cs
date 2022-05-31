@@ -458,7 +458,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
         {
             try
             {
-                List<EasyFinBankJobState> jobList = easyFinBankService.ListActiveJob(txtCorpNum.Text, txtUserId.Text);
+                List<EasyFinBankJobState> jobList = easyFinBankService.ListACtiveJob(txtCorpNum.Text);
 
                 String tmp = "jobID (작업아이디) | jobState (수집상태) | startDate (시작일자) |";
                 tmp += " endDate (종료일자) | errorCode (오류코드) | errorReason (오류메시지) | jobStartDT (수집 시작일시) | jobEndDT (수집 종료일시) |";
@@ -520,7 +520,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
             try
             {
                 EasyFinBankSearchResult searchInfo = easyFinBankService.Search(txtCorpNum.Text, txtJobID.Text,
-                    TradeType, SearchString, Page, PerPage, Order, txtUserId.Text);
+                    TradeType, SearchString, Page, PerPage, Order);
 
                 String tmp = "code (응답코드) : " + searchInfo.code.ToString() + CRLF;
                 tmp += "message (응답메시지) : " + searchInfo.message + CRLF;
@@ -584,7 +584,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
             try
             {
                 EasyFinBankSummary searchInfo = easyFinBankService.Summary(txtCorpNum.Text, txtJobID.Text,
-                    TradeType, SearchString, txtUserId.Text);
+                    TradeType, SearchString);
 
                 String tmp = "count (수집결과 건수) : " + searchInfo.count + CRLF;
                 tmp += "cntAccIn (입금거래 건수) : " + searchInfo.cntAccIn + CRLF;
@@ -664,7 +664,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
             try
             {
-                EasyFinBankFlatRate rateInfo = easyFinBankService.GetFlatRateState(txtCorpNum.Text, BankCode, AccountNumber, txtUserId.Text);
+                EasyFinBankFlatRate rateInfo = easyFinBankService.GetFlatRateState(txtCorpNum.Text, BankCode, AccountNumber);
 
                 String tmp = "referenceID (계좌아이디) : " + rateInfo.referenceID + CRLF;
                 tmp += "contractDT (정액제 서비스 시작일시) : " + rateInfo.contractDT + CRLF;
@@ -1009,7 +1009,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
             try
             {
-                Contact contactInfo = easyFinBankService.GetContactInfo(txtCorpNum.Text, contactID, txtUserId.Text);
+                Contact contactInfo = easyFinBankService.GetContactInfo(txtCorpNum.Text, contactID);
 
                 String tmp = null;
 

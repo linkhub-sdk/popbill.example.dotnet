@@ -347,7 +347,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
         {
             try
             {
-                HTTaxinvoice tiInfo = htTaxinvoiceService.GetTaxinvoice(txtCorpNum.Text, txtNTSconfirmNum.Text, txtUserId.Text);
+                HTTaxinvoice tiInfo = htTaxinvoiceService.GetTaxinvoice(txtCorpNum.Text, txtNTSconfirmNum.Text);
 
                 String tmp = "writeDate (작성일자) : " + tiInfo.writeDate + CRLF;
                 tmp += "issueDT (발행일시) : " + tiInfo.issueDT + CRLF;
@@ -432,7 +432,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
         {
             try
             {
-                HTTaxinvoiceXML tiXML = htTaxinvoiceService.GetXML(txtCorpNum.Text, txtNTSconfirmNum.Text, txtUserId.Text);
+                HTTaxinvoiceXML tiXML = htTaxinvoiceService.GetXML(txtCorpNum.Text, txtNTSconfirmNum.Text);
 
                 String tmp = "ResultCode (응답코드) : " + tiXML.ResultCode.ToString() + CRLF;
                 tmp += "Message (전자세금계산서 국세청승인번호) : " + tiXML.Message + CRLF;
@@ -459,7 +459,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
 
             try
             {
-                String url = htTaxinvoiceService.GetPopUpURL(txtCorpNum.Text, NTSConfirmNum);
+                String url = htTaxinvoiceService.GetPopUpURL(txtCorpNum.Text, NTSConfirmNum, txtUserId.Text);
 
                 MessageBox.Show(url, "홈택스 전자세금계산서 보기 팝업 URL");
                 textURL.Text = url;
@@ -671,7 +671,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
         {
             try
             {
-                HTFlatRate rateInfo = htTaxinvoiceService.GetFlatRateState(txtCorpNum.Text, txtUserId.Text);
+                HTFlatRate rateInfo = htTaxinvoiceService.GetFlatRateState(txtCorpNum.Text);
 
                 String tmp = "referenceID (사업자번호) : " + rateInfo.referenceID + CRLF;
                 tmp += "contractDT (정액제 서비스 시작일시) : " + rateInfo.contractDT + CRLF;
@@ -1078,7 +1078,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
 
             try
             {
-                Contact contactInfo = htTaxinvoiceService.GetContactInfo(txtCorpNum.Text, contactID, txtUserId.Text);
+                Contact contactInfo = htTaxinvoiceService.GetContactInfo(txtCorpNum.Text, contactID);
 
                 String tmp = null;
 

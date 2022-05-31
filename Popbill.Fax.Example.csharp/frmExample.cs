@@ -66,7 +66,7 @@ namespace Popbill.Fax.Example.csharp
             {
                 string senderNumber = "";
 
-                Response response = faxService.CheckSenderNumber(txtCorpNum.Text, senderNumber, txtUserId.Text);
+                Response response = faxService.CheckSenderNumber(txtCorpNum.Text, senderNumber);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + (response.code == 1 ? " (등록)" : " (미등록)") + "\r\n" +
                 "응답메시지(message) : " + response.message, "팩스 발신번호 등록여부 확인");
@@ -1318,7 +1318,7 @@ namespace Popbill.Fax.Example.csharp
 
             try
             {
-                Contact contactInfo = faxService.GetContactInfo(txtCorpNum.Text, contactID, txtUserId.Text);
+                Contact contactInfo = faxService.GetContactInfo(txtCorpNum.Text, contactID);
 
                 String tmp = null;
 

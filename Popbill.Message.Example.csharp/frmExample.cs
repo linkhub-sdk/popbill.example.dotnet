@@ -81,7 +81,7 @@ namespace Popbill.Message.Example.csharp
             {
                 string senderNumber = "";
 
-                Response response = messageService.CheckSenderNumber(txtCorpNum.Text, senderNumber, txtUserId.Text);
+                Response response = messageService.CheckSenderNumber(txtCorpNum.Text, senderNumber);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + (response.code==1?" (등록)":" (미등록)") + "\r\n" +
                 "응답메시지(message) : " + response.message, "문자 발신번호 등록여부 확인");
@@ -770,7 +770,7 @@ namespace Popbill.Message.Example.csharp
         {
             try
             {
-                Response response = messageService.CancelReserve(txtCorpNum.Text, txtReceiptNum.Text, txtUserId.Text);
+                Response response = messageService.CancelReserve(txtCorpNum.Text, txtReceiptNum.Text);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + response.message, "예약문자 전송 취소");
@@ -790,7 +790,7 @@ namespace Popbill.Message.Example.csharp
         {
             try
             {
-                Response response = messageService.CancelReserveRN(txtCorpNum.Text, txtRequestNum.Text, txtUserId.Text);
+                Response response = messageService.CancelReserveRN(txtCorpNum.Text, txtRequestNum.Text);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + response.message, "예약문자 전송 취소");
@@ -1495,7 +1495,7 @@ namespace Popbill.Message.Example.csharp
 
             try
             {
-                Contact contactInfo = messageService.GetContactInfo(txtCorpNum.Text, contactID, txtUserId.Text);
+                Contact contactInfo = messageService.GetContactInfo(txtCorpNum.Text, contactID);
 
                 String tmp = null;
 

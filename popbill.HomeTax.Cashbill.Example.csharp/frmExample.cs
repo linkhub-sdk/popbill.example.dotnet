@@ -202,7 +202,7 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
             try
             {
                 HTCashbillSearch searchInfo = htCashbillService.Search(txtCorpNum.Text, txtJobID.Text, TradeType,
-                    TradeUsage, Page, PerPage, Order, txtUserId.Text);
+                    TradeUsage, Page, PerPage, Order);
 
                 String tmp = "code (응답코드) : " + searchInfo.code.ToString() + CRLF;
                 tmp += "message (응답메시지) : " + searchInfo.message + CRLF;
@@ -465,7 +465,7 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         {
             try
             {
-                HTFlatRate rateInfo = htCashbillService.GetFlatRateState(txtCorpNum.Text, txtUserId.Text);
+                HTFlatRate rateInfo = htCashbillService.GetFlatRateState(txtCorpNum.Text);
 
                 String tmp = "referenceID (사업자번호) : " + rateInfo.referenceID + CRLF;
                 tmp += "contractDT (정액제 서비스 시작일시) : " + rateInfo.contractDT + CRLF;
@@ -868,7 +868,7 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
 
             try
             {
-                Contact contactInfo = htCashbillService.GetContactInfo(txtCorpNum.Text, contactID, txtUserId.Text);
+                Contact contactInfo = htCashbillService.GetContactInfo(txtCorpNum.Text, contactID);
 
                 String tmp = null;
 

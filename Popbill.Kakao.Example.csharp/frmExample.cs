@@ -133,7 +133,7 @@ namespace Popbill.Kakao.Example.csharp
             {
                 string senderNumber = "";
 
-                Response response = kakaoService.CheckSenderNumber(txtCorpNum.Text, senderNumber, txtUserId.Text);
+                Response response = kakaoService.CheckSenderNumber(txtCorpNum.Text, senderNumber);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + (response.code == 1 ? " (등록)" : " (미등록)") + "\r\n" +
                 "응답메시지(message) : " + response.message, "카카오톡 발신번호 등록여부 확인");
@@ -226,7 +226,7 @@ namespace Popbill.Kakao.Example.csharp
 
             try
             {
-                ATSTemplate templateInfo = kakaoService.GetATSTemplate(txtCorpNum.Text, templateCode, txtUserId.Text);
+                ATSTemplate templateInfo = kakaoService.GetATSTemplate(txtCorpNum.Text, templateCode);
 
                 String tmp = null;
 
@@ -1330,7 +1330,7 @@ namespace Popbill.Kakao.Example.csharp
         {
             try
             {
-                Response response = kakaoService.CancelReserve(txtCorpNum.Text, txtReceiptNum.Text, txtUserId.Text);
+                Response response = kakaoService.CancelReserve(txtCorpNum.Text, txtReceiptNum.Text);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + response.message, "예약전송 취소");
@@ -1350,7 +1350,7 @@ namespace Popbill.Kakao.Example.csharp
         {
             try
             {
-                Response response = kakaoService.CancelReserveRN(txtCorpNum.Text, txtRequestNum.Text, txtUserId.Text);
+                Response response = kakaoService.CancelReserveRN(txtCorpNum.Text, txtRequestNum.Text);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + response.message, "예약전송 취소");
@@ -2072,7 +2072,7 @@ namespace Popbill.Kakao.Example.csharp
 
             try
             {
-                Contact contactInfo = kakaoService.GetContactInfo(txtCorpNum.Text, contactID, txtUserId.Text);
+                Contact contactInfo = kakaoService.GetContactInfo(txtCorpNum.Text, contactID);
 
                 String tmp = null;
 
