@@ -61,6 +61,18 @@
             this.txtCorpNum = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBox18 = new System.Windows.Forms.GroupBox();
+            this.txtReciveNumRNbyRCV = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtRequestNumbyRCV = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.btnCancelReserveRNbyRCV = new System.Windows.Forms.Button();
+            this.groupBox17 = new System.Windows.Forms.GroupBox();
+            this.txtReciveNumbyRCV = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.btnCancelReservebyRCV = new System.Windows.Forms.Button();
+            this.txtReceiptNumbyRCV = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.btnGetStates = new System.Windows.Forms.Button();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
@@ -109,6 +121,8 @@
             this.GroupBox3.SuspendLayout();
             this.GroupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox18.SuspendLayout();
+            this.groupBox17.SuspendLayout();
             this.groupBox16.SuspendLayout();
             this.groupBox15.SuspendLayout();
             this.groupBox12.SuspendLayout();
@@ -453,6 +467,8 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.groupBox18);
+            this.groupBox4.Controls.Add(this.groupBox17);
             this.groupBox4.Controls.Add(this.listBox1);
             this.groupBox4.Controls.Add(this.btnGetStates);
             this.groupBox4.Controls.Add(this.groupBox16);
@@ -474,12 +490,124 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "문자전송 관련 기능";
             // 
+            // groupBox18
+            // 
+            this.groupBox18.Controls.Add(this.txtReciveNumRNbyRCV);
+            this.groupBox18.Controls.Add(this.label10);
+            this.groupBox18.Controls.Add(this.txtRequestNumbyRCV);
+            this.groupBox18.Controls.Add(this.label8);
+            this.groupBox18.Controls.Add(this.btnCancelReserveRNbyRCV);
+            this.groupBox18.Location = new System.Drawing.Point(881, 140);
+            this.groupBox18.Name = "groupBox18";
+            this.groupBox18.Size = new System.Drawing.Size(289, 120);
+            this.groupBox18.TabIndex = 35;
+            this.groupBox18.TabStop = false;
+            this.groupBox18.Text = "요청번호 할당 전송건 처리";
+            // 
+            // txtReciveNumRNbyRCV
+            // 
+            this.txtReciveNumRNbyRCV.Location = new System.Drawing.Point(76, 50);
+            this.txtReciveNumRNbyRCV.Name = "txtReciveNumRNbyRCV";
+            this.txtReciveNumRNbyRCV.Size = new System.Drawing.Size(187, 21);
+            this.txtReciveNumRNbyRCV.TabIndex = 36;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(16, 54);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(65, 12);
+            this.label10.TabIndex = 35;
+            this.label10.Text = "수신번호 : ";
+            // 
+            // txtRequestNumbyRCV
+            // 
+            this.txtRequestNumbyRCV.Location = new System.Drawing.Point(76, 21);
+            this.txtRequestNumbyRCV.Name = "txtRequestNumbyRCV";
+            this.txtRequestNumbyRCV.Size = new System.Drawing.Size(187, 21);
+            this.txtRequestNumbyRCV.TabIndex = 34;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(15, 25);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(65, 12);
+            this.label8.TabIndex = 33;
+            this.label8.Text = "요청번호 : ";
+            // 
+            // btnCancelReserveRNbyRCV
+            // 
+            this.btnCancelReserveRNbyRCV.Location = new System.Drawing.Point(18, 82);
+            this.btnCancelReserveRNbyRCV.Name = "btnCancelReserveRNbyRCV";
+            this.btnCancelReserveRNbyRCV.Size = new System.Drawing.Size(245, 32);
+            this.btnCancelReserveRNbyRCV.TabIndex = 32;
+            this.btnCancelReserveRNbyRCV.Text = "예약전송 취소 (요청번호, 수신번호)";
+            this.btnCancelReserveRNbyRCV.UseVisualStyleBackColor = true;
+            this.btnCancelReserveRNbyRCV.Click += new System.EventHandler(this.btnCancelReserveRNbyRCV_Click);
+            // 
+            // groupBox17
+            // 
+            this.groupBox17.Controls.Add(this.txtReciveNumbyRCV);
+            this.groupBox17.Controls.Add(this.label9);
+            this.groupBox17.Controls.Add(this.btnCancelReservebyRCV);
+            this.groupBox17.Controls.Add(this.txtReceiptNumbyRCV);
+            this.groupBox17.Controls.Add(this.label7);
+            this.groupBox17.Location = new System.Drawing.Point(595, 140);
+            this.groupBox17.Name = "groupBox17";
+            this.groupBox17.Size = new System.Drawing.Size(280, 120);
+            this.groupBox17.TabIndex = 33;
+            this.groupBox17.TabStop = false;
+            this.groupBox17.Text = "접수번호 관련 기능 (요청번호 미할당)";
+            // 
+            // txtReciveNumbyRCV
+            // 
+            this.txtReciveNumbyRCV.Location = new System.Drawing.Point(78, 50);
+            this.txtReciveNumbyRCV.Name = "txtReciveNumbyRCV";
+            this.txtReciveNumbyRCV.Size = new System.Drawing.Size(187, 21);
+            this.txtReciveNumbyRCV.TabIndex = 28;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(17, 54);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(65, 12);
+            this.label9.TabIndex = 27;
+            this.label9.Text = "수신번호 : ";
+            // 
+            // btnCancelReservebyRCV
+            // 
+            this.btnCancelReservebyRCV.Location = new System.Drawing.Point(19, 82);
+            this.btnCancelReservebyRCV.Name = "btnCancelReservebyRCV";
+            this.btnCancelReservebyRCV.Size = new System.Drawing.Size(246, 32);
+            this.btnCancelReservebyRCV.TabIndex = 26;
+            this.btnCancelReservebyRCV.Text = "예약전송 취소 (접수번호, 수신번호)";
+            this.btnCancelReservebyRCV.UseVisualStyleBackColor = true;
+            this.btnCancelReservebyRCV.Click += new System.EventHandler(this.btnCancelReservebyRCV_Click);
+            // 
+            // txtReceiptNumbyRCV
+            // 
+            this.txtReceiptNumbyRCV.Location = new System.Drawing.Point(78, 22);
+            this.txtReceiptNumbyRCV.Name = "txtReceiptNumbyRCV";
+            this.txtReceiptNumbyRCV.Size = new System.Drawing.Size(187, 21);
+            this.txtReceiptNumbyRCV.TabIndex = 24;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(17, 26);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(65, 12);
+            this.label7.TabIndex = 23;
+            this.label7.Text = "접수번호 : ";
+            // 
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
             this.listBox1.HorizontalScrollbar = true;
             this.listBox1.ItemHeight = 12;
-            this.listBox1.Location = new System.Drawing.Point(22, 249);
+            this.listBox1.Location = new System.Drawing.Point(22, 272);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(1128, 184);
             this.listBox1.TabIndex = 34;
@@ -500,9 +628,9 @@
             this.groupBox16.Controls.Add(this.btnGetMessageResult);
             this.groupBox16.Controls.Add(this.txtReceiptNum);
             this.groupBox16.Controls.Add(this.label4);
-            this.groupBox16.Location = new System.Drawing.Point(22, 140);
+            this.groupBox16.Location = new System.Drawing.Point(23, 157);
             this.groupBox16.Name = "groupBox16";
-            this.groupBox16.Size = new System.Drawing.Size(291, 91);
+            this.groupBox16.Size = new System.Drawing.Size(280, 91);
             this.groupBox16.TabIndex = 32;
             this.groupBox16.TabStop = false;
             this.groupBox16.Text = "접수번호 관련 기능 (요청번호 미할당)";
@@ -549,9 +677,9 @@
             this.groupBox15.Controls.Add(this.label5);
             this.groupBox15.Controls.Add(this.btnCancelReserveRN);
             this.groupBox15.Controls.Add(this.btnGetMessagesRN);
-            this.groupBox15.Location = new System.Drawing.Point(328, 140);
+            this.groupBox15.Location = new System.Drawing.Point(309, 157);
             this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(289, 91);
+            this.groupBox15.Size = new System.Drawing.Size(280, 91);
             this.groupBox15.TabIndex = 31;
             this.groupBox15.TabStop = false;
             this.groupBox15.Text = "요청번호 할당 전송건 처리";
@@ -597,16 +725,16 @@
             this.groupBox12.Controls.Add(this.btnCheckSenderNumber);
             this.groupBox12.Controls.Add(this.btnGetSenderNumberMgtURL);
             this.groupBox12.Controls.Add(this.btnGetSenderNumberList);
-            this.groupBox12.Location = new System.Drawing.Point(791, 66);
+            this.groupBox12.Location = new System.Drawing.Point(688, 66);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(166, 132);
+            this.groupBox12.Size = new System.Drawing.Size(480, 60);
             this.groupBox12.TabIndex = 28;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "발신번호 관리";
             // 
             // btnCheckSenderNumber
             // 
-            this.btnCheckSenderNumber.Location = new System.Drawing.Point(8, 91);
+            this.btnCheckSenderNumber.Location = new System.Drawing.Point(320, 15);
             this.btnCheckSenderNumber.Name = "btnCheckSenderNumber";
             this.btnCheckSenderNumber.Size = new System.Drawing.Size(150, 32);
             this.btnCheckSenderNumber.TabIndex = 29;
@@ -616,7 +744,7 @@
             // 
             // btnGetSenderNumberMgtURL
             // 
-            this.btnGetSenderNumberMgtURL.Location = new System.Drawing.Point(8, 53);
+            this.btnGetSenderNumberMgtURL.Location = new System.Drawing.Point(164, 15);
             this.btnGetSenderNumberMgtURL.Name = "btnGetSenderNumberMgtURL";
             this.btnGetSenderNumberMgtURL.Size = new System.Drawing.Size(150, 32);
             this.btnGetSenderNumberMgtURL.TabIndex = 28;
@@ -883,6 +1011,10 @@
             this.GroupBox2.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.groupBox18.ResumeLayout(false);
+            this.groupBox18.PerformLayout();
+            this.groupBox17.ResumeLayout(false);
+            this.groupBox17.PerformLayout();
             this.groupBox16.ResumeLayout(false);
             this.groupBox16.PerformLayout();
             this.groupBox15.ResumeLayout(false);
@@ -971,6 +1103,18 @@
         internal System.Windows.Forms.Button btnGetPaymentURL;
         private System.Windows.Forms.Button btnGetContactInfo;
         private System.Windows.Forms.Button btnCheckSenderNumber;
+        private System.Windows.Forms.GroupBox groupBox18;
+        internal System.Windows.Forms.TextBox txtReciveNumRNbyRCV;
+        internal System.Windows.Forms.Label label10;
+        internal System.Windows.Forms.TextBox txtRequestNumbyRCV;
+        internal System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btnCancelReserveRNbyRCV;
+        private System.Windows.Forms.GroupBox groupBox17;
+        internal System.Windows.Forms.TextBox txtReciveNumbyRCV;
+        internal System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button btnCancelReservebyRCV;
+        internal System.Windows.Forms.TextBox txtReceiptNumbyRCV;
+        internal System.Windows.Forms.Label label7;
     }
 }
 

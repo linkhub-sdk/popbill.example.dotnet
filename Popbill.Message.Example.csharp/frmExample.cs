@@ -2,7 +2,7 @@
  * 팝빌 문자 API DotNet SDK Example
  *
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/message/tutorial/dotnet_csharp
- * - 업데이트 일자 : 2022-05-04
+ * - 업데이트 일자 : 2022-10-26
  * - 연동 기술지원 연락처 : 1600-9854
  * - 연동 기술지원 이메일 : code@linkhubcorp.com
  *
@@ -178,6 +178,7 @@ namespace Popbill.Message.Example.csharp
                 MessageBox.Show("접수번호 : " + receiptNum, "단문(SMS) 전송");
 
                 txtReceiptNum.Text = receiptNum;
+                txtReceiptNumbyRCV.Text = receiptNum;
             }
             catch (PopbillException ex)
             {
@@ -791,6 +792,46 @@ namespace Popbill.Message.Example.csharp
             try
             {
                 Response response = messageService.CancelReserveRN(txtCorpNum.Text, txtRequestNum.Text);
+
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "예약문자 전송 취소");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "예약문자 전송 취소");
+            }
+        }
+
+        /*
+        * 팝빌에서 반환받은 접수번호와 수신번호를 통해 예약접수된 문자 메시지 전송을 취소합니다. (예약시간 10분 전까지 가능)
+        * - https://docs.popbill.com/message/dotnet/api#CancelReservebyRCV
+        */
+        private void btnCancelReservebyRCV_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Response response = messageService.CancelReservebyRCV(txtCorpNum.Text, txtReceiptNumbyRCV.Text, txtReciveNumbyRCV.Text);
+
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message, "예약문자 전송 취소");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "예약문자 전송 취소");
+            }
+        }
+
+        /*
+        * 파트너가 할당한 전송요청 번호와 수신번호를 통해 예약접수된 문자 전송을 취소합니다. (예약시간 10분 전까지 가능)
+        * - https://docs.popbill.com/message/dotnet/api#CancelReserveRNbyRCV
+        */
+        private void btnCancelReserveRNbyRCV_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Response response = messageService.CancelReserveRNbyRCV(txtCorpNum.Text, txtRequestNumbyRCV.Text, txtReciveNumRNbyRCV.Text);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + response.message, "예약문자 전송 취소");
