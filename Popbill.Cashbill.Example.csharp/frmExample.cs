@@ -2,7 +2,7 @@
  * 팝빌 현금영수증 API DotNet SDK Example
  *
  * - DotNet C# SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/cashbill/tutorial/dotnet_csharp
- * - 업데이트 일자 : 2022-05-04
+ * - 업데이트 일자 : 2022-11-08
  * - 연동 기술지원 연락처 : 1600-9854
  * - 연동 기술지원 이메일 : code@linkhubcorp.com
  *
@@ -84,10 +84,10 @@ namespace Popbill.Cashbill.Example.csharp
         {
 
             // 메모
-            String memo = "현금영수증 즉시발행 메모";
+            string memo = "현금영수증 즉시발행 메모";
 
             // 안내메일 제목, 공백처리시 기본양식으로 전송
-            String emailSubject = "메일제목 테스트";
+            string emailSubject = "메일제목 테스트";
 
             Cashbill cashbill = new Cashbill();
 
@@ -141,7 +141,7 @@ namespace Popbill.Cashbill.Example.csharp
             // └ 소득공제용 - 주민등록/휴대폰/카드번호(현금영수증 카드)/자진발급용 번호(010-000-1234) 기재가능
             // └ 지출증빙용 - 사업자번호/주민등록/휴대폰/카드번호(현금영수증 카드) 기재가능
             // └ 주민등록번호 13자리, 휴대폰번호 10~11자리, 카드번호 13~19자리, 사업자번호 10자리 입력 가능
-            cashbill.identityNum = "";
+            cashbill.identityNum = "01012341324";
 
             // 주문자명
             cashbill.customerName = "주문자명";
@@ -165,6 +165,10 @@ namespace Popbill.Cashbill.Example.csharp
             // - {smssendYN} 의 값이 true 인 경우 아래 휴대폰번호로 안내 문자 전송
             cashbill.hp = "";
 
+            // 거래일시, 날짜(yyyyMMddHHmmss)
+            // 당일, 전일만 가능
+            cashbill.tradeDT = "20221108000000";
+
             try
             {
                 CBIssueResponse response = cashbillService.RegistIssue(txtCorpNum.Text, cashbill, memo, txtUserId.Text, emailSubject);
@@ -172,7 +176,8 @@ namespace Popbill.Cashbill.Example.csharp
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + response.message + "\r\n" +
                                 "국세청 승인번호(confirmNum) : " + response.confirmNum + "\r\n" +
-                                "거래일자(tradeDate) : " + response.tradeDate, "현금영수증 즉시발행");
+                                "거래일자(tradeDate) : " + response.tradeDate + "\r\n" +
+                                "거래일시(tradeDT) : " + response.tradeDT, "현금영수증 즉시발행");
             }
             catch (PopbillException ex)
             {
@@ -275,6 +280,10 @@ namespace Popbill.Cashbill.Example.csharp
                 // - {smssendYN} 의 값이 true 인 경우 아래 휴대폰번호로 안내 문자 전송
                 cashbill.hp = "";
 
+                // 거래일시, 날짜(yyyyMMddHHmmss)
+                // 당일, 전일만 가능
+                cashbill.tradeDT = "20221108000000";
+
                 cashbillList.Add(cashbill);
             }
 
@@ -304,7 +313,7 @@ namespace Popbill.Cashbill.Example.csharp
             {
                 BulkCashbillResult result = cashbillService.GetBulkResult(txtCorpNum.Text, txtSubmitID.Text);
 
-                String tmp = null;
+                string tmp = null;
 
                 tmp += "응답 코드(code) : " + result.code + CRLF;
                 tmp += "응답메시지(message) : " + result.message + CRLF;
@@ -329,6 +338,7 @@ namespace Popbill.Cashbill.Example.csharp
                         tmp += "문서번호(MgtKey) : " + issueResult.mgtKey + CRLF;
                         tmp += "국세청승인번호(confirmNum) : " + issueResult.confirmNum + CRLF;
                         tmp += "거래일자(tradeDate) : " + issueResult.tradeDate + CRLF;
+                        tmp += "거래일시(tradeDT) : " + issueResult.tradeDT + CRLF;
                         i++;
                     }
                 }
@@ -396,10 +406,10 @@ namespace Popbill.Cashbill.Example.csharp
         {
 
             // 원본현금영수증 국세청승인번호
-            String orgConfirmNum = "TB0000001";
+            string orgConfirmNum = "TB0000001";
 
             // 원본현금영수증 거래일자
-            String orgTradeDate = "20220501";
+            string orgTradeDate = "20220501";
 
             try
             {
@@ -408,7 +418,8 @@ namespace Popbill.Cashbill.Example.csharp
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + response.message + "\r\n" +
                                 "국세청 승인번호(confirmNum) : " + response.confirmNum + "\r\n" +
-                                "거래일자(tradeDate) : " + response.tradeDate, "취소현금영수증 즉시발행");
+                                "거래일자(tradeDate) : " + response.tradeDate + "\r\n" +
+                                "거래일시(tradeDT) : " + response.tradeDT, "취소현금영수증 즉시발행");
             }
             catch (PopbillException ex)
             {
@@ -426,10 +437,10 @@ namespace Popbill.Cashbill.Example.csharp
         private void btnRevokeRegistIssue_part_Click(object sender, EventArgs e)
         {
             // 원본 현금영수증 국세청승인번호
-            String orgConfirmNum = "TB0000015";
+            string orgConfirmNum = "TB0000015";
 
             // 원본현금영수증 거래일자
-            String orgTradeDate = "20220501";
+            string orgTradeDate = "20220501";
 
             // 안내 문자 전송여부 , true / false 중 택 1
             // └ true = 전송 , false = 미전송
@@ -437,7 +448,7 @@ namespace Popbill.Cashbill.Example.csharp
             bool smssendYN = false;
 
             // 메모
-            String memo = "부분 취소발행 메모";
+            string memo = "부분 취소발행 메모";
 
             // 현금영수증 취소유형 - true 기재
             bool isPartCancel = true;
@@ -449,30 +460,38 @@ namespace Popbill.Cashbill.Example.csharp
 
             // [취소] 공급가액
             // - 취소할 공급가액 입력
-            String supplyCost = "3000";
+            string supplyCost = "3000";
 
             // [취소] 부가세
             // - 취소할 부가세 입력
-            String tax = "300";
+            string tax = "300";
 
             // [취소] 봉사료
             // - 취소할 봉사료 입력
-            String serviceFee = "";
+            string serviceFee = "";
 
             // [취소] 거래금액 (공급가액+부가세+봉사료)
             // - 취소할 거래금액 입력
-            String totalAmount = "3300";
+            string totalAmount = "3300";
+
+            // 안내메일 제목, 공백처리시 기본양식으로 전송
+            string emailSubject = "메일제목 테스트";
+
+            // 거래일시, 날짜(yyyyMMddHHmmss)
+            // 당일, 전일만 가능
+            string tradeDT = "20221108000000";
 
             try
             {
                 CBIssueResponse response = cashbillService.RevokeRegistIssue(txtCorpNum.Text, txtMgtKey.Text,
                     orgConfirmNum, orgTradeDate, smssendYN, memo, txtUserId.Text, isPartCancel, cancelType,
-                    supplyCost, tax, serviceFee, totalAmount);
+                    supplyCost, tax, serviceFee, totalAmount, emailSubject, tradeDT);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + response.message + "\r\n" +
                                 "국세청 승인번호(confirmNum) : " + response.confirmNum + "\r\n" +
-                                "거래일자(tradeDate) : " + response.tradeDate, "(부분) 취소현금영수증 즉시발행");
+                                "거래일자(tradeDate) : " + response.tradeDate + "\r\n" +
+                                "거래일시(tradeDT) : " + response.tradeDT , "(부분) 취소현금영수증 즉시발행");
             }
             catch (PopbillException ex)
             {
@@ -499,6 +518,7 @@ namespace Popbill.Cashbill.Example.csharp
                 tmp += "itemKey (팝빌번호) : " + cashbillInfo.itemKey + CRLF;
                 tmp += "mgtKey (문서번호) : " + cashbillInfo.mgtKey + CRLF;
                 tmp += "tradeDate (거래일자) : " + cashbillInfo.tradeDate + CRLF;
+                tmp += "tradeDT (거래일시) : " + cashbillInfo.tradeDT + CRLF;
                 tmp += "tradeType (문서형태) : " + cashbillInfo.tradeType + CRLF;
                 tmp += "tradeUsage (거래구분) : " + cashbillInfo.tradeUsage + CRLF;
                 tmp += "tradeOpt (거래유형) : " + cashbillInfo.tradeOpt + CRLF;
@@ -556,6 +576,7 @@ namespace Popbill.Cashbill.Example.csharp
                     tmp += "itemKey (팝빌번호) : " + cashbillInfoList[i].itemKey + CRLF;
                     tmp += "mgtKey (문서번호) : " + cashbillInfoList[i].mgtKey + CRLF;
                     tmp += "tradeDate (거래일자) : " + cashbillInfoList[i].tradeDate + CRLF;
+                    tmp += "tradeDT (거래일시) : " + cashbillInfoList[i].tradeDT + CRLF;
                     tmp += "tradeType (문서형태) : " + cashbillInfoList[i].tradeType + CRLF;
                     tmp += "tradeUsage (거래구분) : " + cashbillInfoList[i].tradeUsage + CRLF;
                     tmp += "tradeOpt (거래유형) : " + cashbillInfoList[i].tradeOpt + CRLF;
@@ -607,6 +628,7 @@ namespace Popbill.Cashbill.Example.csharp
                 tmp += "orgConfirmNum (원본 현금영수증 국세청승인번호) : " + cashbill.orgConfirmNum + CRLF;
                 tmp += "orgTradeDate (원본 현금영수증 거래일자) : " + cashbill.orgTradeDate + CRLF;
                 tmp += "tradeDate (거래일자) : " + cashbill.tradeDate + CRLF;
+                tmp += "tradeDT (거래일시) : " + cashbill.tradeDT + CRLF;
                 tmp += "tradeType (문서형태) : " + cashbill.tradeType + CRLF;
                 tmp += "tradeUsage (거래구분) : " + cashbill.tradeUsage + CRLF;
                 tmp += "tradeOpt (거래유형) : " + cashbill.tradeOpt + CRLF;
@@ -647,37 +669,37 @@ namespace Popbill.Cashbill.Example.csharp
         {
             // 일자 유형 ("R" , "T" , "I" 중 택 1)
             // └ R = 등록일자 , T = 거래일자 , I = 발행일자
-            String DType = "T";
+            string DType = "T";
 
             // 시작일자, 날짜형식(yyyyMMdd)
-            String SDate = "20220501";
+            string SDate = "20220501";
 
             // 종료일자, 날짜형식(yyyyMMdd)
-            String EDate = "20220531";
+            string EDate = "20220531";
 
             // 상태코드 배열 (2,3번째 자리에 와일드카드(*) 사용 가능)
             // - 미입력시 전체조회
-            String[] State = new String[2];
+            string[] State = new string[2];
             State[0] = "3**";
 
             // 문서형태 배열 ("N" , "C" 중 선택, 다중 선택 가능)
             // - N = 일반 현금영수증 , C = 취소 현금영수증
             // - 미입력시 전체조회
-            String[] TradeType = new String[2];
+            string[] TradeType = new string[2];
             TradeType[0] = "N";
             TradeType[1] = "C";
 
             // 거래구분 배열 ("P" , "C" 중 선택, 다중 선택 가능)
             // - P = 소득공제용 , C = 지출증빙용
             // - 미입력시 전체조회
-            String[] TradeUsage = new String[2];
+            string[] TradeUsage = new string[2];
             TradeUsage[0] = "P";
             TradeUsage[1] = "C";
 
             // 거래유형 배열 ("N" , "B" , "T" 중 선택, 다중 선택 가능)
             // - N = 일반 , B = 도서공연 , T = 대중교통
             // - 미입력시 전체조회
-            String[] TradeOpt = new String[3];
+            string[] TradeOpt = new string[3];
             TradeOpt[0] = "N";
             TradeOpt[1] = "B";
             TradeOpt[2] = "T";
@@ -685,15 +707,15 @@ namespace Popbill.Cashbill.Example.csharp
             // 과세형태 배열 ("T" , "N" 중 선택, 다중 선택 가능)
             // - T = 과세 , N = 비과세
             // - 미입력시 전체조회
-            String[] TaxationType = new String[2];
+            string[] TaxationType = new string[2];
             TaxationType[0] = "T";
             TaxationType[1] = "N";
 
             // 식별번호 조회, 미기재시 전체조회
-            String QString = "";
+            string QString = "";
 
             // 정렬방향, A-오름차순, D-내림차순
-            String Order = "D";
+            string Order = "D";
 
             // 페이지 번호
             int Page = 1;
@@ -704,7 +726,7 @@ namespace Popbill.Cashbill.Example.csharp
             // 가맹점 종사업장 번호
             // └ 다수건 검색시 콤마(",")로 구분. 예) "1234,1000"
             // └ 미입력시 전제조회
-            String FranchiseTaxRegID = "";
+            string FranchiseTaxRegID = "";
 
             try
             {
@@ -712,7 +734,7 @@ namespace Popbill.Cashbill.Example.csharp
                 CBSearchResult searchResult = cashbillService.Search(txtCorpNum.Text, DType, SDate, EDate, State, TradeType,
                                             TradeUsage, TradeOpt, TaxationType, QString, Order, Page, PerPage, FranchiseTaxRegID);
 
-                String tmp = null;
+                string tmp = null;
 
                 tmp += "code (응답코드) : " + searchResult.code + CRLF;
                 tmp += "message (응답메시지) : " + searchResult.message + CRLF;
@@ -731,6 +753,7 @@ namespace Popbill.Cashbill.Example.csharp
                     tmp += cashbillInfo.itemKey + " | ";
                     tmp += cashbillInfo.mgtKey + " | ";
                     tmp += cashbillInfo.tradeDate + " | ";
+                    tmp += cashbillInfo.tradeDT + " | ";
                     tmp += cashbillInfo.tradeType + " | ";
                     tmp += cashbillInfo.tradeUsage + " | ";
                     tmp += cashbillInfo.tradeOpt + " | ";
@@ -776,7 +799,7 @@ namespace Popbill.Cashbill.Example.csharp
             {
                 List<CashbillLog> logList = cashbillService.GetLogs(txtCorpNum.Text, txtMgtKey.Text);
 
-                String tmp = "";
+                string tmp = "";
 
                 foreach (CashbillLog log in logList)
                 {
@@ -1083,11 +1106,11 @@ namespace Popbill.Cashbill.Example.csharp
         private void btnAssignMgtKey_Click(object sender, EventArgs e)
         {
             // 팝빌번호, 목록조회(Search) API의 반환항목중 ItemKey 참조
-            String itemKey = "";
+            string itemKey = "";
 
             // 할당할 문서번호, 숫자, 영문, '-', '_' 조합으로
             // 1~24자리까지 사업자번호별 중복없는 고유번호 할당
-            String mgtKey = "20220504-002";
+            string mgtKey = "20220504-002";
 
             try
             {
@@ -1109,7 +1132,7 @@ namespace Popbill.Cashbill.Example.csharp
          */
         private void btnListEmailConfig_Click(object sender, EventArgs e)
         {
-            String tmp = "";
+            string tmp = "";
             try
             {
                 List<EmailConfig> resultList = cashbillService.ListEmailConfig(txtCorpNum.Text);
@@ -1140,7 +1163,7 @@ namespace Popbill.Cashbill.Example.csharp
          */
         private void btnUpdateEmailConfig_Click(object sender, EventArgs e)
         {
-            String EmailType = "CSH_ISSUE";
+            string EmailType = "CSH_ISSUE";
 
             //전송여부 (True-전송, False-미전송)
             bool SendYN = true;
@@ -1545,13 +1568,13 @@ namespace Popbill.Cashbill.Example.csharp
         private void btnGetContactInfo_Click(object sender, EventArgs e)
         {
             // 확인할 담당자 아이디
-            String contactID = "DOTNET_CONTACT_PASS_TEST19";
+            string contactID = "DOTNET_CONTACT_PASS_TEST19";
 
             try
             {
                 Contact contactInfo = cashbillService.GetContactInfo(txtCorpNum.Text, contactID, txtUserId.Text);
 
-                String tmp = null;
+                string tmp = null;
 
                 tmp += "id (담당자 아이디) : " + contactInfo.id + CRLF;
                 tmp += "personName (담당자명) : " + contactInfo.personName + CRLF;
@@ -1666,234 +1689,6 @@ namespace Popbill.Cashbill.Example.csharp
         }
 
         /*
-         * 1건의 현금영수증을 [임시저장]합니다.
-         * - [임시저장] 상태의 현금영수증은 발행(Issue API)을 호출해야만 국세청에 전송됩니다.
-         */
-        private void btnRegister_Click(object sender, EventArgs e)
-        {
-            Cashbill cashbill = new Cashbill();
-
-            // 문서번호, 최대 24자리, 영문, 숫자 '-', '_'를 조합하여 사업자별로 중복되지 않도록 구성
-            cashbill.mgtKey = txtMgtKey.Text;
-
-            // [취소거래시 필수] 원본 현금영수증 국세청승인번호
-            cashbill.orgConfirmNum = "";
-
-            // [취소거래시 필수] 원본 현금영수증 거래일자
-            cashbill.orgTradeDate = "";
-
-            // 문서형태, { 승인거래, 취소거래 } 중 기재
-            cashbill.tradeType = "승인거래";
-
-            // 거래구분, { 소득공제용, 지출증빙용 } 중 기재
-            cashbill.tradeUsage = "소득공제용";
-
-            // 거래유형, { 일반, 도서공연, 대중교통 } 중 기재
-            cashbill.tradeOpt = "도서공연";
-
-            // 과세형태, { 과세, 비과세 } 중 기재
-            cashbill.taxationType = "과세";
-
-            // 거래금액 ( 공급가액 + 세액 + 봉사료 )
-            cashbill.totalAmount = "11000";
-
-            // 공급가액
-            cashbill.supplyCost = "10000";
-
-            // 부가세
-            cashbill.tax = "1000";
-
-            // 봉사료
-            cashbill.serviceFee = "0";
-
-            // 가맹점 사업자번호
-            cashbill.franchiseCorpNum = txtCorpNum.Text;
-
-            // 가맹점 종사업장 식별변호
-            cashbill.franchiseTaxRegID = "";
-
-            // 가맹점 상호
-            cashbill.franchiseCorpName = "가맹점 상호_abcd";
-
-            // 가맹점 대표자 성명
-            cashbill.franchiseCEOName = "가맹점 대표자";
-
-            // 가맹점 주소
-            cashbill.franchiseAddr = "가맹점 주소";
-
-            // 가맹점 전화번호
-            cashbill.franchiseTEL = "";
-
-            // 식별번호
-            // 거래구분(tradeUsage) - '소득공제용' 인 경우
-            // - 주민등록/휴대폰/카드번호 기재 가능
-            // 거래구분(tradeUsage) - '지출증빙용' 인 경우
-            // - 사업자번호/주민등록/휴대폰/카드번호 기재 가능
-            cashbill.identityNum = "0101112222";
-
-            // 주문자명
-            cashbill.customerName = "주문자명";
-
-            // 주문상품명
-            cashbill.itemName = "주문상품명";
-
-            // 주문번호
-            cashbill.orderNumber = "주문번호";
-
-            // 주문자 이메일
-            // 팝빌 개발환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
-            // 실제 거래처의 메일주소가 기재되지 않도록 주의
-            cashbill.email = "";
-
-            // 주문자 휴대폰
-            cashbill.hp = "";
-
-            // 주문자 팩스번호
-            cashbill.fax = "";
-
-            // 발행시 알림문자 전송여부
-            cashbill.smssendYN = false;
-
-            try
-            {
-                Response response = cashbillService.Register(txtCorpNum.Text, cashbill, txtUserId.Text);
-
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + response.message, "현금영수증 임시저장");
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "현금영수증 임시저장");
-            }
-        }
-
-        /*
-         * 1건의 현금영수증을 [수정]합니다.
-         * - [임시저장] 상태의 현금영수증만 수정할 수 있습니다.
-         */
-        private void Button7_Click(object sender, EventArgs e)
-        {
-            Cashbill cashbill = new Cashbill();
-
-            // 문서번호, 최대 24자리, 영문, 숫자 '-', '_'를 조합하여 사업자별로 중복되지 않도록 구성
-            cashbill.mgtKey = txtMgtKey.Text;
-
-            // 문서형태, {승인거래, 취소거래} 중 기재
-            cashbill.tradeType = "승인거래";
-
-            // 거래구분, {소득공제용, 지출증빙용} 중 기재
-            cashbill.tradeUsage = "소득공제용";
-
-            // 거래유형, {일반, 도서공연, 대중교통} 중 기재
-            cashbill.tradeOpt = "일반";
-
-            // 과세형태, { 과세, 비과세 } 중 기재
-            cashbill.taxationType = "과세";
-
-            // 거래금액 ( 공급가액 + 세액 + 봉사료 )
-            cashbill.totalAmount = "11000";
-
-            // 공급가액
-            cashbill.supplyCost = "10000";
-
-            // 부가세
-            cashbill.tax = "1000";
-
-            // 봉사료
-            cashbill.serviceFee = "0";
-
-
-            // 식별번호
-            // 거래구분(tradeUsage) - '소득공제용' 인 경우
-            // - 주민등록/휴대폰/카드번호 기재 가능
-            // 거래구분(tradeUsage) - '지출증빙용' 인 경우
-            // - 사업자번호/주민등록/휴대폰/카드번호 기재 가능
-            cashbill.identityNum = "0101112222";
-
-            // 가맹점 사업자번호
-            cashbill.franchiseCorpNum = txtCorpNum.Text;
-
-            // 가맹점 종사업장 식별변호
-            cashbill.franchiseTaxRegID = "";
-
-            // 가맹점 상호
-            cashbill.franchiseCorpName = "가맹점 상호_수정";
-
-            // 가맹점 대표자 성명
-            cashbill.franchiseCEOName = "가맹점 대표자_수정";
-
-            // 가맹점 주소
-            cashbill.franchiseAddr = "가맹점 주소";
-
-            // 가맹점 전화번호
-            cashbill.franchiseTEL = "";
-
-
-            // 주문자명
-            cashbill.customerName = "주문자명";
-
-            // 주문상품명
-            cashbill.itemName = "주문상품명";
-
-            // 주문번호
-            cashbill.orderNumber = "주문번호";
-
-            // 주문자 이메일
-            // 팝빌 개발환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
-            // 실제 거래처의 메일주소가 기재되지 않도록 주의
-            cashbill.email = "";
-
-            // 주문자 휴대폰
-            cashbill.hp = "";
-
-            // 주문자 팩스번호
-            cashbill.fax = "";
-
-            // 발행시 알림문자 전송여부
-            cashbill.smssendYN = false;
-
-            try
-            {
-                Response response = cashbillService.Update(txtCorpNum.Text, txtMgtKey.Text, cashbill, txtUserId.Text);
-
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + response.message, "현금영수증 수정");
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "현금영수증 수정");
-            }
-        }
-
-        /*
-         * 1건의 [임시저장] 현금영수증을 [발행]합니다.
-         * - 현금영수증 국세청 전송 정책 : https://docs.popbill.com/cashbill/ntsSendPolicy?lang=dotnet
-         * - https://docs.popbill.com/cashbill/dotnet/api#CBIssue
-         */
-        private void btnIssue_Click(object sender, EventArgs e)
-        {
-            // 메모
-            string memo = "발행 메모";
-
-            try
-            {
-                CBIssueResponse response = cashbillService.Issue(txtCorpNum.Text, txtMgtKey.Text, memo, txtUserId.Text);
-
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + response.message + "\r\n" +
-                                "국세청 승인번호(confirmNum) : " + response.confirmNum + "\r\n" +
-                                "거래일자(tradeDate) : " + response.tradeDate, "현금영수증 발행");
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "현금영수증 발행");
-            }
-        }
-
-        /*
          * 1건의 현금영수증 인쇄 팝업 URL을 반환합니다. (공급받는자용)
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
          */
@@ -1911,6 +1706,11 @@ namespace Popbill.Cashbill.Example.csharp
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
                                 "응답메시지(message) : " + ex.Message, "현금영수증 인쇄 팝업 URL - 공급받는자용");
             }
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

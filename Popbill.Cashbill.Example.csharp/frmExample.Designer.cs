@@ -556,6 +556,7 @@
             this.label11.TabIndex = 6;
             this.label11.Text = "즉시발행";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // GroupBox13
             // 
