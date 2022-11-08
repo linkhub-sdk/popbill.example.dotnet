@@ -342,56 +342,8 @@ namespace Popbill.Cashbill.Example.csharp
         }
 
         /*
-         * 국세청 전송 이전 "발행완료" 상태의 현금영수증을 "발행취소"하고 국세청 신고 대상에서 제외합니다.
-         * - 삭제(Delete API) 함수를 호출하여 "발행취소" 상태의 현금영수증을 삭제하면, 문서번호 재사용이 가능합니다.
-         * - https://docs.popbill.com/cashbill/dotnet/api#CancelIssue
-         */
-        private void btnCancelIssue_Click(object sender, EventArgs e)
-        {
-            // 메모
-            string memo = "발행취소 메모";
-
-            try
-            {
-                Response response = cashbillService.CancelIssue(txtCorpNum.Text, txtMgtKey.Text, memo, txtUserId.Text);
-
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + response.message, "현금영수증 발행취소");
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "현금영수증 발행취소");
-            }
-        }
-
-        /*
-         * 국세청 전송 이전 "발행완료" 상태의 현금영수증을 "발행취소"하고 국세청 신고 대상에서 제외합니다.
-         * - Delete(삭제)함수를 호출하여 "발행취소" 상태의 현금영수증을 삭제하면, 문서번호 재사용이 가능합니다.
-         * - https://docs.popbill.com/cashbill/dotnet/api#CancelIssue
-         */
-        private void btnRevokeCancelIssue_Click(object sender, EventArgs e)
-        {
-            // 메모
-            string memo = "발행취소 메모";
-
-            try
-            {
-                Response response = cashbillService.CancelIssue(txtCorpNum.Text, txtMgtKey.Text, memo, txtUserId.Text);
-
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + response.message, "취소현금영수증 발행취소");
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "취소현금영수증 발행취소");
-            }
-        }
-
-        /*
          * 삭제 가능한 상태의 현금영수증을 삭제합니다.
-         * - 삭제 가능한 상태: "임시저장", "발행취소", "전송실패"
+         * - 삭제 가능한 상태: "전송실패"
          * - 현금영수증을 삭제하면 사용된 문서번호(mgtKey)를 재사용할 수 있습니다.
          * - https://docs.popbill.com/cashbill/dotnet/api#Delete
          */
@@ -414,7 +366,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /*
          * 삭제 가능한 상태의 현금영수증을 삭제합니다.
-         * - 삭제 가능한 상태: "임시저장", "발행취소", "전송실패"
+         * - 삭제 가능한 상태: "전송실패"
          * - 현금영수증을 삭제하면 사용된 문서번호(mgtKey)를 재사용할 수 있습니다.
          * - https://docs.popbill.com/cashbill/dotnet/api#Delete
          */
@@ -707,7 +659,6 @@ namespace Popbill.Cashbill.Example.csharp
             // - 미입력시 전체조회
             String[] State = new String[2];
             State[0] = "3**";
-            State[1] = "4**";
 
             // 문서형태 배열 ("N" , "C" 중 선택, 다중 선택 가능)
             // - N = 일반 현금영수증 , C = 취소 현금영수증
@@ -1961,6 +1912,5 @@ namespace Popbill.Cashbill.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "현금영수증 인쇄 팝업 URL - 공급받는자용");
             }
         }
-
     }
 }
