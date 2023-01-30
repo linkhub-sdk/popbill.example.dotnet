@@ -1,7 +1,7 @@
 ﻿/*
  * 팝빌 계좌조회 API DotNet SDK Example
  *
- * - DotNet C# SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/easyfinbank/tutorial/dotnet_csharp
+ * - DotNet C# SDK 연동환경 설정방법 안내 : [개발가이드] - https://developers.popbill.com/guide/easyfinbank/dotnet/getting-started/tutorial?fwn=csharp
  * - 업데이트 일자 : 2022-05-04
  * - 연동 기술지원 연락처 : 1600-9854
  * - 연동 기술지원 이메일 : code@linkhubcorp.com
@@ -57,7 +57,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
         /*
          * 계좌조회 서비스를 이용할 계좌를 팝빌에 등록합니다.
-         * - https://docs.popbill.com/easyfinbank/dotnet/api#RegistBankAccount
+         * - https://developers.popbill.com/reference/easyfinbank/dotnet/api/manage#RegistBankAccount
          */
         private void btnRegistBankAccount_Click(object sender, EventArgs e)
         {
@@ -119,7 +119,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
         /*
          * 팝빌에 등록된 계좌정보를 수정합니다.
-         * - https://docs.popbill.com/easyfinbank/dotnet/api#UpdateBankAccount
+         * - https://developers.popbill.com/reference/easyfinbank/dotnet/api/manage#UpdateBankAccount
          */
         private void btnUpdateBankAccount_Click(object sender, EventArgs e)
         {
@@ -169,7 +169,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
         /*
          * 팝빌에 등록된 계좌 정보를 확인합니다.
-         * - https://docs.popbill.com/easyfinbank/dotnet/api#GetBankAccountInfo
+         * - https://developers.popbill.com/reference/easyfinbank/dotnet/api/manage#GetBankAccountInfo
          */
         private void btnGetBankAccountInfo_Click(object sender, EventArgs e)
         {
@@ -216,7 +216,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
         /*
          * 팝빌에 등록된 은행계좌 목록을 반환한다.
-         * - https://docs.popbill.com/easyfinbank/dotnet/api#ListBankAccount
+         * - https://developers.popbill.com/reference/easyfinbank/dotnet/api/manage#ListBankAccount
          */
         private void btnListBankAccount_Click(object sender, EventArgs e)
         {
@@ -264,7 +264,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
         /*
          * 계좌 등록, 수정 및 삭제할 수 있는 계좌 관리 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://docs.popbill.com/easyfinbank/dotnet/api#GetBankAccountMgtURL
+         * - https://developers.popbill.com/reference/easyfinbank/dotnet/api/manage#GetBankAccountMgtURL
          */
         private void btnBankAccountMgtURL_Click(object sender, EventArgs e)
         {
@@ -284,7 +284,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
         /*
          * 계좌의 정액제 해지를 요청합니다.
-         * - https://docs.popbill.com/easyfinbank/dotnet/api#CloseBankAccount
+         * - https://developers.popbill.com/reference/easyfinbank/dotnet/api/manage#CloseBankAccount
          */
         private void btnCloseBankAccount_Click(object sender, EventArgs e)
         {
@@ -320,7 +320,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
         /*
          * 신청한 정액제 해지요청을 취소합니다.
-         * - https://docs.popbill.com/easyfinbank/dotnet/api#RevokeCloseBankAccount
+         * - https://developers.popbill.com/reference/easyfinbank/dotnet/api/manage#RevokeCloseBankAccount
          */
         private void btnRevokeCloseBankAccount_Click(object sender, EventArgs e)
         {
@@ -352,7 +352,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
          * 등록된 계좌를 삭제합니다.
          * - 정액제가 아닌 종량제 이용 시에만 등록된 계좌를 삭제할 수 있습니다.
          * - 정액제 이용 시 정액제 해지요청(CloseBankAccount API) 함수를 사용하여 정액제를 해제할 수 있습니다.
-         * - https://docs.popbill.com/easyfinbank/dotnet/api#DeleteBankAccount
+         * - https://developers.popbill.com/reference/easyfinbank/dotnet/api/manage#DeleteBankAccount
          */
         private void btnDeleteBankAccount_Click(object sender, EventArgs e)
         {
@@ -383,7 +383,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
          * 계좌 거래내역을 확인하기 위해 팝빌에 수집요청을 합니다. (조회기간 단위 : 최대 1개월)
          * - 조회일로부터 최대 3개월 이전 내역까지 조회할 수 있습니다.
          * - 반환 받은 작업아이디는 함수 호출 시점부터 1시간 동안 유효합니다.
-         * - https://docs.popbill.com/easyfinbank/dotnet/api#RequestJob
+         * - https://developers.popbill.com/reference/easyfinbank/dotnet/api/job#RequestJob
          */
         private void btnRequestJob_Click(object sender, EventArgs e)
         {
@@ -422,7 +422,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
          *   거래 내역 조회(Search) 또는 거래 요약 정보 조회(Summary) 를 해야합니다.
          * - 작업 상태(jobState)가 3(완료)이지만 수집 결과 코드(errorCode)가 1(수집성공)이 아닌 경우에는
          *   오류메시지(errorReason)로 수집 실패에 대한 원인을 파악할 수 있습니다.
-         * - https://docs.popbill.com/easyfinbank/dotnet/api#GetJobState
+         * - https://developers.popbill.com/reference/easyfinbank/dotnet/api/job#GetJobState
          */
         private void btnGetJobState_Click(object sender, EventArgs e)
         {
@@ -452,7 +452,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
         /*
          * 수집 요청(RequestJob API) 함수를 통해 반환 받은 작업아이디의 목록을 확인합니다.
          * - 수집 요청 후 1시간이 경과한 수집 요청건은 상태정보가 반환되지 않습니다.
-         * - https://docs.popbill.com/easyfinbank/dotnet/api#ListActiveJob
+         * - https://developers.popbill.com/reference/easyfinbank/dotnet/api/job#ListActiveJob
          */
         private void btnListActiveJob_Click(object sender, EventArgs e)
         {
@@ -491,7 +491,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
         /*
          * 수집 상태 확인(GetJobState API) 함수를 통해 상태 정보가 확인된 작업아이디를 활용하여 계좌 거래 내역을 조회합니다.
-         * - https://docs.popbill.com/easyfinbank/dotnet/api#Search
+         * - https://developers.popbill.com/reference/easyfinbank/dotnet/api/search#Search
          */
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -566,7 +566,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
         /*
          * 수집 상태 확인(GetJobState API) 함수를 통해 상태 정보가 확인된 작업아이디를 활용하여 계좌 거래내역의 요약 정보를 조회합니다.
          * - 요약 정보는 입·출 금액 합계, 입·출 거래 건수를 가리킵니다.
-         * - https://docs.popbill.com/easyfinbank/dotnet/api#Summary
+         * - https://developers.popbill.com/reference/easyfinbank/dotnet/api/search#Summary
          */
         private void btnSummary_Click(object sender, EventArgs e)
         {
@@ -604,7 +604,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
         /*
          * 한 건의 거래 내역에 메모를 저장합니다.
-         * - https://docs.popbill.com/easyfinbank/dotnet/api#SaveMemo
+         * - https://developers.popbill.com/reference/easyfinbank/dotnet/api/search#SaveMemo
          */
         private void btnSaveMemo_Click(object sender, EventArgs e)
         {
@@ -632,7 +632,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
         /*
          * 계좌조회 정액제 서비스 신청 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://docs.popbill.com/easyfinbank/dotnet/api#GetFlatRatePopUpURL
+         * - https://developers.popbill.com/reference/easyfinbank/dotnet/api/point#GetFlatRatePopUpURL
          */
         private void btnGetFlatRatePopUpURL_Click(object sender, EventArgs e)
         {
@@ -652,7 +652,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
         /*
          * 계좌조회 정액제 서비스 상태를 확인합니다.
-         * - https://docs.popbill.com/easyfinbank/dotnet/api#GetFlatRateState
+         * - https://developers.popbill.com/reference/easyfinbank/dotnet/api/point#GetFlatRateState
          */
         private void btnGetFlatRateState_Click(object sender, EventArgs e)
         {
@@ -689,7 +689,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
         /*
          * 연동회원의 잔여포인트를 확인합니다.
          * - 과금방식이 파트너과금인 경우 파트너 잔여포인트 확인(GetPartnerBalance API) 함수를 통해 확인하시기 바랍니다.
-         * - https://docs.popbill.com/easyfinbank/dotnet/api#GetBalance
+         * - https://developers.popbill.com/reference/easyfinbank/dotnet/api/point#GetBalance
          */
         private void btnGetBalance_Click(object sender, EventArgs e)
         {
@@ -711,7 +711,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
         /*
          * 연동회원 포인트 충전을 위한 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://docs.popbill.com/easyfinbank/dotnet/api#GetChargeURL
+         * - https://developers.popbill.com/reference/easyfinbank/dotnet/api/point#GetChargeURL
          */
         private void btnGetChargeURL_Click(object sender, EventArgs e)
         {
@@ -732,7 +732,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
         /*
          * 연동회원 포인트 결제내역 확인을 위한 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://docs.popbill.com/easyfinbank/dotnet/api#GetPaymentURL
+         * - https://developers.popbill.com/reference/easyfinbank/dotnet/api/point#GetPaymentURL
          */
         private void btnGetPaymentURL_Click(object sender, EventArgs e)
         {
@@ -753,7 +753,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
         /*
          * 연동회원 포인트 사용내역 확인을 위한 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://docs.popbill.com/easyfinbank/dotnet/api#GetUseHistoryURL
+         * - https://developers.popbill.com/reference/easyfinbank/dotnet/api/point#GetUseHistoryURL
          */
         private void btnGetUseHistoryURL_Click(object sender, EventArgs e)
         {
@@ -774,7 +774,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
         /*
          * 파트너의 잔여포인트를 확인합니다.
          * - 과금방식이 연동과금인 경우 연동회원 잔여포인트 확인(GetBalance API) 함수를 이용하시기 바랍니다.
-         * - https://docs.popbill.com/easyfinbank/dotnet/api#GetPartnerBalance
+         * - https://developers.popbill.com/reference/easyfinbank/dotnet/api/point#GetPartnerBalance
          */
         private void btnGetPartnerBalance_Click(object sender, EventArgs e)
         {
@@ -795,7 +795,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
         /*
          * 파트너 포인트 충전을 위한 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://docs.popbill.com/easyfinbank/dotnet/api#GetPartnerURL
+         * - https://developers.popbill.com/reference/easyfinbank/dotnet/api/point#GetPartnerURL
          */
         private void btnGetPartnerURL_Click(object sender, EventArgs e)
         {
@@ -815,7 +815,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
         /*
          * 팝빌 계좌조회 API 서비스 과금정보를 확인합니다.
-         * - https://docs.popbill.com/easyfinbank/dotnet/api#GetChargeInfo
+         * - https://developers.popbill.com/reference/easyfinbank/dotnet/api/point#GetChargeInfo
          */
         private void btnGetChargeInfo_Click(object sender, EventArgs e)
         {
@@ -839,7 +839,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
         /*
          * 사업자번호를 조회하여 연동회원 가입여부를 확인합니다.
-         * - https://docs.popbill.com/easyfinbank/dotnet/api#CheckIsMember
+         * - https://developers.popbill.com/reference/easyfinbank/dotnet/api/member#CheckIsMember
          */
         private void btnCheckIsMember_Click(object sender, EventArgs e)
         {
@@ -859,7 +859,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
         /*
          * 사용하고자 하는 아이디의 중복여부를 확인합니다.
-         * - https://docs.popbill.com/easyfinbank/dotnet/api#CheckID
+         * - https://developers.popbill.com/reference/easyfinbank/dotnet/api/member#CheckID
          */
         private void btnCheckID_Click(object sender, EventArgs e)
         {
@@ -879,7 +879,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
         /*
          * 사용자를 연동회원으로 가입처리합니다.
-         * - https://docs.popbill.com/easyfinbank/dotnet/api#JoinMember
+         * - https://developers.popbill.com/reference/easyfinbank/dotnet/api/member#JoinMember
          */
         private void btnJoinMember_Click(object sender, EventArgs e)
         {
@@ -938,7 +938,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
         /*
          * 팝빌 사이트에 로그인 상태로 접근할 수 있는 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://docs.popbill.com/easyfinbank/dotnet/api#GetAccessURL
+         * - https://developers.popbill.com/reference/easyfinbank/dotnet/api/member#GetAccessURL
          */
         private void btnGetAccessURL_Click(object sender, EventArgs e)
         {
@@ -959,7 +959,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
         /*
          * 연동회원 사업자번호에 담당자(팝빌 로그인 계정)를 추가합니다.
-         * - https://docs.popbill.com/easyfinbank/dotnet/api#RegistContact
+         * - https://developers.popbill.com/reference/easyfinbank/dotnet/api/member#RegistContact
          */
         private void btnRegistContact_Click(object sender, EventArgs e)
         {
@@ -1000,7 +1000,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
         /*
          * 연동회원 사업자번호에 등록된 담당자(팝빌 로그인 계정) 정보을 확인합니다.
-         * - https://docs.popbill.com/easyfinbank/dotnet/api#GetContactInfo
+         * - https://developers.popbill.com/reference/easyfinbank/dotnet/api/member#GetContactInfo
          */
         private void btnGetContactInfo_Click(object sender, EventArgs e)
         {
@@ -1034,7 +1034,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
         /*
          * 연동회원 사업자번호에 등록된 담당자(팝빌 로그인 계정) 목록을 확인합니다.
-         * - https://docs.popbill.com/easyfinbank/dotnet/api#ListContact
+         * - https://developers.popbill.com/reference/easyfinbank/dotnet/api/member#ListContact
          */
         private void btnListContact_Click(object sender, EventArgs e)
         {
@@ -1067,7 +1067,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
         /*
          * 연동회원 사업자번호에 등록된 담당자(팝빌 로그인 계정) 정보를 수정합니다.
-         * - https://docs.popbill.com/easyfinbank/dotnet/api#UpdateContact
+         * - https://developers.popbill.com/reference/easyfinbank/dotnet/api/member#UpdateContact
          */
         private void btnUpdateContact_Click(object sender, EventArgs e)
         {
@@ -1104,7 +1104,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
         /*
          * 연동회원의 회사정보를 확인합니다.
-         * - https://docs.popbill.com/easyfinbank/dotnet/api#GetCorpInfo
+         * - https://developers.popbill.com/reference/easyfinbank/dotnet/api/member#GetCorpInfo
          */
         private void btnGetCorpInfo_Click(object sender, EventArgs e)
         {
@@ -1130,7 +1130,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
         /*
          * 연동회원의 회사정보를 수정합니다.
-         * - https://docs.popbill.com/easyfinbank/dotnet/api#UpdateCorpInfo
+         * - https://developers.popbill.com/reference/easyfinbank/dotnet/api/member#UpdateCorpInfo
          */
         private void btnUpdateCorpInfo_Click(object sender, EventArgs e)
         {

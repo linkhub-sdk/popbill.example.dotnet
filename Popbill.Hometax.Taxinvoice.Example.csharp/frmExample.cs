@@ -1,7 +1,7 @@
 ﻿/*
  * 팝빌 홈택스 전자세금계산서 연계 API DotNet SDK Example
  *
- * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/httaxinvoice/tutorial/dotnet_csharp
+ * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - https://developers.popbill.com/guide/httaxinvoice/dotnet/getting-started/tutorial?fwn=csharp
  * - 업데이트 일자 : 2022-05-04
  * - 연동 기술지원 연락처 : 1600-9854
  * - 연동 기술지원 이메일 : code@linkhubcorp.com
@@ -60,7 +60,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
 
         /*
          * 홈택스에 신고된 전자세금계산서 매입/매출 내역 수집을 팝빌에 요청합니다. (조회기간 단위 : 최대 3개월)
-         * - https://docs.popbill.com/httaxinvoice/dotnet/api#RequestJob
+         * - https://developers.popbill.com/reference/httaxinvoice/dotnet/api/job#RequestJob
          */
         private void btnRequestJob_Click(object sender, EventArgs e)
         {
@@ -99,7 +99,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
          *   수집 결과 내역 조회(Search) 또는 수집 결과 요약 정보 조회(Summary)를 해야합니다.
          * - 작업 상태(jobState)가 3(완료)이지만 수집 결과 코드(errorCode)가 1(수집성공)이 아닌 경우에는
          *   오류메시지(errorReason)로 수집 실패에 대한 원인을 파악할 수 있습니다.
-         * - https://docs.popbill.com/httaxinvoice/dotnet/api#GetJobState
+         * - https://developers.popbill.com/reference/httaxinvoice/dotnet/api/job#GetJobState
          */
         private void btnGetJobState_Click(object sender, EventArgs e)
         {
@@ -132,7 +132,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
         /*
          * 전자세금계산서 매입/매출 내역 수집요청에 대한 상태 목록을 확인합니다.
          * - 수집 요청 후 1시간이 경과한 수집 요청건은 상태정보가 반환되지 않습니다.
-         * - https://docs.popbill.com/httaxinvoice/dotnet/api#ListActiveJob
+         * - https://developers.popbill.com/reference/httaxinvoice/dotnet/api/job#ListActiveJob
          */
         private void btnListActiveJob_Click(object sender, EventArgs e)
         {
@@ -177,7 +177,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
 
         /*
          * 수집 상태 확인(GetJobState API) 함수를 통해 상태 정보가 확인된 작업아이디를 활용하여 수집된 전자세금계산서 매입/매출 내역을 조회합니다.
-         * - https://docs.popbill.com/httaxinvoice/dotnet/api#Search
+         * - https://developers.popbill.com/reference/httaxinvoice/dotnet/api/search#Search
          */
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -281,7 +281,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
         /*
          * 수집 상태 확인(GetJobState API) 함수를 통해 상태 정보가 확인된 작업아이디를 활용하여 수집된 전자세금계산서 매입/매출 내역의 요약 정보를 조회합니다.
          * - 요약 정보 : 전자세금계산서 수집 건수, 공급가액 합계, 세액 합계, 합계 금액
-         * - https://docs.popbill.com/httaxinvoice/dotnet/api#Summary
+         * - https://developers.popbill.com/reference/httaxinvoice/dotnet/api/search#Summary
          */
         private void btnSummary_Click(object sender, EventArgs e)
         {
@@ -341,7 +341,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
 
         /*
          * 국세청 승인번호를 통해 수집한 전자세금계산서 1건의 상세정보를 반환합니다.
-         * - https://docs.popbill.com/httaxinvoice/dotnet/api#GetTaxinvoice
+         * - https://developers.popbill.com/reference/httaxinvoice/dotnet/api/search#GetTaxinvoice
          */
         private void btnGetTaxinvocie_Click(object sender, EventArgs e)
         {
@@ -426,7 +426,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
 
         /*
          * 국세청 승인번호를 통해 수집한 전자세금계산서 1건의 상세정보를 XML 형태의 문자열로 반환합니다.
-         * - https://docs.popbill.com/httaxinvoice/dotnet/api#GetXML
+         * - https://developers.popbill.com/reference/httaxinvoice/dotnet/api/search#GetXML
          */
         private void btnGetXML_Click(object sender, EventArgs e)
         {
@@ -450,7 +450,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
         /*
          * 수집된 전자세금계산서 1건의 상세내역을 확인하는 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://docs.popbill.com/httaxinvoice/dotnet/api#GetPopUpURL
+         * - https://developers.popbill.com/reference/httaxinvoice/dotnet/api/search#GetPopUpURL
          */
         private void btnGetPopUpURL_Click(object sender, EventArgs e)
         {
@@ -474,7 +474,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
         /*
          * 수집된 전자세금계산서 1건의 상세내역을 인쇄하는 페이지의 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://docs.popbill.com/httaxinvoice/dotnet/api#GetPrintURL
+         * - https://developers.popbill.com/reference/httaxinvoice/dotnet/api/search#GetPrintURL
          */
         private void btnGetPrintURL_Click(object sender, EventArgs e)
         {
@@ -498,7 +498,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
         /*
          * 홈택스연동 인증정보를 관리하는 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://docs.popbill.com/httaxinvoice/dotnet/api#GetCertificatePopUpURL
+         * - https://developers.popbill.com/reference/httaxinvoice/dotnet/api/cert#GetCertificatePopUpURL
          */
         private void btnGetCertificatePopUpURL_Click(object sender, EventArgs e)
         {
@@ -518,7 +518,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
 
         /*
          * 팝빌에 등록된 인증서 만료일자를 확인합니다.
-         * - https://docs.popbill.com/httaxinvoice/dotnet/api#GetCertificateExpireDate
+         * - https://developers.popbill.com/reference/httaxinvoice/dotnet/api/cert#GetCertificateExpireDate
          */
         private void btnGetCertificateExpireDate_Click(object sender, EventArgs e)
         {
@@ -538,7 +538,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
 
         /*
          * 팝빌에 등록된 인증서로 홈택스 로그인 가능 여부를 확인합니다.
-         * - https://docs.popbill.com/httaxinvoice/dotnet/api#CheckCertValidation
+         * - https://developers.popbill.com/reference/httaxinvoice/dotnet/api/cert#CheckCertValidation
          */
         private void btnCheckCertValidation_Click(object sender, EventArgs e)
         {
@@ -558,7 +558,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
 
         /*
          * 홈택스연동 인증을 위해 팝빌에 전자세금계산서용 부서사용자 계정을 등록합니다.
-         * - https://docs.popbill.com/httaxinvoice/dotnet/api#RegistDeptUser
+         * - https://developers.popbill.com/reference/httaxinvoice/dotnet/api/cert#RegistDeptUser
          */
         private void btnRegistDeptUser_Click(object sender, EventArgs e)
         {
@@ -584,7 +584,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
 
         /*
          * 홈택스연동 인증을 위해 팝빌에 등록된 전자세금계산서용 부서사용자 계정을 확인합니다.
-         * - https://docs.popbill.com/httaxinvoice/dotnet/api#CheckDeptUser
+         * - https://developers.popbill.com/reference/httaxinvoice/dotnet/api/cert#CheckDeptUser
          */
         private void btnCheckDeptUser_Click(object sender, EventArgs e)
         {
@@ -604,7 +604,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
 
         /*
          * 팝빌에 등록된 전자세금계산서용 부서사용자 계정 정보로 홈택스 로그인 가능 여부를 확인합니다.
-         * - https://docs.popbill.com/httaxinvoice/dotnet/api#CheckLoginDeptUser
+         * - https://developers.popbill.com/reference/httaxinvoice/dotnet/api/cert#CheckLoginDeptUser
          */
         private void btnCheckLoginDeptUser_Click(object sender, EventArgs e)
         {
@@ -624,7 +624,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
 
         /*
          * 팝빌에 등록된 홈택스 전자세금계산서용 부서사용자 계정을 삭제합니다.
-         * - https://docs.popbill.com/httaxinvoice/dotnet/api#DeleteDeptUser
+         * - https://developers.popbill.com/reference/httaxinvoice/dotnet/api/cert#DeleteDeptUser
          */
         private void btnDeleteDeptUser_Click(object sender, EventArgs e)
         {
@@ -645,7 +645,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
         /*
          * 홈택스연동 정액제 서비스 신청 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://docs.popbill.com/httaxinvoice/dotnet/api#GetFlatRatePopUpURL
+         * - https://developers.popbill.com/reference/httaxinvoice/dotnet/api/point#GetFlatRatePopUpURL
          */
         private void btnGetFlatRatePopUpURL_Click(object sender, EventArgs e)
         {
@@ -665,7 +665,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
 
         /*
          * 홈택스연동 정액제 서비스 상태를 확인합니다.
-         * - https://docs.popbill.com/httaxinvoice/dotnet/api#GetFlatRateState
+         * - https://developers.popbill.com/reference/httaxinvoice/dotnet/api/point#GetFlatRateState
          */
         private void btnGetFlatRateState_Click(object sender, EventArgs e)
         {
@@ -696,7 +696,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
         /*
          * 연동회원의 잔여포인트를 확인합니다.
          * - 과금방식이 파트너과금인 경우 파트너 잔여포인트 확인(GetPartnerBalance API) 함수를 통해 확인하시기 바랍니다.
-         * - https://docs.popbill.com/httaxinvoice/dotnet/api#GetBalance
+         * - https://developers.popbill.com/reference/httaxinvoice/dotnet/api/point#GetBalance
          */
         private void btnGetBalance_Click(object sender, EventArgs e)
         {
@@ -718,7 +718,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
         /*
          * 연동회원 포인트 충전을 위한 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://docs.popbill.com/httaxinvoice/dotnet/api#GetChargeURL
+         * - https://developers.popbill.com/reference/httaxinvoice/dotnet/api/point#GetChargeURL
          */
         private void btnGetChargeURL_Click(object sender, EventArgs e)
         {
@@ -739,7 +739,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
         /*
          * 연동회원 포인트 결제내역 확인을 위한 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://docs.popbill.com/httaxinvoice/dotnet/api#GetPaymentURL
+         * - https://developers.popbill.com/reference/httaxinvoice/dotnet/api/point#GetPaymentURL
          */
         private void btnGetPaymentURL_Click(object sender, EventArgs e)
         {
@@ -760,7 +760,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
         /*
          * 연동회원 포인트 사용내역 확인을 위한 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://docs.popbill.com/httaxinvoice/dotnet/api#GetUseHistoryURL
+         * - https://developers.popbill.com/reference/httaxinvoice/dotnet/api/point#GetUseHistoryURL
          */
         private void btnGetUseHistoryURL_Click(object sender, EventArgs e)
         {
@@ -781,7 +781,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
         /*
          * 파트너의 잔여포인트를 확인합니다.
          * - 과금방식이 연동과금인 경우 연동회원 잔여포인트 확인(GetBalance API) 함수를 이용하시기 바랍니다.
-         * - https://docs.popbill.com/httaxinvoice/dotnet/api#GetPartnerBalance
+         * - https://developers.popbill.com/reference/httaxinvoice/dotnet/api/point#GetPartnerBalance
          */
         private void btnGetPartnerBalance1_Click(object sender, EventArgs e)
         {
@@ -802,7 +802,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
         /*
          * 파트너 포인트 충전을 위한 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://docs.popbill.com/httaxinvoice/dotnet/api#GetPartnerURL
+         * - https://developers.popbill.com/reference/httaxinvoice/dotnet/api/point#GetPartnerURL
          */
         private void btnGetPartnerURL_Click(object sender, EventArgs e)
         {
@@ -822,7 +822,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
 
         /*
          * 팝빌 홈택스연동(세금) API 서비스 과금정보를 확인합니다.
-         * - https://docs.popbill.com/httaxinvoice/dotnet/api#GetChargeInfo
+         * - https://developers.popbill.com/reference/httaxinvoice/dotnet/api/point#GetChargeInfo
          */
         private void btnGetChargeInfo_Click(object sender, EventArgs e)
         {
@@ -846,7 +846,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
 
         /*
          * 사업자번호를 조회하여 연동회원 가입여부를 확인합니다.
-         * - https://docs.popbill.com/httaxinvoice/dotnet/api#CheckIsMember
+         * - https://developers.popbill.com/reference/httaxinvoice/dotnet/api/member#CheckIsMember
          */
         private void btnCheckIsMember_Click(object sender, EventArgs e)
         {
@@ -866,7 +866,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
 
         /*
          * 사용하고자 하는 아이디의 중복여부를 확인합니다.
-         * - https://docs.popbill.com/httaxinvoice/dotnet/api#CheckID
+         * - https://developers.popbill.com/reference/httaxinvoice/dotnet/api/member#CheckID
          */
         private void btnCheckID_Click(object sender, EventArgs e)
         {
@@ -886,7 +886,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
 
         /*
          * 사용자를 연동회원으로 가입처리합니다.
-         * - https://docs.popbill.com/httaxinvoice/dotnet/api#JoinMember
+         * - https://developers.popbill.com/reference/httaxinvoice/dotnet/api/member#JoinMember
          */
         private void btnJoinMember_Click(object sender, EventArgs e)
         {
@@ -946,7 +946,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
         /*
          * 팝빌 사이트에 로그인 상태로 접근할 수 있는 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://docs.popbill.com/httaxinvoice/dotnet/api#GetAccessURL
+         * - https://developers.popbill.com/reference/httaxinvoice/dotnet/api/member#GetAccessURL
          */
         private void btnGetAccessURL_Click(object sender, EventArgs e)
         {
@@ -966,7 +966,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
 
         /*
          * 연동회원의 회사정보를 확인합니다.
-         * - https://docs.popbill.com/httaxinvoice/dotnet/api#GetCorpInfo
+         * - https://developers.popbill.com/reference/httaxinvoice/dotnet/api/member#GetCorpInfo
          */
         private void btnGetCorpInfo_Click(object sender, EventArgs e)
         {
@@ -992,7 +992,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
 
         /*
          * 연동회원의 회사정보를 수정합니다.
-         * - https://docs.popbill.com/httaxinvoice/dotnet/api#UpdateCorpInfo
+         * - https://developers.popbill.com/reference/httaxinvoice/dotnet/api/member#UpdateCorpInfo
          */
         private void btnUpdateCorpInfo_Click(object sender, EventArgs e)
         {
@@ -1029,7 +1029,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
 
         /*
          * 연동회원 사업자번호에 담당자(팝빌 로그인 계정)를 추가합니다.
-         * - https://docs.popbill.com/httaxinvoice/dotnet/api#RegistContact
+         * - https://developers.popbill.com/reference/httaxinvoice/dotnet/api/member#RegistContact
          */
         private void btnRegistContact_Click(object sender, EventArgs e)
         {
@@ -1069,7 +1069,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
 
         /*
          * 연동회원 사업자번호에 등록된 담당자(팝빌 로그인 계정) 정보을 확인합니다.
-         * - https://docs.popbill.com/httaxinvoice/dotnet/api#GetContactInfo
+         * - https://developers.popbill.com/reference/httaxinvoice/dotnet/api/member#GetContactInfo
          */
         private void btnGetContactInfo_Click(object sender, EventArgs e)
         {
@@ -1103,7 +1103,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
 
         /*
          * 연동회원 사업자번호에 등록된 담당자(팝빌 로그인 계정) 목록을 확인합니다.
-         * - https://docs.popbill.com/httaxinvoice/dotnet/api#ListContact
+         * - https://developers.popbill.com/reference/httaxinvoice/dotnet/api/member#ListContact
          */
         private void btnListContact_Click(object sender, EventArgs e)
         {
@@ -1136,7 +1136,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
 
         /*
          * 연동회원 사업자번호에 등록된 담당자(팝빌 로그인 계정) 정보를 수정합니다.
-         * - https://docs.popbill.com/httaxinvoice/dotnet/api#UpdateContact
+         * - https://developers.popbill.com/reference/httaxinvoice/dotnet/api/member#UpdateContact
          */
         private void btnUpdateContact_Click(object sender, EventArgs e)
         {

@@ -1,7 +1,7 @@
 ﻿/*
  * 팝빌 전자명세서 API DotNet SDK Example
  *
- * - DotNet C# SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/statement/tutorial/dotnet_csharp
+ * - DotNet C# SDK 연동환경 설정방법 안내 : [개발가이드] - https://developers.popbill.com/guide/statement/dotnet/getting-started/tutorial?fwn=csharp
  * - 업데이트 일자 : 2022-05-04
  * - 연동 기술지원 연락처 : 1600-9854
  * - 연동 기술지원 이메일 : code@linkhubcorp.com
@@ -72,7 +72,7 @@ namespace Popbill.Statement.Example.csharp
         /*
          * 파트너가 전자명세서 관리 목적으로 할당하는 문서번호의 사용여부를 확인합니다.
          * - 이미 사용 중인 문서번호는 중복 사용이 불가하고, 전자명세서가 삭제된 경우에만 문서번호의 재사용이 가능합니다.
-         * - https://docs.popbill.com/statement/dotnet/api#CheckMgtKeyInUse
+         * - https://developers.popbill.com/reference/statement/dotnet/api/info#CheckMgtKeyInUse
          */
         private void btnCheckMgtKeyInUse_Click(object sender, EventArgs e)
         {
@@ -94,7 +94,7 @@ namespace Popbill.Statement.Example.csharp
         /*
          * 작성된 전자명세서 데이터를 팝빌에 저장과 동시에 발행하여, "발행완료" 상태로 처리합니다.
          * - 팝빌 사이트 [전자명세서] > [환경설정] > [전자명세서 관리] 메뉴의 발행시 자동승인 옵션 설정을 통해 전자명세서를 "발행완료" 상태가 아닌 "승인대기" 상태로 발행 처리 할 수 있습니다.
-         * - https://docs.popbill.com/statement/dotnet/api#RegistIssue
+         * - https://developers.popbill.com/reference/statement/dotnet/api/issue#RegistIssue
          */
         private void btnRegistIssue_Click(object sender, EventArgs e)
         {
@@ -274,7 +274,7 @@ namespace Popbill.Statement.Example.csharp
              * 전자명세서 추가속성
              * - 추가속성에 관한 자세한 사항은 "[전자명세서 API 연동매뉴얼] >
              *   기본양식 추가속성 테이블"을 참조하시기 바랍니다.
-             * [https://docs.popbill.com/statement/propertyBag?lang=dotnet]
+             * [https://developers.popbill.com/guide/statement/dotnet/introduction/statement-form#propertybag-table]
              ************************************************************/
             statement.propertyBag = new propertyBag();
 
@@ -300,7 +300,7 @@ namespace Popbill.Statement.Example.csharp
         /*
          * 작성된 전자명세서 데이터를 팝빌에 저장합니다.
          * - "임시저장" 상태의 전자명세서는 발행(Issue API) 함수를 호출하여 "발행완료"처리한 경우에만 수신자에게 발행 안내 메일이 발송됩니다.
-         * - https://docs.popbill.com/statement/dotnet/api#Register
+         * - https://developers.popbill.com/reference/statement/dotnet/api/issue#Register
          */
         private void btnRegister_Click(object sender, EventArgs e)
         {
@@ -474,7 +474,7 @@ namespace Popbill.Statement.Example.csharp
              * 전자명세서 추가속성
              * - 추가속성에 관한 자세한 사항은 "[전자명세서 API 연동매뉴얼] >
              *   기본양식 추가속성 테이블"을 참조하시기 바랍니다.
-             * [https://docs.popbill.com/statement/propertyBag?lang=dotnet]
+             * [https://developers.popbill.com/guide/statement/dotnet/introduction/statement-form#propertybag-table]
              ************************************************************/
             statement.propertyBag = new propertyBag();
 
@@ -498,7 +498,7 @@ namespace Popbill.Statement.Example.csharp
 
         /*
          * "임시저장" 상태의 전자명세서를 수정합니다.
-         * - https://docs.popbill.com/statement/dotnet/api#Update
+         * - https://developers.popbill.com/reference/statement/dotnet/api/issue#Update
          */
         private void btnUpdate_Click(object sender, EventArgs e)
         {
@@ -672,7 +672,7 @@ namespace Popbill.Statement.Example.csharp
              * 전자명세서 추가속성
              * - 추가속성에 관한 자세한 사항은 "[전자명세서 API 연동매뉴얼] >
              *   기본양식 추가속성 테이블"을 참조하시기 바랍니다.
-             * [https://docs.popbill.com/statement/propertyBag?lang=dotnet]
+             * [https://developers.popbill.com/guide/statement/dotnet/introduction/statement-form#propertybag-table]
              ************************************************************/
             statement.propertyBag = new propertyBag();
 
@@ -698,7 +698,7 @@ namespace Popbill.Statement.Example.csharp
          * "임시저장" 상태의 전자명세서를 발행하여, "발행완료" 상태로 처리합니다.
          * - 팝빌 사이트 [전자명세서] > [환경설정] > [전자명세서 관리] 메뉴의 발행시 자동승인 옵션 설정을 통해 전자명세서를 "발행완료" 상태가 아닌 "승인대기" 상태로 발행 처리 할 수 있습니다.
          * - 전자명세서 발행 함수 호출시 포인트가 과금되며, 수신자에게 발행 안내 메일이 발송됩니다.
-         * - https://docs.popbill.com/statement/dotnet/api#StmIssue
+         * - https://developers.popbill.com/reference/statement/dotnet/api/issue#Issue
          */
         private void btnIssue_Click(object sender, EventArgs e)
         {
@@ -725,7 +725,7 @@ namespace Popbill.Statement.Example.csharp
 
         /*
          * 발신자가 발행한 전자명세서를 발행취소합니다.
-         * - https://docs.popbill.com/statement/dotnet/api#CancelIssue
+         * - https://developers.popbill.com/reference/statement/dotnet/api/issue#CancelIssue
          */
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -751,7 +751,7 @@ namespace Popbill.Statement.Example.csharp
 
         /*
          * 발신자가 발행한 전자명세서를 발행취소합니다.
-         * - https://docs.popbill.com/statement/dotnet/api#CancelIssue
+         * - https://developers.popbill.com/reference/statement/dotnet/api/issue#CancelIssue
          */
         private void btnCancelIssueSub_Click(object sender, EventArgs e)
         {
@@ -779,7 +779,7 @@ namespace Popbill.Statement.Example.csharp
          * 삭제 가능한 상태의 전자명세서를 삭제합니다.
          * - 삭제 가능한 상태: "임시저장", "취소", "승인거부", "발행취소"
          * - 전자명세서를 삭제하면 사용된 문서번호(mgtKey)를 재사용할 수 있습니다.
-         * - https://docs.popbill.com/statement/dotnet/api#Delete
+         * - https://developers.popbill.com/reference/statement/dotnet/api/issue#Delete
          */
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -803,7 +803,7 @@ namespace Popbill.Statement.Example.csharp
          * 삭제 가능한 상태의 전자명세서를 삭제합니다.
          * - 삭제 가능한 상태: "임시저장", "취소", "승인거부", "발행취소"
          * - 전자명세서를 삭제하면 사용된 문서번호(mgtKey)를 재사용할 수 있습니다.
-         * - https://docs.popbill.com/statement/dotnet/api#Delete
+         * - https://developers.popbill.com/reference/statement/dotnet/api/issue#Delete
          */
         private void btnDeleteSub_Click(object sender, EventArgs e)
         {
@@ -825,7 +825,7 @@ namespace Popbill.Statement.Example.csharp
 
         /*
          * 전자명세서의 1건의 상태 및 요약정보 확인합니다.
-         * - https://docs.popbill.com/statement/dotnet/api#GetInfo
+         * - https://developers.popbill.com/reference/statement/dotnet/api/info#GetInfo
          */
         private void btnGetInfo_Click(object sender, EventArgs e)
         {
@@ -871,7 +871,7 @@ namespace Popbill.Statement.Example.csharp
 
         /*
          * 다수건의 전자명세서 상태/요약 정보를 확인합니다.
-         * - https://docs.popbill.com/statement/dotnet/api#GetInfos
+         * - https://developers.popbill.com/reference/statement/dotnet/api/info#GetInfos
          */
         private void btnGetInfos_Click(object sender, EventArgs e)
         {
@@ -930,7 +930,7 @@ namespace Popbill.Statement.Example.csharp
 
         /*
          * 전자명세서 1건의 상세정보 확인합니다.
-         * - https://docs.popbill.com/statement/dotnet/api#GetDetailInfo
+         * - https://developers.popbill.com/reference/statement/dotnet/api/info#GetDetailInfo
          */
         private void btnGetDetailInfo_Click(object sender, EventArgs e)
         {
@@ -1024,7 +1024,7 @@ namespace Popbill.Statement.Example.csharp
 
         /*
          * 검색조건에 해당하는 전자명세서를 조회합니다. (조회기간 단위 : 최대 6개월)
-         * - https://docs.popbill.com/statement/dotnet/api#Search
+         * - https://developers.popbill.com/reference/statement/dotnet/api/info#Search
          */
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -1109,7 +1109,7 @@ namespace Popbill.Statement.Example.csharp
 
         /*
          * 전자명세서의 상태에 대한 변경이력을 확인합니다.
-         * - https://docs.popbill.com/statement/dotnet/api#GetLogs
+         * - https://developers.popbill.com/reference/statement/dotnet/api/info#GetLogs
          */
         private void btnGetLogs_Click(object sender, EventArgs e)
         {
@@ -1141,7 +1141,7 @@ namespace Popbill.Statement.Example.csharp
         /*
          * 로그인 상태로 팝빌 사이트의 전자명세서 임시문서함 메뉴에 접근할 수 있는 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://docs.popbill.com/statement/dotnet/api#GetURL
+         * - https://developers.popbill.com/reference/statement/dotnet/api/info#GetURL
          */
         private void btnGetURL_TBOX_Click(object sender, EventArgs e)
         {
@@ -1162,7 +1162,7 @@ namespace Popbill.Statement.Example.csharp
         /*
          * 로그인 상태로 팝빌 사이트의 전자명세서 발행문서함 메뉴에 접근할 수 있는 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://docs.popbill.com/statement/dotnet/api#GetURL
+         * - https://developers.popbill.com/reference/statement/dotnet/api/info#GetURL
          */
         private void btnGetURL_SBOX_Click(object sender, EventArgs e)
         {
@@ -1183,7 +1183,7 @@ namespace Popbill.Statement.Example.csharp
         /*
          * 전자명세서 1건의 상세 정보 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://docs.popbill.com/statement/dotnet/api#GetPopUpURL
+         * - https://developers.popbill.com/reference/statement/dotnet/api/view#GetPopUpURL
          */
         private void btnGetPopUpURL_Click(object sender, EventArgs e)
         {
@@ -1206,7 +1206,7 @@ namespace Popbill.Statement.Example.csharp
         /*
          * 전자명세서 1건의 상세 정보 페이지(사이트 상단, 좌측 메뉴 및 버튼 제외)의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://docs.popbill.com/statement/dotnet/api#GetViewURL
+         * - https://developers.popbill.com/reference/statement/dotnet/api/view#GetViewURL
          */
         private void btnGetViewURL_Click(object sender, EventArgs e)
         {
@@ -1230,7 +1230,7 @@ namespace Popbill.Statement.Example.csharp
          * 전자명세서 1건을 인쇄하기 위한 페이지의 팝업 URL을 반환하며, 페이지내에서 인쇄 설정값을 "공급자" / "공급받는자" / "공급자+공급받는자"용 중 하나로 지정할 수 있습니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
          * - 전자명세서의 공급자는 "발신자", 공급받는자는 "수신자"를 나타내는 용어입니다.
-         * - https://docs.popbill.com/statement/dotnet/api#GetPrintURL
+         * - https://developers.popbill.com/reference/statement/dotnet/api/view#GetPrintURL
          */
         private void btnGetPrintURL_Click(object sender, EventArgs e)
         {
@@ -1254,7 +1254,7 @@ namespace Popbill.Statement.Example.csharp
          * "공급받는자" 용 전자명세서 1건을 인쇄하기 위한 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
          * - 전자명세서의 공급받는자는 "수신자"를 나타내는 용어입니다.
-         * - https://docs.popbill.com/statement/dotnet/api#GetEPrintURL
+         * - https://developers.popbill.com/reference/statement/dotnet/api/view#GetEPrintURL
          */
         private void btnGetEPrintURL_Click(object sender, EventArgs e)
         {
@@ -1276,7 +1276,7 @@ namespace Popbill.Statement.Example.csharp
         /*
          * 다수건의 전자명세서를 인쇄하기 위한 페이지의 팝업 URL을 반환합니다. (최대 100건)
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://docs.popbill.com/statement/dotnet/api#GetMassPrintURL
+         * - https://developers.popbill.com/reference/statement/dotnet/api/view#GetMassPrintURL
          */
         private void btnGetMassPrintURL_Click(object sender, EventArgs e)
         {
@@ -1305,7 +1305,7 @@ namespace Popbill.Statement.Example.csharp
         /*
          * 전자명세서 안내메일의 상세보기 링크 URL을 반환합니다.
          * - 함수 호출로 반환 받은 URL에는 유효시간이 없습니다.
-         * - https://docs.popbill.com/statement/dotnet/api#GetMailURL
+         * - https://developers.popbill.com/reference/statement/dotnet/api/view#GetMailURL
          */
         private void btnGetMailURL_Click(object sender, EventArgs e)
         {
@@ -1328,7 +1328,7 @@ namespace Popbill.Statement.Example.csharp
         /*
          * 팝빌 사이트에 로그인 상태로 접근할 수 있는 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://docs.popbill.com/statement/dotnet/api#GetAccessURL
+         * - https://developers.popbill.com/reference/statement/dotnet/api/etc#GetAccessURL
          */
         private void btnGetAccessURL_Click(object sender, EventArgs e)
         {
@@ -1349,7 +1349,7 @@ namespace Popbill.Statement.Example.csharp
         /*
          * 인감 및 첨부문서 등록 URL을 반환합니다.
          * - 반환된 URL은 보안정책상 30초의 유효시간을 갖습니다.
-         * - https://docs.popbill.com/statement/dotnet/api#GetSealURL
+         * - https://developers.popbill.com/reference/statement/dotnet/api/etc#GetSealURL
          */
         private void btnGetSealURL_Click(object sender, EventArgs e)
         {
@@ -1369,7 +1369,7 @@ namespace Popbill.Statement.Example.csharp
 
         /*
         * "임시저장" 상태의 명세서에 1개의 파일을 첨부합니다. (최대 5개)
-        * - https://docs.popbill.com/statement/dotnet/api#AttachFile
+        * - https://developers.popbill.com/reference/statement/dotnet/api/etc#AttachFile
         */
         private void btnAttachFile_Click(object sender, EventArgs e)
         {
@@ -1399,7 +1399,7 @@ namespace Popbill.Statement.Example.csharp
         /*
          * "임시저장" 상태의 전자명세서에 첨부된 1개의 파일을 삭제합니다.
          * - 파일을 식별하는 파일아이디는 첨부파일 목록(GetFiles API) 의 응답항목 중 파일아이디(AttachedFile) 값을 통해 확인할 수 있습니다.
-         * - https://docs.popbill.com/statement/dotnet/api#DeleteFile
+         * - https://developers.popbill.com/reference/statement/dotnet/api/etc#DeleteFile
          */
         private void btnDeleteFile_Click(object sender, EventArgs e)
         {
@@ -1423,7 +1423,7 @@ namespace Popbill.Statement.Example.csharp
         /*
          * 전자명세서에 첨부된 파일목록을 확인합니다.
          * - 응답항목 중 파일아이디(AttachedFile) 항목은 파일삭제(DeleteFile API) 호출시 이용할 수 있습니다.
-         * - https://docs.popbill.com/statement/dotnet/api#GetFiles
+         * - https://developers.popbill.com/reference/statement/dotnet/api/etc#GetFiles
          */
         private void btnGetFiles_Click(object sender, EventArgs e)
         {
@@ -1453,7 +1453,7 @@ namespace Popbill.Statement.Example.csharp
 
         /*
          * "승인대기", "발행완료" 상태의 전자명세서와 관련된 발행 안내 메일을 재전송 합니다.
-         * - https://docs.popbill.com/statement/dotnet/api#SendEmail
+         * - https://developers.popbill.com/reference/statement/dotnet/api/etc#SendEmail
          */
         private void btnSendEmail_Click(object sender, EventArgs e)
         {
@@ -1483,7 +1483,7 @@ namespace Popbill.Statement.Example.csharp
          * 전자명세서와 관련된 안내 SMS(단문) 문자를 재전송하는 함수로, 팝빌 사이트 [문자·팩스] > [문자] > [전송내역] 메뉴에서 전송결과를 확인 할 수 있습니다.
          * - 메시지는 최대 90byte까지 입력 가능하고, 초과한 내용은 자동으로 삭제되어 전송합니다. (한글 최대 45자)
          * - 함수 호출시 포인트가 과금됩니다.
-         * - https://docs.popbill.com/statement/dotnet/api#SendSMS
+         * - https://developers.popbill.com/reference/statement/dotnet/api/etc#SendSMS
          */
         private void btnSendSMS_Click(object sender, EventArgs e)
         {
@@ -1515,7 +1515,7 @@ namespace Popbill.Statement.Example.csharp
         /*
          * 전자명세서를 팩스로 전송하는 함수로, 팝빌 사이트 [문자·팩스] > [팩스] > [전송내역] 메뉴에서 전송결과를 확인 할 수 있습니다.
          * - 함수 호출시 포인트가 과금됩니다.
-         * - https://docs.popbill.com/statement/dotnet/api#SendFAX
+         * - https://developers.popbill.com/reference/statement/dotnet/api/etc#SendFAX
          */
         private void btnSendFAX_Click(object sender, EventArgs e)
         {
@@ -1545,7 +1545,7 @@ namespace Popbill.Statement.Example.csharp
         /*
          * 전자명세서를 팩스로 전송하는 함수로, 팝빌에 데이터를 저장하는 과정이 없습니다.
          * - 팝빌 사이트 [문자·팩스] > [팩스] > [전송내역] 메뉴에서 전송결과를 확인 할 수 있습니다.
-         * - https://docs.popbill.com/statement/dotnet/api#FAXSend
+         * - https://developers.popbill.com/reference/statement/dotnet/api/etc#FAXSend
          */
         private void btnFAXSend_Click(object sender, EventArgs e)
         {
@@ -1725,7 +1725,7 @@ namespace Popbill.Statement.Example.csharp
              * 전자명세서 추가속성
              * - 추가속성에 관한 자세한 사항은 "[전자명세서 API 연동매뉴얼] >
              *   기본양식 추가속성 테이블"을 참조하시기 바랍니다.
-             * [https://docs.popbill.com/statement/propertyBag?lang=dotnet]
+             * [https://developers.popbill.com/guide/statement/dotnet/introduction/statement-form#propertybag-table]
              ************************************************************/
             statement.propertyBag = new propertyBag();
 
@@ -1749,7 +1749,7 @@ namespace Popbill.Statement.Example.csharp
 
         /*
          * 하나의 전자명세서에 다른 전자명세서를 첨부합니다.
-         * - https://docs.popbill.com/statement/dotnet/api#AttachStatement
+         * - https://developers.popbill.com/reference/statement/dotnet/api/etc#AttachStatement
          */
         private void btnAttachStmt_Click(object sender, EventArgs e)
         {
@@ -1779,7 +1779,7 @@ namespace Popbill.Statement.Example.csharp
 
         /*
          * 하나의 전자명세서에 첨부된 다른 전자명세서를 해제합니다.
-         * - https://docs.popbill.com/statement/dotnet/api#DetachStatement
+         * - https://developers.popbill.com/reference/statement/dotnet/api/etc#DetachStatement
          */
         private void btnDetachStmt_Click(object sender, EventArgs e)
         {
@@ -1808,7 +1808,7 @@ namespace Popbill.Statement.Example.csharp
 
         /*
          * 전자명세서 관련 메일 항목에 대한 발송설정을 확인합니다.
-         * - https://docs.popbill.com/statement/dotnet/api#ListEmailConfig
+         * - https://developers.popbill.com/reference/statement/dotnet/api/etc#ListEmailConfig
          */
         private void btnListEmailConfig_Click(object sender, EventArgs e)
         {
@@ -1843,7 +1843,7 @@ namespace Popbill.Statement.Example.csharp
         }
 
         /* 전자명세서 관련 메일 항목에 대한 발송설정을 수정합니다.
-         * - https://docs.popbill.com/statement/dotnet/api#UpdateEmailConfig
+         * - https://developers.popbill.com/reference/statement/dotnet/api/etc#UpdateEmailConfig
          *
            메일전송유형
            SMT_ISSUE : 수신자에게 전자명세서가 발행 되었음을 알려주는 메일입니다.
@@ -1877,7 +1877,7 @@ namespace Popbill.Statement.Example.csharp
         /*
          * 연동회원의 잔여포인트를 확인합니다.
          * - 과금방식이 파트너과금인 경우 파트너 잔여포인트 확인(GetPartnerBalance API) 함수를 통해 확인하시기 바랍니다.
-         * - https://docs.popbill.com/statement/dotnet/api#GetBalance
+         * - https://developers.popbill.com/reference/statement/dotnet/api/point#GetBalance
          */
         private void btnGetBalance_Click(object sender, EventArgs e)
         {
@@ -1897,7 +1897,7 @@ namespace Popbill.Statement.Example.csharp
         /*
          * 연동회원 포인트 충전을 위한 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://docs.popbill.com/statement/dotnet/api#GetChargeURL
+         * - https://developers.popbill.com/reference/statement/dotnet/api/point#GetChargeURL
          */
         private void btnGetChargeURL_Click(object sender, EventArgs e)
         {
@@ -1918,7 +1918,7 @@ namespace Popbill.Statement.Example.csharp
         /*
          * 연동회원 포인트 결제내역 확인을 위한 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://docs.popbill.com/statement/dotnet/api#GetPaymentURL
+         * - https://developers.popbill.com/reference/statement/dotnet/api/point#GetPaymentURL
          */
         private void btnGetPaymentURL_Click(object sender, EventArgs e)
         {
@@ -1939,7 +1939,7 @@ namespace Popbill.Statement.Example.csharp
         /*
          * 연동회원 포인트 사용내역 확인을 위한 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://docs.popbill.com/statement/dotnet/api#GetUseHistoryURL
+         * - https://developers.popbill.com/reference/statement/dotnet/api/point#GetUseHistoryURL
          */
         private void btnGetUseHistoryURL_Click(object sender, EventArgs e)
         {
@@ -1960,7 +1960,7 @@ namespace Popbill.Statement.Example.csharp
         /*
          * 파트너의 잔여포인트를 확인합니다.
          * - 과금방식이 연동과금인 경우 연동회원 잔여포인트 확인(GetBalance API) 함수를 이용하시기 바랍니다.
-         * - https://docs.popbill.com/statement/dotnet/api#GetPartnerBalance
+         * - https://developers.popbill.com/reference/statement/dotnet/api/point#GetPartnerBalance
          */
         private void btnGetPartnerPoint_Click(object sender, EventArgs e)
         {
@@ -1980,7 +1980,7 @@ namespace Popbill.Statement.Example.csharp
         /*
          * 파트너 포인트 충전을 위한 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://docs.popbill.com/statement/dotnet/api#GetPartnerURL
+         * - https://developers.popbill.com/reference/statement/dotnet/api/point#GetPartnerURL
          */
         private void btnGetPartnerURL_Click(object sender, EventArgs e)
         {
@@ -2000,7 +2000,7 @@ namespace Popbill.Statement.Example.csharp
 
         /*
          * 전자명세서 발행시 과금되는 포인트 단가를 확인합니다.
-         * - https://docs.popbill.com/statement/dotnet/api#GetUnitCost
+         * - https://developers.popbill.com/reference/statement/dotnet/api/point#GetUnitCost
          */
         private void btnGetUnitCost_Click(object sender, EventArgs e)
         {
@@ -2019,7 +2019,7 @@ namespace Popbill.Statement.Example.csharp
 
         /*
          * 팝빌 전자명세서 API 서비스 과금정보를 확인합니다.
-         * - https://docs.popbill.com/statement/dotnet/api#GetChargeInfo
+         * - https://developers.popbill.com/reference/statement/dotnet/api/point#GetChargeInfo
          */
         private void btnGetChargeInfo_Click(object sender, EventArgs e)
         {
@@ -2046,7 +2046,7 @@ namespace Popbill.Statement.Example.csharp
 
         /*
          * 사업자번호를 조회하여 연동회원 가입여부를 확인합니다.
-         * - https://docs.popbill.com/statement/dotnet/api#CheckIsMember
+         * - https://developers.popbill.com/reference/statement/dotnet/api/member#CheckIsMember
          */
         private void btnCheckIsMember_Click(object sender, EventArgs e)
         {
@@ -2066,7 +2066,7 @@ namespace Popbill.Statement.Example.csharp
 
         /*
          * 사용하고자 하는 아이디의 중복여부를 확인합니다.
-         * - https://docs.popbill.com/statement/dotnet/api#CheckID
+         * - https://developers.popbill.com/reference/statement/dotnet/api/member#CheckID
          */
         private void btnCheckID_Click(object sender, EventArgs e)
         {
@@ -2086,7 +2086,7 @@ namespace Popbill.Statement.Example.csharp
 
         /*
          * 사용자를 연동회원으로 가입처리합니다.
-         * - https://docs.popbill.com/statement/dotnet/api#JoinMember
+         * - https://developers.popbill.com/reference/statement/dotnet/api/member#JoinMember
          */
         private void btnJoinMember_Click(object sender, EventArgs e)
         {
@@ -2144,7 +2144,7 @@ namespace Popbill.Statement.Example.csharp
 
         /*
          * 연동회원의 회사정보를 확인합니다.
-         * - https://docs.popbill.com/statement/dotnet/api#GetCorpInfo
+         * - https://developers.popbill.com/reference/statement/dotnet/api/member#GetCorpInfo
          */
         private void btnGetCorpInfo_Click(object sender, EventArgs e)
         {
@@ -2170,7 +2170,7 @@ namespace Popbill.Statement.Example.csharp
 
         /*
          * 연동회원의 회사정보를 수정합니다.
-         * - https://docs.popbill.com/statement/dotnet/api#UpdateCorpInfo
+         * - https://developers.popbill.com/reference/statement/dotnet/api/member#UpdateCorpInfo
          */
         private void btnUpdateCorpInfo_Click(object sender, EventArgs e)
         {
@@ -2207,7 +2207,7 @@ namespace Popbill.Statement.Example.csharp
 
         /*
          * 연동회원 사업자번호에 담당자(팝빌 로그인 계정)를 추가합니다.
-         * - https://docs.popbill.com/statement/dotnet/api#RegistContact
+         * - https://developers.popbill.com/reference/statement/dotnet/api/member#RegistContact
          */
         private void btnRegistContact_Click(object sender, EventArgs e)
         {
@@ -2247,7 +2247,7 @@ namespace Popbill.Statement.Example.csharp
 
         /*
          * 연동회원 사업자번호에 등록된 담당자(팝빌 로그인 계정) 정보을 확인합니다.
-         * - https://docs.popbill.com/statement/dotnet/api#GetContactInfo
+         * - https://developers.popbill.com/reference/statement/dotnet/api/member#GetContactInfo
          */
         private void btnGetContactInfo_Click(object sender, EventArgs e)
         {
@@ -2281,7 +2281,7 @@ namespace Popbill.Statement.Example.csharp
 
         /*
          * 연동회원 사업자번호에 등록된 담당자(팝빌 로그인 계정) 목록을 확인합니다.
-         * - https://docs.popbill.com/statement/dotnet/api#ListContact
+         * - https://developers.popbill.com/reference/statement/dotnet/api/member#ListContact
          */
         private void ListContact_Click(object sender, EventArgs e)
         {
@@ -2315,7 +2315,7 @@ namespace Popbill.Statement.Example.csharp
 
         /*
          * 연동회원 사업자번호에 등록된 담당자(팝빌 로그인 계정) 정보를 수정합니다.
-         * - https://docs.popbill.com/statement/dotnet/api#UpdateContact
+         * - https://developers.popbill.com/reference/statement/dotnet/api/member#UpdateContact
          */
         private void UpdateContact_Click(object sender, EventArgs e)
         {

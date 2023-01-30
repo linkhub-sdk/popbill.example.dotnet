@@ -1,7 +1,7 @@
 ﻿/*
  * 팝빌 팩스 API DotNet SDK Example
  *
- * - DotNet C# SDK 연동환경 설정방법 안내 : [개발가이드] - https://docs.popbill.com/fax/tutorial/dotnet_csharp
+ * - DotNet C# SDK 연동환경 설정방법 안내 : [개발가이드] - https://developers.popbill.com/guide/fax/dotnet/getting-started/tutorial?fwn=csharp
  * - 업데이트 일자 : 2022-05-04
  * - 연동 기술지원 연락처 : 1600-9854
  * - 연동 기술지원 이메일 : code@linkhubcorp.com
@@ -58,7 +58,7 @@ namespace Popbill.Fax.Example.csharp
         /*
          * 팩스 발신번호 등록여부를 확인합니다.
          * - 발신번호 상태가 '승인'인 경우에만 리턴값 'Response'의 변수 'code'가 1로 반환됩니다.
-         * - https://docs.popbill.com/fax/dotnet/api#CheckSenderNumber
+         * - https://developers.popbill.com/reference/fax/dotnet/api/sendnum#CheckSenderNumber
          */
         private void btnCheckSenderNumber_Click(object sender, EventArgs e)
         {
@@ -81,7 +81,7 @@ namespace Popbill.Fax.Example.csharp
         /*
          * 발신번호를 등록하고 내역을 확인하는 팩스 발신번호 관리 페이지 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://docs.popbill.com/fax/dotnet/api#GetSenderNumberMgtURL
+         * - https://developers.popbill.com/reference/fax/dotnet/api/sendnum#GetSenderNumberMgtURL
          */
         private void btnGetSenderNumberMgtURL_Click(object sender, EventArgs e)
         {
@@ -101,7 +101,7 @@ namespace Popbill.Fax.Example.csharp
 
         /*
          * 팝빌에 등록한 연동회원의 팩스 발신번호 목록을 확인합니다.
-         * - https://docs.popbill.com/fax/dotnet/api#GetSenderNumberList
+         * - https://developers.popbill.com/reference/fax/dotnet/api/sendnum#GetSenderNumberList
          */
         private void btnGetSenderNumberList_Click(object sender, EventArgs e)
         {
@@ -142,8 +142,7 @@ namespace Popbill.Fax.Example.csharp
 
         /*
          * 팩스 1건을 전송합니다. (최대 전송파일 개수: 20개)
-         * - 팩스전송 문서 파일포맷 안내 : https://docs.popbill.com/fax/format?lang=dotnet
-         * - https://docs.popbill.com/fax/dotnet/api#SendFAX
+         * - https://developers.popbill.com/reference/fax/dotnet/api/send#SendFAX
          */
         private void button1_Click(object sender, EventArgs e)
         {
@@ -189,8 +188,7 @@ namespace Popbill.Fax.Example.csharp
 
         /*
          * 동일한 팩스파일을 다수의 수신자에게 전송하기 위해 팝빌에 접수합니다. (최대 1,000건)
-         * - 팩스전송 문서 파일포맷 안내 : https://docs.popbill.com/fax/format?lang=dotnet
-         * - https://docs.popbill.com/fax/dotnet/api#SendFAX_Same
+         * - https://developers.popbill.com/reference/fax/dotnet/api/send#SendFAXSame
          */
         private void button2_Click(object sender, EventArgs e)
         {
@@ -250,8 +248,7 @@ namespace Popbill.Fax.Example.csharp
 
         /*
          * 팩스 1건을 전송합니다.(다중파일 전송) (최대 전송파일 개수: 20개)
-         * - 팩스전송 문서 파일포맷 안내 : https://docs.popbill.com/fax/format?lang=dotnet
-         * - https://docs.popbill.com/fax/dotnet/api#SendFAX_Multi
+         * - https://developers.popbill.com/reference/fax/dotnet/api/send#SendFAXMulti
          */
         private void button3_Click(object sender, EventArgs e)
         {
@@ -303,8 +300,7 @@ namespace Popbill.Fax.Example.csharp
 
         /*
          * 동일한 팩스파일을 다수의 수신자에게 전송하기 위해 팝빌에 접수합니다.(다중파일 동보전송) (최대 전송파일 개수 : 20개) (최대 1,000건)
-         * - 팩스전송 문서 파일포맷 안내 : https://docs.popbill.com/fax/format?lang=dotnet
-         * - https://docs.popbill.com/fax/dotnet/api#SendFAX_Multi_Same
+         * - https://developers.popbill.com/reference/fax/dotnet/api/send#SendFAXMultiSame
          */
         private void button4_Click(object sender, EventArgs e)
         {
@@ -372,7 +368,7 @@ namespace Popbill.Fax.Example.csharp
          * - 발신/수신 정보 미입력시 기존과 동일한 정보로 팩스가 전송되고, 접수일 기준 최대 60일이 경과되지 않는 건만 재전송이 가능합니다.
          * - 팩스 재전송 요청시 포인트가 차감됩니다. (전송실패시 환불처리)
          * - 변환실패 사유로 전송실패한 팩스 접수건은 재전송이 불가합니다.
-         * - https://docs.popbill.com/fax/dotnet/api#ResendFAX
+         * - https://developers.popbill.com/reference/fax/dotnet/api/send#ResendFAX
          */
         private void btnResendFAX_Click(object sender, EventArgs e)
         {
@@ -413,7 +409,7 @@ namespace Popbill.Fax.Example.csharp
          * - 발신/수신 정보 미입력시 기존과 동일한 정보로 팩스가 전송되고, 접수일 기준 최대 60일이 경과되지 않는 건만 재전송이 가능합니다.
          * - 팩스 재전송 요청시 포인트가 차감됩니다. (전송실패시 환불처리)
          * - 변환실패 사유로 전송실패한 팩스 접수건은 재전송이 불가합니다.
-         * - https://docs.popbill.com/fax/dotnet/api#ResendFAXRN
+         * - https://developers.popbill.com/reference/fax/dotnet/api/send#ResendFAXRN
          */
         private void btnResendFAXRN_Click(object sender, EventArgs e)
         {
@@ -458,7 +454,7 @@ namespace Popbill.Fax.Example.csharp
          * - 발신/수신 정보 미입력시 기존과 동일한 정보로 팩스가 전송되고, 접수일 기준 최대 60일이 경과되지 않는 건만 재전송이 가능합니다.
          * - 팩스 재전송 요청시 포인트가 차감됩니다. (전송실패시 환불처리)
          * - 변환실패 사유로 전송실패한 팩스 접수건은 재전송이 불가합니다.
-         * - https://docs.popbill.com/fax/dotnet/api#ResendFAX_Same
+         * - https://developers.popbill.com/reference/fax/dotnet/api/send#ResendFAXSame
          */
         private void btnResendFAXSame_Click(object sender, EventArgs e)
         {
@@ -518,7 +514,7 @@ namespace Popbill.Fax.Example.csharp
          * - 발신/수신 정보 미입력시 기존과 동일한 정보로 팩스가 전송되고, 접수일 기준 최대 60일이 경과되지 않는 건만 재전송이 가능합니다.
          * - 팩스 재전송 요청시 포인트가 차감됩니다. (전송실패시 환불처리)
          * - 변환실패 사유로 전송실패한 팩스 접수건은 재전송이 불가합니다.
-         * - https://docs.popbill.com/fax/dotnet/api#ResendFAXRN_Same
+         * - https://developers.popbill.com/reference/fax/dotnet/api/send#ResendFAXRNSame
          */
         private void btnResendFAXRN_same_Click(object sender, EventArgs e)
         {
@@ -578,7 +574,7 @@ namespace Popbill.Fax.Example.csharp
 
         /*
          * 팝빌에서 반환받은 접수번호를 통해 예약접수된 팩스 전송을 취소합니다. (예약시간 10분 전까지 가능)
-         * - https://docs.popbill.com/fax/dotnet/api#CancelReserve
+         * - https://developers.popbill.com/reference/fax/dotnet/api/send#CancelReserve
          */
         private void btnCancelReserve_Click(object sender, EventArgs e)
         {
@@ -598,7 +594,7 @@ namespace Popbill.Fax.Example.csharp
 
         /*
          * 파트너가 할당한 전송요청 번호를 통해 예약접수된 팩스 전송을 취소합니다. (예약시간 10분 전까지 가능)
-         * - https://docs.popbill.com/fax/dotnet/api#CancelReserveRN
+         * - https://developers.popbill.com/reference/fax/dotnet/api/send#CancelReserveRN
          */
         private void btnCancelReserveRN_Click(object sender, EventArgs e)
         {
@@ -618,7 +614,7 @@ namespace Popbill.Fax.Example.csharp
 
         /*
          * 팝빌에서 반환 받은 접수번호를 통해 팩스 전송상태 및 결과를 확인합니다.
-         * - https://docs.popbill.com/fax/dotnet/api#GetFaxResult
+         * - https://developers.popbill.com/reference/fax/dotnet/api/info#GetFaxResult
          */
         private void btnGetFaxResult_Click(object sender, EventArgs e)
         {
@@ -685,7 +681,7 @@ namespace Popbill.Fax.Example.csharp
 
         /*
          * 파트너가 할당한 전송요청 번호를 통해 팩스 전송상태 및 결과를 확인합니다.
-         * - https://docs.popbill.com/fax/dotnet/api#GetFaxResultRN
+         * - https://developers.popbill.com/reference/fax/dotnet/api/info#GetFaxResultRN
          */
         private void btnGetFaxResultRN_Click(object sender, EventArgs e)
         {
@@ -753,7 +749,7 @@ namespace Popbill.Fax.Example.csharp
         /*
          * 검색조건에 해당하는 팩스 전송내역 목록을 조회합니다. (조회기간 단위 : 최대 2개월)
          * - 팩스 접수일시로부터 2개월 이내 접수건만 조회할 수 있습니다.
-         * - https://docs.popbill.com/fax/dotnet/api#Search
+         * - https://developers.popbill.com/reference/fax/dotnet/api/info#Search
          */
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -873,7 +869,7 @@ namespace Popbill.Fax.Example.csharp
         /*
          * 팩스 전송내역 확인 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://docs.popbill.com/fax/dotnet/api#GetSentListURL
+         * - https://developers.popbill.com/reference/fax/dotnet/api/info#GetSentListURL
          */
         private void btnGetSentListURL_Click(object sender, EventArgs e)
         {
@@ -894,7 +890,7 @@ namespace Popbill.Fax.Example.csharp
         /*
          * 팩스 미리보기 팝업 URL을 반환하며, 팩스전송을 위한 TIF 포맷 변환 완료 후 호출 할 수 있습니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://docs.popbill.com/fax/dotnet/api#GetPreviewURL
+         * - https://developers.popbill.com/reference/fax/dotnet/api/info#GetPreviewURL
          */
         private void btnGetPreviewURL_Click(object sender, EventArgs e)
         {
@@ -915,7 +911,7 @@ namespace Popbill.Fax.Example.csharp
         /*
          * 연동회원의 잔여포인트를 확인합니다.
          * - 과금방식이 파트너과금인 경우 파트너 잔여포인트 확인(GetPartnerBalance API) 함수를 통해 확인하시기 바랍니다.
-         * - https://docs.popbill.com/fax/dotnet/api#GetBalance
+         * - https://developers.popbill.com/reference/fax/dotnet/api/point#GetBalance
          */
         private void btnGetBalance_Click(object sender, EventArgs e)
         {
@@ -935,7 +931,7 @@ namespace Popbill.Fax.Example.csharp
         /*
          * 연동회원 포인트 충전을 위한 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://docs.popbill.com/fax/dotnet/api#GetChargeURL
+         * - https://developers.popbill.com/reference/fax/dotnet/api/point#GetChargeURL
          */
         private void btnGetChargeURL_Click(object sender, EventArgs e)
         {
@@ -956,7 +952,7 @@ namespace Popbill.Fax.Example.csharp
         /*
          * 연동회원 포인트 결제내역 확인을 위한 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://docs.popbill.com/fax/dotnet/api#GetPaymentURL
+         * - https://developers.popbill.com/reference/fax/dotnet/api/point#GetPaymentURL
          */
         private void btnGetPaymentURL_Click(object sender, EventArgs e)
         {
@@ -977,7 +973,7 @@ namespace Popbill.Fax.Example.csharp
         /*
          * 연동회원 포인트 사용내역 확인을 위한 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://docs.popbill.com/fax/dotnet/api#GetUseHistoryURL
+         * - https://developers.popbill.com/reference/fax/dotnet/api/point#GetUseHistoryURL
          */
         private void btnGetUseHistoryURL_Click(object sender, EventArgs e)
         {
@@ -998,7 +994,7 @@ namespace Popbill.Fax.Example.csharp
         /*
          * 파트너의 잔여포인트를 확인합니다.
          * - 과금방식이 연동과금인 경우 연동회원 잔여포인트 확인(GetBalance API) 함수를 이용하시기 바랍니다.
-         * - https://docs.popbill.com/fax/dotnet/api#GetPartnerBalance
+         * - https://developers.popbill.com/reference/fax/dotnet/api/point#GetPartnerBalance
          */
         private void btnGetPartnerBalance_Click(object sender, EventArgs e)
         {
@@ -1018,7 +1014,7 @@ namespace Popbill.Fax.Example.csharp
         /*
          * 파트너 포인트 충전을 위한 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://docs.popbill.com/fax/dotnet/api#GetPartnerURL
+         * - https://developers.popbill.com/reference/fax/dotnet/api/point#GetPartnerURL
          */
         private void btnGetPartnerURL_Click(object sender, EventArgs e)
         {
@@ -1038,7 +1034,7 @@ namespace Popbill.Fax.Example.csharp
 
         /*
          * 팩스 전송시 과금되는 포인트 단가를 확인합니다.
-         * - https://docs.popbill.com/fax/dotnet/api#GetUnitCost
+         * - https://developers.popbill.com/reference/fax/dotnet/api/point#GetUnitCost
          */
         private void btnUnitCost_Click(object sender, EventArgs e)
         {
@@ -1060,7 +1056,7 @@ namespace Popbill.Fax.Example.csharp
 
         /*
          * 팝빌 팩스 API 서비스 과금정보를 확인합니다.
-         * - https://docs.popbill.com/fax/dotnet/api#GetChargeInfo
+         * - https://developers.popbill.com/reference/fax/dotnet/api/point#GetChargeInfo
          */
         private void btnGetChargeInfo_Click(object sender, EventArgs e)
         {
@@ -1087,7 +1083,7 @@ namespace Popbill.Fax.Example.csharp
 
         /*
          * 사업자번호를 조회하여 연동회원 가입여부를 확인합니다.
-         * - https://docs.popbill.com/fax/dotnet/api#CheckIsMember
+         * - https://developers.popbill.com/reference/fax/dotnet/api/member#CheckIsMember
          */
         private void btnCheckIsMember_Click(object sender, EventArgs e)
         {
@@ -1107,7 +1103,7 @@ namespace Popbill.Fax.Example.csharp
 
         /*
          * 사용하고자 하는 아이디의 중복여부를 확인합니다.
-         * - https://docs.popbill.com/fax/dotnet/api#CheckID
+         * - https://developers.popbill.com/reference/fax/dotnet/api/member#CheckID
          */
         private void btnCheckID_Click(object sender, EventArgs e)
         {
@@ -1127,7 +1123,7 @@ namespace Popbill.Fax.Example.csharp
 
         /*
          * 사용자를 연동회원으로 가입처리합니다.
-         * - https://docs.popbill.com/fax/dotnet/api#JoinMember
+         * - https://developers.popbill.com/reference/fax/dotnet/api/member#JoinMember
          */
         private void btnJoinMember_Click(object sender, EventArgs e)
         {
@@ -1186,7 +1182,7 @@ namespace Popbill.Fax.Example.csharp
         /*
          * 팝빌 사이트에 로그인 상태로 접근할 수 있는 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://docs.popbill.com/fax/dotnet/api#GetAccessURL
+         * - https://developers.popbill.com/reference/fax/dotnet/api/member#GetAccessURL
          */
         private void btnGetAccessURL_Click(object sender, EventArgs e)
         {
@@ -1206,7 +1202,7 @@ namespace Popbill.Fax.Example.csharp
 
         /*
          * 연동회원의 회사정보를 확인합니다.
-         * - https://docs.popbill.com/fax/dotnet/api#GetCorpInfo
+         * - https://developers.popbill.com/reference/fax/dotnet/api/member#GetCorpInfo
          */
         private void btnGetCorpInfo_Click(object sender, EventArgs e)
         {
@@ -1232,7 +1228,7 @@ namespace Popbill.Fax.Example.csharp
 
         /*
          * 연동회원의 회사정보를 수정합니다.
-         * - https://docs.popbill.com/fax/dotnet/api#UpdateCorpInfo
+         * - https://developers.popbill.com/reference/fax/dotnet/api/member#UpdateCorpInfo
          */
         private void btnUpdateCorpInfo_Click(object sender, EventArgs e)
         {
@@ -1269,7 +1265,7 @@ namespace Popbill.Fax.Example.csharp
 
         /*
          * 연동회원 사업자번호에 담당자(팝빌 로그인 계정)를 추가합니다.
-         * - https://docs.popbill.com/fax/dotnet/api#RegistContact
+         * - https://developers.popbill.com/reference/fax/dotnet/api/member#RegistContact
          */
         private void btnRegistContact_Click(object sender, EventArgs e)
         {
@@ -1309,7 +1305,7 @@ namespace Popbill.Fax.Example.csharp
 
         /*
          * 연동회원 사업자번호에 등록된 담당자(팝빌 로그인 계정) 정보을 확인합니다.
-         * - https://docs.popbill.com/fax/dotnet/api#GetContactInfo
+         * - https://developers.popbill.com/reference/fax/dotnet/api/member#GetContactInfo
          */
         private void btnGetContactInfo_Click(object sender, EventArgs e)
         {
@@ -1343,7 +1339,7 @@ namespace Popbill.Fax.Example.csharp
 
         /*
          * 연동회원 사업자번호에 등록된 담당자(팝빌 로그인 계정) 목록을 확인합니다.
-         * - https://docs.popbill.com/fax/dotnet/api#ListContact
+         * - https://developers.popbill.com/reference/fax/dotnet/api/member#ListContact
          */
         private void btnListContact_Click(object sender, EventArgs e)
         {
@@ -1377,7 +1373,7 @@ namespace Popbill.Fax.Example.csharp
 
         /*
          * 연동회원 사업자번호에 등록된 담당자(팝빌 로그인 계정) 정보를 수정합니다.
-         * - https://docs.popbill.com/fax/dotnet/api#UpdateContact
+         * - https://developers.popbill.com/reference/fax/dotnet/api/member#UpdateContact
          */
         private void btnUpdateContact_Click(object sender, EventArgs e)
         {
