@@ -725,7 +725,7 @@ namespace Popbill.Statement.Example.csharp
 
         /*
          * 발신자가 발행한 전자명세서를 발행취소합니다.
-         * - https://developers.popbill.com/reference/statement/dotnet/api/issue#CancelIssue
+         * - https://developers.popbill.com/reference/statement/dotnet/api/issue#Cancel
          */
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -751,7 +751,7 @@ namespace Popbill.Statement.Example.csharp
 
         /*
          * 발신자가 발행한 전자명세서를 발행취소합니다.
-         * - https://developers.popbill.com/reference/statement/dotnet/api/issue#CancelIssue
+         * - https://developers.popbill.com/reference/statement/dotnet/api/issue#Cancel
          */
         private void btnCancelIssueSub_Click(object sender, EventArgs e)
         {
