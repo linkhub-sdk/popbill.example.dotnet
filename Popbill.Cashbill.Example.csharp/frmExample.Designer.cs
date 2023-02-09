@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.btnGetInfos = new System.Windows.Forms.Button();
-            this.btnGetLogs = new System.Windows.Forms.Button();
             this.btnGetInfo = new System.Windows.Forms.Button();
             this.GroupBox9 = new System.Windows.Forms.GroupBox();
             this.btnGetBulkResult = new System.Windows.Forms.Button();
@@ -78,8 +77,8 @@
             this.btnGetPDFURL = new System.Windows.Forms.Button();
             this.btnGetPrintURL = new System.Windows.Forms.Button();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.btnRegistIssue = new System.Windows.Forms.Button();
             this.btnDeleteSub = new System.Windows.Forms.Button();
+            this.btnRegistIssue = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.textURL = new System.Windows.Forms.TextBox();
@@ -133,16 +132,6 @@
             this.btnGetInfos.UseVisualStyleBackColor = true;
             this.btnGetInfos.Click += new System.EventHandler(this.btnGetInfos_Click);
             // 
-            // btnGetLogs
-            // 
-            this.btnGetLogs.Location = new System.Drawing.Point(6, 118);
-            this.btnGetLogs.Name = "btnGetLogs";
-            this.btnGetLogs.Size = new System.Drawing.Size(129, 30);
-            this.btnGetLogs.TabIndex = 8;
-            this.btnGetLogs.Text = "문서이력";
-            this.btnGetLogs.UseVisualStyleBackColor = true;
-            this.btnGetLogs.Click += new System.EventHandler(this.btnGetLogs_Click);
-            // 
             // btnGetInfo
             // 
             this.btnGetInfo.Location = new System.Drawing.Point(6, 20);
@@ -158,7 +147,6 @@
             this.GroupBox9.Controls.Add(this.btnGetBulkResult);
             this.GroupBox9.Controls.Add(this.btnSearch);
             this.GroupBox9.Controls.Add(this.btnGetInfos);
-            this.GroupBox9.Controls.Add(this.btnGetLogs);
             this.GroupBox9.Controls.Add(this.btnGetInfo);
             this.GroupBox9.Controls.Add(this.btnGetDetailInfo);
             this.GroupBox9.Location = new System.Drawing.Point(23, 313);
@@ -170,7 +158,7 @@
             // 
             // btnGetBulkResult
             // 
-            this.btnGetBulkResult.Location = new System.Drawing.Point(6, 183);
+            this.btnGetBulkResult.Location = new System.Drawing.Point(6, 149);
             this.btnGetBulkResult.Name = "btnGetBulkResult";
             this.btnGetBulkResult.Size = new System.Drawing.Size(129, 32);
             this.btnGetBulkResult.TabIndex = 12;
@@ -180,7 +168,7 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(6, 150);
+            this.btnSearch.Location = new System.Drawing.Point(6, 118);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(129, 30);
             this.btnSearch.TabIndex = 10;
@@ -658,6 +646,16 @@
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "현금영수증 즉시발행 프로세스(권장)";
             // 
+            // btnDeleteSub
+            // 
+            this.btnDeleteSub.Location = new System.Drawing.Point(25, 107);
+            this.btnDeleteSub.Name = "btnDeleteSub";
+            this.btnDeleteSub.Size = new System.Drawing.Size(56, 29);
+            this.btnDeleteSub.TabIndex = 1;
+            this.btnDeleteSub.Text = "삭제";
+            this.btnDeleteSub.UseVisualStyleBackColor = true;
+            this.btnDeleteSub.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // btnRegistIssue
             // 
             this.btnRegistIssue.BackColor = System.Drawing.Color.LightCoral;
@@ -668,16 +666,6 @@
             this.btnRegistIssue.Text = "즉시발행";
             this.btnRegistIssue.UseVisualStyleBackColor = false;
             this.btnRegistIssue.Click += new System.EventHandler(this.btnRegistIssue_Click);
-            // 
-            // btnDeleteSub
-            // 
-            this.btnDeleteSub.Location = new System.Drawing.Point(25, 107);
-            this.btnDeleteSub.Name = "btnDeleteSub";
-            this.btnDeleteSub.Size = new System.Drawing.Size(56, 29);
-            this.btnDeleteSub.TabIndex = 1;
-            this.btnDeleteSub.Text = "삭제";
-            this.btnDeleteSub.UseVisualStyleBackColor = true;
-            this.btnDeleteSub.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // label4
             // 
@@ -980,7 +968,6 @@
         #endregion
 
         internal System.Windows.Forms.Button btnGetInfos;
-        internal System.Windows.Forms.Button btnGetLogs;
         internal System.Windows.Forms.Button btnGetInfo;
         internal System.Windows.Forms.GroupBox GroupBox9;
         internal System.Windows.Forms.Button btnGetDetailInfo;
