@@ -143,7 +143,7 @@
             this.btnCheckIsMember.Text = "가입여부 확인";
             this.btnCheckIsMember.UseVisualStyleBackColor = true;
             this.btnCheckIsMember.Click += new System.EventHandler(this.btnCheckIsMember_Click);
-            // 
+            //
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnCheckID);
@@ -555,7 +555,79 @@
             this.btnCheckDepositorInfo.Text = "계좌실명조회";
             this.btnCheckDepositorInfo.UseVisualStyleBackColor = true;
             this.btnCheckDepositorInfo.Click += new System.EventHandler(this.btnCheckDepositorInfo_Click);
-            // 
+            //
+            //btnPaymentRequest
+            //
+            this.btnCheckDepositorInfo.Location = new System.Drawing.Point();
+            this.btnCheckDepositorInfo.Name = "btnPaymentRequest";
+            this.btnCheckDepositorInfo.Size = new System.Drawing.Size();
+            this.btnCheckDepositorInfo.Text = "연동회원 무통장 입금신청";
+            this.btnCheckDepositorInfo.Click += new System.EventHandler(this.btnPaymentRequest_Click);
+            //
+            //btnGetPaymentHistory
+            //
+            this.btnCheckDepositorInfo.Location = new System.Drawing.Point();
+            this.btnCheckDepositorInfo.Name = "btnGetPaymentHistory";
+            this.btnCheckDepositorInfo.Size = new System.Drawing.Size();
+            this.btnCheckDepositorInfo.Text = "연동회원 포인트 결제내역 확인";
+            this.btnCheckDepositorInfo.Click += new System.EventHandler(this.btnGetPaymentHistory_Click);
+            //
+            //btnGetSettleResult
+            //
+            this.btnCheckDepositorInfo.Location = new System.Drawing.Point();
+            this.btnCheckDepositorInfo.Name = "btnGetSettleResult";
+            this.btnCheckDepositorInfo.Size = new System.Drawing.Size();
+            this.btnCheckDepositorInfo.Text = "연동회원 무통장 입금신청 정보확인";
+            this.btnCheckDepositorInfo.Click += new System.EventHandler(this.btnGetSettleResult_Click);
+            //
+            //btnGetUseHistory
+            //
+            this.btnCheckDepositorInfo.Location = new System.Drawing.Point();
+            this.btnCheckDepositorInfo.Name = "btnGetUseHistory";
+            this.btnCheckDepositorInfo.Size = new System.Drawing.Size();
+            this.btnCheckDepositorInfo.Text = "연동회원 포인트 사용내역 확인";
+            this.btnCheckDepositorInfo.Click += new System.EventHandler(this.btnGetUseHistory_Click);
+            //
+            //btnRefund
+            //
+            this.btnCheckDepositorInfo.Location = new System.Drawing.Point();
+            this.btnCheckDepositorInfo.Name = "btnRefund";
+            this.btnCheckDepositorInfo.Size = new System.Drawing.Size();
+            this.btnCheckDepositorInfo.Text = "연동회원 포인트 환불신청";
+            this.btnCheckDepositorInfo.Click += new System.EventHandler(this.btnRefund_Click);
+            //
+            //btnGetRefundHistory
+            //
+            this.btnCheckDepositorInfo.Location = new System.Drawing.Point();
+            this.btnCheckDepositorInfo.Name = "btnGetRefundHistory";
+            this.btnCheckDepositorInfo.Size = new System.Drawing.Size();
+            this.btnCheckDepositorInfo.Text = "연동회원 포인트 환불내역 확인";
+            this.btnCheckDepositorInfo.Click += new System.EventHandler(this.btnGetRefundHistory_Click);
+            //
+            //btnGetRefundInfo
+            //
+            this.btnCheckDepositorInfo.Location = new System.Drawing.Point();
+            this.btnCheckDepositorInfo.Name = "btnGetRefundInfo";
+            this.btnCheckDepositorInfo.Size = new System.Drawing.Size();
+            this.btnCheckDepositorInfo.Text = "환불 신청 상태 조회";
+            this.btnCheckDepositorInfo.Click += new System.EventHandler(this.btnGetRefundInfo_Click);
+            //
+            //btnGetRefundableBalance
+            //
+            this.btnCheckDepositorInfo.Location = new System.Drawing.Point();
+            this.btnCheckDepositorInfo.Name = "btnGetRefundableBalance";
+            this.btnCheckDepositorInfo.Size = new System.Drawing.Size();
+            this.btnCheckDepositorInfo.Text = "환불 가능 포인트 조회";
+            this.btnCheckDepositorInfo.Click += new System.EventHandler(this.btnGetRefundableBalance_Click);
+            //
+            //btnQuitMember
+            //
+            this.btnCheckDepositorInfo.Location = new System.Drawing.Point();
+            this.btnCheckDepositorInfo.Name = "btnQuitMember";
+            this.btnCheckDepositorInfo.Size = new System.Drawing.Size();
+            this.btnCheckDepositorInfo.Text = "팝빌 회원 탈퇴";
+            this.btnCheckDepositorInfo.Click += new System.EventHandler(this.btnQuitMember_Click);
+            //
             // label11
             // 
             this.label11.AutoSize = true;

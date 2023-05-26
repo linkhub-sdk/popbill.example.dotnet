@@ -65,7 +65,8 @@ namespace Popbill.AccountCheck.Example.csharp
 
             try
             {
-                AccountCheckInfo result = accountCheckService.CheckAccountInfo(txtCorpNum.Text, txtBankCode.Text, txtAccountNumber.Text);
+                AccountCheckInfo result =
+                    accountCheckService.CheckAccountInfo(txtCorpNum.Text, txtBankCode.Text, txtAccountNumber.Text);
 
                 tmp += "bankCode (기관코드) : " + result.bankCode + "\n";
                 tmp += "accountNumber (계좌번호) : " + result.accountNumber + "\n";
@@ -94,7 +95,8 @@ namespace Popbill.AccountCheck.Example.csharp
 
             try
             {
-                DepositorCheckInfo result = accountCheckService.CheckDepositorInfo(txtCorpNum.Text, txtBankCodeDC.Text, txtAccountNumberDC.Text, txtIdentityNumTypeDC.Text, txtIdentityNumDC.Text);
+                DepositorCheckInfo result = accountCheckService.CheckDepositorInfo(txtCorpNum.Text, txtBankCodeDC.Text,
+                    txtAccountNumberDC.Text, txtIdentityNumTypeDC.Text, txtIdentityNumDC.Text);
 
                 tmp += "bankCode (기관코드) : " + result.bankCode + "\n";
                 tmp += "accountNumber (계좌번호) : " + result.accountNumber + "\n";
@@ -155,6 +157,7 @@ namespace Popbill.AccountCheck.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "포인트 충전 팝업 URL");
             }
         }
+
         /*
          * 연동회원 포인트 결제내역 확인을 위한 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
@@ -327,13 +330,13 @@ namespace Popbill.AccountCheck.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "회원아이디 중복여부 확인");
             }
         }
+
         /*
          * 사용자를 연동회원으로 가입처리합니다.
          * - https://developers.popbill.com/reference/accountcheck/dotnet/api/member#JoinMember
          */
         private void btnJoinMember_Click(object sender, EventArgs e)
         {
-
             JoinForm joinInfo = new JoinForm();
 
             // 아이디, 6자이상 50자 미만
@@ -440,7 +443,6 @@ namespace Popbill.AccountCheck.Example.csharp
          */
         private void btnUpdateCorpInfo_Click(object sender, EventArgs e)
         {
-
             CorpInfo corpInfo = new CorpInfo();
 
             // 대표자성명 (최대 100자)
@@ -586,7 +588,6 @@ namespace Popbill.AccountCheck.Example.csharp
          */
         private void btnUpdateContact_Click(object sender, EventArgs e)
         {
-
             Contact contactInfo = new Contact();
 
             // 담당자 아이디
@@ -618,5 +619,270 @@ namespace Popbill.AccountCheck.Example.csharp
             }
         }
 
+
+        /**
+         * 연동회원 포인트 충전을 위해 무통장입금을 신청합니다.
+         * - https://developers.popbill.com/reference/accountcheck/dotnet/api/point#PaymentRequest
+         */
+        public void btnPaymentRequest_Click(object sender, EventArgs e)
+        {
+            // 팝빌회원 사업자번호
+            String CorpNum = "1234567890";
+
+            PaymentForm PaymentForm = new PaymentForm();
+
+            // 담당자명
+            PaymentForm.settlerName = "담당자명";
+
+            // 담당자 이메일
+            PaymentForm.settlerEmail = "담당자 이메일";
+
+            // 담당자 휴대폰
+            PaymentForm.notifyHP = "담당자 휴대폰";
+
+            // 입금자명
+            PaymentForm.paymentName = "입금자명";
+
+            // 결제금액
+            PaymentForm.settleCost = "결제금액";
+
+            // 팝빌회원 아이디
+            String UserID = "testkorea";
+
+
+            try
+            {
+                PaymentResponse response = accountCheckService.PaymentRequest(CorpNum, PaymentForm, UserID);
+
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + response.message + "\r\n" +
+                                "정산코드" + response.settleCode,
+                    "연동회원 무통장 입금신청");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                                "응답메시지(message) : " + ex.Message, "연동회원 무통장 입금신청");
+            }
+        }
+
+        /**
+         * 연동회원의 포인트 결제내역을 확인합니다.
+         * - https://developers.popbill.com/reference/accountcheck/dotnet/api/point#GetPaymentHistory
+         */
+        public void btnGetPaymentHistory_Click(object sender, EventArgs e)
+        {
+            String CorpNum = "1234567890";
+
+            String SDate = "";
+
+            String EDate = "";
+
+            int Page = 1;
+
+            int PerPage = 500;
+
+            String UserID = "tstkorea";
+
+            try
+            {
+                PaymentHistoryResult result =
+                    accountCheckService.GetPaymentHistory(CorpNum, SDate, EDate, Page, PerPage, UserID);
+
+                MessageBox.Show(
+                    "",
+                    "");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("",
+                    "");
+            }
+        }
+
+        /**
+         * 연동회원 포인트 무통장 입금신청내역 1건을 확인합니다.
+         * - https://developers.popbill.com/reference/accountcheck/dotnet/api/point#GetSettleResult
+         */
+        public void btnGetSettleResult_Click(object sender, EventArgs e)
+        {
+            String CorpNum = "";
+            String SettleCode = "";
+            String UserID = "";
+            try
+            {
+                PaymentHistory result =
+                    accountCheckService.GetSettleResult(CorpNum, SettleCode, UserID);
+
+                MessageBox.Show(
+                    "",
+                    "");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("",
+                    "");
+            }
+        }
+
+        /**
+         * 연동회원의 포인트 사용내역을 확인합니다.
+         * - https://developers.popbill.com/reference/accountcheck/dotnet/api/point#GetUseHistory
+         */
+        public void btnGetUseHistory_Click(object sender, EventArgs e)
+        {
+            String CorpNum = "1234567890";
+
+            String SDate = "20230501";
+
+            String EDate = "20230530";
+
+            int Page = 1;
+
+            int PerPage = 500;
+
+            String Order = "D";
+
+            String UserID = "testkorea";
+
+            try
+            {
+                UseHistoryResult result =
+                    accountCheckService.GetUseHistory(CorpNum, SDate, EDate, Page, PerPage, Order, UserID);
+                MessageBox.Show("", "");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("", "");
+            }
+        }
+
+        /**
+         * 연동회원 포인트를 환불 신청합니다.
+         * - https://developers.popbill.com/reference/accountcheck/dotnet/api/point#Refund
+         */
+        public void btnRefund_Click(object sender, EventArgs e)
+        {
+            String CorpNum = "1234567890";
+
+            RefundForm refundForm = new RefundForm();
+            refundForm.ContactName = "";
+            refundForm.Reason = "";
+            refundForm.TEL = "";
+            refundForm.AccountBank = "";
+            refundForm.AccountName = "";
+            refundForm.AccountNum = "";
+            refundForm.ContactName = "";
+            refundForm.RequestPoint = "";
+
+            String UserID = "testkorea";
+
+            try
+            {
+                RefundResponse result = accountCheckService.Refund(CorpNum, refundForm, UserID);
+                MessageBox.Show("", "");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("", "");
+            }
+        }
+
+        /**
+         * 연동회원의 포인트 환불신청내역을 확인합니다.
+         * - https://developers.popbill.com/reference/accountcheck/dotnet/api/point#GetRefundHistory
+         */
+        public void btnGetRefundHistory_Click(object sender, EventArgs e)
+        {
+            String CorpNum = "1234567890";
+
+            int Page = 1;
+
+            int PerPage = 500;
+
+            String UserID = "testkorea";
+
+            try
+            {
+                RefundHistoryResult result = accountCheckService.GetRefundHistory(CorpNum, Page, PerPage, UserID);
+                MessageBox.Show("", "");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("", "");
+            }
+        }
+
+
+        /**
+         * 포인트 환불에 대한 상세정보 1건을 확인합니다.
+         * - https://developers.popbill.com/reference/accountcheck/dotnet/api/point#GetRefundInfo
+         */
+        public void btnGetRefundInfo_Click(object sender, EventArgs e)
+        {
+            String CorpNum = "1234567890";
+
+            String RefundCode = "";
+
+            String UserID = "testkorea";
+
+            try
+            {
+                RefundHistory result = accountCheckService.GetRefundInfo(CorpNum, RefundCode, UserID);
+                MessageBox.Show("", "");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("", "");
+            }
+        }
+
+        /**
+         * 환불 가능한 포인트를 확인합니다. (보너스 포인트는 환불가능포인트에서 제외됩니다.)
+         * - https://developers.popbill.com/reference/accountcheck/dotnet/api/point#GetRefundableBalance
+         */
+        public void btnGetRefundableBalance_Click(object sender, EventArgs e)
+        {
+            String CorpNum = "1234567890";
+
+
+            String UserID = "testkorea";
+
+            try
+            {
+                double result = accountCheckService.GetRefundableBalance(CorpNum, UserID);
+                MessageBox.Show("", "");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("", "");
+            }
+        }
+
+        /**
+         * 가입된 연동회원의 탈퇴를 요청합니다.
+         * - 회원탈퇴 신청과 동시에 팝빌의 모든 서비스 이용이 불가하며, 관리자를 포함한 모든 담당자 계정도 일괄탈퇴 됩니다.
+         * - 회원탈퇴로 삭제된 데이터는 복원이 불가능합니다.
+         * - 관리자 계정만 회원탈퇴가 가능합니다.
+         * - https://developers.popbill.com/reference/accountcheck/dotnet/api/member#QuitMember
+         */
+        public void btnQuitMember_Click(object sender, EventArgs e)
+        {
+            String CorpNum = "1234567890";
+
+            String QuitReason = "";
+
+            String UserID = "testkorea";
+
+            try
+            {
+                Response result = accountCheckService.QuitMember(CorpNum, QuitReason, UserID);
+                MessageBox.Show("", "");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("", "");
+            }
+        }
     }
 }
