@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Popbill", "Popbill\Popbill.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Popbill.Taxinvoice.Example.csharp", "Popbill.Taxinvoice.Example.csharp\Popbill.Taxinvoice.Example.csharp.csproj", "{A6EC3553-5114-4515-9DCD-1648D42229D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Popbill.Message.Example.csharp", "popbill.message.Example.csharp\Popbill.Message.Example.csharp.csproj", "{5D5A106C-5F8F-4C92-81F9-0E370AED61A1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Popbill.Message.Example.csharp", "Popbill.message.Example.csharp\Popbill.Message.Example.csharp.csproj", "{5D5A106C-5F8F-4C92-81F9-0E370AED61A1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Popbill.Fax.Example.csharp", "Popbill.Fax.Example.csharp\Popbill.Fax.Example.csharp.csproj", "{4B648CBC-FD27-4D1C-A090-A62CE2EA5B7B}"
 EndProject
@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Popbill.Closedown.Example.c
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Popbill.HomeTax.Taxinvoice.Example.csharp", "Popbill.Hometax.Taxinvoice.Example.csharp\Popbill.HomeTax.Taxinvoice.Example.csharp.csproj", "{73FC8D5E-9084-41AA-BA63-D054AD7FDA82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Popbill.HomeTax.Cashbill.Example.csharp", "popbill.HomeTax.Cashbill.Example.csharp\Popbill.HomeTax.Cashbill.Example.csharp.csproj", "{D6685075-D1F2-40FD-B75B-77AAD0BFBB6B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Popbill.HomeTax.Cashbill.Example.csharp", "Popbill.HomeTax.Cashbill.Example.csharp\Popbill.HomeTax.Cashbill.Example.csharp.csproj", "{D6685075-D1F2-40FD-B75B-77AAD0BFBB6B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Popbill.Kakao.Example.csharp", "Popbill.Kakao.Example.csharp\Popbill.Kakao.Example.csharp.csproj", "{1117FF9C-AC7E-46A0-B602-32CAAB1485F5}"
 EndProject
