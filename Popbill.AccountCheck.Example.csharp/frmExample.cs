@@ -1025,13 +1025,13 @@ namespace Popbill.AccountCheck.Example.csharp
                 Response response = accountCheckService.QuitMember(CorpNum, QuitReason, UserID);
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, 
-                    "환불 가능 포인트 확인");
+                    "팝빌회원 탈퇴");
             }
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, 
-                    "환불 가능 포인트 확인");
+                    "팝빌회원 탈퇴");
             }
         }
     }
