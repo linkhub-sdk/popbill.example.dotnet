@@ -438,6 +438,78 @@
             this.textURL.Name = "textURL";
             this.textURL.Size = new System.Drawing.Size(333, 21);
             this.textURL.TabIndex = 23;
+                        //
+            //btnPaymentRequest
+            //
+            this.btnPaymentRequest.Location = new System.Drawing.Point();
+            this.btnPaymentRequest.Name = "btnPaymentRequest";
+            this.btnPaymentRequest.Size = new System.Drawing.Size();
+            this.btnPaymentRequest.Text = "연동회원 무통장 입금신청";
+            this.btnPaymentRequest.Click += new System.EventHandler(this.btnPaymentRequest_Click);
+            //
+            //btnGetPaymentHistory
+            //
+            this.btnGetPaymentHistory.Location = new System.Drawing.Point();
+            this.btnGetPaymentHistory.Name = "btnGetPaymentHistory";
+            this.btnGetPaymentHistory.Size = new System.Drawing.Size();
+            this.btnGetPaymentHistory.Text = "연동회원 포인트 결제내역 확인";
+            this.btnGetPaymentHistory.Click += new System.EventHandler(this.btnGetPaymentHistory_Click);
+            //
+            //btnGetSettleResult
+            //
+            this.btnGetSettleResult.Location = new System.Drawing.Point();
+            this.btnGetSettleResult.Name = "btnGetSettleResult";
+            this.btnGetSettleResult.Size = new System.Drawing.Size();
+            this.btnGetSettleResult.Text = "연동회원 무통장 입금신청 정보확인";
+            this.btnGetSettleResult.Click += new System.EventHandler(this.btnGetSettleResult_Click);
+            //
+            //btnGetUseHistory
+            //
+            this.btnGetUseHistory.Location = new System.Drawing.Point();
+            this.btnGetUseHistory.Name = "btnGetUseHistory";
+            this.btnGetUseHistory.Size = new System.Drawing.Size();
+            this.btnGetUseHistory.Text = "연동회원 포인트 사용내역 확인";
+            this.btnGetUseHistory.Click += new System.EventHandler(this.btnGetUseHistory_Click);
+            //
+            //btnRefund
+            //
+            this.btnRefund.Location = new System.Drawing.Point();
+            this.btnRefund.Name = "btnRefund";
+            this.btnRefund.Size = new System.Drawing.Size();
+            this.btnRefund.Text = "연동회원 포인트 환불신청";
+            this.btnRefund.Click += new System.EventHandler(this.btnRefund_Click);
+            //
+            //btnGetRefundHistory
+            //
+            this.btnGetRefundHistory.Location = new System.Drawing.Point();
+            this.btnGetRefundHistory.Name = "btnGetRefundHistory";
+            this.btnGetRefundHistory.Size = new System.Drawing.Size();
+            this.btnGetRefundHistory.Text = "연동회원 포인트 환불내역 확인";
+            this.btnGetRefundHistory.Click += new System.EventHandler(this.btnGetRefundHistory_Click);
+            //
+            //btnGetRefundInfo
+            //
+            this.btnGetRefundInfo.Location = new System.Drawing.Point();
+            this.btnGetRefundInfo.Name = "btnGetRefundInfo";
+            this.btnGetRefundInfo.Size = new System.Drawing.Size();
+            this.btnGetRefundInfo.Text = "환불 신청 상태 조회";
+            this.btnGetRefundInfo.Click += new System.EventHandler(this.btnGetRefundInfo_Click);
+            //
+            //btnGetRefundableBalance
+            //
+            this.btnGetRefundableBalance.Location = new System.Drawing.Point();
+            this.btnGetRefundableBalance.Name = "btnGetRefundableBalance";
+            this.btnGetRefundableBalance.Size = new System.Drawing.Size();
+            this.btnGetRefundableBalance.Text = "환불 가능 포인트 조회";
+            this.btnGetRefundableBalance.Click += new System.EventHandler(this.btnGetRefundableBalance_Click);
+            //
+            //btnQuitMember
+            //
+            this.btnQuitMember.Location = new System.Drawing.Point();
+            this.btnQuitMember.Name = "btnQuitMember";
+            this.btnQuitMember.Size = new System.Drawing.Size();
+            this.btnQuitMember.Text = "팝빌 회원 탈퇴";
+            this.btnQuitMember.Click += new System.EventHandler(this.btnQuitMember_Click);
             // 
             // frmExample
             // 
@@ -514,6 +586,15 @@
         private System.Windows.Forms.Button btnGetUseHistoryURL;
         private System.Windows.Forms.Button btnGetPaymentURL;
         private System.Windows.Forms.Button btnGetContactInfo;
+        private System.Windows.Forms.Button btnPaymentRequest;
+        private System.Windows.Forms.Button btnGetSettleResult;
+        private System.Windows.Forms.Button btnGetPaymentHistory;
+        private System.Windows.Forms.Button btnGetUseHistory;
+        private System.Windows.Forms.Button btnRefund;
+        private System.Windows.Forms.Button btnGetRefundHistory;
+        private System.Windows.Forms.Button btnGetRefundableBalance;
+        private System.Windows.Forms.Button btnGetRefundInfo;
+        private System.Windows.Forms.Button btnQuitMember;
     }
 }
 

@@ -103,7 +103,7 @@ namespace Popbill.BizInfoCheck.Example.csharp
 
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "기업정보조회 - 단건");
             }
         }
@@ -123,7 +123,7 @@ namespace Popbill.BizInfoCheck.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "연동회원 잔여포인트 확인");
             }
         }
@@ -144,7 +144,7 @@ namespace Popbill.BizInfoCheck.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "포인트 충전 팝업 URL");
             }
         }
@@ -165,7 +165,7 @@ namespace Popbill.BizInfoCheck.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "연동회원 포인트 결제내역 URL");
             }
         }
@@ -186,7 +186,7 @@ namespace Popbill.BizInfoCheck.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "연동회원 포인트 사용내역 URL");
             }
         }
@@ -206,7 +206,7 @@ namespace Popbill.BizInfoCheck.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "파트너 잔여포인트 확인");
             }
         }
@@ -228,7 +228,7 @@ namespace Popbill.BizInfoCheck.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "파트너 포인트충전 URL");
             }
         }
@@ -247,7 +247,7 @@ namespace Popbill.BizInfoCheck.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "휴폐업 조회단가 확인");
             }
         }
@@ -272,7 +272,7 @@ namespace Popbill.BizInfoCheck.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "과금정보 확인");
             }
         }
@@ -287,12 +287,12 @@ namespace Popbill.BizInfoCheck.Example.csharp
             {
                 Response response = bizInfoCheckService.CheckIsMember(txtCorpNum.Text, LinkID);
 
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "연동회원 가입여부 확인");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "연동회원 가입여부 확인");
             }
         }
@@ -307,12 +307,12 @@ namespace Popbill.BizInfoCheck.Example.csharp
             {
                 Response response = bizInfoCheckService.CheckID(txtUserID.Text);
 
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "회원아이디 중복여부 확인");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "회원아이디 중복여부 확인");
             }
         }
@@ -365,12 +365,12 @@ namespace Popbill.BizInfoCheck.Example.csharp
             {
                 Response response = bizInfoCheckService.JoinMember(joinInfo);
 
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "연동회원 가입요청");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "연동회원 가입요청");
             }
         }
@@ -391,7 +391,7 @@ namespace Popbill.BizInfoCheck.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "팝빌 로그인 URL");
             }
         }
@@ -418,7 +418,7 @@ namespace Popbill.BizInfoCheck.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "회사정보 조회");
             }
         }
@@ -450,12 +450,12 @@ namespace Popbill.BizInfoCheck.Example.csharp
             {
                 Response response = bizInfoCheckService.UpdateCorpInfo(txtCorpNum.Text, corpInfo, txtUserID.Text);
 
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "회사정보 수정");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "회사정보 수정");
             }
         }
@@ -490,12 +490,12 @@ namespace Popbill.BizInfoCheck.Example.csharp
             {
                 Response response = bizInfoCheckService.RegistContact(txtCorpNum.Text, contactInfo, txtUserID.Text);
 
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "담당자 추가");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "담당자 추가");
             }
         }
@@ -529,7 +529,7 @@ namespace Popbill.BizInfoCheck.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "담당자 정보 확인");
             }
         }
@@ -563,7 +563,7 @@ namespace Popbill.BizInfoCheck.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "담당자 목록조회");
             }
         }
@@ -595,12 +595,12 @@ namespace Popbill.BizInfoCheck.Example.csharp
             {
                 Response response = bizInfoCheckService.UpdateContact(txtCorpNum.Text, contactInfo, txtUserID.Text);
 
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "담당자 정보수정");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "담당자 정보수정");
             }
         }
@@ -613,6 +613,421 @@ namespace Popbill.BizInfoCheck.Example.csharp
         private void groupBox6_Enter(object sender, EventArgs e)
         {
 
+        }
+        
+        /**
+         * 연동회원 포인트 충전을 위해 무통장입금을 신청합니다.
+         * - https://developers.popbill.com/reference/bizinfocheck/dotnet/api/point#PaymentRequest
+         */
+        public void btnPaymentRequest_Click(object sender, EventArgs e)
+        {
+            // 팝빌회원 사업자번호
+            String CorpNum = "1234567890";
+
+            // 무통장 입금 신청 객체
+            PaymentForm PaymentForm = new PaymentForm();
+
+            // 담당자명
+            PaymentForm.settlerName = "담당자명";
+
+            // 담당자 이메일
+            PaymentForm.settlerEmail = "담당자 이메일";
+
+            // 담당자 휴대폰
+            PaymentForm.notifyHP = "담당자 휴대폰";
+
+            // 입금자명
+            PaymentForm.paymentName = "입금자명";
+
+            // 결제금액
+            PaymentForm.settleCost = "결제금액";
+
+            // 팝빌회원 아이디
+            String UserID = "testkorea";
+
+
+            try
+            {
+                PaymentResponse response = bizInfoCheckService.PaymentRequest(CorpNum, PaymentForm, UserID);
+
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
+                                "응답메시지(message) : " + response.message + CRLF +
+                                "정산코드" + response.settleCode,
+                    "연동회원 무통장 입금신청");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
+                                "응답메시지(message) : " + ex.Message, "연동회원 무통장 입금신청");
+            }
+        }
+
+        /**
+         * 연동회원의 포인트 결제내역을 확인합니다.
+         * - https://developers.popbill.com/reference/bizinfocheck/dotnet/api/point#GetPaymentHistory
+         */
+        public void btnGetPaymentHistory_Click(object sender, EventArgs e)
+        {
+            // 팝빌회원 사업자번호
+            String CorpNum = "1234567890";
+
+            // 조회 시작 일자
+            String SDate = "20230501";
+            
+            // 조회 종료 일자
+            String EDate = "20230530";
+
+            // 목록 페이지 번호
+            int Page = 1;
+
+            // 페이지당 목록 개수
+            int PerPage = 500;
+
+            // 팝빌 회원 아이디
+            String UserID = "testkorea";
+
+            try
+            {
+                PaymentHistoryResult result =
+                    bizInfoCheckService.GetPaymentHistory(CorpNum, SDate, EDate, Page, PerPage, UserID);
+
+                String tmp = "";
+
+                foreach (PaymentHistory history in result.list)
+                {
+                    tmp += "결제 내용(productType) : " + history.productType + CRLF;
+                    tmp += "정액제 상품명(productName) : " + history.productName + CRLF;
+                    tmp += "결제 유형(settleType) : " + history.settleType + CRLF;
+                    tmp += "담당자명(settlerName) : " + history.settlerName + CRLF;
+                    tmp += "담당자메일(settlerEmail) : " + history.settlerEmail + CRLF;
+                    tmp += "결제 금액(settleCost) : " + history.settleCost + CRLF;
+                    tmp += "충전포인트(settlePoint) : " + history.settlePoint + CRLF;
+                    tmp += "결제 상태(settleState) : " + history.settleState.ToString() + CRLF;
+                    tmp += "등록일시(regDT) : " + history.regDT + CRLF;
+                    tmp += "상태일시(stateDT) : " + history.stateDT + CRLF;
+                    tmp += CRLF;
+                }
+
+                MessageBox.Show(
+                    "응답코드(code) : " + result.code.ToString() + CRLF+
+                    "총 검색결과 건수(total) : " + result.total.ToString() + CRLF+
+                    "페이지당 검색개수(perPage) : " + result.perPage.ToString() +CRLF+
+                    "페이지 번호(pageNum) : " + result.pageNum.ToString() +CRLF+
+                    "페이지 개수(pageCount) : " + result.pageCount.ToString() +CRLF
+                    + "사용내역"+CRLF+tmp,
+                    "연동회원 포인트 결제내역 확인");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
+                                "응답메시지(message) : " + ex.Message, "연동회원 포인트 결제내역 확인");
+            }
+        }
+
+        /**
+         * 연동회원 포인트 무통장 입금신청내역 1건을 확인합니다.
+         * - https://developers.popbill.com/reference/bizinfocheck/dotnet/api/point#GetSettleResult
+         */
+        public void btnGetSettleResult_Click(object sender, EventArgs e)
+        {
+            // 팝빌회원 사업자번호
+            String CorpNum = "1234567890";
+            
+            // 정산 코드
+            String SettleCode = "202301160000000010";
+            
+            // 팝빌회원 아이디
+            String UserID = "testkorea";
+            
+            try
+            {
+                PaymentHistory result =
+                    bizInfoCheckService.GetSettleResult(CorpNum, SettleCode, UserID);
+
+                MessageBox.Show(
+                    "결제 내용(productType) : " + result.productType + CRLF +
+                        "정액제 상품명(productName) : " + result.productName + CRLF +
+                        "결제 유형(settleType) : " + result.settleType + CRLF +
+                        "담당자명(settlerName) : " + result.settlerName + CRLF +
+                        "담당자메일(settlerEmail) : " + result.settlerEmail + CRLF +
+                        "결제 금액(settleCost) : " + result.settleCost + CRLF +
+                        "충전포인트(settlePoint) : " + result.settlePoint + CRLF +
+                        "결제 상태(settleState) : " + result.settleState.ToString() + CRLF +
+                        "등록일시(regDT) : " + result.regDT + CRLF +
+                        "상태일시(stateDT) : " + result.stateDT + CRLF,
+                    "무통장 입금 신청내역 확인");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
+                                "응답메시지(message) : " + ex.Message, "무통장 입금 신청내역 확인");
+            }
+        }
+
+        /**
+         * 연동회원의 포인트 사용내역을 확인합니다.
+         * - https://developers.popbill.com/reference/bizinfocheck/dotnet/api/point#GetUseHistory
+         */
+        public void btnGetUseHistory_Click(object sender, EventArgs e)
+        {
+            // 팝빌 회원 아이디
+            String CorpNum = "1234567890";
+
+            // 조회 시작 일자
+            String SDate = "20230501";
+
+            // 조회 종료 일자
+            String EDate = "20230530";
+
+            // 목록 페이지 번호
+            int Page = 1;
+
+            // 페이지당 목록 개수
+            int PerPage = 500;
+
+            // 목록 정렬 방향
+            String Order = "D";
+
+            // 팝빌 회원 아이디
+            String UserID = "testkorea";
+
+            try
+            {
+                UseHistoryResult result =
+                    bizInfoCheckService.GetUseHistory(CorpNum, SDate, EDate, Page, PerPage, Order, UserID);
+
+                String tmp = "";
+
+                foreach (UseHistory history in result.list)
+                {
+                    tmp += "서비스 코드(itemCode) : " + history.itemCode + CRLF;
+                    tmp += "포인트 증감 유형(txType) : " + history.txType + CRLF;
+                    tmp += "결제 유형(txPoint) : " + history.txPoint + CRLF;
+                    tmp += "담당자명(balance) : " + history.balance + CRLF;
+                    tmp += "담당자메일(txDT) : " + history.txDT + CRLF;
+                    tmp += "결제 금액(userID) : " + history.userID + CRLF;
+                    tmp += "충전포인트(userName) : " + history.userName + CRLF;
+                    tmp += CRLF;
+                }
+                
+                MessageBox.Show(
+                    "응답코드(code) : " + result.code.ToString() + CRLF+
+                    "총 검색결과 건수(total) : " + result.total.ToString() + CRLF+
+                    "페이지당 검색개수(perPage) : " + result.perPage.ToString() +CRLF+
+                    "페이지 번호(pageNum) : " + result.pageNum.ToString() +CRLF+
+                    "페이지 개수(pageCount) : " + result.pageCount.ToString() +CRLF +
+                    "사용내역"+CRLF+
+                    tmp,
+                     "포인트 사용내역 확인");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
+                                "응답메시지(message) : " + ex.Message, "포인트 사용내역 확인");
+            }
+        }
+
+        /**
+         * 연동회원 포인트를 환불 신청합니다.
+         * - https://developers.popbill.com/reference/bizinfocheck/dotnet/api/point#Refund
+         */
+        public void btnRefund_Click(object sender, EventArgs e)
+        {
+            // 팝빌 회원 사업자번호
+            String CorpNum = "1234567890";
+
+            // 환불 신청 객체
+            RefundForm refundForm = new RefundForm();
+            
+            // 담당자명
+            refundForm.ContactName = "담당자명";
+            
+            // 담당자 연락처
+            refundForm.TEL = "010-1234-1234";
+            
+            // 환불 신청 포인트
+            refundForm.RequestPoint = "100";
+            
+            // 은행명
+            refundForm.AccountBank = "국민";
+            
+            // 계좌 번호
+            refundForm.AccountNum = "123-12-10981204";
+            
+            // 예금주명
+            refundForm.AccountName = "예금주";
+            
+            // 환불 사유
+            refundForm.Reason = "환불 사유";
+
+            // 팝빌 회원 아이디
+            String UserID = "testkorea";
+
+            try
+            {
+                RefundResponse result = bizInfoCheckService.Refund(CorpNum, refundForm, UserID);
+                MessageBox.Show(
+                    "code (응답 코드) : "+ result.code.ToString() +
+                    "message (응답 메시지) : " + result.message +
+                    "refundCode (환불코드) : " + result.refundCode,
+                    "환불 신청");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
+                                "응답메시지(message) : " + ex.Message, "환불 신청");
+            }
+        }
+
+        /**
+         * 연동회원의 포인트 환불신청내역을 확인합니다.
+         * - https://developers.popbill.com/reference/bizinfocheck/dotnet/api/point#GetRefundHistory
+         */
+        public void btnGetRefundHistory_Click(object sender, EventArgs e)
+        {
+            // 팝빌회원 사업자번호
+            String CorpNum = "1234567890";
+
+            // 목록 페이지 번호
+            int Page = 1;
+
+            // 페이지당 목록 개수
+            int PerPage = 500;
+
+            // 팝빌 회원 아이디
+            String UserID = "testkorea";
+
+            try
+            {
+                RefundHistoryResult result = bizInfoCheckService.GetRefundHistory(CorpNum, Page, PerPage, UserID);
+                String tmp = "";
+
+                foreach (RefundHistory history in result.list)
+                {
+                    tmp += "reqDT (신청일시) :" + history.reqDT + CRLF ;
+                    tmp += "requestPoint (환불 신청포인트) :" + history.requestPoint + CRLF ;
+                    tmp += "accountBank (환불계좌 은행명) :" + history.accountBank + CRLF ;
+                    tmp += "accountNum (환불계좌번호) :" + history.accountNum + CRLF ;
+                    tmp += "accountName (환불계좌 예금주명) :" + history.accountName + CRLF ;
+                    tmp += "state (상태) : " + history.state.ToString() + CRLF ;
+                    tmp += "reason (환불사유) : " + history.reason;
+                    tmp += CRLF;   
+                }
+                
+                MessageBox.Show(
+                    "응답코드(code) : " + result.code.ToString() + CRLF+
+                    "총 검색결과 건수(total) : " + result.total.ToString() + CRLF+
+                    "페이지당 검색개수(perPage) : " + result.perPage.ToString() +CRLF+
+                    "페이지 번호(pageNum) : " + result.pageNum.ToString() +CRLF+
+                    "페이지 개수(pageCount) : " + result.pageCount.ToString() +CRLF +
+                    "사용내역"+CRLF+
+                    tmp, 
+                "환불 신청내역 확인");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
+                                "응답메시지(message) : " + ex.Message, 
+                "환불 신청내역 확인");
+            }
+        }
+
+
+        /**
+         * 포인트 환불에 대한 상세정보 1건을 확인합니다.
+         * - https://developers.popbill.com/reference/bizinfocheck/dotnet/api/point#GetRefundInfo
+         */
+        public void btnGetRefundInfo_Click(object sender, EventArgs e)
+        {
+            // 팝빌회원 사업자번호
+            String CorpNum = "1234567890";
+
+            // 환불 코드
+            String RefundCode = "023040000017";
+
+            // 팝빌 회원 아이디
+            String UserID = "testkorea";
+
+            try
+            {
+                RefundHistory result = bizInfoCheckService.GetRefundInfo(CorpNum, RefundCode, UserID);
+                MessageBox.Show(
+                    "reqDT (신청일시) :" + result.reqDT + CRLF+
+                        "requestPoint (환불 신청포인트) :" + result.requestPoint + CRLF+
+                        "accountBank (환불계좌 은행명) :" + result.accountBank + CRLF+
+                        "accountNum (환불계좌번호) :" + result.accountNum + CRLF+
+                        "accountName (환불계좌 예금주명) :" + result.accountName + CRLF+
+                        "state (상태) : " + result.state.ToString() + CRLF+
+                        "reason (환불사유) : " + result.reason, 
+                        "환불 신청 상세정보 확인"
+                    );
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
+                                "응답메시지(message) : " + ex.Message, 
+                    "환불 신청 상세정보 확인");
+            }
+        }
+
+        /**
+         * 환불 가능한 포인트를 확인합니다. (보너스 포인트는 환불가능포인트에서 제외됩니다.)
+         * - https://developers.popbill.com/reference/bizinfocheck/dotnet/api/point#GetRefundableBalance
+         */
+        public void btnGetRefundableBalance_Click(object sender, EventArgs e)
+        {
+            // 팝빌회원 사업자번호
+            String CorpNum = "1234567890";
+
+            // 팝빌 회원 아이디
+            String UserID = "testkorea";
+
+            try
+            {
+                Double refundableBanace = bizInfoCheckService.GetRefundableBalance(CorpNum, UserID);
+                MessageBox.Show("refundablePoint (환불 가능 포인트) : "+ refundableBanace.ToString(), 
+                    "환불 가능 포인트 확인");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
+                                "응답메시지(message) : " + ex.Message, 
+                    "환불 가능 포인트 확인");
+            }
+        }
+
+        /**
+         * 가입된 연동회원의 탈퇴를 요청합니다.
+         * - 회원탈퇴 신청과 동시에 팝빌의 모든 서비스 이용이 불가하며, 관리자를 포함한 모든 담당자 계정도 일괄탈퇴 됩니다.
+         * - 회원탈퇴로 삭제된 데이터는 복원이 불가능합니다.
+         * - 관리자 계정만 회원탈퇴가 가능합니다.
+         * - https://developers.popbill.com/reference/bizinfocheck/dotnet/api/member#QuitMember
+         */
+        public void btnQuitMember_Click(object sender, EventArgs e)
+        {
+            
+            // 팝빌회원 사업자번호
+            String CorpNum = "1234567890";
+
+            // 탈퇴 사유
+            String QuitReason = "탈퇴 사유";
+            
+            // 팝빌 회원 아이디
+            String UserID = "testkorea";
+
+            try
+            {
+                Response response = bizInfoCheckService.QuitMember(CorpNum, QuitReason, UserID);
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
+                                "응답메시지(message) : " + response.message, 
+                    "환불 가능 포인트 확인");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
+                                "응답메시지(message) : " + ex.Message, 
+                    "환불 가능 포인트 확인");
+            }
         }
     }
 }
