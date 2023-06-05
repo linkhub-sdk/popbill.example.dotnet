@@ -75,7 +75,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "문서번호 중복확인");
             }
         }
@@ -359,13 +359,13 @@ namespace Popbill.Taxinvoice.Example.csharp
                 IssueResponse response = taxinvoiceService.RegistIssue(txtCorpNum.Text, taxinvoice, forceIssue, memo,
                     writeSpecification, dealInvoiceMgtKey, emailSubject);
 
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + response.message  + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
+                                "응답메시지(message) : " + response.message  + CRLF +
                                 "국세청승인번호(ntsConfirmNum) : " + response.ntsConfirmNum, "즉시발행");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "즉시발행");
             }
         }
@@ -635,13 +635,13 @@ namespace Popbill.Taxinvoice.Example.csharp
             {
                 BulkResponse response = taxinvoiceService.BulkSubmit(txtCorpNum.Text, txtSubmitID.Text, taxinvoiceList, forceIssue);
 
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + response.message + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
+                                "응답메시지(message) : " + response.message + CRLF +
                                 "접수아이디(receiptID) : " + response.receiptID, "초대량 발행 접수");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "초대량 발행 접수");
             }
         }
@@ -688,7 +688,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "초대량 접수결과 확인");
             }
         }
@@ -955,12 +955,12 @@ namespace Popbill.Taxinvoice.Example.csharp
                 Response response =
                     taxinvoiceService.Register(txtCorpNum.Text, taxinvoice, txtUserId.Text, writeSpecification);
 
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "세금계산서 임시저장");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "세금계산서 임시저장");
             }
         }
@@ -1206,12 +1206,12 @@ namespace Popbill.Taxinvoice.Example.csharp
             {
                 Response response = taxinvoiceService.Register(txtCorpNum.Text, taxinvoice);
 
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "역발행 세금계산서 임시저장");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "역발행 세금계산서 임시저장");
             }
         }
@@ -1246,13 +1246,13 @@ namespace Popbill.Taxinvoice.Example.csharp
                 IssueResponse response = taxinvoiceService.Issue(txtCorpNum.Text, KeyType, txtMgtKey.Text, memo, forceIssue,
                     txtUserId.Text);
 
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + response.message + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
+                                "응답메시지(message) : " + response.message + CRLF +
                                 "국세청승인번호(ntsConfirmNum) : " + response.ntsConfirmNum, "세금계산서 발행");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "세금계산서 발행");
             }
         }
@@ -1287,13 +1287,13 @@ namespace Popbill.Taxinvoice.Example.csharp
                 IssueResponse response = taxinvoiceService.Issue(txtCorpNum.Text, KeyType, txtMgtKey.Text, memo, forceIssue,
                     txtUserId.Text);
 
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + response.message + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
+                                "응답메시지(message) : " + response.message + CRLF +
                                 "국세청승인번호(ntsConfirmNum) : " + response.ntsConfirmNum, "세금계산서 발행");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "세금계산서 발행");
             }
         }
@@ -1553,12 +1553,12 @@ namespace Popbill.Taxinvoice.Example.csharp
                 Response response = taxinvoiceService.Update(txtCorpNum.Text, KeyType, txtMgtKey.Text, taxinvoice,
                     txtUserId.Text);
 
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "임시저장 세금계산서 수정");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "임시저장 세금계산서 수정");
             }
         }
@@ -1803,12 +1803,12 @@ namespace Popbill.Taxinvoice.Example.csharp
                 Response response = taxinvoiceService.Update(txtCorpNum.Text, KeyType, txtMgtKey.Text, taxinvoice,
                     txtUserId.Text);
 
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "역발행 세금계산서 수정");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "역발행 세금계산서 수정");
             }
         }
@@ -1831,12 +1831,12 @@ namespace Popbill.Taxinvoice.Example.csharp
                 Response response =
                     taxinvoiceService.CancelIssue(txtCorpNum.Text, KeyType, txtMgtKey.Text, memo, txtUserId.Text);
 
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "발행취소");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "발행취소");
             }
         }
@@ -1860,12 +1860,12 @@ namespace Popbill.Taxinvoice.Example.csharp
                 Response response =
                     taxinvoiceService.CancelIssue(txtCorpNum.Text, KeyType, txtMgtKey.Text, memo, txtUserId.Text);
 
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "발행취소");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "발행취소");
             }
         }
@@ -1888,12 +1888,12 @@ namespace Popbill.Taxinvoice.Example.csharp
                 Response response =
                     taxinvoiceService.CancelIssue(txtCorpNum.Text, KeyType, txtMgtKey.Text, memo, txtUserId.Text);
 
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "발행취소");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "발행취소");
             }
         }
@@ -1913,12 +1913,12 @@ namespace Popbill.Taxinvoice.Example.csharp
             {
                 Response response = taxinvoiceService.Delete(txtCorpNum.Text, KeyType, txtMgtKey.Text);
 
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "세금계산서 삭제");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "세금계산서 삭제");
             }
         }
@@ -1938,12 +1938,12 @@ namespace Popbill.Taxinvoice.Example.csharp
             {
                 Response response = taxinvoiceService.Delete(txtCorpNum.Text, KeyType, txtMgtKey.Text);
 
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "세금계산서 삭제");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "세금계산서 삭제");
             }
         }
@@ -1963,12 +1963,12 @@ namespace Popbill.Taxinvoice.Example.csharp
             {
                 Response response = taxinvoiceService.Delete(txtCorpNum.Text, KeyType, txtMgtKey.Text);
 
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "세금계산서 삭제");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "세금계산서 삭제");
             }
         }
@@ -2215,12 +2215,12 @@ namespace Popbill.Taxinvoice.Example.csharp
             {
                 Response response = taxinvoiceService.RegistRequest(txtCorpNum.Text, taxinvoice, memo);
 
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "세금계산서 즉시요청");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "세금계산서 즉시요청");
             }
         }
@@ -2248,12 +2248,12 @@ namespace Popbill.Taxinvoice.Example.csharp
                 Response response =
                     taxinvoiceService.Request(txtCorpNum.Text, KeyType, txtMgtKey.Text, memo, txtUserId.Text);
 
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "역발행 요청");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "역발행 요청");
             }
         }
@@ -2278,12 +2278,12 @@ namespace Popbill.Taxinvoice.Example.csharp
                 Response response =
                     taxinvoiceService.CancelRequest(txtCorpNum.Text, KeyType, txtMgtKey.Text, memo, txtUserId.Text);
 
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "역발행 요청 취소");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "역발행 요청 취소");
             }
         }
@@ -2307,12 +2307,12 @@ namespace Popbill.Taxinvoice.Example.csharp
                 Response response =
                     taxinvoiceService.CancelRequest(txtCorpNum.Text, KeyType, txtMgtKey.Text, memo, txtUserId.Text);
 
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "역발행 요청 취소");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "역발행 요청 취소");
             }
         }
@@ -2382,12 +2382,12 @@ namespace Popbill.Taxinvoice.Example.csharp
                 Response response =
                     taxinvoiceService.SendToNTS(txtCorpNum.Text, KeyType, txtMgtKey.Text, txtUserId.Text);
 
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "국세청 즉시전송");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "국세청 즉시전송");
             }
         }
@@ -2450,7 +2450,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "문서 상태/요약 정보 조회");
             }
         }
@@ -2492,7 +2492,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "문서 상태정보 대량 확인");
             }
         }
@@ -2602,7 +2602,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "세금계산서 상세정보 확인");
             }
         }
@@ -2630,7 +2630,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "세금계산서 상세정보 확인(XML)");
             }
 
@@ -2800,7 +2800,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "문서목록 조회");
             }
         }
@@ -2832,7 +2832,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "문서 상태변경 이력확인");
             }
         }
@@ -2854,7 +2854,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "임시 문서함 팝업 URL");
             }
         }
@@ -2875,7 +2875,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "매출문서함 팝업 URL");
             }
         }
@@ -2896,7 +2896,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "매입문서함 팝업 URL");
             }
         }
@@ -2917,7 +2917,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "매출문서 작성 팝업 URL");
             }
         }
@@ -2941,7 +2941,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "세금계산서 보기 팝업 URL");
             }
         }
@@ -2966,7 +2966,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "세금계산서 보기 팝업 URL");
             }
         }
@@ -2990,7 +2990,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "세금계산서 인쇄 팝업 URL");
             }
         }
@@ -3014,7 +3014,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "세금계산서 인쇄 팝업 URL");
             }
 
@@ -3038,7 +3038,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "세금계산서 인쇄(공급받는자) 팝업 URL");
             }
         }
@@ -3067,7 +3067,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "세금계산서 대량인쇄 팝업 URL");
             }
         }
@@ -3091,7 +3091,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "메일링크 팝업 URL");
             }
         }
@@ -3115,7 +3115,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "세금계산서 인쇄 팝업 URL");
             }
         }
@@ -3136,7 +3136,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "팝빌 로그인 URL");
             }
         }
@@ -3157,7 +3157,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "인감 및 첨부문서 등록 URL");
             }
         }
@@ -3181,12 +3181,12 @@ namespace Popbill.Taxinvoice.Example.csharp
                     Response response = taxinvoiceService.AttachFile(txtCorpNum.Text, KeyType, txtMgtKey.Text,
                         strFileName, txtUserId.Text);
 
-                    MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                    MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                     "응답메시지(message) : " + response.message, "첨부파일 등록");
                 }
                 catch (PopbillException ex)
                 {
-                    MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                    MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                     "응답메시지(message) : " + ex.Message, "첨부파일 등록");
                 }
             }
@@ -3207,12 +3207,12 @@ namespace Popbill.Taxinvoice.Example.csharp
                 Response response = taxinvoiceService.DeleteFile(txtCorpNum.Text, KeyType, txtMgtKey.Text,
                     txtFileID.Text, txtUserId.Text);
 
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "첨부파일 삭제");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "첨부파일 삭제");
             }
         }
@@ -3246,7 +3246,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "첨부파일 목록 확인");
             }
         }
@@ -3269,12 +3269,12 @@ namespace Popbill.Taxinvoice.Example.csharp
                 Response response =
                     taxinvoiceService.SendEmail(txtCorpNum.Text, KeyType, txtMgtKey.Text, email, txtUserId.Text);
 
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "발행 안내메일 재전송");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "발행 안내메일 재전송");
             }
         }
@@ -3304,12 +3304,12 @@ namespace Popbill.Taxinvoice.Example.csharp
                 Response response = taxinvoiceService.SendSMS(txtCorpNum.Text, KeyType, txtMgtKey.Text, senderNum,
                     receiverNum, contents, txtUserId.Text);
 
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "알림문자 전송");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "알림문자 전송");
             }
         }
@@ -3335,12 +3335,12 @@ namespace Popbill.Taxinvoice.Example.csharp
                 Response response = taxinvoiceService.SendFAX(txtCorpNum.Text, KeyType, txtMgtKey.Text, senderNum,
                     receiverNum, txtUserId.Text);
 
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "세금계산서 팩스전송");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "세금계산서 팩스전송");
             }
         }
@@ -3364,12 +3364,12 @@ namespace Popbill.Taxinvoice.Example.csharp
             {
                 Response response = taxinvoiceService.AttachStatement(txtCorpNum.Text, KeyType, txtMgtKey.Text,
                     DocItemCode, DocMgtKey);
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "전자명세서 첨부");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "전자명세서 첨부");
             }
         }
@@ -3394,12 +3394,12 @@ namespace Popbill.Taxinvoice.Example.csharp
                 Response response = taxinvoiceService.DetachStatement(txtCorpNum.Text, KeyType, txtMgtKey.Text,
                     DocItemCode, DocMgtKey);
 
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "전자명세서 첨부해제");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "전자명세서 첨부해제 ");
             }
         }
@@ -3425,7 +3425,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "연계사업자 메일목록 확인");
             }
         }
@@ -3450,12 +3450,12 @@ namespace Popbill.Taxinvoice.Example.csharp
             {
                 Response response = taxinvoiceService.AssignMgtKey(txtCorpNum.Text, KeyType, itemKey, mgtKey);
 
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "세금계산서 문서번호 할당");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "세금계산서 문서번호 할당");
             }
         }
@@ -3511,7 +3511,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "알림메일 전송목록 조회");
             }
         }
@@ -3558,12 +3558,12 @@ namespace Popbill.Taxinvoice.Example.csharp
                     taxinvoiceService.UpdateEmailConfig(txtCorpNum.Text, EmailType, SendYN);
 
 
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "알림메일 전송설정 수정");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "알림메일 전송설정 수정");
             }
         }
@@ -3581,12 +3581,12 @@ namespace Popbill.Taxinvoice.Example.csharp
                     taxinvoiceService.GetSendToNTSConfig(txtCorpNum.Text);
 
 
-                MessageBox.Show("국세청 전송 설정 확인 : " + sendToNTSConfig.ToString() + "\r\n" +
+                MessageBox.Show("국세청 전송 설정 확인 : " + sendToNTSConfig.ToString() + CRLF +
                                 "True(발행 즉시 전송) False(익일 자동 전송)");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, ".국세청 전송 설정 확인");
             }
         }
@@ -3608,7 +3608,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "인증서 등록 URL");
             }
         }
@@ -3627,7 +3627,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "인증서 만료일시 확인");
             }
         }
@@ -3643,12 +3643,12 @@ namespace Popbill.Taxinvoice.Example.csharp
             {
                 Response response = taxinvoiceService.CheckCertValidation(txtCorpNum.Text);
 
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "인증서 유효성 확인");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "인증서 유효성 확인");
             }
         }
@@ -3678,7 +3678,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "인증서 정보 확인");
             }
         }
@@ -3698,7 +3698,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "연동회원 잔여포인트 조회");
             }
         }
@@ -3720,7 +3720,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "포인트 충전 URL");
             }
         }
@@ -3741,7 +3741,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "연동회원 포인트 결제내역 URL");
             }
         }
@@ -3762,7 +3762,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "연동회원 포인트 사용내역 URL");
             }
         }
@@ -3782,7 +3782,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "파트너 잔여포인트 확인");
             }
         }
@@ -3804,7 +3804,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "파트너 포인트충전 URL");
             }
         }
@@ -3823,7 +3823,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "세금계산서 발행단가 확인");
             }
         }
@@ -3848,7 +3848,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "과금정보 확인");
             }
         }
@@ -3864,12 +3864,12 @@ namespace Popbill.Taxinvoice.Example.csharp
             {
                 Response response = taxinvoiceService.CheckIsMember(txtCorpNum.Text, LinkID);
 
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "연동회원 가입여부확인");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "연동회원 가입여부확인");
             }
         }
@@ -3884,12 +3884,12 @@ namespace Popbill.Taxinvoice.Example.csharp
             {
                 Response response = taxinvoiceService.CheckID(txtUserId.Text);
 
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "ID 중복확인");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "ID 중복확인");
             }
         }
@@ -3942,12 +3942,12 @@ namespace Popbill.Taxinvoice.Example.csharp
             {
                 Response response = taxinvoiceService.JoinMember(joinInfo);
 
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "연동회원 가입요청");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "연동회원 가입요청");
             }
         }
@@ -3974,7 +3974,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "회사정보 조회");
             }
         }
@@ -4006,12 +4006,12 @@ namespace Popbill.Taxinvoice.Example.csharp
             {
                 Response response = taxinvoiceService.UpdateCorpInfo(txtCorpNum.Text, corpInfo, txtUserId.Text);
 
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "회사정보 수정");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "회사정보 수정");
             }
         }
@@ -4046,12 +4046,12 @@ namespace Popbill.Taxinvoice.Example.csharp
             {
                 Response response = taxinvoiceService.RegistContact(txtCorpNum.Text, contactInfo, txtUserId.Text);
 
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "담당자 추가등록");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "담당자 추가등록");
             }
         }
@@ -4085,7 +4085,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "담당자 정보 확인");
             }
         }
@@ -4119,7 +4119,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "담당자 목록조회");
             }
         }
@@ -4151,125 +4151,540 @@ namespace Popbill.Taxinvoice.Example.csharp
             {
                 Response response = taxinvoiceService.UpdateContact(txtCorpNum.Text, contactInfo, txtUserId.Text);
 
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "담당자 정보 수정");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "담당저 정보 수정");
             }
         }
-
-        /*
-         * [임시저장] 상태의 세금계산서를 [공급자]가 [발행예정]합니다.
-         * - 발행예정이란 공급자와 공급받는자 사이에 세금계산서 확인 후 발행하는 방법입니다.
-         * - "[전자세금계산서 API 연동매뉴얼] > 1.2.1. 정발행 > 다. 임시저장 발행예정" 의 프로세스를 참조하시기 바랍니다.
+        
+        /**
+         * 연동회원 포인트 충전을 위해 무통장입금을 신청합니다.
+         * - https://developers.popbill.com/reference/taxinvoice/dotnet/api/point#PaymentRequest
          */
-        private void btnSend_Click(object sender, EventArgs e)
+        public void btnPaymentRequest_Click(object sender, EventArgs e)
         {
-            // 세금계산서 발행유형
-            MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
+            // 팝빌회원 사업자번호
+            String CorpNum = "1234567890";
 
-            //메모
-            String Memo = "발행예정 메모";
+            // 무통장 입금 신청 객체
+            PaymentForm PaymentForm = new PaymentForm();
 
-            //발행예정 메일제목, 공백으로 처리시 기본메일 제목으로 전송
-            String EmailSubject = "";
+            // 담당자명
+            PaymentForm.settlerName = "담당자명";
+
+            // 담당자 이메일
+            PaymentForm.settlerEmail = "담당자 이메일";
+
+            // 담당자 휴대폰
+            PaymentForm.notifyHP = "담당자 휴대폰";
+
+            // 입금자명
+            PaymentForm.paymentName = "입금자명";
+
+            // 결제금액
+            PaymentForm.settleCost = "결제금액";
+
+            // 팝빌회원 아이디
+            String UserID = "testkorea";
+
 
             try
             {
-                Response response = taxinvoiceService.Send(txtCorpNum.Text, KeyType, txtMgtKey.Text, Memo, EmailSubject,
-                    txtUserId.Text);
+                PaymentResponse response = taxinvoiceService.PaymentRequest(CorpNum, PaymentForm, UserID);
 
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + response.message, "세금계산서 발행예정 ");
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
+                                "응답메시지(message) : " + response.message + CRLF +
+                                "정산코드" + response.settleCode,
+                    "연동회원 무통장 입금신청");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "세금계산서 발행예정");
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
+                                "응답메시지(message) : " + ex.Message, "연동회원 무통장 입금신청");
             }
         }
 
-        /*
-         * [승인대기] 상태의 세금계산서를 [공급자]가 [취소]합니다.
-         * - [취소]된 세금계산서를 삭제(Delete API)하면 등록된 문서번호를 재사용할 수 있습니다.
+        /**
+         * 연동회원의 포인트 결제내역을 확인합니다.
+         * - https://developers.popbill.com/reference/taxinvoice/dotnet/api/point#GetPaymentHistory
          */
-        private void btnCancelSend_Click(object sender, EventArgs e)
+        public void btnGetPaymentHistory_Click(object sender, EventArgs e)
         {
-            // 세금계산서 발행유형
-            MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
+            // 팝빌회원 사업자번호
+            String CorpNum = "1234567890";
 
-            // 발행예정 취소 메모
-            string memo = "발행예정 취소 메모 ";
+            // 조회 시작 일자
+            String SDate = "20230501";
+            
+            // 조회 종료 일자
+            String EDate = "20230530";
+
+            // 목록 페이지 번호
+            int Page = 1;
+
+            // 페이지당 목록 개수
+            int PerPage = 500;
+
+            // 팝빌 회원 아이디
+            String UserID = "testkorea";
 
             try
             {
-                Response response =
-                    taxinvoiceService.CancelSend(txtCorpNum.Text, KeyType, txtMgtKey.Text, memo, txtUserId.Text);
+                PaymentHistoryResult result =
+                    taxinvoiceService.GetPaymentHistory(CorpNum, SDate, EDate, Page, PerPage, UserID);
 
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + response.message, "발행예정 취소");
+                String tmp = "";
+
+                foreach (PaymentHistory history in result.list)
+                {
+                    tmp += "결제 내용(productType) : " + history.productType + CRLF;
+                    tmp += "정액제 상품명(productName) : " + history.productName + CRLF;
+                    tmp += "결제 유형(settleType) : " + history.settleType + CRLF;
+                    tmp += "담당자명(settlerName) : " + history.settlerName + CRLF;
+                    tmp += "담당자메일(settlerEmail) : " + history.settlerEmail + CRLF;
+                    tmp += "결제 금액(settleCost) : " + history.settleCost + CRLF;
+                    tmp += "충전포인트(settlePoint) : " + history.settlePoint + CRLF;
+                    tmp += "결제 상태(settleState) : " + history.settleState.ToString() + CRLF;
+                    tmp += "등록일시(regDT) : " + history.regDT + CRLF;
+                    tmp += "상태일시(stateDT) : " + history.stateDT + CRLF;
+                    tmp += CRLF;
+                }
+
+                MessageBox.Show(
+                    "응답코드(code) : " + result.code.ToString() + CRLF+
+                    "총 검색결과 건수(total) : " + result.total.ToString() + CRLF+
+                    "페이지당 검색개수(perPage) : " + result.perPage.ToString() +CRLF+
+                    "페이지 번호(pageNum) : " + result.pageNum.ToString() +CRLF+
+                    "페이지 개수(pageCount) : " + result.pageCount.ToString() +CRLF
+                    + "사용내역"+CRLF+tmp,
+                    "연동회원 포인트 결제내역 확인");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "발행예정 취소 ");
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
+                                "응답메시지(message) : " + ex.Message, "연동회원 포인트 결제내역 확인");
             }
         }
 
-        /*
-         * [승인대기] 상태의 세금계산서를 [공급받는자]가 [승인]합니다.
+        /**
+         * 연동회원 포인트 무통장 입금신청내역 1건을 확인합니다.
+         * - https://developers.popbill.com/reference/taxinvoice/dotnet/api/point#GetSettleResult
          */
-        private void btnAccept_Click(object sender, EventArgs e)
+        public void btnGetSettleResult_Click(object sender, EventArgs e)
         {
-            // 세금계산서 발행유형
-            MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
+            // 팝빌회원 사업자번호
+            String CorpNum = "1234567890";
+            
+            // 정산 코드
+            String SettleCode = "202301160000000010";
+            
+            // 팝빌회원 아이디
+            String UserID = "testkorea";
+            
+            try
+            {
+                PaymentHistory result =
+                    taxinvoiceService.GetSettleResult(CorpNum, SettleCode, UserID);
 
-            // 메모
-            string memo = "발행예정 승인 메모";
+                MessageBox.Show(
+                    "결제 내용(productType) : " + result.productType + CRLF +
+                        "정액제 상품명(productName) : " + result.productName + CRLF +
+                        "결제 유형(settleType) : " + result.settleType + CRLF +
+                        "담당자명(settlerName) : " + result.settlerName + CRLF +
+                        "담당자메일(settlerEmail) : " + result.settlerEmail + CRLF +
+                        "결제 금액(settleCost) : " + result.settleCost + CRLF +
+                        "충전포인트(settlePoint) : " + result.settlePoint + CRLF +
+                        "결제 상태(settleState) : " + result.settleState.ToString() + CRLF +
+                        "등록일시(regDT) : " + result.regDT + CRLF +
+                        "상태일시(stateDT) : " + result.stateDT + CRLF,
+                    "무통장 입금 신청내역 확인");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
+                                "응답메시지(message) : " + ex.Message, "무통장 입금 신청내역 확인");
+            }
+        }
+
+        /**
+         * 연동회원의 포인트 사용내역을 확인합니다.
+         * - https://developers.popbill.com/reference/taxinvoice/dotnet/api/point#GetUseHistory
+         */
+        public void btnGetUseHistory_Click(object sender, EventArgs e)
+        {
+            // 팝빌 회원 아이디
+            String CorpNum = "1234567890";
+
+            // 조회 시작 일자
+            String SDate = "20230501";
+
+            // 조회 종료 일자
+            String EDate = "20230530";
+
+            // 목록 페이지 번호
+            int Page = 1;
+
+            // 페이지당 목록 개수
+            int PerPage = 500;
+
+            // 목록 정렬 방향
+            String Order = "D";
+
+            // 팝빌 회원 아이디
+            String UserID = "testkorea";
 
             try
             {
-                Response response =
-                    taxinvoiceService.Accept(txtCorpNum.Text, KeyType, txtMgtKey.Text, memo, txtUserId.Text);
+                UseHistoryResult result =
+                    taxinvoiceService.GetUseHistory(CorpNum, SDate, EDate, Page, PerPage, Order, UserID);
 
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + response.message, "발행예정 승인");
+                String tmp = "";
+
+                foreach (UseHistory history in result.list)
+                {
+                    tmp += "서비스 코드(itemCode) : " + history.itemCode + CRLF;
+                    tmp += "포인트 증감 유형(txType) : " + history.txType + CRLF;
+                    tmp += "결제 유형(txPoint) : " + history.txPoint + CRLF;
+                    tmp += "담당자명(balance) : " + history.balance + CRLF;
+                    tmp += "담당자메일(txDT) : " + history.txDT + CRLF;
+                    tmp += "결제 금액(userID) : " + history.userID + CRLF;
+                    tmp += "충전포인트(userName) : " + history.userName + CRLF;
+                    tmp += CRLF;
+                }
+                
+                MessageBox.Show(
+                    "응답코드(code) : " + result.code.ToString() + CRLF+
+                    "총 검색결과 건수(total) : " + result.total.ToString() + CRLF+
+                    "페이지당 검색개수(perPage) : " + result.perPage.ToString() +CRLF+
+                    "페이지 번호(pageNum) : " + result.pageNum.ToString() +CRLF+
+                    "페이지 개수(pageCount) : " + result.pageCount.ToString() +CRLF +
+                    "사용내역"+CRLF+
+                    tmp,
+                     "포인트 사용내역 확인");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "발행예정 승인");
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
+                                "응답메시지(message) : " + ex.Message, "포인트 사용내역 확인");
             }
         }
 
-        /*
-         * [승인대기] 상태의 세금계산서를 [공급받는자]가 [거부]합니다.
-         * - [거부]처리된 세금계산서를 삭제(Delete API)하면 등록된 문서번호를 재사용할 수 있습니다.
+        /**
+         * 연동회원 포인트를 환불 신청합니다.
+         * - https://developers.popbill.com/reference/taxinvoice/dotnet/api/point#Refund
          */
-        private void btnDeny_Click(object sender, EventArgs e)
+        public void btnRefund_Click(object sender, EventArgs e)
         {
-            // 세금계산서 발행유형
-            MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
+            // 팝빌 회원 사업자번호
+            String CorpNum = "1234567890";
 
-            //메모
-            string memo = "발행예정 거부 메모";
+            // 환불 신청 객체
+            RefundForm refundForm = new RefundForm();
+            
+            // 담당자명
+            refundForm.ContactName = "담당자명";
+            
+            // 담당자 연락처
+            refundForm.TEL = "010-1234-1234";
+            
+            // 환불 신청 포인트
+            refundForm.RequestPoint = "100";
+            
+            // 은행명
+            refundForm.AccountBank = "국민";
+            
+            // 계좌 번호
+            refundForm.AccountNum = "123-12-10981204";
+            
+            // 예금주명
+            refundForm.AccountName = "예금주";
+            
+            // 환불 사유
+            refundForm.Reason = "환불 사유";
+
+            // 팝빌 회원 아이디
+            String UserID = "testkorea";
 
             try
             {
-                Response response =
-                    taxinvoiceService.Deny(txtCorpNum.Text, KeyType, txtMgtKey.Text, memo, txtUserId.Text);
-
-                MessageBox.Show("응답코드(code) : " + response.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + response.message, "발행예정 거부");
+                RefundResponse result = taxinvoiceService.Refund(CorpNum, refundForm, UserID);
+                MessageBox.Show(
+                    "code (응답 코드) : "+ result.code.ToString() +
+                    "message (응답 메시지) : " + result.message +
+                    "refundCode (환불코드) : " + result.refundCode,
+                    "환불 신청");
             }
             catch (PopbillException ex)
             {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + "\r\n" +
-                                "응답메시지(message) : " + ex.Message, "발행예정 거부");
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
+                                "응답메시지(message) : " + ex.Message, "환불 신청");
             }
         }
+
+        /**
+         * 연동회원의 포인트 환불신청내역을 확인합니다.
+         * - https://developers.popbill.com/reference/taxinvoice/dotnet/api/point#GetRefundHistory
+         */
+        public void btnGetRefundHistory_Click(object sender, EventArgs e)
+        {
+            // 팝빌회원 사업자번호
+            String CorpNum = "1234567890";
+
+            // 목록 페이지 번호
+            int Page = 1;
+
+            // 페이지당 목록 개수
+            int PerPage = 500;
+
+            // 팝빌 회원 아이디
+            String UserID = "testkorea";
+
+            try
+            {
+                RefundHistoryResult result = taxinvoiceService.GetRefundHistory(CorpNum, Page, PerPage, UserID);
+                String tmp = "";
+
+                foreach (RefundHistory history in result.list)
+                {
+                    tmp += "reqDT (신청일시) :" + history.reqDT + CRLF ;
+                    tmp += "requestPoint (환불 신청포인트) :" + history.requestPoint + CRLF ;
+                    tmp += "accountBank (환불계좌 은행명) :" + history.accountBank + CRLF ;
+                    tmp += "accountNum (환불계좌번호) :" + history.accountNum + CRLF ;
+                    tmp += "accountName (환불계좌 예금주명) :" + history.accountName + CRLF ;
+                    tmp += "state (상태) : " + history.state.ToString() + CRLF ;
+                    tmp += "reason (환불사유) : " + history.reason;
+                    tmp += CRLF;   
+                }
+                
+                MessageBox.Show(
+                    "응답코드(code) : " + result.code.ToString() + CRLF+
+                    "총 검색결과 건수(total) : " + result.total.ToString() + CRLF+
+                    "페이지당 검색개수(perPage) : " + result.perPage.ToString() +CRLF+
+                    "페이지 번호(pageNum) : " + result.pageNum.ToString() +CRLF+
+                    "페이지 개수(pageCount) : " + result.pageCount.ToString() +CRLF +
+                    "사용내역"+CRLF+
+                    tmp, 
+                "환불 신청내역 확인");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
+                                "응답메시지(message) : " + ex.Message, 
+                "환불 신청내역 확인");
+            }
+        }
+
+
+        /**
+         * 포인트 환불에 대한 상세정보 1건을 확인합니다.
+         * - https://developers.popbill.com/reference/taxinvoice/dotnet/api/point#GetRefundInfo
+         */
+        public void btnGetRefundInfo_Click(object sender, EventArgs e)
+        {
+            // 팝빌회원 사업자번호
+            String CorpNum = "1234567890";
+
+            // 환불 코드
+            String RefundCode = "023040000017";
+
+            // 팝빌 회원 아이디
+            String UserID = "testkorea";
+
+            try
+            {
+                RefundHistory result = taxinvoiceService.GetRefundInfo(CorpNum, RefundCode, UserID);
+                MessageBox.Show(
+                    "reqDT (신청일시) :" + result.reqDT + CRLF+
+                        "requestPoint (환불 신청포인트) :" + result.requestPoint + CRLF+
+                        "accountBank (환불계좌 은행명) :" + result.accountBank + CRLF+
+                        "accountNum (환불계좌번호) :" + result.accountNum + CRLF+
+                        "accountName (환불계좌 예금주명) :" + result.accountName + CRLF+
+                        "state (상태) : " + result.state.ToString() + CRLF+
+                        "reason (환불사유) : " + result.reason, 
+                        "환불 신청 상세정보 확인"
+                    );
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
+                                "응답메시지(message) : " + ex.Message, 
+                    "환불 신청 상세정보 확인");
+            }
+        }
+
+        /**
+         * 환불 가능한 포인트를 확인합니다. (보너스 포인트는 환불가능포인트에서 제외됩니다.)
+         * - https://developers.popbill.com/reference/taxinvoice/dotnet/api/point#GetRefundableBalance
+         */
+        public void btnGetRefundableBalance_Click(object sender, EventArgs e)
+        {
+            // 팝빌회원 사업자번호
+            String CorpNum = "1234567890";
+
+            // 팝빌 회원 아이디
+            String UserID = "testkorea";
+
+            try
+            {
+                Double refundableBanace = taxinvoiceService.GetRefundableBalance(CorpNum, UserID);
+                MessageBox.Show("refundablePoint (환불 가능 포인트) : "+ refundableBanace.ToString(), 
+                    "환불 가능 포인트 확인");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
+                                "응답메시지(message) : " + ex.Message, 
+                    "환불 가능 포인트 확인");
+            }
+        }
+
+        /**
+         * 가입된 연동회원의 탈퇴를 요청합니다.
+         * - 회원탈퇴 신청과 동시에 팝빌의 모든 서비스 이용이 불가하며, 관리자를 포함한 모든 담당자 계정도 일괄탈퇴 됩니다.
+         * - 회원탈퇴로 삭제된 데이터는 복원이 불가능합니다.
+         * - 관리자 계정만 회원탈퇴가 가능합니다.
+         * - https://developers.popbill.com/reference/taxinvoice/dotnet/api/member#QuitMember
+         */
+        public void btnQuitMember_Click(object sender, EventArgs e)
+        {
+            
+            // 팝빌회원 사업자번호
+            String CorpNum = "1234567890";
+
+            // 탈퇴 사유
+            String QuitReason = "탈퇴 사유";
+            
+            // 팝빌 회원 아이디
+            String UserID = "testkorea";
+
+            try
+            {
+                Response response = taxinvoiceService.QuitMember(CorpNum, QuitReason, UserID);
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
+                                "응답메시지(message) : " + response.message, 
+                    "환불 가능 포인트 확인");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
+                                "응답메시지(message) : " + ex.Message, 
+                    "환불 가능 포인트 확인");
+            }
+        }
+        
+        // /*
+        //  * [승인대기] 상태의 세금계산서를 [공급받는자]가 [거부]합니다.
+        //  * - [거부]처리된 세금계산서를 삭제(Delete API)하면 등록된 문서번호를 재사용할 수 있습니다.
+        //  */
+        // private void btnDeny_Click(object sender, EventArgs e)
+        // {
+        //     // 세금계산서 발행유형
+        //     MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
+        //
+        //     //메모
+        //     string memo = "발행예정 거부 메모";
+        //
+        //     try
+        //     {
+        //         Response response =
+        //             taxinvoiceService.Deny(txtCorpNum.Text, KeyType, txtMgtKey.Text, memo, txtUserId.Text);
+        //
+        //         MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
+        //                         "응답메시지(message) : " + response.message, "발행예정 거부");
+        //     }
+        //     catch (PopbillException ex)
+        //     {
+        //         MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
+        //                         "응답메시지(message) : " + ex.Message, "발행예정 거부");
+        //     }
+        // }
+        
+        
+        //  * [임시저장] 상태의 세금계산서를 [공급자]가 [발행예정]합니다.
+        //  * - 발행예정이란 공급자와 공급받는자 사이에 세금계산서 확인 후 발행하는 방법입니다.
+        //  * - "[전자세금계산서 API 연동매뉴얼] > 1.2.1. 정발행 > 다. 임시저장 발행예정" 의 프로세스를 참조하시기 바랍니다.
+        //  */
+        // private void btnSend_Click(object sender, EventArgs e)
+        // {
+        //     // 세금계산서 발행유형
+        //     MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
+        //
+        //     //메모
+        //     String Memo = "발행예정 메모";
+        //
+        //     //발행예정 메일제목, 공백으로 처리시 기본메일 제목으로 전송
+        //     String EmailSubject = "";
+        //
+        //     try
+        //     {
+        //         Response response = taxinvoiceService.Send(txtCorpNum.Text, KeyType, txtMgtKey.Text, Memo, EmailSubject,
+        //             txtUserId.Text);
+        //
+        //         MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
+        //                         "응답메시지(message) : " + response.message, "세금계산서 발행예정 ");
+        //     }
+        //     catch (PopbillException ex)
+        //     {
+        //         MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
+        //                         "응답메시지(message) : " + ex.Message, "세금계산서 발행예정");
+        //     }
+        // }
+        //
+        // /*
+        //  * [승인대기] 상태의 세금계산서를 [공급자]가 [취소]합니다.
+        //  * - [취소]된 세금계산서를 삭제(Delete API)하면 등록된 문서번호를 재사용할 수 있습니다.
+        //  */
+        // private void btnCancelSend_Click(object sender, EventArgs e)
+        // {
+        //     // 세금계산서 발행유형
+        //     MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
+        //
+        //     // 발행예정 취소 메모
+        //     string memo = "발행예정 취소 메모 ";
+        //
+        //     try
+        //     {
+        //         Response response =
+        //             taxinvoiceService.CancelSend(txtCorpNum.Text, KeyType, txtMgtKey.Text, memo, txtUserId.Text);
+        //
+        //         MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
+        //                         "응답메시지(message) : " + response.message, "발행예정 취소");
+        //     }
+        //     catch (PopbillException ex)
+        //     {
+        //         MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
+        //                         "응답메시지(message) : " + ex.Message, "발행예정 취소 ");
+        //     }
+        // }
+        //
+        // /*
+        //  * [승인대기] 상태의 세금계산서를 [공급받는자]가 [승인]합니다.
+        //  */
+        // private void btnAccept_Click(object sender, EventArgs e)
+        // {
+        //     // 세금계산서 발행유형
+        //     MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
+        //
+        //     // 메모
+        //     string memo = "발행예정 승인 메모";
+        //
+        //     try
+        //     {
+        //         Response response =
+        //             taxinvoiceService.Accept(txtCorpNum.Text, KeyType, txtMgtKey.Text, memo, txtUserId.Text);
+        //
+        //         MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
+        //                         "응답메시지(message) : " + response.message, "발행예정 승인");
+        //     }
+        //     catch (PopbillException ex)
+        //     {
+        //         MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
+        //                         "응답메시지(message) : " + ex.Message, "발행예정 승인");
+        //     }
+        // }
     }
 }

@@ -1924,5 +1924,14 @@
         internal System.Windows.Forms.TextBox txtSubmitID;
         private System.Windows.Forms.Button btnGetTaxCertInfo;
         internal System.Windows.Forms.Button btnGetXML;
+        private System.Windows.Forms.Button btnPaymentRequest;
+        private System.Windows.Forms.Button btnGetSettleResult;
+        private System.Windows.Forms.Button btnGetPaymentHistory;
+        private System.Windows.Forms.Button btnGetUseHistory;
+        private System.Windows.Forms.Button btnRefund;
+        private System.Windows.Forms.Button btnGetRefundHistory;
+        private System.Windows.Forms.Button btnGetRefundableBalance;
+        private System.Windows.Forms.Button btnGetRefundInfo;
+        private System.Windows.Forms.Button btnQuitMember;
     }
 }
