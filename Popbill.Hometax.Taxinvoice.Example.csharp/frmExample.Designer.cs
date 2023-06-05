@@ -846,5 +846,14 @@
         private System.Windows.Forms.Button btnGetUseHistoryURL;
         private System.Windows.Forms.Button btnGetPaymentURL;
         private System.Windows.Forms.Button btnGetContactInfo;
+        private System.Windows.Forms.Button btnPaymentRequest;
+        private System.Windows.Forms.Button btnGetSettleResult;
+        private System.Windows.Forms.Button btnGetPaymentHistory;
+        private System.Windows.Forms.Button btnGetUseHistory;
+        private System.Windows.Forms.Button btnRefund;
+        private System.Windows.Forms.Button btnGetRefundHistory;
+        private System.Windows.Forms.Button btnGetRefundableBalance;
+        private System.Windows.Forms.Button btnGetRefundInfo;
+        private System.Windows.Forms.Button btnQuitMember;
     }
 }
