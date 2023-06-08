@@ -36,9 +36,16 @@
             this.btnCheckIsMember = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnCheckID = new System.Windows.Forms.Button();
+            this.btnQuitMember = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnGetChargeInfo = new System.Windows.Forms.Button();
             this.btnUnitCost = new System.Windows.Forms.Button();
+            this.btnGetRefundableBalance = new System.Windows.Forms.Button();
+            this.btnGetRefundInfo = new System.Windows.Forms.Button();
+            this.btnGetRefundHistory = new System.Windows.Forms.Button();
+            this.btnRefund = new System.Windows.Forms.Button();
+            this.btnGetUseHistory = new System.Windows.Forms.Button();
+            this.btnGetPaymentHistory = new System.Windows.Forms.Button();
             this.btnGetSettleResult = new System.Windows.Forms.Button();
             this.btnPaymentRequest = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -187,7 +194,7 @@
             this.btnQuitMember.TabIndex = 22;
             this.btnQuitMember.Text = "회원탈퇴";
             this.btnQuitMember.UseVisualStyleBackColor = true;
-            this.btnQuitMember.Click += new System.EventHandler(this.btnJoinMember_Click);
+            this.btnQuitMember.Click += new System.EventHandler(this.btnQuitMember_Click);
             //
             // groupBox2
             // 
@@ -291,7 +298,7 @@
             // btgGetSettleResult
             //
             this.btnGetSettleResult.Location = new System.Drawing.Point(6, 128);
-            this.btnGetSettleResult.Name = "btgGetSettleResult";
+            this.btnGetSettleResult.Name = "btnGetSettleResult";
             this.btnGetSettleResult.Size = new System.Drawing.Size(119, 32);
             this.btnGetSettleResult.TabIndex = 8;
             this.btnGetSettleResult.Text = "무통장 입금 신청내역 확인";
@@ -596,7 +603,7 @@
             // 
             this.groupBox8.Controls.Add(this.groupBox9);
             this.groupBox8.Controls.Add(this.groupBox6);
-            this.groupBox8.Location = new System.Drawing.Point(12, 238);
+            this.groupBox8.Location = new System.Drawing.Point(12, 723);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(1000, 181);
             this.groupBox8.TabIndex = 29;
@@ -843,7 +850,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1024, 426);
+            this.ClientSize = new System.Drawing.Size(1024, 916);
             this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.textURL);
             this.Controls.Add(this.label5);
