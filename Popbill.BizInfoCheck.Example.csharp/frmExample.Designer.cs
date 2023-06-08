@@ -232,7 +232,7 @@
             this.groupBox2.Controls.Add(this.btnGetRefundableBalance);
             this.groupBox2.Location = new System.Drawing.Point(156, 55);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(133, 371);
+            this.groupBox2.Size = new System.Drawing.Size(133, 386);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "포인트 관련";
@@ -267,7 +267,7 @@
             //
             // btnGetPaymentHistory
             //
-            this.btnGetPaymentHistory.Location = new System.Drawing.Point(6, 154);
+            this.btnGetPaymentHistory.Location = new System.Drawing.Point(6, 166);
             this.btnGetPaymentHistory.Name = "btnGetPaymentHistory";
             this.btnGetPaymentHistory.Size = new System.Drawing.Size(119, 32);
             this.btnGetPaymentHistory.TabIndex = 0;
@@ -276,7 +276,7 @@
             //
             // btnGetUseHistory
             //
-            this.btnGetUseHistory.Location = new System.Drawing.Point(6, 190);
+            this.btnGetUseHistory.Location = new System.Drawing.Point(6, 202);
             this.btnGetUseHistory.Name = "btnGetUseHistory";
             this.btnGetUseHistory.Size = new System.Drawing.Size(119, 32);
             this.btnGetUseHistory.TabIndex = 0;
@@ -285,7 +285,7 @@
             //
             // btnRefund
             //
-            this.btnRefund.Location = new System.Drawing.Point(6, 226);
+            this.btnRefund.Location = new System.Drawing.Point(6, 238);
             this.btnRefund.Name = "btnRefund";
             this.btnRefund.Size = new System.Drawing.Size(119, 32);
             this.btnRefund.TabIndex = 0;
@@ -294,7 +294,7 @@
             //
             // btnGetRefundHistory
             //
-            this.btnGetRefundHistory.Location = new System.Drawing.Point(6, 262);
+            this.btnGetRefundHistory.Location = new System.Drawing.Point(6, 274);
             this.btnGetRefundHistory.Name = "btnGetRefundHistory";
             this.btnGetRefundHistory.Size = new System.Drawing.Size(119, 32);
             this.btnGetRefundHistory.TabIndex = 0;
@@ -303,7 +303,7 @@
             //
             // btnGetRefundInfo
             //
-            this.btnGetRefundInfo.Location = new System.Drawing.Point(6, 298);
+            this.btnGetRefundInfo.Location = new System.Drawing.Point(6, 310);
             this.btnGetRefundInfo.Name = "btnGetRefundInfo";
             this.btnGetRefundInfo.Size = new System.Drawing.Size(119, 32);
             this.btnGetRefundInfo.TabIndex = 0;
@@ -312,7 +312,7 @@
             //
             // btnGetRefundableBalance
             //
-            this.btnGetRefundableBalance.Location = new System.Drawing.Point(6, 334);
+            this.btnGetRefundableBalance.Location = new System.Drawing.Point(6, 346);
             this.btnGetRefundableBalance.Name = "btnGetRefundableBalance";
             this.btnGetRefundableBalance.Size = new System.Drawing.Size(119, 32);
             this.btnGetRefundableBalance.TabIndex = 0;
@@ -419,7 +419,7 @@
             this.groupBox5.Controls.Add(this.groupBox3);
             this.groupBox5.Location = new System.Drawing.Point(12, 36);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(998, 400);
+            this.groupBox5.Size = new System.Drawing.Size(998, 413);
             this.groupBox5.TabIndex = 20;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "팝빌 기본 API";
@@ -514,7 +514,7 @@
             this.groupBox6.Controls.Add(this.btnCheckBizInfo);
             this.groupBox6.Controls.Add(this.label3);
             this.groupBox6.Controls.Add(this.txtCheckCorpNum);
-            this.groupBox6.Location = new System.Drawing.Point(12, 451);
+            this.groupBox6.Location = new System.Drawing.Point(12, 455);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(410, 59);
             this.groupBox6.TabIndex = 21;
@@ -543,7 +543,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1022, 656);
+            this.ClientSize = new System.Drawing.Size(1022, 521);
             this.Controls.Add(this.textURL);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtUserID);
