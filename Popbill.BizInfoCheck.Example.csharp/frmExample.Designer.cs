@@ -543,7 +543,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1022, 558);
+            this.ClientSize = new System.Drawing.Size(1022, 656);
             this.Controls.Add(this.textURL);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtUserID);
