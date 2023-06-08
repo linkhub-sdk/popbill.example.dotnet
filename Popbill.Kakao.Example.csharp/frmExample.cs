@@ -1363,6 +1363,59 @@ namespace Popbill.Kakao.Example.csharp
         }
 
         /*
+        * 팝빌에서 반환받은 접수번호로 접수 건을 식별하여 수신번호에 예약된 카카오톡을 전송 취소합니다. (예약시간 10분 전까지 가능)
+        * - https://developers.popbill.com/reference/kakaotalk/dotnet/api/send#CancelReservebyRCV
+        */
+        private void btnCancelReservebyRCV_Click(object sender, EventArgs e)
+        {
+
+            // 전송 접수번호
+            String receiptNum = "";
+
+            // 수신번호
+            String receiveNum = "";
+
+            try
+            {
+                Response response = kakaoService.CancelReservebyRCV(txtCorpNum.Text, receiptNum, receiveNum, txtReceiptNum.Text);
+
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
+                                "응답메시지(message) : " + response.message, "예약전송 일부 취소 (접수번호)");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
+                                "응답메시지(message) : " + ex.Message, "예약전송 일부 취소 (접수번호)");
+            }
+        }
+
+        /*
+        * 파트너가 할당한 전송 요청번호로 접수 건을 식별하여 수신번호에 예약된 카카오톡을 전송 취소합니다. (예약시간 10분 전까지 가능)
+        * - https://developers.popbill.com/reference/kakaotalk/dotnet/api/send#CancelReserveRNbyRCV
+        */
+        private void btnCancelReserveRNbyRCV_Click(object sender, EventArgs e)
+        {
+            // 전송 요청번호
+            String requestNum = "";
+
+            // 수신번호
+            String receiveNum = "";
+
+            try
+            {
+                Response response = kakaoService.CancelReserveRNbyRCV(txtCorpNum.Text, requestNum, receiveNum, txtReceiptNum.Text);
+
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
+                                "응답메시지(message) : " + response.message, "예약전송 일부 취소 (전송 요청번호)");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
+                                "응답메시지(message) : " + ex.Message, "예약전송 일부 취소 (전송 요청번호)");
+            }
+        }
+
+        /*
          * 팝빌에서 반환받은 접수번호를 통해 알림톡/친구톡 전송상태 및 결과를 확인합니다.
          * - https://developers.popbill.com/reference/kakaotalk/dotnet/api/info#GetMessages
          */
