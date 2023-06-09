@@ -1676,7 +1676,7 @@ namespace Popbill.Message.Example.csharp
          * 연동회원 포인트 충전을 위해 무통장입금을 신청합니다.
          * - https://developers.popbill.com/reference/sms/dotnet/api/point#PaymentRequest
          */
-        public void btnPaymentRequest_Click(object sender, EventArgs e)
+        private void btnPaymentRequest_Click(object sender, EventArgs e)
         {
             // 팝빌회원 사업자번호
             String CorpNum = "1234567890";
@@ -1723,7 +1723,7 @@ namespace Popbill.Message.Example.csharp
          * 연동회원의 포인트 결제내역을 확인합니다.
          * - https://developers.popbill.com/reference/sms/dotnet/api/point#GetPaymentHistory
          */
-        public void btnGetPaymentHistory_Click(object sender, EventArgs e)
+        private void btnGetPaymentHistory_Click(object sender, EventArgs e)
         {
             // 팝빌회원 사업자번호
             String CorpNum = "1234567890";
@@ -1785,7 +1785,7 @@ namespace Popbill.Message.Example.csharp
          * 연동회원 포인트 무통장 입금신청내역 1건을 확인합니다.
          * - https://developers.popbill.com/reference/sms/dotnet/api/point#GetSettleResult
          */
-        public void btnGetSettleResult_Click(object sender, EventArgs e)
+        private void btnGetSettleResult_Click(object sender, EventArgs e)
         {
             // 팝빌회원 사업자번호
             String CorpNum = "1234567890";
@@ -1825,7 +1825,7 @@ namespace Popbill.Message.Example.csharp
          * 연동회원의 포인트 사용내역을 확인합니다.
          * - https://developers.popbill.com/reference/sms/dotnet/api/point#GetUseHistory
          */
-        public void btnGetUseHistory_Click(object sender, EventArgs e)
+        private void btnGetUseHistory_Click(object sender, EventArgs e)
         {
             // 팝빌 회원 아이디
             String CorpNum = "1234567890";
@@ -1888,7 +1888,7 @@ namespace Popbill.Message.Example.csharp
          * 연동회원 포인트를 환불 신청합니다.
          * - https://developers.popbill.com/reference/sms/dotnet/api/point#Refund
          */
-        public void btnRefund_Click(object sender, EventArgs e)
+        private void btnRefund_Click(object sender, EventArgs e)
         {
             // 팝빌 회원 사업자번호
             String CorpNum = "1234567890";
@@ -1940,7 +1940,7 @@ namespace Popbill.Message.Example.csharp
          * 연동회원의 포인트 환불신청내역을 확인합니다.
          * - https://developers.popbill.com/reference/sms/dotnet/api/point#GetRefundHistory
          */
-        public void btnGetRefundHistory_Click(object sender, EventArgs e)
+        private void btnGetRefundHistory_Click(object sender, EventArgs e)
         {
             // 팝빌회원 사업자번호
             String CorpNum = "1234567890";
@@ -1994,7 +1994,7 @@ namespace Popbill.Message.Example.csharp
          * 포인트 환불에 대한 상세정보 1건을 확인합니다.
          * - https://developers.popbill.com/reference/sms/dotnet/api/point#GetRefundInfo
          */
-        public void btnGetRefundInfo_Click(object sender, EventArgs e)
+        private void btnGetRefundInfo_Click(object sender, EventArgs e)
         {
             // 팝빌회원 사업자번호
             String CorpNum = "1234567890";
@@ -2031,7 +2031,7 @@ namespace Popbill.Message.Example.csharp
          * 환불 가능한 포인트를 확인합니다. (보너스 포인트는 환불가능포인트에서 제외됩니다.)
          * - https://developers.popbill.com/reference/sms/dotnet/api/point#GetRefundableBalance
          */
-        public void btnGetRefundableBalance_Click(object sender, EventArgs e)
+        private void btnGetRefundableBalance_Click(object sender, EventArgs e)
         {
             // 팝빌회원 사업자번호
             String CorpNum = "1234567890";
@@ -2060,7 +2060,7 @@ namespace Popbill.Message.Example.csharp
          * - 관리자 계정만 회원탈퇴가 가능합니다.
          * - https://developers.popbill.com/reference/sms/dotnet/api/member#QuitMember
          */
-        public void btnQuitMember_Click(object sender, EventArgs e)
+        private void btnQuitMember_Click(object sender, EventArgs e)
         {
             
             // 팝빌회원 사업자번호
@@ -2084,6 +2084,31 @@ namespace Popbill.Message.Example.csharp
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, 
                     "환불 가능 포인트 확인");
+            }
+        }
+
+        /**
+         * 팝빌회원에 등록된 080 수신거부 번호 정보를 확인합니다.
+         * - https://developers.popbill.com/reference/sms/java/api/info#CheckAutoDenyNumber
+         */
+        private void btnCheckAutoDenyNumber_Click(object sender, EventArgs e)
+        {
+            String CorpNum = "1234567890";
+
+            String UserID = "testkorea";
+
+            try
+            {
+                AutoDenyNumberInfo response = messageService.CheckAutoDenyNumber(CorpNum, UserID);
+                MessageBox.Show("전용 080 번호(smsdenyNumber) : " + response.smsdenyNumber + CRLF +
+                                "등록 일시(regDT) : " + response.regDT,
+                    "080 번호 확인");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
+                                "응답메시지(message) : " + ex.Message,
+                    "080 번호 확인");
             }
         }
     }
