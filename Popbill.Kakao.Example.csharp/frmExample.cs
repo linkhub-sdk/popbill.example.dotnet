@@ -323,6 +323,7 @@ namespace Popbill.Kakao.Example.csharp
             String templateCode = "022040000005";
 
             // 팝빌에 사전 등록된 발신번호
+            // ※ 대체문자를 전송하는 경우에만 필수 입력
             String senderNum = "";
 
             // 알림톡 템플릿 내용, 최대 1000자
@@ -416,6 +417,7 @@ namespace Popbill.Kakao.Example.csharp
             String templateCode = "022040000005";
 
             // 팝빌에 사전 등록된 발신번호
+            // ※ 대체문자를 전송하는 경우에만 필수 입력
             String senderNum = "";
 
             // 대체문자 유형 (null , "C" , "A" 중 택 1)
@@ -573,6 +575,7 @@ namespace Popbill.Kakao.Example.csharp
             String templateCode = "022040000005";
 
             // 팝빌에 사전 등록된 발신번호
+            // ※ 대체문자를 전송하는 경우에만 필수 입력
             String senderNum = "";
 
             String content = "[ 팝빌 ]\n";
@@ -676,6 +679,7 @@ namespace Popbill.Kakao.Example.csharp
             String plusFriendID = "@팝빌";
 
             // 팝빌에 사전 등록된 발신번호
+            // ※ 대체문자를 전송하는 경우에만 필수 입력
             String senderNum = "";
 
             // 친구톡 내용, 최대 1000자
@@ -766,6 +770,7 @@ namespace Popbill.Kakao.Example.csharp
             String plusFriendID = "@팝빌";
 
             // 팝빌에 사전 등록된 발신번호
+            // ※ 대체문자를 전송하는 경우에만 필수 입력
             String senderNum = "";
 
             // 대체문자 유형 (null , "C" , "A" 중 택 1)
@@ -908,6 +913,7 @@ namespace Popbill.Kakao.Example.csharp
             String plusFriendID = "@팝빌";
 
             // 팝빌에 사전 등록된 발신번호
+            // ※ 대체문자를 전송하는 경우에만 필수 입력
             String senderNum = "";
 
             // 친구톡내용, 최대 1000자
@@ -992,6 +998,7 @@ namespace Popbill.Kakao.Example.csharp
             String plusFriendID = "@팝빌";
 
             // 팝빌에 사전 등록된 발신번호
+            // ※ 대체문자를 전송하는 경우에만 필수 입력
             String senderNum = "";
 
             // 친구톡 내용, 최대 400자
@@ -1083,6 +1090,7 @@ namespace Popbill.Kakao.Example.csharp
             String plusFriendID = "@팝빌";
 
             // 팝빌에 사전 등록된 발신번호
+            // ※ 대체문자를 전송하는 경우에만 필수 입력
             String senderNum = "";
 
             // 대체문자 유형 (null , "C" , "A" 중 택 1)
@@ -1238,6 +1246,7 @@ namespace Popbill.Kakao.Example.csharp
             String plusFriendID = "@팝빌";
 
             // 팝빌에 사전 등록된 발신번호
+            // ※ 대체문자를 전송하는 경우에만 필수 입력
             String senderNum = "";
 
             // 친구톡 내용, 최대 400자
