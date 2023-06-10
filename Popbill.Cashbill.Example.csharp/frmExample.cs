@@ -538,6 +538,7 @@ namespace Popbill.Cashbill.Example.csharp
                 tmp += "ntsresultCode (국세청 처리결과 상태코드) : " + cashbillInfo.ntsresultCode + CRLF;
                 tmp += "ntsresultMessage (국세청 처리결과 메시지) : " + cashbillInfo.ntsresultMessage + CRLF;
                 tmp += "printYN (인쇄여부) : " + cashbillInfo.printYN + CRLF;
+                tmp += "interOPYN (연동문서여부) : " + cashbillInfo.interOPYN + CRLF;
 
                 MessageBox.Show(tmp, "현금영수증 상태/요약 정보 확인");
             }
@@ -593,7 +594,8 @@ namespace Popbill.Cashbill.Example.csharp
                     tmp += "ntsresultDT (국세청 처리결과 수신일시) : " + cashbillInfoList[i].ntsresultDT + CRLF;
                     tmp += "ntsresultCode (국세청 처리결과 상태코드) : " + cashbillInfoList[i].ntsresultCode + CRLF;
                     tmp += "ntsresultMessage (국세청 처리결과 메시지) : " + cashbillInfoList[i].ntsresultMessage + CRLF;
-                    tmp += "printYN (인쇄여부) : " + cashbillInfoList[i].printYN + CRLF + CRLF;
+                    tmp += "printYN (인쇄여부) : " + cashbillInfoList[i].printYN + CRLF;
+                    tmp += "interOPYN (연동문서여부) : " + cashbillInfoList[i].interOPYN + CRLF + CRLF;
                 }
 
                 MessageBox.Show(tmp, "현금영수증 상태/요약 정보 조회 - 대량");
@@ -742,7 +744,7 @@ namespace Popbill.Cashbill.Example.csharp
                 tmp += "itemKey | mgtKey | tradeDate | tradeType | tradeUsage | tradeOpt | taxationType | totalAmount | issueDT | ";
                 tmp += "regDT | stateMemo | stateCode | stateDT | identityNum | itemName | customerName | ";
                 tmp += "confirmNum | orgConfirmNum | orgTradeDate | ntssendDT | ntsresultDT | ntsresultCode | ntsresultMessage | ";
-                tmp += "printYN" + CRLF;
+                tmp += "printYN | interOPYN" + CRLF;
 
                 foreach (CashbillInfo cashbillInfo in searchResult.list)
                 {
@@ -770,6 +772,7 @@ namespace Popbill.Cashbill.Example.csharp
                     tmp += cashbillInfo.ntsresultCode + " | ";
                     tmp += cashbillInfo.ntsresultMessage + " | ";
                     tmp += cashbillInfo.printYN;
+                    tmp += cashbillInfo.interOPYN;
                     tmp += CRLF;
                 }
 
