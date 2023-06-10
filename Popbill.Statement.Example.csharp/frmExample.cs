@@ -707,10 +707,13 @@ namespace Popbill.Statement.Example.csharp
             //메모
             string memo = "발행 메모";
 
+            // 전자명세서 발행 안내메일 제목
+            String EmailSubject = "";
+
             try
             {
                 Response response =
-                    statementService.Issue(txtCorpNum.Text, itemCode, txtMgtKey.Text, memo, txtUserID.Text);
+                    statementService.Issue(txtCorpNum.Text, itemCode, txtMgtKey.Text, memo, EmailSubject, txtUserID.Text);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "전자명세서 발행");
