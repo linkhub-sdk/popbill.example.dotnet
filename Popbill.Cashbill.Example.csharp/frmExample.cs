@@ -334,6 +334,7 @@ namespace Popbill.Cashbill.Example.csharp
                     {
                         tmp += "===========발행결과[" + i.ToString() + "/" + result.issueResult.Count + "]===========" + CRLF;
                         tmp += "응답코드(code) : " + issueResult.code + CRLF;
+                        tmp += "응답메시지(message) : " + issueResult.message + CRLF;
                         tmp += "문서번호(MgtKey) : " + issueResult.mgtKey + CRLF;
                         tmp += "국세청승인번호(confirmNum) : " + issueResult.confirmNum + CRLF;
                         tmp += "거래일자(tradeDate) : " + issueResult.tradeDate + CRLF;

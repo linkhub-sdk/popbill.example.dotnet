@@ -679,6 +679,7 @@ namespace Popbill.Taxinvoice.Example.csharp
                         tmp += "===========발행결과[" + i.ToString() + "/" + result.issueResult.Count + "]===========" + CRLF;
                         tmp += "공급자 문서번호(invoicerMgtKey) : " + issueResult.invoicerMgtKey + CRLF;
                         tmp += "응답코드(code) : " + issueResult.code + CRLF;
+                        tmp += "응답메시지(message) : " + issueResult.message + CRLF;
                         tmp += "국세청승인번호(ntsconfirmNum) : " + issueResult.ntsconfirmNum + CRLF;
                         tmp += "발행일시(issueDT) : " + issueResult.issueDT + CRLF;
                         i++;
