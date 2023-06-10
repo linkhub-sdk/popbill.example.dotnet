@@ -525,7 +525,6 @@ namespace Popbill.Cashbill.Example.csharp
                 tmp += "totalAmount (거래금액) : " + cashbillInfo.totalAmount + CRLF;
                 tmp += "issueDT (발행일시) : " + cashbillInfo.issueDT + CRLF;
                 tmp += "regDT (등록일시) : " + cashbillInfo.regDT + CRLF;
-                tmp += "stateMemo (상태메모) : " + cashbillInfo.stateMemo + CRLF;
                 tmp += "stateCode (상태코드) : " + cashbillInfo.stateCode + CRLF;
                 tmp += "stateDT (상태변경일시) : " + cashbillInfo.stateDT + CRLF;
                 tmp += "identityNum (식별번호) : " + cashbillInfo.identityNum + CRLF;
@@ -582,7 +581,6 @@ namespace Popbill.Cashbill.Example.csharp
                     tmp += "totalAmount (거래금액) : " + cashbillInfoList[i].totalAmount + CRLF;
                     tmp += "issueDT (발행일시) : " + cashbillInfoList[i].issueDT + CRLF;
                     tmp += "regDT (등록일시) : " + cashbillInfoList[i].regDT + CRLF;
-                    tmp += "stateMemo (상태메모) : " + cashbillInfoList[i].stateMemo + CRLF;
                     tmp += "stateCode (상태코드) : " + cashbillInfoList[i].stateCode + CRLF;
                     tmp += "stateDT (상태변경일시) : " + cashbillInfoList[i].stateDT + CRLF;
                     tmp += "identityNum (식별번호) : " + cashbillInfoList[i].identityNum + CRLF;
@@ -759,7 +757,6 @@ namespace Popbill.Cashbill.Example.csharp
                     tmp += cashbillInfo.totalAmount + " | ";
                     tmp += cashbillInfo.issueDT + " | ";
                     tmp += cashbillInfo.regDT + " | ";
-                    tmp += cashbillInfo.stateMemo + " | ";
                     tmp += cashbillInfo.stateCode + " | ";
                     tmp += cashbillInfo.stateDT + " | ";
                     tmp += cashbillInfo.identityNum + " | ";
