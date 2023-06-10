@@ -2912,13 +2912,13 @@ namespace Popbill.Taxinvoice.Example.csharp
             {
                 string url = taxinvoiceService.GetURL(txtCorpNum.Text, txtUserId.Text, "WRITE");
 
-                MessageBox.Show(url, "매출문서 작성 팝업 URL");
+                MessageBox.Show(url, "정발행 작성 팝업 URL");
                 textURL.Text = url;
             }
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
-                                "응답메시지(message) : " + ex.Message, "매출문서 작성 팝업 URL");
+                                "응답메시지(message) : " + ex.Message, "정발행 작성 팝업 URL");
             }
         }
 
