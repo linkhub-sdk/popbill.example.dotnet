@@ -1034,5 +1034,10 @@ namespace Popbill.AccountCheck.Example.csharp
                     "팝빌회원 탈퇴");
             }
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
