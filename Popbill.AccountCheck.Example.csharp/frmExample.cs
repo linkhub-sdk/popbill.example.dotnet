@@ -645,7 +645,7 @@ namespace Popbill.AccountCheck.Example.csharp
             PaymentForm.paymentName = "입금자명";
 
             // 결제금액
-            PaymentForm.settleCost = "결제금액";
+            PaymentForm.settleCost = "1000";
 
             // 팝빌회원 아이디
             String UserID = "testkorea";
@@ -657,7 +657,7 @@ namespace Popbill.AccountCheck.Example.csharp
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message + CRLF +
-                                "정산코드" + response.settleCode,
+                                "정산코드(settleCode) : " + response.settleCode,
                     "연동회원 무통장 입금신청");
             }
             catch (PopbillException ex)
@@ -872,8 +872,8 @@ namespace Popbill.AccountCheck.Example.csharp
             {
                 RefundResponse result = accountCheckService.Refund(CorpNum, refundForm, UserID);
                 MessageBox.Show(
-                    "code (응답 코드) : "+ result.code.ToString() +
-                    "message (응답 메시지) : " + result.message +
+                    "code (응답 코드) : " + result.code.ToString() + CRLF +
+                    "message (응답 메시지) : " + result.message + CRLF +
                     "refundCode (환불코드) : " + result.refundCode,
                     "환불 신청");
             }
@@ -915,7 +915,7 @@ namespace Popbill.AccountCheck.Example.csharp
                     tmp += "accountNum (환불계좌번호) :" + history.accountNum + CRLF ;
                     tmp += "accountName (환불계좌 예금주명) :" + history.accountName + CRLF ;
                     tmp += "state (상태) : " + history.state.ToString() + CRLF ;
-                    tmp += "reason (환불사유) : " + history.reason;
+                    tmp += "reason (환불사유) : " + history.reason + CRLF;
                     tmp += CRLF;   
                 }
                 

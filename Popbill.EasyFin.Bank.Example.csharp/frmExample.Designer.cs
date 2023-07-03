@@ -265,7 +265,7 @@
             this.btnPaymentRequest.Name = "btnPaymentRequest";
             this.btnPaymentRequest.Size = new System.Drawing.Size(135, 32);
             this.btnPaymentRequest.TabIndex = 8;
-            this.btnPaymentRequest.Text = "연동회원 무통장 입금신청";
+            this.btnPaymentRequest.Text = "무통장 입금신청";
             this.btnPaymentRequest.Click += new System.EventHandler(this.btnPaymentRequest_Click);
             // 
             // btnGetSettleResult
@@ -283,7 +283,7 @@
             this.btnGetPaymentHistory.Name = "btnGetPaymentHistory";
             this.btnGetPaymentHistory.Size = new System.Drawing.Size(135, 32);
             this.btnGetPaymentHistory.TabIndex = 0;
-            this.btnGetPaymentHistory.Text = "연동회원 포인트 결제내역 확인";
+            this.btnGetPaymentHistory.Text = "포인트 결제내역 확인";
             this.btnGetPaymentHistory.Click += new System.EventHandler(this.btnGetPaymentHistory_Click);
             // 
             // btnGetUseHistory
@@ -292,7 +292,7 @@
             this.btnGetUseHistory.Name = "btnGetUseHistory";
             this.btnGetUseHistory.Size = new System.Drawing.Size(135, 32);
             this.btnGetUseHistory.TabIndex = 0;
-            this.btnGetUseHistory.Text = "연동회원 포인트 사용내역 확인";
+            this.btnGetUseHistory.Text = "포인트 사용내역 확인";
             this.btnGetUseHistory.Click += new System.EventHandler(this.btnGetUseHistory_Click);
             // 
             // btnRefund
@@ -301,7 +301,7 @@
             this.btnRefund.Name = "btnRefund";
             this.btnRefund.Size = new System.Drawing.Size(135, 32);
             this.btnRefund.TabIndex = 0;
-            this.btnRefund.Text = "연동회원 포인트 환불신청";
+            this.btnRefund.Text = "포인트 환불신청";
             this.btnRefund.Click += new System.EventHandler(this.btnRefund_Click);
             // 
             // btnGetRefundHistory
@@ -310,7 +310,7 @@
             this.btnGetRefundHistory.Name = "btnGetRefundHistory";
             this.btnGetRefundHistory.Size = new System.Drawing.Size(135, 32);
             this.btnGetRefundHistory.TabIndex = 0;
-            this.btnGetRefundHistory.Text = "연동회원 포인트 환불내역 확인";
+            this.btnGetRefundHistory.Text = "포인트 환불내역 확인";
             this.btnGetRefundHistory.Click += new System.EventHandler(this.btnGetRefundHistory_Click);
             // 
             // btnGetRefundableBalance

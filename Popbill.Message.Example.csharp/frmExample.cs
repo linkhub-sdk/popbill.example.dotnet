@@ -1697,7 +1697,7 @@ namespace Popbill.Message.Example.csharp
             PaymentForm.paymentName = "입금자명";
 
             // 결제금액
-            PaymentForm.settleCost = "결제금액";
+            PaymentForm.settleCost = "1000";
 
             // 팝빌회원 아이디
             String UserID = "testkorea";
@@ -1924,8 +1924,8 @@ namespace Popbill.Message.Example.csharp
             {
                 RefundResponse result = messageService.Refund(CorpNum, refundForm, UserID);
                 MessageBox.Show(
-                    "code (응답 코드) : "+ result.code.ToString() +
-                    "message (응답 메시지) : " + result.message +
+                    "code (응답 코드) : " + result.code.ToString() + CRLF +
+                    "message (응답 메시지) : " + result.message + CRLF +
                     "refundCode (환불코드) : " + result.refundCode,
                     "환불 신청");
             }
@@ -1967,7 +1967,7 @@ namespace Popbill.Message.Example.csharp
                     tmp += "accountNum (환불계좌번호) :" + history.accountNum + CRLF ;
                     tmp += "accountName (환불계좌 예금주명) :" + history.accountName + CRLF ;
                     tmp += "state (상태) : " + history.state.ToString() + CRLF ;
-                    tmp += "reason (환불사유) : " + history.reason;
+                    tmp += "reason (환불사유) : " + history.reason + CRLF;
                     tmp += CRLF;   
                 }
                 

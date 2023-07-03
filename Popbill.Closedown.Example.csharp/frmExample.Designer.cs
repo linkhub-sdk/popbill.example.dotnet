@@ -41,8 +41,14 @@
             this.btnGetAccessURL = new System.Windows.Forms.Button();
             this.btnGetChargeURL = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnUpdateCorpInfo = new System.Windows.Forms.Button();
+            this.btnGetContactInfo = new System.Windows.Forms.Button();
+            this.btnGetCorpInfo = new System.Windows.Forms.Button();
             this.btnCheckID = new System.Windows.Forms.Button();
+            this.btnUpdateContact = new System.Windows.Forms.Button();
             this.btnQuitMember = new System.Windows.Forms.Button();
+            this.btnListContact = new System.Windows.Forms.Button();
+            this.btnRegistContact = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnGetChargeInfo = new System.Windows.Forms.Button();
             this.btnPaymentRequest = new System.Windows.Forms.Button();
@@ -55,18 +61,12 @@
             this.btnGetRefundInfo = new System.Windows.Forms.Button();
             this.btnGetPartnerBalance = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btnGetContactInfo = new System.Windows.Forms.Button();
-            this.btnUpdateContact = new System.Windows.Forms.Button();
-            this.btnListContact = new System.Windows.Forms.Button();
-            this.btnRegistContact = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtCheckCorpNum = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.btnGetUseHistoryURL = new System.Windows.Forms.Button();
             this.btnGetPaymentURL = new System.Windows.Forms.Button();
-            this.btnUpdateCorpInfo = new System.Windows.Forms.Button();
-            this.btnGetCorpInfo = new System.Windows.Forms.Button();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
             this.btnGetPartnerURL_CHRG = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -169,7 +169,7 @@
             // 
             this.btnUnitCost.Location = new System.Drawing.Point(6, 20);
             this.btnUnitCost.Name = "btnUnitCost";
-            this.btnUnitCost.Size = new System.Drawing.Size(119, 32);
+            this.btnUnitCost.Size = new System.Drawing.Size(130, 32);
             this.btnUnitCost.TabIndex = 7;
             this.btnUnitCost.Text = "조회단가 확인";
             this.btnUnitCost.UseVisualStyleBackColor = true;
@@ -213,145 +213,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "회원정보";
             // 
-            // btnCheckID
+            // btnUpdateCorpInfo
             // 
-            this.btnCheckID.Location = new System.Drawing.Point(8, 58);
-            this.btnCheckID.Name = "btnCheckID";
-            this.btnCheckID.Size = new System.Drawing.Size(111, 32);
-            this.btnCheckID.TabIndex = 22;
-            this.btnCheckID.Text = "ID 중복 확인";
-            this.btnCheckID.UseVisualStyleBackColor = true;
-            this.btnCheckID.Click += new System.EventHandler(this.btnCheckID_Click);
-            // 
-            // btnQuitMember
-            // 
-            this.btnQuitMember.Location = new System.Drawing.Point(8, 132);
-            this.btnQuitMember.Name = "btnQuitMember";
-            this.btnQuitMember.Size = new System.Drawing.Size(111, 32);
-            this.btnQuitMember.TabIndex = 23;
-            this.btnQuitMember.Text = "팝빌 회원 탈퇴";
-            this.btnQuitMember.Click += new System.EventHandler(this.btnQuitMember_Click);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.btnGetChargeInfo);
-            this.groupBox2.Controls.Add(this.btnUnitCost);
-            this.groupBox2.Controls.Add(this.btnPaymentRequest);
-            this.groupBox2.Controls.Add(this.btnGetSettleResult);
-            this.groupBox2.Controls.Add(this.btnGetPaymentHistory);
-            this.groupBox2.Controls.Add(this.btnGetUseHistory);
-            this.groupBox2.Controls.Add(this.btnRefund);
-            this.groupBox2.Controls.Add(this.btnGetRefundHistory);
-            this.groupBox2.Controls.Add(this.btnGetRefundableBalance);
-            this.groupBox2.Controls.Add(this.btnGetRefundInfo);
-            this.groupBox2.Location = new System.Drawing.Point(266, 19);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(257, 207);
-            this.groupBox2.TabIndex = 12;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "포인트 관련";
-            // 
-            // btnGetChargeInfo
-            // 
-            this.btnGetChargeInfo.Location = new System.Drawing.Point(6, 56);
-            this.btnGetChargeInfo.Name = "btnGetChargeInfo";
-            this.btnGetChargeInfo.Size = new System.Drawing.Size(119, 32);
-            this.btnGetChargeInfo.TabIndex = 1;
-            this.btnGetChargeInfo.Text = "과금정보 확인";
-            this.btnGetChargeInfo.UseVisualStyleBackColor = true;
-            this.btnGetChargeInfo.Click += new System.EventHandler(this.btnGetChargeInfo_Click);
-            // 
-            // btnPaymentRequest
-            // 
-            this.btnPaymentRequest.Location = new System.Drawing.Point(6, 92);
-            this.btnPaymentRequest.Name = "btnPaymentRequest";
-            this.btnPaymentRequest.Size = new System.Drawing.Size(119, 32);
-            this.btnPaymentRequest.TabIndex = 8;
-            this.btnPaymentRequest.Text = "연동회원 무통장 입금신청";
-            this.btnPaymentRequest.Click += new System.EventHandler(this.btnPaymentRequest_Click);
-            // 
-            // btnGetSettleResult
-            // 
-            this.btnGetSettleResult.Location = new System.Drawing.Point(6, 128);
-            this.btnGetSettleResult.Name = "btnGetSettleResult";
-            this.btnGetSettleResult.Size = new System.Drawing.Size(119, 32);
-            this.btnGetSettleResult.TabIndex = 0;
-            this.btnGetSettleResult.Text = "무통장 입금신청 정보확인";
-            this.btnGetSettleResult.Click += new System.EventHandler(this.btnGetSettleResult_Click);
-            // 
-            // btnGetPaymentHistory
-            // 
-            this.btnGetPaymentHistory.Location = new System.Drawing.Point(6, 166);
-            this.btnGetPaymentHistory.Name = "btnGetPaymentHistory";
-            this.btnGetPaymentHistory.Size = new System.Drawing.Size(119, 32);
-            this.btnGetPaymentHistory.TabIndex = 0;
-            this.btnGetPaymentHistory.Text = "연동회원 포인트 결제내역 확인";
-            this.btnGetPaymentHistory.Click += new System.EventHandler(this.btnGetPaymentHistory_Click);
-            // 
-            // btnGetUseHistory
-            // 
-            this.btnGetUseHistory.Location = new System.Drawing.Point(131, 20);
-            this.btnGetUseHistory.Name = "btnGetUseHistory";
-            this.btnGetUseHistory.Size = new System.Drawing.Size(119, 32);
-            this.btnGetUseHistory.TabIndex = 0;
-            this.btnGetUseHistory.Text = "연동회원 포인트 사용내역 확인";
-            this.btnGetUseHistory.Click += new System.EventHandler(this.btnGetUseHistory_Click);
-            // 
-            // btnRefund
-            // 
-            this.btnRefund.Location = new System.Drawing.Point(131, 56);
-            this.btnRefund.Name = "btnRefund";
-            this.btnRefund.Size = new System.Drawing.Size(119, 32);
-            this.btnRefund.TabIndex = 0;
-            this.btnRefund.Text = "연동회원 포인트 환불신청";
-            this.btnRefund.Click += new System.EventHandler(this.btnRefund_Click);
-            // 
-            // btnGetRefundHistory
-            // 
-            this.btnGetRefundHistory.Location = new System.Drawing.Point(131, 92);
-            this.btnGetRefundHistory.Name = "btnGetRefundHistory";
-            this.btnGetRefundHistory.Size = new System.Drawing.Size(119, 32);
-            this.btnGetRefundHistory.TabIndex = 0;
-            this.btnGetRefundHistory.Text = "연동회원 포인트 환불내역 확인";
-            this.btnGetRefundHistory.Click += new System.EventHandler(this.btnGetRefundHistory_Click);
-            // 
-            // btnGetRefundableBalance
-            // 
-            this.btnGetRefundableBalance.Location = new System.Drawing.Point(131, 166);
-            this.btnGetRefundableBalance.Name = "btnGetRefundableBalance";
-            this.btnGetRefundableBalance.Size = new System.Drawing.Size(119, 32);
-            this.btnGetRefundableBalance.TabIndex = 0;
-            this.btnGetRefundableBalance.Text = "환불 가능 포인트 조회";
-            this.btnGetRefundableBalance.Click += new System.EventHandler(this.btnGetRefundableBalance_Click);
-            // 
-            // btnGetRefundInfo
-            // 
-            this.btnGetRefundInfo.Location = new System.Drawing.Point(131, 128);
-            this.btnGetRefundInfo.Name = "btnGetRefundInfo";
-            this.btnGetRefundInfo.Size = new System.Drawing.Size(119, 32);
-            this.btnGetRefundInfo.TabIndex = 0;
-            this.btnGetRefundInfo.Text = "환불 신청 상태 조회";
-            this.btnGetRefundInfo.Click += new System.EventHandler(this.btnGetRefundInfo_Click);
-            // 
-            // btnGetPartnerBalance
-            // 
-            this.btnGetPartnerBalance.Location = new System.Drawing.Point(9, 20);
-            this.btnGetPartnerBalance.Name = "btnGetPartnerBalance";
-            this.btnGetPartnerBalance.Size = new System.Drawing.Size(118, 32);
-            this.btnGetPartnerBalance.TabIndex = 0;
-            this.btnGetPartnerBalance.Text = "파트너포인트 확인";
-            this.btnGetPartnerBalance.UseVisualStyleBackColor = true;
-            this.btnGetPartnerBalance.Click += new System.EventHandler(this.btnGetPartnerBalance_Click);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.btnGetAccessURL);
-            this.groupBox3.Location = new System.Drawing.Point(823, 21);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(130, 174);
-            this.groupBox3.TabIndex = 13;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "팝빌 기본 URL";
+            this.btnUpdateCorpInfo.Location = new System.Drawing.Point(125, 170);
+            this.btnUpdateCorpInfo.Name = "btnUpdateCorpInfo";
+            this.btnUpdateCorpInfo.Size = new System.Drawing.Size(111, 32);
+            this.btnUpdateCorpInfo.TabIndex = 1;
+            this.btnUpdateCorpInfo.Text = "회사정보 수정";
+            this.btnUpdateCorpInfo.UseVisualStyleBackColor = true;
+            this.btnUpdateCorpInfo.Click += new System.EventHandler(this.btnUpdateCorpInfo_Click);
             // 
             // btnGetContactInfo
             // 
@@ -363,6 +233,26 @@
             this.btnGetContactInfo.UseVisualStyleBackColor = true;
             this.btnGetContactInfo.Click += new System.EventHandler(this.btnGetContactInfo_Click);
             // 
+            // btnGetCorpInfo
+            // 
+            this.btnGetCorpInfo.Location = new System.Drawing.Point(8, 170);
+            this.btnGetCorpInfo.Name = "btnGetCorpInfo";
+            this.btnGetCorpInfo.Size = new System.Drawing.Size(111, 32);
+            this.btnGetCorpInfo.TabIndex = 0;
+            this.btnGetCorpInfo.Text = "회사정보 조회";
+            this.btnGetCorpInfo.UseVisualStyleBackColor = true;
+            this.btnGetCorpInfo.Click += new System.EventHandler(this.btnGetCorpInfo_Click);
+            // 
+            // btnCheckID
+            // 
+            this.btnCheckID.Location = new System.Drawing.Point(8, 58);
+            this.btnCheckID.Name = "btnCheckID";
+            this.btnCheckID.Size = new System.Drawing.Size(111, 32);
+            this.btnCheckID.TabIndex = 22;
+            this.btnCheckID.Text = "ID 중복 확인";
+            this.btnCheckID.UseVisualStyleBackColor = true;
+            this.btnCheckID.Click += new System.EventHandler(this.btnCheckID_Click);
+            // 
             // btnUpdateContact
             // 
             this.btnUpdateContact.Location = new System.Drawing.Point(125, 132);
@@ -372,6 +262,15 @@
             this.btnUpdateContact.Text = "담당자 정보 수정";
             this.btnUpdateContact.UseVisualStyleBackColor = true;
             this.btnUpdateContact.Click += new System.EventHandler(this.btnUpdateContact_Click);
+            // 
+            // btnQuitMember
+            // 
+            this.btnQuitMember.Location = new System.Drawing.Point(8, 132);
+            this.btnQuitMember.Name = "btnQuitMember";
+            this.btnQuitMember.Size = new System.Drawing.Size(111, 32);
+            this.btnQuitMember.TabIndex = 23;
+            this.btnQuitMember.Text = "팝빌 회원 탈퇴";
+            this.btnQuitMember.Click += new System.EventHandler(this.btnQuitMember_Click);
             // 
             // btnListContact
             // 
@@ -392,6 +291,127 @@
             this.btnRegistContact.Text = "담당자 추가";
             this.btnRegistContact.UseVisualStyleBackColor = true;
             this.btnRegistContact.Click += new System.EventHandler(this.btnRegistContact_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btnGetChargeInfo);
+            this.groupBox2.Controls.Add(this.btnUnitCost);
+            this.groupBox2.Controls.Add(this.btnPaymentRequest);
+            this.groupBox2.Controls.Add(this.btnGetSettleResult);
+            this.groupBox2.Controls.Add(this.btnGetPaymentHistory);
+            this.groupBox2.Controls.Add(this.btnGetUseHistory);
+            this.groupBox2.Controls.Add(this.btnRefund);
+            this.groupBox2.Controls.Add(this.btnGetRefundHistory);
+            this.groupBox2.Controls.Add(this.btnGetRefundableBalance);
+            this.groupBox2.Controls.Add(this.btnGetRefundInfo);
+            this.groupBox2.Location = new System.Drawing.Point(266, 19);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(295, 207);
+            this.groupBox2.TabIndex = 12;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "포인트 관련";
+            // 
+            // btnGetChargeInfo
+            // 
+            this.btnGetChargeInfo.Location = new System.Drawing.Point(6, 56);
+            this.btnGetChargeInfo.Name = "btnGetChargeInfo";
+            this.btnGetChargeInfo.Size = new System.Drawing.Size(130, 32);
+            this.btnGetChargeInfo.TabIndex = 1;
+            this.btnGetChargeInfo.Text = "과금정보 확인";
+            this.btnGetChargeInfo.UseVisualStyleBackColor = true;
+            this.btnGetChargeInfo.Click += new System.EventHandler(this.btnGetChargeInfo_Click);
+            // 
+            // btnPaymentRequest
+            // 
+            this.btnPaymentRequest.Location = new System.Drawing.Point(6, 92);
+            this.btnPaymentRequest.Name = "btnPaymentRequest";
+            this.btnPaymentRequest.Size = new System.Drawing.Size(130, 32);
+            this.btnPaymentRequest.TabIndex = 8;
+            this.btnPaymentRequest.Text = "무통장 입금신청";
+            this.btnPaymentRequest.Click += new System.EventHandler(this.btnPaymentRequest_Click);
+            // 
+            // btnGetSettleResult
+            // 
+            this.btnGetSettleResult.Location = new System.Drawing.Point(6, 128);
+            this.btnGetSettleResult.Name = "btnGetSettleResult";
+            this.btnGetSettleResult.Size = new System.Drawing.Size(130, 32);
+            this.btnGetSettleResult.TabIndex = 0;
+            this.btnGetSettleResult.Text = "무통장 입금신청 정보확인";
+            this.btnGetSettleResult.Click += new System.EventHandler(this.btnGetSettleResult_Click);
+            // 
+            // btnGetPaymentHistory
+            // 
+            this.btnGetPaymentHistory.Location = new System.Drawing.Point(6, 166);
+            this.btnGetPaymentHistory.Name = "btnGetPaymentHistory";
+            this.btnGetPaymentHistory.Size = new System.Drawing.Size(130, 32);
+            this.btnGetPaymentHistory.TabIndex = 0;
+            this.btnGetPaymentHistory.Text = "포인트 결제내역 확인";
+            this.btnGetPaymentHistory.Click += new System.EventHandler(this.btnGetPaymentHistory_Click);
+            // 
+            // btnGetUseHistory
+            // 
+            this.btnGetUseHistory.Location = new System.Drawing.Point(142, 20);
+            this.btnGetUseHistory.Name = "btnGetUseHistory";
+            this.btnGetUseHistory.Size = new System.Drawing.Size(130, 32);
+            this.btnGetUseHistory.TabIndex = 0;
+            this.btnGetUseHistory.Text = "포인트 사용내역 확인";
+            this.btnGetUseHistory.Click += new System.EventHandler(this.btnGetUseHistory_Click);
+            // 
+            // btnRefund
+            // 
+            this.btnRefund.Location = new System.Drawing.Point(142, 56);
+            this.btnRefund.Name = "btnRefund";
+            this.btnRefund.Size = new System.Drawing.Size(130, 32);
+            this.btnRefund.TabIndex = 0;
+            this.btnRefund.Text = "포인트 환불신청";
+            this.btnRefund.Click += new System.EventHandler(this.btnRefund_Click);
+            // 
+            // btnGetRefundHistory
+            // 
+            this.btnGetRefundHistory.Location = new System.Drawing.Point(142, 92);
+            this.btnGetRefundHistory.Name = "btnGetRefundHistory";
+            this.btnGetRefundHistory.Size = new System.Drawing.Size(130, 32);
+            this.btnGetRefundHistory.TabIndex = 0;
+            this.btnGetRefundHistory.Text = "포인트 환불내역 확인";
+            this.btnGetRefundHistory.Click += new System.EventHandler(this.btnGetRefundHistory_Click);
+            // 
+            // btnGetRefundableBalance
+            // 
+            this.btnGetRefundableBalance.Location = new System.Drawing.Point(142, 166);
+            this.btnGetRefundableBalance.Name = "btnGetRefundableBalance";
+            this.btnGetRefundableBalance.Size = new System.Drawing.Size(130, 32);
+            this.btnGetRefundableBalance.TabIndex = 0;
+            this.btnGetRefundableBalance.Text = "환불 가능 포인트 조회";
+            this.btnGetRefundableBalance.Click += new System.EventHandler(this.btnGetRefundableBalance_Click);
+            // 
+            // btnGetRefundInfo
+            // 
+            this.btnGetRefundInfo.Location = new System.Drawing.Point(142, 128);
+            this.btnGetRefundInfo.Name = "btnGetRefundInfo";
+            this.btnGetRefundInfo.Size = new System.Drawing.Size(130, 32);
+            this.btnGetRefundInfo.TabIndex = 0;
+            this.btnGetRefundInfo.Text = "환불 신청 상태 조회";
+            this.btnGetRefundInfo.Click += new System.EventHandler(this.btnGetRefundInfo_Click);
+            // 
+            // btnGetPartnerBalance
+            // 
+            this.btnGetPartnerBalance.Location = new System.Drawing.Point(9, 20);
+            this.btnGetPartnerBalance.Name = "btnGetPartnerBalance";
+            this.btnGetPartnerBalance.Size = new System.Drawing.Size(118, 32);
+            this.btnGetPartnerBalance.TabIndex = 0;
+            this.btnGetPartnerBalance.Text = "파트너포인트 확인";
+            this.btnGetPartnerBalance.UseVisualStyleBackColor = true;
+            this.btnGetPartnerBalance.Click += new System.EventHandler(this.btnGetPartnerBalance_Click);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btnGetAccessURL);
+            this.groupBox3.Location = new System.Drawing.Point(861, 21);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(130, 174);
+            this.groupBox3.TabIndex = 13;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "팝빌 기본 URL";
             // 
             // label3
             // 
@@ -419,7 +439,7 @@
             this.groupBox5.Controls.Add(this.groupBox2);
             this.groupBox5.Location = new System.Drawing.Point(12, 36);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(964, 234);
+            this.groupBox5.Size = new System.Drawing.Size(1002, 234);
             this.groupBox5.TabIndex = 20;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "팝빌 기본 API";
@@ -430,7 +450,7 @@
             this.groupBox12.Controls.Add(this.btnGetPaymentURL);
             this.groupBox12.Controls.Add(this.btnGetBalance);
             this.groupBox12.Controls.Add(this.btnGetChargeURL);
-            this.groupBox12.Location = new System.Drawing.Point(529, 19);
+            this.groupBox12.Location = new System.Drawing.Point(567, 19);
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.Size = new System.Drawing.Size(149, 176);
             this.groupBox12.TabIndex = 22;
@@ -457,31 +477,11 @@
             this.btnGetPaymentURL.UseVisualStyleBackColor = true;
             this.btnGetPaymentURL.Click += new System.EventHandler(this.btnGetPaymentURL_Click);
             // 
-            // btnUpdateCorpInfo
-            // 
-            this.btnUpdateCorpInfo.Location = new System.Drawing.Point(125, 170);
-            this.btnUpdateCorpInfo.Name = "btnUpdateCorpInfo";
-            this.btnUpdateCorpInfo.Size = new System.Drawing.Size(111, 32);
-            this.btnUpdateCorpInfo.TabIndex = 1;
-            this.btnUpdateCorpInfo.Text = "회사정보 수정";
-            this.btnUpdateCorpInfo.UseVisualStyleBackColor = true;
-            this.btnUpdateCorpInfo.Click += new System.EventHandler(this.btnUpdateCorpInfo_Click);
-            // 
-            // btnGetCorpInfo
-            // 
-            this.btnGetCorpInfo.Location = new System.Drawing.Point(8, 170);
-            this.btnGetCorpInfo.Name = "btnGetCorpInfo";
-            this.btnGetCorpInfo.Size = new System.Drawing.Size(111, 32);
-            this.btnGetCorpInfo.TabIndex = 0;
-            this.btnGetCorpInfo.Text = "회사정보 조회";
-            this.btnGetCorpInfo.UseVisualStyleBackColor = true;
-            this.btnGetCorpInfo.Click += new System.EventHandler(this.btnGetCorpInfo_Click);
-            // 
             // groupBox13
             // 
             this.groupBox13.Controls.Add(this.btnGetPartnerURL_CHRG);
             this.groupBox13.Controls.Add(this.btnGetPartnerBalance);
-            this.groupBox13.Location = new System.Drawing.Point(684, 21);
+            this.groupBox13.Location = new System.Drawing.Point(722, 21);
             this.groupBox13.Name = "groupBox13";
             this.groupBox13.Size = new System.Drawing.Size(133, 174);
             this.groupBox13.TabIndex = 23;
@@ -532,7 +532,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(986, 343);
+            this.ClientSize = new System.Drawing.Size(1020, 343);
             this.Controls.Add(this.textURL);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtUserID);

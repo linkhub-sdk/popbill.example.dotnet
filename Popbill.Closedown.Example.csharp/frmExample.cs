@@ -879,8 +879,8 @@ namespace Popbill.Closedown.Example.csharp
             {
                 RefundResponse result = closedownService.Refund(CorpNum, refundForm, UserID);
                 MessageBox.Show(
-                    "code (응답 코드) : "+ result.code.ToString() +
-                    "message (응답 메시지) : " + result.message +
+                    "code (응답 코드) : "+ result.code.ToString() + CRLF +
+                    "message (응답 메시지) : " + result.message + CRLF +
                     "refundCode (환불코드) : " + result.refundCode,
                     "환불 신청");
             }
