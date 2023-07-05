@@ -1642,7 +1642,7 @@ namespace Popbill.Cashbill.Example.csharp
         /*
          * 현금영수증 PDF 파일을 다운 받을 수 있는 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://developers.popbill.com/reference/cashbill/dotnet/api/view#GetPDFURL 
+         * - https://developers.popbill.com/reference/cashbill/dotnet/api/view#GetPDFURL
          */
         private void btnGetPDFURL_Click(object sender, EventArgs e)
         {
@@ -1684,7 +1684,7 @@ namespace Popbill.Cashbill.Example.csharp
         {
 
         }
-        
+
         /**
          * 연동회원 포인트 충전을 위해 무통장입금을 신청합니다.
          * - https://developers.popbill.com/reference/cashbill/dotnet/api/point#PaymentRequest
@@ -1743,7 +1743,7 @@ namespace Popbill.Cashbill.Example.csharp
 
             // 조회 시작 일자
             String SDate = "20230501";
-            
+
             // 조회 종료 일자
             String EDate = "20230530";
 
@@ -1802,13 +1802,13 @@ namespace Popbill.Cashbill.Example.csharp
         {
             // 팝빌회원 사업자번호
             String CorpNum = "1234567890";
-            
+
             // 정산 코드
             String SettleCode = "202301160000000010";
-            
+
             // 팝빌회원 아이디
             String UserID = "testkorea";
-            
+
             try
             {
                 PaymentHistory result =
@@ -1872,14 +1872,14 @@ namespace Popbill.Cashbill.Example.csharp
                 {
                     tmp += "서비스 코드(itemCode) : " + history.itemCode + CRLF;
                     tmp += "포인트 증감 유형(txType) : " + history.txType + CRLF;
-                    tmp += "결제 유형(txPoint) : " + history.txPoint + CRLF;
-                    tmp += "담당자명(balance) : " + history.balance + CRLF;
-                    tmp += "담당자메일(txDT) : " + history.txDT + CRLF;
-                    tmp += "결제 금액(userID) : " + history.userID + CRLF;
-                    tmp += "충전포인트(userName) : " + history.userName + CRLF;
+                    tmp += "증감 포인트(txPoint) : " + history.txPoint + CRLF;
+                    tmp += "잔여 포인트(balance) : " + history.balance + CRLF;
+                    tmp += "포인트 증감 일시(txDT) : " + history.txDT + CRLF;
+                    tmp += "담당자 아이디(userID) : " + history.userID + CRLF;
+                    tmp += "담당자명(userName) : " + history.userName + CRLF;
                     tmp += CRLF;
                 }
-                
+
                 MessageBox.Show(
                     "응답코드(code) : " + result.code.ToString() + CRLF+
                     "총 검색결과 건수(total) : " + result.total.ToString() + CRLF+
@@ -1908,25 +1908,25 @@ namespace Popbill.Cashbill.Example.csharp
 
             // 환불 신청 객체
             RefundForm refundForm = new RefundForm();
-            
+
             // 담당자명
             refundForm.ContactName = "담당자명";
-            
+
             // 담당자 연락처
             refundForm.TEL = "010-1234-1234";
-            
+
             // 환불 신청 포인트
             refundForm.RequestPoint = "100";
-            
+
             // 은행명
             refundForm.AccountBank = "국민";
-            
+
             // 계좌 번호
             refundForm.AccountNum = "123-12-10981204";
-            
+
             // 예금주명
             refundForm.AccountName = "예금주";
-            
+
             // 환불 사유
             refundForm.Reason = "환불 사유";
 
@@ -1970,7 +1970,7 @@ namespace Popbill.Cashbill.Example.csharp
             try
             {
                 RefundHistoryResult result = cashbillService.GetRefundHistory(CorpNum, Page, PerPage, UserID);
-                
+
                 String tmp = "";
 
                 foreach (RefundHistory history in result.list)
@@ -1982,9 +1982,9 @@ namespace Popbill.Cashbill.Example.csharp
                     tmp += "accountName (환불계좌 예금주명) :" + history.accountName + CRLF ;
                     tmp += "state (상태) : " + history.state.ToString() + CRLF ;
                     tmp += "reason (환불사유) : " + history.reason;
-                    tmp += CRLF;   
+                    tmp += CRLF;
                 }
-                
+
                 MessageBox.Show(
                     "응답코드(code) : " + result.code.ToString() + CRLF+
                     "총 검색결과 건수(total) : " + result.total.ToString() + CRLF+
@@ -1992,13 +1992,13 @@ namespace Popbill.Cashbill.Example.csharp
                     "페이지 번호(pageNum) : " + result.pageNum.ToString() +CRLF+
                     "페이지 개수(pageCount) : " + result.pageCount.ToString() +CRLF +
                     "사용내역"+CRLF+
-                    tmp, 
+                    tmp,
                 "환불 신청내역 확인");
             }
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
-                                "응답메시지(message) : " + ex.Message, 
+                                "응답메시지(message) : " + ex.Message,
                 "환불 신청내역 확인");
             }
         }
@@ -2029,14 +2029,14 @@ namespace Popbill.Cashbill.Example.csharp
                         "accountNum (환불계좌번호) :" + result.accountNum + CRLF+
                         "accountName (환불계좌 예금주명) :" + result.accountName + CRLF+
                         "state (상태) : " + result.state.ToString() + CRLF+
-                        "reason (환불사유) : " + result.reason, 
+                        "reason (환불사유) : " + result.reason,
                         "환불 신청 상세정보 확인"
                     );
             }
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
-                                "응답메시지(message) : " + ex.Message, 
+                                "응답메시지(message) : " + ex.Message,
                     "환불 신청 상세정보 확인");
             }
         }
@@ -2055,14 +2055,14 @@ namespace Popbill.Cashbill.Example.csharp
 
             try
             {
-                Double refundableBanace = cashbillService.GetRefundableBalance(CorpNum, UserID);
-                MessageBox.Show("refundablePoint (환불 가능 포인트) : "+ refundableBanace.ToString(), 
+                Double refundableBalance = cashbillService.GetRefundableBalance(CorpNum, UserID);
+                MessageBox.Show("refundableBalance (환불 가능 포인트) : "+ refundableBalance.ToString(),
                     "환불 가능 포인트 확인");
             }
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
-                                "응답메시지(message) : " + ex.Message, 
+                                "응답메시지(message) : " + ex.Message,
                     "환불 가능 포인트 확인");
             }
         }
@@ -2076,13 +2076,13 @@ namespace Popbill.Cashbill.Example.csharp
          */
         public void btnQuitMember_Click(object sender, EventArgs e)
         {
-            
+
             // 팝빌회원 사업자번호
             String CorpNum = "1234567890";
 
             // 탈퇴 사유
             String QuitReason = "탈퇴 사유";
-            
+
             // 팝빌 회원 아이디
             String UserID = "testkorea";
 
@@ -2090,14 +2090,14 @@ namespace Popbill.Cashbill.Example.csharp
             {
                 Response response = cashbillService.QuitMember(CorpNum, QuitReason, UserID);
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
-                                "응답메시지(message) : " + response.message, 
-                    "환불 가능 포인트 확인");
+                                "응답메시지(message) : " + response.message,
+                                "팝빌 회원 탈퇴");
             }
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
-                                "응답메시지(message) : " + ex.Message, 
-                    "환불 가능 포인트 확인");
+                                "응답메시지(message) : " + ex.Message,
+                                "팝빌 회원 탈퇴");
             }
         }
     }

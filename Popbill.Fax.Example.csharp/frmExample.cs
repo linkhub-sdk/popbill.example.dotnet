@@ -1407,7 +1407,7 @@ namespace Popbill.Fax.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "담당자 정보수정");
             }
         }
-        
+
         /**
          * 연동회원 포인트 충전을 위해 무통장입금을 신청합니다.
          * - https://developers.popbill.com/reference/fax/dotnet/api/point#PaymentRequest
@@ -1466,7 +1466,7 @@ namespace Popbill.Fax.Example.csharp
 
             // 조회 시작 일자
             String SDate = "20230501";
-            
+
             // 조회 종료 일자
             String EDate = "20230530";
 
@@ -1489,7 +1489,7 @@ namespace Popbill.Fax.Example.csharp
                 foreach (PaymentHistory history in result.list)
                 {
                     tmp += "결제 내용(productType) : " + history.productType + CRLF;
-                    tmp += "정액제 상품명(productName) : " + history.productName + CRLF;
+                    tmp += "결제 상품명(productName) : " + history.productName + CRLF;
                     tmp += "결제 유형(settleType) : " + history.settleType + CRLF;
                     tmp += "담당자명(settlerName) : " + history.settlerName + CRLF;
                     tmp += "담당자메일(settlerEmail) : " + history.settlerEmail + CRLF;
@@ -1507,7 +1507,7 @@ namespace Popbill.Fax.Example.csharp
                     "페이지당 검색개수(perPage) : " + result.perPage.ToString() +CRLF+
                     "페이지 번호(pageNum) : " + result.pageNum.ToString() +CRLF+
                     "페이지 개수(pageCount) : " + result.pageCount.ToString() +CRLF
-                    + "사용내역"+CRLF+tmp,
+                    + "결제내역"+CRLF+CRLF+tmp,
                     "연동회원 포인트 결제내역 확인");
             }
             catch (PopbillException ex)
@@ -1525,21 +1525,21 @@ namespace Popbill.Fax.Example.csharp
         {
             // 팝빌회원 사업자번호
             String CorpNum = "1234567890";
-            
+
             // 정산 코드
             String SettleCode = "202301160000000010";
-            
+
             // 팝빌회원 아이디
             String UserID = "testkorea";
-            
+
             try
             {
                 PaymentHistory result =
                     faxService.GetSettleResult(CorpNum, SettleCode, UserID);
 
                 MessageBox.Show(
-                    "결제 내용(productType) : " + result.productType + CRLF +
-                        "정액제 상품명(productName) : " + result.productName + CRLF +
+                        "결제 내용(productType) : " + result.productType + CRLF +
+                        "결제 상품명(productName) : " + result.productName + CRLF +
                         "결제 유형(settleType) : " + result.settleType + CRLF +
                         "담당자명(settlerName) : " + result.settlerName + CRLF +
                         "담당자메일(settlerEmail) : " + result.settlerEmail + CRLF +
@@ -1595,14 +1595,14 @@ namespace Popbill.Fax.Example.csharp
                 {
                     tmp += "서비스 코드(itemCode) : " + history.itemCode + CRLF;
                     tmp += "포인트 증감 유형(txType) : " + history.txType + CRLF;
-                    tmp += "결제 유형(txPoint) : " + history.txPoint + CRLF;
-                    tmp += "담당자명(balance) : " + history.balance + CRLF;
-                    tmp += "담당자메일(txDT) : " + history.txDT + CRLF;
-                    tmp += "결제 금액(userID) : " + history.userID + CRLF;
-                    tmp += "충전포인트(userName) : " + history.userName + CRLF;
+                    tmp += "증감 포인트(txPoint) : " + history.txPoint + CRLF;
+                    tmp += "잔여포인트(balance) : " + history.balance + CRLF;
+                    tmp += "포인트 증감 일시(txDT) : " + history.txDT + CRLF;
+                    tmp += "담당자 아이디(userID) : " + history.userID + CRLF;
+                    tmp += "담당자명(userName) : " + history.userName + CRLF;
                     tmp += CRLF;
                 }
-                
+
                 MessageBox.Show(
                     "응답코드(code) : " + result.code.ToString() + CRLF+
                     "총 검색결과 건수(total) : " + result.total.ToString() + CRLF+
@@ -1611,7 +1611,7 @@ namespace Popbill.Fax.Example.csharp
                     "페이지 개수(pageCount) : " + result.pageCount.ToString() +CRLF +
                     "사용내역"+CRLF+
                     tmp,
-                     "포인트 사용내역 확인");
+                    "포인트 사용내역 확인");
             }
             catch (PopbillException ex)
             {
@@ -1631,25 +1631,25 @@ namespace Popbill.Fax.Example.csharp
 
             // 환불 신청 객체
             RefundForm refundForm = new RefundForm();
-            
+
             // 담당자명
             refundForm.ContactName = "담당자명";
-            
+
             // 담당자 연락처
             refundForm.TEL = "010-1234-1234";
-            
+
             // 환불 신청 포인트
             refundForm.RequestPoint = "100";
-            
+
             // 은행명
             refundForm.AccountBank = "국민";
-            
+
             // 계좌 번호
             refundForm.AccountNum = "123-12-10981204";
-            
+
             // 예금주명
             refundForm.AccountName = "예금주";
-            
+
             // 환불 사유
             refundForm.Reason = "환불 사유";
 
@@ -1704,9 +1704,9 @@ namespace Popbill.Fax.Example.csharp
                     tmp += "accountName (환불계좌 예금주명) :" + history.accountName + CRLF ;
                     tmp += "state (상태) : " + history.state.ToString() + CRLF ;
                     tmp += "reason (환불사유) : " + history.reason;
-                    tmp += CRLF;   
+                    tmp += CRLF;
                 }
-                
+
                 MessageBox.Show(
                     "응답코드(code) : " + result.code.ToString() + CRLF+
                     "총 검색결과 건수(total) : " + result.total.ToString() + CRLF+
@@ -1714,13 +1714,13 @@ namespace Popbill.Fax.Example.csharp
                     "페이지 번호(pageNum) : " + result.pageNum.ToString() +CRLF+
                     "페이지 개수(pageCount) : " + result.pageCount.ToString() +CRLF +
                     "사용내역"+CRLF+
-                    tmp,  
+                    tmp,
                 "환불 신청내역 확인");
             }
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
-                                "응답메시지(message) : " + ex.Message, 
+                                "응답메시지(message) : " + ex.Message,
                 "환불 신청내역 확인");
             }
         }
@@ -1751,14 +1751,14 @@ namespace Popbill.Fax.Example.csharp
                         "accountNum (환불계좌번호) :" + result.accountNum + CRLF+
                         "accountName (환불계좌 예금주명) :" + result.accountName + CRLF+
                         "state (상태) : " + result.state.ToString() + CRLF+
-                        "reason (환불사유) : " + result.reason, 
+                        "reason (환불사유) : " + result.reason,
                         "환불 신청 상세정보 확인"
                     );
             }
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
-                                "응답메시지(message) : " + ex.Message, 
+                                "응답메시지(message) : " + ex.Message,
                     "환불 신청 상세정보 확인");
             }
         }
@@ -1777,14 +1777,14 @@ namespace Popbill.Fax.Example.csharp
 
             try
             {
-                Double refundableBanace = faxService.GetRefundableBalance(CorpNum, UserID);
-                MessageBox.Show("refundablePoint (환불 가능 포인트) : "+ refundableBanace.ToString(), 
+                Double refundableBalance = faxService.GetRefundableBalance(CorpNum, UserID);
+                MessageBox.Show("refundableBalance (환불 가능 포인트) : "+ refundableBalance.ToString(),
                     "환불 가능 포인트 확인");
             }
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
-                                "응답메시지(message) : " + ex.Message, 
+                                "응답메시지(message) : " + ex.Message,
                     "환불 가능 포인트 확인");
             }
         }
@@ -1798,13 +1798,13 @@ namespace Popbill.Fax.Example.csharp
          */
         public void btnQuitMember_Click(object sender, EventArgs e)
         {
-            
+
             // 팝빌회원 사업자번호
             String CorpNum = "1234567890";
 
             // 탈퇴 사유
             String QuitReason = "탈퇴 사유";
-            
+
             // 팝빌 회원 아이디
             String UserID = "testkorea";
 
@@ -1812,14 +1812,14 @@ namespace Popbill.Fax.Example.csharp
             {
                 Response response = faxService.QuitMember(CorpNum, QuitReason, UserID);
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
-                                "응답메시지(message) : " + response.message, 
-                    "환불 가능 포인트 확인");
+                                "응답메시지(message) : " + response.message,
+                                "팝빌 회원 탈퇴");
             }
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
-                                "응답메시지(message) : " + ex.Message, 
-                    "환불 가능 포인트 확인");
+                                "응답메시지(message) : " + ex.Message,
+                                "팝빌 회원 탈퇴");
             }
         }
     }
