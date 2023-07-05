@@ -2,7 +2,7 @@
  * 팝빌 홈택스 현금영수증 연계 API DotNet SDK Example
  *
  * - DotNet C# SDK 연동환경 설정방법 안내 : [개발가이드] - https://developers.popbill.com/guide/htcashbill/dotnet/getting-started/tutorial?fwn=csharp
- * - 업데이트 일자 : 2022-05-04
+ * - 업데이트 일자 : 2022-07-05
  * - 연동 기술지원 연락처 : 1600-9854
  * - 연동 기술지원 이메일 : code@linkhubcorp.com
  *
