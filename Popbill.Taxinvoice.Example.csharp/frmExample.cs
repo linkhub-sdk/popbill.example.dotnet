@@ -2924,6 +2924,48 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
+         * 로그인 상태로 팝빌 사이트의 전자세금계산서 매출문서작성 메뉴에 접근할 수 있는 페이지의 팝업 URL을 반환합니다.
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
+         * - https://developers.popbill.com/reference/taxinvoice/dotnet/api/info#GetURL
+         */
+        private void btnGetURL_SWBOX_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string url = taxinvoiceService.GetURL(txtCorpNum.Text, txtUserId.Text, "SWBOX");
+
+                MessageBox.Show(url, "매출 발행 대기함 팝업 URL");
+                textURL.Text = url;
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
+                                "응답메시지(message) : " + ex.Message, "매출 발행 대기함 팝업 URL");
+            }
+        }
+
+        /*
+         * 로그인 상태로 팝빌 사이트의 전자세금계산서 매출문서작성 메뉴에 접근할 수 있는 페이지의 팝업 URL을 반환합니다.
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
+         * - https://developers.popbill.com/reference/taxinvoice/dotnet/api/info#GetURL
+         */
+        private void btnGetURL_PWBOX_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string url = taxinvoiceService.GetURL(txtCorpNum.Text, txtUserId.Text, "PWBOX");
+
+                MessageBox.Show(url, "매입 발행 대기함 팝업 URL");
+                textURL.Text = url;
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
+                                "응답메시지(message) : " + ex.Message, "매입 발행 대기함 팝업 URL");
+            }
+        }
+
+        /*
          * 세금계산서 1건의 상세 정보 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
          * - https://developers.popbill.com/reference/taxinvoice/dotnet/api/view#GetPopUpURL
@@ -4187,7 +4229,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             PaymentForm.paymentName = "입금자명";
 
             // 결제금액
-            PaymentForm.settleCost = "결제금액";
+            PaymentForm.settleCost = "1000";
 
             // 팝빌회원 아이디
             String UserID = "testkorea";
@@ -4243,7 +4285,7 @@ namespace Popbill.Taxinvoice.Example.csharp
                 foreach (PaymentHistory history in result.list)
                 {
                     tmp += "결제 내용(productType) : " + history.productType + CRLF;
-                    tmp += "정액제 상품명(productName) : " + history.productName + CRLF;
+                    tmp += "결제 상품명(productName) : " + history.productName + CRLF;
                     tmp += "결제 유형(settleType) : " + history.settleType + CRLF;
                     tmp += "담당자명(settlerName) : " + history.settlerName + CRLF;
                     tmp += "담당자메일(settlerEmail) : " + history.settlerEmail + CRLF;
@@ -4261,7 +4303,7 @@ namespace Popbill.Taxinvoice.Example.csharp
                     "페이지당 검색개수(perPage) : " + result.perPage.ToString() +CRLF+
                     "페이지 번호(pageNum) : " + result.pageNum.ToString() +CRLF+
                     "페이지 개수(pageCount) : " + result.pageCount.ToString() +CRLF
-                    + "사용내역"+CRLF+tmp,
+                    + "결제내역"+CRLF+tmp,
                     "연동회원 포인트 결제내역 확인");
             }
             catch (PopbillException ex)
@@ -4414,8 +4456,8 @@ namespace Popbill.Taxinvoice.Example.csharp
             {
                 RefundResponse result = taxinvoiceService.Refund(CorpNum, refundForm, UserID);
                 MessageBox.Show(
-                    "code (응답 코드) : "+ result.code.ToString() +
-                    "message (응답 메시지) : " + result.message +
+                    "code (응답 코드) : " + result.code.ToString() + CRLF +
+                    "message (응답 메시지) : " + result.message + CRLF +
                     "refundCode (환불코드) : " + result.refundCode,
                     "환불 신청");
             }

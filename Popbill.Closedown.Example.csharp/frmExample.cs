@@ -708,7 +708,7 @@ namespace Popbill.Closedown.Example.csharp
                 foreach (PaymentHistory history in result.list)
                 {
                     tmp += "결제 내용(productType) : " + history.productType + CRLF;
-                    tmp += "정액제 상품명(productName) : " + history.productName + CRLF;
+                    tmp += "결제 상품명(productName) : " + history.productName + CRLF;
                     tmp += "결제 유형(settleType) : " + history.settleType + CRLF;
                     tmp += "담당자명(settlerName) : " + history.settlerName + CRLF;
                     tmp += "담당자메일(settlerEmail) : " + history.settlerEmail + CRLF;
@@ -726,7 +726,7 @@ namespace Popbill.Closedown.Example.csharp
                     "페이지당 검색개수(perPage) : " + result.perPage.ToString() +CRLF+
                     "페이지 번호(pageNum) : " + result.pageNum.ToString() +CRLF+
                     "페이지 개수(pageCount) : " + result.pageCount.ToString() +CRLF
-                    + "사용내역"+CRLF+tmp,
+                    + "결제내역"+CRLF+tmp,
                     "연동회원 포인트 결제내역 확인");
             }
             catch (PopbillException ex)
@@ -879,8 +879,8 @@ namespace Popbill.Closedown.Example.csharp
             {
                 RefundResponse result = closedownService.Refund(CorpNum, refundForm, UserID);
                 MessageBox.Show(
-                    "code (응답 코드) : "+ result.code.ToString() +
-                    "message (응답 메시지) : " + result.message +
+                    "code (응답 코드) : "+ result.code.ToString() + CRLF +
+                    "message (응답 메시지) : " + result.message + CRLF +
                     "refundCode (환불코드) : " + result.refundCode,
                     "환불 신청");
             }
@@ -933,7 +933,7 @@ namespace Popbill.Closedown.Example.csharp
                     "페이지당 검색개수(perPage) : " + result.perPage.ToString() +CRLF+
                     "페이지 번호(pageNum) : " + result.pageNum.ToString() +CRLF+
                     "페이지 개수(pageCount) : " + result.pageCount.ToString() +CRLF +
-                    "사용내역"+CRLF+
+                    "환불내역"+CRLF+
                     tmp,
                 "환불 신청내역 확인");
             }

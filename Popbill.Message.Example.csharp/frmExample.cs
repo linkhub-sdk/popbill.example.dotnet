@@ -1697,7 +1697,7 @@ namespace Popbill.Message.Example.csharp
             PaymentForm.paymentName = "입금자명";
 
             // 결제금액
-            PaymentForm.settleCost = "결제금액";
+            PaymentForm.settleCost = "1000";
 
             // 팝빌회원 아이디
             String UserID = "testkorea";
@@ -1753,7 +1753,7 @@ namespace Popbill.Message.Example.csharp
                 foreach (PaymentHistory history in result.list)
                 {
                     tmp += "결제 내용(productType) : " + history.productType + CRLF;
-                    tmp += "정액제 상품명(productName) : " + history.productName + CRLF;
+                    tmp += "결제 상품명(productName) : " + history.productName + CRLF;
                     tmp += "결제 유형(settleType) : " + history.settleType + CRLF;
                     tmp += "담당자명(settlerName) : " + history.settlerName + CRLF;
                     tmp += "담당자메일(settlerEmail) : " + history.settlerEmail + CRLF;
@@ -1771,7 +1771,7 @@ namespace Popbill.Message.Example.csharp
                     "페이지당 검색개수(perPage) : " + result.perPage.ToString() +CRLF+
                     "페이지 번호(pageNum) : " + result.pageNum.ToString() +CRLF+
                     "페이지 개수(pageCount) : " + result.pageCount.ToString() +CRLF
-                    + "사용내역"+CRLF+tmp,
+                    + "결제내역" + CRLF + tmp,
                     "연동회원 포인트 결제내역 확인");
             }
             catch (PopbillException ex)
@@ -1924,8 +1924,8 @@ namespace Popbill.Message.Example.csharp
             {
                 RefundResponse result = messageService.Refund(CorpNum, refundForm, UserID);
                 MessageBox.Show(
-                    "code (응답 코드) : "+ result.code.ToString() +
-                    "message (응답 메시지) : " + result.message +
+                    "code (응답 코드) : " + result.code.ToString() + CRLF +
+                    "message (응답 메시지) : " + result.message + CRLF +
                     "refundCode (환불코드) : " + result.refundCode,
                     "환불 신청");
             }
@@ -1967,7 +1967,7 @@ namespace Popbill.Message.Example.csharp
                     tmp += "accountNum (환불계좌번호) :" + history.accountNum + CRLF ;
                     tmp += "accountName (환불계좌 예금주명) :" + history.accountName + CRLF ;
                     tmp += "state (상태) : " + history.state.ToString() + CRLF ;
-                    tmp += "reason (환불사유) : " + history.reason;
+                    tmp += "reason (환불사유) : " + history.reason + CRLF;
                     tmp += CRLF;
                 }
 
@@ -1977,7 +1977,7 @@ namespace Popbill.Message.Example.csharp
                     "페이지당 검색개수(perPage) : " + result.perPage.ToString() +CRLF+
                     "페이지 번호(pageNum) : " + result.pageNum.ToString() +CRLF+
                     "페이지 개수(pageCount) : " + result.pageCount.ToString() +CRLF +
-                    "사용내역"+CRLF+
+                    "환불내역"+CRLF+
                     tmp,
                 "환불 신청내역 확인");
             }
