@@ -418,8 +418,7 @@ namespace Popbill.Cashbill.Example.csharp
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message + CRLF +
                                 "국세청 승인번호(confirmNum) : " + response.confirmNum + CRLF +
-                                "거래일자(tradeDate) : " + response.tradeDate + CRLF +
-                                "거래일시(tradeDT) : " + response.tradeDT, "취소현금영수증 즉시발행");
+                                "거래일자(tradeDate) : " + response.tradeDate, "취소현금영수증 즉시발행");
             }
             catch (PopbillException ex)
             {
@@ -490,8 +489,7 @@ namespace Popbill.Cashbill.Example.csharp
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message + CRLF +
                                 "국세청 승인번호(confirmNum) : " + response.confirmNum + CRLF +
-                                "거래일자(tradeDate) : " + response.tradeDate + CRLF +
-                                "거래일시(tradeDT) : " + response.tradeDT , "(부분) 취소현금영수증 즉시발행");
+                                "거래일자(tradeDate) : " + response.tradeDate, "(부분) 취소현금영수증 즉시발행");
             }
             catch (PopbillException ex)
             {

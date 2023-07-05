@@ -2924,6 +2924,48 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
+         * 로그인 상태로 팝빌 사이트의 전자세금계산서 매출문서작성 메뉴에 접근할 수 있는 페이지의 팝업 URL을 반환합니다.
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
+         * - https://developers.popbill.com/reference/taxinvoice/dotnet/api/info#GetURL
+         */
+        private void btnGetURL_SWBOX_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string url = taxinvoiceService.GetURL(txtCorpNum.Text, txtUserId.Text, "SWBOX");
+
+                MessageBox.Show(url, "매출 발행 대기함 팝업 URL");
+                textURL.Text = url;
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
+                                "응답메시지(message) : " + ex.Message, "매출 발행 대기함 팝업 URL");
+            }
+        }
+
+        /*
+         * 로그인 상태로 팝빌 사이트의 전자세금계산서 매출문서작성 메뉴에 접근할 수 있는 페이지의 팝업 URL을 반환합니다.
+         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
+         * - https://developers.popbill.com/reference/taxinvoice/dotnet/api/info#GetURL
+         */
+        private void btnGetURL_PWBOX_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string url = taxinvoiceService.GetURL(txtCorpNum.Text, txtUserId.Text, "PWBOX");
+
+                MessageBox.Show(url, "매입 발행 대기함 팝업 URL");
+                textURL.Text = url;
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
+                                "응답메시지(message) : " + ex.Message, "매입 발행 대기함 팝업 URL");
+            }
+        }
+
+        /*
          * 세금계산서 1건의 상세 정보 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
          * - https://developers.popbill.com/reference/taxinvoice/dotnet/api/view#GetPopUpURL
@@ -4576,6 +4618,8 @@ namespace Popbill.Taxinvoice.Example.csharp
                     "환불 가능 포인트 확인");
             }
         }
+
+      
         
         // /*
         //  * [승인대기] 상태의 세금계산서를 [공급받는자]가 [거부]합니다.
