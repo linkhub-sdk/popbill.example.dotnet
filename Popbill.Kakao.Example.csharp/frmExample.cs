@@ -2359,7 +2359,7 @@ namespace Popbill.Kakao.Example.csharp
 
                 MessageBox.Show(
                     "결제 내용(productType) : " + result.productType + CRLF +
-                        "정액제 상품명(productName) : " + result.productName + CRLF +
+                        "결제 상품명(productName) : " + result.productName + CRLF +
                         "결제 유형(settleType) : " + result.settleType + CRLF +
                         "담당자명(settlerName) : " + result.settlerName + CRLF +
                         "담당자메일(settlerEmail) : " + result.settlerEmail + CRLF +
