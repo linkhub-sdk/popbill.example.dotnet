@@ -2,7 +2,7 @@
  * 팝빌 전자세금계산서 API DotNet SDK Example
  *
  * - DotNet C# SDK 연동환경 설정방법 안내 : [개발가이드] - https://developers.popbill.com/guide/taxinvoice/dotnet/getting-started/tutorial?fwn=csharp
- * - 업데이트 일자 : 2022-07-05
+ * - 업데이트 일자 : 2023-07-06
  * - 연동 기술지원 연락처 : 1600-9854
  * - 연동 기술지원 이메일 : code@linkhubcorp.com
  *
@@ -4509,7 +4509,7 @@ namespace Popbill.Taxinvoice.Example.csharp
                     "페이지당 검색개수(perPage) : " + result.perPage.ToString() +CRLF+
                     "페이지 번호(pageNum) : " + result.pageNum.ToString() +CRLF+
                     "페이지 개수(pageCount) : " + result.pageCount.ToString() +CRLF +
-                    "사용내역"+CRLF+
+                    "환불내역"+CRLF+
                     tmp,
                 "환불 신청내역 확인");
             }

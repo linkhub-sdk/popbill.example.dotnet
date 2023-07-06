@@ -2,7 +2,7 @@
  * 팝빌 홈택스 전자세금계산서 연계 API DotNet SDK Example
  *
  * - DotNet SDK 연동환경 설정방법 안내 : [개발가이드] - https://developers.popbill.com/guide/httaxinvoice/dotnet/getting-started/tutorial?fwn=csharp
- * - 업데이트 일자 : 2022-07-05
+ * - 업데이트 일자 : 2023-07-06
  * - 연동 기술지원 연락처 : 1600-9854
  * - 연동 기술지원 이메일 : code@linkhubcorp.com
  *

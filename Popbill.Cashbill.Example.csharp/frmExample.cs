@@ -338,7 +338,7 @@ namespace Popbill.Cashbill.Example.csharp
                         tmp += "문서번호(MgtKey) : " + issueResult.mgtKey + CRLF;
                         tmp += "국세청승인번호(confirmNum) : " + issueResult.confirmNum + CRLF;
                         tmp += "거래일자(tradeDate) : " + issueResult.tradeDate + CRLF;
-                        tmp += "거래일시(issueDT) : " + issueResult.issueDT + CRLF;
+                        tmp += "발행일시(issueDT) : " + issueResult.issueDT + CRLF;
                         i++;
                     }
                 }
