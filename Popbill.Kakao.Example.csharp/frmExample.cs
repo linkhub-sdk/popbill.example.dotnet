@@ -2431,7 +2431,7 @@ namespace Popbill.Kakao.Example.csharp
                     "페이지 개수(pageCount) : " + result.pageCount.ToString() +CRLF +
                     "사용내역"+CRLF+
                     tmp,
-                     "포인트 사용내역 확인");
+                    "포인트 사용내역 확인");
             }
             catch (PopbillException ex)
             {

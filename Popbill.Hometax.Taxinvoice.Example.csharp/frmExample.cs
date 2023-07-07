@@ -1313,7 +1313,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
                         "상태일시(stateDT) : " + result.stateDT + CRLF,
                     "무통장 입금 신청내역 확인");
             }
-            catch (PopbillException ex)ㅌ
+            catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
                                 "응답메시지(message) : " + ex.Message, "무통장 입금 신청내역 확인");

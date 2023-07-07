@@ -923,7 +923,7 @@ namespace Popbill.Closedown.Example.csharp
                     tmp += "accountNum (환불계좌번호) :" + history.accountNum + CRLF ;
                     tmp += "accountName (환불계좌 예금주명) :" + history.accountName + CRLF ;
                     tmp += "state (상태) : " + history.state.ToString() + CRLF ;
-                    tmp += "reason (환불사유) : " + history.reason;
+                    tmp += "reason (환불사유) : " + history.reason + CRLF;
                     tmp += CRLF;
                 }
 
