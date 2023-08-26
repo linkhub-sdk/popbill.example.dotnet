@@ -3448,33 +3448,6 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-         * 전자세금계산서 유통사업자의 메일 목록을 확인합니다.
-         * - https://developers.popbill.com/reference/taxinvoice/dotnet/api/etc#GetEmailPublicKeys
-         */
-        private void btnGetEmailPublicKey_Click(object sender, EventArgs e)
-        {
-            string tmp = "";
-
-            try
-            {
-                List<EmailPublicKey> KeyList = taxinvoiceService.GetEmailPublicKeys(txtCorpNum.Text);
-
-                foreach (EmailPublicKey info in KeyList)
-                {
-                    tmp += info.confirmNum + " | " + info.email + CRLF;
-                }
-
-                MessageBox.Show(tmp, "연계사업자 메일목록 확인");
-            }
-            catch (PopbillException ex)
-            {
-                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
-                                "응답메시지(message) : " + ex.Message, "연계사업자 메일목록 확인");
-            }
-        }
-
-
-        /*
          * 팝빌 사이트를 통해 발행하였지만 문서번호가 존재하지 않는 세금계산서에 문서번호를 할당합니다.
          * - https://developers.popbill.com/reference/taxinvoice/dotnet/api/etc#AssignMgtKey
          */
