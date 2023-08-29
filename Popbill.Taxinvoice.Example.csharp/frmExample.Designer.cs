@@ -529,16 +529,7 @@
             this.btnSendEmail.Text = "이메일 전송";
             this.btnSendEmail.UseVisualStyleBackColor = true;
             this.btnSendEmail.Click += new System.EventHandler(this.btnSendEmail_Click);
-            //
-            // btnGetEmailPublicKey
-            //
-            this.btnGetEmailPublicKey.Location = new System.Drawing.Point(1159, 23);
-            this.btnGetEmailPublicKey.Name = "btnGetEmailPublicKey";
-            this.btnGetEmailPublicKey.Size = new System.Drawing.Size(153, 26);
-            this.btnGetEmailPublicKey.TabIndex = 6;
-            this.btnGetEmailPublicKey.Text = "ASP업체 Email목록 확인";
-            this.btnGetEmailPublicKey.UseVisualStyleBackColor = true;
-            this.btnGetEmailPublicKey.Click += new System.EventHandler(this.btnGetEmailPublicKey_Click);
+
             //
             // btnCheckMgtKeyInUse
             //
