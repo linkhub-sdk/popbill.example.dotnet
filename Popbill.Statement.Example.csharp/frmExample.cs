@@ -1,15 +1,20 @@
 ﻿/*
- * 팝빌 전자명세서 API DotNet SDK Example
- *
- * - DotNet C# SDK 연동환경 설정방법 안내 : [개발가이드] - https://developers.popbill.com/guide/statement/dotnet/getting-started/tutorial?fwn=csharp
- * - 업데이트 일자 : 2023-07-06
- * - 연동 기술지원 연락처 : 1600-9854
- * - 연동 기술지원 이메일 : code@linkhubcorp.com
- *
- * <테스트 연동개발 준비사항>
- * 1) 29, 32 라인에 선언된 링크아이디(LinkID)와 비밀키(SecretKey)를
- *    링크허브 가입시 메일로 발급받은 인증정보로 변경합니다.
- * 2) 팝빌 개발용 사이트(test.popbill.com)에 연동회원으로 가입합니다.
+* 팝빌 전자명세서 API .NET SDK C#.NET Example
+* C#.NET 연동 튜토리얼 안내 : https://developers.popbill.com/guide/statement/dotnet/getting-started/tutorial?fwn=csharp
+*
+* 업데이트 일자 : 2024-02-26
+* 연동기술지원 연락처 : 1600-9854
+* 연동기술지원 이메일 : code@linkhubcorp.com
+*         
+* <테스트 연동개발 준비사항>
+* 1) API Key 변경 (연동신청 시 메일로 전달된 정보)
+*     - LinkID : 링크허브에서 발급한 링크아이디
+*     - SecretKey : 링크허브에서 발급한 비밀키
+* 2) SDK 환경설정 옵션 설정
+*     - IsTest : 연동환경 설정, true-테스트, false-운영(Production), (기본값:true)
+*     - IPRestrictOnOff : 인증토큰 IP 검증 설정, true-사용, false-미사용, (기본값:true)
+*     - UseStaticIP : 통신 IP 고정, true-사용, false-미사용, (기본값:false)
+*     - UseLocalTimeYN : 로컬시스템 시간 사용여부, true-사용, false-미사용, (기본값:true)
  */
 
 using System;
@@ -42,16 +47,16 @@ namespace Popbill.Statement.Example.csharp
             // 전자명세서 모듈 초기화
             statementService = new StatementService(LinkID, SecretKey);
 
-            // 연동환경 설정값, true-개발용, false-상업용.
+            // 연동환경 설정, true-테스트, false-운영(Production), (기본값:true).
             statementService.IsTest = true;
 
-            // 인증토큰 발급 IP 제한 On/Off, true-사용, false-미사용, 기본값(true)
+            // 인증토큰 IP 검증 설정, true-사용, false-미사용, (기본값:true)
             statementService.IPRestrictOnOff = true;
 
-            // 팝빌 API 서비스 고정 IP 사용여부, true-사용, false-미사용, 기본값(false)
+            // 통신 IP 고정, true-사용, false-미사용, (기본값:false)
             statementService.UseStaticIP = false;
 
-            // 로컬시스템 시간 사용여부, true-사용, false-미사용, 기본값(false)
+            // 로컬시스템 시간 사용여부, true-사용, false-미사용, (기본값:true)
             statementService.UseLocalTimeYN = false;
         }
 
@@ -190,7 +195,7 @@ namespace Popbill.Statement.Example.csharp
             statement.receiverContactName = "수신자 담당자명";
 
             // 수신자 메일주소
-            // 팝빌 개발환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
+            // 팝빌 테스트 환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
             // 실제 거래처의 메일주소가 기재되지 않도록 주의
             statement.receiverEmail = "";
 
@@ -390,7 +395,7 @@ namespace Popbill.Statement.Example.csharp
             statement.receiverContactName = "수신자 담당자명";
 
             // 수신자 메일주소
-            // 팝빌 개발환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
+            // 팝빌 테스트 환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
             // 실제 거래처의 메일주소가 기재되지 않도록 주의
             statement.receiverEmail = "";
 
@@ -588,7 +593,7 @@ namespace Popbill.Statement.Example.csharp
             statement.receiverContactName = "수신자 담당자명";
 
             // 수신자 메일주소
-            // 팝빌 개발환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
+            // 팝빌 테스트 환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
             // 실제 거래처의 메일주소가 기재되지 않도록 주의
             statement.receiverEmail = "";
 
@@ -1463,7 +1468,7 @@ namespace Popbill.Statement.Example.csharp
             int itemcode = selectedItemCode();
 
             // 수신메일주소
-            // 팝빌 개발환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
+            // 팝빌 테스트 환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
             // 실제 거래처의 메일주소가 기재되지 않도록 주의
             string ReceiverEmail = "";
 
@@ -1644,7 +1649,7 @@ namespace Popbill.Statement.Example.csharp
             statement.receiverContactName = "수신자 담당자명";
 
             // 수신자 메일주소
-            // 팝빌 개발환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
+            // 팝빌 테스트 환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
             // 실제 거래처의 메일주소가 기재되지 않도록 주의
             statement.receiverEmail = "";
 

@@ -1,19 +1,24 @@
 ﻿/*
- * 팝빌 전자세금계산서 API DotNet SDK Example
- *
- * - DotNet C# SDK 연동환경 설정방법 안내 : [개발가이드] - https://developers.popbill.com/guide/taxinvoice/dotnet/getting-started/tutorial?fwn=csharp
- * - 업데이트 일자 : 2023-07-06
- * - 연동 기술지원 연락처 : 1600-9854
- * - 연동 기술지원 이메일 : code@linkhubcorp.com
- *
- * <테스트 연동개발 준비사항>
- * 1) 29, 32 라인에 선언된 링크아이디(LinkID)와 비밀키(SecretKey)를
- *    링크허브 가입시 메일로 발급받은 인증정보로 변경합니다.
- * 2) 팝빌 개발용 사이트(test.popbill.com)에 연동회원으로 가입합니다.
- * 3) 전자세금계산서 발행을 위해 인증서를 등록합니다. 두가지 방법 중 선택
- *    - 팝빌사이트 로그인 > [전자세금계산서] > [환경설정] > [인증서 관리]
- *    - 인증서 등록 팝업 URL (GetTaxCertURL API)을 이용하여 등록
- */
+* 팝빌 전자세금계산서 API .NET SDK C#.NET Example
+* C#.NET 연동 튜토리얼 안내 : https://developers.popbill.com/guide/taxinvoice/dotnet/getting-started/tutorial?fwn=csharp
+*
+* 업데이트 일자 : 2024-02-26
+* 연동기술지원 연락처 : 1600-9854
+* 연동기술지원 이메일 : code@linkhubcorp.com
+*         
+* <테스트 연동개발 준비사항>
+* 1) API Key 변경 (연동신청 시 메일로 전달된 정보)
+*     - LinkID : 링크허브에서 발급한 링크아이디
+*     - SecretKey : 링크허브에서 발급한 비밀키
+* 2) SDK 환경설정 옵션 설정
+*     - IsTest : 연동환경 설정, true-테스트, false-운영(Production), (기본값:true)
+*     - IPRestrictOnOff : 인증토큰 IP 검증 설정, true-사용, false-미사용, (기본값:true)
+*     - UseStaticIP : 통신 IP 고정, true-사용, false-미사용, (기본값:false)
+*     - UseLocalTimeYN : 로컬시스템 시간 사용여부, true-사용, false-미사용, (기본값:true)
+* 3) 전자세금계산서 발행을 위해 공동인증서를 등록합니다.
+*    - 팝빌사이트 로그인 > [전자세금계산서] > [환경설정] > [공동인증서 관리]
+*    - 공동인증서 등록 팝업 URL (GetTaxCertURL API)을 이용하여 등록
+*/
 
 using System;
 using System.Collections.Generic;
@@ -43,16 +48,16 @@ namespace Popbill.Taxinvoice.Example.csharp
             // 세금계산서 서비스 객체 초기화
             taxinvoiceService = new TaxinvoiceService(LinkID, SecretKey);
 
-            // 연동환경 설정값, true-개발용, false-상업용
+            // 연동환경 설정, true-테스트, false-운영(Production), (기본값:true)
             taxinvoiceService.IsTest = true;
 
-            // 인증토큰 발급 IP 제한 On/Off, true-사용, false-미사용, 기본값(true)
+            // 인증토큰 IP 검증 설정, true-사용, false-미사용, (기본값:true)
             taxinvoiceService.IPRestrictOnOff = true;
 
-            // 팝빌 API 서비스 고정 IP 사용여부, true-사용, false-미사용, 기본값(false)
+            // 통신 IP 고정, true-사용, false-미사용, (기본값:false)
             taxinvoiceService.UseStaticIP = false;
 
-            // 로컬시스템 시간 사용여부, true-사용, false-미사용, 기본값(false)
+            // 로컬시스템 시간 사용여부, true-사용, false-미사용, (기본값:true)
             taxinvoiceService.UseLocalTimeYN = false;
         }
 
@@ -196,7 +201,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             taxinvoice.invoiceeContactName1 = "공급받는자 담당자명";
 
             // 공급받는자 담당자 메일주소
-            // 팝빌 개발환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
+            // 팝빌 테스트 환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
             // 실제 거래처의 메일주소가 기재되지 않도록 주의
             taxinvoice.invoiceeEmail1 = "";
 
@@ -495,7 +500,7 @@ namespace Popbill.Taxinvoice.Example.csharp
                 taxinvoice.invoiceeContactName1 = "공급받는자 담당자명";
 
                 // 공급받는자 담당자 메일주소
-                // 팝빌 개발환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
+                // 팝빌 테스트 환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
                 // 실제 거래처의 메일주소가 기재되지 않도록 주의
                 taxinvoice.invoiceeEmail1 = "";
 
@@ -811,7 +816,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             taxinvoice.invoiceeContactName1 = "공급받는자 담당자명";
 
             // 공급받는자 담당자 메일주소
-            // 팝빌 개발환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
+            // 팝빌 테스트 환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
             // 실제 거래처의 메일주소가 기재되지 않도록 주의
             taxinvoice.invoiceeEmail1 = "";
 
@@ -1088,7 +1093,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             taxinvoice.invoiceeContactName1 = "공급받는자 담당자명";
 
             // 공급받는자 담당자 메일주소
-            // 팝빌 개발환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
+            // 팝빌 테스트 환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
             // 실제 거래처의 메일주소가 기재되지 않도록 주의
             taxinvoice.invoiceeEmail1 = "";
 
@@ -1411,7 +1416,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             taxinvoice.invoiceeContactName1 = "공급받는자 담당자명";
 
             // 공급받는자 담당자 메일주소
-            // 팝빌 개발환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
+            // 팝빌 테스트 환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
             // 실제 거래처의 메일주소가 기재되지 않도록 주의
             taxinvoice.invoiceeEmail1 = "";
 
@@ -1683,7 +1688,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             taxinvoice.invoiceeContactName1 = "공급받는자 담당자명";
 
             // 공급받는자 담당자 메일주소
-            // 팝빌 개발환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
+            // 팝빌 테스트 환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
             // 실제 거래처의 메일주소가 기재되지 않도록 주의
             taxinvoice.invoiceeEmail1 = "";
 
@@ -2093,7 +2098,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             taxinvoice.invoiceeContactName1 = "공급받는자 담당자명";
 
             // 공급받는자 담당자 메일주소
-            // 팝빌 개발환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
+            // 팝빌 테스트 환경에서 테스트하는 경우에도 안내 메일이 전송되므로,
             // 실제 거래처의 메일주소가 기재되지 않도록 주의
             taxinvoice.invoiceeEmail1 = "";
 
@@ -3237,7 +3242,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
         /*
          * "임시저장" 상태의 세금계산서에 첨부된 1개의 파일을 삭제합니다.
-         * - 파일 식별을 위해 첨부 시 부여되는 'FileID'는 첨부파일 목록 확인(GetFiles API) 함수를 호출하여 확인합니다.
+         * - 파일 식별을 위해 첨부 시 할당되는 'FileID'는 첨부파일 목록 확인(GetFiles API) 함수를 호출하여 확인합니다.
          * - https://developers.popbill.com/reference/taxinvoice/dotnet/api/etc#DeleteFile
          */
         private void btnDeleteFile_Click(object sender, EventArgs e)
