@@ -1,8 +1,8 @@
 ﻿/*
-* 팝빌 휴폐업조회 API .NET SDK C#.NET Example
+* 팝빌 사업자등록상태조회(휴폐업조회) API .NET SDK C#.NET Example
 * C#.NET 연동 튜토리얼 안내 : https://developers.popbill.com/guide/closedown/dotnet/getting-started/tutorial?fwn=csharp
 *
-* 업데이트 일자 : 2024-02-26
+* 업데이트 일자 : 2024-11-11
 * 연동기술지원 연락처 : 1600-9854
 * 연동기술지원 이메일 : code@linkhubcorp.com
 *         
@@ -40,7 +40,7 @@ namespace Popbill.Closedown.Example.csharp
         {
             InitializeComponent();
 
-            // 휴폐업조회 서비스 모듈 초기화
+            // 사업자등록상태조회(휴폐업조회) 서비스 모듈 초기화
             closedownService = new ClosedownService(LinkID, SecretKey);
 
             // 연동환경 설정, true-테스트, false-운영(Production), (기본값:true)
@@ -65,7 +65,7 @@ namespace Popbill.Closedown.Example.csharp
         }
 
         /*
-         * 사업자번호 1건에 대한 휴폐업정보를 확인합니다.
+         * 사업자번호 1건에 대한 사업자등록상태 (휴폐업) 를 확인합니다.
          * - https://developers.popbill.com/reference/closedown/dotnet/api/check#CheckCorpNum
          */
         private void btnCheckCorpNum_Click(object sender, EventArgs e)
@@ -85,18 +85,18 @@ namespace Popbill.Closedown.Example.csharp
                 tmp += "typeDate(과세유형 전환일자) : " + result.typeDate + "\n";
                 tmp += "checkDate(국세청확인일자) : " + result.checkDate + "\n";
 
-                MessageBox.Show(tmp, "휴폐업조회 - 단건");
+                MessageBox.Show(tmp, "사업자등록상태조회(휴폐업조회) - 단건");
             }
 
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
-                                "응답메시지(message) : " + ex.Message, "휴폐업조회 - 단건");
+                                "응답메시지(message) : " + ex.Message, "사업자등록상태조회(휴폐업조회) - 단건");
             }
         }
 
         /*
-         * 다수건의 사업자번호에 대한 휴폐업정보를 확인합니다. (최대 1,000건)
+         * 다수건의 사업자번호에 대한 사업자등록상태(휴폐업) 를 확인합니다. (최대 1,000건)
          * - https://developers.popbill.com/reference/closedown/dotnet/api/check#CheckCorpNums
          */
         private void btnCheckCorpNums_Click(object sender, EventArgs e)
@@ -126,12 +126,12 @@ namespace Popbill.Closedown.Example.csharp
                     tmp += "checkDate (국세청확인일자) : " + corpStateList[i].checkDate + CRLF + CRLF;
                 }
 
-                MessageBox.Show(tmp, "휴폐업조회 - 대량");
+                MessageBox.Show(tmp, "사업자등록상태조회 (휴폐업조회) - 대량");
             }
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
-                                "응답메시지(message) : " + ex.Message, "휴폐업조회 - 대량");
+                                "응답메시지(message) : " + ex.Message, "사업자등록상태조회 (휴폐업조회) - 대량");
             }
         }
 
@@ -261,7 +261,7 @@ namespace Popbill.Closedown.Example.csharp
         }
 
         /*
-         * 휴폐업 조회시 과금되는 포인트 단가를 확인합니다.
+         * 사업자등록상태조회 (휴폐업조회) 조회시 과금되는 포인트 단가를 확인합니다.
          * - https://developers.popbill.com/reference/closedown/dotnet/api/point#GetUnitCost
          */
         private void btnUnitCost_Click(object sender, EventArgs e)
@@ -280,7 +280,7 @@ namespace Popbill.Closedown.Example.csharp
         }
 
         /*
-         * 팝빌 휴폐업조회 API 서비스 과금정보를 확인합니다.
+         * 팝빌 사업자등록상태조회 (휴폐업조회) API 서비스 과금정보를 확인합니다.
          * - https://developers.popbill.com/reference/closedown/dotnet/api/point#GetChargeInfo
          */
         private void btnGetChargeInfo_Click(object sender, EventArgs e)

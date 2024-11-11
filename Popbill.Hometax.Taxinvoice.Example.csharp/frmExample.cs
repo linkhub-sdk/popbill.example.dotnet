@@ -2,7 +2,7 @@
 * 팝빌 홈택스 전자세금계산서 API .NET SDK C#.NET Example
 * C#.NET 연동 튜토리얼 안내 : https://developers.popbill.com/guide/httaxinvoice/dotnet/getting-started/tutorial?fwn=csharp
 *
-* 업데이트 일자 : 2024-02-26
+* 업데이트 일자 : 2024-11-11
 * 연동기술지원 연락처 : 1600-9854
 * 연동기술지원 이메일 : code@linkhubcorp.com
 *         
@@ -16,8 +16,8 @@
 *     - UseStaticIP : 통신 IP 고정, true-사용, false-미사용, (기본값:false)
 *     - UseLocalTimeYN : 로컬시스템 시간 사용여부, true-사용, false-미사용, (기본값:true)
 * 3) 홈택스 로그인 인증정보를 등록합니다. (부서사용자등록 / 공동인증서 등록)
-*    - 팝빌로그인 > [홈택스연동] > [환경설정] > [인증 관리] 메뉴
-*    - 홈택스연동 인증 관리 팝업 URL(GetCertificatePopUpURL API) 반환된 URL을 이용하여
+*    - 팝빌로그인 > [홈택스수집] > [환경설정] > [인증 관리] 메뉴
+*    - 홈택스수집 인증 관리 팝업 URL(GetCertificatePopUpURL API) 반환된 URL을 이용하여
 *      홈택스 인증 처리를 합니다.
 */
 
@@ -502,7 +502,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
         }
 
         /*
-         * 홈택스연동 인증정보를 관리하는 페이지의 팝업 URL을 반환합니다.
+         * 홈택스수집 인증정보를 관리하는 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
          * - https://developers.popbill.com/reference/httaxinvoice/dotnet/api/cert#GetCertificatePopUpURL
          */
@@ -512,13 +512,13 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
             {
                 String url = htTaxinvoiceService.GetCertificatePopUpURL(txtCorpNum.Text, txtUserId.Text);
 
-                MessageBox.Show(url, "홈택스연동 인증관리 URL");
+                MessageBox.Show(url, "홈택스수집 인증관리 URL");
                 textURL.Text = url;
             }
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
-                                "응답메시지(message) : " + ex.Message, "홈택스연동 인증관리 URL");
+                                "응답메시지(message) : " + ex.Message, "홈택스수집 인증관리 URL");
             }
         }
 
@@ -563,7 +563,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
         }
 
         /*
-         * 홈택스연동 인증을 위해 팝빌에 전자세금계산서용 부서사용자 계정을 등록합니다.
+         * 홈택스수집 인증을 위해 팝빌에 전자세금계산서용 부서사용자 계정을 등록합니다.
          * - https://developers.popbill.com/reference/httaxinvoice/dotnet/api/cert#RegistDeptUser
          */
         private void btnRegistDeptUser_Click(object sender, EventArgs e)
@@ -589,7 +589,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
         }
 
         /*
-         * 홈택스연동 인증을 위해 팝빌에 등록된 전자세금계산서용 부서사용자 계정을 확인합니다.
+         * 홈택스수집 인증을 위해 팝빌에 등록된 전자세금계산서용 부서사용자 계정을 확인합니다.
          * - https://developers.popbill.com/reference/httaxinvoice/dotnet/api/cert#CheckDeptUser
          */
         private void btnCheckDeptUser_Click(object sender, EventArgs e)
@@ -649,7 +649,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
         }
 
         /*
-         * 홈택스연동 정액제 서비스 신청 페이지의 팝업 URL을 반환합니다.
+         * 홈택스수집 정액제 서비스 신청 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
          * - https://developers.popbill.com/reference/httaxinvoice/dotnet/api/point#GetFlatRatePopUpURL
          */
@@ -670,7 +670,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
         }
 
         /*
-         * 홈택스연동 정액제 서비스 상태를 확인합니다.
+         * 홈택스수집 정액제 서비스 상태를 확인합니다.
          * - https://developers.popbill.com/reference/httaxinvoice/dotnet/api/point#GetFlatRateState
          */
         private void btnGetFlatRateState_Click(object sender, EventArgs e)
@@ -827,7 +827,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
         }
 
         /*
-         * 팝빌 홈택스연동(세금) API 서비스 과금정보를 확인합니다.
+         * 팝빌 홈택스수집(세금) API 서비스 과금정보를 확인합니다.
          * - https://developers.popbill.com/reference/httaxinvoice/dotnet/api/point#GetChargeInfo
          */
         private void btnGetChargeInfo_Click(object sender, EventArgs e)

@@ -606,7 +606,7 @@
             this.btnGetCertificatePopUpURL.Name = "btnGetCertificatePopUpURL";
             this.btnGetCertificatePopUpURL.Size = new System.Drawing.Size(163, 29);
             this.btnGetCertificatePopUpURL.TabIndex = 4;
-            this.btnGetCertificatePopUpURL.Text = "홈택스연동 인증관리 URL";
+            this.btnGetCertificatePopUpURL.Text = "홈택스수집 인증관리 URL";
             this.btnGetCertificatePopUpURL.UseVisualStyleBackColor = true;
             this.btnGetCertificatePopUpURL.Click += new System.EventHandler(this.btnGetCertificatePopUpURL_Click);
             //
