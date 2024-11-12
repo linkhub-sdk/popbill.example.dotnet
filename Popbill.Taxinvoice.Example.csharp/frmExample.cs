@@ -3568,7 +3568,7 @@ namespace Popbill.Taxinvoice.Example.csharp
          */
         private void btnUpdateEmailConfig_Click(object sender, EventArgs e)
         {
-            String EmailType = "TAX_ISSUE";
+            String EmailType = "TAX_ISSUE_INVOICER";
 
             //전송여부 (True-전송, False-미전송)
             bool SendYN = true;
