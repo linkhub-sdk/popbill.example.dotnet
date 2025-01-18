@@ -2,7 +2,7 @@
 * 팝빌 문자 API .NET SDK C#.NET Example
 * C#.NET 연동 튜토리얼 안내 : https://developers.popbill.com/guide/sms/dotnet/getting-started/tutorial?fwn=csharp
 *
-* 업데이트 일자 : 2025-01-16
+* 업데이트 일자 : 2025-01-18
 * 연동기술지원 연락처 : 1600-9854
 * 연동기술지원 이메일 : code@linkhubcorp.com
 *         
@@ -952,10 +952,10 @@ namespace Popbill.Message.Example.csharp
         private void btnSearch_Click(object sender, EventArgs e)
         {
             // 시작일자, 날짜형식(yyyyMMdd)
-            String SDate = "20220501";
+            String SDate = "20241201";
 
             // 종료일자, 날짜형식(yyyyMMdd)
-            String EDate = "20220531";
+            String EDate = "20241231";
 
             // 전송상태 배열 ("1" , "2" , "3" , "4" 중 선택, 다중 선택 가능)
             // └ 1 = 대기 , 2 = 성공 , 3 = 실패 , 4 = 취소
@@ -974,9 +974,9 @@ namespace Popbill.Message.Example.csharp
             Item[1] = "LMS";
             Item[2] = "MMS";
 
-            // 예약여부 (false , true 중 택 1)
-            // └ false = 전체조회, true = 예약전송건 조회
-            // - 미입력시 기본값 false 처리
+            // 예약여부 (null, false , true 중 택 1)
+            // └ null = 전체조회, false = 즉시전송건 조회, true = 예약전송건 조회
+            // - 미입력 시 전체조회
             bool ReserveYN = false;
 
             // 개인조회 여부 (false , true 중 택 1)
