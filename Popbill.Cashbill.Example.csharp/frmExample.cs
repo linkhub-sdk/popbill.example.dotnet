@@ -541,7 +541,12 @@ namespace Popbill.Cashbill.Example.csharp
                 tmp += "ntsresultCode (국세청 처리결과 상태코드) : " + cashbillInfo.ntsresultCode + CRLF;
                 tmp += "ntsresultMessage (국세청 처리결과 메시지) : " + cashbillInfo.ntsresultMessage + CRLF;
                 tmp += "printYN (인쇄여부) : " + cashbillInfo.printYN + CRLF;
-                tmp += "interOPYN (연동문서여부) : " + cashbillInfo.interOPYN + CRLF;
+                tmp += "email (구매자 메일) : " + cashbillInfo.email + CRLF;
+                tmp += "hp (구매자 휴대폰) : " + cashbillInfo.hp + CRLF;
+                tmp += "supplyCost (공급가액) : " + cashbillInfo.supplyCost + CRLF;
+                tmp += "tax (세액) : " + cashbillInfo.tax + CRLF;
+                tmp += "serviceFee (봉사료) : " + cashbillInfo.serviceFee + CRLF;
+                tmp += "orderNumber (주문번호) : " + cashbillInfo.orderNumber + CRLF;
 
                 MessageBox.Show(tmp, "현금영수증 상태/요약 정보 확인");
             }
