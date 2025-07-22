@@ -109,7 +109,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.GroupBox12 = new System.Windows.Forms.GroupBox();
-            this.btnGetOldPrintURL = new System.Windows.Forms.Button();
             this.btnGetPDFURL = new System.Windows.Forms.Button();
             this.btnGetViewURL = new System.Windows.Forms.Button();
             this.btnGetPrintURL = new System.Windows.Forms.Button();
@@ -177,6 +176,7 @@
             this.txtCorpNum = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.fileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.btnDeleteContact = new System.Windows.Forms.Button();
             this.GroupBox8.SuspendLayout();
             this.GroupBox9.SuspendLayout();
             this.GroupBox10.SuspendLayout();
@@ -457,7 +457,7 @@
             // 
             // btnGetMassPrintURL
             // 
-            this.btnGetMassPrintURL.Location = new System.Drawing.Point(195, 133);
+            this.btnGetMassPrintURL.Location = new System.Drawing.Point(195, 57);
             this.btnGetMassPrintURL.Name = "btnGetMassPrintURL";
             this.btnGetMassPrintURL.Size = new System.Drawing.Size(174, 32);
             this.btnGetMassPrintURL.TabIndex = 12;
@@ -528,7 +528,6 @@
             this.btnSendEmail.Text = "이메일 전송";
             this.btnSendEmail.UseVisualStyleBackColor = true;
             this.btnSendEmail.Click += new System.EventHandler(this.btnSendEmail_Click);
-
             // 
             // btnCheckMgtKeyInUse
             // 
@@ -543,7 +542,10 @@
             // cboMgtKeyType
             // 
             this.cboMgtKeyType.FormattingEnabled = true;
-            this.cboMgtKeyType.Items.AddRange(new object[] { "SELL", "BUY", "TRUSTEE" });
+            this.cboMgtKeyType.Items.AddRange(new object[] {
+            "SELL",
+            "BUY",
+            "TRUSTEE"});
             this.cboMgtKeyType.Location = new System.Drawing.Point(159, 23);
             this.cboMgtKeyType.Name = "cboMgtKeyType";
             this.cboMgtKeyType.Size = new System.Drawing.Size(74, 20);
@@ -1054,7 +1056,6 @@
             // 
             // GroupBox12
             // 
-            this.GroupBox12.Controls.Add(this.btnGetOldPrintURL);
             this.GroupBox12.Controls.Add(this.btnGetPDFURL);
             this.GroupBox12.Controls.Add(this.btnGetViewURL);
             this.GroupBox12.Controls.Add(this.btnGetEmailURL);
@@ -1068,16 +1069,6 @@
             this.GroupBox12.TabIndex = 11;
             this.GroupBox12.TabStop = false;
             this.GroupBox12.Text = "문서관련 URL 기능";
-            // 
-            // btnGetOldPrintURL
-            // 
-            this.btnGetOldPrintURL.Location = new System.Drawing.Point(195, 57);
-            this.btnGetOldPrintURL.Name = "btnGetOldPrintURL";
-            this.btnGetOldPrintURL.Size = new System.Drawing.Size(174, 32);
-            this.btnGetOldPrintURL.TabIndex = 16;
-            this.btnGetOldPrintURL.Text = "(구)인쇄 팝업 URL";
-            this.btnGetOldPrintURL.UseVisualStyleBackColor = true;
-            this.btnGetOldPrintURL.Click += new System.EventHandler(this.btnGetOldPrintURL_Click);
             // 
             // btnGetPDFURL
             // 
@@ -1716,13 +1707,14 @@
             // 
             // GroupBox6
             // 
+            this.GroupBox6.Controls.Add(this.btnDeleteContact);
             this.GroupBox6.Controls.Add(this.btnGetContactInfo);
             this.GroupBox6.Controls.Add(this.btnUpdateContact);
             this.GroupBox6.Controls.Add(this.btnListContact);
             this.GroupBox6.Controls.Add(this.btnRegistContact);
             this.GroupBox6.Location = new System.Drawing.Point(996, 20);
             this.GroupBox6.Name = "GroupBox6";
-            this.GroupBox6.Size = new System.Drawing.Size(158, 148);
+            this.GroupBox6.Size = new System.Drawing.Size(158, 186);
             this.GroupBox6.TabIndex = 3;
             this.GroupBox6.TabStop = false;
             this.GroupBox6.Text = "담당자 관련";
@@ -1817,6 +1809,16 @@
             // fileDialog
             // 
             this.fileDialog.FileName = "OpenFileDialog1";
+            // 
+            // btnDeleteContact
+            // 
+            this.btnDeleteContact.Location = new System.Drawing.Point(9, 145);
+            this.btnDeleteContact.Name = "btnDeleteContact";
+            this.btnDeleteContact.Size = new System.Drawing.Size(142, 27);
+            this.btnDeleteContact.TabIndex = 4;
+            this.btnDeleteContact.Text = "담당자 삭제";
+            this.btnDeleteContact.UseVisualStyleBackColor = true;
+            this.btnDeleteContact.Click += new System.EventHandler(this.btnDeleteContact_Click);
             // 
             // frmExample
             // 
@@ -1994,7 +1996,6 @@
         private System.Windows.Forms.Label label36;
         internal System.Windows.Forms.Button btnGetViewURL;
         private System.Windows.Forms.Button btnGetPDFURL;
-        internal System.Windows.Forms.Button btnGetOldPrintURL;
         internal System.Windows.Forms.Label label8;
         internal System.Windows.Forms.TextBox textURL;
         private System.Windows.Forms.Button btnGetSendToNTSConfig;
@@ -2017,5 +2018,6 @@
         private System.Windows.Forms.Button btnGetRefundableBalance;
         private System.Windows.Forms.Button btnGetRefundInfo;
         private System.Windows.Forms.Button btnQuitMember;
+        private System.Windows.Forms.Button btnDeleteContact;
     }
 }

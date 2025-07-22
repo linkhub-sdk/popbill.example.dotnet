@@ -4045,7 +4045,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             Contact contactInfo = new Contact();
 
             //담당자 아이디, 6자 이상 50자 미만
-            contactInfo.id = "dotnet_test_002";
+            contactInfo.id = "testkorea20250722_01";
 
             // 담당자 비밀번호, 8자 이상 20자 이하(영문, 숫자, 특수문자 조합)
             contactInfo.Password = "asdf8536!@#";
@@ -4054,10 +4054,10 @@ namespace Popbill.Taxinvoice.Example.csharp
             contactInfo.personName = "담당자명";
 
             //담당자연락처 (최대 20자)
-            contactInfo.tel = "";
+            contactInfo.tel = "07012341234";
 
             //담당자 이메일 (최대 100자)
-            contactInfo.email = "";
+            contactInfo.email = "test@test.com";
 
             // 담당자 권한, 1 : 개인권한, 2 : 읽기권한, 3 : 회사권한
             contactInfo.searchRole = 3;
@@ -4596,115 +4596,24 @@ namespace Popbill.Taxinvoice.Example.csharp
             }
         }
 
-        // /*
-        //  * [승인대기] 상태의 세금계산서를 [공급받는자]가 [거부]합니다.
-        //  * - [거부]처리된 세금계산서를 삭제(Delete API)하면 등록된 문서번호를 재사용할 수 있습니다.
-        //  */
-        // private void btnDeny_Click(object sender, EventArgs e)
-        // {
-        //     // 세금계산서 발행유형
-        //     MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
-        //
-        //     //메모
-        //     string memo = "발행예정 거부 메모";
-        //
-        //     try
-        //     {
-        //         Response response =
-        //             taxinvoiceService.Deny(txtCorpNum.Text, KeyType, txtMgtKey.Text, memo, txtUserId.Text);
-        //
-        //         MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
-        //                         "응답메시지(message) : " + response.message, "발행예정 거부");
-        //     }
-        //     catch (PopbillException ex)
-        //     {
-        //         MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
-        //                         "응답메시지(message) : " + ex.Message, "발행예정 거부");
-        //     }
-        // }
+        private void btnDeleteContact_Click(object sender, EventArgs e)
+        {
 
+            String ContactID = "testkorea20250722_01";
 
-        //  * [임시저장] 상태의 세금계산서를 [공급자]가 [발행예정]합니다.
-        //  * - 발행예정이란 공급자와 공급받는자 사이에 세금계산서 확인 후 발행하는 방법입니다.
-        //  * - "[전자세금계산서 API 연동매뉴얼] > 1.2.1. 정발행 > 다. 임시저장 발행예정" 의 프로세스를 참조하시기 바랍니다.
-        //  */
-        // private void btnSend_Click(object sender, EventArgs e)
-        // {
-        //     // 세금계산서 발행유형
-        //     MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
-        //
-        //     //메모
-        //     String Memo = "발행예정 메모";
-        //
-        //     //발행예정 메일제목, 공백으로 처리시 기본메일 제목으로 전송
-        //     String EmailSubject = "";
-        //
-        //     try
-        //     {
-        //         Response response = taxinvoiceService.Send(txtCorpNum.Text, KeyType, txtMgtKey.Text, Memo, EmailSubject,
-        //             txtUserId.Text);
-        //
-        //         MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
-        //                         "응답메시지(message) : " + response.message, "세금계산서 발행예정 ");
-        //     }
-        //     catch (PopbillException ex)
-        //     {
-        //         MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
-        //                         "응답메시지(message) : " + ex.Message, "세금계산서 발행예정");
-        //     }
-        // }
-        //
-        // /*
-        //  * [승인대기] 상태의 세금계산서를 [공급자]가 [취소]합니다.
-        //  * - [취소]된 세금계산서를 삭제(Delete API)하면 등록된 문서번호를 재사용할 수 있습니다.
-        //  */
-        // private void btnCancelSend_Click(object sender, EventArgs e)
-        // {
-        //     // 세금계산서 발행유형
-        //     MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
-        //
-        //     // 발행예정 취소 메모
-        //     string memo = "발행예정 취소 메모 ";
-        //
-        //     try
-        //     {
-        //         Response response =
-        //             taxinvoiceService.CancelSend(txtCorpNum.Text, KeyType, txtMgtKey.Text, memo, txtUserId.Text);
-        //
-        //         MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
-        //                         "응답메시지(message) : " + response.message, "발행예정 취소");
-        //     }
-        //     catch (PopbillException ex)
-        //     {
-        //         MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
-        //                         "응답메시지(message) : " + ex.Message, "발행예정 취소 ");
-        //     }
-        // }
-        //
-        // /*
-        //  * [승인대기] 상태의 세금계산서를 [공급받는자]가 [승인]합니다.
-        //  */
-        // private void btnAccept_Click(object sender, EventArgs e)
-        // {
-        //     // 세금계산서 발행유형
-        //     MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
-        //
-        //     // 메모
-        //     string memo = "발행예정 승인 메모";
-        //
-        //     try
-        //     {
-        //         Response response =
-        //             taxinvoiceService.Accept(txtCorpNum.Text, KeyType, txtMgtKey.Text, memo, txtUserId.Text);
-        //
-        //         MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
-        //                         "응답메시지(message) : " + response.message, "발행예정 승인");
-        //     }
-        //     catch (PopbillException ex)
-        //     {
-        //         MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
-        //                         "응답메시지(message) : " + ex.Message, "발행예정 승인");
-        //     }
-        // }
+            try
+            {
+                Response response = taxinvoiceService.DeleteContact(txtCorpNum.Text, ContactID, txtUserId.Text);
+
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
+                                "응답메시지(message) : " + response.message, "담당자 삭제");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
+                                "응답메시지(message) : " + ex.Message, "담당자 삭제");
+            }
+        }
+
     }
 }
