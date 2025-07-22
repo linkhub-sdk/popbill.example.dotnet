@@ -166,6 +166,7 @@
             this.btnUpdateCorpInfo = new System.Windows.Forms.Button();
             this.btnGetCorpInfo = new System.Windows.Forms.Button();
             this.GroupBox6 = new System.Windows.Forms.GroupBox();
+            this.btnDeleteContact = new System.Windows.Forms.Button();
             this.btnGetContactInfo = new System.Windows.Forms.Button();
             this.btnUpdateContact = new System.Windows.Forms.Button();
             this.btnListContact = new System.Windows.Forms.Button();
@@ -176,7 +177,6 @@
             this.txtCorpNum = new System.Windows.Forms.TextBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.fileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.btnDeleteContact = new System.Windows.Forms.Button();
             this.GroupBox8.SuspendLayout();
             this.GroupBox9.SuspendLayout();
             this.GroupBox10.SuspendLayout();
@@ -208,7 +208,7 @@
             this.btnGetInfos.Name = "btnGetInfos";
             this.btnGetInfos.Size = new System.Drawing.Size(131, 32);
             this.btnGetInfos.TabIndex = 9;
-            this.btnGetInfos.Text = "문서정보(대량)";
+            this.btnGetInfos.Text = "다수건 상태 확인";
             this.btnGetInfos.UseVisualStyleBackColor = true;
             this.btnGetInfos.Click += new System.EventHandler(this.btnGetInfos_Click);
             // 
@@ -218,7 +218,7 @@
             this.btnGetLogs.Name = "btnGetLogs";
             this.btnGetLogs.Size = new System.Drawing.Size(131, 32);
             this.btnGetLogs.TabIndex = 8;
-            this.btnGetLogs.Text = "문서이력";
+            this.btnGetLogs.Text = "상태 변경이력";
             this.btnGetLogs.UseVisualStyleBackColor = true;
             this.btnGetLogs.Click += new System.EventHandler(this.btnGetLogs_Click);
             // 
@@ -254,7 +254,7 @@
             this.btnGetInfo.Name = "btnGetInfo";
             this.btnGetInfo.Size = new System.Drawing.Size(131, 32);
             this.btnGetInfo.TabIndex = 7;
-            this.btnGetInfo.Text = "문서정보";
+            this.btnGetInfo.Text = "상태 확인";
             this.btnGetInfo.UseVisualStyleBackColor = true;
             this.btnGetInfo.Click += new System.EventHandler(this.btnGetInfo_Click);
             // 
@@ -401,7 +401,7 @@
             this.btnGetXML.Name = "btnGetXML";
             this.btnGetXML.Size = new System.Drawing.Size(131, 32);
             this.btnGetXML.TabIndex = 12;
-            this.btnGetXML.Text = "문서상세정보(XML)";
+            this.btnGetXML.Text = "상세정보 확인(XML)";
             this.btnGetXML.UseVisualStyleBackColor = true;
             this.btnGetXML.Click += new System.EventHandler(this.btnGetXML_Click);
             // 
@@ -421,7 +421,7 @@
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(131, 32);
             this.btnSearch.TabIndex = 10;
-            this.btnSearch.Text = "문서목록 조회";
+            this.btnSearch.Text = "목록 조회";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
@@ -431,7 +431,7 @@
             this.btnGetDetailInfo.Name = "btnGetDetailInfo";
             this.btnGetDetailInfo.Size = new System.Drawing.Size(131, 32);
             this.btnGetDetailInfo.TabIndex = 6;
-            this.btnGetDetailInfo.Text = "문서상세정보";
+            this.btnGetDetailInfo.Text = "상세정보 확인";
             this.btnGetDetailInfo.UseVisualStyleBackColor = true;
             this.btnGetDetailInfo.Click += new System.EventHandler(this.btnGetDetailInfo_Click);
             // 
@@ -1719,6 +1719,16 @@
             this.GroupBox6.TabStop = false;
             this.GroupBox6.Text = "담당자 관련";
             // 
+            // btnDeleteContact
+            // 
+            this.btnDeleteContact.Location = new System.Drawing.Point(9, 145);
+            this.btnDeleteContact.Name = "btnDeleteContact";
+            this.btnDeleteContact.Size = new System.Drawing.Size(142, 27);
+            this.btnDeleteContact.TabIndex = 4;
+            this.btnDeleteContact.Text = "담당자 삭제";
+            this.btnDeleteContact.UseVisualStyleBackColor = true;
+            this.btnDeleteContact.Click += new System.EventHandler(this.btnDeleteContact_Click);
+            // 
             // btnGetContactInfo
             // 
             this.btnGetContactInfo.Location = new System.Drawing.Point(9, 50);
@@ -1809,16 +1819,6 @@
             // fileDialog
             // 
             this.fileDialog.FileName = "OpenFileDialog1";
-            // 
-            // btnDeleteContact
-            // 
-            this.btnDeleteContact.Location = new System.Drawing.Point(9, 145);
-            this.btnDeleteContact.Name = "btnDeleteContact";
-            this.btnDeleteContact.Size = new System.Drawing.Size(142, 27);
-            this.btnDeleteContact.TabIndex = 4;
-            this.btnDeleteContact.Text = "담당자 삭제";
-            this.btnDeleteContact.UseVisualStyleBackColor = true;
-            this.btnDeleteContact.Click += new System.EventHandler(this.btnDeleteContact_Click);
             // 
             // frmExample
             // 

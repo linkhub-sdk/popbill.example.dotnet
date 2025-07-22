@@ -1047,7 +1047,7 @@ namespace Popbill.AccountCheck.Example.csharp
 
             try
             {
-                Response response = accountCheckService.DeleteContact(txtCorpNum.Text, ContactID, txtUserId.Text);
+                Response response = accountCheckService.DeleteContact(txtCorpNum.Text, ContactID, txtUserID.Text);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "담당자 삭제");

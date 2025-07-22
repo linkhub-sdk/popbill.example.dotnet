@@ -69,7 +69,7 @@ namespace Popbill.Taxinvoice.Example.csharp
          */
         private void btnCheckMgtKeyInUse_Click(object sender, EventArgs e)
         {
-            // 세금계산서 발행유형
+            // 문서번호 유형
             MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
 
             try
@@ -100,7 +100,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             Taxinvoice taxinvoice = new Taxinvoice();
 
             // 기재상 작성일자, 날짜형식(yyyyMMdd)
-            taxinvoice.writeDate = "20220504";
+            taxinvoice.writeDate = "20250722";
 
             // 과금방향, {정과금, 역과금} 중 기재
             // └ 정과금 = 공급자 과금 , 역과금 = 공급받는자 과금
@@ -384,13 +384,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             // 세금계산서 객체정보 목록
             List<Taxinvoice> taxinvoiceList = new List<Taxinvoice>();
 
-            // 지연발행 강제여부  (true / false 중 택 1)
-            // └ true = 가능 , false = 불가능
-            // - 미입력 시 기본값 false 처리
-            // - 발행마감일이 지난 세금계산서를 발행하는 경우, 가산세가 부과될 수 있습니다.
-            // - 가산세가 부과되더라도 발행을 해야하는 경우에는 forceIssue의 값을
-            //   true로 선언하여 발행(Issue API)를 호출하시면 됩니다.
-            bool forceIssue = false;
+           
 
             for (int i = 0; i < 100; i++)
             {
@@ -398,7 +392,7 @@ namespace Popbill.Taxinvoice.Example.csharp
                 Taxinvoice taxinvoice = new Taxinvoice();
 
                 // 기재상 작성일자, 날짜형식(yyyyMMdd)
-                taxinvoice.writeDate = "20220504";
+                taxinvoice.writeDate = "20250722";
 
                 // 과금방향, {정과금, 역과금} 중 기재
                 // └ 정과금 = 공급자 과금 , 역과금 = 공급받는자 과금
@@ -636,9 +630,17 @@ namespace Popbill.Taxinvoice.Example.csharp
                 taxinvoiceList.Add(taxinvoice);
             }
 
+            // 지연발행 강제여부  (true / false 중 택 1)
+            // └ true = 가능 , false = 불가능
+            // - 미입력 시 기본값 false 처리
+            // - 발행마감일이 지난 세금계산서를 발행하는 경우, 가산세가 부과될 수 있습니다.
+            // - 가산세가 부과되더라도 발행을 해야하는 경우에는 forceIssue의 값을
+            //   true로 선언하여 발행(Issue API)를 호출하시면 됩니다.
+            bool forceIssue = false;
+
             try
             {
-                BulkResponse response = taxinvoiceService.BulkSubmit(txtCorpNum.Text, txtSubmitID.Text, taxinvoiceList, forceIssue);
+                BulkResponse response = taxinvoiceService.BulkSubmit(txtCorpNum.Text, txtSubmitID.Text, taxinvoiceList, forceIssue, txtUserId.Text);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message + CRLF +
@@ -659,7 +661,7 @@ namespace Popbill.Taxinvoice.Example.csharp
         {
             try
             {
-                BulkTaxinvoiceResult result = taxinvoiceService.GetBulkResult(txtCorpNum.Text, txtSubmitID.Text);
+                BulkTaxinvoiceResult result = taxinvoiceService.GetBulkResult(txtCorpNum.Text, txtSubmitID.Text, txtUserId.Text);
 
                 String tmp = null;
 
@@ -713,7 +715,7 @@ namespace Popbill.Taxinvoice.Example.csharp
             Taxinvoice taxinvoice = new Taxinvoice();
 
             // 기재상 작성일자, 날짜형식(yyyyMMdd)
-            taxinvoice.writeDate = "20220504";
+            taxinvoice.writeDate = "20250722";
 
             // 과금방향, {정과금, 역과금} 중 기재
             // └ 정과금 = 공급자 과금 , 역과금 = 공급받는자 과금
@@ -1223,21 +1225,19 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-        * "임시저장" 상태의 세금계산서를 발행(전자서명)하며, "발행완료" 상태로 처리합니다.
-        * - 세금계산서 국세청 전송정책 [https://developers.popbill.com/guide/taxinvoice/dotnet/introduction/policy-of-send-to-nts]
-        * - "발행완료" 된 전자세금계산서는 국세청 전송 이전에 발행취소(CancelIssue API) 함수로 국세청 신고 대상에서 제외할 수 있습니다.
-        * - 세금계산서 발행을 위해서 공급자의 인증서가 팝빌 인증서버에 사전등록 되어야 합니다.
-        *   └ 위수탁발행의 경우, 수탁자의 인증서 등록이 필요합니다.
-        * - 세금계산서 발행 시 공급받는자에게 발행 메일이 발송됩니다.
+        * "임시저장" 또는 "(역)발행대기" 상태의 세금계산서를 발행(전자서명)하며, "발행완료" 상태로 처리합니다.
          * - https://developers.popbill.com/reference/taxinvoice/dotnet/api/issue#Issue
          */
         private void btnIssue_Click(object sender, EventArgs e)
         {
-            // 세금계산서 발행유형
+            // 문서번호 유형
             MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
 
             // 메모
             String memo = "발행메모";
+
+            // 발행 안내메일 제목, 미입력시 기본 안내메일 제목 사용
+            String EmailSubject = "";
 
             // 지연발행 강제여부  (true / false 중 택 1)
             // └ true = 가능 , false = 불가능
@@ -1249,8 +1249,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
             try
             {
-                IssueResponse response = taxinvoiceService.Issue(txtCorpNum.Text, KeyType, txtMgtKey.Text, memo, forceIssue,
-                    txtUserId.Text);
+                IssueResponse response = taxinvoiceService.Issue(txtCorpNum.Text, KeyType, txtMgtKey.Text, memo, EmailSubject, forceIssue, txtUserId.Text);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message + CRLF +
@@ -1264,22 +1263,20 @@ namespace Popbill.Taxinvoice.Example.csharp
         }
 
         /*
-        * "(역)발행대기" 상태의 세금계산서를 발행(전자서명)하며, "발행완료" 상태로 처리합니다.
-        * - 세금계산서 국세청 전송정책 [https://developers.popbill.com/guide/taxinvoice/dotnet/introduction/policy-of-send-to-nts]
-        * - "발행완료" 된 전자세금계산서는 국세청 전송 이전에 발행취소(CancelIssue API) 함수로 국세청 신고 대상에서 제외할 수 있습니다.
-        * - 세금계산서 발행을 위해서 공급자의 인증서가 팝빌 인증서버에 사전등록 되어야 합니다.
-        *   └ 위수탁발행의 경우, 수탁자의 인증서 등록이 필요합니다.
-        * - 세금계산서 발행 시 공급받는자에게 발행 메일이 발송됩니다.
+        * "임시저장" 또는 "(역)발행대기" 상태의 세금계산서를 발행(전자서명)하며, "발행완료" 상태로 처리합니다. 
          * - https://developers.popbill.com/reference/taxinvoice/dotnet/api/issue#Issue
          */
         private void btnIssue_Reverse_sub_Click(object sender, EventArgs e)
         {
-            // 세금계산서 발행유형
+            // 문서번호 유형
             MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
 
             // 메모
             String memo = "발행메모";
 
+            // 발행 안내메일 제목, 미입력시 기본 안내메일 제목 사용
+            String EmailSubject = "";
+            
             // 지연발행 강제여부  (true / false 중 택 1)
             // └ true = 가능 , false = 불가능
             // - 미입력 시 기본값 false 처리
@@ -1290,8 +1287,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
             try
             {
-                IssueResponse response = taxinvoiceService.Issue(txtCorpNum.Text, KeyType, txtMgtKey.Text, memo, forceIssue,
-                    txtUserId.Text);
+                IssueResponse response = taxinvoiceService.Issue(txtCorpNum.Text, KeyType, txtMgtKey.Text, memo, EmailSubject, forceIssue, txtUserId.Text);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message + CRLF +
@@ -1310,11 +1306,16 @@ namespace Popbill.Taxinvoice.Example.csharp
          */
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+
+            // 문서번호 유형
+            MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
+
+
             // 세금계산서 정보 객체
             Taxinvoice taxinvoice = new Taxinvoice();
 
             // 기재상 작성일자, 날짜형식(yyyyMMdd)
-            taxinvoice.writeDate = "20220504";
+            taxinvoice.writeDate = "20250722";
 
             // 과금방향, {정과금, 역과금} 중 기재
             // └ 정과금 = 공급자 과금 , 역과금 = 공급받는자 과금
@@ -1551,13 +1552,11 @@ namespace Popbill.Taxinvoice.Example.csharp
             taxinvoice.addContactList.Add(addContact2);
 
 
-            // 세금계산서 발행유형
-            MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
+            
 
             try
             {
-                Response response = taxinvoiceService.Update(txtCorpNum.Text, KeyType, txtMgtKey.Text, taxinvoice,
-                    txtUserId.Text);
+                Response response = taxinvoiceService.Update(txtCorpNum.Text, KeyType, txtMgtKey.Text, taxinvoice, txtUserId.Text);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "임시저장 세금계산서 수정");
@@ -1575,7 +1574,7 @@ namespace Popbill.Taxinvoice.Example.csharp
          */
         private void btnUpdate_Reverse_Click(object sender, EventArgs e)
         {
-            // 세금계산서 발행유형
+            // 문서번호 유형
             MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
 
 
@@ -1826,7 +1825,7 @@ namespace Popbill.Taxinvoice.Example.csharp
          */
         private void btnCancelIssue_Click(object sender, EventArgs e)
         {
-            // 세금계산서 발행유형
+            // 문서번호 유형
             MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
 
             // 메모
@@ -1855,7 +1854,7 @@ namespace Popbill.Taxinvoice.Example.csharp
          */
         private void btnCancelIssue_Reverse_sub_Click(object sender, EventArgs e)
         {
-            // 세금계산서 발행유형
+            // 문서번호 유형
             MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
 
             // 메모
@@ -1883,7 +1882,7 @@ namespace Popbill.Taxinvoice.Example.csharp
          */
         private void btnCancelIssue_Sub_Click(object sender, EventArgs e)
         {
-            // 세금계산서 발행유형
+            // 문서번호 유형
             MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
 
             // 메모
@@ -1912,12 +1911,12 @@ namespace Popbill.Taxinvoice.Example.csharp
          */
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            // 세금계산서 발행유형
+            // 문서번호 유형
             MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
 
             try
             {
-                Response response = taxinvoiceService.Delete(txtCorpNum.Text, KeyType, txtMgtKey.Text);
+                Response response = taxinvoiceService.Delete(txtCorpNum.Text, KeyType, txtMgtKey.Text, txtUserId.Text);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "세금계산서 삭제");
@@ -1937,7 +1936,7 @@ namespace Popbill.Taxinvoice.Example.csharp
          */
         private void btnDelete_Sub_Click(object sender, EventArgs e)
         {
-            // 세금계산서 발행유형
+            // 문서번호 유형
             MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
 
             try
@@ -1962,7 +1961,7 @@ namespace Popbill.Taxinvoice.Example.csharp
         */
         private void btnDelete_Reverse_sub_Click(object sender, EventArgs e)
         {
-            // 세금계산서 발행유형
+            // 문서번호 유형
             MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
 
             try
@@ -1989,11 +1988,12 @@ namespace Popbill.Taxinvoice.Example.csharp
          */
         private void btnRegistRequest_Click(object sender, EventArgs e)
         {
+
             // 세금계산서 정보 객체
             Taxinvoice taxinvoice = new Taxinvoice();
 
             // 기재상 작성일자, 날짜형식(yyyyMMdd)
-            taxinvoice.writeDate = "20220504";
+            taxinvoice.writeDate = "20250722";
 
             // 과금방향, {정과금, 역과금} 중 기재
             // └ 정과금 = 공급자 과금 , 역과금 = 공급받는자 과금
@@ -2219,7 +2219,7 @@ namespace Popbill.Taxinvoice.Example.csharp
 
             try
             {
-                Response response = taxinvoiceService.RegistRequest(txtCorpNum.Text, taxinvoice, memo);
+                Response response = taxinvoiceService.RegistRequest(txtCorpNum.Text, taxinvoice, memo, txtUserId.Text);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "세금계산서 즉시요청");
@@ -2243,7 +2243,7 @@ namespace Popbill.Taxinvoice.Example.csharp
          */
         private void btnRequest_Click(object sender, EventArgs e)
         {
-            // 세금계산서 발행유형
+            // 문서번호 유형
             MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
 
             // 메모
@@ -2273,7 +2273,7 @@ namespace Popbill.Taxinvoice.Example.csharp
          */
         private void btnCancelRequest_Click(object sender, EventArgs e)
         {
-            // 세금계산서 발행유형
+            // 문서번호 유형
             MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
 
             // 메모
@@ -2302,7 +2302,7 @@ namespace Popbill.Taxinvoice.Example.csharp
          */
         private void btnCancelRequest_sub_Click(object sender, EventArgs e)
         {
-            // 세금계산서 발행유형
+            // 문서번호 유형
             MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
 
             // 메모
@@ -2329,7 +2329,7 @@ namespace Popbill.Taxinvoice.Example.csharp
          */
         private void btnRefuse_Click(object sender, EventArgs e)
         {
-            // 세금계산서 발행유형
+            // 문서번호 유형
             MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
 
             // 메모
@@ -2354,7 +2354,7 @@ namespace Popbill.Taxinvoice.Example.csharp
          */
         private void btnRefuse_sub_Click(object sender, EventArgs e)
         {
-            // 세금계산서 발행유형
+            // 문서번호 유형
             MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
 
             // 메모
@@ -2380,7 +2380,7 @@ namespace Popbill.Taxinvoice.Example.csharp
          */
         private void btnSendToNTS_Click(object sender, EventArgs e)
         {
-            // 세금계산서 발행유형
+            // 문서번호 유형
             MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
 
             try
@@ -2405,7 +2405,7 @@ namespace Popbill.Taxinvoice.Example.csharp
          */
         private void btnGetInfo_Click(object sender, EventArgs e)
         {
-            // 세금계산서 발행유형
+            // 문서번호 유형
             MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
 
             try
@@ -2432,7 +2432,7 @@ namespace Popbill.Taxinvoice.Example.csharp
                 tmp += "ntsresult (국세청 전송결과) : " + taxinvoiceInfo.ntsresult + CRLF;
                 tmp += "ntssendDT (국세청 전송일시) : " + taxinvoiceInfo.ntssendDT + CRLF;
                 tmp += "ntsresultDT (국세청 결과 수신일시) : " + taxinvoiceInfo.ntsresultDT + CRLF;
-                tmp += "ntssendErrCode (전송실패 사유코드) : " + taxinvoiceInfo.ntssendErrCode + CRLF;
+                tmp += "ntssendErrCode (국세청 결과코드) : " + taxinvoiceInfo.ntssendErrCode + CRLF;
                 tmp += "modifyCode (수정 사유코드) : " + taxinvoiceInfo.modifyCode + CRLF;
                 tmp += "interOPYN (연동문서 여부) : " + taxinvoiceInfo.interOPYN + CRLF;
 
@@ -2452,12 +2452,12 @@ namespace Popbill.Taxinvoice.Example.csharp
                 tmp += "trusteeMgtKey (수탁자 문서번호) : " + taxinvoiceInfo.trusteeMgtKey + CRLF;
                 tmp += "trusteePrintYN (수탁자 인쇄여부) : " + taxinvoiceInfo.trusteePrintYN + CRLF;
 
-                MessageBox.Show(tmp, "문서 상태/요약 정보 조회");
+                MessageBox.Show(tmp, "상태 확인");
             }
             catch (PopbillException ex)
             {
                 MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
-                                "응답메시지(message) : " + ex.Message, "문서 상태/요약 정보 조회");
+                                "응답메시지(message) : " + ex.Message, "상태 확인");
             }
         }
 
@@ -2467,7 +2467,7 @@ namespace Popbill.Taxinvoice.Example.csharp
          */
         private void btnGetInfos_Click(object sender, EventArgs e)
         {
-            // 세금계산서 발행유형
+            // 문서번호 유형
             MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
 
             List<string> MgtKeyList = new List<string>();
@@ -2509,7 +2509,7 @@ namespace Popbill.Taxinvoice.Example.csharp
          */
         private void btnGetDetailInfo_Click(object sender, EventArgs e)
         {
-            // 세금계산서 발행유형
+            // 문서번호 유형
             MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
 
             try
@@ -2619,7 +2619,7 @@ namespace Popbill.Taxinvoice.Example.csharp
          */
         private void btnGetXML_Click(object sender, EventArgs e)
         {
-            // 세금계산서 발행유형
+            // 문서번호 유형
             MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
 
             try
@@ -2648,7 +2648,7 @@ namespace Popbill.Taxinvoice.Example.csharp
          */
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            // 세금계산서 발행유형
+            // 문서번호 유형
             MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
 
             // 일자유형 ("R" , "W" , "I" 중 택 1)
@@ -2817,7 +2817,7 @@ namespace Popbill.Taxinvoice.Example.csharp
          */
         private void btnGetLogs_Click(object sender, EventArgs e)
         {
-            // 세금계산서 발행유형
+            // 문서번호 유형
             MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
 
             try
@@ -2977,7 +2977,7 @@ namespace Popbill.Taxinvoice.Example.csharp
          */
         private void btnGetPopUpURL_Click(object sender, EventArgs e)
         {
-            // 세금계산서 발행유형
+            // 문서번호 유형
             MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
 
             try
@@ -3001,7 +3001,7 @@ namespace Popbill.Taxinvoice.Example.csharp
          */
         private void btnGetViewURL_Click(object sender, EventArgs e)
         {
-            // 세금계산서 발행유형
+            // 문서번호 유형
             MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
 
             try
@@ -3074,7 +3074,7 @@ namespace Popbill.Taxinvoice.Example.csharp
          */
         private void btnEPrintURL_Click(object sender, EventArgs e)
         {
-            // 세금계산서 발행유형
+            // 문서번호 유형
             MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
 
             try
@@ -3098,7 +3098,7 @@ namespace Popbill.Taxinvoice.Example.csharp
          */
         private void btnGetMassPrintURL_Click(object sender, EventArgs e)
         {
-            // 세금계산서 발행유형
+            // 문서번호 유형
             MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
 
             List<string> MgtKeyList = new List<string>();
@@ -3127,7 +3127,7 @@ namespace Popbill.Taxinvoice.Example.csharp
          */
         private void btnGetEmailURL_Click(object sender, EventArgs e)
         {
-            // 세금계산서 발행유형
+            // 문서번호 유형
             MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
 
             try
@@ -3216,7 +3216,7 @@ namespace Popbill.Taxinvoice.Example.csharp
          */
         private void btnAttachFile_Click(object sender, EventArgs e)
         {
-            // 세금계산서 발행유형
+            // 문서번호 유형
             MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
 
 
@@ -3247,7 +3247,7 @@ namespace Popbill.Taxinvoice.Example.csharp
          */
         private void btnDeleteFile_Click(object sender, EventArgs e)
         {
-            // 세금계산서 발행유형
+            // 문서번호 유형
             MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
 
             try
@@ -3272,7 +3272,7 @@ namespace Popbill.Taxinvoice.Example.csharp
          */
         private void gtnGetFiles_Click(object sender, EventArgs e)
         {
-            // 세금계산서 발행유형
+            // 문서번호 유형
             MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
 
             try
@@ -3306,7 +3306,7 @@ namespace Popbill.Taxinvoice.Example.csharp
          */
         private void btnSendEmail_Click(object sender, EventArgs e)
         {
-            // 세금계산서 발행유형
+            // 문서번호 유형
             MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
 
             // 수신메일주소
@@ -3335,7 +3335,7 @@ namespace Popbill.Taxinvoice.Example.csharp
          */
         private void btnSendSMS_Click(object sender, EventArgs e)
         {
-            // 세금계산서 발행유형
+            // 문서번호 유형
             MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
 
             // 발신번호
@@ -3369,7 +3369,7 @@ namespace Popbill.Taxinvoice.Example.csharp
          */
         private void btnSendFAX_Click(object sender, EventArgs e)
         {
-            // 세금계산서 발행유형
+            // 문서번호 유형
             MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
 
             // 발신번호
@@ -3399,7 +3399,7 @@ namespace Popbill.Taxinvoice.Example.csharp
          */
         private void btnAttachStmt_Click(object sender, EventArgs e)
         {
-            // 세금계산서 발행유형
+            // 문서번호 유형
             MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
 
             // 첨부할 명세서 종류 코드
@@ -3428,7 +3428,7 @@ namespace Popbill.Taxinvoice.Example.csharp
          */
         private void btnDetachStmt_Click(object sender, EventArgs e)
         {
-            // 세금계산서 발행유형
+            // 문서번호 유형
             MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
 
             // 첨부해제할 명세서 종류 코드
