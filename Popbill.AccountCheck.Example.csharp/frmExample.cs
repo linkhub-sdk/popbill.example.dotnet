@@ -77,7 +77,7 @@ namespace Popbill.AccountCheck.Example.csharp
                 tmp += "bankCode (기관코드) : " + result.bankCode + "\n";
                 tmp += "accountNumber (계좌번호) : " + result.accountNumber + "\n";
                 tmp += "accountName (예금주 성명) : " + result.accountName + "\n";
-                tmp += "checkDate (확인일시) : " + result.checkDate + "\n";
+                tmp += "checkDT (확인일시) : " + result.checkDT + "\n";
                 tmp += "result (응답코드) : " + result.result + "\n";
                 tmp += "resultMessage (응답메시지) : " + result.resultMessage + "\n";
 
@@ -107,7 +107,7 @@ namespace Popbill.AccountCheck.Example.csharp
                 tmp += "bankCode (기관코드) : " + result.bankCode + "\n";
                 tmp += "accountNumber (계좌번호) : " + result.accountNumber + "\n";
                 tmp += "accountName (예금주 성명) : " + result.accountName + "\n";
-                tmp += "checkDate (확인일시) : " + result.checkDate + "\n";
+                tmp += "checkDT (확인일시) : " + result.checkDT + "\n";
                 tmp += "identityNumType (등록번호 유형) : " + result.identityNumType + "\n";
                 tmp += "identityNum (등록번호) : " + result.identityNum + "\n";
                 tmp += "result (응답코드) : " + result.result + "\n";
