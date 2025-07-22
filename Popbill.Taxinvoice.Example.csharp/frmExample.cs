@@ -2656,10 +2656,10 @@ namespace Popbill.Taxinvoice.Example.csharp
             String DType = "W";
 
             // 시작일자, 날짜형식(yyyyMMdd)
-            String SDate = "20220501";
+            String SDate = "20250701";
 
             // 종료일자, 날짜형식(yyyyMMdd)
-            String EDate = "20220531";
+            String EDate = "20250731";
 
             // 세금계산서 상태코드 배열 (2,3번째 자리에 와일드카드(*) 사용 가능)
             // - 미입력시 전체조회
@@ -3624,7 +3624,6 @@ namespace Popbill.Taxinvoice.Example.csharp
             {
                 string url = taxinvoiceService.GetTaxCertURL(txtCorpNum.Text, txtUserId.Text);
 
-                Process objProcess = Process.Start("IEXPLORE.EXE", "-nomerge "+url);
                 textURL.Text = url;
             }
             catch (PopbillException ex)

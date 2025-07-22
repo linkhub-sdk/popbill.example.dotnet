@@ -603,7 +603,13 @@ namespace Popbill.Cashbill.Example.csharp
                     tmp += "ntsresultCode (국세청 처리결과 상태코드) : " + cashbillInfoList[i].ntsresultCode + CRLF;
                     tmp += "ntsresultMessage (국세청 처리결과 메시지) : " + cashbillInfoList[i].ntsresultMessage + CRLF;
                     tmp += "printYN (인쇄여부) : " + cashbillInfoList[i].printYN + CRLF;
-                    tmp += "interOPYN (연동문서여부) : " + cashbillInfoList[i].interOPYN + CRLF + CRLF;
+                    tmp += "interOPYN (연동문서여부) : " + cashbillInfoList[i].interOPYN + CRLF;
+                    tmp += "email (구매자 메일) : " + cashbillInfoList[i].email + CRLF;
+                    tmp += "hp (구매자 휴대폰) : " + cashbillInfoList[i].hp + CRLF;
+                    tmp += "supplyCost (공급가액) : " + cashbillInfoList[i].supplyCost + CRLF;
+                    tmp += "tax (세액) : " + cashbillInfoList[i].tax + CRLF;
+                    tmp += "serviceFee (봉사료) : " + cashbillInfoList[i].serviceFee + CRLF;
+                    tmp += "orderNumber (주문번호) : " + cashbillInfoList[i].orderNumber + CRLF + CRLF;
                 }
 
                 MessageBox.Show(tmp, "현금영수증 상태/요약 정보 조회 - 대량");
@@ -678,10 +684,10 @@ namespace Popbill.Cashbill.Example.csharp
             string DType = "T";
 
             // 시작일자, 날짜형식(yyyyMMdd)
-            string SDate = "20220501";
+            string SDate = "20250701";
 
             // 종료일자, 날짜형식(yyyyMMdd)
-            string EDate = "20220531";
+            string EDate = "20250731";
 
             // 상태코드 배열 (2,3번째 자리에 와일드카드(*) 사용 가능)
             // - 미입력시 전체조회
@@ -752,7 +758,8 @@ namespace Popbill.Cashbill.Example.csharp
                 tmp += "itemKey | mgtKey | tradeDate | tradeType | tradeUsage | tradeOpt | taxationType | totalAmount | issueDT | ";
                 tmp += "regDT | stateMemo | stateCode | stateDT | identityNum | itemName | customerName | ";
                 tmp += "confirmNum | orgConfirmNum | orgTradeDate | ntssendDT | ntsresultDT | ntsresultCode | ntsresultMessage | ";
-                tmp += "printYN | interOPYN" + CRLF;
+                tmp += "printYN | interOPYN | email | hp | supplyCost | tax | serviceFee | orderNumber " + CRLF;
+
 
                 foreach (CashbillInfo cashbillInfo in searchResult.list)
                 {
@@ -779,8 +786,14 @@ namespace Popbill.Cashbill.Example.csharp
                     tmp += cashbillInfo.ntsresultDT + " | ";
                     tmp += cashbillInfo.ntsresultCode + " | ";
                     tmp += cashbillInfo.ntsresultMessage + " | ";
-                    tmp += cashbillInfo.printYN;
-                    tmp += cashbillInfo.interOPYN;
+                    tmp += cashbillInfo.printYN + " | ";
+                    tmp += cashbillInfo.interOPYN + " | ";
+                    tmp += cashbillInfo.email + " | ";
+                    tmp += cashbillInfo.hp + " | ";
+                    tmp += cashbillInfo.supplyCost + " | ";
+                    tmp += cashbillInfo.tax + " | ";
+                    tmp += cashbillInfo.serviceFee + " | ";
+                    tmp += cashbillInfo.orderNumber;
                     tmp += CRLF;
                 }
 
