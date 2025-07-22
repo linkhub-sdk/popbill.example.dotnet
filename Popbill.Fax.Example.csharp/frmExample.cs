@@ -1848,5 +1848,10 @@ namespace Popbill.Fax.Example.csharp
                                 "응답메시지(message) : " + ex.Message, "담당자 삭제");
             }
         }
+
+        private void GroupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
