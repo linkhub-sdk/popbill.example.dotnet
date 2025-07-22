@@ -156,6 +156,9 @@ namespace Popbill.Message.Example.csharp
             // 발신번호
             String senderNum = "";
 
+            // 발신자명
+            String senderName = "";
+
             // 수신번호
             String receiver = "";
 
@@ -177,7 +180,7 @@ namespace Popbill.Message.Example.csharp
 
             try
             {
-                string receiptNum = messageService.SendSMS(txtCorpNum.Text, senderNum, receiver,
+                string receiptNum = messageService.SendSMS(txtCorpNum.Text, senderNum, senderName, receiver,
                     receiverName, contents, getReserveDT(), txtUserId.Text, requestNum, adsYN);
 
                 MessageBox.Show("접수번호 : " + receiptNum, "단문(SMS) 전송");
