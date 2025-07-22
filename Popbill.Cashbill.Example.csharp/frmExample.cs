@@ -2,7 +2,7 @@
 * 팝빌 현금영수증 API .NET SDK C#.NET Example
 * C#.NET 연동 튜토리얼 안내 : https://developers.popbill.com/guide/cashbill/dotnet/getting-started/tutorial?fwn=csharp
 *
-* 업데이트 일자 : 2025-01-18
+* 업데이트 일자 : 2025-07-22
 * 연동기술지원 연락처 : 1600-9854
 * 연동기술지원 이메일 : code@linkhubcorp.com
 *         
@@ -207,10 +207,10 @@ namespace Popbill.Cashbill.Example.csharp
                 // 문서번호, 최대 24자리, 영문, 숫자 '-', '_'를 조합하여 사업자별로 중복되지 않도록 구성
                 cashbill.mgtKey = txtSubmitID.Text + "-" + i;
 
-                // // [취소거래시 필수] 원본 현금영수증 국세청승인번호
+                // // [취소거래시 필수] 당초 승인 현금영수증 국세청승인번호
                 // cashbill.orgConfirmNum = "";
                 //
-                // // [취소거래시 필수] 원본 현금영수증 거래일자
+                // // [취소거래시 필수] 당초 승인 현금영수증 거래일자
                 // cashbill.orgTradeDate = "";
 
                 // 문서형태, { 승인거래, 취소거래 } 중 기재
@@ -440,7 +440,7 @@ namespace Popbill.Cashbill.Example.csharp
          */
         private void btnRevokeRegistIssue_part_Click(object sender, EventArgs e)
         {
-            // 원본 현금영수증 국세청승인번호
+            // 당초 승인 현금영수증 국세청승인번호
             string orgConfirmNum = "TB0000015";
 
             // 원본현금영수증 거래일자
@@ -448,7 +448,7 @@ namespace Popbill.Cashbill.Example.csharp
 
             // 안내 문자 전송여부 , true / false 중 택 1
             // └ true = 전송 , false = 미전송
-            // └ 원본 현금영수증의 구매자(고객)의 휴대폰번호 문자 전송
+            // └ 당초 승인 현금영수증의 구매자(고객)의 휴대폰번호 문자 전송
             bool smssendYN = false;
 
             // 메모
@@ -534,8 +534,8 @@ namespace Popbill.Cashbill.Example.csharp
                 tmp += "itemName (주문상품명) : " + cashbillInfo.itemName + CRLF;
                 tmp += "customerName (주문자명) : " + cashbillInfo.customerName + CRLF;
                 tmp += "confirmNum (국세청승인번호) : " + cashbillInfo.confirmNum + CRLF;
-                tmp += "orgConfirmNum (원본 현금영수증 국세청승인번호) : " + cashbillInfo.orgConfirmNum + CRLF;
-                tmp += "orgTradeDate (원본 현금영수증 거래일자) : " + cashbillInfo.orgTradeDate + CRLF;
+                tmp += "orgConfirmNum (당초 승인 현금영수증 국세청승인번호) : " + cashbillInfo.orgConfirmNum + CRLF;
+                tmp += "orgTradeDate (당초 승인 현금영수증 거래일자) : " + cashbillInfo.orgTradeDate + CRLF;
                 tmp += "ntssendDT (국세청 전송일시) : " + cashbillInfo.ntssendDT + CRLF;
                 tmp += "ntsresultDT (국세청 처리결과 수신일시) : " + cashbillInfo.ntsresultDT + CRLF;
                 tmp += "ntsresultCode (국세청 처리결과 상태코드) : " + cashbillInfo.ntsresultCode + CRLF;
@@ -591,8 +591,8 @@ namespace Popbill.Cashbill.Example.csharp
                     tmp += "itemName (주문상품명) : " + cashbillInfoList[i].itemName + CRLF;
                     tmp += "customerName (주문자명) : " + cashbillInfoList[i].customerName + CRLF;
                     tmp += "confirmNum (국세청승인번호) : " + cashbillInfoList[i].confirmNum + CRLF;
-                    tmp += "orgConfirmNum (원본 현금영수증 국세청승인번호) : " + cashbillInfoList[i].orgConfirmNum + CRLF;
-                    tmp += "orgTradeDate (원본 현금영수증 거래일자) : " + cashbillInfoList[i].orgTradeDate + CRLF;
+                    tmp += "orgConfirmNum (당초 승인 현금영수증 국세청승인번호) : " + cashbillInfoList[i].orgConfirmNum + CRLF;
+                    tmp += "orgTradeDate (당초 승인 현금영수증 거래일자) : " + cashbillInfoList[i].orgTradeDate + CRLF;
                     tmp += "ntssendDT (국세청 전송일시) : " + cashbillInfoList[i].ntssendDT + CRLF;
                     tmp += "ntsresultDT (국세청 처리결과 수신일시) : " + cashbillInfoList[i].ntsresultDT + CRLF;
                     tmp += "ntsresultCode (국세청 처리결과 상태코드) : " + cashbillInfoList[i].ntsresultCode + CRLF;
@@ -626,8 +626,8 @@ namespace Popbill.Cashbill.Example.csharp
 
                 tmp += "mgtKey (문서번호) : " + cashbill.mgtKey + CRLF;
                 tmp += "confirmNum (국세청승인번호) : " + cashbill.confirmNum + CRLF;
-                tmp += "orgConfirmNum (원본 현금영수증 국세청승인번호) : " + cashbill.orgConfirmNum + CRLF;
-                tmp += "orgTradeDate (원본 현금영수증 거래일자) : " + cashbill.orgTradeDate + CRLF;
+                tmp += "orgConfirmNum (당초 승인 현금영수증 국세청승인번호) : " + cashbill.orgConfirmNum + CRLF;
+                tmp += "orgTradeDate (당초 승인 현금영수증 거래일자) : " + cashbill.orgTradeDate + CRLF;
                 tmp += "tradeDate (거래일자) : " + cashbill.tradeDate + CRLF;
                 tmp += "tradeDT (거래일시) : " + cashbill.tradeDT + CRLF;
                 tmp += "tradeType (문서형태) : " + cashbill.tradeType + CRLF;

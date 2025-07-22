@@ -2,7 +2,7 @@
 * 팝빌 카카오톡 API .NET SDK C#.NET Example
 * C#.NET 연동 튜토리얼 안내 : https://developers.popbill.com/guide/kakaotalk/dotnet/getting-started/tutorial?fwn=csharp
 *
-* 업데이트 일자 : 2025-01-18
+* 업데이트 일자 : 2025-07-22
 * 연동기술지원 연락처 : 1600-9854
 * 연동기술지원 이메일 : code@linkhubcorp.com
 *         
@@ -395,6 +395,9 @@ namespace Popbill.Kakao.Example.csharp
 
             // 버튼링크2 [앱링크] IOS / [웹링크] PC URL
             btnInfo.u2 = "http://test.popbill.com";
+            
+            // 버튼 아웃 링크, 공백-카카오톡 인앱 브라우저, "out"- 디바이스 기본 브라우저(알림톡만 적용)
+            btnInfo.tg = ""
 
             buttons.Add(btnInfo);
             */

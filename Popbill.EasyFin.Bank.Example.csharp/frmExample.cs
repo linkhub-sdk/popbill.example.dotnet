@@ -2,7 +2,7 @@
 * 팝빌 계좌조회 API .NET SDK C#.NET Example
 * C#.NET 연동 튜토리얼 안내 : https://developers.popbill.com/guide/easyfinbank/dotnet/getting-started/tutorial?fwn=csharp
 *
-* 업데이트 일자 : 2025-01-18
+* 업데이트 일자 : 2025-07-22
 * 연동기술지원 연락처 : 1600-9854
 * 연동기술지원 이메일 : code@linkhubcorp.com
 *         
@@ -68,7 +68,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
         {
             EasyFinBankAccountForm info = new EasyFinBankAccountForm();
 
-            // 기관코드
+            // 은행 기관코드
             // 산업은행-0002 / 기업은행-0003 / 국민은행-0004 /수협은행-0007 / 농협은행-0011 / 우리은행-0020
             // SC은행-0023 / 대구은행-0031 / 부산은행-0032 / 광주은행-0034 / 제주은행-0035 / 전북은행-0037
             // 경남은행-0039 / 새마을금고-0045 / 신협은행-0048 / 우체국-0071 / KEB하나은행-0081 / 신한은행-0088 /씨티은행-0027
@@ -128,16 +128,14 @@ namespace Popbill.EasyFin.Bank.Example.csharp
          */
         private void btnUpdateBankAccount_Click(object sender, EventArgs e)
         {
-            EasyFinBankAccountForm info = new EasyFinBankAccountForm();
 
-            // 기관코드
-            // 산업은행-0002 / 기업은행-0003 / 국민은행-0004 /수협은행-0007 / 농협은행-0011 / 우리은행-0020
-            // SC은행-0023 / 대구은행-0031 / 부산은행-0032 / 광주은행-0034 / 제주은행-0035 / 전북은행-0037
-            // 경남은행-0039 / 새마을금고-0045 / 신협은행-0048 / 우체국-0071 / KEB하나은행-0081 / 신한은행-0088 /씨티은행-0027
-            info.BankCode = "";
+            // 은행 기관코드
+            String BankCode = "";
 
             // 계좌번호, 하이픈('-') 제외
-            info.AccountNumber = "";
+            String AccountNumber = "";
+
+            UpdateEasyFinBankAccountForm info = new UpdateEasyFinBankAccountForm();
 
             // 계좌비밀번호
             info.AccountPWD = "";
@@ -160,7 +158,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
             try
             {
-                Response response = easyFinBankService.UpdateBankAccount(txtCorpNum.Text, info);
+                Response response = easyFinBankService.UpdateBankAccount(txtCorpNum.Text, BankCode, AccountNumber, info, txtUserId.Text);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "계좌 수정");
@@ -178,7 +176,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
          */
         private void btnGetBankAccountInfo_Click(object sender, EventArgs e)
         {
-            // 기관코드
+            // 은행 기관코드
             // 산업은행-0002 / 기업은행-0003 / 국민은행-0004 /수협은행-0007 / 농협은행-0011 / 우리은행-0020
             // SC은행-0023 / 대구은행-0031 / 부산은행-0032 / 광주은행-0034 / 제주은행-0035 / 전북은행-0037
             // 경남은행-0039 / 새마을금고-0045 / 신협은행-0048 / 우체국-0071 / KEB하나은행-0081 / 신한은행-0088 /씨티은행-0027
@@ -293,7 +291,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
          */
         private void btnCloseBankAccount_Click(object sender, EventArgs e)
         {
-            // 기관코드
+            // 은행 기관코드
             // 산업은행-0002 / 기업은행-0003 / 국민은행-0004 /수협은행-0007 / 농협은행-0011 / 우리은행-0020
             // SC은행-0023 / 대구은행-0031 / 부산은행-0032 / 광주은행-0034 / 제주은행-0035 / 전북은행-0037
             // 경남은행-0039 / 새마을금고-0045 / 신협은행-0048 / 우체국-0071 / KEB하나은행-0081 / 신한은행-0088 /씨티은행-0027
@@ -330,7 +328,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
         private void btnRevokeCloseBankAccount_Click(object sender, EventArgs e)
         {
 
-            // 기관코드
+            // 은행 기관코드
             // 산업은행-0002 / 기업은행-0003 / 국민은행-0004 /수협은행-0007 / 농협은행-0011 / 우리은행-0020
             // SC은행-0023 / 대구은행-0031 / 부산은행-0032 / 광주은행-0034 / 제주은행-0035 / 전북은행-0037
             // 경남은행-0039 / 새마을금고-0045 / 신협은행-0048 / 우체국-0071 / KEB하나은행-0081 / 신한은행-0088 /씨티은행-0027
@@ -361,7 +359,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
          */
         private void btnDeleteBankAccount_Click(object sender, EventArgs e)
         {
-            // 기관코드
+            // 은행 기관코드
             // 산업은행-0002 / 기업은행-0003 / 국민은행-0004 /수협은행-0007 / 농협은행-0011 / 우리은행-0020
             // SC은행-0023 / 대구은행-0031 / 부산은행-0032 / 광주은행-0034 / 제주은행-0035 / 전북은행-0037
             // 경남은행-0039 / 새마을금고-0045 / 신협은행-0048 / 우체국-0071 / KEB하나은행-0081 / 신한은행-0088 /씨티은행-0027
@@ -392,7 +390,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
          */
         private void btnRequestJob_Click(object sender, EventArgs e)
         {
-            // 기관코드
+            // 은행 기관코드
             String BankCode = "";
 
             // 은행 계좌번호
@@ -662,7 +660,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
          */
         private void btnGetFlatRateState_Click(object sender, EventArgs e)
         {
-            // 기관코드
+            // 은행 기관코드
             String BankCode = "";
 
             // 은행 계좌번호

@@ -2,7 +2,7 @@
 * 팝빌 전자명세서 API .NET SDK C#.NET Example
 * C#.NET 연동 튜토리얼 안내 : https://developers.popbill.com/guide/statement/dotnet/getting-started/tutorial?fwn=csharp
 *
-* 업데이트 일자 : 2025-01-18
+* 업데이트 일자 : 2025-07-22
 * 연동기술지원 연락처 : 1600-9854
 * 연동기술지원 이메일 : code@linkhubcorp.com
 *         
