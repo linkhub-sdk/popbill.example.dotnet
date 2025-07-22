@@ -86,13 +86,7 @@ namespace Popbill.Cashbill.Example.csharp
          * - https://developers.popbill.com/reference/cashbill/dotnet/api/issue#RegistIssue
          */
         private void btnRegistIssue_Click(object sender, EventArgs e)
-        {
-
-            // 메모
-            string memo = "현금영수증 즉시발행 메모";
-
-            // 안내메일 제목, 공백처리시 기본양식으로 전송
-            string emailSubject = "메일제목 테스트";
+        {   
 
             Cashbill cashbill = new Cashbill();
 
@@ -173,6 +167,14 @@ namespace Popbill.Cashbill.Example.csharp
             // 거래일시, 날짜(yyyyMMddHHmmss)
             // 당일, 전일만 가능, 미입력시 기본값 발행일시 처리
             cashbill.tradeDT = "20221108000000";
+
+
+            // 메모
+            string memo = "현금영수증 즉시발행 메모";
+
+            // 안내메일 제목, 공백처리시 기본양식으로 전송
+            string emailSubject = "메일제목 테스트";
+
 
             try
             {

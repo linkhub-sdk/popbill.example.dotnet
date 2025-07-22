@@ -1608,7 +1608,6 @@
             this.GroupBox1.Size = new System.Drawing.Size(1326, 411);
             this.GroupBox1.TabIndex = 11;
             this.GroupBox1.TabStop = false;
-            this.GroupBox1.Text = "팝빌 기본 API";
             // 
             // groupBox18
             // 
