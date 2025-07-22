@@ -100,6 +100,7 @@
             this.textURL = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.fileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.btnDeleteContact = new System.Windows.Forms.Button();
             this.GroupBox1.SuspendLayout();
             this.groupBox13.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -203,13 +204,14 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.btnDeleteContact);
             this.groupBox6.Controls.Add(this.btnGetContactInfo);
             this.groupBox6.Controls.Add(this.btnUpdateContact);
             this.groupBox6.Controls.Add(this.btnListContact);
             this.groupBox6.Controls.Add(this.btnRegistContact);
             this.groupBox6.Location = new System.Drawing.Point(726, 16);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(129, 146);
+            this.groupBox6.Size = new System.Drawing.Size(129, 173);
             this.groupBox6.TabIndex = 3;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "담당자 관련";
@@ -848,6 +850,16 @@
             // 
             this.fileDialog.FileName = "OpenFileDialog1";
             // 
+            // btnDeleteContact
+            // 
+            this.btnDeleteContact.Location = new System.Drawing.Point(7, 137);
+            this.btnDeleteContact.Name = "btnDeleteContact";
+            this.btnDeleteContact.Size = new System.Drawing.Size(114, 30);
+            this.btnDeleteContact.TabIndex = 10;
+            this.btnDeleteContact.Text = "담당자 삭제";
+            this.btnDeleteContact.UseVisualStyleBackColor = true;
+            this.btnDeleteContact.Click += new System.EventHandler(this.btnDeleteContact_Click);
+            // 
             // frmExample
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -959,5 +971,6 @@
         private System.Windows.Forms.Button btnGetRefundableBalance;
         private System.Windows.Forms.Button btnGetRefundInfo;
         private System.Windows.Forms.Button btnQuitMember;
+        private System.Windows.Forms.Button btnDeleteContact;
     }
 }

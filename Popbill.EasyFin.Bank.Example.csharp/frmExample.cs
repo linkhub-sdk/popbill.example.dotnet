@@ -1570,5 +1570,23 @@ namespace Popbill.EasyFin.Bank.Example.csharp
                                 "팝빌 회원 탈퇴");
             }
         }
+
+        private void btnDeleteContact_Click(object sender, EventArgs e)
+        {
+            String ContactID = "testkorea20250722_01";
+
+            try
+            {
+                Response response = faxService.DeleteContact(txtCorpNum.Text, ContactID, txtUserId.Text);
+
+                MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
+                                "응답메시지(message) : " + response.message, "담당자 삭제");
+            }
+            catch (PopbillException ex)
+            {
+                MessageBox.Show("응답코드(code) : " + ex.code.ToString() + CRLF +
+                                "응답메시지(message) : " + ex.Message, "담당자 삭제");
+            }
+        }
     }
 }
