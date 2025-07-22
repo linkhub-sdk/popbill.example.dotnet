@@ -74,13 +74,13 @@ namespace Popbill.AccountCheck.Example.csharp
                 AccountCheckInfo result =
                     accountCheckService.CheckAccountInfo(txtCorpNum.Text, txtBankCode.Text, txtAccountNumber.Text);
 
-                tmp += "bankCode (기관코드) : " + result.bankCode + "\n";
-                tmp += "accountNumber (계좌번호) : " + result.accountNumber + "\n";
-                tmp += "accountName (예금주 성명) : " + result.accountName + "\n";
-                tmp += "checkDT (확인일시) : " + result.checkDT + "\n";
                 tmp += "result (응답코드) : " + result.result + "\n";
                 tmp += "resultMessage (응답메시지) : " + result.resultMessage + "\n";
-
+                tmp += "accountName (예금주 성명) : " + result.accountName + "\n";
+                tmp += "bankCode (기관코드) : " + result.bankCode + "\n";
+                tmp += "accountNumber (계좌번호) : " + result.accountNumber + "\n";
+                tmp += "checkDT (확인일시) : " + result.checkDT + "\n";
+                
                 MessageBox.Show(tmp, "예금주성명 조회");
             }
 
@@ -102,16 +102,16 @@ namespace Popbill.AccountCheck.Example.csharp
             try
             {
                 DepositorCheckInfo result = accountCheckService.CheckDepositorInfo(txtCorpNum.Text, txtBankCodeDC.Text,
-                    txtAccountNumberDC.Text, txtIdentityNumTypeDC.Text, txtIdentityNumDC.Text);
+                    txtAccountNumberDC.Text, txtIdentityNumTypeDC.Text, txtIdentityNumDC.Text, txtUserID.Text);
 
-                tmp += "bankCode (기관코드) : " + result.bankCode + "\n";
-                tmp += "accountNumber (계좌번호) : " + result.accountNumber + "\n";
-                tmp += "accountName (예금주 성명) : " + result.accountName + "\n";
-                tmp += "checkDT (확인일시) : " + result.checkDT + "\n";
-                tmp += "identityNumType (등록번호 유형) : " + result.identityNumType + "\n";
-                tmp += "identityNum (등록번호) : " + result.identityNum + "\n";
                 tmp += "result (응답코드) : " + result.result + "\n";
                 tmp += "resultMessage (응답메시지) : " + result.resultMessage + "\n";
+                tmp += "accountName (예금주 성명) : " + result.accountName + "\n";
+                tmp += "bankCode (기관코드) : " + result.bankCode + "\n";
+                tmp += "accountNumber (계좌번호) : " + result.accountNumber + "\n";
+                tmp += "identityNumType (실명번호 유형) : " + result.identityNumType + "\n";
+                tmp += "identityNum (실명번호) : " + result.identityNum + "\n";
+                tmp += "checkDT (확인일시) : " + result.checkDT + "\n";
 
                 MessageBox.Show(tmp, "예금주실명 조회");
             }

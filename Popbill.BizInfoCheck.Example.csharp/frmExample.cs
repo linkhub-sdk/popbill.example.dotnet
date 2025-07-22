@@ -78,17 +78,17 @@ namespace Popbill.BizInfoCheck.Example.csharp
 
                 tmp += "corpNum (사업자번호) : " + result.corpNum + "\n";
                 tmp += "companyRegNum (법인번호): " +result.companyRegNum + "\n";
-                tmp += "checkDT (확인일시) : " +result.checkDT + "\n";
+                tmp += "checkDT (기업정보 조회일시) : " +result.checkDT + "\n";
                 tmp += "corpName (상호): " +result.corpName + "\n";
+                tmp += "CEOName (대표자명) : " + result.ceoname + "\n";
                 tmp += "corpCode (기업형태코드): " +result.corpCode + "\n";
                 tmp += "corpScaleCode (기업규모코드): " +result.corpScaleCode + "\n";
-                tmp += "personCorpCode (개인법인코드): " +result.personCorpCode + "\n";
-                tmp += "headOfficeCode (본점지점코드) : " +result.headOfficeCode + "\n";
+                tmp += "personCorpCode (개인/법인코드): " +result.personCorpCode + "\n";
+                tmp += "headOfficeCode (본점/지점코드) : " +result.headOfficeCode + "\n";
                 tmp += "industryCode (산업코드) : " +result.industryCode + "\n";
-                tmp += "establishCode (설립구분코드) : " +result.establishCode + "\n";
-                tmp += "establishDate (설립일자) : " +result.establishDate + "\n";
-                tmp += "CEOName (대표자명) : " +result.ceoname + "\n";
-                tmp += "workPlaceCode (사업장구분코드): " +result.workPlaceCode + "\n";
+                tmp += "establishDate (설립일자) : " + result.establishDate + "\n";
+                tmp += "establishCode (설립코드) : " +result.establishCode + "\n";
+                tmp += "workPlaceCode (사업장구분코드): " + result.workPlaceCode + "\n";
                 tmp += "addrCode (주소구분코드) : " +result.addrCode + "\n";
                 tmp += "zipCode (우편번호) : " +result.zipCode + "\n";
                 tmp += "addr (주소) : " +result.addr + "\n";
@@ -96,12 +96,12 @@ namespace Popbill.BizInfoCheck.Example.csharp
                 tmp += "enAddr (영문주소) : " +result.enAddr + "\n";
                 tmp += "bizClass (업종) : " +result.bizClass + "\n";
                 tmp += "bizType (업태) : " +result.bizType + "\n";
-                tmp += "result (결과코드) : " +result.result + "\n";
-                tmp += "resultMessage (결과메시지) : " +result.resultMessage + "\n";
-                tmp += "closeDownTaxType (사업자과세유형) : " +result.closeDownTaxType + "\n";
-                tmp += "closeDownTaxTypeDate (과세유형전환일자):" +result.closeDownTaxTypeDate + "\n";
-                tmp += "closeDownState (휴폐업상태) : " +result.closeDownState + "\n";
-                tmp += "closeDownStateDate (휴폐업일자) : " +result.closeDownStateDate + "\n";
+                tmp += "result (상태코드) : " +result.result + "\n";
+                tmp += "resultMessage (상태메시지) : " +result.resultMessage + "\n";
+                tmp += "closeDownState (휴폐업상태) : " + result.closeDownState + "\n";
+                tmp += "closeDownStateDate (휴폐업일자) : " + result.closeDownStateDate + "\n";
+                tmp += "closeDownTaxType (과세유형) : " +result.closeDownTaxType + "\n";
+                tmp += "closeDownTaxTypeDate (과세유형 전환일자):" +result.closeDownTaxTypeDate + "\n";
 
                 MessageBox.Show(tmp, "기업정보조회 - 단건");
             }
