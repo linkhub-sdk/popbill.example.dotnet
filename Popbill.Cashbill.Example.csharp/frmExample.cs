@@ -1178,7 +1178,7 @@ namespace Popbill.Cashbill.Example.csharp
         /*
          * 연동회원의 잔여포인트를 확인합니다.
          * - 과금방식이 파트너과금인 경우 파트너 잔여포인트 확인(GetPartnerBalance API) 함수를 통해 확인하시기 바랍니다.
-         * - https://developers.popbill.com/reference/cashbill/dotnet/api/point#GetBalance
+         * - https://developers.popbill.com/reference/cashbill/dotnet/common-api/point#GetBalance
          *
          */
         private void btnGetBalance_Click(object sender, EventArgs e)
@@ -1201,7 +1201,7 @@ namespace Popbill.Cashbill.Example.csharp
         /*
          * 연동회원 포인트 충전을 위한 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://developers.popbill.com/reference/cashbill/dotnet/api/point#GetChargeURL
+         * - https://developers.popbill.com/reference/cashbill/dotnet/common-api/point#GetChargeURL
          */
         private void btnGetChargeURL_Click(object sender, EventArgs e)
         {
@@ -1222,7 +1222,7 @@ namespace Popbill.Cashbill.Example.csharp
         /*
          * 연동회원 포인트 결제내역 확인을 위한 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://developers.popbill.com/reference/cashbill/dotnet/api/point#GetPaymentURL
+         * - https://developers.popbill.com/reference/cashbill/dotnet/common-api/point#GetPaymentURL
          */
         private void btnGetPaymentURL_Click(object sender, EventArgs e)
         {
@@ -1243,7 +1243,7 @@ namespace Popbill.Cashbill.Example.csharp
         /*
          * 연동회원 포인트 사용내역 확인을 위한 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://developers.popbill.com/reference/cashbill/dotnet/api/point#GetUseHistoryURL
+         * - https://developers.popbill.com/reference/cashbill/dotnet/common-api/point#GetUseHistoryURL
          */
         private void btnGetUseHistoryURL_Click(object sender, EventArgs e)
         {
@@ -1264,7 +1264,7 @@ namespace Popbill.Cashbill.Example.csharp
         /*
          * 파트너의 잔여포인트를 확인합니다.
          * - 과금방식이 연동과금인 경우 연동회원 잔여포인트 확인(GetBalance API) 함수를 이용하시기 바랍니다.
-         * - https://developers.popbill.com/reference/cashbill/dotnet/api/point#GetPartnerBalance
+         * - https://developers.popbill.com/reference/cashbill/dotnet/common-api/point#GetPartnerBalance
          */
         private void btnGetPartnerBalance_Click(object sender, EventArgs e)
         {
@@ -1284,7 +1284,7 @@ namespace Popbill.Cashbill.Example.csharp
         /*
          * 파트너 포인트 충전을 위한 페이지의 팝업 URL을 반환합니다.
          * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - https://developers.popbill.com/reference/cashbill/dotnet/api/point#GetPartnerURL
+         * - https://developers.popbill.com/reference/cashbill/dotnet/common-api/point#GetPartnerURL
          */
         private void btnGetPartnerURL_Click(object sender, EventArgs e)
         {
@@ -1304,7 +1304,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /*
          * 현금영수증 발행시 과금되는 포인트 단가를 확인합니다.
-         * - https://developers.popbill.com/reference/cashbill/dotnet/api/point#GetUnitCost
+         * - https://developers.popbill.com/reference/cashbill/dotnet/common-api/point#GetUnitCost
          */
         private void btnUnitCost_Click(object sender, EventArgs e)
         {
@@ -1324,7 +1324,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /*
          * 팝빌 현금영수증 API 서비스 과금정보를 확인합니다.
-         * - https://developers.popbill.com/reference/cashbill/dotnet/api/point#GetChargeInfo
+         * - https://developers.popbill.com/reference/cashbill/dotnet/common-api/point#GetChargeInfo
          */
         private void btnGetChargeInfo_Click(object sender, EventArgs e)
         {
@@ -1348,7 +1348,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /*
          * 사업자번호를 조회하여 연동회원 가입여부를 확인합니다.
-         * - https://developers.popbill.com/reference/cashbill/dotnet/api/member#CheckIsMember
+         * - https://developers.popbill.com/reference/cashbill/dotnet/common-api/member#CheckIsMember
          */
         private void btnCheckIsMember_Click(object sender, EventArgs e)
         {
@@ -1371,7 +1371,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /*
          * 사용하고자 하는 아이디의 중복여부를 확인합니다.
-         * - https://developers.popbill.com/reference/cashbill/dotnet/api/member#CheckID
+         * - https://developers.popbill.com/reference/cashbill/dotnet/common-api/member#CheckID
          */
         private void btnCheckID_Click(object sender, EventArgs e)
         {
@@ -1392,7 +1392,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /*
          * 사용자를 연동회원으로 가입처리합니다.
-         * - https://developers.popbill.com/reference/cashbill/dotnet/api/member#JoinMember
+         * - https://developers.popbill.com/reference/cashbill/dotnet/common-api/member#JoinMember
          */
         private void btnJoinMember_Click(object sender, EventArgs e)
         {
@@ -1451,7 +1451,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /*
          * 연동회원의 회사정보를 확인합니다.
-         * - https://developers.popbill.com/reference/cashbill/dotnet/api/member#GetCorpInfo
+         * - https://developers.popbill.com/reference/cashbill/dotnet/common-api/member#GetCorpInfo
          */
         private void btnGetCorpInfo_Click(object sender, EventArgs e)
         {
@@ -1477,7 +1477,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /*
          * 연동회원의 회사정보를 수정합니다.
-         * - https://developers.popbill.com/reference/cashbill/dotnet/api/member#UpdateCorpInfo
+         * - https://developers.popbill.com/reference/cashbill/dotnet/common-api/member#UpdateCorpInfo
          */
         private void btnUpdateCorpInfo_Click(object sender, EventArgs e)
         {
@@ -1514,7 +1514,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /*
          * 연동회원 사업자번호에 담당자(팝빌 로그인 계정)를 추가합니다.
-         * - https://developers.popbill.com/reference/cashbill/dotnet/api/member#RegistContact
+         * - https://developers.popbill.com/reference/cashbill/dotnet/common-api/member#RegistContact
          */
         private void btnRegistContact_Click(object sender, EventArgs e)
         {
@@ -1555,7 +1555,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /*
          * 연동회원 사업자번호에 등록된 담당자(팝빌 로그인 계정) 정보을 확인합니다.
-         * - https://developers.popbill.com/reference/cashbill/dotnet/api/member#GetContactInfo
+         * - https://developers.popbill.com/reference/cashbill/dotnet/common-api/member#GetContactInfo
          */
         private void btnGetContactInfo_Click(object sender, EventArgs e)
         {
@@ -1589,7 +1589,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /*
          * 연동회원 사업자번호에 등록된 담당자(팝빌 로그인 계정) 목록을 확인합니다.
-         * - https://developers.popbill.com/reference/cashbill/dotnet/api/member#ListContact
+         * - https://developers.popbill.com/reference/cashbill/dotnet/common-api/member#ListContact
          */
         private void btnListContact_Click(object sender, EventArgs e)
         {
@@ -1624,7 +1624,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /*
          * 연동회원 사업자번호에 등록된 담당자(팝빌 로그인 계정) 정보를 수정합니다.
-         * - https://developers.popbill.com/reference/cashbill/dotnet/api/member#UpdateContact
+         * - https://developers.popbill.com/reference/cashbill/dotnet/common-api/member#UpdateContact
          */
         private void btnUpdateContact_Click(object sender, EventArgs e)
         {
@@ -1708,7 +1708,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /**
          * 연동회원 포인트 충전을 위해 무통장입금을 신청합니다.
-         * - https://developers.popbill.com/reference/cashbill/dotnet/api/point#PaymentRequest
+         * - https://developers.popbill.com/reference/cashbill/dotnet/common-api/point#PaymentRequest
          */
         public void btnPaymentRequest_Click(object sender, EventArgs e)
         {
@@ -1755,7 +1755,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /**
          * 연동회원의 포인트 결제내역을 확인합니다.
-         * - https://developers.popbill.com/reference/cashbill/dotnet/api/point#GetPaymentHistory
+         * - https://developers.popbill.com/reference/cashbill/dotnet/common-api/point#GetPaymentHistory
          */
         public void btnGetPaymentHistory_Click(object sender, EventArgs e)
         {
@@ -1817,7 +1817,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /**
          * 연동회원 포인트 무통장 입금신청내역 1건을 확인합니다.
-         * - https://developers.popbill.com/reference/cashbill/dotnet/api/point#GetSettleResult
+         * - https://developers.popbill.com/reference/cashbill/dotnet/common-api/point#GetSettleResult
          */
         public void btnGetSettleResult_Click(object sender, EventArgs e)
         {
@@ -1857,7 +1857,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /**
          * 연동회원의 포인트 사용내역을 확인합니다.
-         * - https://developers.popbill.com/reference/cashbill/dotnet/api/point#GetUseHistory
+         * - https://developers.popbill.com/reference/cashbill/dotnet/common-api/point#GetUseHistory
          */
         public void btnGetUseHistory_Click(object sender, EventArgs e)
         {
@@ -1920,7 +1920,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /**
          * 연동회원 포인트를 환불 신청합니다.
-         * - https://developers.popbill.com/reference/cashbill/dotnet/api/point#Refund
+         * - https://developers.popbill.com/reference/cashbill/dotnet/common-api/point#Refund
          */
         public void btnRefund_Click(object sender, EventArgs e)
         {
@@ -1972,7 +1972,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /**
          * 연동회원의 포인트 환불신청내역을 확인합니다.
-         * - https://developers.popbill.com/reference/cashbill/dotnet/api/point#GetRefundHistory
+         * - https://developers.popbill.com/reference/cashbill/dotnet/common-api/point#GetRefundHistory
          */
         public void btnGetRefundHistory_Click(object sender, EventArgs e)
         {
@@ -2027,7 +2027,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /**
          * 포인트 환불에 대한 상세정보 1건을 확인합니다.
-         * - https://developers.popbill.com/reference/cashbill/dotnet/api/point#GetRefundInfo
+         * - https://developers.popbill.com/reference/cashbill/dotnet/common-api/point#GetRefundInfo
          */
         public void btnGetRefundInfo_Click(object sender, EventArgs e)
         {
@@ -2064,7 +2064,7 @@ namespace Popbill.Cashbill.Example.csharp
 
         /**
          * 환불 가능한 포인트를 확인합니다. (보너스 포인트는 환불가능포인트에서 제외됩니다.)
-         * - https://developers.popbill.com/reference/cashbill/dotnet/api/point#GetRefundableBalance
+         * - https://developers.popbill.com/reference/cashbill/dotnet/common-api/point#GetRefundableBalance
          */
         public void btnGetRefundableBalance_Click(object sender, EventArgs e)
         {
@@ -2093,7 +2093,7 @@ namespace Popbill.Cashbill.Example.csharp
          * - 회원탈퇴 신청과 동시에 팝빌의 모든 서비스 이용이 불가하며, 관리자를 포함한 모든 담당자 계정도 일괄탈퇴 됩니다.
          * - 회원탈퇴로 삭제된 데이터는 복원이 불가능합니다.
          * - 관리자 계정만 회원탈퇴가 가능합니다.
-         * - https://developers.popbill.com/reference/cashbill/dotnet/api/member#QuitMember
+         * - https://developers.popbill.com/reference/cashbill/dotnet/common-api/member#QuitMember
          */
         public void btnQuitMember_Click(object sender, EventArgs e)
         {
