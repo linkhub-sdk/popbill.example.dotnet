@@ -259,8 +259,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
         }
 
         /*
-         * 계좌 등록, 수정 및 삭제할 수 있는 계좌 관리 팝업 URL을 반환합니다.
-         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
+         * 계좌를 등록하는 팝업 URL을 반환합니다.
          * - https://developers.popbill.com/reference/easyfinbank/dotnet/api/manage#GetBankAccountMgtURL
          */
         private void btnBankAccountMgtURL_Click(object sender, EventArgs e)
@@ -280,7 +279,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
         }
 
         /*
-         * 계좌의 정액제 해지를 요청합니다.
+         * 팝빌에 등록된 계좌의 정액제 해지를 요청합니다..
          * - https://developers.popbill.com/reference/easyfinbank/dotnet/api/manage#CloseBankAccount
          */
         private void btnCloseBankAccount_Click(object sender, EventArgs e)
@@ -341,8 +340,6 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
         /*
          * 등록된 계좌를 삭제합니다.
-         * - 정액제가 아닌 종량제 이용 시에만 등록된 계좌를 삭제할 수 있습니다.
-         * - 정액제 이용 시 정액제 해지요청(CloseBankAccount API) 함수를 사용하여 정액제를 해제할 수 있습니다.
          * - https://developers.popbill.com/reference/easyfinbank/dotnet/api/manage#DeleteBankAccount
          */
         private void btnDeleteBankAccount_Click(object sender, EventArgs e)
@@ -368,9 +365,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
         }
 
         /*
-         * 계좌 거래내역을 확인하기 위해 팝빌에 수집요청을 합니다. (조회기간 단위 : 최대 1개월)
-         * - 조회일로부터 최대 3개월 이전 내역까지 조회할 수 있습니다.
-         * - 반환 받은 작업아이디는 함수 호출 시점부터 1시간 동안 유효합니다.
+         * 계좌 거래내역 수집을 팝빌에 요청합니다.
          * - https://developers.popbill.com/reference/easyfinbank/dotnet/api/job#RequestJob
          */
         private void btnRequestJob_Click(object sender, EventArgs e)
@@ -382,10 +377,10 @@ namespace Popbill.EasyFin.Bank.Example.csharp
             String AccountNumber = "";
 
             // 시작일자, 표시형식(yyyyMMdd)
-            String SDate = "20220501";
+            String SDate = "20250701";
 
             // 종료일자, 표시형식(yyyyMMdd)
-            String EDate = "20220504";
+            String EDate = "20250731";
 
             try
             {
@@ -403,13 +398,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
         }
 
         /*
-         * 수집 요청(RequestJob API) 함수를 통해 반환 받은 작업 아이디의 상태를 확인합니다.
-         * - 거래 내역 조회(Search API) 함수 또는 거래 요약 정보 조회(Summary API) 함수를 사용하기 전에
-         *   수집 작업의 진행 상태, 수집 작업의 성공 여부를 확인해야 합니다.
-         * - 작업 상태(jobState) = 3(완료)이고 수집 결과 코드(errorCode) = 1(수집성공)이면
-         *   거래 내역 조회(Search) 또는 거래 요약 정보 조회(Summary) 를 해야합니다.
-         * - 작업 상태(jobState)가 3(완료)이지만 수집 결과 코드(errorCode)가 1(수집성공)이 아닌 경우에는
-         *   오류메시지(errorReason)로 수집 실패에 대한 원인을 파악할 수 있습니다.
+         * [RequestJob - 수집 요청] API를 호출하고 반환 받은 작업아이디(JobID)를 이용하여 수집 상태를 확인합니다.
          * - https://developers.popbill.com/reference/easyfinbank/dotnet/api/job#GetJobState
          */
         private void btnGetJobState_Click(object sender, EventArgs e)
@@ -438,8 +427,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
         }
 
         /*
-         * 수집 요청(RequestJob API) 함수를 통해 반환 받은 작업아이디의 목록을 확인합니다.
-         * - 수집 요청 후 1시간이 경과한 수집 요청건은 상태정보가 반환되지 않습니다.
+         * [RequestJob - 수집 요청] API를 호출하고 반환 받은 작업아이디(JobID) 목록의 수집 상태를 확인합니다.
          * - https://developers.popbill.com/reference/easyfinbank/dotnet/api/job#ListActiveJob
          */
         private void btnListActiveJob_Click(object sender, EventArgs e)
@@ -478,7 +466,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
         }
 
         /*
-         * 수집 상태 확인(GetJobState API) 함수를 통해 상태 정보가 확인된 작업아이디를 활용하여 계좌 거래 내역을 조회합니다.
+         * 금융기관에서 수집된 계좌 거래내역을 확인합니다.
          * - https://developers.popbill.com/reference/easyfinbank/dotnet/api/search#Search
          */
         private void btnSearch_Click(object sender, EventArgs e)
@@ -553,8 +541,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
         }
 
         /*
-         * 수집 상태 확인(GetJobState API) 함수를 통해 상태 정보가 확인된 작업아이디를 활용하여 계좌 거래내역의 요약 정보를 조회합니다.
-         * - 요약 정보는 입·출 금액 합계, 입·출 거래 건수를 가리킵니다.
+         * 금융기관에서 수집된 계좌 거래내역의 입금 및 출금 합계정보를 제공합니다.
          * - https://developers.popbill.com/reference/easyfinbank/dotnet/api/search#Summary
          */
         private void btnSummary_Click(object sender, EventArgs e)
@@ -619,8 +606,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
         }
 
         /*
-         * 계좌조회 정액제 서비스 신청 페이지의 팝업 URL을 반환합니다.
-         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
+         * 정액제를 신청하는 팝업 URL을 반환합니다.
          * - https://developers.popbill.com/reference/easyfinbank/dotnet/common-api/point#GetFlatRatePopUpURL
          */
         private void btnGetFlatRatePopUpURL_Click(object sender, EventArgs e)
