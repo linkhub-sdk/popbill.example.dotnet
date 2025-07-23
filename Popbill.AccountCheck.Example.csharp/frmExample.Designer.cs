@@ -61,6 +61,7 @@
             this.btnGetPartnerURL_CHRG = new System.Windows.Forms.Button();
             this.btnGetPartnerBalance = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnDeleteContact = new System.Windows.Forms.Button();
             this.btnGetContactInfo = new System.Windows.Forms.Button();
             this.btnUpdateContact = new System.Windows.Forms.Button();
             this.btnListContact = new System.Windows.Forms.Button();
@@ -86,7 +87,6 @@
             this.btnCheckDepositorInfo = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.txtBankCodeDC = new System.Windows.Forms.TextBox();
-            this.btnDeleteContact = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -448,6 +448,16 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "담당자 관련";
             // 
+            // btnDeleteContact
+            // 
+            this.btnDeleteContact.Location = new System.Drawing.Point(8, 167);
+            this.btnDeleteContact.Name = "btnDeleteContact";
+            this.btnDeleteContact.Size = new System.Drawing.Size(117, 30);
+            this.btnDeleteContact.TabIndex = 15;
+            this.btnDeleteContact.Text = "담당자 삭제";
+            this.btnDeleteContact.UseVisualStyleBackColor = true;
+            this.btnDeleteContact.Click += new System.EventHandler(this.btnDeleteContact_Click);
+            // 
             // btnGetContactInfo
             // 
             this.btnGetContactInfo.Location = new System.Drawing.Point(8, 53);
@@ -616,7 +626,7 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(93, 12);
             this.label7.TabIndex = 23;
-            this.label7.Text = "등록번호 유형 : ";
+            this.label7.Text = "실명번호 유형 : ";
             // 
             // txtIdentityNumTypeDC
             // 
@@ -632,7 +642,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(65, 12);
             this.label6.TabIndex = 21;
-            this.label6.Text = "등록번호 : ";
+            this.label6.Text = "실명번호 : ";
             // 
             // txtIdentityNumDC
             // 
@@ -682,16 +692,6 @@
             this.txtBankCodeDC.Name = "txtBankCodeDC";
             this.txtBankCodeDC.Size = new System.Drawing.Size(100, 21);
             this.txtBankCodeDC.TabIndex = 17;
-            // 
-            // btnDeleteContact
-            // 
-            this.btnDeleteContact.Location = new System.Drawing.Point(8, 167);
-            this.btnDeleteContact.Name = "btnDeleteContact";
-            this.btnDeleteContact.Size = new System.Drawing.Size(117, 30);
-            this.btnDeleteContact.TabIndex = 15;
-            this.btnDeleteContact.Text = "담당자 삭제";
-            this.btnDeleteContact.UseVisualStyleBackColor = true;
-            this.btnDeleteContact.Click += new System.EventHandler(this.btnDeleteContact_Click);
             // 
             // frmExample
             // 
