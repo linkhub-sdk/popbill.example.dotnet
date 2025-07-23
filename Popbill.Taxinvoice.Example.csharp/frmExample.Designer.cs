@@ -1823,7 +1823,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1544, 1195);
+            this.ClientSize = new System.Drawing.Size(1413, 1195);
             this.Controls.Add(this.textURL);
             this.Controls.Add(this.GroupBox7);
             this.Controls.Add(this.label8);
