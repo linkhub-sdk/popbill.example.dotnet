@@ -65,8 +65,7 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         }
 
         /*
-         * 홈택스에 신고된 현금영수증 매입/매출 내역 수집을 팝빌에 요청합니다. (조회기간 단위 : 최대 3개월)
-         * - 수집 요청후 반환받은 작업아이디(JobID)의 유효시간은 1시간 입니다.
+         * 홈택스에 신고된 현금영수증 매입/매출 내역 수집을 팝빌에 요청합니다.
          * - https://developers.popbill.com/reference/htcashbill/dotnet/api/job#RequestJob
          */
         private void btnRequestJob_Click(object sender, EventArgs e)
@@ -96,13 +95,7 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         }
 
         /*
-         *  수집 요청(RequestJob API) 함수를 통해 반환 받은 작업 아이디의 상태를 확인합니다.
-         * - 수집 결과 조회(Search API) 함수 또는 수집 결과 요약 정보 조회(Summary API) 함수를 사용하기 전에
-         *   수집 작업의 진행 상태, 수집 작업의 성공 여부를 확인해야 합니다.
-         * - 작업 상태(jobState) = 3(완료)이고 수집 결과 코드(errorCode) = 1(수집성공)이면
-         *   수집 결과 내역 조회(Search) 또는 수집 결과 요약 정보 조회(Summary)를 해야합니다.
-         * - 작업 상태(jobState)가 3(완료)이지만 수집 결과 코드(errorCode)가 1(수집성공)이 아닌 경우에는
-         *   오류메시지(errorReason)로 수집 실패에 대한 원인을 파악할 수 있습니다.
+         * [RequestJob – 수집 요청] API를 호출하고 반환 받은 작업아이디(JobID)를 이용하여 수집 상태를 확인합니다.
          * - https://developers.popbill.com/reference/htcashbill/dotnet/api/job#GetJobState
          */
         private void btnGetJobState_Click(object sender, EventArgs e)
@@ -134,8 +127,7 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         }
 
         /*
-         * 현금영수증 매입/매출 내역 수집요청에 대한 상태 목록을 확인합니다.
-         * - 수집 요청 후 1시간이 경과한 수집 요청건은 상태정보가 반환되지 않습니다.
+         * [RequestJob – 수집 요청] API를 호출하고 반환 받은 작업아이디(JobID) 목록의 수집 상태를 확인합니다.
          * - https://developers.popbill.com/reference/htcashbill/dotnet/api/job#ListActiveJob
          */
         private void btnListActiveJob_Click(object sender, EventArgs e)
@@ -179,7 +171,7 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         }
 
         /*
-         * 함수 GetJobState(수집 상태 확인)를 통해 상태 정보 확인된 작업아이디를 활용하여 현금영수증 매입/매출 내역을 조회합니다.
+         * 홈택스에서 수집된 현금영수증 매입/매출 내역을 확인합니다.
          * - https://developers.popbill.com/reference/htcashbill/dotnet/api/search#Search
          */
         private void btnSearch_Click(object sender, EventArgs e)
@@ -260,8 +252,7 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         }
 
         /*
-         * 수집 상태 확인(GetJobState API) 함수를 통해 상태 정보가 확인된 작업아이디를 활용하여 수집된 현금영수증 매입/매출 내역의 요약 정보를 조회합니다.
-         * - 요약 정보 : 현금영수증 수집 건수, 공급가액 합계, 세액 합계, 봉사료 합계, 합계 금액
+         * 홈택스에서 수집된 현금영수증 매입/매출 내역의 합계정보를 제공합니다.
          * - https://developers.popbill.com/reference/htcashbill/dotnet/api/search#Summary
          */
         private void btnSummary_Click(object sender, EventArgs e)
@@ -297,8 +288,7 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         }
 
         /*
-         * 홈택스수집 인증정보를 관리하는 페이지의 팝업 URL을 반환합니다.
-         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
+         * 홈택스 인증정보를 등록하는 팝업 URL을 반환합니다.
          * - https://developers.popbill.com/reference/htcashbill/dotnet/api/cert#GetCertificatePopUpURL
          */
         private void btnGetCertificatePopUpURL_Click(object sender, EventArgs e)
@@ -318,7 +308,7 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         }
 
         /*
-         * 팝빌에 등록된 인증서 만료일자를 확인합니다.
+         * 팝빌에 등록된 인증서의 만료일자를 확인합니다.
          * - https://developers.popbill.com/reference/htcashbill/dotnet/api/cert#GetCertificateExpireDate
          */
         private void btnGetCertificateExpireDate_Click(object sender, EventArgs e)
@@ -357,7 +347,7 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         }
 
         /*
-         * 홈택스수집 인증을 위해 팝빌에 현금영수증 자료조회 부서사용자 계정을 등록합니다.
+         *팝빌에 부서사용자를 등록합니다.
          *  - https://developers.popbill.com/reference/htcashbill/dotnet/api/cert#RegistDeptUser
          */
         private void btnRegistDeptUser_Click(object sender, EventArgs e)
@@ -383,7 +373,7 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         }
 
         /*
-         * 홈택스수집 인증을 위해 팝빌에 등록된 현금영수증 자료조회 부서사용자 계정을 확인합니다.
+         * 팝빌에 부서사용자 등록 여부를 확인합니다.
          * - https://developers.popbill.com/reference/htcashbill/dotnet/api/cert#CheckDeptUser
          */
         private void btnCheckDeptUser_Click(object sender, EventArgs e)
@@ -403,7 +393,7 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         }
 
         /*
-         * 팝빌에 등록된 현금영수증 자료조회 부서사용자 계정 정보로 홈택스 로그인 가능 여부를 확인합니다.
+         * 팝빌에 등록된 부서사용자로 홈택스 로그인 가능 여부를 확인합니다.
          * - https://developers.popbill.com/reference/htcashbill/dotnet/api/cert#CheckLoginDeptUser
          */
         private void btnCheckLoginDeptUser_Click(object sender, EventArgs e)
@@ -423,7 +413,7 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         }
 
         /*
-         * 팝빌에 등록된 홈택스 현금영수증 자료조회 부서사용자 계정을 삭제합니다.
+         * 팝빌에 등록된 부서사용자 계정을 삭제합니다.
          *  - https://developers.popbill.com/reference/htcashbill/dotnet/api/cert#DeleteDeptUser
          */
         private void btnDeleteDeptUser_Click(object sender, EventArgs e)
@@ -443,8 +433,7 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         }
 
         /*
-         * 홈택스수집 정액제 서비스 신청 페이지의 팝업 URL을 반환합니다.
-         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
+         * 정액제를 신청하는 팝업 URL을 반환합니다.
          * - https://developers.popbill.com/reference/htcashbill/dotnet/common-api/point#GetFlatRatePopUpURL
          */
         private void btnGetFlatRatePopUpURL_Click(object sender, EventArgs e)
