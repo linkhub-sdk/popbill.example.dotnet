@@ -76,7 +76,6 @@ namespace Popbill.Statement.Example.csharp
 
         /*
          * 파트너가 전자명세서 관리 목적으로 할당하는 문서번호의 사용여부를 확인합니다.
-         * - 이미 사용 중인 문서번호는 중복 사용이 불가하고, 전자명세서가 삭제된 경우에만 문서번호의 재사용이 가능합니다.
          * - https://developers.popbill.com/reference/statement/dotnet/api/info#CheckMgtKeyInUse
          */
         private void btnCheckMgtKeyInUse_Click(object sender, EventArgs e)
@@ -98,7 +97,6 @@ namespace Popbill.Statement.Example.csharp
 
         /*
          * 작성된 전자명세서 데이터를 팝빌에 저장과 동시에 발행하여, "발행완료" 상태로 처리합니다.
-         * - 팝빌 사이트 [전자명세서] > [환경설정] > [전자명세서 관리] 메뉴의 발행시 자동승인 옵션 설정을 통해 전자명세서를 "발행완료" 상태가 아닌 "승인대기" 상태로 발행 처리 할 수 있습니다.
          * - https://developers.popbill.com/reference/statement/dotnet/api/issue#RegistIssue
          */
         private void btnRegistIssue_Click(object sender, EventArgs e)
@@ -304,7 +302,6 @@ namespace Popbill.Statement.Example.csharp
 
         /*
          * 작성된 전자명세서 데이터를 팝빌에 저장합니다.
-         * - "임시저장" 상태의 전자명세서는 발행(Issue API) 함수를 호출하여 "발행완료"처리한 경우에만 수신자에게 발행 안내 메일이 발송됩니다.
          * - https://developers.popbill.com/reference/statement/dotnet/api/issue#Register
          */
         private void btnRegister_Click(object sender, EventArgs e)
@@ -700,9 +697,7 @@ namespace Popbill.Statement.Example.csharp
         }
 
         /*
-         * "임시저장" 상태의 전자명세서를 발행하여, "발행완료" 상태로 처리합니다.
-         * - 팝빌 사이트 [전자명세서] > [환경설정] > [전자명세서 관리] 메뉴의 발행시 자동승인 옵션 설정을 통해 전자명세서를 "발행완료" 상태가 아닌 "승인대기" 상태로 발행 처리 할 수 있습니다.
-         * - 전자명세서 발행 함수 호출시 포인트가 과금되며, 수신자에게 발행 안내 메일이 발송됩니다.
+         * "임시저장" 상태의 전자명세서를 수정합니다.
          * - https://developers.popbill.com/reference/statement/dotnet/api/issue#Issue
          */
         private void btnIssue_Click(object sender, EventArgs e)
@@ -785,8 +780,6 @@ namespace Popbill.Statement.Example.csharp
 
         /*
          * 삭제 가능한 상태의 전자명세서를 삭제합니다.
-         * - 삭제 가능한 상태: "임시저장", "취소", "승인거부", "발행취소"
-         * - 전자명세서를 삭제하면 사용된 문서번호(mgtKey)를 재사용할 수 있습니다.
          * - https://developers.popbill.com/reference/statement/dotnet/api/issue#Delete
          */
         private void btnDelete_Click(object sender, EventArgs e)
@@ -809,8 +802,6 @@ namespace Popbill.Statement.Example.csharp
 
         /*
          * 삭제 가능한 상태의 전자명세서를 삭제합니다.
-         * - 삭제 가능한 상태: "임시저장", "취소", "승인거부", "발행취소"
-         * - 전자명세서를 삭제하면 사용된 문서번호(mgtKey)를 재사용할 수 있습니다.
          * - https://developers.popbill.com/reference/statement/dotnet/api/issue#Delete
          */
         private void btnDeleteSub_Click(object sender, EventArgs e)
@@ -832,7 +823,7 @@ namespace Popbill.Statement.Example.csharp
         }
 
         /*
-         * 전자명세서의 1건의 상태 및 요약정보 확인합니다.
+         * 전자명세서의 1건의 상태 및 요약정보를 확인합니다.
          * - https://developers.popbill.com/reference/statement/dotnet/api/info#GetInfo
          */
         private void btnGetInfo_Click(object sender, EventArgs e)
@@ -878,7 +869,7 @@ namespace Popbill.Statement.Example.csharp
         }
 
         /*
-         * 다수건의 전자명세서 상태/요약 정보를 확인합니다.
+         * 다수건의 전자명세서 상태 및 요약정보를 확인합니다. (1회 호출에 최대 1,000건 확인 가능)
          * - https://developers.popbill.com/reference/statement/dotnet/api/info#GetInfos
          */
         private void btnGetInfos_Click(object sender, EventArgs e)
@@ -937,7 +928,7 @@ namespace Popbill.Statement.Example.csharp
         }
 
         /*
-         * 전자명세서 1건의 상세정보 확인합니다.
+         * 전자명세서 1건의 상세정보를 확인합니다.
          * - https://developers.popbill.com/reference/statement/dotnet/api/info#GetDetailInfo
          */
         private void btnGetDetailInfo_Click(object sender, EventArgs e)
@@ -1031,7 +1022,7 @@ namespace Popbill.Statement.Example.csharp
         }
 
         /*
-         * 검색조건에 해당하는 전자명세서를 조회합니다. (조회기간 단위 : 최대 6개월)
+         * 검색조건에 해당하는 전자명세서를 조회합니다. (최대 조회기간 : 6개월)
          * - https://developers.popbill.com/reference/statement/dotnet/api/info#Search
          */
         private void btnSearch_Click(object sender, EventArgs e)
@@ -1147,8 +1138,7 @@ namespace Popbill.Statement.Example.csharp
         }
 
         /*
-         * 로그인 상태로 팝빌 사이트의 전자명세서 임시문서함 메뉴에 접근할 수 있는 페이지의 팝업 URL을 반환합니다.
-         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
+         * 전자명세서 문서함의 팝업 URL을 반환합니다.
          * - https://developers.popbill.com/reference/statement/dotnet/api/info#GetURL
          */
         private void btnGetURL_TBOX_Click(object sender, EventArgs e)
@@ -1168,8 +1158,7 @@ namespace Popbill.Statement.Example.csharp
         }
 
         /*
-         * 로그인 상태로 팝빌 사이트의 전자명세서 발행문서함 메뉴에 접근할 수 있는 페이지의 팝업 URL을 반환합니다.
-         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
+         * 전자명세서 문서함의 팝업 URL을 반환합니다.
          * - https://developers.popbill.com/reference/statement/dotnet/api/info#GetURL
          */
         private void btnGetURL_SBOX_Click(object sender, EventArgs e)
@@ -1189,8 +1178,7 @@ namespace Popbill.Statement.Example.csharp
         }
 
         /*
-         * 전자명세서 1건의 상세 정보 페이지의 팝업 URL을 반환합니다.
-         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
+         * 전자명세서 1건의 팝업 URL을 반환합니다.
          * - https://developers.popbill.com/reference/statement/dotnet/api/view#GetPopUpURL
          */
         private void btnGetPopUpURL_Click(object sender, EventArgs e)
@@ -1212,8 +1200,7 @@ namespace Popbill.Statement.Example.csharp
         }
 
         /*
-         * 전자명세서 1건의 상세 정보 페이지(사이트 상단, 좌측 메뉴 및 버튼 제외)의 팝업 URL을 반환합니다.
-         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
+         * 전자명세서 1건의 팝업 URL을 반환합니다.
          * - https://developers.popbill.com/reference/statement/dotnet/api/view#GetViewURL
          */
         private void btnGetViewURL_Click(object sender, EventArgs e)
@@ -1235,9 +1222,7 @@ namespace Popbill.Statement.Example.csharp
         }
 
         /*
-         * 전자명세서 1건을 인쇄하기 위한 페이지의 팝업 URL을 반환하며, 페이지내에서 인쇄 설정값을 "공급자" / "공급받는자" / "공급자+공급받는자"용 중 하나로 지정할 수 있습니다.
-         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - 전자명세서의 공급자는 "발신자", 공급받는자는 "수신자"를 나타내는 용어입니다.
+         * 전자명세서 1건의 공급자 인쇄 팝업 URL을 반환합니다.
          * - https://developers.popbill.com/reference/statement/dotnet/api/view#GetPrintURL
          */
         private void btnGetPrintURL_Click(object sender, EventArgs e)
@@ -1259,9 +1244,7 @@ namespace Popbill.Statement.Example.csharp
         }
 
         /*
-         * "공급받는자" 용 전자명세서 1건을 인쇄하기 위한 페이지의 팝업 URL을 반환합니다.
-         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
-         * - 전자명세서의 공급받는자는 "수신자"를 나타내는 용어입니다.
+         * 전자명세서 1건의 공급받는자 인쇄 팝업 URL을 반환합니다.
          * - https://developers.popbill.com/reference/statement/dotnet/api/view#GetEPrintURL
          */
         private void btnGetEPrintURL_Click(object sender, EventArgs e)
@@ -1282,8 +1265,7 @@ namespace Popbill.Statement.Example.csharp
         }
 
         /*
-         * 다수건의 전자명세서를 인쇄하기 위한 페이지의 팝업 URL을 반환합니다. (최대 100건)
-         * - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
+         * 전자명세서 다건의 인쇄 팝업 URL을 반환합니다.
          * - https://developers.popbill.com/reference/statement/dotnet/api/view#GetMassPrintURL
          */
         private void btnGetMassPrintURL_Click(object sender, EventArgs e)
@@ -1311,8 +1293,7 @@ namespace Popbill.Statement.Example.csharp
         }
 
         /*
-         * 전자명세서 안내메일의 상세보기 링크 URL을 반환합니다.
-         * - 함수 호출로 반환 받은 URL에는 유효시간이 없습니다.
+         * 전자명세서 발행 안내 메일의 '보기' 버튼 URL을 반환합니다.
          * - https://developers.popbill.com/reference/statement/dotnet/api/view#GetMailURL
          */
         private void btnGetMailURL_Click(object sender, EventArgs e)
@@ -1355,8 +1336,7 @@ namespace Popbill.Statement.Example.csharp
         }
 
         /*
-         * 인감 및 첨부문서 등록 URL을 반환합니다.
-         * - 반환된 URL은 보안정책상 30초의 유효시간을 갖습니다.
+         * 전자명세서에 첨부될 인감, 사업자등록증, 통장사본을 등록하는 팝업 URL을 반환합니다.
          * - https://developers.popbill.com/reference/statement/dotnet/api/etc#GetSealURL
          */
         private void btnGetSealURL_Click(object sender, EventArgs e)
@@ -1406,7 +1386,6 @@ namespace Popbill.Statement.Example.csharp
 
         /*
          * "임시저장" 상태의 전자명세서에 첨부된 1개의 파일을 삭제합니다.
-         * - 파일을 식별하는 파일아이디는 첨부파일 목록(GetFiles API) 의 응답항목 중 파일아이디(AttachedFile) 값을 통해 확인할 수 있습니다.
          * - https://developers.popbill.com/reference/statement/dotnet/api/etc#DeleteFile
          */
         private void btnDeleteFile_Click(object sender, EventArgs e)
@@ -1430,7 +1409,6 @@ namespace Popbill.Statement.Example.csharp
 
         /*
          * 전자명세서에 첨부된 파일목록을 확인합니다.
-         * - 응답항목 중 파일아이디(AttachedFile) 항목은 파일삭제(DeleteFile API) 호출시 이용할 수 있습니다.
          * - https://developers.popbill.com/reference/statement/dotnet/api/etc#GetFiles
          */
         private void btnGetFiles_Click(object sender, EventArgs e)
@@ -1488,9 +1466,7 @@ namespace Popbill.Statement.Example.csharp
         }
 
         /*
-         * 전자명세서와 관련된 안내 SMS(단문) 문자를 재전송하는 함수로, 팝빌 사이트 [문자·팩스] > [문자] > [전송내역] 메뉴에서 전송결과를 확인 할 수 있습니다.
-         * - 메시지는 최대 90byte까지 입력 가능하고, 초과한 내용은 자동으로 삭제되어 전송합니다. (한글 최대 45자)
-         * - 함수 호출시 포인트가 과금됩니다.
+         * 전자명세서와 관련된 안내 SMS(단문) 문자를 재전송하는 함수로, 팝빌 사이트 [ 문자 > 결과 > 전송결과 ] 메뉴에서 전송결과를 확인할 수 있습니다.
          * - https://developers.popbill.com/reference/statement/dotnet/api/etc#SendSMS
          */
         private void btnSendSMS_Click(object sender, EventArgs e)
@@ -1521,8 +1497,7 @@ namespace Popbill.Statement.Example.csharp
         }
 
         /*
-         * 전자명세서를 팩스로 전송하는 함수로, 팝빌 사이트 [문자·팩스] > [팩스] > [전송내역] 메뉴에서 전송결과를 확인 할 수 있습니다.
-         * - 함수 호출시 포인트가 과금됩니다.
+         * 전자명세서를 팩스로 전송하는 함수로, 팝빌 사이트 [ 팩스 > 결과 > 전송결과 ] 메뉴에서 전송결과를 확인할 수 있습니다.
          * - https://developers.popbill.com/reference/statement/dotnet/api/etc#SendFAX
          */
         private void btnSendFAX_Click(object sender, EventArgs e)
@@ -1552,7 +1527,6 @@ namespace Popbill.Statement.Example.csharp
 
         /*
          * 전자명세서를 팩스로 전송하는 함수로, 팝빌에 데이터를 저장하는 과정이 없습니다.
-         * - 팝빌 사이트 [문자·팩스] > [팩스] > [전송내역] 메뉴에서 전송결과를 확인 할 수 있습니다.
          * - https://developers.popbill.com/reference/statement/dotnet/api/etc#FAXSend
          */
         private void btnFAXSend_Click(object sender, EventArgs e)
@@ -1850,15 +1824,9 @@ namespace Popbill.Statement.Example.csharp
             }
         }
 
-        /* 전자명세서 관련 메일 항목에 대한 발송설정을 수정합니다.
+        /* 
+         * 전자명세서 관련 메일 항목에 대한 발송설정을 수정합니다.
          * - https://developers.popbill.com/reference/statement/dotnet/api/etc#UpdateEmailConfig
-         *
-           메일전송유형
-           SMT_ISSUE : 수신자에게 전자명세서가 발행 되었음을 알려주는 메일입니다.
-           SMT_ACCEPT : 발신자에게 전자명세서가 승인 되었음을 알려주는 메일입니다.
-           SMT_DENY : 발신자게에 전자명세서가 거부 되었음을 알려주는 메일입니다.
-           SMT_CANCEL : 수신자게에 전자명세서가 취소 되었음을 알려주는 메일입니다.
-           SMT_CANCEL_ISSUE : 수신자에게 전자명세서가 발행취소 되었음을 알려주는 메일입니다.
          */
         private void btnUpdateEmailConfig_Click(object sender, EventArgs e)
         {
