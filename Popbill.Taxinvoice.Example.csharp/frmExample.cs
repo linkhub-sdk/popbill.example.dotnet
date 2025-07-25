@@ -3163,15 +3163,19 @@ namespace Popbill.Taxinvoice.Example.csharp
             // 문서번호 유형
             MgtKeyType KeyType = (MgtKeyType)Enum.Parse(typeof(MgtKeyType), cboMgtKeyType.Text);
 
+            // 파일명
+            string DisplayName = "test.txt";
+
 
             if (fileDialog.ShowDialog(this) == DialogResult.OK)
             {
+                // 파일경로
                 string strFileName = fileDialog.FileName;
 
                 try
                 {
                     Response response = taxinvoiceService.AttachFile(txtCorpNum.Text, KeyType, txtMgtKey.Text,
-                        strFileName, txtUserId.Text);
+                        DisplayName, strFileName, txtUserId.Text);
 
                     MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                     "응답메시지(message) : " + response.message, "첨부파일 등록");
