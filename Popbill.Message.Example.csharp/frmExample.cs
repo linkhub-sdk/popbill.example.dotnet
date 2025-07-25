@@ -317,6 +317,9 @@ namespace Popbill.Message.Example.csharp
             // 발신번호
             String senderNum = "";
 
+            // 발신자명
+            String senderName = "";
+
             // 수신번호
             String receiver = "";
 
@@ -340,7 +343,7 @@ namespace Popbill.Message.Example.csharp
 
             try
             {
-                string receiptNum = messageService.SendLMS(txtCorpNum.Text, senderNum, receiver,
+                string receiptNum = messageService.SendLMS(txtCorpNum.Text, senderNum, senderName, receiver,
                     receiverName, subject, contents, getReserveDT(), txtUserId.Text, requestNum, adsYN);
 
                 MessageBox.Show("접수번호 : " + receiptNum, "LMS(장문) 전송");
@@ -485,6 +488,9 @@ namespace Popbill.Message.Example.csharp
             // 발신번호
             String senderNum = "";
 
+            // 발신자명
+            String senderName = "";
+
             // 수신번호
             String receiver = "";
 
@@ -509,7 +515,7 @@ namespace Popbill.Message.Example.csharp
 
             try
             {
-                string receiptNum = messageService.SendXMS(txtCorpNum.Text, senderNum, receiver, receiverName, subject,
+                string receiptNum = messageService.SendXMS(txtCorpNum.Text, senderNum, senderName, receiver, receiverName, subject,
                     contents, getReserveDT(), txtUserId.Text, requestNum, adsYN);
 
                 MessageBox.Show("접수번호 : " + receiptNum, "자동인식(XMS) 전송");
@@ -653,6 +659,10 @@ namespace Popbill.Message.Example.csharp
             // 발신번호
             String senderNum = "";
 
+
+            // 발신자명
+            String senderName = "";
+
             // 수신번호
             String receiver = "";
 
@@ -681,7 +691,7 @@ namespace Popbill.Message.Example.csharp
 
                 try
                 {
-                    string receiptNum = messageService.SendMMS(txtCorpNum.Text, senderNum, receiver, receiverName,
+                    string receiptNum = messageService.SendMMS(txtCorpNum.Text, senderNum, senderName, receiver, receiverName,
                         subject, contents, mmsFilePath, getReserveDT(), txtUserId.Text, requestNum, adsYN);
 
                     MessageBox.Show("접수번호 : " + receiptNum, "포토(MMS) 메시지 전송");
@@ -2107,6 +2117,11 @@ namespace Popbill.Message.Example.csharp
                     "080 번호 확인");
             }
         }
+
+        /**
+         * 연동회원에 추가된 담당자를 삭제합니다.
+         * - https://developers.popbill.com/reference/taxinvoice/java/common-api/member#DeleteContact
+         */
 
         private void btnDeleteContact_Click(object sender, EventArgs e)
         {

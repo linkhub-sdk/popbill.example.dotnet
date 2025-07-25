@@ -1814,6 +1814,11 @@ namespace Popbill.Fax.Example.csharp
             }
         }
 
+        /**
+         * 연동회원에 추가된 담당자를 삭제합니다.
+         * - https://developers.popbill.com/reference/taxinvoice/java/common-api/member#DeleteContact
+         */
+
         private void btnDeleteContact_Click(object sender, EventArgs e)
         {
             String ContactID = "testkorea20250722_01";
@@ -1832,9 +1837,5 @@ namespace Popbill.Fax.Example.csharp
             }
         }
 
-        private void GroupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
     }
 }
