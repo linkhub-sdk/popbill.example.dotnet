@@ -16,7 +16,7 @@
 *     - UseStaticIP : 통신 IP 고정, true-사용, false-미사용, (기본값:false)
 *     - UseLocalTimeYN : 로컬시스템 시간 사용여부, true-사용, false-미사용, (기본값:true)
 * 3) 발신번호 사전등록을 합니다. (등록방법은 사이트/API 두가지 방식이 있습니다.)
-*    - 1. 팝빌 사이트 로그인 > [문자/팩스] > [문자] > [발신번호 사전등록] 메뉴에서 등록
+*    - 1. 팝빌 사이트 로그인 > [문자] > [발신번호 사전등록] 메뉴에서 등록
 *    - 2. getSenderNumberMgtURL API를 통해 반환된 URL을 이용하여 발신번호 등록
  */
 
@@ -133,7 +133,8 @@ namespace Popbill.Message.Example.csharp
                 {
                     tmp += "number (발신번호) : " + numInfo.number + CRLF;
                     tmp += "representYN (대표번호 지정여부) : " + numInfo.representYN + CRLF;
-                    tmp += "state (등록상태) : " + numInfo.state + CRLF + CRLF;
+                    tmp += "state (등록상태) : " + numInfo.state + CRLF;
+                    tmp += "memo (메모) : " + numInfo.memo + CRLF + CRLF;
                 }
 
                 MessageBox.Show(tmp, "발신번호 목록 조회");
@@ -1505,16 +1506,16 @@ namespace Popbill.Message.Example.csharp
             // 담당자 비밀번호, 8자 이상 20자 이하(영문, 숫자, 특수문자 조합)
             contactInfo.Password = "asdf8536!@#";
 
-            //담당자 성명 (최대 100자)
+            // 담당자 성명 (최대 100자)
             contactInfo.personName = "담당자명";
 
-            //담당자연락처 (최대 20자)
+            // 담당자 휴대폰 (최대 20자)
             contactInfo.tel = "";
 
-            //담당자 이메일 (최대 100자)
+            // 담당자 메일 (최대 100자)
             contactInfo.email = "";
 
-            // 담당자 권한, 1 : 개인권한, 2 : 읽기권한, 3 : 회사권한
+            // 권한, 1 : 개인권한, 2 : 읽기권한, 3 : 회사권한
             contactInfo.searchRole = 3;
 
             try
@@ -1548,12 +1549,12 @@ namespace Popbill.Message.Example.csharp
 
                 tmp += "id (담당자 아이디) : " + contactInfo.id + CRLF;
                 tmp += "personName (담당자명) : " + contactInfo.personName + CRLF;
-                tmp += "tel (연락처) : " + contactInfo.tel + CRLF;
-                tmp += "email (담당자 이메일) : " + contactInfo.email + CRLF;
+                tmp += "tel (담당자 휴대폰) : " + contactInfo.tel + CRLF;
+                tmp += "email (담당자 메일) : " + contactInfo.email + CRLF;
                 tmp += "regDT (등록일시) : " + contactInfo.regDT + CRLF;
-                tmp += "searchRole (담당자 권한) : " + contactInfo.searchRole + CRLF;
-                tmp += "mgrYN (관리자 여부) : " + contactInfo.mgrYN + CRLF;
-                tmp += "state (상태) : " + contactInfo.state + CRLF;
+                tmp += "searchRole (권한) : " + contactInfo.searchRole + CRLF;
+                tmp += "mgrYN (역할) : " + contactInfo.mgrYN + CRLF;
+                tmp += "state (계정상태) : " + contactInfo.state + CRLF;
                 tmp += CRLF;
 
                 MessageBox.Show(tmp, "담당자 정보 확인");
@@ -1581,12 +1582,12 @@ namespace Popbill.Message.Example.csharp
                 {
                     tmp += "id (담당자 아이디) : " + contactInfo.id + CRLF;
                     tmp += "personName (담당자명) : " + contactInfo.personName + CRLF;
-                    tmp += "tel (연락처) : " + contactInfo.tel + CRLF;
-                    tmp += "email (담당자 이메일) : " + contactInfo.email + CRLF;
+                    tmp += "tel (담당자 휴대폰) : " + contactInfo.tel + CRLF;
+                    tmp += "email (담당자 메일) : " + contactInfo.email + CRLF;
                     tmp += "regDT (등록일시) : " + contactInfo.regDT + CRLF;
-                    tmp += "searchRole (담당자 권한) : " + contactInfo.searchRole + CRLF;
-                    tmp += "mgrYN (관리자 여부) : " + contactInfo.mgrYN + CRLF;
-                    tmp += "state (상태) : " + contactInfo.state + CRLF;
+                    tmp += "searchRole (권한) : " + contactInfo.searchRole + CRLF;
+                    tmp += "mgrYN (역할) : " + contactInfo.mgrYN + CRLF;
+                    tmp += "state (계정상태) : " + contactInfo.state + CRLF;
                     tmp += CRLF;
                 }
 
@@ -1613,13 +1614,13 @@ namespace Popbill.Message.Example.csharp
             // 담당자 성명 (최대 100자)
             contactInfo.personName = "담당자123";
 
-            // 연락처 (최대 20자)
+            // 담당자 휴대폰 (최대 20자)
             contactInfo.tel = "";
 
             // 이메일주소 (최대 100자)
             contactInfo.email = "";
 
-            // 담당자 권한, 1 : 개인권한, 2 : 읽기권한, 3 : 회사권한
+            // 권한, 1 : 개인권한, 2 : 읽기권한, 3 : 회사권한
             contactInfo.searchRole = 3;
 
             try
@@ -1735,10 +1736,10 @@ namespace Popbill.Message.Example.csharp
             String CorpNum = "1234567890";
 
             // 조회 시작 일자
-            String SDate = "20230501";
+            String SDate = "20250701";
 
             // 조회 종료 일자
-            String EDate = "20230530";
+            String EDate = "20250731";
 
             // 목록 페이지 번호
             int Page = 1;
@@ -1746,13 +1747,10 @@ namespace Popbill.Message.Example.csharp
             // 페이지당 목록 개수
             int PerPage = 500;
 
-            // 팝빌 회원 아이디
-            String UserID = "testkorea";
-
             try
             {
                 PaymentHistoryResult result =
-                    messageService.GetPaymentHistory(CorpNum, SDate, EDate, Page, PerPage, UserID);
+                    messageService.GetPaymentHistory(CorpNum, SDate, EDate, Page, PerPage, txtUserId.Text);
 
                 String tmp = "";
 
@@ -1799,13 +1797,10 @@ namespace Popbill.Message.Example.csharp
             // 정산 코드
             String SettleCode = "202301160000000010";
 
-            // 팝빌회원 아이디
-            String UserID = "testkorea";
-
             try
             {
                 PaymentHistory result =
-                    messageService.GetSettleResult(CorpNum, SettleCode, UserID);
+                    messageService.GetSettleResult(CorpNum, SettleCode, txtUserId.Text);
 
                 MessageBox.Show(
                     "결제 내용(productType) : " + result.productType + CRLF +
@@ -1851,13 +1846,10 @@ namespace Popbill.Message.Example.csharp
             // 목록 정렬 방향
             String Order = "D";
 
-            // 팝빌 회원 아이디
-            String UserID = "testkorea";
-
             try
             {
                 UseHistoryResult result =
-                    messageService.GetUseHistory(CorpNum, SDate, EDate, Page, PerPage, Order, UserID);
+                    messageService.GetUseHistory(CorpNum, SDate, EDate, Page, PerPage, Order, UserID, txtUserId.Text);
 
                 String tmp = "";
 
