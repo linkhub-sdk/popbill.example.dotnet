@@ -185,7 +185,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
                 String tmp = null;
                 tmp += "accountNumber (계좌번호) : " + bankInfo.accountNumber + CRLF;
-                tmp += "bankCode (기관코드) : " + bankInfo.bankCode + CRLF;
+                tmp += "bankCode (은행 기관코드) : " + bankInfo.bankCode + CRLF;
                 tmp += "accountName (계좌 별칭) : " + bankInfo.accountName +CRLF;
                 tmp += "accountType (계좌 유형) : " +bankInfo.accountType +CRLF;
                 tmp += "state (계좌 상태) : " + bankInfo.state.ToString() + CRLF;
@@ -222,7 +222,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
             {
                 List<EasyFinBankAccount> bankAccountList = easyFinBankService.ListBankAccount(txtCorpNum.Text);
 
-                String tmp = "bankCode (기관코드) | accountNumber (계좌번호) | accountName (계좌별칭) | accountType (계좌유형) | state (정액제 상태) |";
+                String tmp = "bankCode (은행 기관코드) | accountNumber (계좌번호) | accountName (계좌별칭) | accountType (계좌유형) | state (정액제 상태) |";
                 tmp += " regDT (등록일시) | contractDT (정액제 서비스 시작일시) | useEndDate (정액제 서비스 종료일자) | baseDate (자동연장 결제일) |";
                 tmp += " contractState (정액제 서비스 상태) | closeRequestYN (정액제 해지신청 여부) | useRestrictYN (정액제 사용제한 여부) |";
                 tmp += " closeOnExpired (정액제 만료 시 해지여부) | unPaiedYN (미수금 보유 여부) | memo (메모) " + CRLF + CRLF;
@@ -290,11 +290,9 @@ namespace Popbill.EasyFin.Bank.Example.csharp
             // 계좌번호, 하이픈('-') 제외
             String AccountNumber = "";
 
-            // 해지유형, "일반", "중도" 중 택 1
+            // 해지유형
             // 일반(일반해지) – 이용중인 정액제 기간 만료 후 해지
-            // 중도(중도해지) – 해지 요청일 기준으로 정지되고 팝빌 담당자가 승인시 해지
-            // └ 중도일 경우, 정액제 잔여기간은 일할로 계산되어 포인트 환불 (무료 이용기간 중 해지하면 전액 환불)
-            String CloseType = "중도";
+            String CloseType = "일반";
 
 
             try
@@ -411,7 +409,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
                 tmp += "jobState (수집상태) : " + jobState.jobState.ToString() + CRLF;
                 tmp += "startDate (시작일자) : " + jobState.startDate + CRLF;
                 tmp += "endDate (종료일자) : " + jobState.endDate + CRLF;
-                tmp += "errorCode (오류코드) : " + jobState.errorCode.ToString() + CRLF;
+                tmp += "errorCode (수집 결과코드) : " + jobState.errorCode.ToString() + CRLF;
                 tmp += "errorReason (오류메시지) : " + jobState.errorReason + CRLF;
                 tmp += "jobStartDT (작업 시작일시) : " + jobState.jobStartDT + CRLF;
                 tmp += "jobEndDT (작업 종료일시) : " + jobState.jobEndDT + CRLF;
@@ -437,7 +435,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
                 List<EasyFinBankJobState> jobList = easyFinBankService.ListACtiveJob(txtCorpNum.Text);
 
                 String tmp = "jobID (작업아이디) | jobState (수집상태) | startDate (시작일자) |";
-                tmp += " endDate (종료일자) | errorCode (오류코드) | errorReason (오류메시지) | jobStartDT (수집 시작일시) | jobEndDT (수집 종료일시) |";
+                tmp += " endDate (종료일자) | errorCode (수집 결과코드) | errorReason (오류메시지) | jobStartDT (수집 시작일시) | jobEndDT (수집 종료일시) |";
                 tmp += " regDT (수집 요청일시) " + CRLF;
 
                 for (int i = 0; i < jobList.Count; i++)
@@ -941,7 +939,7 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
             Contact contactInfo = new Contact();
 
-            // 담당자 아이디, 6자 이상 50자 미만
+            // 아이디, 6자 이상 50자 미만
             contactInfo.id = "testkorea";
 
             // 담당자 비밀번호, 8자 이상 20자 이하(영문, 숫자, 특수문자 조합)
@@ -950,13 +948,13 @@ namespace Popbill.EasyFin.Bank.Example.csharp
             // 담당자 성명 (최대 100자)
             contactInfo.personName = "담당자명";
 
-            // 담당자연락처 (최대 20자)
+            // 담당자 휴대폰 (최대 20자)
             contactInfo.tel = "";
 
-            // 담당자 이메일 (최대 100자)
+            // 담당자 메일 (최대 100자)
             contactInfo.email = "";
 
-            // 담당자 권한, 1 : 개인권한, 2 : 읽기권한, 3 : 회사권한
+            // 권한, 1 : 개인권한, 2 : 읽기권한, 3 : 회사권한
             contactInfo.searchRole = 3;
 
             try
@@ -988,14 +986,14 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
                 String tmp = null;
 
-                tmp += "id (담당자 아이디) : " + contactInfo.id + CRLF;
-                tmp += "personName (담당자명) : " + contactInfo.personName + CRLF;
-                tmp += "tel (연락처) : " + contactInfo.tel + CRLF;
-                tmp += "email (담당자 이메일) : " + contactInfo.email + CRLF;
+                tmp += "id (아이디) : " + contactInfo.id + CRLF;
+                tmp += "personName (담당자 성명) : " + contactInfo.personName + CRLF;
+                tmp += "tel (담당자 휴대폰) : " + contactInfo.tel + CRLF;
+                tmp += "email (담당자 메일) : " + contactInfo.email + CRLF;
                 tmp += "regDT (등록일시) : " + contactInfo.regDT + CRLF;
-                tmp += "searchRole (담당자 권한) : " + contactInfo.searchRole + CRLF;
-                tmp += "mgrYN (관리자 여부) : " + contactInfo.mgrYN + CRLF;
-                tmp += "state (상태) : " + contactInfo.state + CRLF;
+                tmp += "searchRole (권한) : " + contactInfo.searchRole + CRLF;
+                tmp += "mgrYN (역할) : " + contactInfo.mgrYN + CRLF;
+                tmp += "state (계정상태) : " + contactInfo.state + CRLF;
                 tmp += CRLF;
 
                 MessageBox.Show(tmp, "담당자 정보 확인");
@@ -1021,14 +1019,14 @@ namespace Popbill.EasyFin.Bank.Example.csharp
 
                 foreach (Contact contactInfo in contactList)
                 {
-                    tmp += "id (담당자 아이디) : " + contactInfo.id + CRLF;
-                    tmp += "personName (담당자명) : " + contactInfo.personName + CRLF;
-                    tmp += "tel (연락처) : " + contactInfo.tel + CRLF;
-                    tmp += "email (담당자 이메일) : " + contactInfo.email + CRLF;
+                    tmp += "id (아이디) : " + contactInfo.id + CRLF;
+                    tmp += "personName (담당자 성명) : " + contactInfo.personName + CRLF;
+                    tmp += "tel (담당자 휴대폰) : " + contactInfo.tel + CRLF;
+                    tmp += "email (담당자 메일) : " + contactInfo.email + CRLF;
                     tmp += "regDT (등록일시) : " + contactInfo.regDT + CRLF;
-                    tmp += "searchRole (담당자 권한) : " + contactInfo.searchRole + CRLF;
-                    tmp += "mgrYN (관리자 여부) : " + contactInfo.mgrYN + CRLF;
-                    tmp += "state (상태) : " + contactInfo.state + CRLF;
+                    tmp += "searchRole (권한) : " + contactInfo.searchRole + CRLF;
+                    tmp += "mgrYN (역할) : " + contactInfo.mgrYN + CRLF;
+                    tmp += "state (계정상태) : " + contactInfo.state + CRLF;
                     tmp += CRLF;
                 }
                 MessageBox.Show(tmp, "담당자 목록조회");
@@ -1048,19 +1046,19 @@ namespace Popbill.EasyFin.Bank.Example.csharp
         {
             Contact contactInfo = new Contact();
 
-            // 담당자 아이디
+            // 아이디
             contactInfo.id = txtUserId.Text;
 
             // 담당자 성명 (최대 100자)
             contactInfo.personName = "담당자123";
 
-            // 연락처 (최대 20자)
+            // 담당자 휴대폰 (최대 20자)
             contactInfo.tel = "";
 
             // 이메일주소 (최대 100자)
             contactInfo.email = "";
 
-            // 담당자 권한, 1 : 개인권한, 2 : 읽기권한, 3 : 회사권한
+            // 권한, 1 : 개인권한, 2 : 읽기권한, 3 : 회사권한
             contactInfo.searchRole = 3;
 
             try
@@ -1198,10 +1196,10 @@ namespace Popbill.EasyFin.Bank.Example.csharp
             String CorpNum = "1234567890";
 
             // 조회 시작 일자
-            String SDate = "20230501";
+            String SDate = "20250701";
 
             // 조회 종료 일자
-            String EDate = "20230530";
+            String EDate = "20250731";
 
             // 목록 페이지 번호
             int Page = 1;
@@ -1300,10 +1298,10 @@ namespace Popbill.EasyFin.Bank.Example.csharp
             String CorpNum = "1234567890";
 
             // 조회 시작 일자
-            String SDate = "20230501";
+            String SDate = "20250701";
 
             // 조회 종료 일자
-            String EDate = "20230530";
+            String EDate = "20250731";
 
             // 목록 페이지 번호
             int Page = 1;
