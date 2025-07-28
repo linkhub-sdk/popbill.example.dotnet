@@ -74,10 +74,10 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
             KeyType tiKeyType = KeyType.SELL;
 
             // 시작일자, 표시형식(yyyyMMdd)
-            String SDate = "20220501";
+            String SDate = "20250701";
 
             // 종료일자, 표시형식(yyyyMMdd)
-            String EDate = "20220504";
+            String EDate = "20250731";
 
             try
             {
@@ -106,16 +106,16 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
 
                 String tmp = "jobID (작업아이디) : " + jobState.jobID + CRLF;
                 tmp += "jobState (수집상태) : " + jobState.jobState.ToString() + CRLF;
-                tmp += "queryType (수집유형) : " + jobState.queryType + CRLF;
+                tmp += "queryType (전자세금계산서 유형) : " + jobState.queryType + CRLF;
                 tmp += "queryDateType (일자유형) : " + jobState.queryDateType + CRLF;
                 tmp += "queryStDate (시작일자) : " + jobState.queryStDate + CRLF;
                 tmp += "queryEnDate (종료일자) : " + jobState.queryEnDate + CRLF;
-                tmp += "errorCode (오류코드) : " + jobState.errorCode.ToString() + CRLF;
+                tmp += "errorCode (수집 결과코드) : " + jobState.errorCode.ToString() + CRLF;
                 tmp += "errorReason (오류메시지) : " + jobState.errorReason + CRLF;
                 tmp += "jobStartDT (작업 시작일시) : " + jobState.jobStartDT + CRLF;
                 tmp += "jobEndDT (작업 종료일시) : " + jobState.jobEndDT + CRLF;
-                tmp += "collectCount (수집개수) : " + jobState.collectCount.ToString() + CRLF;
-                tmp += "regDT (수집요청일시) : " + jobState.regDT + CRLF;
+                tmp += "collectCount (수집건수) : " + jobState.collectCount.ToString() + CRLF;
+                tmp += "regDT (수집 요청일시) : " + jobState.regDT + CRLF;
 
                 MessageBox.Show(tmp, "수집 상태 확인");
             }
@@ -136,9 +136,9 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
             {
                 List<HTCashbillJobState> jobList = htCashbillService.ListActiveJob(txtCorpNum.Text);
 
-                String tmp = "jobID(작업아이디) | jobState(수집상태) | queryType(수집유형) | queryDateType(일자유형) | queryStDate(시작일자) |";
-                tmp += "queryEnDate(종료일자) | errorCode(오류코드) | errorReason(오류메시지) | jobStartDT(작업 시작일시) | jobEndDT(작업 종료일시) |";
-                tmp += "collectCount(수집개수) | regDT(수집 요청일시) " + CRLF;
+                String tmp = "jobID(작업아이디) | jobState(수집상태) | queryType(전자세금계산서 유형) | queryDateType(일자유형) | queryStDate(시작일자) |";
+                tmp += "queryEnDate(종료일자) | errorCode(수집 결과코드) | errorReason(오류메시지) | jobStartDT(작업 시작일시) | jobEndDT(작업 종료일시) |";
+                tmp += "collectCount(수집건수) | regDT(수집 요청일시) " + CRLF;
 
                 for (int i = 0; i < jobList.Count; i++)
                 {
@@ -352,10 +352,10 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
          */
         private void btnRegistDeptUser_Click(object sender, EventArgs e)
         {
-            // 홈택스에서 생성한 현금영수증 부서사용자 아이디
+            // 현금영수증 전용 부서사용자 아이디
             String deptUserID = "userid";
 
-            // 홈택스에서 생성한 현금영수증 부서사용자 비밀번호
+            // 현금영수증 전용 부서사용자 비밀번호
             String deptUserPWD = "passwd";
 
             try
@@ -820,22 +820,22 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         {
             Contact contactInfo = new Contact();
 
-            //담당자 아이디, 6자 이상 50자 미만
+            // 아이디, 6자 이상 50자 미만
             contactInfo.id = "testkorea";
 
             // 담당자 비밀번호, 8자 이상 20자 이하(영문, 숫자, 특수문자 조합)
             contactInfo.Password = "asdf8536!@#";
 
-            //담당자 성명 (최대 100자)
+            // 담당자 성명 (최대 100자)
             contactInfo.personName = "담당자명";
 
-            //담당자연락처 (최대 20자)
+            // 담당자 휴대폰 (최대 20자)
             contactInfo.tel = "";
 
-            //담당자 이메일 (최대 100자)
+            // 담당자 메일 (최대 100자)
             contactInfo.email = "";
 
-            // 담당자 권한, 1 : 개인권한, 2 : 읽기권한, 3 : 회사권한
+            // 권한, 1 : 개인권한, 2 : 읽기권한, 3 : 회사권한
             contactInfo.searchRole = 3;
 
             try
@@ -867,14 +867,14 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
 
                 String tmp = null;
 
-                tmp += "id (담당자 아이디) : " + contactInfo.id + CRLF;
-                tmp += "personName (담당자명) : " + contactInfo.personName + CRLF;
-                tmp += "tel (연락처) : " + contactInfo.tel + CRLF;
-                tmp += "email (담당자 이메일) : " + contactInfo.email + CRLF;
+                tmp += "id (아이디) : " + contactInfo.id + CRLF;
+                tmp += "personName (담당자 성명) : " + contactInfo.personName + CRLF;
+                tmp += "tel (담당자 휴대폰) : " + contactInfo.tel + CRLF;
+                tmp += "email (담당자 메일) : " + contactInfo.email + CRLF;
                 tmp += "regDT (등록일시) : " + contactInfo.regDT + CRLF;
-                tmp += "searchRole (담당자 권한) : " + contactInfo.searchRole + CRLF;
-                tmp += "mgrYN (관리자 여부) : " + contactInfo.mgrYN + CRLF;
-                tmp += "state (상태) : " + contactInfo.state + CRLF;
+                tmp += "searchRole (권한) : " + contactInfo.searchRole + CRLF;
+                tmp += "mgrYN (역할) : " + contactInfo.mgrYN + CRLF;
+                tmp += "state (계정상태) : " + contactInfo.state + CRLF;
                 tmp += CRLF;
 
                 MessageBox.Show(tmp, "담당자 정보 확인");
@@ -900,14 +900,14 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
 
                 foreach (Contact contactInfo in contactList)
                 {
-                    tmp += "id (담당자 아이디) : " + contactInfo.id + CRLF;
-                    tmp += "personName (담당자명) : " + contactInfo.personName + CRLF;
-                    tmp += "tel (연락처) : " + contactInfo.tel + CRLF;
-                    tmp += "email (담당자 이메일) : " + contactInfo.email + CRLF;
+                    tmp += "id (아이디) : " + contactInfo.id + CRLF;
+                    tmp += "personName (담당자 성명) : " + contactInfo.personName + CRLF;
+                    tmp += "tel (담당자 휴대폰) : " + contactInfo.tel + CRLF;
+                    tmp += "email (담당자 메일) : " + contactInfo.email + CRLF;
                     tmp += "regDT (등록일시) : " + contactInfo.regDT + CRLF;
-                    tmp += "searchRole (담당자 권한) : " + contactInfo.searchRole + CRLF;
-                    tmp += "mgrYN (관리자 여부) : " + contactInfo.mgrYN + CRLF;
-                    tmp += "state (상태) : " + contactInfo.state + CRLF;
+                    tmp += "searchRole (권한) : " + contactInfo.searchRole + CRLF;
+                    tmp += "mgrYN (역할) : " + contactInfo.mgrYN + CRLF;
+                    tmp += "state (계정상태) : " + contactInfo.state + CRLF;
                     tmp += CRLF;
                 }
 
@@ -928,19 +928,19 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         {
             Contact contactInfo = new Contact();
 
-            // 담당자 아이디
+            // 아이디
             contactInfo.id = txtUserId.Text;
 
             // 담당자 성명 (최대 100자)
             contactInfo.personName = "담당자123";
 
-            // 연락처 (최대 20자)
+            // 담당자 휴대폰 (최대 20자)
             contactInfo.tel = "";
 
-            // 이메일주소 (최대 100자)
+            // 담당자 메일 (최대 100자)
             contactInfo.email = "";
 
-            // 담당자 권한, 1 : 개인권한, 2 : 읽기권한, 3 : 회사권한
+            // 권한, 1 : 개인권한, 2 : 읽기권한, 3 : 회사권한
             contactInfo.searchRole = 3;
 
             try
@@ -1116,10 +1116,10 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
             String CorpNum = "1234567890";
 
             // 조회 시작 일자
-            String SDate = "20230501";
+            String SDate = "20250701";
 
             // 조회 종료 일자
-            String EDate = "20230530";
+            String EDate = "20250731";
 
             // 목록 페이지 번호
             int Page = 1;
