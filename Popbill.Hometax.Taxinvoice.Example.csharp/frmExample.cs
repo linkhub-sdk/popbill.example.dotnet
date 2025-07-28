@@ -77,10 +77,10 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
             String DType = "S";
 
             // 시작일자, 표시형식(yyyyMMdd)
-            String SDate = "20220501";
+            String SDate = "20250701";
 
             // 종료일자, 표시형식(yyyyMMdd)
-            String EDate = "20220504";
+            String EDate = "20250731";
 
             try
             {
@@ -109,15 +109,15 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
 
                 String tmp = "jobID (작업아이디) : " + jobState.jobID + CRLF;
                 tmp += "jobState (수집상태) : " + jobState.jobState.ToString() + CRLF;
-                tmp += "queryType (수집유형) : " + jobState.queryType + CRLF;
+                tmp += "queryType (전자세금계산서 유형) : " + jobState.queryType + CRLF;
                 tmp += "queryDateType (일자유형) : " + jobState.queryDateType + CRLF;
                 tmp += "queryStDate (시작일자) : " + jobState.queryStDate + CRLF;
                 tmp += "queryEnDate (종료일자) : " + jobState.queryEnDate + CRLF;
-                tmp += "errorCode (오류코드) : " + jobState.errorCode.ToString() + CRLF;
+                tmp += "errorCode (수집 결과코드) : " + jobState.errorCode.ToString() + CRLF;
                 tmp += "errorReason (오류메시지) : " + jobState.errorReason + CRLF;
                 tmp += "jobStartDT (작업 시작일시) : " + jobState.jobStartDT + CRLF;
                 tmp += "jobEndDT (작업 종료일시) : " + jobState.jobEndDT + CRLF;
-                tmp += "collectCount (수집개수) : " + jobState.collectCount.ToString() + CRLF;
+                tmp += "collectCount (수집건수) : " + jobState.collectCount.ToString() + CRLF;
                 tmp += "regDT (수집 요청일시) : " + jobState.regDT + CRLF;
 
                 MessageBox.Show(tmp, "수집 상태 확인");
@@ -139,8 +139,8 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
             {
                 List<HTTaxinvoiceJobState> jobList = htTaxinvoiceService.ListActiveJob(txtCorpNum.Text);
 
-                String tmp = "jobID(작업아이디) | jobState(수집상태) | queryType(수집유형) | queryDateType(일자유형) | queryStDate(시작일자) |";
-                tmp += "queryEnDate(종료일자) | errorCode(오류코드) | errorReason(오류메시지) | jobStartDT(작업 시작일시) | jobEndDT(작업 종료일시) |";
+                String tmp = "jobID(작업아이디) | jobState(수집상태) | queryType(전자세금계산서 유형) | queryDateType(일자유형) | queryStDate(시작일자) |";
+                tmp += "queryEnDate(종료일자) | errorCode(수집 결과코드) | errorReason(오류메시지) | jobStartDT(작업 시작일시) | jobEndDT(작업 종료일시) |";
                 tmp += "collectCount(수집개수) | regDT(수집 요청일시) " + CRLF;
 
                 for (int i = 0; i < jobList.Count; i++)
@@ -354,6 +354,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
                 tmp += "taxTotal (세액 합계) : " + tiInfo.taxTotal + CRLF;
                 tmp += "supplyCostTotal (공급가액 합계) : " + tiInfo.supplyCostTotal + CRLF;
                 tmp += "totalAmount (합계금액) : " + tiInfo.totalAmount + CRLF;
+
                 tmp += "purposeType (영수/청구) : " + tiInfo.purposeType + CRLF;
                 tmp += "serialNum (일련번호) : " + tiInfo.serialNum + CRLF;
                 tmp += "cash (현금) : " + tiInfo.cash + CRLF;
@@ -363,12 +364,13 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
                 tmp += "remark1 (비고1) : " + tiInfo.remark1 + CRLF;
                 tmp += "remakr2 (비고2) : " + tiInfo.remark2 + CRLF;
                 tmp += "remark3 (비고3) : " + tiInfo.remark3 + CRLF;
+
                 tmp += "ntsconfirmNum (국세청승인번호) : " + tiInfo.ntsconfirmNum + CRLF + CRLF;
 
                 tmp += "========공급자 정보========" + CRLF;
                 tmp += "inovicerCorpNum (사업자번호) : " + tiInfo.invoicerCorpNum + CRLF;
                 tmp += "invoicerMgtKey (공급자 문서번호) : " + tiInfo.invoicerMgtKey + CRLF;
-                tmp += "invoicerTaxRegID (종사업장번호) : " + tiInfo.invoicerTaxRegID + CRLF;
+                tmp += "invoicerTaxRegID (종사업장 식별번호) : " + tiInfo.invoicerTaxRegID + CRLF;
                 tmp += "invoicerCorpName (상호) : " + tiInfo.invoicerCorpName + CRLF;
                 tmp += "invoicerCEOName (대표자 성명) : " + tiInfo.invoicerCEOName + CRLF;
                 tmp += "invoicerAddr (주소) : " + tiInfo.invoicerAddr + CRLF;
@@ -383,7 +385,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
                 tmp += "invoiceeCorpNum (사업자번호) : " + tiInfo.invoiceeCorpNum + CRLF;
                 tmp += "invoiceeType (공급받는자 구분) : " + tiInfo.invoiceeType + CRLF;
                 tmp += "invoiceeMgtKey (공급받는자 문서번호) : " + tiInfo.invoiceeMgtKey + CRLF;
-                tmp += "invoiceeTaxRegID (종사업장번호) : " + tiInfo.invoiceeTaxRegID + CRLF;
+                tmp += "invoiceeTaxRegID (종사업장 식별번호) : " + tiInfo.invoiceeTaxRegID + CRLF;
                 tmp += "invoiceeCorpName (상호) : " + tiInfo.invoiceeCorpName + CRLF;
                 tmp += "invoiceeCEOName (대표자 성명) : " + tiInfo.invoiceeCEOName + CRLF;
                 tmp += "invoiceeAddr (주소) : " + tiInfo.invoiceeAddr + CRLF;
@@ -393,6 +395,11 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
                 tmp += "invoiceeDeptName1 (담당자 부서명) : " + tiInfo.invoiceeDeptName1 + CRLF;
                 tmp += "invoiceeTEL1 (담당자 연락처) : " + tiInfo.invoiceeTEL1 + CRLF;
                 tmp += "invoiceeEmail1 (담당자 이메일) : " + tiInfo.invoiceeEmail1 + CRLF + CRLF;
+
+               
+                tmp += CRLF + "=========수정 전자(세금)계산서 정보========" + CRLF;
+                tmp += "modifyCode (수정 사유코드) : " + tiInfo.modifyCode.ToString() + CRLF;
+                tmp += "orgNTSConfirmNum (당초 국세청승인번호) : " + tiInfo.orgNTSConfirmNum + CRLF + CRLF;
 
                 tmp += "========품목 정보========" + CRLF;
 
@@ -409,9 +416,6 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
                     tmp += "remark (비고) : " + tiInfo.detailList[i].remark + CRLF;
                 }
 
-                tmp += CRLF + "=========수정 전자(세금)계산서 정보========" + CRLF;
-                tmp += "modifyCode (수정 사유코드) : " + tiInfo.modifyCode.ToString() + CRLF;
-                tmp += "orgNTSConfirmNum (원본 전자세금계산서국세청승인번호) : " + tiInfo.orgNTSConfirmNum + CRLF + CRLF;
 
                 MessageBox.Show(tmp, "상세정보 조회");
             }
@@ -433,7 +437,7 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
                 HTTaxinvoiceXML tiXML = htTaxinvoiceService.GetXML(txtCorpNum.Text, txtNTSconfirmNum.Text);
 
                 String tmp = "ResultCode (응답코드) : " + tiXML.ResultCode.ToString() + CRLF;
-                tmp += "Message (전자세금계산서 국세청승인번호) : " + tiXML.Message + CRLF;
+                tmp += "Message (응답메시지) : " + tiXML.Message + CRLF;
                 tmp += "retObject (전자세금계산서 XML 문서) : " + tiXML.retObject + CRLF;
 
                 MessageBox.Show(tmp, "상세정보 조회 - XML");
@@ -557,10 +561,10 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
          */
         private void btnRegistDeptUser_Click(object sender, EventArgs e)
         {
-            // 홈택스에서 생성한 전자세금계산서 부서사용자 아이디
+            // 전자세금계산서 전용 부서사용자 아이디
             String deptUserID = "userid_test";
 
-            // 홈택스에서 생성한 전자세금계산서 부서사용자 비밀번호
+            // 전자세금계산서 전용 부서사용자 비밀번호
             String deptUserPWD = "passwd_test";
 
             try
@@ -1029,22 +1033,22 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
         {
             Contact contactInfo = new Contact();
 
-            //담당자 아이디, 6자 이상 50자 미만
+            // 담당자 아이디, 6자 이상 50자 미만
             contactInfo.id = "testkorea";
 
             // 담당자 비밀번호, 8자 이상 20자 이하(영문, 숫자, 특수문자 조합)
             contactInfo.Password = "asdf8536!@#";
 
-            //담당자 성명 (최대 100자)
+            // 담당자 성명 (최대 100자)
             contactInfo.personName = "담당자명";
 
-            //담당자연락처 (최대 20자)
+            // 담당자 휴대폰 (최대 20자)
             contactInfo.tel = "";
 
-            //담당자 이메일 (최대 100자)
+            // 담당자 메일 (최대 100자)
             contactInfo.email = "";
 
-            // 담당자 권한, 1 : 개인권한, 2 : 읽기권한, 3 : 회사권한
+            // 권한, 1 : 개인권한, 2 : 읽기권한, 3 : 회사권한
             contactInfo.searchRole = 3;
 
             try
@@ -1077,13 +1081,13 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
                 String tmp = null;
 
                 tmp += "id (담당자 아이디) : " + contactInfo.id + CRLF;
-                tmp += "personName (담당자명) : " + contactInfo.personName + CRLF;
-                tmp += "tel (연락처) : " + contactInfo.tel + CRLF;
-                tmp += "email (담당자 이메일) : " + contactInfo.email + CRLF;
+                tmp += "personName (담당자 성명) : " + contactInfo.personName + CRLF;
+                tmp += "tel (담당자 휴대폰) : " + contactInfo.tel + CRLF;
+                tmp += "email (담당자 메일) : " + contactInfo.email + CRLF;
                 tmp += "regDT (등록일시) : " + contactInfo.regDT + CRLF;
-                tmp += "searchRole (담당자 권한) : " + contactInfo.searchRole + CRLF;
-                tmp += "mgrYN (관리자 여부) : " + contactInfo.mgrYN + CRLF;
-                tmp += "state (상태) : " + contactInfo.state + CRLF;
+                tmp += "searchRole (권한) : " + contactInfo.searchRole + CRLF;
+                tmp += "mgrYN (역할) : " + contactInfo.mgrYN + CRLF;
+                tmp += "state (계정상태) : " + contactInfo.state + CRLF;
                 tmp += CRLF;
 
                 MessageBox.Show(tmp, "담당자 정보 확인");
@@ -1110,13 +1114,13 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
                 foreach (Contact contactInfo in contactList)
                 {
                     tmp += "id (담당자 아이디) : " + contactInfo.id + CRLF;
-                    tmp += "personName (담당자명) : " + contactInfo.personName + CRLF;
-                    tmp += "tel (연락처) : " + contactInfo.tel + CRLF;
-                    tmp += "email (담당자 이메일) : " + contactInfo.email + CRLF;
+                    tmp += "personName (담당자 성명) : " + contactInfo.personName + CRLF;
+                    tmp += "tel (담당자 휴대폰) : " + contactInfo.tel + CRLF;
+                    tmp += "email (담당자 메일) : " + contactInfo.email + CRLF;
                     tmp += "regDT (등록일시) : " + contactInfo.regDT + CRLF;
-                    tmp += "searchRole (담당자 권한) : " + contactInfo.searchRole + CRLF;
-                    tmp += "mgrYN (관리자 여부) : " + contactInfo.mgrYN + CRLF;
-                    tmp += "state (상태) : " + contactInfo.state + CRLF;
+                    tmp += "searchRole (권한) : " + contactInfo.searchRole + CRLF;
+                    tmp += "mgrYN (역할) : " + contactInfo.mgrYN + CRLF;
+                    tmp += "state (계정상태) : " + contactInfo.state + CRLF;
                     tmp += CRLF;
                 }
                 MessageBox.Show(tmp, "담당자 목록조회");
@@ -1136,19 +1140,19 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
         {
             Contact contactInfo = new Contact();
 
-            // 담당자 아이디
+            // 아이디
             contactInfo.id = txtUserId.Text;
 
             // 담당자 성명 (최대 100자)
             contactInfo.personName = "담당자123";
 
-            // 연락처 (최대 20자)
+            // 담당자 휴대폰 (최대 20자)
             contactInfo.tel = "";
 
-            // 이메일주소 (최대 100자)
+            // 담당자 이메일 (최대 100자)
             contactInfo.email = "";
 
-            // 담당자 권한, 1 : 개인권한, 2 : 읽기권한, 3 : 회사권한
+            // 권한, 1 : 개인권한, 2 : 읽기권한, 3 : 회사권한
             contactInfo.searchRole = 3;
 
             try
@@ -1324,10 +1328,10 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
             String CorpNum = "1234567890";
 
             // 조회 시작 일자
-            String SDate = "20230501";
+            String SDate = "20250701";
 
             // 조회 종료 일자
-            String EDate = "20230530";
+            String EDate = "20250731";
 
             // 목록 페이지 번호
             int Page = 1;
