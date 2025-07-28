@@ -1849,7 +1849,7 @@ namespace Popbill.Message.Example.csharp
             try
             {
                 UseHistoryResult result =
-                    messageService.GetUseHistory(CorpNum, SDate, EDate, Page, PerPage, Order, UserID, txtUserId.Text);
+                    messageService.GetUseHistory(CorpNum, SDate, EDate, Page, PerPage, Order, txtUserId.Text);
 
                 String tmp = "";
 

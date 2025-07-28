@@ -188,7 +188,8 @@ namespace Popbill.Kakao.Example.csharp
                 {
                     tmp += "number (발신번호) : " + numInfo.number + CRLF;
                     tmp += "representYN (대표번호 지정여부) : " + numInfo.representYN + CRLF;
-                    tmp += "state (등록상태) : " + numInfo.state + CRLF + CRLF;
+                    tmp += "memo (메모) : " + numInfo.memo + CRLF;
+                    tmp += "state (등록상태) : " + numInfo.state + CRLF;
                 }
 
                 MessageBox.Show(tmp, "발신번호 목록 조회");
@@ -241,6 +242,10 @@ namespace Popbill.Kakao.Example.csharp
                 tmp += "검색용 아이디 (plusFriendID) : " + templateInfo.plusFriendID + CRLF;
                 tmp += "광고 메시지 (ads) : " + templateInfo.ads + CRLF;
                 tmp += "부가 메시지 (appendix) : " + templateInfo.appendix + CRLF;
+                tmp += "보안템플릿 여부(sercureYN) : " + templateInfo.secureYN + CRLF;
+                tmp += "템플릿 상태(state) : " + templateInfo.state + CRLF;
+                tmp += "템플릿 상태 일시(stateDT) : " + templateInfo.stateDT + CRLF;
+
                 if (templateInfo.btns != null)
                 {
                     foreach (KakaoButton buttonInfo in templateInfo.btns)
@@ -250,11 +255,10 @@ namespace Popbill.Kakao.Example.csharp
                         tmp += "버튼유형 (t) : " + buttonInfo.t + CRLF;
                         tmp += "버튼링크1 (u1) : " + buttonInfo.u1 + CRLF;
                         tmp += "버튼링크2 (u2) : " + buttonInfo.u2 + CRLF;
+                        tmp += "아웃링크 (tg) : " + buttonInfo.tg + CRLF;
                     }
                 }
-                tmp += "보안템플릿 여부(sercureYN) : " + templateInfo.secureYN + CRLF;
-                tmp += "템플릿 상태(state) : " + templateInfo.state + CRLF;
-                tmp += "템플릿 상태 일시(stateDT) : " + templateInfo.stateDT + CRLF;
+                
 
                 MessageBox.Show(tmp, "알림톡 템플릿 정보 확인");
             }
@@ -285,6 +289,9 @@ namespace Popbill.Kakao.Example.csharp
                     tmp += "검색용 아이디 (plusFriendID) : " + templateInfo.plusFriendID + CRLF;
                     tmp += "광고 메시지 (ads) : " + templateInfo.ads + CRLF;
                     tmp += "부가 메시지 (appendix) : " + templateInfo.appendix + CRLF;
+                    tmp += "보안템플릿 여부(sercureYN) : " + templateInfo.secureYN + CRLF;
+                    tmp += "템플릿 상태(state) : " + templateInfo.state + CRLF;
+                    tmp += "템플릿 상태 일시(stateDT) : " + templateInfo.stateDT + CRLF;
 
                     if (templateInfo.btns != null)
                     {
@@ -295,12 +302,11 @@ namespace Popbill.Kakao.Example.csharp
                             tmp += "버튼유형 (t) : " + buttonInfo.t + CRLF;
                             tmp += "버튼링크1 (u1) : " + buttonInfo.u1 + CRLF;
                             tmp += "버튼링크2 (u2) : " + buttonInfo.u2 + CRLF;
+                            tmp += "아웃링크 (tg) : " + buttonInfo.tg + CRLF;
                         }
                     }
 
-                    tmp += "보안템플릿 여부(sercureYN) : " + templateInfo.secureYN + CRLF;
-                    tmp += "템플릿 상태(state) : " + templateInfo.state + CRLF;
-                    tmp += "템플릿 상태 일시(stateDT) : " + templateInfo.stateDT + CRLF;
+                    
 
                     tmp += CRLF + CRLF;
                 }
@@ -1442,7 +1448,7 @@ namespace Popbill.Kakao.Example.csharp
                 MessageBox.Show(tmp, "전송내역 확인");
 
                 string rowStr =
-                    "state (전송상태 코드) | sendDT (전송일시) | result (전송결과 코드) | resultDT (전송결과 수신일시) | contentType (카카오톡 유형) | receiveNum (수신번호) | " +
+                    "state (상태코드) | sendDT (전송일시) | result (카카오 결과코드) | resultDT (전송결과 수신일시) | contentType (카카오톡 유형) | receiveNum (수신번호) | " +
                     "receiveName (수신자명) | content (내용) | altSubject (대체문자 제목) | altContent(대체문자 내용) | altContentType (대체문자 전송타입) | altSendDT (대체문자 전송일시) | " +
                     "altResult (대체문자 전송결과 코드) | altResultDT (대체문자 전송결과 수신일시) | receiptNum (접수번호) | requestNum (요청번호) | interOPRefKey (파트너 지정키)";
 
@@ -1510,7 +1516,7 @@ namespace Popbill.Kakao.Example.csharp
                 MessageBox.Show(tmp, "전송내역 확인");
 
                 string rowStr =
-                    "state (전송상태 코드) | sendDT (전송일시) | result (전송결과 코드) | resultDT (전송결과 수신일시) | contentType (카카오톡 유형) | receiveNum (수신번호) | " +
+                    "state (상태코드) | sendDT (전송일시) | result (카카오 결과코드) | resultDT (전송결과 수신일시) | contentType (카카오톡 유형) | receiveNum (수신번호) | " +
                     "receiveName (수신자명) | content (내용) | altSubject (대체문자 제목) | altContent(대체문자 내용) | altContentType (대체문자 전송타입) | altSendDT (대체문자 전송일시) | " +
                     "altResult (대체문자 전송결과 코드) | altResultDT (대체문자 전송결과 수신일시) | receiptNum (접수번호) | requestNum (요청번호) | interOPRefKey (파트너 지정키)";
 
@@ -1558,7 +1564,7 @@ namespace Popbill.Kakao.Example.csharp
             String SDate = "20250701";
 
             // 종료일자, 날짜형식(yyyyMMdd)
-            String EDate = "20250730";
+            String EDate = "20250731";
 
             // 전송상태 배열 ("0" , "1" , "2" , "3" , "4" , "5" 중 선택, 다중 선택 가능)
             // └ 0 = 전송대기 , 1 = 전송중 , 2 = 전송성공 , 3 = 대체문자 전송 , 4 = 전송실패 , 5 = 전송취소
@@ -2082,16 +2088,16 @@ namespace Popbill.Kakao.Example.csharp
             // 담당자 비밀번호, 8자 이상 20자 이하(영문, 숫자, 특수문자 조합)
             contactInfo.Password = "asdf8536!@#";
 
-            //담당자 성명 (최대 100자)
+            // 담당자 성명 (최대 100자)
             contactInfo.personName = "담당자명";
 
-            //담당자연락처 (최대 20자)
+            // 담당자 휴대폰 (최대 20자)
             contactInfo.tel = "";
 
-            //담당자 이메일 (최대 100자)
+            // 담당자 메일 (최대 100자)
             contactInfo.email = "";
 
-            // 담당자 권한, 1 : 개인권한, 2 : 읽기권한, 3 : 회사권한
+            // 권한, 1 : 개인권한, 2 : 읽기권한, 3 : 회사권한
             contactInfo.searchRole = 3;
 
             try
@@ -2123,14 +2129,14 @@ namespace Popbill.Kakao.Example.csharp
 
                 String tmp = null;
 
-                tmp += "id (담당자 아이디) : " + contactInfo.id + CRLF;
-                tmp += "personName (담당자명) : " + contactInfo.personName + CRLF;
-                tmp += "tel (연락처) : " + contactInfo.tel + CRLF;
-                tmp += "email (담당자 이메일) : " + contactInfo.email + CRLF;
+                tmp += "id (아이디) : " + contactInfo.id + CRLF;
+                tmp += "personName (담당자 성명) : " + contactInfo.personName + CRLF;
+                tmp += "tel (담당자 휴대폰) : " + contactInfo.tel + CRLF;
+                tmp += "email (담당자 메일) : " + contactInfo.email + CRLF;
                 tmp += "regDT (등록일시) : " + contactInfo.regDT + CRLF;
-                tmp += "searchRole (담당자 권한) : " + contactInfo.searchRole + CRLF;
-                tmp += "mgrYN (관리자 여부) : " + contactInfo.mgrYN + CRLF;
-                tmp += "state (상태) : " + contactInfo.state + CRLF;
+                tmp += "searchRole (권한) : " + contactInfo.searchRole + CRLF;
+                tmp += "mgrYN (역할) : " + contactInfo.mgrYN + CRLF;
+                tmp += "state (계정상태) : " + contactInfo.state + CRLF;
                 tmp += CRLF;
 
                 MessageBox.Show(tmp, "담당자 정보 확인");
@@ -2156,14 +2162,14 @@ namespace Popbill.Kakao.Example.csharp
 
                 foreach (Contact contactInfo in contactList)
                 {
-                    tmp += "id (담당자 아이디) : " + contactInfo.id + CRLF;
-                    tmp += "personName (담당자명) : " + contactInfo.personName + CRLF;
-                    tmp += "tel (연락처) : " + contactInfo.tel + CRLF;
-                    tmp += "email (담당자 이메일) : " + contactInfo.email + CRLF;
+                    tmp += "id (아이디) : " + contactInfo.id + CRLF;
+                    tmp += "personName (담당자 성명) : " + contactInfo.personName + CRLF;
+                    tmp += "tel (담당자 휴대폰) : " + contactInfo.tel + CRLF;
+                    tmp += "email (담당자 메일) : " + contactInfo.email + CRLF;
                     tmp += "regDT (등록일시) : " + contactInfo.regDT + CRLF;
-                    tmp += "searchRole (담당자 권한) : " + contactInfo.searchRole + CRLF;
-                    tmp += "mgrYN (관리자 여부) : " + contactInfo.mgrYN + CRLF;
-                    tmp += "state (상태) : " + contactInfo.state + CRLF;
+                    tmp += "searchRole (권한) : " + contactInfo.searchRole + CRLF;
+                    tmp += "mgrYN (역할) : " + contactInfo.mgrYN + CRLF;
+                    tmp += "state (계정상태) : " + contactInfo.state + CRLF;
                     tmp += CRLF;
                 }
 
@@ -2190,13 +2196,13 @@ namespace Popbill.Kakao.Example.csharp
             // 담당자 성명 (최대 100자)
             contactInfo.personName = "담당자123";
 
-            // 연락처 (최대 20자)
+            // 담당자 휴대폰 (최대 20자)
             contactInfo.tel = "";
 
-            // 이메일주소 (최대 100자)
+            // 담당자 메일 (최대 100자)
             contactInfo.email = "";
 
-            // 담당자 권한, 1 : 개인권한, 2 : 읽기권한, 3 : 회사권한
+            // 권한, 1 : 개인권한, 2 : 읽기권한, 3 : 회사권한
             contactInfo.searchRole = 3;
 
             try
@@ -2270,10 +2276,10 @@ namespace Popbill.Kakao.Example.csharp
             String CorpNum = "1234567890";
 
             // 조회 시작 일자
-            String SDate = "20230501";
+            String SDate = "20250701";
 
             // 조회 종료 일자
-            String EDate = "20230530";
+            String EDate = "20250731";
 
             // 목록 페이지 번호
             int Page = 1;
@@ -2372,10 +2378,10 @@ namespace Popbill.Kakao.Example.csharp
             String CorpNum = "1234567890";
 
             // 조회 시작 일자
-            String SDate = "20230501";
+            String SDate = "20250701";
 
             // 조회 종료 일자
-            String EDate = "20230530";
+            String EDate = "20250731";
 
             // 목록 페이지 번호
             int Page = 1;
