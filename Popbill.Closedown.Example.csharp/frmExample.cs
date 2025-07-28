@@ -76,8 +76,6 @@ namespace Popbill.Closedown.Example.csharp
             {
                 CorpState result = closedownService.checkCorpNum(txtCorpNum.Text, txtCheckCorpNum.Text);
 
-                tmp += "* state (휴폐업상태) : null-알수없음, 0-등록되지 않은 사업자번호, 1-사업중, 2-폐업, 3-휴업\n";
-                tmp += "* taxType (과세유형) : null-알수없음, 10-일반, 20-면세, 30-간이, 31-간이(세금계산서 발급사업자),  40-비영리법인, 국가기관" + CRLF + CRLF;
                 tmp += "corpNum(사업자번호) : " + result.corpNum + "\n";
                 tmp += "taxType(과세유형) : " + result.taxType + "\n";
                 tmp += "state(휴폐업상태) : " + result.state + "\n";
@@ -112,9 +110,6 @@ namespace Popbill.Closedown.Example.csharp
             try
             {
                 List<CorpState> corpStateList = closedownService.checkCorpNums(txtCorpNum.Text, CorpNumList);
-
-                tmp += "* state (휴폐업상태) : null-알수없음, 0-등록되지 않은 사업자번호, 1-사업중, 2-폐업, 3-휴업" + CRLF;
-                tmp += "* taxType (과세유형) : null-알수없음, 10-일반, 20-면세, 30-간이, 31-간이(세금계산서 발급사업자),  40-비영리법인, 국가기관" + CRLF + CRLF;
 
                 for (int i = 0; i < corpStateList.Count; i++)
                 {
@@ -495,22 +490,22 @@ namespace Popbill.Closedown.Example.csharp
         {
             Contact contactInfo = new Contact();
 
-            //담당자 아이디, 6자 이상 50자 미만
+            // 아이디, 6자 이상 50자 미만
             contactInfo.id = "testkorea";
 
             // 담당자 비밀번호, 8자 이상 20자 이하(영문, 숫자, 특수문자 조합)
             contactInfo.Password = "asdf8536!@#";
 
-            //담당자 성명 (최대 100자)
+            // 담당자 성명 (최대 100자)
             contactInfo.personName = "담당자명";
 
-            //담당자연락처 (최대 20자)
+            // 담당자 휴대폰 (최대 20자)
             contactInfo.tel = "";
 
-            //담당자 이메일 (최대 100자)
+            // 담당자 메일 (최대 100자)
             contactInfo.email = "";
 
-            // 담당자 권한, 1 : 개인권한, 2 : 읽기권한, 3 : 회사권한
+            // 권한, 1 : 개인권한, 2 : 읽기권한, 3 : 회사권한
             contactInfo.searchRole = 3;
 
             try
@@ -542,14 +537,14 @@ namespace Popbill.Closedown.Example.csharp
 
                 String tmp = null;
 
-                tmp += "id (담당자 아이디) : " + contactInfo.id + CRLF;
-                tmp += "personName (담당자명) : " + contactInfo.personName + CRLF;
-                tmp += "tel (연락처) : " + contactInfo.tel + CRLF;
-                tmp += "email (담당자 이메일) : " + contactInfo.email + CRLF;
+                tmp += "id (아이디) : " + contactInfo.id + CRLF;
+                tmp += "personName (담당자 성명) : " + contactInfo.personName + CRLF;
+                tmp += "tel (담당자 휴대폰) : " + contactInfo.tel + CRLF;
+                tmp += "email (담당자 메일) : " + contactInfo.email + CRLF;
                 tmp += "regDT (등록일시) : " + contactInfo.regDT + CRLF;
-                tmp += "searchRole (담당자 권한) : " + contactInfo.searchRole + CRLF;
-                tmp += "mgrYN (관리자 여부) : " + contactInfo.mgrYN + CRLF;
-                tmp += "state (상태) : " + contactInfo.state + CRLF;
+                tmp += "searchRole (권한) : " + contactInfo.searchRole + CRLF;
+                tmp += "mgrYN (역할) : " + contactInfo.mgrYN + CRLF;
+                tmp += "state (계정상태) : " + contactInfo.state + CRLF;
                 tmp += CRLF;
 
                 MessageBox.Show(tmp, "담당자 정보 확인");
@@ -575,14 +570,14 @@ namespace Popbill.Closedown.Example.csharp
 
                 foreach (Contact contactInfo in contactList)
                 {
-                    tmp += "id (담당자 아이디) : " + contactInfo.id + CRLF;
-                    tmp += "personName (담당자명) : " + contactInfo.personName + CRLF;
-                    tmp += "tel (연락처) : " + contactInfo.tel + CRLF;
-                    tmp += "email (담당자 이메일) : " + contactInfo.email + CRLF;
+                    tmp += "id (아이디) : " + contactInfo.id + CRLF;
+                    tmp += "personName (담당자 성명) : " + contactInfo.personName + CRLF;
+                    tmp += "tel (담당자 휴대폰) : " + contactInfo.tel + CRLF;
+                    tmp += "email (담당자 메일) : " + contactInfo.email + CRLF;
                     tmp += "regDT (등록일시) : " + contactInfo.regDT + CRLF;
-                    tmp += "searchRole (담당자 권한) : " + contactInfo.searchRole + CRLF;
-                    tmp += "mgrYN (관리자 여부) : " + contactInfo.mgrYN + CRLF;
-                    tmp += "state (상태) : " + contactInfo.state + CRLF;
+                    tmp += "searchRole (권한) : " + contactInfo.searchRole + CRLF;
+                    tmp += "mgrYN (역할) : " + contactInfo.mgrYN + CRLF;
+                    tmp += "state (계정상태) : " + contactInfo.state + CRLF;
                     tmp += CRLF;
                 }
 
@@ -603,19 +598,19 @@ namespace Popbill.Closedown.Example.csharp
         {
             Contact contactInfo = new Contact();
 
-            // 담당자 아이디
+            // 아이디
             contactInfo.id = txtUserID.Text;
 
             // 담당자 성명 (최대 100자)
             contactInfo.personName = "담당자123";
 
-            // 연락처 (최대 20자)
+            // 담당자 휴대폰 (최대 20자)
             contactInfo.tel = "";
 
-            // 이메일주소 (최대 100자)
+            // 담당자 메일 (최대 100자)
             contactInfo.email = "";
 
-            // 담당자 권한, 1 : 개인권한, 2 : 읽기권한, 3 : 회사권한
+            // 권한, 1 : 개인권한, 2 : 읽기권한, 3 : 회사권한
             contactInfo.searchRole = 3;
 
             try
@@ -689,10 +684,10 @@ namespace Popbill.Closedown.Example.csharp
             String CorpNum = "1234567890";
 
             // 조회 시작 일자
-            String SDate = "20230501";
+            String SDate = "20250701";
 
             // 조회 종료 일자
-            String EDate = "20230530";
+            String EDate = "20250731";
 
             // 목록 페이지 번호
             int Page = 1;
@@ -791,10 +786,10 @@ namespace Popbill.Closedown.Example.csharp
             String CorpNum = "1234567890";
 
             // 조회 시작 일자
-            String SDate = "20230501";
+            String SDate = "20250701";
 
             // 조회 종료 일자
-            String EDate = "20230530";
+            String EDate = "20250731";
 
             // 목록 페이지 번호
             int Page = 1;
