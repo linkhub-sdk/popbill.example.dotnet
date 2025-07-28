@@ -139,7 +139,6 @@
             this.GroupBox1.TabIndex = 16;
             this.GroupBox1.TabStop = false;
             this.GroupBox1.Text = "팝빌 기본 API";
-            this.GroupBox1.Enter += new System.EventHandler(this.GroupBox1_Enter);
             // 
             // groupBox13
             // 
