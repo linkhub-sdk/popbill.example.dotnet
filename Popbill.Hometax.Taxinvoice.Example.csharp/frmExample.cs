@@ -562,10 +562,10 @@ namespace Popbill.HomeTax.Taxinvoice.Example.csharp
         private void btnRegistDeptUser_Click(object sender, EventArgs e)
         {
             // 부서사용자 아이디
-            String deptUserID = "userid_test";
+            String deptUserID = "userid";
 
             // 부서사용자 비밀번호
-            String deptUserPWD = "passwd_test";
+            String deptUserPWD = "passwd";
 
             // 부서사용자 대표자 주민번호
             String identityNum = "";
