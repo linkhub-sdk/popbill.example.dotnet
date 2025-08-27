@@ -2,7 +2,7 @@
 * 팝빌 홈택스 현금영수증 API .NET SDK C#.NET Example
 * C#.NET 연동 튜토리얼 안내 : https://developers.popbill.com/guide/htcashbill/dotnet/getting-started/tutorial?fwn=csharp
 *
-* 업데이트 일자 : 2025-07-22
+* 업데이트 일자 : 2025-08-27
 * 연동기술지원 연락처 : 1600-9854
 * 연동기술지원 이메일 : code@linkhubcorp.com
 *         
@@ -347,20 +347,26 @@ namespace Popbill.HomeTax.Cashbill.Example.csharp
         }
 
         /*
-         *팝빌에 부서사용자를 등록합니다.
+         * 팝빌에 현금영수증 전용 부서사용자를 등록합니다.
          *  - https://developers.popbill.com/reference/htcashbill/dotnet/api/cert#RegistDeptUser
          */
         private void btnRegistDeptUser_Click(object sender, EventArgs e)
         {
-            // 현금영수증 전용 부서사용자 아이디
+            // 부서사용자 아이디
             String deptUserID = "userid";
 
-            // 현금영수증 전용 부서사용자 비밀번호
+            // 부서사용자 비밀번호
             String deptUserPWD = "passwd";
+
+            // 부서사용자 대표자 주민번호
+            String identityNum = "";
+
+            // 팝빌회원 아이디
+            String userID = "testkorea";
 
             try
             {
-                Response response = htCashbillService.RegistDeptUser(txtCorpNum.Text, deptUserID, deptUserPWD);
+                Response response = htCashbillService.RegistDeptUser(txtCorpNum.Text, deptUserID, deptUserPWD, identityNum, userID);
 
                 MessageBox.Show("응답코드(code) : " + response.code.ToString() + CRLF +
                                 "응답메시지(message) : " + response.message, "부서사용자 계정등록");
