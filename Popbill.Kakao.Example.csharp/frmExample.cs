@@ -245,6 +245,8 @@ namespace Popbill.Kakao.Example.csharp
                 tmp += "보안템플릿 여부(sercureYN) : " + templateInfo.secureYN + CRLF;
                 tmp += "템플릿 상태(state) : " + templateInfo.state + CRLF;
                 tmp += "템플릿 상태 일시(stateDT) : " + templateInfo.stateDT + CRLF;
+                tmp += "강조표기 타이틀 (emphasizeTitle) : " + templateInfo.emphasizeTitle + CRLF;
+                tmp += "강조표기 보조 문구 (emphasizeSubTitle) : " + templateInfo.emphasizeSubTitle + CRLF;
 
                 if (templateInfo.btns != null)
                 {
@@ -292,6 +294,8 @@ namespace Popbill.Kakao.Example.csharp
                     tmp += "보안템플릿 여부(sercureYN) : " + templateInfo.secureYN + CRLF;
                     tmp += "템플릿 상태(state) : " + templateInfo.state + CRLF;
                     tmp += "템플릿 상태 일시(stateDT) : " + templateInfo.stateDT + CRLF;
+                    tmp += "강조표기 타이틀 (emphasizeTitle) : " + templateInfo.emphasizeTitle + CRLF;
+                    tmp += "강조표기 보조 문구 (emphasizeSubTitle) : " + templateInfo.emphasizeSubTitle + CRLF;
 
                     if (templateInfo.btns != null)
                     {
@@ -371,6 +375,9 @@ namespace Popbill.Kakao.Example.csharp
             // 1~36자리로 구성. 영문, 숫자, 하이픈(-), 언더바(_)를 조합하여 팝빌 회원별로 중복되지 않도록 할당.
             String requestNum = "";
 
+            // 강조표기 타이틀
+            String emphasizeTitle = "";
+
             // 버튼정보를 수정하지 않고 템플릿 신청시 기재한 정보로 전송하는 경우 null 처리
             List<KakaoButton> buttons = null;
 
@@ -402,7 +409,7 @@ namespace Popbill.Kakao.Example.csharp
             try
             {
                 string receiptNum = kakaoService.SendATS(txtCorpNum.Text, templateCode, senderNum, altSubject, altSendType,
-                    getReserveDT(), receiverNum, receiverName, content, altContent, requestNum, buttons);
+                    getReserveDT(), receiverNum, receiverName, content, altContent, requestNum, buttons, emphasizeTitle);
 
                 MessageBox.Show("접수번호 : " + receiptNum, "알림톡(ATS) 전송");
 
@@ -478,6 +485,9 @@ namespace Popbill.Kakao.Example.csharp
 
                 // 파트너 지정키, 대량전송시, 수신자 구별용 메모
                 receiverInfo.interOPRefKey = "20220504-" + i.ToString();
+
+                // 강조표기 타이틀
+                receiverInfo.emphasizeTitle = "";
 
                 // 수신자별 개별 버튼내용 전송하는 경우
                 // 개별 버튼의 개수는 템플릿 신청 시 승인받은 버튼의 개수와 동일하게 생성, 다를경우 실패 처리
@@ -633,6 +643,9 @@ namespace Popbill.Kakao.Example.csharp
                 receivers.Add(receiverInfo);
             }
 
+            // 강조표기 타이틀
+            String emphasizeTitle = "";
+
 
             // 버튼정보를 수정하지 않고 템플릿 신청시 기재한 정보로 전송하는 경우 null 처리
             List<KakaoButton> buttons = null;
@@ -662,7 +675,7 @@ namespace Popbill.Kakao.Example.csharp
             try
             {
                 string receiptNum = kakaoService.SendATS(txtCorpNum.Text, templateCode, senderNum, content, altSubject,
-                    altContent, altSendType, getReserveDT(), receivers, txtUserId.Text, requestNum, buttons);
+                    altContent, altSendType, getReserveDT(), receivers, txtUserId.Text, requestNum, buttons, emphasizeTitle);
 
                 MessageBox.Show("접수번호 : " + receiptNum, "알림톡(ATS) 전송");
 
@@ -1450,7 +1463,7 @@ namespace Popbill.Kakao.Example.csharp
                 string rowStr =
                     "state (상태코드) | sendDT (전송일시) | result (카카오 결과코드) | resultDT (전송결과 수신일시) | contentType (카카오톡 유형) | receiveNum (수신번호) | " +
                     "receiveName (수신자명) | content (내용) | altSubject (대체문자 제목) | altContent(대체문자 내용) | altContentType (대체문자 전송타입) | altSendDT (대체문자 전송일시) | " +
-                    "altResult (대체문자 전송결과 코드) | altResultDT (대체문자 전송결과 수신일시) | receiptNum (접수번호) | requestNum (요청번호) | interOPRefKey (파트너 지정키)";
+                    "altResult (대체문자 전송결과 코드) | altResultDT (대체문자 전송결과 수신일시) | receiptNum (접수번호) | requestNum (요청번호) | interOPRefKey (파트너 지정키) | emphasizeTitle (강조표기 타이틀)";
 
                 listBox1.Items.Add(rowStr);
 
@@ -1473,7 +1486,8 @@ namespace Popbill.Kakao.Example.csharp
                     rowStr += info.msgs[i].altResultDT + " | ";
                     rowStr += info.msgs[i].receiptNum + " | ";
                     rowStr += info.msgs[i].requestNum + " | ";
-                    rowStr += info.msgs[i].interOPRefKey;
+                    rowStr += info.msgs[i].interOPRefKey + " | ";
+                    rowStr += info.msgs[i].emphasizeTitle;
 
                     listBox1.Items.Add(rowStr);
                 }
@@ -1518,7 +1532,7 @@ namespace Popbill.Kakao.Example.csharp
                 string rowStr =
                     "state (상태코드) | sendDT (전송일시) | result (카카오 결과코드) | resultDT (전송결과 수신일시) | contentType (카카오톡 유형) | receiveNum (수신번호) | " +
                     "receiveName (수신자명) | content (내용) | altSubject (대체문자 제목) | altContent(대체문자 내용) | altContentType (대체문자 전송타입) | altSendDT (대체문자 전송일시) | " +
-                    "altResult (대체문자 전송결과 코드) | altResultDT (대체문자 전송결과 수신일시) | receiptNum (접수번호) | requestNum (요청번호) | interOPRefKey (파트너 지정키)";
+                    "altResult (대체문자 전송결과 코드) | altResultDT (대체문자 전송결과 수신일시) | receiptNum (접수번호) | requestNum (요청번호) | interOPRefKey (파트너 지정키)  | emphasizeTitle (강조표기 타이틀)";
 
                 listBox1.Items.Add(rowStr);
 
@@ -1541,7 +1555,8 @@ namespace Popbill.Kakao.Example.csharp
                     rowStr += info.msgs[i].altResultDT + " | ";
                     rowStr += info.msgs[i].receiptNum + " | ";
                     rowStr += info.msgs[i].requestNum + " | ";
-                    rowStr += info.msgs[i].interOPRefKey;
+                    rowStr += info.msgs[i].interOPRefKey + " | ";
+                    rowStr += info.msgs[i].emphasizeTitle;
 
                     listBox1.Items.Add(rowStr);
                 }
@@ -1628,7 +1643,7 @@ namespace Popbill.Kakao.Example.csharp
                 string rowStr =
                     "state (전송상태 코드) | sendDT (전송일시) | result (전송결과 코드) | resultDT (전송결과 수신일시) | contentType (카카오톡 유형) | receiveNum (수신번호) | " +
                     "receiveName (수신자명) | content (내용) | altSubject (대체문자 제목) | altContent(대체문자 내용) | altContentType (대체문자 전송타입) | altSendDT (대체문자 전송일시) | " +
-                    "altResult (대체문자 전송결과 코드) | altResultDT (대체문자 전송결과 수신일시) | receiptNum (접수번호) | requestNum (요청번호) | interOPRefKey (파트너 지정키)";
+                    "altResult (대체문자 전송결과 코드) | altResultDT (대체문자 전송결과 수신일시) | receiptNum (접수번호) | requestNum (요청번호) | interOPRefKey (파트너 지정키) | emphasizeTitle (강조표기 타이틀)";
 
                 listBox1.Items.Add(rowStr);
 
@@ -1651,7 +1666,8 @@ namespace Popbill.Kakao.Example.csharp
                     rowStr += searchResult.list[i].altResultDT + " | ";
                     rowStr += searchResult.list[i].receiptNum + " | ";
                     rowStr += searchResult.list[i].requestNum + " | ";
-                    rowStr += searchResult.list[i].interOPRefKey;
+                    rowStr += searchResult.list[i].interOPRefKey + " | ";
+                    rowStr += searchResult.list[i].emphasizeTitle;
 
                     listBox1.Items.Add(rowStr);
                 }
