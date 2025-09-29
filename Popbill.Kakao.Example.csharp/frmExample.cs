@@ -406,10 +406,13 @@ namespace Popbill.Kakao.Example.csharp
             buttons.Add(btnInfo);
             */
 
+            // 팝빌회원 아이디
+            String userID = "testkorea";
+
             try
             {
                 string receiptNum = kakaoService.SendATS(txtCorpNum.Text, templateCode, senderNum, altSubject, altSendType,
-                    getReserveDT(), receiverNum, receiverName, content, altContent, requestNum, buttons, emphasizeTitle);
+                    getReserveDT(), receiverNum, receiverName, content, altContent, requestNum, buttons, emphasizeTitle, userID);
 
                 MessageBox.Show("접수번호 : " + receiptNum, "알림톡(ATS) 전송");
 
